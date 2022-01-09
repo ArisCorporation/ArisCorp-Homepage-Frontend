@@ -6,8 +6,12 @@
 
 @layer components {
 
-  .navbaritem {
+  .navbar-icon {
     @apply fill-transparent stroke-[50] stroke-[#c7c7c7] opacity-50 group-hover:stroke-[60] group-hover:stroke-primary group-hover:opacity-100 group-hover:blur-lg
   }
-  
+
+  .navbar-tooltip {
+    @apply absolute z-10 w-auto p-2 m-2 min-w-max top-24 rounded-md shadow-md text-white bg-black text-xs font-bold transition-all duration-100 scale-0 origin-top bg-opacity-75
+  }
+
 }

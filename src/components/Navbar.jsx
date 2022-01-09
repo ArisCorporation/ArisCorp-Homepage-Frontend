@@ -30,79 +30,73 @@ const Navbar = () => {
         <div>
           <div className="">
             <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100">
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <MemberIcon width="82" height="82" classes="navbaritem" />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <FleetIcon width="82" height="82" classes="navbaritem" />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <GameplaysIcon
-                      width="82"
-                      height="82"
-                      classes="navbaritem"
-                    />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <CommLinksIcon
-                      width="82"
-                      height="82"
-                      classes="navbaritem"
-                    />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <RecruitingIcon
-                      width="82"
-                      height="82"
-                      classes="navbaritem"
-                    />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
-                    <PartnerIcon width="82" height="82" classes="navbaritem" />
-                  </a>
-                </Link>
-              </li>
+              <NavbarItem
+                link="/"
+                tooltip="Unsere Member"
+                content={
+                  <MemberIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="Unsere Flotte"
+                content={
+                  <FleetIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="Unsere Aufgabenfelder"
+                content={
+                  <GameplaysIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="Comm-Links"
+                content={
+                  <CommLinksIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="Rekrutierung"
+                content={
+                  <RecruitingIcon
+                    width="82"
+                    height="82"
+                    classes="navbar-icon"
+                  />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="Unsere Partner"
+                content={
+                  <PartnerIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
               <li className="pl-10">
                 <Link href="/">
-                  <a className="group">
-                    <VerseExkursIcon
-                      width="120"
-                      height="120"
-                      className="absolute"
-                    />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="group">
+                  <a className="flex justify-center group">
                     <ShipExkursIcon
                       width="120"
                       height="120"
                       className="absolute"
                     />
+                    <NavbarTooltip tooltip="ShipExkurs - COMMING SOON" />
+                  </a>
+                </Link>
+              </li>
+              <li className="">
+                <Link href="/">
+                  <a className="flex justify-center group">
+                    <VerseExkursIcon
+                      width="120"
+                      height="120"
+                      className="absolute"
+                    />
+                    <NavbarTooltip tooltip="VerseExkurs" />
                   </a>
                 </Link>
               </li>
@@ -194,11 +188,22 @@ const Navbar = () => {
   );
 };
 
-const NavbarItem = ({ content, link }) => {
+const NavbarItem = ({ content, link, tooltip }) => {
   return (
-    <Link href={link}>
-      <a>{content}</a>
-    </Link>
+    <li>
+      <Link href={link}>
+        <a className="flex justify-center group">
+          {content}
+          <NavbarTooltip tooltip={tooltip} />
+        </a>
+      </Link>
+    </li>
+  );
+};
+
+const NavbarTooltip = ({ tooltip }) => {
+  return (
+    <span className="navbar-tooltip group-hover:scale-100">{tooltip}</span>
   );
 };
 
