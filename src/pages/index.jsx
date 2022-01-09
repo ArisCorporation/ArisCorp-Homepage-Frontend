@@ -7,7 +7,7 @@ export default function Home() {
       <Navbar />
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         <Head>
-          <title>ArisCorp - Homepage</title>
+          <title>Astro Research and Industrial Service Corporation - Homepage</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
       </div>
