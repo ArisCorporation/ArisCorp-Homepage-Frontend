@@ -17,7 +17,10 @@
     "postcss": "^8.4.5",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "react-markdown": "^7.1.2",
+    "react-tabs": "^3.2.3",
+    "rehype-raw": "^6.1.1"
   },
   "devDependencies": {
     "eslint": "8.5.0",

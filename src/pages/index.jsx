@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Navbar from "components/Navbar";
 import HeroSection from "components/HeroSection";
-import Member from "components/AboutSection";
+import AboutSection from "components/AboutSection";
 
 export default function Home() {
   return (
@@ -15,8 +15,8 @@ export default function Home() {
       <Navbar />
       <HeroSection />
 
-      <div className="md:container md:mx-auto">
-        servus
+      <div className="px-4 md:container md:mx-auto">
+        <AboutSection />
       </div>
     </>
   );

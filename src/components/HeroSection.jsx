@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const HeroSection = () => {
   return (
-    <div className="relative drop-shadow-2xl">
+    <div className="relative mb-32 drop-shadow-2xl">
       <div className="absolute w-full h-full bg-black bg-opacity-60">
 
       </div>
