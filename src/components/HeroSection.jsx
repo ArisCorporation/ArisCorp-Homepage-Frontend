@@ -1,0 +1,41 @@
+import Image from "next/image";
+
+const HeroSection = () => {
+  return (
+    <div className="relative">
+      <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-center justify-center">
+        <div className="relative items-center justify-center">
+          <h1 className="flex items-center justify-center text-xl font-bold text-white mb-[-50px]">
+            Willkommen
+            <span className="ml-2 tracking-widest text-secondary">bei der</span>
+          </h1>
+          <div className="flex items-center justify-center scale-50">
+            <Image
+              src="https://cms.ariscorp.de/assets/62eb0e48-6a0e-432f-b90d-fbd6aca6eaac"
+              alt="ArisCorp Banner"
+              width={600}
+              height={230}
+              priority
+            />
+          </div>
+        </div>
+      </div>
+      <div className="">
+        <video
+          autoPlay
+          loop
+          muted
+          controlslist="nofullscreen nodownload"
+          className="w-full h-full"
+        >
+          <source
+            src="https://cms.ariscorp.de/assets/2fe8455b-d879-4703-b81f-2c9485794d93"
+            type='video/webm; codecs="vp8, vorbis"'
+          />
+        </video>
+      </div>
+    </div>
+  );
+};
+
+export default HeroSection;

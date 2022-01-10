@@ -1,15 +1,20 @@
 import Head from "next/head";
 import Navbar from "components/Navbar";
+import HeroSection from "components/HeroSection";
 
 export default function Home() {
   return (
-    <div className="flex bg-secondary">
+    <div className="max-w-full bg-gray-900">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Homepage
+        </title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        <Head>
-          <title>Astro Research and Industrial Service Corporation - Homepage</title>
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
+      <HeroSection />
+      <div className="">
+        servus
       </div>
     </div>
   );
