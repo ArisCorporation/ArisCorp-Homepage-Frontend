@@ -65,7 +65,7 @@ class MyDocument extends Document {
           <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
           <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
         </Head>
-        <body>
+        <body className="font-nasa bg-[#202020] text-white min-h-screen">
           <Main />
           <NextScript />
         </body>

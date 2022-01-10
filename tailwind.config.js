@@ -9,7 +9,8 @@ module.exports = {
         'bg-primary': '#111111',
       },
       fontFamily: {
-        'anurati': ['Anurati-Regular', 'sans-serif']
+        'anurati': ['Anurati-Regular', 'sans-serif'],
+        'nasa': ['Nasalization', 'sans-serif']
       }
     },
   },
