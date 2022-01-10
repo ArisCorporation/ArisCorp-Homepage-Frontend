@@ -1,28 +1,32 @@
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 
-const { gql, useQuery } = require("@apollo/client");
+const AboutSection = () => (
+  <Tabs>
+    <TabList>
+      <Tab>Die ArisCorp</Tab>
+      <Tab>History</Tab>
+      <Tab>Manifest</Tab>
+      <Tab>Charter</Tab>
+    </TabList>
+    
 
-const THE_ARISCORP = gql`
-  query GetTheArisCorp {
-    die_ariscorp {
-      about_ariscorp
-    }
-  }
-`;
+    <TabPanel>
+      <h2>Die ArisCorp</h2>
+    </TabPanel>
 
-export default function TheArisCorp() {
-  const { loading, error, data } = useQuery(THE_ARISCORP);
+    <TabPanel>
+      <h2>History</h2>
+    </TabPanel>
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+    <TabPanel>
+      <h2>Manifest</h2>
+    </TabPanel>
 
-  console.log(data.die_ariscorp.about_ariscorp);
-  return (
-      <div className="text-center">
-        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-          {data.die_ariscorp.about_ariscorp}
-        </ReactMarkdown>
-      </div>
-  );
-}
+    <TabPanel>
+      <h2>Charter</h2>
+    </TabPanel>
+  </Tabs>
+);
+
+export default AboutSection
