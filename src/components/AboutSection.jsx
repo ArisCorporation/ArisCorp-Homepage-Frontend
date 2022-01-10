@@ -9,10 +9,10 @@ const AboutSection = () => (
     <TabList>
       <h1>ÜBER</h1>
       <hr />
-      <Tab><h1>DIE ARISCORP</h1></Tab>
-      <Tab><h1>HISTORY</h1></Tab>
-      <Tab><h1>MANIFEST</h1></Tab>
-      <Tab><h1>CHARTER</h1></Tab>
+      <Tab><h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">DIE ARISCORP</h1></Tab>
+      <Tab><h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">HISTORY</h1></Tab>
+      <Tab><h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">MANIFEST</h1></Tab>
+      <Tab><h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">CHARTER</h1></Tab>
       <hr />
     </TabList>
 
