@@ -1,32 +1,37 @@
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import TheArisCorp from "./AboutSection/AboutArisCorp";
+import ArisCorpHistory from "./AboutSection/ArisCorpHistory";
+import ArisCorpManifest from "./AboutSection/ArisCorpManifest";
+import ArisCorpCharta from "./AboutSection/ArisCorpCharta";
 
 const AboutSection = () => (
   <Tabs>
     <TabList>
-      <Tab>Die ArisCorp</Tab>
-      <Tab>History</Tab>
-      <Tab>Manifest</Tab>
-      <Tab>Charter</Tab>
+      <h1>ÜBER</h1>
+      <hr />
+      <Tab><h1>DIE ARISCORP</h1></Tab>
+      <Tab><h1>HISTORY</h1></Tab>
+      <Tab><h1>MANIFEST</h1></Tab>
+      <Tab><h1>CHARTER</h1></Tab>
+      <hr />
     </TabList>
-    
 
     <TabPanel>
-      <h2>Die ArisCorp</h2>
+      <TheArisCorp />
     </TabPanel>
 
     <TabPanel>
-      <h2>History</h2>
+      <ArisCorpHistory />
     </TabPanel>
 
     <TabPanel>
-      <h2>Manifest</h2>
+      <ArisCorpManifest />
     </TabPanel>
 
     <TabPanel>
-      <h2>Charter</h2>
+      <ArisCorpCharta />
     </TabPanel>
   </Tabs>
 );
 
-export default AboutSection
+export default AboutSection;
