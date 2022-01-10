@@ -1,5 +1,7 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import OurMember from "./OrgaSection/OurMember";
+import OurFleet from "./OrgaSection/OurFleet";
+import OurGameplays from "./OrgaSection/OurGameplays";
 
 const OrgaSection = () => (
   <Tabs>
@@ -17,11 +19,11 @@ const OrgaSection = () => (
     </TabPanel>
 
     <TabPanel>
-      <h1 />
+      <OurFleet />
     </TabPanel>
 
     <TabPanel>
-      <h1 />
+      <OurGameplays />
     </TabPanel>
   </Tabs>
 );

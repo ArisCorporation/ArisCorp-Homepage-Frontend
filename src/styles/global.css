@@ -39,7 +39,7 @@ hr {
 }
 
 .react-tabs__tab--selected {
-  @apply opacity-100 text-primary; 
+  @apply opacity-100 text-primary;
 }
 
 .react-tabs__tab--disabled {
