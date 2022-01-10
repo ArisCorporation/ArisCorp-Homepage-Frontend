@@ -7,7 +7,7 @@ const { gql, useQuery } = require("@apollo/client");
 const OUR_MEMBERS = gql`
   query GetMember {
     member(
-      filter: { status: { _eq: "published" } },
+      filter: { status: { _eq: "published" } }
       sort: ["sort", "member_name"]
     ) {
       id
@@ -28,7 +28,6 @@ export default function OurMember() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
 
-  console.log(data.member);
   return (
     <div className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

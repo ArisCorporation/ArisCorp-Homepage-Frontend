@@ -61,34 +61,3 @@ hr {
 .react-tabs__tab-panel--selected {
   @apply block;
 }
-
-{data.member.map(
-  ({ id, member_name, member_titel, member_rollen, member_potrait }) => (
-    <div key={id} className="text-center">
-      <figure className="relative inline-block overflow-hidden text-center">
-        <div className="border-b-2 border-b-secondary border-solid rounded-[3px]">
-          <Image
-            src={
-              "https://cms.ariscorp.de/assets/5c690246-9f3b-4831-bf3f-6ee858a8b123"
-            }
-            alt={member_name + "Potrait"}
-            width={270}
-            height={320}
-            className="border-b-2 border-b-secondary border-solid rounded-[3px]"
-          />
-        </div>
-        <figcaption className="absolute top-0 left-0 bg-opacity-60 text-center pt-[40%] px-5 pb-5 z-10 opacity-0 transition-all delay-300 ease-linear min-w-full min-h-full">
-          <hr className="hr-short w-[100px] h-[2px] m-1.5" />
-          {member_rollen.map((member_rollen) => (
-            <p key={member_rollen}>{member_rollen}</p>
-          ))}
-          <ul>
-            <a href="">Biografie</a>
-          </ul>
-        </figcaption>
-      </figure>
-      <p className="pb-0 text-2xl">{member_titel}</p>
-      <p className="text-[#999]">Mitglied</p>
-    </div>
-  )
-)}
