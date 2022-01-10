@@ -17,7 +17,7 @@ const Navbar = () => {
   const toggleMobile = () => setMobileOpen((current) => !current);
 
   return (
-    <nav className="fixed z-10 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30">
+    <nav className="fixed z-20 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30">
       {/* Desktop menu */}
       <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>
@@ -106,7 +106,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className="flex flex-wrap items-center justify-between w-full px-5 mx-auto lg:hidden">
+      <div className="flex flex-wrap items-center justify-between w-full px-5 mx-auto bg-black lg:hidden bg-opacity-80">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <div>
             <Link href="/">
