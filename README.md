@@ -4,28 +4,26 @@
 
 ### Frontend:
 
-<hr />
-
 - React
 - NextJS
 - TailwindCSS
 - React-Icons
 - React-Tabs
 
-### API:
-
 <hr />
+
+### API:
 
 - Directus SDK
 
-### Backend:
-
 <hr />
+
+### Backend:
 
 - Directus hCMS
 
-### Webserver:
-
 <hr />
+
+### Webserver:
 
 - Nginx
