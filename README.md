@@ -2,7 +2,7 @@
 
 ## Tech Stack:
 
-### Frontend:
+## Frontend:
 
 - React
 - NextJS
@@ -10,20 +10,14 @@
 - React-Icons
 - React-Tabs
 
-<hr />
-
-### API:
+## API:
 
 - Directus SDK
 
-<hr />
-
-### Backend:
+## Backend:
 
 - Directus hCMS
 
-<hr />
-
-### Webserver:
+## Webserver:
 
 - Nginx
