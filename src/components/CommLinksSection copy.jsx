@@ -32,9 +32,7 @@ const CommLinksSection = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error :(</p>;
-
-
-  (
+  /*return (
     <div className="flex flex-wrap justify-center my-12">
       <ThreeThirds />
 
@@ -51,7 +49,7 @@ const CommLinksSection = () => {
       <OneThird />
       <TwoThirds />
     </div>
-  );
+  );*/
 
   return (
     <div className="flex flex-wrap justify-center my-12">
