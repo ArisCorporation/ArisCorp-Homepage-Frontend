@@ -45,7 +45,7 @@ export default function OurMember() {
                   objectFit="contain"
                 />
               </div>
-              <figcaption className="absolute top-0 left-0 h-full bg-opacity-60 text-center pt-[40%] px-[20px] pb-[20px] z-[5] opacity-0 bg-black group-hover:opacity-80 transition-all ease-linear min-w-full min-h-full block">
+              <figcaption className="absolute top-0 left-0 h-full bg-opacity-50 text-center pt-[40%] px-[20px] pb-[20px] z-5 opacity-0 bg-black group-hover:opacity-100 transition-all ease-linear min-w-full min-h-full block">
                 <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
                 <p className="p-[10px] m-0">“Member“</p>
                 <hr className="w-[100px] h-[2px] m-auto" />
@@ -54,7 +54,7 @@ export default function OurMember() {
                     href=""
                     className="italic bg-transparent text-secondary hover:underline"
                   >
-                    Biografie
+                    BIOGRAFIE
                   </a>
                 </ul>
               </figcaption>

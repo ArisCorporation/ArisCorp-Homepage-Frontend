@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import Image from "next/image";
 
 const { gql, useQuery } = require("@apollo/client");
 

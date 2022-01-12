@@ -16,6 +16,9 @@
   h1 {
     @apply text-4xl tracking-widest font-anurati;
   }
+  .hr-short{
+    @apply w-16 mt-2
+  }
 }
 
 hr {
