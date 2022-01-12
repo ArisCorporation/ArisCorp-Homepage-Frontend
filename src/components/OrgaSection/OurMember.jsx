@@ -32,7 +32,7 @@ export default function OurMember() {
     <div className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.member.map((member) => (
-          <div className="m-0 relative w-full px-[15px]" key={member.id}>
+          <div className="m-0 relative w-full px-[15px] mb-8" key={member.id}>
             <figure className="relative inline-block overflow-hidden text-center group">
               <div className="relative border-b-2 border-solid rounded-sm border-secondary max-w-full w-[270px] h-[320px]">
                 <Image

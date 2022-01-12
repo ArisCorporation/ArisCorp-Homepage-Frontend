@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const PartnerSection = () => {
   return (
-    <div className="flex flex-wrap mx-[-15px] justify-center items-center">
+    <div className="flex flex-wrap mx-[-15px] justify-center items-center px-4">
       <hr />
       <h2 className="mb-10 text-xs font-medium text-center sm:text-base md:text-lg lg:text-2xl">
         Die ARISCORP unterhält auch Partnerschaften mit anderen Star Citizen
