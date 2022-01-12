@@ -64,3 +64,22 @@ hr {
 .react-tabs__tab-panel--selected {
   @apply block;
 }
+
+
+html::-webkit-scrollbar-track
+{
+  @apply rounded bg-bg-secondary;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  /*border-radius: 10px; */
+}
+
+html::-webkit-scrollbar
+{
+  @apply w-[5px] bg-bg-secondary
+}
+
+html::-webkit-scrollbar-thumb
+{
+  @apply rounded-md bg-primary;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+}

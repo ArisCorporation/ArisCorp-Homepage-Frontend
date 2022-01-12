@@ -23,7 +23,7 @@ const OrgaSection = () => (
     </TabPanel>
 
     <TabPanel>
-      <OurGameplays />
+      <i />
     </TabPanel>
   </Tabs>
 );

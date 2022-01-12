@@ -10,6 +10,7 @@ module.exports = {
         'primary': '#00FFE8',
         'secondary': '#E48632',
         'bg-primary': '#111111',
+        'bg-secondary': '#252525',
       },
       fontFamily: {
         'anurati': ['Anurati-Regular', 'sans-serif'],

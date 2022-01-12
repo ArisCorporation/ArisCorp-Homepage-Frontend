@@ -5,7 +5,7 @@ const PartnerSection = () => {
   return (
     <div className="flex flex-wrap mx-[-15px] justify-center items-center">
       <hr />
-      <h2 className="mb-10 text-2xl font-medium text-center">
+      <h2 className="mb-10 text-xs font-medium text-center sm:text-base md:text-lg lg:text-2xl">
         Die ARISCORP unterhält auch Partnerschaften mit anderen Star Citizen
         Organisationen. Für nähere Informationen gern auf die jeweiligen Logos
         klicken.
