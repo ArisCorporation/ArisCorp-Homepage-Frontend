@@ -29,81 +29,76 @@ const COMM_LINKS = gql`
 `;
 
 const CommLinksSection = () => {
-  const { loading, error, data } = useQuery(COMM_LINKS);
   const [children, setChildren] = useState([]);
+  const { loading, error, data } = useQuery(COMM_LINKS);
 
   useEffect(() => {
     const layout = [];
-    console.log(data.comm_links.length);
 
-    for (let i = 0; i < data.comm_links.length; i += 10) {
+    for (let i = 0; i < data?.comm_links.length; i += 10) {
       layout.push(
         <div key={i}>
-          <ThreeThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[1] + "')]"} title={data.comm_links.comm_link_titel[1]} channel={data.comm_links.comm_link_channel[1]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[1]} />
+          <ThreeThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links.comm_link_banner?.id[i] + "')]"} title={data?.comm_links[i].comm_link_titel} channel={data?.comm_links[i].comm_link_channel} posted="1 day ago" description={data?.comm_links[i].comm_link_beschreibung} />
         </div>
       );
 
       // Break out of the loop if we've
       // already reached the end of data
-      if (i + 1 >= data.comm_links.length) {
+      if (i + 1 >= data?.comm_links.length) {
         break;
       }
 
       layout.push(
         <div key={i + 1}>
-          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 1] + "')]"} title={data.comm_links.comm_link_titel[i + 1]} channel={data.comm_links.comm_link_channel[i + 1]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 1]} />
+          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 1].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 1].comm_link_titel} channel={data?.comm_links[i + 1].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
-          {data.comm_links[i + 2] && <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 2] + "')]"} title={data.comm_links.comm_link_titel[i + 2]} channel={data.comm_links.comm_link_channel[i + 2]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 2]} />}
+          {data?.comm_links[i + 2] && <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 2].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
         </div>
       );
 
-      if (i + 3 >= data.comm_links.length) {
+      if (i + 3 >= data?.comm_links.length) {
         break;
       }
 
       layout.push(
         <div key={i + 3}>
-          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 3] + "')]"} title={data.comm_links.comm_link_titel[i + 3]} channel={data.comm_links.comm_link_channel[i + 3]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 3]} />
-          {data.comm_links[i + 4] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 4] + "')]"} title={data.comm_links.comm_link_titel[i + 4]} channel={data.comm_links.comm_link_channel[i + 4]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 4]} />}
-          {data.comm_links[i + 5] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 5] + "')]"} title={data.comm_links.comm_link_titel[i + 5]} channel={data.comm_links.comm_link_channel[i + 5]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 5]} />}
+          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 3].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 3].comm_link_titel} channel={data?.comm_links[i + 3].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 3].comm_link_beschreibung} />
+          {data?.comm_links[i + 4] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 4].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 4].comm_link_titel} channel={data?.comm_links[i + 4].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 4].comm_link_beschreibung} />}
+          {data?.comm_links[i + 5] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 5].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 5].comm_link_titel} channel={data?.comm_links[i + 5].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 5].comm_link_beschreibung} />}
         </div>
       );
 
-      if (i + 6 >= data.comm_links.length) {
+      if (i + 6 >= data?.comm_links.length) {
         break;
       }
 
       layout.push(
         <div key={i + 6}>
-          <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 6] + "')]"} title={data.comm_links.comm_link_titel[i + 6]} channel={data.comm_links.comm_link_channel[i + 6]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 6]} />
-          {data.comm_links[i + 7] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 7] + "')]"} title={data.comm_links.comm_link_titel[i + 7]} channel={data.comm_links.comm_link_channel[i + 7]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 7]} />}
+          <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 6].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 6].comm_link_titel} channel={data?.comm_links[i + 6].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 6].comm_link_beschreibung} />
+          {data?.comm_links[i + 7] && <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 7].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 7].comm_link_titel} channel={data?.comm_links[i + 7].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 7].comm_link_beschreibung} />}
         </div>
       );
 
-      if (i + 8 >= data.comm_links.length) {
+      if (i + 8 >= data?.comm_links.length) {
         break;
       }
 
       layout.push(
         <div key={i + 8}>
-          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 8] + "')]"} title={data.comm_links.comm_link_titel[i + 8]} channel={data.comm_links.comm_link_channel[i + 8]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 8]} />
-          {data.comm_links[i + 9] && <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data.comm_links.comm_link_banner?.id[i + 9] + "')]"} title={data.comm_links.comm_link_titel[i + 9]} channel={data.comm_links.comm_link_channel[i + 9]} posted="1 day ago" description={data.comm_links.comm_link_beschreibung[i + 9]} />}
+          <OneThird typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 8].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 8].comm_link_titel} channel={data?.comm_links[i + 8].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 8].comm_link_beschreibung} />
+          {data?.comm_links[i + 9] && <TwoThirds typeicon="type-post" typename="post" image={"bg-[url('//cms.ariscorp.de/assets/" + data?.comm_links[i + 9].comm_link_banner?.id + "')]"} title={data?.comm_links[i + 9].comm_link_titel} channel={data?.comm_links[i + 9].comm_link_channel} posted="1 day ago" description={data?.comm_links[i + 9].comm_link_beschreibung} />}
         </div>
       );
     }
 
     setChildren(layout);
-  }, []);
-  
+  }, [data]);
 
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error :(</p>;
-
-  return (
-    <div className="flex flex-wrap justify-center my-12">
-      {children}
-    </div>
-  );
+    return (
+      <div className="flex flex-wrap justify-center my-12">
+        {children}
+      </div>
+    );
 };
 
 const OneThird = ({typeicon, typename, image, title, channel, posted, description }) => {
