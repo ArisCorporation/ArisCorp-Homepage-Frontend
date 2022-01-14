@@ -90,7 +90,7 @@ const OneThird = ({typeicon, typename, image, title, channel, posted, descriptio
             {typename}
           </span>
         </div>
-        <div className={'bg-cover relative bg-center opacity-60 w-[338px] h-[210px]'} style={{ backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')'}}></div>
+        <div className={'bg-cover relative bg-center opacity-100 w-[338px] h-[210px]'} style={{ backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')'}}></div>
         <div className="block align-middle absolute mt-[26px] w-full">
           <div className="text-lg text-white ">
             {title}
@@ -168,7 +168,7 @@ const ThreeThirds = ({typeicon, typename, image, title, channel, posted, descrip
             {typename}
           </span>
         </div>
-        <div className={"lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-60 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]"} style={{ backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')'}}></div>
+        <div className={"lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-80 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]"} style={{ backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')'}}></div>
         <div className="scale-0 lg:scale-100 float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div className={'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] '}></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
