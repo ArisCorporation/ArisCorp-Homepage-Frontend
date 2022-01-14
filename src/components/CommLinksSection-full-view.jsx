@@ -95,8 +95,8 @@ const CommLinksSection = () => {
   }, [data?.comm_links]);
 
   return (
-    <div className="flex flex-wrap mx-auto my-12">
-      <div className="mx-auto">
+    <div className="mx-auto my-12">
+      <div className="flex flex-wrap items-center justify-center mr-[-30px]">
        {children}
       </div>
     </div>
