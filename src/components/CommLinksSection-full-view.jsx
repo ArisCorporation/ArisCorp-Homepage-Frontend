@@ -9,7 +9,6 @@ const COMM_LINKS = gql`
     comm_links(
       filter: { status: { _eq: "published" } }
       sort: ["sort", "-date_created"]
-      limit: 4
     ) {
       id
       status
@@ -53,7 +52,7 @@ const CommLinksSection = () => {
         <div key={i + 1}>
           <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 1].comm_link_banner.filename_disk} title={data?.comm_links[i + 1].comm_link_titel} channel={data?.comm_links[i + 1].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
-          {data?.comm_links[i + 2] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 2].comm_link_banner.filename_disk} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
+          {data?.comm_links[i + 2] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 2].comm_link_banner.filename_disk} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
         </div>
       );
 
@@ -64,6 +63,30 @@ const CommLinksSection = () => {
       layout.push(
         <div key={i + 3}>
           <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 3].comm_link_banner.filename_disk} title={data?.comm_links[i + 3].comm_link_titel} channel={data?.comm_links[i + 3].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 3].comm_link_beschreibung} />
+          {data?.comm_links[i + 4] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 4].comm_link_banner.filename_disk} title={data?.comm_links[i + 4].comm_link_titel} channel={data?.comm_links[i + 4].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 4].comm_link_beschreibung} />}
+          {data?.comm_links[i + 5] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 5].comm_link_banner.filename_disk} title={data?.comm_links[i + 5].comm_link_titel} channel={data?.comm_links[i + 5].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 5].comm_link_beschreibung} />}
+        </div>
+      );
+
+      if (i + 6 >= data?.comm_links.length) {
+        break;
+      }
+
+      layout.push(
+        <div key={i + 6}>
+          <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 6].comm_link_banner.filename_disk} title={data?.comm_links[i + 6].comm_link_titel} channel={data?.comm_links[i + 6].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 6].comm_link_beschreibung} />
+          {data?.comm_links[i + 7] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 7].comm_link_banner.filename_disk} title={data?.comm_links[i + 7].comm_link_titel} channel={data?.comm_links[i + 7].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 7].comm_link_beschreibung} />}
+        </div>
+      );
+
+      if (i + 8 >= data?.comm_links.length) {
+        break;
+      }
+
+      layout.push(
+        <div key={i + 8}>
+          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 8].comm_link_banner.filename_disk} title={data?.comm_links[i + 8].comm_link_titel} channel={data?.comm_links[i + 8].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 8].comm_link_beschreibung} />
+          {data?.comm_links[i + 9] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 9].comm_link_banner.filename_disk} title={data?.comm_links[i + 9].comm_link_titel} channel={data?.comm_links[i + 9].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 9].comm_link_beschreibung} />}
         </div>
       );
     }
