@@ -73,7 +73,7 @@ const CommLinksSection = () => {
 
   return (
     <div className="flex flex-wrap mx-auto my-12">
-      <div className="mx-auto">
+      <div className="mx-auto scale-90 sm:scale-100">
        {children}
       </div>
     </div>
