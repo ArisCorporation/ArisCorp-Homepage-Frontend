@@ -69,7 +69,7 @@ const CommLinksSection = () => {
     }
 
     setChildren(layout);
-  }, [data]);
+  }, [data?.comm_links]);
 
   return (
     <div className="flex flex-wrap mx-auto my-12">
