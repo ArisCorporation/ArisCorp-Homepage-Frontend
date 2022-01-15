@@ -3,9 +3,8 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <div className="relative mb-32 drop-shadow-2xl">
-
-      </div>
       <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-center justify-center">
+        
         <div className="relative items-center justify-center">
           <h1 className="flex items-center justify-center text-lg font-bold text-white mt-20 mb-[-40px] sm:mt-10 sm:mb-[-50px] sm:text-2xl md:mt-10 md:mb-[-30px] md:text-4xl lg:mt-0 lg:mb-0 lg:text-5xl xl:mb-10 xl:text-6xl">
             Willkommen
@@ -31,8 +30,8 @@ const HeroSection = () => {
           className="w-full h-full"
         >
           <source
-            src="https://cms.ariscorp.de/assets/2fe8455b-d879-4703-b81f-2c9485794d93"
-            type='video/webm; codecs="vp8, vorbis"'
+            src="/assets/ArisCorp-Trailer.mp4"
+            type='video/mp4'
           />
         </video>
       </div>
