@@ -8,12 +8,15 @@ const VerseExkursIcon = ({ width, height, classes }) => {
       width={width}
       height={height}
     >
+      <filter id="grayscale">
+        <feColorMatrix type="saturate" values="0.10"/>
+      </filter>
       <path
         className="transition-all duration-100 ease-linear fill-white grayscale group-hover:grayscale-0"
         d="M2,2079.52H69.54c32.58,69.2,56.37,140.6,86.93,213.75L317.17,2080h70.51L173.82,2362.69H118.68c-16.62-26.73-24.74-58.21-38.56-87.08-15.46-32.26-27.35-66.24-40.49-99.59-7.69-19.52-14.65-39.33-22.22-58.91-3.31-8.57-5.05-18.45-15.41-22.26Z"
       />
       <path
-        className="transition-all duration-100 ease-linear fill-primary grayscale group-hover:grayscale-0"
+        className="transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary"
         d="M3072,1642.8c-12.56,27.42-13,57.52-18.75,86.4-9.55,48-17.21,96.27-25.73,144.76-17.9,3.49-34.38,1.27-52.86,1.66-16.14-24.23-32.68-49.08-49.25-73.91-17.71-26.53-34.69-53.61-53.5-79.35-9.95-13.63-12.32-27.09-9.35-43,3.09-16.58,5-33.39,8.17-55.57L2990.52,1804c11.72-65.35,22.5-125.44,33.73-188H3072Z"
       />
       <path
