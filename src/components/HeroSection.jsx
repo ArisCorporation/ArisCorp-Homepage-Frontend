@@ -3,7 +3,6 @@ import Image from "next/image";
 const HeroSection = () => {
   return (
     <div className="relative mb-32 drop-shadow-2xl">
-      <div className="absolute w-full h-full bg-black opacity-60">
 
       </div>
       <div className="absolute top-0 bottom-0 left-0 right-0 z-10 flex items-center justify-center">
