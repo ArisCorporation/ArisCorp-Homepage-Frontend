@@ -76,9 +76,9 @@ export async function getStaticProps() {
   
   return {
     props: {
-      about: aboutData.die_ariscorp.about_ariscorp,
-      member: memberData.member,
-      comm_links: commsData.comm_links,
+      about: await aboutData.die_ariscorp.about_ariscorp,
+      member: await memberData.member,
+      comm_links: await commsData.comm_links,
     },
     revalidate: 60
  };
