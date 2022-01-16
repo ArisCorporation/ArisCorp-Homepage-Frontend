@@ -1,37 +1,10 @@
 import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
 
-const { gql, useQuery } = require("@apollo/client");
-
-const OUR_MEMBERS = gql`
-  query GetMember {
-    member(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "member_name"]
-    ) {
-      id
-      status
-      member_name
-      member_titel
-      member_rollen
-      member_potrait {
-        id
-      }
-    }
-  }
-`;
-
-export default function OurMember() {
-  const { loading, error, data } = useQuery(OUR_MEMBERS);
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
-
+export default function OurMember({data}) {
   return (
     <div className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.member.map((member) => (
+        {data.map((member) => (
           <div className="m-0 relative w-full px-[15px] mb-8" key={member.id}>
             <figure className="relative inline-block overflow-hidden text-center group">
               <div className="relative border-b-2 border-solid rounded-sm border-secondary max-w-full w-[270px] h-[320px]">

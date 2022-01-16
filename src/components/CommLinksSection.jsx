@@ -2,74 +2,46 @@ import Image from "next/image";
 import Link from "next/link";
 import { Children, useEffect, useState } from "react";
 
-const { gql, useQuery } = require("@apollo/client");
-
-const COMM_LINKS = gql`
-  query GetComm_Links {
-    comm_links(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
-      limit: 4
-    ) {
-      id
-      status
-      comm_link_titel
-      comm_link_banner {
-        filename_disk
-      }
-      comm_link_author {
-        member_titel
-      }
-      comm_link
-      comm_link_beschreibung
-      comm_link_channel {
-        channel
-      }
-    }
-  }
-`;
-
-const CommLinksSection = () => {
+const CommLinksSection = ({ data }) => {
   const [children, setChildren] = useState([]);
-  const { loading, error, data } = useQuery(COMM_LINKS);
 
   useEffect(() => {
     const layout = [];
 
-    for (let i = 0; i < data?.comm_links.length; i += 10) {
+    for (let i = 0; i < data.length; i += 10) {
       layout.push(
         <div key={i}>
-          <ThreeThirds typeicon="type-post" typename="post" title={data?.comm_links[i].comm_link_titel} channel={data?.comm_links[i].comm_link_channel?.channel} posted="1 day ago" description={data?.comm_links[i].comm_link_beschreibung} image={data?.comm_links[i].comm_link_banner.filename_disk} />
+          <ThreeThirds typeicon="type-post" typename="post" title={data[i].comm_link_titel} channel={data[i].comm_link_channel?.channel} posted="1 day ago" description={data[i].comm_link_beschreibung} image={data[i].comm_link_banner.filename_disk} />
         </div>
       );
 
       // Break out of the loop if we've
       // already reached the end of data
-      if (i + 1 >= data?.comm_links.length) {
+      if (i + 1 >= data.length) {
         break;
       }
 
       layout.push(
         <div key={i + 1}>
-          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 1].comm_link_banner.filename_disk} title={data?.comm_links[i + 1].comm_link_titel} channel={data?.comm_links[i + 1].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 1].comm_link_beschreibung} />
+          <OneThird typeicon="type-post" typename="post" image={data[i + 1].comm_link_banner.filename_disk} title={data[i + 1].comm_link_titel} channel={data[i + 1].comm_link_channel.channel} posted="1 day ago" description={data[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
-          {data?.comm_links[i + 2] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 2].comm_link_banner.filename_disk} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
+          {data[i + 2] && <OneThird typeicon="type-post" typename="post" image={data[i + 2].comm_link_banner.filename_disk} title={data[i + 2].comm_link_titel} channel={data[i + 2].comm_link_channel.channel} posted="1 day ago" description={data[i + 2].comm_link_beschreibung} />}
         </div>
       );
 
-      if (i + 3 >= data?.comm_links.length) {
+      if (i + 3 >= data.length) {
         break;
       }
 
       layout.push(
         <div key={i + 3}>
-          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 3].comm_link_banner.filename_disk} title={data?.comm_links[i + 3].comm_link_titel} channel={data?.comm_links[i + 3].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 3].comm_link_beschreibung} />
+          <OneThird typeicon="type-post" typename="post" image={data[i + 3].comm_link_banner.filename_disk} title={data[i + 3].comm_link_titel} channel={data[i + 3].comm_link_channel.channel} posted="1 day ago" description={data[i + 3].comm_link_beschreibung} />
         </div>
       );
     }
 
     setChildren(layout);
-  }, [data?.comm_links]);
+  }, [data]);
 
   return (
     <div className="flex flex-wrap mx-auto my-12">

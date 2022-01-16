@@ -8,7 +8,7 @@ import {
   gql
 } from "@apollo/client";
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: 'https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr',
   cache: new InMemoryCache()
 });

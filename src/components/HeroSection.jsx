@@ -30,11 +30,7 @@ const HeroSection = () => {
           className="w-full h-full"
         >
           <source
-<<<<<<< HEAD
-            src="/assets/ArisCorp-Trailer.mp4"
-=======
             src="https://cms.ariscorp.de/assets/2fe8455b-d879-4703-b81f-2c9485794d93"
->>>>>>> 9e645b5d27a4eaaefa196f8b67dff90aa010d74a
             type='video/mp4'
           />
         </video>

@@ -2,8 +2,9 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import OurMember from "./OrgaSection/OurMember";
 import OurFleet from "./OrgaSection/OurFleet";
 import OurGameplays from "./OrgaSection/OurGameplays";
+import { useEffect } from "react";
 
-const OrgaSection = () => (
+const OrgaSection = ({ memberData }) => (
   <Tabs>
     <TabList>
       <h1>UNSERE</h1>
@@ -15,7 +16,7 @@ const OrgaSection = () => (
     </TabList>
 
     <TabPanel>
-      <OurMember />
+      <OurMember data={memberData} />
     </TabPanel>
 
     <TabPanel>

@@ -4,7 +4,7 @@ import ArisCorpHistory from "./AboutSection/ArisCorpHistory";
 import ArisCorpManifest from "./AboutSection/ArisCorpManifest";
 import ArisCorpCharta from "./AboutSection/ArisCorpCharta";
 
-const AboutSection = () => (
+const AboutSection = ({ aboutData }) => (
   <Tabs>
     <TabList>
       <h1>ÜBER</h1>
@@ -17,7 +17,7 @@ const AboutSection = () => (
     </TabList>
 
     <TabPanel>
-      <TheArisCorp />
+      <TheArisCorp data={aboutData} />
     </TabPanel>
 
     <TabPanel>
