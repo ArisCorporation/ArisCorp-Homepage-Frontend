@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const PartnerSection = () => {
+const PartnerSection = ({data}) => {
   return (
     <div className="flex flex-wrap mx-[-15px] justify-center items-center px-4">
       <hr />
@@ -11,22 +11,24 @@ const PartnerSection = () => {
         klicken.
       </h2>
       <div className="flex flex-wrap justify-between space-x-20">
-        <Link href="">
-          <a className="group">
+      {data.map((partner) => (
+        <Link key={partner.id} href={partner.partner_website}>
+          <a target="_blank" className="group">
             <figure className="mb-4">
               <Image
-                src="https://cms.ariscorp.de/assets/227a8424-0ec8-416e-8f50-3b42b8e30636"
+                src={"https://cms.ariscorp.de/assets/" + partner.partner_logo.id}
                 width={250}
                 height={250}
               />
               <figcaption>
                 <p className="text-center no-underline underline-offset-2 decoration-1 decoration-secondary group-hover:underline">
-                  501st UEE MARINE CORPS
+                  {partner.partner_name}
                 </p>
               </figcaption>
             </figure>
           </a>
         </Link>
+      ))}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ const CommLinksSection = ({ data }) => {
     for (let i = 0; i < data.length; i += 10) {
       layout.push(
         <div key={i}>
-          <ThreeThirds typeicon="type-post" typename="post" title={data[i].comm_link_titel} channel={data[i].comm_link_channel?.channel} posted="1 day ago" description={data[i].comm_link_beschreibung} image={data[i].comm_link_banner.filename_disk} />
+          <ThreeThirds typeicon="type-post" typename="post" title={data[i].comm_link_titel} channel={data[i].comm_link_channel?.channel} posted="1 day ago" description={data[i].comm_link_beschreibung} image={data[i].comm_link_banner.id} />
         </div>
       );
 
@@ -23,9 +23,9 @@ const CommLinksSection = ({ data }) => {
 
       layout.push(
         <div key={i + 1}>
-          <OneThird typeicon="type-post" typename="post" image={data[i + 1].comm_link_banner.filename_disk} title={data[i + 1].comm_link_titel} channel={data[i + 1].comm_link_channel.channel} posted="1 day ago" description={data[i + 1].comm_link_beschreibung} />
+          <OneThird typeicon="type-post" typename="post" image={data[i + 1].comm_link_banner.id} title={data[i + 1].comm_link_titel} channel={data[i + 1].comm_link_channel.channel} posted="1 day ago" description={data[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
-          {data[i + 2] && <OneThird typeicon="type-post" typename="post" image={data[i + 2].comm_link_banner.filename_disk} title={data[i + 2].comm_link_titel} channel={data[i + 2].comm_link_channel.channel} posted="1 day ago" description={data[i + 2].comm_link_beschreibung} />}
+          {data[i + 2] && <OneThird typeicon="type-post" typename="post" image={data[i + 2].comm_link_banner.id} title={data[i + 2].comm_link_titel} channel={data[i + 2].comm_link_channel.channel} posted="1 day ago" description={data[i + 2].comm_link_beschreibung} />}
         </div>
       );
 
@@ -35,7 +35,7 @@ const CommLinksSection = ({ data }) => {
 
       layout.push(
         <div key={i + 3}>
-          <OneThird typeicon="type-post" typename="post" image={data[i + 3].comm_link_banner.filename_disk} title={data[i + 3].comm_link_titel} channel={data[i + 3].comm_link_channel.channel} posted="1 day ago" description={data[i + 3].comm_link_beschreibung} />
+          <OneThird typeicon="type-post" typename="post" image={data[i + 3].comm_link_banner.id} title={data[i + 3].comm_link_titel} channel={data[i + 3].comm_link_channel.channel} posted="1 day ago" description={data[i + 3].comm_link_beschreibung} />
         </div>
       );
     }

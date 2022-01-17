@@ -38,7 +38,7 @@ const CommLinksSection = () => {
     for (let i = 0; i < data?.comm_links.length; i += 10) {
       layout.push(
         <div key={i}>
-          <ThreeThirds typeicon="type-post" typename="post" title={data?.comm_links[i].comm_link_titel} channel={data?.comm_links[i].comm_link_channel?.channel} posted="1 day ago" description={data?.comm_links[i].comm_link_beschreibung} image={data?.comm_links[i].comm_link_banner.filename_disk} />
+          <ThreeThirds typeicon="type-post" typename="post" title={data?.comm_links[i].comm_link_titel} channel={data?.comm_links[i].comm_link_channel?.channel} posted="1 day ago" description={data?.comm_links[i].comm_link_beschreibung} image={data?.comm_links[i].comm_link_banner.id} />
         </div>
       );
 
@@ -50,9 +50,9 @@ const CommLinksSection = () => {
 
       layout.push(
         <div key={i + 1}>
-          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 1].comm_link_banner.filename_disk} title={data?.comm_links[i + 1].comm_link_titel} channel={data?.comm_links[i + 1].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 1].comm_link_beschreibung} />
+          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 1].comm_link_banner.id} title={data?.comm_links[i + 1].comm_link_titel} channel={data?.comm_links[i + 1].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
-          {data?.comm_links[i + 2] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 2].comm_link_banner.filename_disk} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
+          {data?.comm_links[i + 2] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 2].comm_link_banner.id} title={data?.comm_links[i + 2].comm_link_titel} channel={data?.comm_links[i + 2].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 2].comm_link_beschreibung} />}
         </div>
       );
 
@@ -62,9 +62,9 @@ const CommLinksSection = () => {
 
       layout.push(
         <div key={i + 3}>
-          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 3].comm_link_banner.filename_disk} title={data?.comm_links[i + 3].comm_link_titel} channel={data?.comm_links[i + 3].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 3].comm_link_beschreibung} />
-          {data?.comm_links[i + 4] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 4].comm_link_banner.filename_disk} title={data?.comm_links[i + 4].comm_link_titel} channel={data?.comm_links[i + 4].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 4].comm_link_beschreibung} />}
-          {data?.comm_links[i + 5] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 5].comm_link_banner.filename_disk} title={data?.comm_links[i + 5].comm_link_titel} channel={data?.comm_links[i + 5].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 5].comm_link_beschreibung} />}
+          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 3].comm_link_banner.id} title={data?.comm_links[i + 3].comm_link_titel} channel={data?.comm_links[i + 3].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 3].comm_link_beschreibung} />
+          {data?.comm_links[i + 4] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 4].comm_link_banner.id} title={data?.comm_links[i + 4].comm_link_titel} channel={data?.comm_links[i + 4].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 4].comm_link_beschreibung} />}
+          {data?.comm_links[i + 5] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 5].comm_link_banner.id} title={data?.comm_links[i + 5].comm_link_titel} channel={data?.comm_links[i + 5].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 5].comm_link_beschreibung} />}
         </div>
       );
 
@@ -74,8 +74,8 @@ const CommLinksSection = () => {
 
       layout.push(
         <div key={i + 6}>
-          <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 6].comm_link_banner.filename_disk} title={data?.comm_links[i + 6].comm_link_titel} channel={data?.comm_links[i + 6].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 6].comm_link_beschreibung} />
-          {data?.comm_links[i + 7] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 7].comm_link_banner.filename_disk} title={data?.comm_links[i + 7].comm_link_titel} channel={data?.comm_links[i + 7].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 7].comm_link_beschreibung} />}
+          <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 6].comm_link_banner.id} title={data?.comm_links[i + 6].comm_link_titel} channel={data?.comm_links[i + 6].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 6].comm_link_beschreibung} />
+          {data?.comm_links[i + 7] && <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 7].comm_link_banner.id} title={data?.comm_links[i + 7].comm_link_titel} channel={data?.comm_links[i + 7].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 7].comm_link_beschreibung} />}
         </div>
       );
 
@@ -85,8 +85,8 @@ const CommLinksSection = () => {
 
       layout.push(
         <div key={i + 8}>
-          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 8].comm_link_banner.filename_disk} title={data?.comm_links[i + 8].comm_link_titel} channel={data?.comm_links[i + 8].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 8].comm_link_beschreibung} />
-          {data?.comm_links[i + 9] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 9].comm_link_banner.filename_disk} title={data?.comm_links[i + 9].comm_link_titel} channel={data?.comm_links[i + 9].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 9].comm_link_beschreibung} />}
+          <OneThird typeicon="type-post" typename="post" image={data?.comm_links[i + 8].comm_link_banner.id} title={data?.comm_links[i + 8].comm_link_titel} channel={data?.comm_links[i + 8].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 8].comm_link_beschreibung} />
+          {data?.comm_links[i + 9] && <TwoThirds typeicon="type-post" typename="post" image={data?.comm_links[i + 9].comm_link_banner.id} title={data?.comm_links[i + 9].comm_link_titel} channel={data?.comm_links[i + 9].comm_link_channel.channel} posted="1 day ago" description={data?.comm_links[i + 9].comm_link_beschreibung} />}
         </div>
       );
     }
