@@ -17,11 +17,11 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
     </TabList>
 
     <TabPanel>
-      <TheArisCorp data={aboutData} />
+      <ArisCorpHistory data={historyData} />
     </TabPanel>
 
     <TabPanel>
-      <ArisCorpHistory data={historyData} />
+      <TheArisCorp data={aboutData} />
     </TabPanel>
 
     <TabPanel>
