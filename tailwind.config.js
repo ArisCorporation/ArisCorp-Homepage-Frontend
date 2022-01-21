@@ -20,8 +20,8 @@ module.exports = {
         'bg-secondary': '#252525',
       },
       fontFamily: {
-        'anurati': ['Anurati-Regular', 'sans-serif'],
-        'nasa': ['Nasalization', 'sans-serif']
+        'anurati': ['Anurati', 'sans-serif'],
+        'nasa': ['nasalization', 'sans-serif']
       },
       backgroundImage: {
         'type-bg': "url('https://robertsspaceindustries.com/rsi/static/images/channel/hub-type-bg.png')",

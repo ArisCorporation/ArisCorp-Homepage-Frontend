@@ -46,6 +46,10 @@ class MyDocument extends Document {
           <link rel="apple-touch-startup-image" href="/icons/apple-splash-dark-1334-750.jpg" media="(prefers-color-scheme: dark) and (device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" />
           <link rel="apple-touch-startup-image" href="/icons/apple-splash-dark-640-1136.jpg" media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: portrait)" />
           <link rel="apple-touch-startup-image" href="/icons/apple-splash-dark-1136-640.jpg" media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" />
+
+
+          <link rel="stylesheet" href="https://use.typekit.net/ihj0lxn.css" />
+          <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/anurati" />
         </Head>
         <body className="font-nasa bg-[#111] text-white min-h-screen selection:bg-primary selection:text-bg-secondary">
           <Main />
