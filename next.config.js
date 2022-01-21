@@ -10,4 +10,9 @@ module.exports = withPWA ({
   images: {
     domains: ['cms.ariscorp.de'],
   },
+  
+  i18n: {
+    locales: ['de'],
+    defaultLocale: 'de',
+  },
 })
