@@ -20,7 +20,7 @@ module.exports = {
         'bg-secondary': '#252525',
       },
       fontFamily: {
-        'anurati': ['Anurati', 'sans-serif'],
+        'anurati': ['anurati', 'sans-serif'],
         'nasa': ['nasalization', 'sans-serif']
       },
       backgroundImage: {

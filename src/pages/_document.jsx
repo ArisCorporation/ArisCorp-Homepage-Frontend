@@ -49,7 +49,7 @@ class MyDocument extends Document {
 
 
           <link rel="stylesheet" href="https://use.typekit.net/ihj0lxn.css" />
-          <link rel="stylesheet" href="http://fonts.cdnfonts.com/css/anurati" />
+          <link rel="stylesheet" href="/fonts/anurati.css" />
         </Head>
         <body className="font-nasa bg-[#111] text-white min-h-screen selection:bg-primary selection:text-bg-secondary">
           <Main />
