@@ -10,7 +10,7 @@ const CommLinksSection = ({ data }) => {
 
     for (let i = 0; i < data.length; i += 10) {
       layout.push(
-        <div key={i}>
+        <div key={i} className="flex justify-center">
           <ThreeThirds typeicon="type-post" typename="post" title={data[i].comm_link_titel} channel={data[i].comm_link_channel?.channel} posted="1 day ago" description={data[i].comm_link_beschreibung} image={data[i].comm_link_banner.id} />
         </div>
       );
@@ -22,20 +22,11 @@ const CommLinksSection = ({ data }) => {
       }
 
       layout.push(
-        <div key={i + 1}>
+        <div key={i + 1} className="flex flex-wrap justify-center">
           <OneThird typeicon="type-post" typename="post" image={data[i + 1].comm_link_banner.id} title={data[i + 1].comm_link_titel} channel={data[i + 1].comm_link_channel.channel} posted="1 day ago" description={data[i + 1].comm_link_beschreibung} />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
           {data[i + 2] && <OneThird typeicon="type-post" typename="post" image={data[i + 2].comm_link_banner.id} title={data[i + 2].comm_link_titel} channel={data[i + 2].comm_link_channel.channel} posted="1 day ago" description={data[i + 2].comm_link_beschreibung} />}
-        </div>
-      );
-
-      if (i + 3 >= data.length) {
-        break;
-      }
-
-      layout.push(
-        <div key={i + 3}>
-          <OneThird typeicon="type-post" typename="post" image={data[i + 3].comm_link_banner.id} title={data[i + 3].comm_link_titel} channel={data[i + 3].comm_link_channel.channel} posted="1 day ago" description={data[i + 3].comm_link_beschreibung} />
+          {data[i + 3] && <OneThird typeicon="type-post" typename="post" image={data[i + 3].comm_link_banner.id} title={data[i + 3].comm_link_titel} channel={data[i + 3].comm_link_channel.channel} posted="1 day ago" description={data[i + 3].comm_link_beschreibung} />}
         </div>
       );
     }
@@ -44,8 +35,8 @@ const CommLinksSection = ({ data }) => {
   }, [data]);
 
   return (
-    <div className="flex flex-wrap mx-auto my-12">
-      <div className="mx-auto scale-90 sm:scale-100">
+    <div className="flex flex-wrap justify-center mx-auto my-12">
+      <div className="mx-auto scale-[.77] xs:scale-100">
        {children}
       </div>
     </div>
@@ -55,7 +46,7 @@ const CommLinksSection = ({ data }) => {
 const OneThird = ({typeicon, typename, image, title, channel, posted, description }) => {
   return (
     <Link href="/">
-      <a className="mt-10 mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
+      <a className="mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div className={'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'}></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -133,7 +124,7 @@ const TwoThirds = ({typeicon, typename, image, title, channel, posted, descripti
 const ThreeThirds = ({typeicon, typename, image, title, channel, posted, description }) => {
   return (
     <Link href="/">
-      <a className="mt-10 mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
+      <a className="mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat lg:scale-0">
           <div className={"bg-" + typeicon + " float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] "}></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
