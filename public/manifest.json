@@ -7,6 +7,25 @@
   "name": "Astro Research and Industrial Service Homepage",
   "short_name": "ArisCorp",
   "description": "Astro Research and Industrial Service Homepage Desc",
+  "shortcuts": [
+    {
+      "name": "VerseExkurs",
+      "description": "Gehe direkt zum VerseExkurs",
+      "url": "/VerseExkurs",
+      "icons": [
+        {
+          "src": "/icons/solar-system.svg",
+          "type": "image/svg+xml",
+          "purpose": "any"
+        }
+      ]
+    },
+    {
+      "name": "New Appointment",
+      "description": "Create a new appointment.",
+      "url": "/appointments/new"
+    }
+  ],
   "icons": [
     {
       "src": "icons/manifest-icon-192.maskable.png",
