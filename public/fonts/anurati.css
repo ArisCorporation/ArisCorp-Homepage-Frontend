@@ -2,4 +2,5 @@
   font-family: anurati;
   font-style: normal;
   src: url('./anurati.woff') format('woff');
+  font-display: switch;
 }
