@@ -1,17 +1,43 @@
 import Image from "next/image";
+import { useState } from "react";
+const { gql, useQuery } = require("@apollo/client");
 
-export default function OurMember({data}) {
+const QUERY = gql`
+  query Member {
+    member(
+      filter: { status: { _eq: "published" } }
+      sort: ["sort", "member_name"]
+    ){
+      id
+      status
+      member_name
+      member_titel
+      member_rollen
+      member_potrait {
+        id
+      }
+    }
+  }
+`
+
+
+export default function OurMember() {
+  const { data, loading, error } = useQuery(QUERY);
+
+  if(loading){return <div>loading...</div> }
+
+
   return (
     <div className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.map((member) => (
+        {data.member.map((member) => (
           <div className="m-0 relative w-full px-[15px] mb-8" key={member.id}>
             <figure className="relative inline-block overflow-hidden text-center group">
               <div className="relative border-b-2 border-solid rounded-sm border-secondary max-w-full w-[270px] h-[320px]">
                 <Image
                   src={
                     "https://cms.ariscorp.de/assets/" +
-                    member.member_potrait?.id
+                      (member.member_potrait == null ? '0b7eafde-0933-4d1a-a32f-b4f8dd5bb492' : member.member_potrait?.id)
                   }
                   alt={member.member_name + "Potrait"}
                   layout="fill"

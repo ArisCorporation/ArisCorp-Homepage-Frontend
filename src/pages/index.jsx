@@ -51,26 +51,6 @@ export async function getStaticProps() {
       }
     `,
   });
-  
-  const { data: memberData } = await client.query({
-    query: gql`
-      query Member {
-        member(
-          filter: { status: { _eq: "published" } }
-          sort: ["sort", "member_name"]
-        ){
-          id
-          status
-          member_name
-          member_titel
-          member_rollen
-          member_potrait {
-            id
-          }
-        }
-      }
-    `,
-  });
 
   const { data: commsData } = await client.query({
     query: gql`
@@ -117,7 +97,7 @@ export async function getStaticProps() {
     `,
   });
 
-  if (!memberData || !commsData || !aboutData || !arisHistoryData) {
+  if (!commsData || !aboutData || !arisHistoryData) {
     return {
       notFound: true,
     }
@@ -130,8 +110,6 @@ export async function getStaticProps() {
       manifest: await manifestData.manifest.manifest,
       charta: await chartaData.charta.charta,
 
-      member: await memberData.member,
-
       comm_links: await commsData.comm_links,
 
       partner: await partnerData.partner,
@@ -140,7 +118,7 @@ export async function getStaticProps() {
  };
 }
 
-export default function Home({ about, history, manifest, charta, member, comm_links, partner }) {
+export default function Home({ about, history, manifest, charta, comm_links, partner }) {
   return (
     <>
       <Head>
@@ -154,7 +132,7 @@ export default function Home({ about, history, manifest, charta, member, comm_li
 
       <div className="px-4 md:container md:mx-auto">
         <AboutSection aboutData={about} historyData={history} manifestData={manifest} chartaData={charta} />
-        <OrgaSection memberData={member} />
+        <OrgaSection />
         <CommLinksSection data={comm_links} />
         <RectruitmentSection />
         <PartnerSection data={partner} />
