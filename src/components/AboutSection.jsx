@@ -1,8 +1,10 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import TheArisCorp from "./AboutSection/AboutArisCorp";
-import ArisCorpHistory from "./AboutSection/ArisCorpHistory";
 import ArisCorpManifest from "./AboutSection/ArisCorpManifest";
-import ArisCorpCharta from "./AboutSection/ArisCorpCharta";
+import dynamic from 'next/dynamic';
+
+const TheArisCorp = dynamic(() => import('./AboutSection/AboutArisCorp'), {});
+const ArisCorpHistory = dynamic(() => import('./AboutSection/ArisCorpHistory'), {});
+const ArisCorpCharta = dynamic(() => import('./AboutSection/ArisCorpCharta'), {});
 
 const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
   <Tabs>
