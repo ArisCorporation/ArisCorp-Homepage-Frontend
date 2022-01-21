@@ -16,16 +16,16 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
       <hr />
     </TabList>
 
-    <TabPanel>
-      <ArisCorpHistory data={historyData} />
-    </TabPanel>
+<TabPanel>
+  <ArisCorpManifest data={manifestData} />
+</TabPanel>
 
     <TabPanel>
       <TheArisCorp data={aboutData} />
     </TabPanel>
 
     <TabPanel>
-      <ArisCorpManifest data={manifestData} />
+      <ArisCorpHistory data={historyData} />
     </TabPanel>
 
     <TabPanel>
