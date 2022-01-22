@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Navbar from "components/Navbar";
-import HeroSection from "components/HeroSection";
-import AboutSection from "components/AboutSection";
-import OrgaSection from "components/OrgaSection";
-import CommLinksSection from "components/CommLinksSection";
-import RectruitmentSection from "components/RecruitmentSection";
-import PartnerSection from "components/PartnerSection";
+import Navbar from "components/HomeNavbar";
+import HeroSection from "components/HomeHero";
+import AboutSection from "components/HomeAbout";
+import OrgaSection from "components/HomeOur";
+import CommLinksSection from "components/HomeCommLinksSection";
+import RectruitmentSection from "components/HomeRecruitment";
+import PartnerSection from "components/HomePartnerSection";
 import { data } from "autoprefixer";
 const { gql, useQuery } = require("@apollo/client");
 import { client } from "./_app";

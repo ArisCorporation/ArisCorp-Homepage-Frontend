@@ -1,15 +1,19 @@
 import Link from "next/link";
 import MainLogo from "./icons/MainLogo";
-import MemberIcon from "./icons/MemberIcon";
-import FleetIcon from "./icons/FleetIcon";
-import GameplaysIcon from "./icons/GameplaysIcon";
-import CommLinksIcon from "./icons/CommLinksIcon";
-import RecruitingIcon from "./icons/RecruitingIcon";
-import PartnerIcon from "./icons/PartnerIcon";
-import VerseExkursIcon from "./icons/VerseExkursIcon";
-import ShipExkursIcon from "./icons/ShipExkursIcon";
+import { MemberIcon, FleetIcon, GameplaysIcon, CommLinksIcon, RecruitmentIcon, PartnerIcon, ShipExkursBanner, VerseExkursBanner } from "./icons";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+
+const navbarElements = [
+  { name: "Unsere Member", icon: (<MemberIcon ), link: "/", isBanner: false, soon: false },
+  { name: "Unsere Flotte", icon: "FleetIcon", link: "/", isBanner: false, soon: false },
+  { name: "Unsere Aufgabenfelder", icon: "GameplaysIcon", link: "/", isBanner: false, soon: false },
+  { name: "Comm-Links", icon: "CommLinksIcon", link: "/", isBanner: false, soon: false },
+  { name: "Rekrutierung", icon: "RecruitmentIcon", link: "/", isBanner: false, soon: false },
+  { name: "Unsere Partner", icon: "PartnerIcon", link: "/", isBanner: false, soon: false },
+  { name: "ShipExkurs - COMMING SOON", icon: "ShipExkursBanner", link: "/", isBanner: true, soon: true },
+  { name: "VerseExkurs", icon: "VerseExkursBanner", link: "/", isBanner: true, soon: false },
+]
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -30,76 +34,9 @@ const Navbar = () => {
         <div>
           <div className="">
             <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100">
-              <NavbarItem
-                link="/"
-                tooltip="Unsere Member"
-                content={
-                  <MemberIcon width="82" height="82" classes="navbar-icon" />
-                }
-              />
-              <NavbarItem
-                link="/"
-                tooltip="Unsere Flotte"
-                content={
-                  <FleetIcon width="82" height="82" classes="navbar-icon" />
-                }
-              />
-              <NavbarItem
-                link="/"
-                tooltip="Unsere Aufgabenfelder"
-                content={
-                  <GameplaysIcon width="82" height="82" classes="navbar-icon" />
-                }
-              />
-              <NavbarItem
-                link="/"
-                tooltip="Comm-Links"
-                content={
-                  <CommLinksIcon width="82" height="82" classes="navbar-icon" />
-                }
-              />
-              <NavbarItem
-                link="/"
-                tooltip="Rekrutierung"
-                content={
-                  <RecruitingIcon
-                    width="82"
-                    height="82"
-                    classes="navbar-icon"
-                  />
-                }
-              />
-              <NavbarItem
-                link="/"
-                tooltip="Unsere Partner"
-                content={
-                  <PartnerIcon width="82" height="82" classes="navbar-icon" />
-                }
-              />
-              <li className="pl-10">
-                <Link href="/">
-                  <a className="flex justify-center group">
-                    <ShipExkursIcon
-                      width="120"
-                      height="120"
-                      className="absolute"
-                    />
-                    <NavbarTooltip tooltip="ShipExkurs - COMMING SOON" />
-                  </a>
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/">
-                  <a className="flex justify-center group">
-                    <VerseExkursIcon
-                      width="120"
-                      height="120"
-                      className="absolute"
-                    />
-                    <NavbarTooltip tooltip="VerseExkurs" />
-                  </a>
-                </Link>
-              </li>
+              {navbarElements.map((element) => (
+                <NavbarItem content={<{element.icon} width={element.isBanner ? "120" : "82"} height={element.isBanner ? "120" : "82"} classes={(element.isBanner ? "navbar-banner" : "navbar-icon") + (element.soon ? "-soon" : "")} />} tooltip={element.name} link={element.link} />
+              ))}
             </ul>
           </div>
         </div>

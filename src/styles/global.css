@@ -83,3 +83,9 @@ html::-webkit-scrollbar-thumb
   @apply rounded-md bg-primary;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
 }
+
+figcaption p span + figcaption p span::before {
+  display: inline-block;
+  white-space: pre;
+  content: ", ";
+}

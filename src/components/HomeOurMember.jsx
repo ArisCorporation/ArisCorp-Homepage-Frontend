@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useState } from "react";
+import { SquareLoader } from "react-spinners";
 const { gql, useQuery } = require("@apollo/client");
 
 const QUERY = gql`
@@ -20,11 +20,10 @@ const QUERY = gql`
   }
 `
 
-
 export default function OurMember() {
   const { data, loading, error } = useQuery(QUERY);
 
-  if(loading){return <div>loading...</div> }
+  if(loading){return <div className="flex justify-center pt-10"><SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} /></div> }
 
 
   return (
@@ -46,7 +45,11 @@ export default function OurMember() {
               </div>
               <figcaption className="absolute top-0 left-0 h-full bg-opacity-50 text-center pt-[40%] px-[20px] pb-[20px] z-5 opacity-0 bg-black group-hover:opacity-100 transition-all ease-linear min-w-full min-h-full block">
                 <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
-                <p className="p-[10px] m-0">“Member“</p>
+                <p className="p-[10px] m-0">“{ member.member_rollen.map((role, index) => (
+                  <>
+                    { (index ? ', ': '') + (role === 'member' ? "Member" : role === 'marketing' ? "Marketing & Presse" : role === 'recruitment' ? "Rekrutierung" : role) }
+                  </>
+                )) }“</p>
                 <hr className="w-[100px] h-[2px] m-auto" />
                 <ul className="mt-3">
                   <a

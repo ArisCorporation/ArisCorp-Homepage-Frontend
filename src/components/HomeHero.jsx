@@ -1,7 +1,7 @@
 import Image from "next/image";
 import dynamic from 'next/dynamic';
 
-const Trailer = dynamic(() => import('./HeroTrailer'), {
+const Trailer = dynamic(() => import('./HomeHeroTrailer'), {
 })
 
 const HeroSection = () => {
