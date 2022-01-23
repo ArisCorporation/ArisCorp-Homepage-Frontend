@@ -4,15 +4,18 @@
 
 ## Frontend:
 
-- React
-- NextJS
+- NextJS (React)
 - TailwindCSS
-- React-Icons
-- React-Tabs
+- HeadlessUI
+- React Libraries
+  - React-Icons
+  - React-Spinners
+  - React-Markdown
+
 
 ## API:
 
-- Directus SDK
+- Apollo (GraphQL) Client
 
 ## Backend:
 

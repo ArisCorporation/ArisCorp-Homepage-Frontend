@@ -1,8 +1,8 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import OurMember from "./HomeOurMember";
+import OurFleet from "./HomeOurFleet";
 import dynamic from 'next/dynamic';
 
-const OurFleet = dynamic(() => import('./HomeOurFleet'), {});
 const OurGameplays = dynamic(() => import('./HomeOurGameplays'), {});
 
 const OrgaSection = () => (
@@ -25,7 +25,7 @@ const OrgaSection = () => (
     </TabPanel>
 
     <TabPanel>
-      <i />
+      <OurGameplays />
     </TabPanel>
   </Tabs>
 );

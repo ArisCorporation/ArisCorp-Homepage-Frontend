@@ -29,18 +29,21 @@ export default function OurMember() {
   return (
     <div className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-        {data.member.map((member) => (
+        {data.member.map((member) => {
+          const Potrait = member.member_potrait == null ? '0b7eafde-0933-4d1a-a32f-b4f8dd5bb492' : member.member_potrait?.id;
+          return (
           <div className="m-0 relative w-full px-[15px] mb-8" key={member.id}>
             <figure className="relative inline-block overflow-hidden text-center group">
               <div className="relative border-b-2 border-solid rounded-sm border-secondary max-w-full w-[270px] h-[320px]">
                 <Image
                   src={
-                    "https://cms.ariscorp.de/assets/" +
-                      (member.member_potrait == null ? '0b7eafde-0933-4d1a-a32f-b4f8dd5bb492' : member.member_potrait?.id)
+                    "https://cms.ariscorp.de/assets/" + Potrait
                   }
                   alt={member.member_name + "Potrait"}
                   layout="fill"
                   objectFit="contain"
+                  placeholder="blur"
+                  blurDataURL={`/_next/image?url=${Potrait}&w=16&q=1`}
                 />
               </div>
               <figcaption className="absolute top-0 left-0 h-full bg-opacity-50 text-center pt-[40%] px-[20px] pb-[20px] z-5 opacity-0 bg-black group-hover:opacity-100 transition-all ease-linear min-w-full min-h-full block">
@@ -64,7 +67,7 @@ export default function OurMember() {
             <p className="text-2xl">{member.member_titel}</p>
             <p className="text-[#999]">Mitglied</p>
           </div>
-        ))}
+        )})}
       </div>
     </div>
   );

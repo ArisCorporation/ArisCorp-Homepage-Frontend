@@ -5,7 +5,7 @@ import FleetIcon from "./FleetIcon";
 import GameplaysIcon from "./GameplaysIcon";
 import MemberIcon from "./MemberIcon";
 import PartnerIcon from "./PartnerIcon";
-import RecruitingIcon from "./RecruitmentIcon";
+import RecruitmentIcon from "./RecruitmentIcon";
 import ShipExkursBanner from "./ShipExkursBanner";
 import VerseExkursBanner from "./VerseExkursBanner";
 
@@ -16,7 +16,7 @@ export {
   GameplaysIcon,
   MemberIcon,
   PartnerIcon,
-  RecruitingIcon,
+  RecruitmentIcon,
   ShipExkursBanner,
   VerseExkursBanner,
 };

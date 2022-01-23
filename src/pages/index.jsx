@@ -6,9 +6,10 @@ import OrgaSection from "components/HomeOur";
 import CommLinksSection from "components/HomeCommLinksSection";
 import RectruitmentSection from "components/HomeRecruitment";
 import PartnerSection from "components/HomePartnerSection";
-import { data } from "autoprefixer";
+import Script from "next/script";
 const { gql, useQuery } = require("@apollo/client");
 import { client } from "./_app";
+import { useEffect } from "react";
 
 export async function getStaticProps() {
 
@@ -119,6 +120,16 @@ export async function getStaticProps() {
 }
 
 export default function Home({ about, history, manifest, charta, comm_links, partner }) {
+
+  useEffect(() => {
+    const script = document.createElement("script");
+
+    script.src = "https://fleetyards.net/embed.js";
+    script.async = false;
+
+    document.body.appendChild(script);
+  })
+
   return (
     <>
       <Head>
@@ -131,6 +142,8 @@ export default function Home({ about, history, manifest, charta, comm_links, par
       <HeroSection />
 
       <div className="px-4 md:container md:mx-auto">
+        <Script src="/FleetYards.js"></Script>
+
         <AboutSection aboutData={about} historyData={history} manifestData={manifest} chartaData={charta} />
         <OrgaSection />
         <CommLinksSection data={comm_links} />

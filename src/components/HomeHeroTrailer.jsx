@@ -14,7 +14,7 @@ const HeroTrailer = () => {
         autoPlay
         loop
         muted
-        controlslist="nofullscreen nodownload"
+        controlsList="nofullscreen nodownload"
         className="w-full h-full"
         src="https://cms.ariscorp.de/assets/2fe8455b-d879-4703-b81f-2c9485794d93"
       />
