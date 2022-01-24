@@ -1,4 +1,5 @@
 import MainLogo from "./MainLogo";
+import DiscordIcon from "./DiscordIcon";
 
 import CommLinksIcon from "./CommLinksIcon";
 import FleetIcon from "./FleetIcon";
@@ -11,6 +12,7 @@ import VerseExkursBanner from "./VerseExkursBanner";
 
 export {
   MainLogo,
+  DiscordIcon,
   CommLinksIcon,
   FleetIcon,
   GameplaysIcon,

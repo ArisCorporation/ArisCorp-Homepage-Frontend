@@ -21,7 +21,7 @@ const HeroSection = () => {
               width={600}
               height={230}
               placeholder="blur"
-              blurDataURL={`/_next/image?url=https://cms.ariscorp.de/assets/62eb0e48-6a0e-432f-b90d-fbd6aca6eaac&w=16&q=1`}
+              blurDataURL={"https://cms.ariscorp.de/assets/62eb0e48-6a0e-432f-b90d-fbd6aca6eaacjjjj?width=16&quality=1"}
               priority
             />
           </div>

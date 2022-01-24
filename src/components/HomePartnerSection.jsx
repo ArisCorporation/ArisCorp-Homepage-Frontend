@@ -19,6 +19,8 @@ const PartnerSection = ({data}) => {
                 src={"https://cms.ariscorp.de/assets/" + partner.partner_logo.id}
                 width={250}
                 height={250}
+                placeholder="blur"
+                blurDataURL={"https://cms.ariscorp.de/assets/" + partner.partner_logo.id + "?width=16&quality=1"}
               />
               <figcaption>
                 <p className="text-center no-underline underline-offset-2 decoration-1 decoration-secondary group-hover:underline">

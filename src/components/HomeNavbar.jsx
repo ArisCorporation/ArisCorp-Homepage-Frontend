@@ -58,7 +58,7 @@ const Navbar = () => {
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10">
                 <li className="block w-full">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Member
@@ -67,7 +67,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Flotte
@@ -76,7 +76,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Arbeitsfelder
@@ -85,7 +85,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Comm-Links
@@ -94,7 +94,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Rekrutierung
@@ -103,7 +103,7 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="block w-full mb-5">
-                  <Link href="">
+                  <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Partner
