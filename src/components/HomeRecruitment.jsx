@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
-import DiscordIcon from "./icons/DiscordIcon";
 import Image from "next/image";
 import Link from "next/link";
 

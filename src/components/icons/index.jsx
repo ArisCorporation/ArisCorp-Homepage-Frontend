@@ -1,5 +1,12 @@
 import MainLogo from "./MainLogo";
-import DiscordIcon from "./DiscordIcon";
+
+import SCLogo from "./SCLogo";
+import SQ42Logo from "./SQ42Logo";
+import RSILogo from "./RSILogo";
+import CIGLogo from "./CIGLogo";
+
+import DeFlag from "./DeFlag";
+import EnglFlag from "./EnglFlag";
 
 import CommLinksIcon from "./CommLinksIcon";
 import FleetIcon from "./FleetIcon";
@@ -12,7 +19,12 @@ import VerseExkursBanner from "./VerseExkursBanner";
 
 export {
   MainLogo,
-  DiscordIcon,
+  SCLogo,
+  SQ42Logo,
+  RSILogo,
+  CIGLogo,
+  DeFlag,
+  EnglFlag,
   CommLinksIcon,
   FleetIcon,
   GameplaysIcon,

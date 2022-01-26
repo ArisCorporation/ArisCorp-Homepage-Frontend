@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navbar from "components/HomeNavbar";
+import Footer from "components/Footer";
 import HeroSection from "components/HomeHero";
 import AboutSection from "components/HomeAbout";
 import OrgaSection from "components/HomeOur";
@@ -150,6 +151,8 @@ export default function Home({ about, history, manifest, charta, comm_links, par
         <RectruitmentSection />
         <PartnerSection data={partner} />
       </div>
+
+      <Footer />
     </>
   );
 }

@@ -94,7 +94,7 @@ const OneThird = ({
 }) => {
   return (
     <Link href="/">
-      <a className="mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
+      <a className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
@@ -114,7 +114,7 @@ const OneThird = ({
           }}
         ></div>
         <div className="block align-middle absolute mt-[26px] w-full">
-          <div className="text-lg text-white ">{title}</div>
+          <div className="text-lg text-white">{title}</div>
         </div>
         <div className="absolute w-[338px] h-[90px] mt-[10px]">
           <div className="pl-[18px] pb-[3px] font-bold float-right text-[11px] text-[#5e7a8d] absolute right-0">
@@ -146,7 +146,7 @@ const TwoThirds = ({
 }) => {
   return (
     <Link href="/">
-      <a className="mt-10 mr-[30px] xl:w-[729px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
+      <a className="hover:no-underline mt-10 mr-[30px] xl:w-[729px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat xl:scale-0">
           <div
             className={
@@ -212,7 +212,7 @@ const ThreeThirds = ({
 }) => {
   return (
     <Link href="/">
-      <a className="mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
+      <a className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat lg:scale-0">
           <div
             className={

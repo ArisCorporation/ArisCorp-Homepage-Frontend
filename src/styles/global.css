@@ -14,7 +14,10 @@
   }
 
   h1 {
-    @apply text-4xl tracking-widest font-anurati;
+    @apply text-3xl tracking-widest xs:text-4xl font-anurati;
+  }
+  a {
+    @apply text-secondary cursor-pointer hover:underline
   }
   .hr-short{
     @apply w-16 mt-2

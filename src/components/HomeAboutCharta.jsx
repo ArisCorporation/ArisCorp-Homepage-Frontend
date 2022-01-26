@@ -3,7 +3,7 @@ import rehypeRaw from "rehype-raw";
 
 export default function ArisCorpCharta({data}) {
   return (
-      <ReactMarkdown rehypePlugins={[rehypeRaw]} className="flex flex-wrap justify-center text-sm text-center xs:text-base">
+      <ReactMarkdown rehypePlugins={[rehypeRaw]} className="flex flex-wrap justify-center text-center">
         {data}
       </ReactMarkdown>
   );
