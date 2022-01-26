@@ -21,22 +21,22 @@ const Footer = () => {
         </div>
         <div className={showGer ? "block" : "hidden"}>
           <p className="italic">
-            "Diese Website wird nicht von oder der Unternehmensgruppe Cloud
+          &ldquo;Diese Website wird nicht von oder der Unternehmensgruppe Cloud
             Imperium oder Roberts Space Industries geführt. Alle Spielinhalte
             und -materialien sind copyright Cloud Imperium Rights LLC und Cloud
             Imperium Rights Ltd. Star Citizen®, Squadron 42®, Roberts Space
             Industries® und Cloud Imperium® sind eingetragene Marken von Cloud
-            Imperium Rights LLC. Alle Rechte vorbehalten."
+            Imperium Rights LLC. Alle Rechte vorbehalten.&rdquo;
           </p>
         </div>
 
         <div className={showGer ? "hidden" : "block"}>
           <p className="italic">
-            “This is an unofficial Star Citizen fansite, not affiliated with the
+          &ldquo;This is an unofficial Star Citizen fansite, not affiliated with the
             Cloud Imperium group of companies. All content on this site not
             authored by its host or users are property of their respective
             owners. Star Citizen®, Roberts Space Industries® and Cloud Imperium
-            ® are registered trademarks of Cloud Imperium Rights LLC"
+            ® are registered trademarks of Cloud Imperium Rights LLC&rdquo;
           </p>
         </div>
 
