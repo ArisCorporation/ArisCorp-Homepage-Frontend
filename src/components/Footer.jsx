@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="py-5 mt-5 bg-black border-t-2 border-solid border-secondary">
       <div className="container mx-auto">
         <div className="flex pb-6">
-          <h2 className="mr-5 text-2xl">//Disclaimer</h2>
+          <h2 className="mr-5 text-2xl">/<span>/</span>Disclaimer</h2>
           <div className="flex gap-5">
             <div onClick={() => setShowGer(true)} className="cursor-pointer">
               <DeFlag width="35" height="20" />
