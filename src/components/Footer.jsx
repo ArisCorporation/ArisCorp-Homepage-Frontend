@@ -41,16 +41,16 @@ const Footer = () => {
         </div>
 
         <div className="flex float-right space-x-3">
-          <a href="https://starcitizen.com" target="_blank">
+          <a href="https://starcitizen.com" target="_blank" rel="noreferrer">
             <SCLogo width="48" height="48" />
           </a>
-          <a href="https://starcitizen.com" target="_blank">
+          <a href="https://starcitizen.com" target="_blank" rel="noreferrer">
             <SQ42Logo width="48" height="48" />
           </a>
-          <a href="https://starcitizen.com" target="_blank">
+          <a href="https://starcitizen.com" target="_blank" rel="noreferrer">
             <RSILogo width="48" height="48" />
           </a>
-          <a href="https://starcitizen.com" target="_blank">
+          <a href="https://starcitizen.com" target="_blank" rel="noreferrer">
             <CIGLogo width="48" height="48" />
           </a>
         </div>
