@@ -6,7 +6,7 @@ const SQ42Logo = ({ width, height }) => {
       width={width}
       height={height}
       viewBox="0 0 339 294"
-      enable-background="new 0 0 339 294"
+      enableBackground="new 0 0 339 294"
     >
       <filter
         filterUnits="objectBoundingBox"
@@ -143,8 +143,8 @@ const SQ42Logo = ({ width, height }) => {
           y2="526.413"
           gradientTransform="matrix(86.4441 0 0 -113.087 44103.516 59674.117)"
         >
-          <stop offset="0" stop-color="#b17f1b"></stop>
-          <stop offset="1" stop-color="#ccad75"></stop>
+          <stop offset="0" stopColor="#b17f1b"></stop>
+          <stop offset="1" stopColor="#ccad75"></stop>
         </linearGradient>
         <path
           d="M46 125.3l-.7-.2-26.7-8.3-7.1-29.7 33.9 10.5.7.2 3.4 1 6.2 1.9 1.8.6 4.7 1.5 15.9 4.9 3.6 1.1 4.6 1.4 11.6 3.6c-1 1.4-2 2.9-3 4.4-1.3 2-2.5 4.1-3.6 6.2-.6 1.1-1.1 2.2-1.6 3.3-.1.2-.2.5-.3.7-1.3 3-2.5 6-3.5 9.2l-11.1-3.4-4.5-1.4-3.5-1.1-10.7-3.3-2.2-.7-2.5-.8-4.6-1.4-.8-.2zm.3 28.2l-4.7-1.6-15.6-5.3-6-24.3 25.4 7.8 4.6 1.4 15.4 4.8 3.5 1.1 4.5 1.4 11.1 3.4c-1.7 6.7-2.6 13.6-2.6 20.8v2.6L62 158.8l-15.7-5.3zm23.9 39.4l-4.3-1.5-18-6.5-5.2-1.9-9.3-3.4-6.4-26.3 14.2 4.7 4.8 1.6 16 5.4 20.3 6.8c1.1 10.1 3.9 19.7 8.3 28.5L75.8 195l-5.6-2.1z"
@@ -161,8 +161,8 @@ const SQ42Logo = ({ width, height }) => {
           y2="526.409"
           gradientTransform="matrix(86.444 0 0 -112.8775 44327.848 59563.336)"
         >
-          <stop offset="0" stop-color="#ccad75"></stop>
-          <stop offset="1" stop-color="#b17f1b"></stop>
+          <stop offset="0" stopColor="#ccad75"></stop>
+          <stop offset="1" stopColor="#b17f1b"></stop>
         </linearGradient>
         <path
           d="M276.2 101.3l1.8-.6 6.2-1.9 3.4-1 .7-.2 33.9-10.4-6.8 29.5-27 8.3-.7.2-.8.3-4.6 1.4-2.6.8-2.2.7-10.6 3.3-3.5 1.1-4.5 1.4-11.1 3.4c-1-3.1-2.2-6.2-3.5-9.1-.1-.2-.2-.5-.3-.7-.5-1.1-1.1-2.2-1.6-3.3-1.1-2.1-2.3-4.2-3.6-6.2-.9-1.5-1.9-3-3-4.4l11.6-3.6 4.6-1.4 3.6-1.1 15.9-4.9 4.7-1.6zm7.2 30l4.6-1.4 25.4-7.8-5.7 24.3-15.8 5.3-4.7 1.6-15.8 5.4-19.8 6.7v-2.6c0-7.2-.9-14.2-2.7-20.9l11.1-3.4 4.5-1.4 3.5-1.1 15.4-4.7zm7.5 51.5l-5.2 1.9-18 6.5-4.2 1.5-5.6 2-14.8 5.3c4.3-8.8 7.2-18.5 8.2-28.7l20.3-6.8 16-5.4 4.8-1.6 14.2-4.7-6.6 26.7-9.1 3.3z"
@@ -211,7 +211,7 @@ const SQ42Logo = ({ width, height }) => {
           <clipPath id="m">
             <use xlinkHref="#l" overflow="visible"></use>
           </clipPath>
-          <g clipPath="url(#m)" enable-background="new">
+          <g clipPath="url(#m)" enableBackground="new">
             <defs>
               <path id="n" d="M307 5h26v26h-26z"></path>
             </defs>
@@ -225,7 +225,7 @@ const SQ42Logo = ({ width, height }) => {
               <clipPath id="q">
                 <use xlinkHref="#p" overflow="visible"></use>
               </clipPath>
-              <g opacity=".5" clipPath="url(#q)" enable-background="new">
+              <g opacity=".5" clipPath="url(#q)" enableBackground="new">
                 <defs>
                   <path id="r" d="M307 5h26v26h-26z"></path>
                 </defs>
