@@ -16,7 +16,7 @@ const HeroTrailer = () => {
         muted
         controlsList="nofullscreen nodownload"
         className="w-full h-full"
-        src="https://cms.ariscorp.de/assets/2fe8455b-d879-4703-b81f-2c9485794d93"
+        src="https://cms.ariscorp.de/assets/893966c7-3541-4605-a00f-633f5234ddd4"
       />
     </>
   )

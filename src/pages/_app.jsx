@@ -1,4 +1,5 @@
 import "styles/global.css";
+import Layout from "./layout";
 import {
   ApolloClient,
   InMemoryCache,
@@ -15,7 +16,9 @@ export const client = new ApolloClient({
 function MyApp({ Component, pageProps }) {
   return (
     <ApolloProvider client={client}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   )
 }
