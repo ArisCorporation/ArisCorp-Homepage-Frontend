@@ -139,7 +139,11 @@ export default function Home({ about, history, manifest, charta, comm_links, par
         </title>
       </Head>
 
-      <div>
+      <Navbar />
+
+      <HeroSection />
+
+      <div className="px-4 md:container md:mx-auto">
         <Script src="/FleetYards.js"></Script>
 
         <AboutSection aboutData={about} historyData={history} manifestData={manifest} chartaData={charta} />

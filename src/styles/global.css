@@ -22,6 +22,9 @@
   .hr-short{
     @apply w-16 mt-2
   }
+  img {
+    display: unset;
+  }
 }
 
 hr {
