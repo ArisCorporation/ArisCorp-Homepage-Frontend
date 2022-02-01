@@ -152,6 +152,8 @@ export default function Home({ about, history, manifest, charta, comm_links, par
         <RectruitmentSection />
         <PartnerSection data={partner} />
       </div>
+
+      <Footer />
     </>
   );
 }

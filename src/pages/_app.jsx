@@ -1,5 +1,4 @@
 import "styles/global.css";
-import Footer from "components/Footer"
 import {
   ApolloClient,
   InMemoryCache,
@@ -14,10 +13,11 @@ export const client = new ApolloClient({
 });
 
 function MyApp({ Component, pageProps }) {
-  return (
+  const getLayout = Component.getLayout || ((page) => page)
+
+  return getLayout(
     <ApolloProvider client={client}>
         <Component {...pageProps} />
-        <Footer />
     </ApolloProvider>
   )
 }
