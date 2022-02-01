@@ -4,22 +4,24 @@ import {
   InMemoryCache,
   ApolloProvider,
   useQuery,
-  gql
+  gql,
 } from "@apollo/client";
+import NextNProgress from "nextjs-progressbar";
 
 export const client = new ApolloClient({
-  uri: 'https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr',
-  cache: new InMemoryCache()
+  uri: "https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr",
+  cache: new InMemoryCache(),
 });
 
 function MyApp({ Component, pageProps }) {
-  const getLayout = Component.getLayout || ((page) => page)
+  const getLayout = Component.getLayout || ((page) => page);
 
   return getLayout(
     <ApolloProvider client={client}>
-        <Component {...pageProps} />
+      <NextNProgress color="#00ffe8" height={2} />
+      <Component {...pageProps} />
     </ApolloProvider>
-  )
+  );
 }
 
 export default MyApp;

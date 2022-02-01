@@ -95,3 +95,7 @@ figcaption p span + figcaption p span::before {
   white-space: pre;
   content: ", ";
 }
+
+#nprogress .spinner-icon {
+  display: none;
+}
