@@ -1,4 +1,5 @@
 import "styles/global.css";
+import dynamic from "next/dynamic";
 import {
   ApolloClient,
   InMemoryCache,
@@ -6,7 +7,8 @@ import {
   useQuery,
   gql,
 } from "@apollo/client";
-import NextNProgress from "nextjs-progressbar";
+
+const NextNProgress = dynamic(() => import('nextjs-progressbar'))
 
 export const client = new ApolloClient({
   uri: "https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr",
