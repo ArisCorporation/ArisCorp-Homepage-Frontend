@@ -96,8 +96,8 @@ export default function Sidebar() {
         style={{ transition: "left .5s ease,right .5s ease,width .5s ease" }}
       >
         <div className="flex items-stretch justify-between min-h-[60px] pb-5 bg-[rgba(23,25,28,.95)] border-t-[1px] border-solid border-t-[rgba(30,34,38,.5)]">
-          <Link href="#">
-            <a className="min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:content-['*'] after:text-transparent after:block">
+          <Link href="/VerseExkurs">
+            <a className={"min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" + (router.pathname == "/VerseExkurs" ? "" : " after:hidden")}>
               <div
                 className="px-4 py-2 overflow-hidden text-center text-white whitespace-normal transition-all duration-500 ease-linear rounded-md text-ellipsis"
                 style={{ fontSize: "130%" }}
@@ -110,7 +110,7 @@ export default function Sidebar() {
             </a>
           </Link>
           <Link href="#">
-            <a className="min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:content-['*'] after:text-transparent after:hidden">
+            <a className={"min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" + (router.pathname == "/VerseExkurs/ships" ? "" : " after:hidden")}>
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
                 style={{ fontSize: "130%" }}
@@ -123,7 +123,7 @@ export default function Sidebar() {
             </a>
           </Link>
           <Link href="#">
-            <a className="min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:content-['*'] after:text-transparent after:hidden">
+            <a className={"min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" + (router.pathname == "/VerseExkurs/search" ? "" : " after:hidden")}>
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
                 style={{ fontSize: "130%" }}
@@ -136,7 +136,7 @@ export default function Sidebar() {
             </a>
           </Link>
           <Link href="#">
-            <a className="min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:content-['*'] after:text-transparent after:hidden">
+            <a className={"min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" + (router.pathname == "/VerseExkurs/hangar" ? "" : " after:hidden")}>
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
                 style={{ fontSize: "130%" }}
