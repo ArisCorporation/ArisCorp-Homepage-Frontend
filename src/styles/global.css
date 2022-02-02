@@ -71,6 +71,9 @@ hr {
   @apply block;
 }
 
+html{
+  overflow-x: hidden
+}
 
 html::-webkit-scrollbar-track
 {
