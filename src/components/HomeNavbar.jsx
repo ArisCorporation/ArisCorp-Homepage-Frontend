@@ -1,7 +1,16 @@
 import Link from "next/link";
 import React from "react";
 import MainLogo from "./icons/MainLogo";
-import { MemberIcon, FleetIcon, GameplaysIcon, CommLinksIcon, RecruitmentIcon, PartnerIcon, ShipExkursBanner, VerseExkursBanner } from "./icons";
+import {
+  MemberIcon,
+  FleetIcon,
+  GameplaysIcon,
+  CommLinksIcon,
+  RecruitmentIcon,
+  PartnerIcon,
+  ShipExkursBanner,
+  VerseExkursBanner,
+} from "./icons";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 
@@ -24,14 +33,74 @@ const Navbar = () => {
         <div>
           <div className="">
             <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100">
-              <NavbarItem link="/#member" tooltip="Unsere Member" content={<MemberIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/#fleet" tooltip="Unsere Flotte" content={<FleetIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/#gameplays" tooltip="Unsere Aufgabenfelder" content={<GameplaysIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/#comm-links" tooltip="Comm-Links" content={<CommLinksIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/#recruitment" tooltip="Rekrutierung" content={<RecruitmentIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/#member" tooltip="Unsere Partner" content={<PartnerIcon width="82" height="82" classes="navbar-icon" />} />
-              <NavbarItem link="/" tooltip="ShipExkurs - COMMING SOON" content={<ShipExkursBanner width="120" height="120" classes="navbar-banner-soon" />} />
-              <NavbarItem link="/VerseExkurs" tooltip="VerseExkurs" content={<VerseExkursBanner width="120" height="120" classes="navbar-banner" />} />
+              <NavbarItem
+                link="/#member"
+                tooltip="Unsere Member"
+                content={
+                  <MemberIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/#fleet"
+                tooltip="Unsere Flotte"
+                content={
+                  <FleetIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/#gameplays"
+                tooltip="Unsere Aufgabenfelder"
+                content={
+                  <GameplaysIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/#comm-links"
+                tooltip="Comm-Links"
+                content={
+                  <CommLinksIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/#recruitment"
+                tooltip="Rekrutierung"
+                content={
+                  <RecruitmentIcon
+                    width="82"
+                    height="82"
+                    classes="navbar-icon"
+                  />
+                }
+              />
+              <NavbarItem
+                link="/#member"
+                tooltip="Unsere Partner"
+                content={
+                  <PartnerIcon width="82" height="82" classes="navbar-icon" />
+                }
+              />
+              <NavbarItem
+                link="/"
+                tooltip="ShipExkurs - COMMING SOON"
+                content={
+                  <ShipExkursBanner
+                    width="120"
+                    height="120"
+                    classes="navbar-banner-soon"
+                  />
+                }
+              />
+              <NavbarItem
+                link="/VerseExkurs"
+                tooltip="VerseExkurs"
+                content={
+                  <VerseExkursBanner
+                    width="120"
+                    height="120"
+                    classes="navbar-banner"
+                  />
+                }
+              />
             </ul>
           </div>
         </div>
@@ -107,6 +176,15 @@ const Navbar = () => {
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Partner
+                      </span>
+                    </a>
+                  </Link>
+                </li>
+                <li className="block w-full mb-5">
+                  <Link href="/VerseExkurs">
+                    <a>
+                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
+                        VerseExkurs
                       </span>
                     </a>
                   </Link>
