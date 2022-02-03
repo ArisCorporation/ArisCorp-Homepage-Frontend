@@ -13,40 +13,40 @@
     @apply absolute z-10 w-auto p-2 m-2 text-xs font-bold text-white transition-all duration-100 origin-top scale-0 bg-black bg-opacity-75 rounded-md shadow-md min-w-max top-24;
   }
   p {
-    @apply py-[5px] block
+    @apply py-[5px] block;
   }
   h1 {
-    @apply text-3xl tracking-widest xs:text-4xl;
+    @apply text-3xl font-bold tracking-widest xs:text-4xl;
   }
   h2 {
-    @apply text-xl xs:text-2xl 
+    @apply text-xl font-bold xs:text-2xl;
   }
   h3 {
-    @apply text-lg xs:text-xl my-4
+    @apply my-4 text-lg font-bold xs:text-xl;
   }
   h4 {
-    @apply text-lg xs:text-xl my-1
+    @apply my-1 text-lg font-bold xs:text-xl;
   }
-  .no-marker li::marker{
-    color: transparent
+  .no-marker li::marker {
+    color: transparent;
   }
-  ul li{
-    @apply marker:text-primary list-disc pb-1
+  ul li {
+    @apply pb-1 list-disc marker:text-primary;
   }
-  ul{
-    @apply pl-7 mb-4
+  ul {
+    @apply mb-4 pl-7;
   }
   a {
-    @apply text-secondary cursor-pointer hover:underline
+    @apply cursor-pointer text-secondary hover:underline;
   }
-  .hr-short{
-    @apply w-16 mt-2
+  .hr-short {
+    @apply w-16 mt-2;
   }
   img {
     display: unset;
   }
   .article-font * {
-    font-family: inherit !important
+    font-family: inherit !important;
   }
 }
 
@@ -94,26 +94,23 @@ hr {
   @apply block;
 }
 
-html{
-  overflow-x: hidden
+html {
+  overflow-x: hidden;
 }
 
-html::-webkit-scrollbar-track
-{
+html::-webkit-scrollbar-track {
   @apply rounded bg-bg-secondary;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   /*border-radius: 10px; */
 }
 
-html::-webkit-scrollbar
-{
-  @apply w-[5px] bg-bg-secondary
+html::-webkit-scrollbar {
+  @apply w-[5px] bg-bg-secondary;
 }
 
-html::-webkit-scrollbar-thumb
-{
+html::-webkit-scrollbar-thumb {
   @apply rounded-md bg-primary;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 figcaption p span + figcaption p span::before {
