@@ -11,9 +11,9 @@ import Script from "next/script";
 const { gql, useQuery } = require("@apollo/client");
 import { client } from "./_app";
 import { useEffect } from "react";
+import Layout from "./layout";
 
 export async function getStaticProps() {
-
   const { data: aboutData } = await client.query({
     query: gql`
       query DieArisCorp {
@@ -57,7 +57,7 @@ export async function getStaticProps() {
   const { data: commsData } = await client.query({
     query: gql`
       query Comm_Links {
-        comm_links (
+        comm_links(
           filter: { status: { _eq: "published" } }
           sort: ["sort", "-date_created"]
           limit: 4
@@ -84,9 +84,7 @@ export async function getStaticProps() {
   const { data: partnerData } = await client.query({
     query: gql`
       query Partner {
-        partner (
-          filter: { status: { _eq: "published" } }
-        ) {
+        partner(filter: { status: { _eq: "published" } }) {
           id
           partner_name
           partner_logo {
@@ -102,9 +100,9 @@ export async function getStaticProps() {
   if (!commsData || !aboutData || !arisHistoryData) {
     return {
       notFound: true,
-    }
+    };
   }
-  
+
   return {
     props: {
       about: await aboutData.die_ariscorp.about_ariscorp,
@@ -116,12 +114,18 @@ export async function getStaticProps() {
 
       partner: await partnerData.partner,
     },
-    revalidate: 60
- };
+    revalidate: 60,
+  };
 }
 
-export default function Home({ about, history, manifest, charta, comm_links, partner }) {
-
+export default function Home({
+  about,
+  history,
+  manifest,
+  charta,
+  comm_links,
+  partner,
+}) {
   useEffect(() => {
     const script = document.createElement("script");
 
@@ -129,7 +133,7 @@ export default function Home({ about, history, manifest, charta, comm_links, par
     script.async = false;
 
     document.body.appendChild(script);
-  })
+  });
 
   return (
     <>
@@ -139,21 +143,22 @@ export default function Home({ about, history, manifest, charta, comm_links, par
         </title>
       </Head>
 
-      <Navbar />
+      <Script src="/FleetYards.js"></Script>
 
-      <HeroSection />
-
-      <div className="px-4 md:container md:mx-auto">
-        <Script src="/FleetYards.js"></Script>
-
-        <AboutSection aboutData={about} historyData={history} manifestData={manifest} chartaData={charta} />
-        <OrgaSection />
-        <CommLinksSection data={comm_links} />
-        <RectruitmentSection />
-        <PartnerSection data={partner} />
-      </div>
-
-      <Footer />
+      <AboutSection
+        aboutData={about}
+        historyData={history}
+        manifestData={manifest}
+        chartaData={charta}
+      />
+      <OrgaSection />
+      <CommLinksSection data={comm_links} />
+      <RectruitmentSection />
+      <PartnerSection data={partner} />
     </>
   );
 }
+
+Home.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

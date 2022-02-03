@@ -13,7 +13,7 @@ const PartnerSection = ({data}) => {
       <div className="flex flex-wrap justify-between space-x-20">
       {data.map((partner) => (
         <Link key={partner.id} href={partner.partner_website}>
-          <a target="_blank" className="group">
+          <a target="_blank" className="group decoration-transparent">
             <figure className="mb-4">
               <Image
                 src={"https://cms.ariscorp.de/assets/" + partner.partner_logo.id}

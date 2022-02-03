@@ -1,0 +1,102 @@
+import Layout from "pages/layout";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { SquareLoader } from "react-spinners";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+
+const { gql, useQuery } = require("@apollo/client");
+
+const ARIS_COMMLINKS = gql`
+  query Member($name: String!) {
+    member(
+      filter: { member_name: { _eq: $name } }
+      sort: ["sort", "member_name"]
+    ){
+      id
+      status
+      member_name
+      member_titel
+      member_potrait {
+        id
+      }
+      member_biografie
+      member_steckbrief
+    }
+  }
+`;
+
+export default function CommLinkDetailPage() {
+  const router = useRouter();
+  const { name } = router.query;
+
+  const { loading, error, data } = useQuery(ARIS_COMMLINKS, {
+    variables: { name },
+  });
+
+  if (loading)
+    return (
+      <div className="flex justify-center pt-10">
+        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
+      </div>
+    );
+  if (error) return <p>Error :(</p>;
+  const Data = data.member[0];
+  return (
+    <div className="items-center max-w-6xl pt-32 mx-auto">
+      <div>
+        <div className="items-center text-center">
+          <h1 className="uppercase">
+            Biografie:{" "}
+            <span className="text-primary">
+              {Data.member_name}
+            </span>
+          </h1>
+          <hr />
+        </div>
+        <div className={"mx-auto"}>
+          <h2 className="mt-3">
+            Bio von {Data.member_titel}
+          </h2>
+          <div className="float-right">
+          <Image
+              src={
+                "https://cms.ariscorp.de/assets/" + Data.member_potrait.id
+              }
+              alt={"Banner"}
+              width={270}
+              height={320}
+              placeholder="blur"
+              blurDataURL={
+                "https://cms.ariscorp.de/assets/" + Data.member_potrait.id + "?width=16&quality=1"
+              }
+            />
+          </div>
+          <hr className="max-w-[80px]" />
+        </div>
+        <div className="font-nasa article-font">
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            className="justify-center steckbrief"
+          >
+            {Data.member_steckbrief}
+          </ReactMarkdown>
+        </div>
+        <h2 className="mt-12 mb-3">Biografie:</h2>
+        <div className="text-lg font-nasa article-font">
+          <ReactMarkdown
+            rehypePlugins={[rehypeRaw]}
+            className="justify-center steckbrief"
+          >
+            {Data.member_biografie}
+          </ReactMarkdown>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+CommLinkDetailPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

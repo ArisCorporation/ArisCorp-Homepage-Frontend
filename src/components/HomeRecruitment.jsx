@@ -65,10 +65,10 @@ const RectruitmentSection = () => {
                 </p>
                 <div className="mb-5">
                   <h2 className="pt-5 text-xl text-white">ANFORDERUNGEN:</h2>
-                  <ul className="ml-6">
+                  <ul className="pl-0 ml-6">
                     <li
                       className={
-                        "before:content-['»'] before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
+                        "before:content-['»'] marker:text-transparent before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
                       }
                     >
                       <p className="inline pl-1">
@@ -77,7 +77,7 @@ const RectruitmentSection = () => {
                     </li>
                     <li
                       className={
-                        "before:content-['»'] before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
+                        "before:content-['»'] marker:text-transparent before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
                       }
                     >
                       <p className="inline pl-1">
@@ -87,7 +87,7 @@ const RectruitmentSection = () => {
                     </li>
                     <li
                       className={
-                        "before:content-['»'] before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
+                        "before:content-['»'] marker:text-transparent before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
                       }
                     >
                       <p className="inline pl-1">
@@ -100,7 +100,7 @@ const RectruitmentSection = () => {
                     </li>
                     <li
                       className={
-                        "before:content-['»'] before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
+                        "before:content-['»'] marker:text-transparent before:text-secondary before:mr-2 before:w-4 before:h-6 py-3"
                       }
                     >
                       <p className="inline pl-1">
