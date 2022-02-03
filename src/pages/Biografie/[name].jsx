@@ -27,7 +27,7 @@ const ARIS_COMMLINKS = gql`
   }
 `;
 
-export default function CommLinkDetailPage() {
+export default function BiografiePage() {
   const router = useRouter();
   const { name } = router.query;
 
@@ -97,6 +97,6 @@ export default function CommLinkDetailPage() {
   );
 }
 
-CommLinkDetailPage.getLayout = function getLayout(page) {
+BigorafiePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
