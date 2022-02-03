@@ -48,7 +48,7 @@ export async function getStaticProps() {
     query: gql`
       query ArisCharta {
         charta {
-          charta
+          text
         }
       }
     `,
@@ -108,7 +108,7 @@ export async function getStaticProps() {
       about: await aboutData.die_ariscorp.about_ariscorp,
       history: await arisHistoryData.ariscorp_history.ariscorp_history,
       manifest: await manifestData.manifest.manifest,
-      charta: await chartaData.charta.charta,
+      charta: await chartaData.charta.text,
 
       comm_links: await commsData.comm_links,
 
