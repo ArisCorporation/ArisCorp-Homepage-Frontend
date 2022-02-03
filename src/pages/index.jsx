@@ -13,7 +13,7 @@ import { client } from "./_app";
 import { useEffect } from "react";
 import Layout from "./layout";
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   const { data: aboutData } = await client.query({
     query: gql`
       query DieArisCorp {
@@ -113,8 +113,7 @@ export async function getStaticProps() {
       comm_links: await commsData.comm_links,
 
       partner: await partnerData.partner,
-    },
-    revalidate: 60,
+    }
   };
 }
 
