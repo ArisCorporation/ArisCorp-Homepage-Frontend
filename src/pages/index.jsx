@@ -144,17 +144,18 @@ export default function Home({
       </Head>
 
       <Script src="/FleetYards.js"></Script>
-
-      <AboutSection
-        aboutData={about}
-        historyData={history}
-        manifestData={manifest}
-        chartaData={charta}
-      />
-      <OrgaSection />
-      <CommLinksSection data={comm_links} />
-      <RectruitmentSection />
-      <PartnerSection data={partner} />
+      <div className="no-marker">
+        <AboutSection
+          aboutData={about}
+          historyData={history}
+          manifestData={manifest}
+          chartaData={charta}
+        />
+        <OrgaSection />
+        <CommLinksSection data={comm_links} />
+        <RectruitmentSection />
+        <PartnerSection data={partner} />
+      </div>
     </>
   );
 }

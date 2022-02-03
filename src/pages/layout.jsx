@@ -13,7 +13,7 @@ export default function Layout({ children }) {
 
       {router.pathname == "/" ? (<HeroSection />) : ""}
 
-      <div className="px-4 md:container md:mx-auto">
+      <div className="min-h-screen px-4 md:container md:mx-auto">
         {children}
       </div>
 

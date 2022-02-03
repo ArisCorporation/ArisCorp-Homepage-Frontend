@@ -27,6 +27,9 @@
   h4 {
     @apply text-lg xs:text-xl my-1
   }
+  .no-marker li::marker{
+    color: transparent
+  }
   ul li{
     @apply marker:text-primary list-disc pb-1
   }
