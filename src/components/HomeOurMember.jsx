@@ -54,7 +54,7 @@ export default function OurMember() {
                   </span>
                 )) }“</p>
                 <hr className="w-[100px] h-[2px] m-auto" />
-                <ul className="mt-3">
+                <ul className="pl-0 mt-3 mb-0 list-none">
                   <a
                     href=""
                     className="italic bg-transparent text-secondary hover:underline"
