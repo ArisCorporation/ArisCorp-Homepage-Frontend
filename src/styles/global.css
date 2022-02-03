@@ -12,9 +12,23 @@
   .navbar-tooltip {
     @apply absolute z-10 w-auto p-2 m-2 text-xs font-bold text-white transition-all duration-100 origin-top scale-0 bg-black bg-opacity-75 rounded-md shadow-md min-w-max top-24;
   }
-
+  p {
+    @apply py-1
+  }
   h1 {
     @apply text-3xl tracking-widest xs:text-4xl font-anurati;
+  }
+  h2 {
+    @apply text-xl xs:text-2xl 
+  }
+  h3 {
+    @apply text-lg xs:text-xl my-4
+  }
+  ul li{
+    @apply marker:text-primary list-disc pb-1
+  }
+  ul{
+    @apply pl-7 mb-4
   }
   a {
     @apply text-secondary cursor-pointer hover:underline

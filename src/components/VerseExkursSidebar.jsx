@@ -218,7 +218,7 @@ export default function Sidebar() {
           style={{ transition: "left .5s ease,right .5s ease,width .5s ease" }}
         >
           <div className="relative min-h-full pb-[150px]">
-            <ul className="lg:pt-5 pt-[5px] m-0 list-none">
+            <ul className="pl-0 lg:pt-5 pt-[5px] m-0 list-none">
               <li className="p-0 m-0 list-none group" data-tip="Home">
                 <Link href="/VerseExkurs">
                   <a
@@ -302,7 +302,7 @@ export default function Sidebar() {
                     <Transition>
                       <Disclosure.Panel
                         as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
+                        className="mb-[10px] list-none relative overflow-hidden pl-0"
                       >
                         <Transition.Child
                           enter="transform transition-all duration-300 ease-linear"
@@ -367,7 +367,7 @@ export default function Sidebar() {
                               </a>
                             </Link>
                           </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li className="h-[1px] list-none my-[5px] mx-[15px] bg-[#272b30]"></li>
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
@@ -479,7 +479,7 @@ export default function Sidebar() {
                     <Transition>
                       <Disclosure.Panel
                         as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
+                        className="mb-[10px] list-none relative overflow-hidden pl-0"
                       >
                         <Transition.Child
                           enter="transform transition-all duration-300 ease-linear"
@@ -544,7 +544,7 @@ export default function Sidebar() {
                               </a>
                             </Link>
                           </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li className="h-[1px] my-[5px] mx-[15px] list-none bg-[#272b30]"></li>
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
@@ -689,7 +689,7 @@ export default function Sidebar() {
                     <Transition>
                       <Disclosure.Panel
                         as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
+                        className="mb-[10px] list-none relative overflow-hidden pl-0"
                       >
                         <Transition.Child
                           enter="transform transition-all duration-300 ease-linear"
@@ -919,7 +919,7 @@ export default function Sidebar() {
                               </a>
                             </Link>
                           </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30] list-none"></li>
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
@@ -1085,7 +1085,7 @@ export default function Sidebar() {
                     <Transition>
                       <Disclosure.Panel
                         as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
+                        className="mb-[10px] list-none relative overflow-hidden pl-0"
                       >
                         <Transition.Child
                           enter="transform transition-all duration-300 ease-linear"
@@ -1375,7 +1375,7 @@ export default function Sidebar() {
                               </a>
                             </Link>
                           </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30] list-none"></li>
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
@@ -1613,7 +1613,7 @@ export default function Sidebar() {
                   </div>
                 </a>
               </li>
-              <li className="min-h-[60px]">
+              <li className="min-h-[60px] list-none">
                 <span
                   className={
                     "relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap" +

@@ -32,7 +32,7 @@ const Navbar = () => {
         </div>
         <div>
           <div className="">
-            <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100">
+            <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100 mb-0">
               <NavbarItem
                 link="/#member"
                 tooltip="Unsere Member"
@@ -125,8 +125,8 @@ const Navbar = () => {
 
           <div className={mobileOpen ? "flex w-full" : "hidden"}>
             <div className="flex flex-wrap w-full">
-              <ul className="flex flex-wrap w-full px-10">
-                <li className="block w-full">
+              <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
+                <li className="block w-full pb-0">
                   <Link href="/">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
@@ -200,7 +200,7 @@ const Navbar = () => {
 
 const NavbarItem = ({ content, link, tooltip }) => {
   return (
-    <li>
+    <li className="pb-0 list-none">
       <Link href={link}>
         <a className="flex justify-center group">
           {content}

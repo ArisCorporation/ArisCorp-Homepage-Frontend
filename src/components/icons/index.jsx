@@ -5,6 +5,11 @@ import SQ42Logo from "./SQ42Logo";
 import RSILogo from "./RSILogo";
 import CIGLogo from "./CIGLogo";
 
+import ARKIcon from "./ARKLogo";
+import GalactapediaIcon from "./GalactapediaIcon";
+import RSICommLinksIcon from "./RSICommLinksIcon";
+import RSIRoadmapIcon from "./RSIRoadmapIcon";
+
 import DeFlag from "./DeFlag";
 import EnglFlag from "./EnglFlag";
 
@@ -23,6 +28,10 @@ export {
   SQ42Logo,
   RSILogo,
   CIGLogo,
+  ARKIcon,
+  GalactapediaIcon,
+  RSICommLinksIcon,
+  RSIRoadmapIcon,
   DeFlag,
   EnglFlag,
   CommLinksIcon,
