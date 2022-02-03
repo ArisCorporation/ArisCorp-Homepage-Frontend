@@ -17,12 +17,15 @@ import {
   FaSearch,
 } from "react-icons/fa";
 import { BiPlanet } from "react-icons/bi";
-import { GiSolarSystem } from "react-icons/gi";
+import { GiAlienSkull, GiSolarSystem } from "react-icons/gi";
 import { GrTasks } from "react-icons/gr";
-import { FiPlus } from "react-icons/fi";
+import { FiCpu, FiPlus } from "react-icons/fi";
+import { MdHistoryEdu, MdOutlineHistoryEdu, MdTimeline } from "react-icons/md";
+import { RiArrowGoBackLine } from "react-icons/ri";
+import { ImBook } from "react-icons/im";
 import { useState, useEffect, useRef } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
-import { BsChevronDoubleLeft } from "react-icons/bs";
+import { BsCalendar3, BsChevronDoubleLeft, BsTriangleFill } from "react-icons/bs";
 import MainLogo from "./icons/MainLogo";
 import { RotateSpinner } from "react-spinners-kit";
 import { useRouter } from "next/router";
@@ -61,7 +64,7 @@ export default function Sidebar() {
   }
 
   useEffect(() => {
-    mobileOpen
+    mobileOpen && mobileView
       ? (document
           .querySelector("body")
           .classList.add("absolute", "right-0", "left-0", "overflow-hidden"),
@@ -113,11 +116,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="#">
+          <Link href="/VerseExkurs/Firmen">
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
-                (router.pathname == "/VerseExkurs/ships" ? "" : " after:hidden")
+                (router.pathname == "/VerseExkurs/Firmen" ? "" : " after:hidden")
               }
             >
               <div
@@ -131,7 +134,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="#">
+          <Link href="/VerseExkurs/search">
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
@@ -151,11 +154,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="#">
+          <Link href="/VerseExkurs/Alienrassen">
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" +
-                (router.pathname == "/VerseExkurs/hangar"
+                (router.pathname == "/VerseExkurs/Alienrassen"
                   ? ""
                   : " after:hidden")
               }
@@ -164,7 +167,7 @@ export default function Sidebar() {
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
                 style={{ fontSize: "130%" }}
               >
-                <FaRegBookmark
+                <GiAlienSkull
                   className="relative text-center whitespace-normal"
                   style={{ fontSize: "130%" }}
                 />
@@ -216,40 +219,6 @@ export default function Sidebar() {
         >
           <div className="relative min-h-full pb-[150px]">
             <ul className="lg:pt-5 pt-[5px] m-0 list-none">
-              <li className="p-0 m-0 list-none group" data-tip="Login">
-                <Link href="/VerseExkurs/login">
-                  <a
-                    className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/login"
-                        ? "after:block "
-                        : "after:hidden ") +
-                      (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
-                    }
-                  >
-                    <div
-                      className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
-                      }
-                    >
-                      <FaSignInAlt className="min-w-[30px] text-center relative antialiased inline-block" />
-                      <span
-                        className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
-                        }
-                      >
-                        {" "}
-                        Login{" "}
-                      </span>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-
               <li className="p-0 m-0 list-none group" data-tip="Home">
                 <Link href="/VerseExkurs">
                   <a
@@ -284,39 +253,6 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="p-0 m-0 list-none group" data-tip="Hangar">
-                <Link href="/VerseExkurs/hangar">
-                  <a
-                    className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/hangar"
-                        ? "after:block "
-                        : "after:hidden ") +
-                      (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
-                    }
-                  >
-                    <div
-                      className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
-                      }
-                    >
-                      <FaSignInAlt className="min-w-[30px] text-center relative antialiased inline-block" />
-                      <span
-                        className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
-                        }
-                      >
-                        {" "}
-                        My Hangar{" "}
-                      </span>
-                    </div>
-                  </a>
-                </Link>
-              </li>
               <Disclosure as="li" className="p-0 m-0 list-none">
                 {({ open }) => (
                   <>
@@ -328,7 +264,7 @@ export default function Sidebar() {
                           ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
                           : "")
                       }
-                      data-tip="Ships"
+                      data-tip="Geschichte"
                     >
                       <div
                         className={
@@ -336,7 +272,7 @@ export default function Sidebar() {
                           (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
                         }
                       >
-                        <FaPlaceOfWorship className="min-w-[30px] text-center relative antialiased inline-block" />
+                        <MdHistoryEdu className="min-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
                             "ml-[5px] " +
@@ -344,7 +280,7 @@ export default function Sidebar() {
                           }
                         >
                           {" "}
-                          Ships{" "}
+                          Geschichte{" "}
                         </span>
                       </div>
                       <span
@@ -379,13 +315,13 @@ export default function Sidebar() {
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
-                            data-for="shipsTip"
+                            data-for="timelineTip"
                           >
-                            <Link href="/VerseExkurs/ships">
+                            <Link href="/VerseExkurs/timeline">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/ships"
+                                  (router.pathname == "/VerseExkurs/timeline"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -401,7 +337,7 @@ export default function Sidebar() {
                                       : "h-6")
                                   }
                                 >
-                                  <FaTh className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
                                       "ml-[5px] " +
@@ -411,18 +347,18 @@ export default function Sidebar() {
                                     }
                                   >
                                     {" "}
-                                    Ships{" "}
+                                    Zeitleiste des Verse{" "}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
-                                      id="shipsTip"
+                                      id="timelineTip"
                                       place="right"
                                       effect="solid"
                                       arrowColor="transparent"
                                       type="dark"
                                       padding="8px"
                                     >
-                                      Ships
+                                      Zeitleiste des Verse
                                     </ReactTooltip>
                                   ) : (
                                     ""
@@ -435,13 +371,191 @@ export default function Sidebar() {
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
-                            data-for="compareshipsTip"
+                            data-for="oneDayInHistoryTip"
                           >
-                            <Link href="/VerseExkurs/compare">
+                            <Link href="/VerseExkurs/OneDayInHistory">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/compare"
+                                  (router.pathname ==
+                                  "/VerseExkurs/OneDayInHistory"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative h-6 whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <BsCalendar3 className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Ein Tag in der Geschichte{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="oneDayInHistoryTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Ein Tag in der Geschichte
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                        </Transition.Child>
+                      </Disclosure.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Disclosure>
+              <Disclosure as="li" className="p-0 m-0 list-none">
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button
+                      as="a"
+                      className={
+                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
+                        (!mobileView && sidebarCollapsed
+                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
+                          : "")
+                      }
+                      data-tip="UEE"
+                    >
+                      <div
+                        className={
+                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
+                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        }
+                      >
+                        <FaPlaceOfWorship className="min-w-[30px] text-center relative antialiased inline-block" />
+                        <span
+                          className={
+                            "ml-[5px] " +
+                            (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          }
+                        >
+                          {" "}
+                          UEE{" "}
+                        </span>
+                      </div>
+                      <span
+                        className={
+                          "absolute top-1/2 right-[20px] mt-[-10px]" +
+                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                        }
+                      >
+                        <FaChevronRight
+                          className={`${
+                            open ? "transform rotate-90" : ""
+                          } transition-all duration-300 ease-linear antialiased ${
+                            !mobileView && sidebarCollapsed ? "hidden" : ""
+                          }`}
+                        />
+                      </span>
+                    </Disclosure.Button>
+
+                    <Transition>
+                      <Disclosure.Panel
+                        as="ul"
+                        className="mb-[10px] list-none relative overflow-hidden"
+                      >
+                        <Transition.Child
+                          enter="transform transition-all duration-300 ease-linear"
+                          enterFrom="transform h-0"
+                          enterTo="transform h-[99px]"
+                          leave="transform transition-all duration-300 ease-linear"
+                          leaveFrom="transform h-[99px]"
+                          leaveTo="transform h-0"
+                        >
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="LifeInUeeTip"
+                          >
+                            <Link href="/VerseExkurs/LifeInUee">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname == "/VerseExkurs/LifeInUee"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Leben im UEE{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="LifeInUeeTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Leben im UEE
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="ueeGovernmentTip"
+                          >
+                            <Link href="/VerseExkurs/UeeGovernment">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/UeeGovernment"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -467,18 +581,18 @@ export default function Sidebar() {
                                     }
                                   >
                                     {" "}
-                                    Compare{" "}
+                                    Regierung des UEE{" "}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
-                                      id="compareshipsTip"
+                                      id="ueeGovernmentTip"
                                       place="right"
                                       effect="solid"
                                       arrowColor="transparent"
                                       type="dark"
                                       padding="8px"
                                     >
-                                      Compare
+                                      Regierung des UEE
                                     </ReactTooltip>
                                   ) : (
                                     ""
@@ -493,399 +607,12 @@ export default function Sidebar() {
                   </>
                 )}
               </Disclosure>
-
-              <Disclosure as="li" className="p-0 m-0 list-none">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button
-                      as="a"
-                      className={
-                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
-                        (!mobileView && sidebarCollapsed
-                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                          : "")
-                      }
-                      data-tip="Stations"
-                    >
-                      <div
-                        className={
-                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
-                        }
-                      >
-                        <BiPlanet className="min-w-[30px] text-center relative antialiased inline-block" />
-                        <span
-                          className={
-                            "ml-[5px] " +
-                            (!mobileView && sidebarCollapsed ? "hidden" : "")
-                          }
-                        >
-                          {" "}
-                          Stations{" "}
-                        </span>
-                      </div>
-                      <span
-                        className={
-                          "absolute top-1/2 right-[20px] mt-[-10px]" +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
-                        }
-                      >
-                        <FaChevronRight
-                          className={`${
-                            open ? "transform rotate-90" : ""
-                          } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? "hidden" : ""
-                          }`}
-                        />
-                      </span>
-                    </Disclosure.Button>
-
-                    <Transition>
-                      <Disclosure.Panel
-                        as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
-                      >
-                        <Transition.Child
-                          enter="transform transition-all duration-300 ease-linear"
-                          enterFrom="transform h-0"
-                          enterTo="transform h-[143px]"
-                          leave="transform transition-all duration-300 ease-linear"
-                          leaveFrom="transform h-[143px]"
-                          leaveTo="transform h-0"
-                        >
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="staoverviewTip"
-                          >
-                            <Link href="/VerseExkurs/overview">
-                              <a
-                                className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/overview"
-                                    ? "after:block "
-                                    : "after:hidden ") +
-                                  (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
-                                }
-                              >
-                                <div
-                                  className={
-                                    "relative h-6 whitespace-nowrap " +
-                                    (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
-                                  }
-                                >
-                                  <BiPlanet className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      "ml-[5px] " +
-                                      (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
-                                    }
-                                  >
-                                    {" "}
-                                    Overview{" "}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="staoverviewTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Overview
-                                    </ReactTooltip>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="starsystemsTip"
-                          >
-                            <Link href="/VerseExkurs/starsystems">
-                              <a
-                                className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/starsystems"
-                                    ? "after:block "
-                                    : "after:hidden ") +
-                                  (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
-                                }
-                              >
-                                <div
-                                  className={
-                                    "relative h-6 whitespace-nowrap " +
-                                    (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
-                                  }
-                                >
-                                  <GiSolarSystem className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      "ml-[5px] " +
-                                      (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
-                                    }
-                                  >
-                                    {" "}
-                                    By Starsystems{" "}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="starsystemsTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Ships
-                                    </ReactTooltip>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="shopsTip"
-                          >
-                            <Link href="/VerseExkurs/shops">
-                              <a
-                                className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/shops"
-                                    ? "after:block "
-                                    : "after:hidden ") +
-                                  (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
-                                }
-                              >
-                                <div
-                                  className={
-                                    "relative h-6 whitespace-nowrap " +
-                                    (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
-                                  }
-                                >
-                                  <FaStoreAlt className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      "ml-[5px] " +
-                                      (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
-                                    }
-                                  >
-                                    {" "}
-                                    Shops{" "}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="shopsTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Shops
-                                    </ReactTooltip>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                        </Transition.Child>
-                      </Disclosure.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Disclosure>
-              <Disclosure as="li" className="p-0 m-0 list-none">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button
-                      as="a"
-                      className={
-                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
-                        (!mobileView && sidebarCollapsed
-                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                          : "")
-                      }
-                      data-tip="Fleets"
-                    >
-                      <div
-                        className={
-                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
-                        }
-                      >
-                        <FaRocket className="min-w-[30px] text-center relative antialiased inline-block" />
-                        <span
-                          className={
-                            "ml-[5px] " +
-                            (!mobileView && sidebarCollapsed ? "hidden" : "")
-                          }
-                        >
-                          {" "}
-                          Fleets{" "}
-                        </span>
-                      </div>
-                      <span
-                        className={
-                          "absolute top-1/2 right-[20px] mt-[-10px]" +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
-                        }
-                      >
-                        <FaChevronRight
-                          className={`${
-                            open ? "transform rotate-90" : ""
-                          } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? "hidden" : ""
-                          }`}
-                        />
-                      </span>
-                    </Disclosure.Button>
-
-                    <Transition>
-                      <Disclosure.Panel
-                        as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden"
-                      >
-                        <Transition.Child
-                          enter="transform transition-all duration-300 ease-linear"
-                          enterFrom="transform h-0"
-                          enterTo="transform h-[44px]"
-                          leave="transform transition-all duration-300 ease-linear"
-                          leaveFrom="transform h-[44px]"
-                          leaveTo="transform h-0"
-                        >
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="createfleetTip"
-                          >
-                            <Link href="/VerseExkurs/createfleet">
-                              <a
-                                className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/"
-                                    ? "after:block "
-                                    : "after:hidden ") +
-                                  (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
-                                }
-                              >
-                                <div
-                                  className={
-                                    "relative h-6 whitespace-nowrap " +
-                                    (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
-                                  }
-                                >
-                                  <FiPlus className="min-w-[30px] text-center relative antialiased inline-block mb-[2px]" />
-                                  <span
-                                    className={
-                                      "ml-[5px] " +
-                                      (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
-                                    }
-                                  >
-                                    {" "}
-                                    Create a new Fleet{" "}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="createfleetTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Create a new Fleet
-                                    </ReactTooltip>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                        </Transition.Child>
-                      </Disclosure.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Disclosure>
-              <li className="p-0 m-0 list-none group" data-tip="Images">
-                <Link href="/VerseExkurs/images">
+              <li className="p-0 m-0 list-none group" data-tip="ARK Starmap">
+                <Link href="/VerseExkurs/starmap">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/images"
-                        ? "after:block "
-                        : "after:hidden ") +
-                      (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
-                    }
-                  >
-                    <div
-                      className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          !mobileView && sidebarCollapsed
-                          ? "h-[30px]"
-                          : ""
-                      }
-                    >
-                      <FaImages className="min-w-[30px] text-center relative antialiased inline-block" />
-                      <span
-                        className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
-                        }
-                      >
-                        {" "}
-                        Images{" "}
-                      </span>
-                    </div>
-                  </a>
-                </Link>
-              </li>
-              <li className="p-0 m-0 list-none group" data-tip="Trade Routes">
-                <Link href="/VerseExkurs/traderoutes">
-                  <a
-                    className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/traderoutes"
+                      (router.pathname == "/VerseExkurs/starmap"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -899,7 +626,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
                       }
                     >
-                      <FaPallet className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <GiSolarSystem className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
                           "ml-[5px] " +
@@ -907,7 +634,7 @@ export default function Sidebar() {
                         }
                       >
                         {" "}
-                        Trade Routes{" "}
+                        ARK Starmap{" "}
                       </span>
                     </div>
                   </a>
@@ -924,7 +651,7 @@ export default function Sidebar() {
                           ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
                           : "")
                       }
-                      data-tip="Roadmap"
+                      data-tip="Alienrassen"
                     >
                       <div
                         className={
@@ -932,7 +659,7 @@ export default function Sidebar() {
                           (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
                         }
                       >
-                        <GrTasks className="min-w-[30px] text-center relative antialiased inline-block" />
+                        <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
                             "ml-[5px] " +
@@ -940,7 +667,7 @@ export default function Sidebar() {
                           }
                         >
                           {" "}
-                          Roadmap{" "}
+                          Alienrassen{" "}
                         </span>
                       </div>
                       <span
@@ -967,21 +694,21 @@ export default function Sidebar() {
                         <Transition.Child
                           enter="transform transition-all duration-300 ease-linear"
                           enterFrom="transform h-0"
-                          enterTo="transform h-[143px]"
+                          enterTo="transform h-[275px]"
                           leave="transform transition-all duration-300 ease-linear"
-                          leaveFrom="transform h-[143px]"
+                          leaveFrom="transform h-[275px]"
                           leaveTo="transform h-0"
                         >
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
-                            data-for="roadmapoverviewTip"
+                            data-for="BanuTip"
                           >
-                            <Link href="/VerseExkurs/overview">
+                            <Link href="/VerseExkurs/Banu">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/overview"
+                                  (router.pathname == "/VerseExkurs/Banu"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -991,13 +718,13 @@ export default function Sidebar() {
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    "relative whitespace-nowrap " +
                                     (!mobileView && sidebarCollapsed
                                       ? "h-[30px]"
                                       : "h-6")
                                   }
                                 >
-                                  <GrTasks className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
                                       "ml-[5px] " +
@@ -1007,18 +734,18 @@ export default function Sidebar() {
                                     }
                                   >
                                     {" "}
-                                    Overview{" "}
+                                    Banu{" "}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
-                                      id="roadmapoverviewTip"
+                                      id="BanuTip"
                                       place="right"
                                       effect="solid"
                                       arrowColor="transparent"
                                       type="dark"
                                       padding="8px"
                                     >
-                                      Overview
+                                      Banu
                                     </ReactTooltip>
                                   ) : (
                                     ""
@@ -1030,13 +757,13 @@ export default function Sidebar() {
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
-                            data-for="changesTip"
+                            data-for="TevarinTip"
                           >
-                            <Link href="/VerseExkurs/changes">
+                            <Link href="/VerseExkurs/Tevarin">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/changes"
+                                  (router.pathname == "/VerseExkurs/Tevarin"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1046,13 +773,13 @@ export default function Sidebar() {
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    "relative whitespace-nowrap " +
                                     (!mobileView && sidebarCollapsed
                                       ? "h-[30px]"
                                       : "h-6")
                                   }
                                 >
-                                  <FaTasks className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
                                       "ml-[5px] " +
@@ -1062,18 +789,128 @@ export default function Sidebar() {
                                     }
                                   >
                                     {" "}
-                                    Changes{" "}
+                                    Tevarin{" "}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
-                                      id="changesTip"
+                                      id="TevarinTip"
                                       place="right"
                                       effect="solid"
                                       arrowColor="transparent"
                                       type="dark"
                                       padding="8px"
                                     >
-                                      Changes
+                                      Tevarin
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="VanduulTip"
+                          >
+                            <Link href="/VerseExkurs/Vanduul">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname == "/VerseExkurs/Vanduul"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Vanduul{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="VanduulTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Vanduul
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="XiAnTip"
+                          >
+                            <Link href="/VerseExkurs/XiAn">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname == "/VerseExkurs/XiAn"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Xi{"'"}An{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="XiAnTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Xi{"'"}An
                                     </ReactTooltip>
                                   ) : (
                                     ""
@@ -1086,13 +923,13 @@ export default function Sidebar() {
                           <li
                             className="p-0 m-0 list-none group"
                             data-tip
-                            data-for="shiproadmapTip"
+                            data-for="BiestariumTip"
                           >
-                            <Link href="/VerseExkurs/shiproadmap">
+                            <Link href="/VerseExkurs/Biestarium">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/shiproadmap"
+                                  (router.pathname == "/VerseExkurs/Biestarium"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1108,7 +945,7 @@ export default function Sidebar() {
                                       : "h-6")
                                   }
                                 >
-                                  <FaRocket className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
                                       "ml-[5px] " +
@@ -1118,18 +955,73 @@ export default function Sidebar() {
                                     }
                                   >
                                     {" "}
-                                    Ship-Roadmap{" "}
+                                    Biestarium{" "}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
-                                      id="shiproadmapTip"
+                                      id="BiestariumTip"
                                       place="right"
                                       effect="solid"
                                       arrowColor="transparent"
                                       type="dark"
                                       padding="8px"
                                     >
-                                      Ship-Roadmap
+                                      Biestarium
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="PflanzenTip"
+                          >
+                            <Link href="/VerseExkurs/Pflanzen">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname == "/VerseExkurs/Pflanzen"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative h-6 whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Pflanzen{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="PflanzenTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Pflanzen
                                     </ReactTooltip>
                                   ) : (
                                     ""
@@ -1144,12 +1036,414 @@ export default function Sidebar() {
                   </>
                 )}
               </Disclosure>
-              <li className="p-0 m-0 list-none group" data-tip="Stats">
-                <Link href="/VerseExkurs/stats">
+              <Disclosure as="li" className="p-0 m-0 list-none">
+                {({ open }) => (
+                  <>
+                    <Disclosure.Button
+                      as="a"
+                      className={
+                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
+                        (!mobileView && sidebarCollapsed
+                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
+                          : "")
+                      }
+                      data-tip="Firmen"
+                    >
+                      <div
+                        className={
+                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
+                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        }
+                      >
+                        <FaPlaceOfWorship className="min-w-[30px] text-center relative antialiased inline-block" />
+                        <span
+                          className={
+                            "ml-[5px] " +
+                            (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          }
+                        >
+                          {" "}
+                          Firmen{" "}
+                        </span>
+                      </div>
+                      <span
+                        className={
+                          "absolute top-1/2 right-[20px] mt-[-10px]" +
+                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                        }
+                      >
+                        <FaChevronRight
+                          className={`${
+                            open ? "transform rotate-90" : ""
+                          } transition-all duration-300 ease-linear antialiased ${
+                            !mobileView && sidebarCollapsed ? "hidden" : ""
+                          }`}
+                        />
+                      </span>
+                    </Disclosure.Button>
+
+                    <Transition>
+                      <Disclosure.Panel
+                        as="ul"
+                        className="mb-[10px] list-none relative overflow-hidden"
+                      >
+                        <Transition.Child
+                          enter="transform transition-all duration-300 ease-linear"
+                          enterFrom="transform h-0"
+                          enterTo="transform h-[275px]"
+                          leave="transform transition-all duration-300 ease-linear"
+                          leaveFrom="transform h-[275px]"
+                          leaveTo="transform h-0"
+                        >
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="HerstellerTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Hersteller">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Hersteller"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Hersteller{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="HerstellerTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Hersteller
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="HerstellerTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Hersteller">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Hersteller"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Hersteller{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="HerstellerTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Hersteller
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="DienstleisterTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Dienstleister">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Dienstleister"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Dienstleister{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="DienstleisterTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Dienstleister
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="GeschaefteTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Geschaefte">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Geschaefte"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Geschäfte{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="GeschaefteTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Geschäfte
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="OrganisationenTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Organisationen">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Organisationen"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative h-6 whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <FaExchangeAlt className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Organisationen{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="OrganisationenTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Organisationen
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30]"></li>
+                          <li
+                            className="p-0 m-0 list-none group"
+                            data-tip
+                            data-for="VerschiedeneTip"
+                          >
+                            <Link href="/VerseExkurs/Firmen/Verschiedene">
+                              <a
+                                className={
+                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  (router.pathname ==
+                                  "/VerseExkurs/Firmen/Verschiedene"
+                                    ? "after:block "
+                                    : "after:hidden ") +
+                                  (!mobileView && sidebarCollapsed
+                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
+                                    : " py-[10px] pl-10 pr-[15px] ")
+                                }
+                              >
+                                <div
+                                  className={
+                                    "relative h-6 whitespace-nowrap " +
+                                    (!mobileView && sidebarCollapsed
+                                      ? "h-[30px]"
+                                      : "h-6")
+                                  }
+                                >
+                                  <FaExchangeAlt className="min-w-[30px] text-center relative antialiased inline-block" />
+                                  <span
+                                    className={
+                                      "ml-[5px] " +
+                                      (!mobileView && sidebarCollapsed
+                                        ? "hidden"
+                                        : "")
+                                    }
+                                  >
+                                    {" "}
+                                    Verschiedene{" "}
+                                  </span>
+                                  {!mobileView && sidebarCollapsed ? (
+                                    <ReactTooltip
+                                      id="VerschiedeneTip"
+                                      place="right"
+                                      effect="solid"
+                                      arrowColor="transparent"
+                                      type="dark"
+                                      padding="8px"
+                                    >
+                                      Verschiedene
+                                    </ReactTooltip>
+                                  ) : (
+                                    ""
+                                  )}
+                                </div>
+                              </a>
+                            </Link>
+                          </li>
+                        </Transition.Child>
+                      </Disclosure.Panel>
+                    </Transition>
+                  </>
+                )}
+              </Disclosure>
+              <li className="p-0 m-0 list-none group" data-tip="Technologie">
+                <Link href="/VerseExkurs/Technologie">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/stats"
+                      (router.pathname == "/VerseExkurs/Technologie"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -1163,7 +1457,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
                       }
                     >
-                      <FaChartBar className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <FiCpu className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
                           "ml-[5px] " +
@@ -1171,7 +1465,73 @@ export default function Sidebar() {
                         }
                       >
                         {" "}
-                        Stats{" "}
+                        Technologie{" "}
+                      </span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li className="p-0 m-0 list-none group" data-tip="Spectrum">
+                <Link href="/VerseExkurs/Spectrum">
+                  <a
+                    className={
+                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                      (router.pathname == "/VerseExkurs/Spectrum"
+                        ? "after:block "
+                        : "after:hidden ") +
+                      (!mobileView && sidebarCollapsed
+                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
+                        : "")
+                    }
+                  >
+                    <div
+                      className={
+                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
+                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                      }
+                    >
+                      <BsTriangleFill className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          "ml-[5px] " +
+                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                        }
+                      >
+                        {" "}
+                        Spectrum{" "}
+                      </span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li className="p-0 m-0 list-none group" data-tip="Literatur">
+                <Link href="/VerseExkurs/Literatur">
+                  <a
+                    className={
+                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                      (router.pathname == "/VerseExkurs/Literatur"
+                        ? "after:block "
+                        : "after:hidden ") +
+                      (!mobileView && sidebarCollapsed
+                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
+                        : "")
+                    }
+                  >
+                    <div
+                      className={
+                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
+                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                      }
+                    >
+                      <ImBook className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          "ml-[5px] " +
+                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                        }
+                      >
+                        {" "}
+                        Literatur{" "}
                       </span>
                     </div>
                   </a>
@@ -1179,6 +1539,39 @@ export default function Sidebar() {
               </li>
             </ul>
             <ul className="absolute bottom-0 p-0 pb-[10px] lg:pb-5 m-0 list-none">
+              <li className="p-0 m-0 list-none group" data-tip="Zurück">
+                <Link href="/">
+                  <a
+                    className={
+                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                      (router.pathname == "/"
+                        ? "after:block "
+                        : "after:hidden ") +
+                      (!mobileView && sidebarCollapsed
+                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
+                        : "")
+                    }
+                  >
+                    <div
+                      className={
+                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
+                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                      }
+                    >
+                      <RiArrowGoBackLine className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          "ml-[5px] " +
+                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                        }
+                      >
+                        {" "}
+                        Zurück{" "}
+                      </span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
               <li
                 className={
                   "p-0 m-0 list-none group" + (mobileView ? " hidden" : "")
