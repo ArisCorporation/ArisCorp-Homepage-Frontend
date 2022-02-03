@@ -27,7 +27,7 @@ const ARIS_COMMLINKS = gql`
   }
 `;
 
-export default function BiografiePage() {
+export default function Biografie() {
   const router = useRouter();
   const { name } = router.query;
 
@@ -97,6 +97,6 @@ export default function BiografiePage() {
   );
 }
 
-BigorafiePage.getLayout = function getLayout(page) {
+Biografie.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
