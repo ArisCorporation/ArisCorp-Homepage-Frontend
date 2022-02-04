@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import { Tab } from "@headlessui/react";
 import { Tabs } from "react-tabs";
+import Link from "next/link";
 
 const { gql, useQuery } = require("@apollo/client");
 
@@ -101,10 +102,10 @@ export default function PflanzenPage() {
             <Tab.Panels className={"px-4"}>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <div
-                    key={data.title}
+                  <Link href={"/VerseExkurs/" + data.title} key={data.title}>
+                  <a
                     className={
-                      "children-square " +
+                      "children-square text-white children-square hover:text-secondary decoration-transparent " +
                       (data.pflanze == false ? "hidden" : "")
                     }
                   >
@@ -116,27 +117,29 @@ export default function PflanzenPage() {
                         <div>{data.title}</div>
                       </div>
                     </div>
-                  </div>
+                  </a>
+                </Link>
                 ))}
               </Tab.Panel>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <div
-                    key={data.title}
-                    className={
-                      "children-square " +
-                      (data.pflanze == true ? "hidden" : "")
-                    }
-                  >
-                    <div className="text-center">
-                      <div>
-                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
-                          {data.image}
-                        </ReactMarkdown>
-                        <div>{data.title}</div>
+                  <Link href={"/VerseExkurs/" + data.title} key={data.title}>
+                    <a
+                      className={
+                        "children-square text-white children-square hover:text-secondary decoration-transparent " +
+                        (data.pflanze == true ? "hidden" : "")
+                      }
+                    >
+                      <div className="text-center">
+                        <div>
+                          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                            {data.image}
+                          </ReactMarkdown>
+                          <div>{data.title}</div>
+                        </div>
                       </div>
-                    </div>
-                  </div>
+                    </a>
+                  </Link>
                 ))}
               </Tab.Panel>
             </Tab.Panels>
