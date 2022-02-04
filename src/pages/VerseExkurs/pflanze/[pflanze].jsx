@@ -1,0 +1,83 @@
+import Layout from "pages/VerseExkurs/layout";
+import { useRouter } from "next/router";
+import { SquareLoader } from "react-spinners";
+import Image from "next/image";
+import ReactMarkdown from "react-markdown";
+import rehypeRaw from "rehype-raw";
+import { Tab } from "@headlessui/react";
+
+const { gql, useQuery } = require("@apollo/client");
+
+const ALIENRASSEN = gql`
+  query Alienrassen {
+    alienrassen(filter: { alienrassen_name: { _eq: "Pflanzen" } }) {
+      id
+      alienrassen_name
+      alienrassen_banner {
+        id
+        width
+        height
+      }
+      text
+      sections
+    }
+  }
+`;
+
+export default function AlienrassenDetailPage() {
+  const router = useRouter();
+  const { pflanze } = router.query;
+
+  const { loading, error, data } = useQuery(ALIENRASSEN, {
+    variables: { pflanze },
+  });
+
+  if (loading)
+    return (
+      <div className="flex justify-center pt-32">
+        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
+      </div>
+    );
+
+  if (error) return <p>Error :(</p>;
+
+  const Data = data.alienrassen[0].sections;
+
+  return (
+    <div className="items-center max-w-6xl pt-10 mx-auto">
+      <div>
+        {Data.filter((pflanzen) => pflanzen.title === pflanze).map((data) => (
+          <>
+            <div className="items-center text-center">
+              <h1 className="uppercase">
+                Alienrasse: <span className="text-primary">{data.title}</span>
+              </h1>
+              <hr />
+              <div className="w-full">
+                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                  {data.image}
+                </ReactMarkdown>
+              </div>
+            </div>
+            <div className={"px-5 mx-auto"}>
+              <h2 className="mt-3">VerseExkurs - Alienrassen: {data.title}</h2>
+              <hr className="max-w-[80px]" />
+            </div>
+            <div className="font-nasa article-font">
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                className="child-delete-image"
+              >
+                {data.content}
+              </ReactMarkdown>
+            </div>
+          </>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+AlienrassenDetailPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>;
+};

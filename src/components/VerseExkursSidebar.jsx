@@ -25,7 +25,12 @@ import { RiArrowGoBackLine } from "react-icons/ri";
 import { ImBook } from "react-icons/im";
 import { useState, useEffect, useRef } from "react";
 import { Disclosure, Transition } from "@headlessui/react";
-import { BsCalendar3, BsChevronDoubleLeft, BsShieldShaded, BsTriangleFill } from "react-icons/bs";
+import {
+  BsCalendar3,
+  BsChevronDoubleLeft,
+  BsShieldShaded,
+  BsTriangleFill,
+} from "react-icons/bs";
 import MainLogo from "./icons/MainLogo";
 import { RotateSpinner } from "react-spinners-kit";
 import { useRouter } from "next/router";
@@ -102,7 +107,7 @@ export default function Sidebar() {
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" +
-                (router.pathname == "/VerseExkurs" ? "" : " after:hidden")
+                (router.asPath == "/VerseExkurs" ? "" : " after:hidden")
               }
             >
               <div
@@ -116,11 +121,13 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="/VerseExkurs/Firmen">
+          <Link href="/VerseExkurs/firmen">
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
-                (router.pathname == "/VerseExkurs/Firmen" ? "" : " after:hidden")
+                (router.asPath == "/VerseExkurs/firmen"
+                  ? ""
+                  : " after:hidden")
               }
             >
               <div
@@ -138,7 +145,7 @@ export default function Sidebar() {
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
-                (router.pathname == "/VerseExkurs/search"
+                (router.asPath == "/VerseExkurs/search"
                   ? ""
                   : " after:hidden")
               }
@@ -154,11 +161,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="/VerseExkurs/Alienrassen">
+          <Link href="/VerseExkurs/alienrassen">
             <a
               className={
                 "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" +
-                (router.pathname == "/VerseExkurs/Alienrassen"
+                (router.asPath == "/VerseExkurs/alienrassen"
                   ? ""
                   : " after:hidden")
               }
@@ -224,7 +231,7 @@ export default function Sidebar() {
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs"
+                      (router.asPath == "/VerseExkurs"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -321,7 +328,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/timeline"
+                                  (router.asPath == "/VerseExkurs/timeline"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -373,12 +380,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="oneDayInHistoryTip"
                           >
-                            <Link href="/VerseExkurs/OneDayInHistory">
+                            <Link href="/VerseExkurs/one-day-in-history">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/OneDayInHistory"
+                                  (router.asPath ==
+                                  "/VerseExkurs/one-day-in-history"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -431,11 +438,11 @@ export default function Sidebar() {
                 )}
               </Disclosure>
               <li className="p-0 m-0 list-none group" data-tip="Home">
-                <Link href="/VerseExkurs/UEE">
+                <Link href="/VerseExkurs/uee">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/UEE"
+                      (router.asPath == "/VerseExkurs/uee"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -469,7 +476,7 @@ export default function Sidebar() {
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/starmap"
+                      (router.asPath == "/VerseExkurs/starmap"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -561,11 +568,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="BanuTip"
                           >
-                            <Link href="/VerseExkurs/Banu">
+                            <Link href="/VerseExkurs/alienrasse/Banu">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/Banu"
+                                  (router.asPath == "/VerseExkurs/alienrasse/Banu"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -616,11 +623,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="TevarinTip"
                           >
-                            <Link href="/VerseExkurs/Tevarin">
+                            <Link href="/VerseExkurs/alienrasse/Tevarin">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/Tevarin"
+                                  (router.asPath == "/VerseExkurs/alienrasse/Tevarin"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -671,11 +678,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="VanduulTip"
                           >
-                            <Link href="/VerseExkurs/Vanduul">
+                            <Link href="/VerseExkurs/alienrasse/Vanduul">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/Vanduul"
+                                  (router.asPath == "/VerseExkurs/alienrasse/Vanduul"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -726,11 +733,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="XiAnTip"
                           >
-                            <Link href="/VerseExkurs/XiAn">
+                            <Link href="/VerseExkurs/alienrasse/XiAn">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/XiAn"
+                                  (router.asPath == "/VerseExkurs/alienrasse/XiAn"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -782,11 +789,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="BiestariumTip"
                           >
-                            <Link href="/VerseExkurs/Biestarium">
+                            <Link href="/VerseExkurs/biestarium">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/Biestarium"
+                                  (router.asPath == "/VerseExkurs/biestarium"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -837,11 +844,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="PflanzenTip"
                           >
-                            <Link href="/VerseExkurs/Pflanzen">
+                            <Link href="/VerseExkurs/pflanzen">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname == "/VerseExkurs/Pflanzen"
+                                  (router.asPath == "/VerseExkurs/pflanzen"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -957,68 +964,11 @@ export default function Sidebar() {
                             data-tip
                             data-for="HerstellerTip"
                           >
-                            <Link href="/VerseExkurs/Firmen/Hersteller">
+                            <Link href="/VerseExkurs/hersteller">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Hersteller"
-                                    ? "after:block "
-                                    : "after:hidden ") +
-                                  (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
-                                }
-                              >
-                                <div
-                                  className={
-                                    "relative whitespace-nowrap " +
-                                    (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
-                                  }
-                                >
-                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      "ml-[5px] " +
-                                      (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
-                                    }
-                                  >
-                                    {" "}
-                                    Hersteller{" "}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="HerstellerTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Hersteller
-                                    </ReactTooltip>
-                                  ) : (
-                                    ""
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="HerstellerTip"
-                          >
-                            <Link href="/VerseExkurs/Firmen/Hersteller">
-                              <a
-                                className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Hersteller"
+                                  (router.asPath == "/VerseExkurs/hersteller"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1069,12 +1019,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="DienstleisterTip"
                           >
-                            <Link href="/VerseExkurs/Firmen/Dienstleister">
+                            <Link href="/VerseExkurs/dienstleister">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Dienstleister"
+                                  (router.asPath ==
+                                  "/VerseExkurs/dienstleister"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1125,12 +1075,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="GeschaefteTip"
                           >
-                            <Link href="/VerseExkurs/Firmen/Geschaefte">
+                            <Link href="/VerseExkurs/geschafte">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Geschaefte"
+                                  (router.asPath ==
+                                  "/VerseExkurs/Firmen/geschafte"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1181,12 +1131,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="OrganisationenTip"
                           >
-                            <Link href="/VerseExkurs/Firmen/Organisationen">
+                            <Link href="/VerseExkurs/organisationen">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Organisationen"
+                                  (router.asPath ==
+                                  "/VerseExkurs/organisationen"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1238,12 +1188,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="VerschiedeneTip"
                           >
-                            <Link href="/VerseExkurs/Firmen/Verschiedene">
+                            <Link href="/VerseExkurs/verschiedene">
                               <a
                                 className={
                                   "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.pathname ==
-                                  "/VerseExkurs/Firmen/Verschiedene"
+                                  (router.asPath ==
+                                  "/VerseExkurs/verschiedene"
                                     ? "after:block "
                                     : "after:hidden ") +
                                   (!mobileView && sidebarCollapsed
@@ -1296,11 +1246,11 @@ export default function Sidebar() {
                 )}
               </Disclosure>
               <li className="p-0 m-0 list-none group" data-tip="Technologie">
-                <Link href="/VerseExkurs/Technologie">
+                <Link href="/VerseExkurs/technologie">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/Technologie"
+                      (router.asPath == "/VerseExkurs/technologie"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -1329,11 +1279,11 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="p-0 m-0 list-none group" data-tip="Spectrum">
-                <Link href="/VerseExkurs/Spectrum">
+                <Link href="/VerseExkurs/spectrum">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/Spectrum"
+                      (router.asPath == "/VerseExkurs/spectrum"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -1362,11 +1312,11 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="p-0 m-0 list-none group" data-tip="Literatur">
-                <Link href="/VerseExkurs/Literatur">
+                <Link href="/VerseExkurs/literatur">
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/VerseExkurs/Literatur"
+                      (router.asPath == "/VerseExkurs/literatur"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -1401,7 +1351,7 @@ export default function Sidebar() {
                   <a
                     className={
                       "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.pathname == "/"
+                      (router.asPath == "/"
                         ? "after:block "
                         : "after:hidden ") +
                       (!mobileView && sidebarCollapsed
@@ -1437,10 +1387,7 @@ export default function Sidebar() {
               >
                 <a
                   className={
-                    "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                    (router.pathname == "/VerseExkurs/stats"
-                      ? "after:block "
-                      : "after:hidden ") +
+                    "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent " +
                     (sidebarCollapsed
                       ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
                       : "")
@@ -1471,32 +1418,36 @@ export default function Sidebar() {
                 </a>
               </li>
               <li className="min-h-[60px] list-none">
-                <span
-                  className={
-                    "relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap" +
-                    (!mobileView && sidebarCollapsed ? " w-16 h-16" : "")
-                  }
-                  style={{ transition: "all .5s ease" }}
-                >
-                  <div
-                    className={
-                      "absolute transition-all duration-500 ease-linear top-2.5 left-[30px] w-12 h-12" +
-                      (!mobileView && sidebarCollapsed
-                        ? " top-auto left-5"
-                        : "")
-                    }
-                  >
-                    <MainLogo />
-                  </div>
-                  <span
-                    className={
-                      "block pt-[6px] pr-5 pl-[50px]" +
-                      (!mobileView && sidebarCollapsed ? " hidden" : "")
-                    }
-                  >
-                    ArisCorp VerseExkurs
-                  </span>
-                </span>
+                <Link href="/">
+                  <a className="decoration-transparent">
+                    <span
+                      className={
+                        "relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap" +
+                        (!mobileView && sidebarCollapsed ? " w-16 h-16" : "")
+                      }
+                      style={{ transition: "all .5s ease" }}
+                    >
+                      <div
+                        className={
+                          "absolute transition-all duration-500 ease-linear top-2.5 left-[30px] w-12 h-12" +
+                          (!mobileView && sidebarCollapsed
+                            ? " top-auto left-5"
+                            : "")
+                        }
+                      >
+                        <MainLogo />
+                      </div>
+                      <span
+                        className={
+                          "block pt-[6px] pr-5 pl-[50px]" +
+                          (!mobileView && sidebarCollapsed ? " hidden" : "")
+                        }
+                      >
+                        ArisCorp VerseExkurs
+                      </span>
+                    </span>
+                  </a>
+                </Link>
               </li>
             </ul>
           </div>

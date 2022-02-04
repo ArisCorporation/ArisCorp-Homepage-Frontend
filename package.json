@@ -26,7 +26,8 @@
     "react-spinners-kit": "^1.9.1",
     "react-tabs": "^3.2.3",
     "react-tooltip": "^4.2.21",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "slugify": "^1.6.5"
   },
   "devDependencies": {
     "eslint": "8.5.0",

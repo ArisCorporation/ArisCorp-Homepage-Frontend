@@ -102,7 +102,7 @@ export default function PflanzenPage() {
             <Tab.Panels className={"px-4"}>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <Link href={"/VerseExkurs/" + data.title} key={data.title}>
+                  <Link href={"/VerseExkurs/pflanze/" + data.title} key={data.title}>
                   <a
                     className={
                       "children-square text-white children-square hover:text-secondary decoration-transparent " +
@@ -123,7 +123,7 @@ export default function PflanzenPage() {
               </Tab.Panel>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <Link href={"/VerseExkurs/" + data.title} key={data.title}>
+                  <Link href={"/VerseExkurs/pflanze/" + data.title} key={data.title}>
                     <a
                       className={
                         "children-square text-white children-square hover:text-secondary decoration-transparent " +

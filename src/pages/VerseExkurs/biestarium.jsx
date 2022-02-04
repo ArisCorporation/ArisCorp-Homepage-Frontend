@@ -78,7 +78,7 @@ export default function PflanzenPage() {
           <hr />
           <div className="flex flex-wrap items-center justify-between text-center">
             {Data.sections.map((data) => (
-              <Link href={"/VerseExkurs/" + data.title} key={data.title}>
+              <Link href={"/VerseExkurs/biestarium/" + data.title} key={data.title}>
                 <a className="text-white children-square hover:text-secondary decoration-transparent">
                   <div className="text-center">
                     <div>
