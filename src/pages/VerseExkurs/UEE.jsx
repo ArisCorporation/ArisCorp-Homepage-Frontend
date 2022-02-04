@@ -44,7 +44,7 @@ export default function PflanzenPage() {
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            ALLES ÜBER DAS:{" "}
+            ALLES ÜBER DAS{" "}
             <span className="text-primary">UEE</span>
           </h1>
           <hr />
