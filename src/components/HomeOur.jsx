@@ -8,7 +8,7 @@ const OurGameplays = dynamic(() => import("./HomeOurGameplays"), {});
 const OrgaSection = () => (
   <div className="my-24">
     <Tab.Group>
-      <Tab.List>
+      <Tab.List className="flex flex-wrap justify-between">
         <h1>UNSERE</h1>
         <hr />
         <Tab
@@ -35,7 +35,7 @@ const OrgaSection = () => (
           }
         >
           <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">
-            AUFGABENFELDER
+            ABTEILUNGEN
           </h1>
         </Tab>
         <hr />

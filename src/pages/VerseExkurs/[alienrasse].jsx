@@ -20,7 +20,6 @@ const ALIENRASSEN = gql`
       }
       text
       sections
-      alienrassen_text
     }
   }
 `;
@@ -43,7 +42,6 @@ export default function AlienrassenDetailPage() {
   if (error) return <p>Error :(</p>;
 
   const Data = data.alienrassen[0];
-  console.log(Data.sections);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
@@ -85,14 +83,14 @@ export default function AlienrassenDetailPage() {
             <Tab.List>
               {Data.sections.map((data) => (
                 <Tab
-                  key={data.Title}
+                  key={data.title}
                   className={({ selected }) =>
                     (selected ? "text-primary" : "opacity-50") +
                     " p-3 m-1 transition-all duration-300 ease-in-out"
                   }
                 >
                   <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl">
-                    {data.Title}
+                    {data.title}
                   </h1>
                 </Tab>
               ))}

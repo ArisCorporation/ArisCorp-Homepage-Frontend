@@ -8,7 +8,7 @@ const ArisCorpCharta = dynamic(() => import("./HomeAboutCharta"), {});
 
 const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
   <Tab.Group>
-    <Tab.List>
+    <Tab.List className="flex flex-wrap justify-between">
       <h1>ÜBER</h1>
       <hr />
       <Tab
