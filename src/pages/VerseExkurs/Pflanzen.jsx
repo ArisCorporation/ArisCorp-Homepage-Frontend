@@ -76,7 +76,7 @@ export default function PflanzenPage() {
         <div className="font-nasa article-font">
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>{Data.text}</ReactMarkdown>
           <Tab.Group>
-            <Tab.List className="w-full">
+            <Tab.List className="flex flex-wrap justify-between">
               <Tab
                 className={({ selected }) =>
                   (selected ? "text-primary" : "opacity-50") +
@@ -90,7 +90,7 @@ export default function PflanzenPage() {
               <Tab
                 className={({ selected }) =>
                   (selected ? "text-primary" : "opacity-50") +
-                  " p-3 m-1 transition-all duration-300 ease-in-out float-right"
+                  " p-3 m-1 transition-all duration-300 ease-in-out"
                 }
               >
                 <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl">

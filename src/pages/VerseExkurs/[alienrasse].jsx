@@ -80,7 +80,7 @@ export default function AlienrassenDetailPage() {
         <div className="font-nasa article-font">
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>{Data.text}</ReactMarkdown>
           <Tab.Group>
-            <Tab.List>
+            <Tab.List className="flex flex-wrap justify-between">
               {Data.sections.map((data) => (
                 <Tab
                   key={data.title}
