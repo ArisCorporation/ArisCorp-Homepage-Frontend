@@ -36,13 +36,9 @@ export default function CommLinkDetailPage() {
   const { id } = router.query;
 
   const Id = parseFloat(id);
-  console.log(Id);
   const { loading, error, data } = useQuery(ARIS_COMMLINKS, {
     variables: { Id },
   });
-
-  console.log(data?.comm_links);
-  console.log(error);
 
   if (loading)
     return (

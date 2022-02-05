@@ -4,16 +4,13 @@ import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const { gql, useQuery } = require("@apollo/client");
 
 const SPECTRUM = gql`
   query Spectrum {
-    spectrum(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "-spectrum_kategorie_beschreibung", "spectrum_titel"]
-      limit: 50
-    ) {
+    spectrum(filter: { status: { _eq: "published" } }, limit: 1000) {
       id
       status
       spectrum_titel
@@ -29,7 +26,10 @@ const SPECTRUM = gql`
   }
 `;
 
-export default function SpectrumPage() {
+export default function SpectrumCategoryPage() {
+  const router = useRouter();
+  const { cid } = router.query;
+
   const { loading, error, data } = useQuery(SPECTRUM);
 
   if (loading)
@@ -41,50 +41,65 @@ export default function SpectrumPage() {
 
   if (error) return <p>Error :(</p>;
 
-  const Data = data?.spectrum;
+  const Data = data.spectrum;
+
+  const category = Data.filter(
+    (data) => data.spectrum_kategorie_beschreibung == true && data.id == cid
+  )[0];
 
   console.log(Data);
 
   return (
     <div className="pt-10">
-      <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
+      <div className="flex flex-wrap w-full aspect-[40/21] scale-[.8]">
         <div className="relative w-full">
           <Image
-            src="https://cms.ariscorp.de/assets/6e633dd2-1512-405d-92e0-fb3907de86a1"
+            src={"https://cms.ariscorp.de/assets/" + category.image?.id}
             layout="fill"
-            alt="Spectrum Banner"
+            alt={
+              "Banner von der Kategorie: " + category.spectrum_beitrag_kateogrie
+            }
             placeholder="blur"
-            blurDataURL="https://cms.ariscorp.de/assets/6e633dd2-1512-405d-92e0-fb3907de86a1"
+            blurDataURL={
+              "https://cms.ariscorp.de/assets/" +
+              category.image?.id +
+              "?width=16&quality=1"
+            }
             objectFit="cover"
           />
         </div>
       </div>
-      <div className="-mt-5 scale-95">
+      <div className="-mt-12 scale-95">
         <hr />
       </div>
       <div>
         {Data.filter(
-          (data) => data.spectrum_kategorie_beschreibung == true
+          (data) =>
+            data.spectrum_kategorie_beschreibung == false &&
+            data.spectrum_beitrag_kateogrie ===
+              category.spectrum_beitrag_kateogrie
         ).map((data) => (
           <div
             key={data.id}
-            className="w-full h-64 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
+            className="w-full h-48 my-10 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-secondary"
           >
-            <Link href={"/VerseExkurs/spectrum/" + data.id}>
-              <a className="pr-0 text-white decoration-transparent">
+            <Link href={"/VerseExkurs/spectrum/" + category.id + "/" + data.id}>
+              <a className="text-white decoration-transparent">
                 <div className="flex items-center w-full h-full px-8">
                   <div className={"relative h-3/4 w-1/3"}>
                     <Image
-                      src={"https://cms.ariscorp.de/assets/" + data.image?.id}
+                      src={
+                        "https://cms.ariscorp.de/assets/" + category.image?.id
+                      }
                       layout="fill"
                       alt={
                         "Banner von der Kategorie: " +
-                        data.spectrum_beitrag_kateogrie
+                        category.spectrum_beitrag_kateogrie
                       }
                       placeholder="blur"
                       blurDataURL={
                         "https://cms.ariscorp.de/assets/" +
-                        data.image?.id +
+                        category.image?.id +
                         "?width=16&quality=1"
                       }
                       objectFit="cover"
@@ -92,9 +107,6 @@ export default function SpectrumPage() {
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
                     <h1 className="text-primary">{data.spectrum_titel}</h1>
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]} className="pt-3">
-                      {data.spectrum_text}
-                    </ReactMarkdown>
                   </div>
                 </div>
               </a>
@@ -107,6 +119,6 @@ export default function SpectrumPage() {
   );
 }
 
-SpectrumPage.getLayout = function getLayout(page) {
+SpectrumCategoryPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };

@@ -96,7 +96,7 @@ export default function AlienrassenDetailPage() {
               ))}
               <hr />
             </Tab.List>
-            <Tab.Panels className={"px-4"}>
+            <Tab.Panels className={"px-4 pt-5"}>
               {Data.sections.map((data) => (
                 <Tab.Panel key={data.title}>
                   <ReactMarkdown rehypePlugins={[rehypeRaw]}>
