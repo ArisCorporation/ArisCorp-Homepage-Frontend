@@ -25,7 +25,7 @@ const UEE = gql`
   }
 `;
 
-export default function PflanzenPage() {
+export default function UEEPage() {
   const { loading, error, data } = useQuery(UEE);
 
   if (loading)
@@ -106,6 +106,6 @@ export default function PflanzenPage() {
   );
 }
 
-PflanzenPage.getLayout = function getLayout(page) {
+UEEPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
 };
