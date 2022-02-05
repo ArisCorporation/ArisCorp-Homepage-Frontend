@@ -126,7 +126,7 @@ export default function PflanzenPage() {
                   <Link href={"/VerseExkurs/pflanze/" + data.title} key={data.title}>
                     <a
                       className={
-                        "children-square text-white children-square hover:text-secondary decoration-transparent " +
+                        "children-square text-white children-square hover:text-secondary decoration-transparent mt-10 " +
                         (data.pflanze == true ? "hidden" : "")
                       }
                     >

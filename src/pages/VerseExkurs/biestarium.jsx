@@ -79,7 +79,7 @@ export default function PflanzenPage() {
           <div className="flex flex-wrap items-center justify-between text-center">
             {Data.sections.map((data) => (
               <Link href={"/VerseExkurs/biestarium/" + data.title} key={data.title}>
-                <a className="text-white children-square hover:text-secondary decoration-transparent">
+                <a className="mx-1 mt-10 text-white children-square hover:text-secondary decoration-transparent">
                   <div className="text-center">
                     <div>
                       <ReactMarkdown rehypePlugins={[rehypeRaw]}>
