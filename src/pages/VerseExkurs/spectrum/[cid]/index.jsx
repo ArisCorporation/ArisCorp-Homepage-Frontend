@@ -47,8 +47,6 @@ export default function SpectrumCategoryPage() {
     (data) => data.spectrum_kategorie_beschreibung == true && data.id == cid
   )[0];
 
-  console.log(Data);
-
   return (
     <div className="pt-10">
       <div className="flex flex-wrap w-full aspect-[40/21] scale-[.8]">

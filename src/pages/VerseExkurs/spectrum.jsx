@@ -41,9 +41,7 @@ export default function SpectrumPage() {
 
   if (error) return <p>Error :(</p>;
 
-  const Data = data?.spectrum;
-
-  console.log(Data);
+  const Data = data.spectrum;
 
   return (
     <div className="pt-10">
@@ -70,7 +68,7 @@ export default function SpectrumPage() {
             key={data.id}
             className="w-full h-64 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
           >
-            <Link href={"/VerseExkurs/spectrum/" + data.id}>
+            <Link href={data.id == 19 ? "/VerseExkurs/spectrum/19/125" : ("/VerseExkurs/spectrum/" + data.id)}>
               <a className="pr-0 text-white decoration-transparent">
                 <div className="flex items-center w-full h-full px-8">
                   <div className={"relative h-3/4 w-1/3"}>
