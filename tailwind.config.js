@@ -38,6 +38,9 @@ module.exports = {
         'height': 'height',
         'spacing': 'margin, padding',
       },
+      animation: {
+        'pulse-slow': 'pulse 3s linear infinite',
+      },
     },
   },
   plugins: [],
