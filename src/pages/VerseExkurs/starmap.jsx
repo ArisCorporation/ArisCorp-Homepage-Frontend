@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
+import ReactTooltip from "react-tooltip";
 import Layout from "./layout";
+import ReactDOMServer from 'react-dom/server';
+
 
 export default function test() {
   return (
@@ -719,7 +722,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="castra"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[58.4%] top-[-70.755%] group hover:cursor-pointer"
@@ -737,7 +740,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="oya"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[64.3%] top-[-67.1%] group hover:cursor-pointer"
@@ -755,7 +758,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="gurzil"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[69.1%] top-[-71.50797%] group hover:cursor-pointer"
@@ -773,7 +776,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="horus"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[75.4%] top-[-73.27%] group hover:cursor-pointer"
@@ -791,7 +794,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="kiel"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[72.7%] top-[-61.7%] group hover:cursor-pointer"
@@ -809,7 +812,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="hadrian"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[67.85%] top-[-62.969%] group hover:cursor-pointer"
@@ -827,7 +830,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="cano"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[44.4%] top-[-65.5%] group hover:cursor-pointer"
@@ -845,7 +848,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="sol"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.6%] top-[-69.23%] group hover:cursor-pointer"
@@ -863,7 +866,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="centauri"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[11.89%] top-[-68.3%] group hover:cursor-pointer"
@@ -881,7 +884,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="baker"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[76.74%] top-[-65.89%] group hover:cursor-pointer"
@@ -899,7 +902,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="terra"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[65.38%] top-[-68.1%] group hover:cursor-pointer"
@@ -917,7 +920,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="stanton"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[59.63%] top-[-70.4%] group hover:cursor-pointer"
@@ -935,7 +938,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="magnus"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[53.9398%] top-[-72.9%] group hover:cursor-pointer"
@@ -953,7 +956,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="ellis"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-75.19%] group hover:cursor-pointer"
@@ -971,7 +974,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="kilian"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[45.4%] top-[-77.6%] group hover:cursor-pointer"
@@ -989,7 +992,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="davien"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[40.3%] top-[-80.07%] group hover:cursor-pointer"
@@ -1007,7 +1010,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="croshaw"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[28.93%] top-[-82.4%] group hover:cursor-pointer"
@@ -1025,7 +1028,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="rhetor"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[23.77%] top-[-84.7%] group hover:cursor-pointer"
@@ -1043,7 +1046,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="idris"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-87%] group hover:cursor-pointer"
@@ -1061,7 +1064,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="elysium"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[11.6%] top-[-89.5%] group hover:cursor-pointer"
@@ -1079,7 +1082,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="tayac"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[67.35%] top-[-85.77%] group hover:cursor-pointer"
@@ -1097,7 +1100,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="goss"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[71.1364%] top-[-85.9%] group hover:cursor-pointer"
@@ -1115,7 +1118,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="ferron"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-88.3%] group hover:cursor-pointer"
@@ -1133,7 +1136,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="oretani"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.63%] top-[-83.2%] group hover:cursor-pointer"
@@ -1151,7 +1154,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="nexus"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[48%] top-[-89.5%] group hover:cursor-pointer"
@@ -1169,7 +1172,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="banshee"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[24.78%] top-[-86.1%] group hover:cursor-pointer"
@@ -1187,7 +1190,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="helios"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[60.682%] top-[-89.236%] group hover:cursor-pointer"
@@ -1205,7 +1208,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="kabal"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[15.35%] top-[-90.317%] group hover:cursor-pointer"
@@ -1223,7 +1226,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="nemo"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[39.78%] top-[-89.57%] group hover:cursor-pointer"
@@ -1241,7 +1244,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="fora"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.57%] top-[-90.6%] group hover:cursor-pointer"
@@ -1259,7 +1262,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="charon"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[57.65%] top-[-93.8%] group hover:cursor-pointer"
@@ -1277,7 +1280,7 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="corel"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[42.28%] top-[-86.645%] group hover:cursor-pointer"
@@ -1295,10 +1298,12 @@ export default function test() {
             />
           </div>
         </div>
-        
+
         <div
           id="tamsa"
           className="relative z-10 w-[1.667%] h-[2.3789%] left-[21.1%] top-[-83.9%] group hover:cursor-pointer"
+          data-html={true}
+          data-tip={ReactDOMServer.renderToString(<div><h3 className="p-0 m-0">Tamsa</h3><img src={"https://cms.ariscorp.de/assets/2813eb71-a28c-4eac-916c-b0b7de2a2f81"} className="object-cover w-32 h-16 rounded-sm" /><div><h4>Starsystem:</h4><ul className="pl-0 list-none no-marker"><li><p className="p-0 m-0 text-base">System Typ</p><p className="p-0 m-0 [font-size:0.6rem]">Einzelner Stern</p></li><li><p className="p-0 m-0 text-base">Größe</p><p className="p-0 m-0 [font-size:0.6rem]">30 AE</p></li><li><p className="p-0 m-0 text-base">Zugehörigkeit</p><p className="p-0 m-0 [font-size:0.6rem]">UEE</p></li></ul></div></div>)}          
         >
           <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
@@ -1314,6 +1319,14 @@ export default function test() {
           </div>
         </div>
 
+        <ReactTooltip
+          place="right"
+          effect="solid"
+          arrowColor="transparent"
+          type="dark"
+          padding="8px"
+        />
+
         <Image
           src={
             "https://cms.ariscorp.de/assets/26a5366b-8ac6-40f8-b8fe-af144c64165f"
@@ -1327,6 +1340,12 @@ export default function test() {
     </div>
   );
 }
+
+const tttest = () => {
+  return (
+    <div className="absolute"><div className="relative w-12 h-9"><Image src={"https://cms.arsicorp.de/assets/2813eb71-a28c-4eac-916c-b0b7de2a2f81"} layout="fill" objectFit="cover" placeholder="blur" blurDataURL={"https://cms.arsicorp.de/assets/2813eb71-a28c-4eac-916c-b0b7de2a2f81?width=16&quality=1"} /></div></div>
+  );
+};
 
 test.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>;
