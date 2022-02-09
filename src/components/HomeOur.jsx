@@ -16,7 +16,7 @@ const OrgaSection = () => (
             (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"
           }
         >
-          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">
+          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
             MEMBER
           </h1>
         </Tab>
@@ -25,7 +25,7 @@ const OrgaSection = () => (
             (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"
           }
         >
-          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">
+          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
             FLOTTE
           </h1>
         </Tab>
@@ -34,7 +34,7 @@ const OrgaSection = () => (
             (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"
           }
         >
-          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl">
+          <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
             ABTEILUNGEN
           </h1>
         </Tab>

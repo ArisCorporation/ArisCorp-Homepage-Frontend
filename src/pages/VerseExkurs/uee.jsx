@@ -83,7 +83,7 @@ export default function UEEPage() {
                     " p-3 m-1 transition-all duration-300 ease-in-out"
                   }
                 >
-                  <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl">
+                  <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
                     {data.title}
                   </h1>
                 </Tab>

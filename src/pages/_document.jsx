@@ -225,7 +225,7 @@ class MyDocument extends Document {
 
           <link rel="stylesheet" href="https://use.typekit.net/ihj0lxn.css" />
         </Head>
-        <body className="font-nasa bg-[#111] text-white min-h-screen selection:bg-primary selection:text-bg-secondary">
+        <body className="font-nasa bg-[#111] min-h-screen selection:bg-primary selection:text-bg-secondary">
           <Main />
           <NextScript />
         </body>

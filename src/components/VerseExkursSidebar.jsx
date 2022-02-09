@@ -97,7 +97,7 @@ export default function Sidebar() {
     <>
       <div
         className={
-          "fixed bottom-0 z-50 w-full lg:hidden " +
+          "fixed bottom-0 z-50 w-full lg:hidden print:hidden " +
           (mobileOpen ? "right-[300px]" : "right-0")
         }
         style={{ transition: "left .5s ease,right .5s ease,width .5s ease" }}
@@ -212,7 +212,7 @@ export default function Sidebar() {
 
       <nav
         className={
-          "absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block " +
+          "absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden " +
           (!mobileView && sidebarCollapsed ? "lg:w-[80px] lg:min-w-[80px]" : "")
         }
       >
