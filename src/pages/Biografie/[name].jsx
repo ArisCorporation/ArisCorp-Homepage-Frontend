@@ -13,7 +13,7 @@ const ARIS_COMMLINKS = gql`
     member(
       filter: { member_name: { _eq: $name } }
       sort: ["sort", "member_name"]
-    ){
+    ) {
       id
       status
       member_name
@@ -44,47 +44,44 @@ export default function Biografie() {
   if (error) return <p>Error :(</p>;
   const Data = data.member[0];
   return (
-    <div className="items-center max-w-6xl pt-32 mx-auto">
+    <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Biografie:{" "}
-            <span className="text-primary">
-              {Data.member_name}
-            </span>
+            Biografie: <span className="text-primary">{Data.member_name}</span>
           </h1>
           <hr />
         </div>
-        <div className={"mx-auto"}>
-          <h2 className="mt-3">
-            Bio von {Data.member_titel}
-          </h2>
-          <div className="float-right">
-          <Image
-              src={
-                "https://cms.ariscorp.de/assets/" + Data.member_potrait.id
-              }
-              alt={"Banner"}
-              width={270}
-              height={320}
-              placeholder="blur"
-              blurDataURL={
-                "https://cms.ariscorp.de/assets/" + Data.member_potrait.id + "?width=16&quality=1"
-              }
-            />
+        <div className="max-w-[95%] mx-auto">
+          <div className={"mx-auto"}>
+            <h2 className="mt-3">Bio von {Data.member_titel}</h2>
+            <div className="float-right">
+              <Image
+                src={"https://cms.ariscorp.de/assets/" + Data.member_potrait.id}
+                alt={"Banner"}
+                width={270}
+                height={320}
+                placeholder="blur"
+                blurDataURL={
+                  "https://cms.ariscorp.de/assets/" +
+                  Data.member_potrait.id +
+                  "?width=16&quality=1"
+                }
+              />
+            </div>
+            <hr className="max-w-[80px]" />
           </div>
-          <hr className="max-w-[80px]" />
-        </div>
-        <div className="font-nasa article-font">
-          <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
-            className="justify-center steckbrief"
-          >
-            {Data.member_steckbrief}
-          </ReactMarkdown>
+          <div className="font-nasa article-font">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              className="justify-center prose steckbrief prose-td:align-middle prose-invert xl:max-w-full"
+            >
+              {Data.member_steckbrief}
+            </ReactMarkdown>
+          </div>
         </div>
         <h2 className="mt-12 mb-3">Biografie:</h2>
-        <div className="text-lg font-nasa article-font">
+        <div className="mx-auto prose font-nasa article-font prose-td:align-middle prose-invert xl:max-w-[98%]">
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="justify-center steckbrief"

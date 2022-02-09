@@ -44,7 +44,7 @@ export default function AlienrassenDetailPage() {
   const Data = data.alienrassen[0].sections;
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         {Data.filter((pflanzen) => pflanzen.title === pflanze).map((data) => (
           <>
@@ -66,7 +66,7 @@ export default function AlienrassenDetailPage() {
             <div className="font-nasa article-font">
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
-                className="child-delete-image"
+                className="child-delete-image mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
               >
                 {data.content}
               </ReactMarkdown>

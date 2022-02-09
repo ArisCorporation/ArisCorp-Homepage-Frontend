@@ -20,7 +20,7 @@ const Navbar = () => {
   const toggleMobile = () => setMobileOpen((current) => !current);
 
   return (
-    <nav className="fixed z-20 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30">
+    <nav className="fixed z-20 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30 print:hidden">
       {/* Desktop menu */}
       <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>

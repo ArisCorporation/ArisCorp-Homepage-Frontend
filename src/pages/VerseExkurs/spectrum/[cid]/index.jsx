@@ -48,7 +48,7 @@ export default function SpectrumCategoryPage() {
   )[0];
 
   return (
-    <div className="pt-10">
+    <div className="pt-3 print:pt-0">
       <div className="flex flex-wrap w-full aspect-[40/21] scale-[.8]">
         <div className="relative w-full">
           <Image

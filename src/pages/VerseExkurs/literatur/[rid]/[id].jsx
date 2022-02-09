@@ -54,7 +54,7 @@ export default function LiteraturReihenPage() {
   const Data = data.literatur[0];
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
         <div key={Data.id}>
           <div className="items-center text-center">
             <h1 className="uppercase">
@@ -84,7 +84,7 @@ export default function LiteraturReihenPage() {
             <hr className="max-w-[80px]" />
           </div>
           <div className="font-nasa article-font">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
               {Data.literatur_text}
             </ReactMarkdown>
           </div>

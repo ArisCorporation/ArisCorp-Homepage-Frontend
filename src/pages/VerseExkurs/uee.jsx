@@ -40,7 +40,7 @@ export default function UEEPage() {
   const Data = data.united_empire_of_earth;
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -68,7 +68,7 @@ export default function UEEPage() {
         </div>
         <div className="font-nasa article-font">
           <div>
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full">
               {Data.text}
             </ReactMarkdown>
           </div>
@@ -90,10 +90,10 @@ export default function UEEPage() {
               ))}
               <hr />
             </Tab.List>
-            <Tab.Panels className={"px-4"}>
+            <Tab.Panels className={"px-4 xl:px-0"}>
               {Data.sections.map((data) => (
                 <Tab.Panel key={data.title}>
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
                     {data.content}
                   </ReactMarkdown>
                 </Tab.Panel>

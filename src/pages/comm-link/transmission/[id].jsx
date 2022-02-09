@@ -49,7 +49,7 @@ export default function CommLinkDetailPage() {
   if (error) return <p>Error :(</p>;
   const Data = data.comm_links[0];
   return (
-    <div className="items-center max-w-6xl pt-32 mx-auto">
+    <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -83,7 +83,7 @@ export default function CommLinkDetailPage() {
         <div className="font-nasa article-font">
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
-            className="justify-center"
+            className="justify-center mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
           >
             {Data.comm_link}
           </ReactMarkdown>

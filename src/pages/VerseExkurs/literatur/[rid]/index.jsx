@@ -52,7 +52,7 @@ export default function LiteraturReihenPage() {
   const reihe = Data[0].literatur_reihe;
 
   return (
-    <div className="pt-10">
+    <div className="pt-3 print:pt-0">
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
         <div className="relative w-full">
           <Image

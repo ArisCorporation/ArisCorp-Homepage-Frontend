@@ -27,7 +27,7 @@ export default function VerseExkursIndex() {
 
   return (
     <>
-      <ReactMarkdown rehypePlugins={[rehypeRaw]} className="">
+      <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
         {data.exkurs_index.text}
       </ReactMarkdown>
       <div className="flex flex-wrap items-center justify-center text-center lg:justify-between scale-70 xl:scale-100">

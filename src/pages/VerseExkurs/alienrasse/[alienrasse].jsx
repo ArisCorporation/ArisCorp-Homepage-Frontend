@@ -44,7 +44,7 @@ export default function AlienrassenDetailPage() {
   const Data = data.alienrassen[0];
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -78,7 +78,7 @@ export default function AlienrassenDetailPage() {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{Data.text}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full">{Data.text}</ReactMarkdown>
           <Tab.Group>
             <Tab.List className="flex flex-wrap justify-between">
               {Data.sections.map((data) => (
@@ -96,10 +96,10 @@ export default function AlienrassenDetailPage() {
               ))}
               <hr />
             </Tab.List>
-            <Tab.Panels className={"px-4 pt-5"}>
+            <Tab.Panels className={"px-4 xl:px-0 pt-5"}>
               {Data.sections.map((data) => (
                 <Tab.Panel key={data.title}>
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                  <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
                     {data.content}
                   </ReactMarkdown>
                 </Tab.Panel>

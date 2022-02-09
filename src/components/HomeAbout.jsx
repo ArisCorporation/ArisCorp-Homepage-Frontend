@@ -41,7 +41,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
       </Tab>
       <hr />
     </Tab.List>
-    <Tab.Panels className={"p-4"}>
+    <Tab.Panels className={"p-4 mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"}>
       <Tab.Panel>
         <TheArisCorp data={aboutData} />
       </Tab.Panel>

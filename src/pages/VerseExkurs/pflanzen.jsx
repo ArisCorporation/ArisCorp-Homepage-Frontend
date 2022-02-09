@@ -74,7 +74,7 @@ export default function PflanzenPage() {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{Data.text}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full">{Data.text}</ReactMarkdown>
           <Tab.Group>
             <Tab.List className="flex flex-wrap justify-between">
               <Tab
@@ -132,7 +132,7 @@ export default function PflanzenPage() {
                     >
                       <div className="text-center">
                         <div>
-                          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                          <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
                             {data.image}
                           </ReactMarkdown>
                           <div>{data.title}</div>

@@ -50,7 +50,7 @@ export default function SpectrumCategoryPage() {
   console.log(Data);
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       {Data.filter((data) => data.id == id).map((data) => (
         <div key={data.id}>
           <div className="items-center text-center">
@@ -81,7 +81,7 @@ export default function SpectrumCategoryPage() {
             <hr className="max-w-[80px]" />
           </div>
           <div className="font-nasa article-font">
-            <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
               {data.spectrum_text}
             </ReactMarkdown>
           </div>
