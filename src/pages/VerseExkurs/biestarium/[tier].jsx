@@ -10,7 +10,7 @@ const { gql, useQuery } = require("@apollo/client");
 
 const ALIENRASSEN = gql`
   query Alienrassen {
-    alienrassen(filter: { alienrassen_name: { _eq: "Pflanzen" } }) {
+    alienrassen(filter: { alienrassen_name: { _eq: "Biestarium" } }) {
       id
       alienrassen_name
       alienrassen_banner {
@@ -26,10 +26,10 @@ const ALIENRASSEN = gql`
 
 export default function AlienrassenDetailPage() {
   const router = useRouter();
-  const { pflanze } = router.query;
+  const { tier } = router.query;
 
   const { loading, error, data } = useQuery(ALIENRASSEN, {
-    variables: { pflanze },
+    variables: { tier },
   });
 
   if (loading)
@@ -46,7 +46,7 @@ export default function AlienrassenDetailPage() {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
-        {Data.filter((pflanzen) => pflanzen.title === pflanze).map((data) => (
+        {Data.filter((tiere) => tiere.title === tier).map((data) => (
           <div key={data.title}>
             <div className="items-center text-center">
               <h1 className="uppercase">
@@ -60,7 +60,7 @@ export default function AlienrassenDetailPage() {
               </div>
             </div>
             <div className={"px-5 mx-auto"}>
-              <h2 className="mt-3">VerseExkurs - Pflanzen: {data.title}</h2>
+              <h2 className="mt-3">VerseExkurs - Biestarium: {data.title}</h2>
               <hr className="max-w-[80px]" />
             </div>
             <div className="font-nasa article-font">

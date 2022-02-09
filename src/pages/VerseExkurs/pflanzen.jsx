@@ -80,7 +80,7 @@ export default function PflanzenPage() {
               <Tab
                 className={({ selected }) =>
                   (selected ? "text-primary" : "opacity-50") +
-                  " p-3 m-1 transition-all duration-300 ease-in-out"
+                  " p-3 m-1 transition-all duration-300 ease-in-out text-inherit"
                 }
               >
                 <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl">
@@ -90,7 +90,7 @@ export default function PflanzenPage() {
               <Tab
                 className={({ selected }) =>
                   (selected ? "text-primary" : "opacity-50") +
-                  " p-3 m-1 transition-all duration-300 ease-in-out"
+                  " p-3 m-1 transition-all duration-300 ease-in-out text-inherit"
                 }
               >
                 <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl">
@@ -105,7 +105,7 @@ export default function PflanzenPage() {
                   <Link href={"/VerseExkurs/pflanze/" + data.title} key={data.title}>
                   <a
                     className={
-                      "children-square text-white children-square hover:text-secondary decoration-transparent " +
+                      "children-square mt-10 text-white children-square hover:text-secondary decoration-transparent " +
                       (data.pflanze == false ? "hidden" : "")
                     }
                   >
@@ -126,7 +126,7 @@ export default function PflanzenPage() {
                   <Link href={"/VerseExkurs/pflanze/" + data.title} key={data.title}>
                     <a
                       className={
-                        "children-square text-white children-square hover:text-secondary decoration-transparent mt-10 " +
+                        "children-square mt-10 text-white children-square hover:text-secondary decoration-transparent mt-10 " +
                         (data.pflanze == true ? "hidden" : "")
                       }
                     >
