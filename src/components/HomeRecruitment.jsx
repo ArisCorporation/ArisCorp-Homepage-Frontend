@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { Dialog } from "@headlessui/react";
-import Image from "next/image";
-import Link from "next/link";
+import { useState } from 'react'
+import { Dialog } from '@headlessui/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
 const RectruitmentSection = () => {
-  let [isOpen, setIsOpen] = useState(false);
+  let [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="px-4">
@@ -136,7 +136,7 @@ const RectruitmentSection = () => {
                 >
                   <Image
                     src={
-                      "https://cms.ariscorp.de/assets/90d5157b-2d6e-4ce2-af5a-9bf59343ec66"
+                      'https://cms.ariscorp.de/assets/90d5157b-2d6e-4ce2-af5a-9bf59343ec66'
                     }
                     alt="Discord Logo"
                     width={120}
@@ -149,7 +149,7 @@ const RectruitmentSection = () => {
                 >
                   <Image
                     src={
-                      "https://cms.ariscorp.de/assets/74529b89-cf09-4b2d-bd65-5813097cd65b"
+                      'https://cms.ariscorp.de/assets/74529b89-cf09-4b2d-bd65-5813097cd65b'
                     }
                     alt="RSI Logo"
                     width={120}
@@ -162,7 +162,7 @@ const RectruitmentSection = () => {
         </Dialog>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default RectruitmentSection;
+export default RectruitmentSection

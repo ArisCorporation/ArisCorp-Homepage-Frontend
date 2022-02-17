@@ -1,13 +1,13 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Children, useEffect, useState } from "react";
-import { OneThird, TwoThirds, ThreeThirds } from "./CommLinkCards";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Children, useEffect, useState } from 'react'
+import { OneThird, TwoThirds, ThreeThirds } from './CommLinkCards'
 
 const CommLinksSection = ({ data }) => {
-  const [children, setChildren] = useState([]);
+  const [children, setChildren] = useState([])
 
   useEffect(() => {
-    const layout = [];
+    const layout = []
 
     for (let i = 0; i < data.length; i += 10) {
       layout.push(
@@ -23,12 +23,12 @@ const CommLinksSection = ({ data }) => {
             id={data[i].id}
           />
         </div>
-      );
+      )
 
       // Break out of the loop if we've
       // already reached the end of data
       if (i + 1 >= data.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -69,25 +69,30 @@ const CommLinksSection = ({ data }) => {
             />
           )}
         </div>
-      );
+      )
     }
 
-    setChildren(layout);
-  }, [data]);
+    setChildren(layout)
+  }, [data])
 
   return (
     <div className="px-4 mb-24">
       <h1 className="inline-block w-full text-lg sm:text-3xl md:text-4xl">
         ARISCORP <span className="text-primary">COMM-LINKS</span>
-
-        <span><Link href="/comm-link"><a className="inline-block float-right text-base text-right text-white transition-colors duration-300 decoration-transparent hover:decoration-transparent hover:cursor-pointer font-nasa hover:text-secondary">Hier findest du alle Comm-Links!</a></Link></span>
+        <span>
+          <Link href="/comm-link">
+            <a className="inline-block float-right text-base text-right text-white transition-colors duration-300 decoration-transparent hover:decoration-transparent hover:cursor-pointer font-nasa hover:text-secondary">
+              Hier findest du alle Comm-Links!
+            </a>
+          </Link>
+        </span>
       </h1>
       <hr />
       <div className="flex flex-wrap justify-center px-4 mx-auto">
         <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CommLinksSection;
+export default CommLinksSection

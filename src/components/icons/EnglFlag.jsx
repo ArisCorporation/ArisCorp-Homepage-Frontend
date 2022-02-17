@@ -25,7 +25,7 @@ const EnglFlag = ({ width, height }) => {
         <path d="M30,0 v30 M0,15 h60" stroke="#C8102E" strokeWidth="6" />
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export default EnglFlag;
+export default EnglFlag

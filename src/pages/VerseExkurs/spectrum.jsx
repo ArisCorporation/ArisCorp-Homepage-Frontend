@@ -1,11 +1,11 @@
-import Layout from "pages/VerseExkurs/layout";
-import { SquareLoader } from "react-spinners";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import Link from "next/link";
+import Layout from 'pages/VerseExkurs/layout'
+import { SquareLoader } from 'react-spinners'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import Link from 'next/link'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const SPECTRUM = gql`
   query Spectrum {
@@ -27,21 +27,21 @@ const SPECTRUM = gql`
       }
     }
   }
-`;
+`
 
 export default function SpectrumPage() {
-  const { loading, error, data } = useQuery(SPECTRUM);
+  const { loading, error, data } = useQuery(SPECTRUM)
 
   if (loading)
     return (
       <div className="flex justify-center pt-32">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
-    );
+    )
 
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :(</p>
 
-  const Data = data.spectrum;
+  const Data = data.spectrum
 
   return (
     <div className="pt-3 print:pt-0">
@@ -68,29 +68,38 @@ export default function SpectrumPage() {
             key={data.id}
             className="w-full h-64 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
           >
-            <Link href={data.id == 19 ? "/VerseExkurs/spectrum/19/125" : ("/VerseExkurs/spectrum/" + data.id)}>
+            <Link
+              href={
+                data.id == 19
+                  ? '/VerseExkurs/spectrum/19/125'
+                  : '/VerseExkurs/spectrum/' + data.id
+              }
+            >
               <a className="pr-0 text-white decoration-transparent">
                 <div className="flex items-center w-full h-full px-8">
-                  <div className={"relative h-3/4 w-1/3"}>
+                  <div className={'relative h-3/4 w-1/3'}>
                     <Image
-                      src={"https://cms.ariscorp.de/assets/" + data.image?.id}
+                      src={'https://cms.ariscorp.de/assets/' + data.image?.id}
                       layout="fill"
                       alt={
-                        "Banner von der Kategorie: " +
+                        'Banner von der Kategorie: ' +
                         data.spectrum_beitrag_kateogrie
                       }
                       placeholder="blur"
                       blurDataURL={
-                        "https://cms.ariscorp.de/assets/" +
+                        'https://cms.ariscorp.de/assets/' +
                         data.image?.id +
-                        "?width=16&quality=1"
+                        '?width=16&quality=1'
                       }
                       objectFit="cover"
                     />
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
                     <h1 className="text-primary">{data.spectrum_titel}</h1>
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]} className="pt-3 text-pink-500">
+                    <ReactMarkdown
+                      rehypePlugins={[rehypeRaw]}
+                      className="pt-3 text-pink-500"
+                    >
                       {data.spectrum_text}
                     </ReactMarkdown>
                   </div>
@@ -102,9 +111,9 @@ export default function SpectrumPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 SpectrumPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

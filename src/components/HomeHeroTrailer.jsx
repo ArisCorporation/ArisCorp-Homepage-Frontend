@@ -1,13 +1,13 @@
-import { useState } from 'react';
-import Image from 'next/image';
+import { useState } from 'react'
+import Image from 'next/image'
 
 const HeroTrailer = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
 
   const onLoadedData = () => {
-    setIsVideoLoaded(true);
-  };
-  
+    setIsVideoLoaded(true)
+  }
+
   return (
     <>
       <video
@@ -22,4 +22,4 @@ const HeroTrailer = () => {
   )
 }
 
-export default HeroTrailer;
+export default HeroTrailer

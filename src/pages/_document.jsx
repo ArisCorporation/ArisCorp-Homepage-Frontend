@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript } from "next/document";
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
   render() {
@@ -198,7 +198,7 @@ class MyDocument extends Document {
             property="og:description"
             content="Die Website der Star Citizen Organisation ArisCorp bietet euch eine Übersicht der Orga und allen Informationen die über das Verse verfügbar sind."
           />
-          
+
           <meta
             property="og:image"
             content="https://cms.ariscorp.de/assets/61f8ed26-978a-4d66-a59d-92e8db4fdcb5"
@@ -230,8 +230,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument

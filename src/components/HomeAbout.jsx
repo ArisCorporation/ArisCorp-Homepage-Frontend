@@ -1,10 +1,10 @@
-import { Tab } from "@headlessui/react";
-import ArisCorpManifest from "./HomeAboutManifest";
-import dynamic from "next/dynamic";
+import { Tab } from '@headlessui/react'
+import ArisCorpManifest from './HomeAboutManifest'
+import dynamic from 'next/dynamic'
 
-const TheArisCorp = dynamic(() => import("./HomeAboutArisCorp"), {});
-const ArisCorpHistory = dynamic(() => import("./HomeAboutHistory"), {});
-const ArisCorpCharta = dynamic(() => import("./HomeAboutCharta"), {});
+const TheArisCorp = dynamic(() => import('./HomeAboutArisCorp'), {})
+const ArisCorpHistory = dynamic(() => import('./HomeAboutHistory'), {})
+const ArisCorpCharta = dynamic(() => import('./HomeAboutCharta'), {})
 
 const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
   <Tab.Group>
@@ -12,28 +12,40 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
       <h1>ÜBER</h1>
       <hr />
       <Tab
-        className={({ selected }) => (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"}
+        className={({ selected }) =>
+          (selected ? 'text-primary' : 'opacity-50') +
+          ' p-3 m-1 transition-all duration-300 ease-in-out'
+        }
       >
         <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
           DIE ARISCORP
         </h1>
       </Tab>
       <Tab
-        className={({ selected }) => (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"}
+        className={({ selected }) =>
+          (selected ? 'text-primary' : 'opacity-50') +
+          ' p-3 m-1 transition-all duration-300 ease-in-out'
+        }
       >
         <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
           HISTORY
         </h1>
       </Tab>
       <Tab
-        className={({ selected }) => (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"}
+        className={({ selected }) =>
+          (selected ? 'text-primary' : 'opacity-50') +
+          ' p-3 m-1 transition-all duration-300 ease-in-out'
+        }
       >
         <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
           MANIFEST
         </h1>
       </Tab>
       <Tab
-        className={({ selected }) => (selected ? "text-primary" : "opacity-50") + " p-3 m-1 transition-all duration-300 ease-in-out"}
+        className={({ selected }) =>
+          (selected ? 'text-primary' : 'opacity-50') +
+          ' p-3 m-1 transition-all duration-300 ease-in-out'
+        }
       >
         <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
           CHARTER
@@ -41,7 +53,11 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
       </Tab>
       <hr />
     </Tab.List>
-    <Tab.Panels className={"p-4 mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"}>
+    <Tab.Panels
+      className={
+        'p-4 mx-auto prose prose-td:align-middle prose-invert xl:max-w-full'
+      }
+    >
       <Tab.Panel>
         <TheArisCorp data={aboutData} />
       </Tab.Panel>
@@ -56,6 +72,6 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
       </Tab.Panel>
     </Tab.Panels>
   </Tab.Group>
-);
+)
 
-export default AboutSection;
+export default AboutSection

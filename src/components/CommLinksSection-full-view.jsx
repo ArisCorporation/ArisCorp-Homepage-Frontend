@@ -1,8 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Children, useEffect, useState } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { Children, useEffect, useState } from 'react'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const COMM_LINKS = gql`
   query GetComm_Links {
@@ -26,14 +26,14 @@ const COMM_LINKS = gql`
       }
     }
   }
-`;
+`
 
 const CommLinksSection = () => {
-  const [children, setChildren] = useState([]);
-  const { loading, error, data } = useQuery(COMM_LINKS);
+  const [children, setChildren] = useState([])
+  const { loading, error, data } = useQuery(COMM_LINKS)
 
   useEffect(() => {
-    const layout = [];
+    const layout = []
 
     for (let i = 0; i < data?.comm_links.length; i += 10) {
       layout.push(
@@ -48,12 +48,12 @@ const CommLinksSection = () => {
             image={data?.comm_links[i].comm_link_banner.id}
           />
         </div>
-      );
+      )
 
       // Break out of the loop if we've
       // already reached the end of data
       if (i + 1 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -80,10 +80,10 @@ const CommLinksSection = () => {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 3 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -120,10 +120,10 @@ const CommLinksSection = () => {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 6 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -149,10 +149,10 @@ const CommLinksSection = () => {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 8 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -178,18 +178,18 @@ const CommLinksSection = () => {
             />
           )}
         </div>
-      );
+      )
     }
 
-    setChildren(layout);
-  }, [data?.comm_links]);
+    setChildren(layout)
+  }, [data?.comm_links])
 
   return (
     <div className="flex flex-wrap justify-center mx-auto my-12">
       <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
     </div>
-  );
-};
+  )
+}
 
 const OneThird = ({
   typeicon,
@@ -206,7 +206,7 @@ const OneThird = ({
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -215,10 +215,10 @@ const OneThird = ({
         </div>
         <div
           className={
-            "bg-cover relative bg-center opacity-60 w-[338px] h-[210px]"
+            'bg-cover relative bg-center opacity-60 w-[338px] h-[210px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="block align-middle absolute mt-[26px] w-full">
@@ -241,8 +241,8 @@ const OneThird = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 const TwoThirds = ({
   typeicon,
   typename,
@@ -258,9 +258,9 @@ const TwoThirds = ({
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat xl:scale-0">
           <div
             className={
-              "bg-" +
+              'bg-' +
               typeicon +
-              " float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              ' float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -269,16 +269,16 @@ const TwoThirds = ({
         </div>
         <div
           className={
-            "xl:bg-cover relative xl:absolute xl:bg-center opacity-60 bg-center bg-cover w-[338px] h-[210px] xl:w-[729px] xl:h-[315px]"
+            'xl:bg-cover relative xl:absolute xl:bg-center opacity-60 bg-center bg-cover w-[338px] h-[210px] xl:w-[729px] xl:h-[315px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="scale-0 xl:scale-100 float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -307,8 +307,8 @@ const TwoThirds = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 const ThreeThirds = ({
   typeicon,
   typename,
@@ -324,9 +324,9 @@ const ThreeThirds = ({
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat lg:scale-0">
           <div
             className={
-              "bg-" +
+              'bg-' +
               typeicon +
-              " float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] "
+              ' float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] '
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -335,16 +335,16 @@ const ThreeThirds = ({
         </div>
         <div
           className={
-            "lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-60 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]"
+            'lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-60 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="scale-0 lg:scale-100 float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] "
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] '
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -373,7 +373,7 @@ const ThreeThirds = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export default CommLinksSection;
+export default CommLinksSection

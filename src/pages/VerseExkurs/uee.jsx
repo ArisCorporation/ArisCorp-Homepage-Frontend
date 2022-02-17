@@ -1,13 +1,13 @@
-import Layout from "pages/VerseExkurs/layout";
-import { SquareLoader } from "react-spinners";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import { Tab } from "@headlessui/react";
-import { Tabs } from "react-tabs";
-import Link from "next/link";
+import Layout from 'pages/VerseExkurs/layout'
+import { SquareLoader } from 'react-spinners'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import { Tab } from '@headlessui/react'
+import { Tabs } from 'react-tabs'
+import Link from 'next/link'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const UEE = gql`
   query united_empire_of_earth {
@@ -23,21 +23,21 @@ const UEE = gql`
       sections
     }
   }
-`;
+`
 
 export default function UEEPage() {
-  const { loading, error, data } = useQuery(UEE);
+  const { loading, error, data } = useQuery(UEE)
 
   if (loading)
     return (
       <div className="flex justify-center pt-32">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
-    );
+    )
 
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :(</p>
 
-  const Data = data.united_empire_of_earth;
+  const Data = data.united_empire_of_earth
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -49,26 +49,29 @@ export default function UEEPage() {
           <hr />
           <div className="w-full">
             <Image
-              src={"https://cms.ariscorp.de/assets/" + Data.image.id}
-              alt={"Banner"}
+              src={'https://cms.ariscorp.de/assets/' + Data.image.id}
+              alt={'Banner'}
               width={Data.image.width}
               height={Data.image.width}
               placeholder="blur"
               blurDataURL={
-                "https://cms.ariscorp.de/assets/" +
+                'https://cms.ariscorp.de/assets/' +
                 Data.image.id +
-                "?width=16&quality=1"
+                '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={"max-w-[1600px] mx-auto"}>
+        <div className={'max-w-[1600px] mx-auto'}>
           <h2 className="mt-3">VerseExkurs - UEE: Übersicht</h2>
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
           <div>
-            <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
+            >
               {Data.text}
             </ReactMarkdown>
           </div>
@@ -79,8 +82,8 @@ export default function UEEPage() {
                 <Tab
                   key={data.title}
                   className={({ selected }) =>
-                    (selected ? "text-primary" : "opacity-50") +
-                    " p-3 m-1 transition-all duration-300 ease-in-out"
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -90,10 +93,13 @@ export default function UEEPage() {
               ))}
               <hr />
             </Tab.List>
-            <Tab.Panels className={"px-4 xl:px-0"}>
+            <Tab.Panels className={'px-4 xl:px-0'}>
               {Data.sections.map((data) => (
                 <Tab.Panel key={data.title}>
-                  <ReactMarkdown rehypePlugins={[rehypeRaw]} className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]">
+                  <ReactMarkdown
+                    rehypePlugins={[rehypeRaw]}
+                    className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
+                  >
                     {data.content}
                   </ReactMarkdown>
                 </Tab.Panel>
@@ -103,9 +109,9 @@ export default function UEEPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 UEEPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

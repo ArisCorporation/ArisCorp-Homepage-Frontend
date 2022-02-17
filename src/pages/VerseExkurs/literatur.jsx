@@ -1,11 +1,11 @@
-import Layout from "pages/VerseExkurs/layout";
-import { SquareLoader } from "react-spinners";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import Link from "next/link";
+import Layout from 'pages/VerseExkurs/layout'
+import { SquareLoader } from 'react-spinners'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import Link from 'next/link'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const LITERATUR_REIHEN = gql`
   query Literatur_Reihen {
@@ -25,21 +25,21 @@ const LITERATUR_REIHEN = gql`
       reihen_protagonist
     }
   }
-`;
+`
 
 export default function LiteraturReihenPage() {
-  const { loading, error, data } = useQuery(LITERATUR_REIHEN);
+  const { loading, error, data } = useQuery(LITERATUR_REIHEN)
 
   if (loading)
     return (
       <div className="flex justify-center pt-32">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
-    );
+    )
 
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :(</p>
 
-  const Data = data.literatur_reihen;
+  const Data = data.literatur_reihen
 
   return (
     <div className="pt-3 print:pt-0">
@@ -64,22 +64,24 @@ export default function LiteraturReihenPage() {
             key={data.id}
             className="w-full h-48 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
           >
-            <Link href={"/VerseExkurs/literatur/" + data.id}>
+            <Link href={'/VerseExkurs/literatur/' + data.id}>
               <a className="pr-0 text-white decoration-transparent">
                 <div className="flex items-center w-full h-full px-8">
-                  <div className={"relative h-3/4 w-1/3"}>
+                  <div className={'relative h-3/4 w-1/3'}>
                     <Image
-                      src={"https://cms.ariscorp.de/assets/" + data.reihen_cover?.id}
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        data.reihen_cover?.id
+                      }
                       layout="fill"
                       alt={
-                        "Banner von der Literatur Reihe " +
-                        data.reihen_titel
+                        'Banner von der Literatur Reihe ' + data.reihen_titel
                       }
                       placeholder="blur"
                       blurDataURL={
-                        "https://cms.ariscorp.de/assets/" +
+                        'https://cms.ariscorp.de/assets/' +
                         data.reihen_cover?.id +
-                        "?width=16&quality=1"
+                        '?width=16&quality=1'
                       }
                       objectFit="cover"
                     />
@@ -95,9 +97,9 @@ export default function LiteraturReihenPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 LiteraturReihenPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

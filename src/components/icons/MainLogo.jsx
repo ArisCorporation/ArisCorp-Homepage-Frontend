@@ -28,7 +28,10 @@ const MainLogo = ({ width, height }) => {
         className="fill-white"
         d="M1631.82,1985.11,1779,2267.23l-321.8,6.45-58.45-107.61Z"
       />
-      <path className="fill-[#c7c7c7]" d="M2961.48,1011.34l-3.06-3.82,30.14-8.68.33.38Z" />
+      <path
+        className="fill-[#c7c7c7]"
+        d="M2961.48,1011.34l-3.06-3.82,30.14-8.68.33.38Z"
+      />
       <path
         className="fill-[#c7c7c7]"
         d="M2911.93,1032.57l15.12-6.79C2923.58,1031.55,2918.44,1033.58,2911.93,1032.57Z"
@@ -38,7 +41,7 @@ const MainLogo = ({ width, height }) => {
         d="M2988.56,998.84a13.73,13.73,0,0,1,2.88-2.44c.45-.22,1.46.69,3.13,1.56l-5.68,1.26Z"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default MainLogo; 
+export default MainLogo

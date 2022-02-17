@@ -1,17 +1,17 @@
-import Head from "next/head";
-import Navbar from "components/HomeNavbar";
-import Footer from "components/Footer";
-import HeroSection from "components/HomeHero";
-import AboutSection from "components/HomeAbout";
-import OrgaSection from "components/HomeOur";
-import CommLinksSection from "components/HomeCommLinksSection";
-import RectruitmentSection from "components/HomeRecruitment";
-import PartnerSection from "components/HomePartnerSection";
-import Script from "next/script";
-const { gql, useQuery } = require("@apollo/client");
-import { client } from "./_app";
-import { useEffect } from "react";
-import Layout from "./layout";
+import Head from 'next/head'
+import Navbar from 'components/HomeNavbar'
+import Footer from 'components/Footer'
+import HeroSection from 'components/HomeHero'
+import AboutSection from 'components/HomeAbout'
+import OrgaSection from 'components/HomeOur'
+import CommLinksSection from 'components/HomeCommLinksSection'
+import RectruitmentSection from 'components/HomeRecruitment'
+import PartnerSection from 'components/HomePartnerSection'
+import Script from 'next/script'
+const { gql, useQuery } = require('@apollo/client')
+import { client } from './_app'
+import { useEffect } from 'react'
+import Layout from './layout'
 
 export async function getServerSideProps() {
   const { data: aboutData } = await client.query({
@@ -22,7 +22,7 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   const { data: arisHistoryData } = await client.query({
     query: gql`
@@ -32,7 +32,7 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   const { data: manifestData } = await client.query({
     query: gql`
@@ -42,7 +42,7 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   const { data: chartaData } = await client.query({
     query: gql`
@@ -52,7 +52,7 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   const { data: commsData } = await client.query({
     query: gql`
@@ -79,7 +79,7 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   const { data: partnerData } = await client.query({
     query: gql`
@@ -95,12 +95,12 @@ export async function getServerSideProps() {
         }
       }
     `,
-  });
+  })
 
   if (!commsData || !aboutData || !arisHistoryData) {
     return {
       notFound: true,
-    };
+    }
   }
 
   return {
@@ -113,8 +113,8 @@ export async function getServerSideProps() {
       comm_links: await commsData.comm_links,
 
       partner: await partnerData.partner,
-    }
-  };
+    },
+  }
 }
 
 export default function Home({
@@ -126,13 +126,13 @@ export default function Home({
   partner,
 }) {
   useEffect(() => {
-    const script = document.createElement("script");
+    const script = document.createElement('script')
 
-    script.src = "https://fleetyards.net/embed.js";
-    script.async = false;
+    script.src = 'https://fleetyards.net/embed.js'
+    script.async = false
 
-    document.body.appendChild(script);
-  });
+    document.body.appendChild(script)
+  })
 
   return (
     <>
@@ -156,9 +156,9 @@ export default function Home({
         <PartnerSection data={partner} />
       </div>
     </>
-  );
+  )
 }
 
 Home.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

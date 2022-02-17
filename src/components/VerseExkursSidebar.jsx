@@ -1,5 +1,5 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 import {
   FaHome,
   FaRegBookmark,
@@ -15,32 +15,32 @@ import {
   FaTasks,
   FaChartBar,
   FaSearch,
-} from "react-icons/fa";
-import { BiPlanet } from "react-icons/bi";
-import { GiAlienSkull, GiSolarSystem } from "react-icons/gi";
-import { GrTasks } from "react-icons/gr";
-import { FiCpu, FiPlus } from "react-icons/fi";
-import { MdHistoryEdu, MdOutlineHistoryEdu, MdTimeline } from "react-icons/md";
-import { RiArrowGoBackLine } from "react-icons/ri";
-import { ImBook } from "react-icons/im";
-import { useState, useEffect, useRef } from "react";
-import { Disclosure, Transition } from "@headlessui/react";
+} from 'react-icons/fa'
+import { BiPlanet } from 'react-icons/bi'
+import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
+import { GrTasks } from 'react-icons/gr'
+import { FiCpu, FiPlus } from 'react-icons/fi'
+import { MdHistoryEdu, MdOutlineHistoryEdu, MdTimeline } from 'react-icons/md'
+import { RiArrowGoBackLine } from 'react-icons/ri'
+import { ImBook } from 'react-icons/im'
+import { useState, useEffect, useRef } from 'react'
+import { Disclosure, Transition } from '@headlessui/react'
 import {
   BsCalendar3,
   BsChevronDoubleLeft,
   BsShieldShaded,
   BsTriangleFill,
-} from "react-icons/bs";
-import MainLogo from "./icons/MainLogo";
-import { RotateSpinner } from "react-spinners-kit";
-import { useRouter } from "next/router";
-import ReactTooltip from "react-tooltip";
+} from 'react-icons/bs'
+import MainLogo from './icons/MainLogo'
+import { RotateSpinner } from 'react-spinners-kit'
+import { useRouter } from 'next/router'
+import ReactTooltip from 'react-tooltip'
 
 export default function Sidebar() {
-  const router = useRouter();
-  const size = useWindowSize();
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const router = useRouter()
+  const size = useWindowSize()
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
 
   function useWindowSize() {
     // Initialize state with undefined width/height so server and client renders match
@@ -48,7 +48,7 @@ export default function Sidebar() {
     const [windowSize, setWindowSize] = useState({
       width: undefined,
       height: undefined,
-    });
+    })
     useEffect(() => {
       // Handler to call on window resize
       function handleResize() {
@@ -56,67 +56,67 @@ export default function Sidebar() {
         setWindowSize({
           width: window.innerWidth,
           height: window.innerHeight,
-        });
+        })
       }
       // Add event listener
-      window.addEventListener("resize", handleResize);
+      window.addEventListener('resize', handleResize)
       // Call handler right away so state gets updated with initial window size
-      handleResize();
+      handleResize()
       // Remove event listener on cleanup
-      return () => window.removeEventListener("resize", handleResize);
-    }, []); // Empty array ensures that effect is only run on mount
-    return windowSize;
+      return () => window.removeEventListener('resize', handleResize)
+    }, []) // Empty array ensures that effect is only run on mount
+    return windowSize
   }
 
   useEffect(() => {
     mobileOpen && mobileView
       ? (document
-          .querySelector("body")
-          .classList.add("absolute", "right-0", "left-0", "overflow-hidden"),
+          .querySelector('body')
+          .classList.add('absolute', 'right-0', 'left-0', 'overflow-hidden'),
         document
-          .querySelector("footer")
-          .classList.add("right-[300px]", "relative"),
+          .querySelector('footer')
+          .classList.add('right-[300px]', 'relative'),
         document
-          .querySelector("main")
-          .classList.add("right-[300px]", "left-[-300px]"))
+          .querySelector('main')
+          .classList.add('right-[300px]', 'left-[-300px]'))
       : (document
-          .querySelector("body")
-          .classList.remove("absolute", "right-0", "left-0", "overflow-hidden"),
+          .querySelector('body')
+          .classList.remove('absolute', 'right-0', 'left-0', 'overflow-hidden'),
         document
-          .querySelector("footer")
-          .classList.remove("right-[300px]", "relative"),
+          .querySelector('footer')
+          .classList.remove('right-[300px]', 'relative'),
         document
-          .querySelector("main")
-          .classList.remove("right-[300px]", "left-[-300px]"));
-  });
+          .querySelector('main')
+          .classList.remove('right-[300px]', 'left-[-300px]'))
+  })
 
-  const mobileView = size.width < 1024;
-  const homeRef = useRef();
+  const mobileView = size.width < 1024
+  const homeRef = useRef()
 
   return (
     <>
       <div
         className={
-          "fixed bottom-0 z-50 w-full lg:hidden print:hidden " +
-          (mobileOpen ? "right-[300px]" : "right-0")
+          'fixed bottom-0 z-50 w-full lg:hidden print:hidden ' +
+          (mobileOpen ? 'right-[300px]' : 'right-0')
         }
-        style={{ transition: "left .5s ease,right .5s ease,width .5s ease" }}
+        style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
       >
         <div className="flex items-stretch justify-between min-h-[60px] pb-5 bg-[rgba(23,25,28,.95)] border-t-[1px] border-solid border-t-[rgba(30,34,38,.5)]">
           <Link href="/VerseExkurs">
             <a
               className={
-                "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" +
-                (router.asPath == "/VerseExkurs" ? "" : " after:hidden")
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
+                (router.asPath == '/VerseExkurs' ? '' : ' after:hidden')
               }
             >
               <div
                 className="px-4 py-2 overflow-hidden text-center text-white whitespace-normal transition-all duration-500 ease-linear rounded-md text-ellipsis"
-                style={{ fontSize: "130%" }}
+                style={{ fontSize: '130%' }}
               >
                 <FaHome
                   className="relative text-center whitespace-normal"
-                  style={{ fontSize: "130%" }}
+                  style={{ fontSize: '130%' }}
                 />
               </div>
             </a>
@@ -124,19 +124,17 @@ export default function Sidebar() {
           <Link href="/VerseExkurs/firmen">
             <a
               className={
-                "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
-                (router.asPath == "/VerseExkurs/firmen"
-                  ? ""
-                  : " after:hidden")
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
+                (router.asPath == '/VerseExkurs/firmen' ? '' : ' after:hidden')
               }
             >
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
-                style={{ fontSize: "130%" }}
+                style={{ fontSize: '130%' }}
               >
                 <FaPlaceOfWorship
                   className="relative text-center whitespace-normal"
-                  style={{ fontSize: "130%" }}
+                  style={{ fontSize: '130%' }}
                 />
               </div>
             </a>
@@ -144,19 +142,17 @@ export default function Sidebar() {
           <Link href="/VerseExkurs/search">
             <a
               className={
-                "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden" +
-                (router.asPath == "/VerseExkurs/search"
-                  ? ""
-                  : " after:hidden")
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
+                (router.asPath == '/VerseExkurs/search' ? '' : ' after:hidden')
               }
             >
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
-                style={{ fontSize: "130%" }}
+                style={{ fontSize: '130%' }}
               >
                 <FaSearch
                   className="relative text-center whitespace-normal"
-                  style={{ fontSize: "120%" }}
+                  style={{ fontSize: '120%' }}
                 />
               </div>
             </a>
@@ -164,19 +160,19 @@ export default function Sidebar() {
           <Link href="/VerseExkurs/alienrassen">
             <a
               className={
-                "min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow" +
-                (router.asPath == "/VerseExkurs/alienrassen"
-                  ? ""
-                  : " after:hidden")
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
+                (router.asPath == '/VerseExkurs/alienrassen'
+                  ? ''
+                  : ' after:hidden')
               }
             >
               <div
                 className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
-                style={{ fontSize: "130%" }}
+                style={{ fontSize: '130%' }}
               >
                 <GiAlienSkull
                   className="relative text-center whitespace-normal"
-                  style={{ fontSize: "130%" }}
+                  style={{ fontSize: '130%' }}
                 />
               </div>
             </a>
@@ -190,20 +186,20 @@ export default function Sidebar() {
             </span>
             <span
               className={
-                "transform origin-[10%_10%] block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear " +
-                (mobileOpen ? "rotate-45" : "rotate-0")
+                'transform origin-[10%_10%] block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear ' +
+                (mobileOpen ? 'rotate-45' : 'rotate-0')
               }
             ></span>
             <span
               className={
-                "block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear mt-1 " +
-                (mobileOpen ? "opacity-0" : "opacity-100")
+                'block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear mt-1 ' +
+                (mobileOpen ? 'opacity-0' : 'opacity-100')
               }
             ></span>
             <span
               className={
-                "transform rotate-0 origin-[10%_90%] block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear mt-1 " +
-                (mobileOpen ? "-rotate-45" : "rotate-0")
+                'transform rotate-0 origin-[10%_90%] block w-[22px] h-[2px] bg-[#c8c8c8] rounded-[1px] transition-all duration-200 ease-linear mt-1 ' +
+                (mobileOpen ? '-rotate-45' : 'rotate-0')
               }
             ></span>
           </button>
@@ -212,17 +208,17 @@ export default function Sidebar() {
 
       <nav
         className={
-          "absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden " +
-          (!mobileView && sidebarCollapsed ? "lg:w-[80px] lg:min-w-[80px]" : "")
+          'absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden ' +
+          (!mobileView && sidebarCollapsed ? 'lg:w-[80px] lg:min-w-[80px]' : '')
         }
       >
         <div
           className={
-            "fixed w-[300px] lg:h-full top-0 lg:top-auto lg:r-auto bottom-0 lg:bottom-auto left-auto lg:left-0 h-screen max-h-screen lg:max-h-full pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] lg:p-0 overflow-x-hidden overflow-y-auto bg-[rgba(39,43,48,.5)] border-r-[1px] border-solid border-r-[rgba(30,34,38,.5)] transition-[left] duration-500 ease-[right] " +
-            (mobileOpen ? " right-0" : "right-[-300px]") +
-            (!mobileView && sidebarCollapsed ? " w-[80px]" : "")
+            'fixed w-[300px] lg:h-full top-0 lg:top-auto lg:r-auto bottom-0 lg:bottom-auto left-auto lg:left-0 h-screen max-h-screen lg:max-h-full pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] lg:p-0 overflow-x-hidden overflow-y-auto bg-[rgba(39,43,48,.5)] border-r-[1px] border-solid border-r-[rgba(30,34,38,.5)] transition-[left] duration-500 ease-[right] ' +
+            (mobileOpen ? ' right-0' : 'right-[-300px]') +
+            (!mobileView && sidebarCollapsed ? ' w-[80px]' : '')
           }
-          style={{ transition: "left .5s ease,right .5s ease,width .5s ease" }}
+          style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
         >
           <div className="relative min-h-full pb-[150px]">
             <ul className="pl-0 lg:pt-5 pt-[5px] m-0 list-none">
@@ -230,32 +226,32 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <FaHome className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        Home{" "}
+                        {' '}
+                        Home{' '}
                       </span>
-                      {!mobileView && sidebarCollapsed ? <div></div> : ""}
+                      {!mobileView && sidebarCollapsed ? <div></div> : ''}
                     </div>
                   </a>
                 </Link>
@@ -266,41 +262,41 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent' +
                         (!mobileView && sidebarCollapsed
-                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                          : "")
+                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                          : '')
                       }
                       data-tip="Geschichte"
                     >
                       <div
                         className={
-                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                          'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                          (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                         }
                       >
                         <MdHistoryEdu className="min-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
-                            "ml-[5px] " +
-                            (!mobileView && sidebarCollapsed ? "hidden" : "")
+                            'ml-[5px] ' +
+                            (!mobileView && sidebarCollapsed ? 'hidden' : '')
                           }
                         >
-                          {" "}
-                          Geschichte{" "}
+                          {' '}
+                          Geschichte{' '}
                         </span>
                       </div>
                       <span
                         className={
-                          "absolute top-1/2 right-[20px] mt-[-10px]" +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'absolute top-1/2 right-[20px] mt-[-10px]' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
                         <FaChevronRight
                           className={`${
-                            open ? "transform rotate-90" : ""
+                            open ? 'transform rotate-90' : ''
                           } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? "hidden" : ""
+                            !mobileView && sidebarCollapsed ? 'hidden' : ''
                           }`}
                         />
                       </span>
@@ -327,34 +323,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/timeline">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/timeline"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/timeline'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Zeitleiste des Verse{" "}
+                                    {' '}
+                                    Zeitleiste des Verse{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -368,7 +364,7 @@ export default function Sidebar() {
                                       Zeitleiste des Verse
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -383,35 +379,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/one-day-in-history">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  "/VerseExkurs/one-day-in-history"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  '/VerseExkurs/one-day-in-history'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    'relative h-6 whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <BsCalendar3 className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Ein Tag in der Geschichte{" "}
+                                    {' '}
+                                    Ein Tag in der Geschichte{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -425,7 +421,7 @@ export default function Sidebar() {
                                       Ein Tag in der Geschichte
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -441,32 +437,32 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/uee">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs/uee"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs/uee'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <BsShieldShaded className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        UEE{" "}
+                        {' '}
+                        UEE{' '}
                       </span>
-                      {!mobileView && sidebarCollapsed ? <div></div> : ""}
+                      {!mobileView && sidebarCollapsed ? <div></div> : ''}
                     </div>
                   </a>
                 </Link>
@@ -475,30 +471,30 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/starmap">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs/starmap"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs/starmap'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <GiSolarSystem className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        ARK Starmap{" "}
+                        {' '}
+                        ARK Starmap{' '}
                       </span>
                     </div>
                   </a>
@@ -510,41 +506,41 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent' +
                         (!mobileView && sidebarCollapsed
-                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                          : "")
+                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                          : '')
                       }
                       data-tip="Alienrassen"
                     >
                       <div
                         className={
-                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                          'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                          (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                         }
                       >
                         <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
-                            "ml-[5px] " +
-                            (!mobileView && sidebarCollapsed ? "hidden" : "")
+                            'ml-[5px] ' +
+                            (!mobileView && sidebarCollapsed ? 'hidden' : '')
                           }
                         >
-                          {" "}
-                          Alienrassen{" "}
+                          {' '}
+                          Alienrassen{' '}
                         </span>
                       </div>
                       <span
                         className={
-                          "absolute top-1/2 right-[20px] mt-[-10px]" +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'absolute top-1/2 right-[20px] mt-[-10px]' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
                         <FaChevronRight
                           className={`${
-                            open ? "transform rotate-90" : ""
+                            open ? 'transform rotate-90' : ''
                           } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? "hidden" : ""
+                            !mobileView && sidebarCollapsed ? 'hidden' : ''
                           }`}
                         />
                       </span>
@@ -571,34 +567,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/alienrasse/Banu">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/alienrasse/Banu"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath ==
+                                  '/VerseExkurs/alienrasse/Banu'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Banu{" "}
+                                    {' '}
+                                    Banu{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -612,7 +609,7 @@ export default function Sidebar() {
                                       Banu
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -626,34 +623,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/alienrasse/Tevarin">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/alienrasse/Tevarin"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath ==
+                                  '/VerseExkurs/alienrasse/Tevarin'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Tevarin{" "}
+                                    {' '}
+                                    Tevarin{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -667,7 +665,7 @@ export default function Sidebar() {
                                       Tevarin
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -681,34 +679,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/alienrasse/Vanduul">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/alienrasse/Vanduul"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath ==
+                                  '/VerseExkurs/alienrasse/Vanduul'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Vanduul{" "}
+                                    {' '}
+                                    Vanduul{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -722,7 +721,7 @@ export default function Sidebar() {
                                       Vanduul
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -736,34 +735,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/alienrasse/XiAn">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/alienrasse/XiAn"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath ==
+                                  '/VerseExkurs/alienrasse/XiAn'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Xi{"'"}An{" "}
+                                    {' '}
+                                    Xi{"'"}An{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -777,7 +777,7 @@ export default function Sidebar() {
                                       Xi{"'"}An
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -792,34 +792,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/biestarium">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/biestarium"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/biestarium'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    'relative h-6 whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Biestarium{" "}
+                                    {' '}
+                                    Biestarium{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -833,7 +833,7 @@ export default function Sidebar() {
                                       Biestarium
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -847,34 +847,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/pflanzen">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/pflanzen"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/pflanzen'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    'relative h-6 whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Pflanzen{" "}
+                                    {' '}
+                                    Pflanzen{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -888,7 +888,7 @@ export default function Sidebar() {
                                       Pflanzen
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -906,41 +906,41 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        "hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent" +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent' +
                         (!mobileView && sidebarCollapsed
-                          ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                          : "")
+                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                          : '')
                       }
                       data-tip="Firmen"
                     >
                       <div
                         className={
-                          "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                          (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                          'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                          (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                         }
                       >
                         <FaPlaceOfWorship className="min-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
-                            "ml-[5px] " +
-                            (!mobileView && sidebarCollapsed ? "hidden" : "")
+                            'ml-[5px] ' +
+                            (!mobileView && sidebarCollapsed ? 'hidden' : '')
                           }
                         >
-                          {" "}
-                          Firmen{" "}
+                          {' '}
+                          Firmen{' '}
                         </span>
                       </div>
                       <span
                         className={
-                          "absolute top-1/2 right-[20px] mt-[-10px]" +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'absolute top-1/2 right-[20px] mt-[-10px]' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
                         <FaChevronRight
                           className={`${
-                            open ? "transform rotate-90" : ""
+                            open ? 'transform rotate-90' : ''
                           } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? "hidden" : ""
+                            !mobileView && sidebarCollapsed ? 'hidden' : ''
                           }`}
                         />
                       </span>
@@ -967,34 +967,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/hersteller">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath == "/VerseExkurs/hersteller"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/hersteller'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Hersteller{" "}
+                                    {' '}
+                                    Hersteller{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -1008,7 +1008,7 @@ export default function Sidebar() {
                                       Hersteller
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -1022,35 +1022,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/dienstleister">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath ==
-                                  "/VerseExkurs/dienstleister"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/dienstleister'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Dienstleister{" "}
+                                    {' '}
+                                    Dienstleister{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -1064,7 +1063,7 @@ export default function Sidebar() {
                                       Dienstleister
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -1078,35 +1077,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/geschafte">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  "/VerseExkurs/Firmen/geschafte"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  '/VerseExkurs/Firmen/geschafte'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative whitespace-nowrap " +
+                                    'relative whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Geschäfte{" "}
+                                    {' '}
+                                    Geschäfte{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -1120,7 +1119,7 @@ export default function Sidebar() {
                                       Geschäfte
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -1134,35 +1133,35 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/organisationen">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  "/VerseExkurs/organisationen"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  '/VerseExkurs/organisationen'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    'relative h-6 whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <FaExchangeAlt className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Organisationen{" "}
+                                    {' '}
+                                    Organisationen{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -1176,7 +1175,7 @@ export default function Sidebar() {
                                       Organisationen
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -1191,35 +1190,34 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/verschiedene">
                               <a
                                 className={
-                                  "group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                                  (router.asPath ==
-                                  "/VerseExkurs/verschiedene"
-                                    ? "after:block "
-                                    : "after:hidden ") +
+                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  (router.asPath == '/VerseExkurs/verschiedene'
+                                    ? 'after:block '
+                                    : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
-                                    ? "py-[10px] pl-[25px] pr-[10px] text-2xl "
-                                    : " py-[10px] pl-10 pr-[15px] ")
+                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                                    : ' py-[10px] pl-10 pr-[15px] ')
                                 }
                               >
                                 <div
                                   className={
-                                    "relative h-6 whitespace-nowrap " +
+                                    'relative h-6 whitespace-nowrap ' +
                                     (!mobileView && sidebarCollapsed
-                                      ? "h-[30px]"
-                                      : "h-6")
+                                      ? 'h-[30px]'
+                                      : 'h-6')
                                   }
                                 >
                                   <FaExchangeAlt className="min-w-[30px] text-center relative antialiased inline-block" />
                                   <span
                                     className={
-                                      "ml-[5px] " +
+                                      'ml-[5px] ' +
                                       (!mobileView && sidebarCollapsed
-                                        ? "hidden"
-                                        : "")
+                                        ? 'hidden'
+                                        : '')
                                     }
                                   >
-                                    {" "}
-                                    Verschiedene{" "}
+                                    {' '}
+                                    Verschiedene{' '}
                                   </span>
                                   {!mobileView && sidebarCollapsed ? (
                                     <ReactTooltip
@@ -1233,7 +1231,7 @@ export default function Sidebar() {
                                       Verschiedene
                                     </ReactTooltip>
                                   ) : (
-                                    ""
+                                    ''
                                   )}
                                 </div>
                               </a>
@@ -1249,30 +1247,30 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/technologie">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs/technologie"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs/technologie'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <FiCpu className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        Technologie{" "}
+                        {' '}
+                        Technologie{' '}
                       </span>
                     </div>
                   </a>
@@ -1282,30 +1280,30 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/spectrum">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs/spectrum"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs/spectrum'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <BsTriangleFill className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        Spectrum{" "}
+                        {' '}
+                        Spectrum{' '}
                       </span>
                     </div>
                   </a>
@@ -1315,30 +1313,30 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/literatur">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/VerseExkurs/literatur"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/VerseExkurs/literatur'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <ImBook className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        Literatur{" "}
+                        {' '}
+                        Literatur{' '}
                       </span>
                     </div>
                   </a>
@@ -1350,30 +1348,30 @@ export default function Sidebar() {
                 <Link href="/">
                   <a
                     className={
-                      "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent " +
-                      (router.asPath == "/"
-                        ? "after:block "
-                        : "after:hidden ") +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.asPath == '/'
+                        ? 'after:block '
+                        : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
-                        ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                        : "")
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
                     }
                   >
                     <div
                       className={
-                        "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                        (!mobileView && sidebarCollapsed ? "h-[30px]" : "")
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
                       <RiArrowGoBackLine className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          "ml-[5px] " +
-                          (!mobileView && sidebarCollapsed ? "hidden" : "")
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        {" "}
-                        Zurück{" "}
+                        {' '}
+                        Zurück{' '}
                       </span>
                     </div>
                   </a>
@@ -1381,38 +1379,38 @@ export default function Sidebar() {
               </li>
               <li
                 className={
-                  "p-0 m-0 list-none group" + (mobileView ? " hidden" : "")
+                  'p-0 m-0 list-none group' + (mobileView ? ' hidden' : '')
                 }
                 data-tip="Expand"
               >
                 <a
                   className={
-                    "group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent " +
+                    'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent ' +
                     (sidebarCollapsed
-                      ? "py-[10px] pl-[25px] pr-[10px] text-2xl"
-                      : "")
+                      ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                      : '')
                   }
                   onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
                 >
                   <div
                     className={
-                      "relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear " +
-                      (sidebarCollapsed ? "h-[30px]" : "")
+                      'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                      (sidebarCollapsed ? 'h-[30px]' : '')
                     }
                   >
                     <BsChevronDoubleLeft
                       className={
-                        "min-w-[30px] text-center relative antialiased inline-block" +
-                        (sidebarCollapsed ? " transform rotate-180" : "")
+                        'min-w-[30px] text-center relative antialiased inline-block' +
+                        (sidebarCollapsed ? ' transform rotate-180' : '')
                       }
                     />
                     <span
                       className={
-                        "ml-[5px] " + (sidebarCollapsed ? "hidden" : "")
+                        'ml-[5px] ' + (sidebarCollapsed ? 'hidden' : '')
                       }
                     >
-                      {" "}
-                      Collapse{" "}
+                      {' '}
+                      Collapse{' '}
                     </span>
                   </div>
                 </a>
@@ -1422,25 +1420,25 @@ export default function Sidebar() {
                   <a className="decoration-transparent">
                     <span
                       className={
-                        "relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap" +
-                        (!mobileView && sidebarCollapsed ? " w-16 h-16" : "")
+                        'relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap' +
+                        (!mobileView && sidebarCollapsed ? ' w-16 h-16' : '')
                       }
-                      style={{ transition: "all .5s ease" }}
+                      style={{ transition: 'all .5s ease' }}
                     >
                       <div
                         className={
-                          "absolute transition-all duration-500 ease-linear top-2.5 left-[30px] w-12 h-12" +
+                          'absolute transition-all duration-500 ease-linear top-2.5 left-[30px] w-12 h-12' +
                           (!mobileView && sidebarCollapsed
-                            ? " top-auto left-5"
-                            : "")
+                            ? ' top-auto left-5'
+                            : '')
                         }
                       >
                         <MainLogo />
                       </div>
                       <span
                         className={
-                          "block pt-[6px] pr-5 pl-[50px]" +
-                          (!mobileView && sidebarCollapsed ? " hidden" : "")
+                          'block pt-[6px] pr-5 pl-[50px]' +
+                          (!mobileView && sidebarCollapsed ? ' hidden' : '')
                         }
                       >
                         ArisCorp VerseExkurs
@@ -1463,8 +1461,8 @@ export default function Sidebar() {
           padding="8px"
         />
       ) : (
-        ""
+        ''
       )}
     </>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-const { default: Link } = require("next/link");
+const { default: Link } = require('next/link')
 
 const OneThird = ({
   typeicon,
@@ -8,15 +8,15 @@ const OneThird = ({
   channel,
   posted,
   description,
-  id
+  id,
 }) => {
   return (
-    <Link href={"/comm-link/transmission/" + id}>
+    <Link href={'/comm-link/transmission/' + id}>
       <a className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -25,10 +25,10 @@ const OneThird = ({
         </div>
         <div
           className={
-            "bg-cover relative bg-center opacity-100 w-[338px] h-[210px]"
+            'bg-cover relative bg-center opacity-100 w-[338px] h-[210px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="block align-middle absolute mt-[26px] w-full">
@@ -51,8 +51,8 @@ const OneThird = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 
 const TwoThirds = ({
   typeicon,
@@ -62,17 +62,17 @@ const TwoThirds = ({
   channel,
   posted,
   description,
-  id
+  id,
 }) => {
   return (
-    <Link href={"/comm-link/transmission/" + id}>
+    <Link href={'/comm-link/transmission/' + id}>
       <a className="hover:no-underline mt-10 mr-[30px] xl:w-[729px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat xl:scale-0">
           <div
             className={
-              "bg-" +
+              'bg-' +
               typeicon +
-              " float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              ' float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -81,16 +81,16 @@ const TwoThirds = ({
         </div>
         <div
           className={
-            "xl:bg-cover relative xl:absolute xl:bg-center opacity-60 bg-center bg-cover w-[338px] h-[210px] xl:w-[729px] xl:h-[315px]"
+            'xl:bg-cover relative xl:absolute xl:bg-center opacity-60 bg-center bg-cover w-[338px] h-[210px] xl:w-[729px] xl:h-[315px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="scale-0 xl:scale-100 float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]"
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px]'
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -119,8 +119,8 @@ const TwoThirds = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 
 const ThreeThirds = ({
   typeicon,
@@ -130,17 +130,17 @@ const ThreeThirds = ({
   channel,
   posted,
   description,
-  id
+  id,
 }) => {
   return (
-    <Link href={"/comm-link/transmission/" + id}>
+    <Link href={'/comm-link/transmission/' + id}>
       <a className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer">
         <div className="float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat lg:scale-0">
           <div
             className={
-              "bg-" +
+              'bg-' +
               typeicon +
-              " float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] "
+              ' float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] '
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -149,16 +149,16 @@ const ThreeThirds = ({
         </div>
         <div
           className={
-            "lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-80 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]"
+            'lg:bg-cover relative lg:absolute bg-center bg-cover lg:bg-center opacity-80 w-[338px] lg:w-[729px] xl:w-[1119px] h-[210px] lg:h-[315px]'
           }
           style={{
-            backgroundImage: "url(//cms.ariscorp.de/assets/" + image + ")",
+            backgroundImage: 'url(//cms.ariscorp.de/assets/' + image + ')',
           }}
         ></div>
         <div className="scale-0 lg:scale-100 float-right h-[33px] w-[120px] absolute right-[10px] z-5 opacity-60 bg-type-bg bg-no-repeat">
           <div
             className={
-              "bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] "
+              'bg-type-post float-left w-[14px] h-[14px] bg-center bg-no-repeat block mt-[7px] ml-[40px] mr-[8px] '
             }
           ></div>
           <span className="mt-[7px] text-primary text-[11px] italic capitalize">
@@ -187,7 +187,7 @@ const ThreeThirds = ({
         </div>
       </a>
     </Link>
-  );
-};
+  )
+}
 
-export {OneThird, TwoThirds, ThreeThirds};
+export { OneThird, TwoThirds, ThreeThirds }

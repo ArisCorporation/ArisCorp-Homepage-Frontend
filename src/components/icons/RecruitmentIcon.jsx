@@ -25,7 +25,7 @@ const RecruitingIcon = ({ width, height, classes }) => {
         d="M1224.86,1357.45c164.71,157.14,321.93,314.12,482.79,473.66-226.32,63.34-447.76,126.22-675.29,189.59C1097.64,1795.78,1160.82,1578.11,1224.86,1357.45Z"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default RecruitingIcon;
+export default RecruitingIcon

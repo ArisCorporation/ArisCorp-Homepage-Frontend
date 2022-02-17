@@ -125,7 +125,7 @@ const GalactapediaIcon = ({ width, height, classes }) => {
         d="M2672.89,2670.9c2.39-16.26,4.61-31.4,6.94-47.28H2758l-10.56,47.28Z"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default GalactapediaIcon;
+export default GalactapediaIcon

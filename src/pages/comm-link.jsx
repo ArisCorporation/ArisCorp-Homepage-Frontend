@@ -1,11 +1,11 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { SquareLoader } from "react-spinners";
-import Layout from "./layout";
-import { OneThird, TwoThirds, ThreeThirds } from "components/CommLinkCards";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { SquareLoader } from 'react-spinners'
+import Layout from './layout'
+import { OneThird, TwoThirds, ThreeThirds } from 'components/CommLinkCards'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const ARIS_COMMLINKS = gql`
   query ArisCommLinks {
@@ -29,14 +29,14 @@ const ARIS_COMMLINKS = gql`
       }
     }
   }
-`;
+`
 
 export default function CommLinksPage() {
-  const [children, setChildren] = useState([]);
-  const { loading, error, data } = useQuery(ARIS_COMMLINKS);
+  const [children, setChildren] = useState([])
+  const { loading, error, data } = useQuery(ARIS_COMMLINKS)
 
   useEffect(() => {
-    const layout = [];
+    const layout = []
 
     for (let i = 0; i < data?.comm_links.length; i += 10) {
       layout.push(
@@ -52,12 +52,12 @@ export default function CommLinksPage() {
             id={data?.comm_links[i].id}
           />
         </div>
-      );
+      )
 
       // Break out of the loop if we've
       // already reached the end of data
       if (i + 1 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -86,10 +86,10 @@ export default function CommLinksPage() {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 3 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -129,10 +129,10 @@ export default function CommLinksPage() {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 6 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -160,10 +160,10 @@ export default function CommLinksPage() {
             />
           )}
         </div>
-      );
+      )
 
       if (i + 8 >= data?.comm_links.length) {
-        break;
+        break
       }
 
       layout.push(
@@ -191,33 +191,40 @@ export default function CommLinksPage() {
             />
           )}
         </div>
-      );
+      )
     }
 
-    setChildren(layout);
-  }, [data?.comm_links]);
+    setChildren(layout)
+  }, [data?.comm_links])
 
   if (loading)
     return (
       <div className="flex justify-center pt-32">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
-    );
-  if (error) return <p>Error :(</p>;
+    )
+  if (error) return <p>Error :(</p>
 
   return (
     <div>
       <div className="flex items-center justify-center pt-32">
-        <Image src="https://cms.ariscorp.de/assets/2f7590ef-c84a-495c-8acc-93653f0cddd3" width="1118" height="351" alt="ArisCorp CommLinks-Banner" placeholder="blur" blurDataURL="https://cms.ariscorp.de/assets/2f7590ef-c84a-495c-8acc-93653f0cddd3?width=16&quality=1" />
+        <Image
+          src="https://cms.ariscorp.de/assets/2f7590ef-c84a-495c-8acc-93653f0cddd3"
+          width="1118"
+          height="351"
+          alt="ArisCorp CommLinks-Banner"
+          placeholder="blur"
+          blurDataURL="https://cms.ariscorp.de/assets/2f7590ef-c84a-495c-8acc-93653f0cddd3?width=16&quality=1"
+        />
       </div>
       <hr />
       <div className="flex flex-wrap justify-center pt-12 mx-auto">
         <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
       </div>
     </div>
-  );
+  )
 }
 
 CommLinksPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

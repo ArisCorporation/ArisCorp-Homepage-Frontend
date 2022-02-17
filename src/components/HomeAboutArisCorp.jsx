@@ -1,7 +1,7 @@
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
-export default function TheArisCorp({data}) {
+export default function TheArisCorp({ data }) {
   return (
     <ReactMarkdown
       rehypePlugins={[rehypeRaw]}
@@ -9,5 +9,5 @@ export default function TheArisCorp({data}) {
     >
       {data}
     </ReactMarkdown>
-  );
+  )
 }

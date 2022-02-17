@@ -1,12 +1,12 @@
-import Layout from "pages/VerseExkurs/layout";
-import { SquareLoader } from "react-spinners";
-import Image from "next/image";
-import ReactMarkdown from "react-markdown";
-import rehypeRaw from "rehype-raw";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Layout from 'pages/VerseExkurs/layout'
+import { SquareLoader } from 'react-spinners'
+import Image from 'next/image'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 
-const { gql, useQuery } = require("@apollo/client");
+const { gql, useQuery } = require('@apollo/client')
 
 const SPECTRUM = gql`
   query Spectrum {
@@ -24,44 +24,44 @@ const SPECTRUM = gql`
       }
     }
   }
-`;
+`
 
 export default function SpectrumCategoryPage() {
-  const router = useRouter();
-  const { cid } = router.query;
+  const router = useRouter()
+  const { cid } = router.query
 
-  const { loading, error, data } = useQuery(SPECTRUM);
+  const { loading, error, data } = useQuery(SPECTRUM)
 
   if (loading)
     return (
       <div className="flex justify-center pt-32">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
-    );
+    )
 
-  if (error) return <p>Error :(</p>;
+  if (error) return <p>Error :(</p>
 
-  const Data = data.spectrum;
+  const Data = data.spectrum
 
   const category = Data.filter(
     (data) => data.spectrum_kategorie_beschreibung == true && data.id == cid
-  )[0];
+  )[0]
 
   return (
     <div className="pt-3 print:pt-0">
       <div className="flex flex-wrap w-full aspect-[40/21] scale-[.8]">
         <div className="relative w-full">
           <Image
-            src={"https://cms.ariscorp.de/assets/" + category.image?.id}
+            src={'https://cms.ariscorp.de/assets/' + category.image?.id}
             layout="fill"
             alt={
-              "Banner von der Kategorie: " + category.spectrum_beitrag_kateogrie
+              'Banner von der Kategorie: ' + category.spectrum_beitrag_kateogrie
             }
             placeholder="blur"
             blurDataURL={
-              "https://cms.ariscorp.de/assets/" +
+              'https://cms.ariscorp.de/assets/' +
               category.image?.id +
-              "?width=16&quality=1"
+              '?width=16&quality=1'
             }
             objectFit="cover"
           />
@@ -81,24 +81,24 @@ export default function SpectrumCategoryPage() {
             key={data.id}
             className="w-full h-48 my-10 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-secondary"
           >
-            <Link href={"/VerseExkurs/spectrum/" + category.id + "/" + data.id}>
+            <Link href={'/VerseExkurs/spectrum/' + category.id + '/' + data.id}>
               <a className="text-white decoration-transparent">
                 <div className="flex items-center w-full h-full px-8">
-                  <div className={"relative h-3/4 w-1/3"}>
+                  <div className={'relative h-3/4 w-1/3'}>
                     <Image
                       src={
-                        "https://cms.ariscorp.de/assets/" + category.image?.id
+                        'https://cms.ariscorp.de/assets/' + category.image?.id
                       }
                       layout="fill"
                       alt={
-                        "Banner von der Kategorie: " +
+                        'Banner von der Kategorie: ' +
                         category.spectrum_beitrag_kateogrie
                       }
                       placeholder="blur"
                       blurDataURL={
-                        "https://cms.ariscorp.de/assets/" +
+                        'https://cms.ariscorp.de/assets/' +
                         category.image?.id +
-                        "?width=16&quality=1"
+                        '?width=16&quality=1'
                       }
                       objectFit="cover"
                     />
@@ -114,9 +114,9 @@ export default function SpectrumCategoryPage() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 SpectrumCategoryPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>;
-};
+  return <Layout>{page}</Layout>
+}

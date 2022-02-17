@@ -259,7 +259,7 @@ const SQ42Logo = ({ width, height }) => {
         </g>
       </g>
     </svg>
-  );
-};
+  )
+}
 
-export default SQ42Logo;
+export default SQ42Logo

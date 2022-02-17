@@ -1,5 +1,5 @@
 const SCLogo = ({ width, height }) => {
-  return(
+  return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width={width}
@@ -13,7 +13,7 @@ const SCLogo = ({ width, height }) => {
         transform="translate(-3 -4)"
       ></path>
     </svg>
-  );
-};
+  )
+}
 
-export default SCLogo;
+export default SCLogo

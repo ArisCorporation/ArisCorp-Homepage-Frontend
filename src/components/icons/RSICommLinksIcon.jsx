@@ -125,7 +125,7 @@ const RSICommLinksIcon = ({ width, height, classes }) => {
         d="M2844,3066.63c-8.5,10.67-14.46,2.8-21.39-1.09Z"
       />
     </svg>
-  );
-};
+  )
+}
 
-export default RSICommLinksIcon;
+export default RSICommLinksIcon

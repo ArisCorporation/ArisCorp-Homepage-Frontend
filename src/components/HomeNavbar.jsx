@@ -1,6 +1,6 @@
-import Link from "next/link";
-import React from "react";
-import MainLogo from "./icons/MainLogo";
+import Link from 'next/link'
+import React from 'react'
+import MainLogo from './icons/MainLogo'
 import {
   MemberIcon,
   FleetIcon,
@@ -10,14 +10,14 @@ import {
   PartnerIcon,
   ShipExkursBanner,
   VerseExkursBanner,
-} from "./icons";
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
+} from './icons'
+import { useState } from 'react'
+import { FaBars } from 'react-icons/fa'
 
 const Navbar = () => {
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false)
 
-  const toggleMobile = () => setMobileOpen((current) => !current);
+  const toggleMobile = () => setMobileOpen((current) => !current)
 
   return (
     <nav className="fixed z-20 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30 print:hidden">
@@ -123,7 +123,7 @@ const Navbar = () => {
             <FaBars />
           </button>
 
-          <div className={mobileOpen ? "flex w-full" : "hidden"}>
+          <div className={mobileOpen ? 'flex w-full' : 'hidden'}>
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
@@ -195,8 +195,8 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
 const NavbarItem = ({ content, link, tooltip }) => {
   return (
@@ -208,13 +208,11 @@ const NavbarItem = ({ content, link, tooltip }) => {
         </a>
       </Link>
     </li>
-  );
-};
+  )
+}
 
 const NavbarTooltip = ({ tooltip }) => {
-  return (
-    <span className="navbar-tooltip group-hover:scale-100">{tooltip}</span>
-  );
-};
+  return <span className="navbar-tooltip group-hover:scale-100">{tooltip}</span>
+}
 
-export default Navbar;
+export default Navbar

@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 
-module.exports = withPWA ({
+module.exports = withPWA({
   reactStrictMode: true,
   pwa: {
     dest: 'public',
@@ -10,7 +10,7 @@ module.exports = withPWA ({
   images: {
     domains: ['cms.ariscorp.de'],
   },
-  
+
   i18n: {
     locales: ['de'],
     defaultLocale: 'de',
