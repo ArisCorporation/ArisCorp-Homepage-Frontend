@@ -26,6 +26,7 @@ const ARIS_COMMLINKS = gql`
       comm_link_beschreibung
       comm_link_channel {
         channel
+        beschreibung
       }
     }
   }
@@ -47,7 +48,7 @@ export default function CommLinksPage() {
             title={data?.comm_links[i].comm_link_titel}
             channel={data?.comm_links[i].comm_link_channel?.channel}
             posted="1 day ago"
-            description={data?.comm_links[i].comm_link_beschreibung}
+            description={data?.comm_links[i].comm_link_channel?.beschreibung}
             image={data?.comm_links[i].comm_link_banner.id}
             id={data?.comm_links[i].id}
           />
@@ -69,7 +70,7 @@ export default function CommLinksPage() {
             title={data?.comm_links[i + 1].comm_link_titel}
             channel={data?.comm_links[i + 1].comm_link_channel.channel}
             posted="1 day ago"
-            description={data?.comm_links[i + 1].comm_link_beschreibung}
+            description={data?.comm_links[i + 1].comm_link_channel?.beschreibung}
             id={data?.comm_links[i + 1].id}
           />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
@@ -81,7 +82,7 @@ export default function CommLinksPage() {
               title={data?.comm_links[i + 2].comm_link_titel}
               channel={data?.comm_links[i + 2].comm_link_channel.channel}
               posted="1 day ago"
-              description={data?.comm_links[i + 2].comm_link_beschreibung}
+              description={data?.comm_links[i + 2].comm_link_channel?.beschreibung}
               id={data?.comm_links[i + 2].id}
             />
           )}
@@ -101,7 +102,7 @@ export default function CommLinksPage() {
             title={data?.comm_links[i + 3].comm_link_titel}
             channel={data?.comm_links[i + 3].comm_link_channel.channel}
             posted="1 day ago"
-            description={data?.comm_links[i + 3].comm_link_beschreibung}
+            description={data?.comm_links[i + 3].comm_link_channel?.beschreibung}
             id={data?.comm_links[i + 3].id}
           />
           {data?.comm_links[i + 4] && (
@@ -112,7 +113,7 @@ export default function CommLinksPage() {
               title={data?.comm_links[i + 4].comm_link_titel}
               channel={data?.comm_links[i + 4].comm_link_channel.channel}
               posted="1 day ago"
-              description={data?.comm_links[i + 4].comm_link_beschreibung}
+              description={data?.comm_links[i + 4].comm_link_channel?.beschreibung}
               id={data?.comm_links[i + 4].id}
             />
           )}
@@ -124,7 +125,7 @@ export default function CommLinksPage() {
               title={data?.comm_links[i + 5].comm_link_titel}
               channel={data?.comm_links[i + 5].comm_link_channel.channel}
               posted="1 day ago"
-              description={data?.comm_links[i + 5].comm_link_beschreibung}
+              description={data?.comm_links[i + 5].comm_link_channel?.beschreibung}
               id={data?.comm_links[i + 5].id}
             />
           )}
@@ -144,7 +145,7 @@ export default function CommLinksPage() {
             title={data?.comm_links[i + 6].comm_link_titel}
             channel={data?.comm_links[i + 6].comm_link_channel.channel}
             posted="1 day ago"
-            description={data?.comm_links[i + 6].comm_link_beschreibung}
+            description={data?.comm_links[i + 6].comm_link_channel?.beschreibung}
             id={data?.comm_links[i + 6].id}
           />
           {data?.comm_links[i + 7] && (
@@ -155,7 +156,7 @@ export default function CommLinksPage() {
               title={data?.comm_links[i + 7].comm_link_titel}
               channel={data?.comm_links[i + 7].comm_link_channel.channel}
               posted="1 day ago"
-              description={data?.comm_links[i + 7].comm_link_beschreibung}
+              description={data?.comm_links[i + 7].comm_link_channel?.beschreibung}
               id={data?.comm_links[i + 7].id}
             />
           )}
@@ -175,7 +176,7 @@ export default function CommLinksPage() {
             title={data?.comm_links[i + 8].comm_link_titel}
             channel={data?.comm_links[i + 8].comm_link_channel.channel}
             posted="1 day ago"
-            description={data?.comm_links[i + 8].comm_link_beschreibung}
+            description={data?.comm_links[i + 8].comm_link_channel?.beschreibung}
             id={data?.comm_links[i + 8].id}
           />
           {data?.comm_links[i + 9] && (
@@ -186,7 +187,7 @@ export default function CommLinksPage() {
               title={data?.comm_links[i + 9].comm_link_titel}
               channel={data?.comm_links[i + 9].comm_link_channel.channel}
               posted="1 day ago"
-              description={data?.comm_links[i + 9].comm_link_beschreibung}
+              description={data?.comm_links[i + 9].comm_link_channel?.beschreibung}
               id={data?.comm_links[i + 9].id}
             />
           )}

@@ -75,6 +75,7 @@ export async function getServerSideProps() {
           comm_link_beschreibung
           comm_link_channel {
             channel
+            beschreibung
           }
         }
       }

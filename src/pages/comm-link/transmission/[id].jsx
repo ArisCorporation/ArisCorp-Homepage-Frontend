@@ -26,6 +26,7 @@ const ARIS_COMMLINKS = gql`
       comm_link_beschreibung
       comm_link_channel {
         channel
+        beschreibung
       }
     }
   }

@@ -18,7 +18,7 @@ const CommLinksSection = ({ data }) => {
             title={data[i].comm_link_titel}
             channel={data[i].comm_link_channel?.channel}
             posted="1 day ago"
-            description={data[i].comm_link_beschreibung}
+            description={data[i].comm_link_channel?.beschreibung}
             image={data[i].comm_link_banner.id}
             id={data[i].id}
           />
@@ -40,7 +40,7 @@ const CommLinksSection = ({ data }) => {
             title={data[i + 1].comm_link_titel}
             channel={data[i + 1].comm_link_channel.channel}
             posted="1 day ago"
-            description={data[i + 1].comm_link_beschreibung}
+            description={data[i + 1].comm_link_channel?.beschreibung}
             id={data[i + 1].id}
           />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
@@ -52,7 +52,7 @@ const CommLinksSection = ({ data }) => {
               title={data[i + 2].comm_link_titel}
               channel={data[i + 2].comm_link_channel.channel}
               posted="1 day ago"
-              description={data[i + 2].comm_link_beschreibung}
+              description={data[i + 2].comm_link_channel?.beschreibung}
               id={data[i + 2].id}
             />
           )}
@@ -64,7 +64,7 @@ const CommLinksSection = ({ data }) => {
               title={data[i + 3].comm_link_titel}
               channel={data[i + 3].comm_link_channel.channel}
               posted="1 day ago"
-              description={data[i + 3].comm_link_beschreibung}
+              description={data[i + 3].comm_link_channel?.beschreibung}
               id={data[i + 3].id}
             />
           )}
