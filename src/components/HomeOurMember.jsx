@@ -26,14 +26,14 @@ export default function OurMember() {
 
   if (loading) {
     return (
-      <div id='member' className="flex justify-center pt-10">
+      <div id="member" className="flex justify-center pt-10">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
     )
   }
 
   return (
-    <div id='member' className="flex items-center justify-center text-center">
+    <div id="member" className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {data.member.map((member) => {
           const Potrait =

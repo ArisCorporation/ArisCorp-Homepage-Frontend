@@ -3587,9 +3587,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3634,9 +3632,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3681,9 +3677,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3728,9 +3722,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3775,9 +3767,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3822,9 +3812,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3869,9 +3857,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3916,9 +3902,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -3963,9 +3947,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -4011,9 +3993,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
@@ -4058,9 +4038,7 @@ export default function Starmap() {
         <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
-            src={
-              unclIcon
-            }
+            src={unclIcon}
             layout="fill"
             placeholder="blur"
             blurDataURL={unclIcon + '?width=16&quality=1'}
