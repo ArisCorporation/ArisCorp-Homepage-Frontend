@@ -44,7 +44,7 @@ module.exports = {
       },
       animation: {
         'pulse-slow': 'pulse 3s linear infinite',
-        'ping-slow': 'ping 1.3s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'ping-slow': 'ping 1.15s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
     },
   },
