@@ -54,7 +54,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={unclIcon}
@@ -99,7 +99,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -147,7 +147,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -192,7 +192,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -237,7 +237,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -282,7 +282,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -327,7 +327,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -372,7 +372,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -417,7 +417,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -462,7 +462,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -507,7 +507,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -552,7 +552,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -597,7 +597,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -642,7 +642,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -687,7 +687,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -732,7 +732,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -777,7 +777,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -822,7 +822,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={vnclIcon}
@@ -870,7 +870,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -915,7 +915,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -960,7 +960,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1005,7 +1005,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1050,7 +1050,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1095,7 +1095,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1140,7 +1140,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1185,7 +1185,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1230,7 +1230,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1275,7 +1275,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1322,7 +1322,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1367,7 +1367,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={xianIcon}
@@ -1415,7 +1415,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -1460,7 +1460,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -1505,7 +1505,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -1550,7 +1550,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -1595,7 +1595,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -1643,7 +1643,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1688,7 +1688,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1733,7 +1733,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1778,7 +1778,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1823,7 +1823,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1868,7 +1868,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1913,7 +1913,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -1958,7 +1958,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2003,7 +2003,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2048,7 +2048,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2093,7 +2093,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2138,7 +2138,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2183,7 +2183,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2228,7 +2228,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2273,7 +2273,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2318,7 +2318,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2363,7 +2363,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2408,7 +2408,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2453,7 +2453,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2498,7 +2498,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2543,7 +2543,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2588,7 +2588,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2633,7 +2633,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2678,7 +2678,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2723,7 +2723,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2768,7 +2768,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2813,7 +2813,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2858,7 +2858,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2903,7 +2903,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2948,7 +2948,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -2993,7 +2993,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3038,7 +3038,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3083,7 +3083,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3128,7 +3128,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3173,7 +3173,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3218,7 +3218,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3263,7 +3263,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={ueeIcon}
@@ -3311,7 +3311,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3356,7 +3356,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3401,7 +3401,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3446,7 +3446,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3491,7 +3491,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3536,7 +3536,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={devIcon}
@@ -3584,11 +3584,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3631,11 +3631,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3678,11 +3678,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3725,11 +3725,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3772,11 +3772,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3819,11 +3819,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3866,11 +3866,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3913,11 +3913,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -3960,11 +3960,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -4008,11 +4008,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -4055,11 +4055,11 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={
-              'https://cms.ariscorp.de/assets/a3523e87-8346-4d3a-942d-46fbac42038a'
+              unclIcon
             }
             layout="fill"
             placeholder="blur"
@@ -4105,7 +4105,7 @@ export default function Starmap() {
           </div>
         )}
       >
-        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-75 bg-gradient-to-r from-cyan-600 to-blue-600 blur group-hover:opacity-100 group-hover:duration-200 animate-pulse-slow"></div>
+        <div className="absolute w-full h-full transition duration-1000 rounded-full opacity-80 bg-gradient-to-r from-cyan-400 to-blue-400 blur group-hover:opacity-100 group-hover:duration-200 group-hover:animate-ping-slow animate-pulse-slow"></div>
         <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
           <Image
             src={banuIcon}
@@ -4131,7 +4131,7 @@ export default function Starmap() {
         }
         layout="fill"
         placeholder="blur"
-        blurDataURL="https://cms.ariscorp.de/assets/59e8771b-d5a2-468e-971d-7594da3c113e?width=16&quality=1"
+        blurDataURL="https://cms.ariscorp.de/assets/167ca435-c126-41da-b9b2-884f40444c0c?width=16&quality=1"
         draggable="false"
       />
     </div>

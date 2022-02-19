@@ -29,7 +29,7 @@ export default function OurGameplays() {
 
   if (loading)
     return (
-      <div className="flex justify-center pt-10">
+      <div id='gameplays' className="flex justify-center pt-10">
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
     )
@@ -37,7 +37,7 @@ export default function OurGameplays() {
 
   return (
     <>
-      <Tab.Group>
+      <Tab.Group id='gameplays'>
         <Tab.List className={'flex flex-wrap justify-center max-w-7xl mx-auto'}>
           {data.gameplays.map((data) => (
             <Tab key={data.id} className={'p-3 m-1'}>
