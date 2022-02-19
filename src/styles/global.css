@@ -156,7 +156,7 @@ figcaption p span + figcaption p span::before {
   --swiper-navigation-color: #00ffe8;
   --swiper-theme-color: #00ffe8;
   --swiper-pagination-bullet-inactive-color: #444;
-  --swiper-pagination-color: #00ffe8
+  --swiper-pagination-color: #00ffe8;
 }
 .swiper-button-next,
 .swiper-button-prev {
