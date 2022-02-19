@@ -75,7 +75,7 @@ export default function SpectrumPage() {
                   : '/VerseExkurs/spectrum/' + data.id
               }
             >
-              <a className="pr-0 text-white decoration-transparent">
+              <a className="pr-0 decoration-transparent text-inherit">
                 <div className="flex items-center w-full h-full px-8">
                   <div className={'relative h-3/4 w-1/3'}>
                     <Image
@@ -98,7 +98,7 @@ export default function SpectrumPage() {
                     <h1 className="text-primary">{data.spectrum_titel}</h1>
                     <ReactMarkdown
                       rehypePlugins={[rehypeRaw]}
-                      className="pt-3 text-pink-500"
+                      className="pt-3"
                     >
                       {data.spectrum_text}
                     </ReactMarkdown>
