@@ -10,6 +10,12 @@ import GalactapediaIcon from './GalactapediaIcon'
 import RSICommLinksIcon from './RSICommLinksIcon'
 import RSIRoadmapIcon from './RSIRoadmapIcon'
 
+import StarmapIcon from './StarmapIcon'
+import SystemHistoryIcon from './SystemHistoryIcon'
+import DistancesIcon from './DistancesIcon'
+import JumppointsIcon from './JumppointsIcon'
+import BorderIcon from './BorderIcon'
+
 import DeFlag from './DeFlag'
 import EnglFlag from './EnglFlag'
 
@@ -32,6 +38,11 @@ export {
   GalactapediaIcon,
   RSICommLinksIcon,
   RSIRoadmapIcon,
+  StarmapIcon,
+  SystemHistoryIcon,
+  DistancesIcon,
+  JumppointsIcon,
+  BorderIcon,
   DeFlag,
   EnglFlag,
   CommLinksIcon,

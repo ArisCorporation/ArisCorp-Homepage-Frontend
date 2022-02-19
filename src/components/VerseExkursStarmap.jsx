@@ -18,7 +18,7 @@ const xianIcon =
 
 export default function Starmap() {
   return (
-    <div className="relative w-[1200px] h-[841px]">
+    <div className="relative w-[1200px] h-[841px] mx-auto">
       <div
         id="branaugh"
         className="relative z-10 w-[1.667%] h-[2.3789%] left-[26.47%] top-[0.28777%] group hover:cursor-pointer"

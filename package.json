@@ -27,7 +27,8 @@
     "react-spinners-kit": "^1.9.1",
     "react-tabs": "^3.2.3",
     "react-tooltip": "^4.2.21",
-    "rehype-raw": "^6.1.1"
+    "rehype-raw": "^6.1.1",
+    "swiper": "^8.0.6"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",
