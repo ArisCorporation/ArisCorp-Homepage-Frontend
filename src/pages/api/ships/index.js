@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios'
 
 export default async (req, res) => {
   const url = `https://raw.githubusercontent.com/richardthombs/scunpacked/master/api/dist/json/v2/ships.json`
