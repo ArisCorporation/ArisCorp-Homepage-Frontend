@@ -3,42 +3,18 @@ import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_LITERATUR_ARTICLE } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
-
-const LITERATUR_LISTE = gql`
-  query Literatur_Liste($Id: Float!) {
-    literatur(
-      filter: { id: { _eq: $Id } }
-      sort: ["sort", "literatur_kapitel"]
-    ) {
-      id
-      status
-      literatur_reihe {
-        id
-        reihen_cover {
-          id
-          width
-          height
-        }
-        reihen_titel
-      }
-      literatur_kapitel
-      literatur_text
-    }
-  }
-`
-
-export default function LiteraturReihenPage() {
+export default function LiteraturArticlePage() {
   const router = useRouter()
   const { rid: rid, id: id } = router.query
 
   const Id = parseFloat(id)
   const rId = parseFloat(rid)
 
-  const { loading, error, data } = useQuery(LITERATUR_LISTE, {
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_LITERATUR_ARTICLE, {
     variables: { rId, Id },
   })
 
@@ -107,6 +83,6 @@ export default function LiteraturReihenPage() {
   )
 }
 
-LiteraturReihenPage.getLayout = function getLayout(page) {
+LiteraturArticlePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
