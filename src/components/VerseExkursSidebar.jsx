@@ -2,25 +2,14 @@ import Link from 'next/link'
 import Image from 'next/image'
 import {
   FaHome,
-  FaRegBookmark,
   FaChevronRight,
-  FaSignInAlt,
   FaPlaceOfWorship,
-  FaTh,
   FaExchangeAlt,
-  FaStoreAlt,
-  FaRocket,
-  FaImages,
-  FaPallet,
-  FaTasks,
-  FaChartBar,
   FaSearch,
 } from 'react-icons/fa'
-import { BiPlanet } from 'react-icons/bi'
 import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
-import { GrTasks } from 'react-icons/gr'
-import { FiCpu, FiPlus } from 'react-icons/fi'
-import { MdHistoryEdu, MdOutlineHistoryEdu, MdTimeline } from 'react-icons/md'
+import { FiCpu } from 'react-icons/fi'
+import { MdHistoryEdu, MdTimeline } from 'react-icons/md'
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import { ImBook } from 'react-icons/im'
 import { useState, useEffect, useRef } from 'react'
@@ -32,7 +21,6 @@ import {
   BsTriangleFill,
 } from 'react-icons/bs'
 import MainLogo from './icons/MainLogo'
-import { RotateSpinner } from 'react-spinners-kit'
 import { useRouter } from 'next/router'
 import ReactTooltip from 'react-tooltip'
 
