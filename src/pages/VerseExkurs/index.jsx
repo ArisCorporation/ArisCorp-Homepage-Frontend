@@ -1,42 +1,39 @@
 import Layout from './layout'
-import Image from 'next/image'
-import { SquareLoader } from 'react-spinners'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-const { gql, useQuery } = require('@apollo/client')
 import {
   ARKIcon,
   GalactapediaIcon,
   RSICommLinksIcon,
   RSIRoadmapIcon,
 } from 'components/icons'
+import { GET_VEXKURS_INDEX } from 'graphql/queries'
+import { client } from 'pages/_app'
 
-const INDEX = gql`
-  query ArisManifest {
-    exkurs_index {
-      text
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VEXKURS_INDEX })
+
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function VerseExkursIndex() {
-  const { loading, error, data } = useQuery(INDEX)
+  return {
+    props: {
+      data: await data.exkurs_index,
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-10">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-  if (error) return <p>Error :(</p>
-
+export default function VerseExkursIndex(data) {
   return (
     <>
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
       >
-        {data.exkurs_index.text}
+        {data.data.text}
       </ReactMarkdown>
       <div className="flex flex-wrap items-center justify-center text-center lg:justify-between scale-70 xl:scale-100">
         <a
