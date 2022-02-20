@@ -1,10 +1,9 @@
 import { Tab } from '@headlessui/react'
 import ArisCorpManifest from './HomeAboutManifest'
 import dynamic from 'next/dynamic'
-
-const TheArisCorp = dynamic(() => import('./HomeAboutArisCorp'), {})
-const ArisCorpHistory = dynamic(() => import('./HomeAboutHistory'), {})
-const ArisCorpCharta = dynamic(() => import('./HomeAboutCharta'), {})
+import TheArisCorp from './HomeAboutArisCorp'
+import ArisCorpHistory from './HomeAboutHistory'
+import ArisCorpCharta from './HomeAboutCharta'
 
 const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => (
   <Tab.Group>

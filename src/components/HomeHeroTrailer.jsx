@@ -1,8 +1,7 @@
 import { useState } from 'react'
-import Image from 'next/image'
 
 const HeroTrailer = () => {
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false)
+  const [setIsVideoLoaded] = useState(false)
 
   const onLoadedData = () => {
     setIsVideoLoaded(true)

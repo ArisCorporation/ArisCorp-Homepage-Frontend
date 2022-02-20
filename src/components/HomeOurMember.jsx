@@ -1,28 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { SquareLoader } from 'react-spinners'
-const { gql, useQuery } = require('@apollo/client')
-
-const QUERY = gql`
-  query Member {
-    member(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "member_name"]
-    ) {
-      id
-      status
-      member_name
-      member_titel
-      member_rollen
-      member_potrait {
-        id
-      }
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_MEMBERS } from 'graphql/queries'
 
 export default function OurMember() {
-  const { data, loading, error } = useQuery(QUERY)
+  const { data, loading, error } = useQuery(GET_MEMBERS)
+
+  if (error) return <p>Error :(</p>
 
   if (loading) {
     return (

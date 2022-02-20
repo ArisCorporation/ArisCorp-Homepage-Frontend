@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { Children, useEffect, useState } from 'react'
-import { OneThird, TwoThirds, ThreeThirds } from './CommLinkCards'
+import { useEffect, useState } from 'react'
+import { OneThird, ThreeThirds } from './CommLinkCards'
 
 const CommLinksSection = ({ data }) => {
   const [children, setChildren] = useState([])

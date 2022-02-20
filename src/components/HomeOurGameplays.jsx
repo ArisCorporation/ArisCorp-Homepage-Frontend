@@ -1,31 +1,11 @@
 import Image from 'next/image'
 import { SquareLoader } from 'react-spinners'
 import { Tab } from '@headlessui/react'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const OUR_GAMEPLAYS = gql`
-  query GetGameplays {
-    gameplays(filter: { status: { _eq: "published" } }, sort: ["sort", "id"]) {
-      id
-      status
-      gameplay_name
-      gameplay_logo {
-        id
-      }
-      gameplay_bild_links {
-        id
-      }
-      gameplay_bild_rechts {
-        id
-      }
-      gameplay_text
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_GAMEPLAYS } from 'graphql/queries'
 
 export default function OurGameplays() {
-  const { loading, error, data } = useQuery(OUR_GAMEPLAYS)
+  const { loading, error, data } = useQuery(GET_GAMEPLAYS)
 
   if (loading)
     return (
@@ -33,6 +13,7 @@ export default function OurGameplays() {
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
     )
+    
   if (error) return <p>Error :(</p>
 
   return (
