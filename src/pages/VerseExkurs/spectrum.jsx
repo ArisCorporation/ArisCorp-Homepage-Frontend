@@ -1,47 +1,29 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
+import { client } from 'pages/_app'
+import { GET_VERSEEXKURS_SPECTRUM_ARTICLES } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VERSEEXKURS_SPECTRUM_ARTICLES })
 
-const SPECTRUM = gql`
-  query Spectrum {
-    spectrum(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "-spectrum_kategorie_beschreibung", "spectrum_titel"]
-      limit: 50
-    ) {
-      id
-      status
-      spectrum_titel
-      spectrum_text
-      spectrum_beitrag_kateogrie
-      spectrum_kategorie_beschreibung
-      image {
-        id
-        width
-        height
-      }
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function SpectrumPage() {
-  const { loading, error, data } = useQuery(SPECTRUM)
+  return {
+    props: {
+      data: await data.spectrum,
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
-
-  const Data = data.spectrum
+export default function SpectrumPage(data) {
+  const Data = data.data
 
   return (
     <div className="pt-3 print:pt-0">
