@@ -1,40 +1,14 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Layout from './layout'
 import { OneThird, TwoThirds, ThreeThirds } from 'components/CommLinkCards'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const ARIS_COMMLINKS = gql`
-  query ArisCommLinks {
-    comm_links(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
-    ) {
-      id
-      status
-      comm_link_titel
-      comm_link_banner {
-        id
-      }
-      comm_link_author {
-        member_titel
-      }
-      comm_link
-      comm_link_beschreibung
-      comm_link_channel {
-        channel
-        beschreibung
-      }
-    }
-  }
-`
+import { GET_COMM_LINKS } from 'graphql/queries'
+import { useQuery } from '@apollo/client'
 
 export default function CommLinksPage() {
   const [children, setChildren] = useState([])
-  const { loading, error, data } = useQuery(ARIS_COMMLINKS)
+  const { loading, error, data } = useQuery(GET_COMM_LINKS)
 
   useEffect(() => {
     const layout = []
