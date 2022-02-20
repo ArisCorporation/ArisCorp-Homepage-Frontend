@@ -1,45 +1,27 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
+import { client } from 'pages/_app'
+import { GET_VERSEEXKURS_LITERATUREN } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VERSEEXKURS_LITERATUREN })
 
-const LITERATUR_REIHEN = gql`
-  query Literatur_Reihen {
-    literatur_reihen(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "reihen_titel"]
-    ) {
-      id
-      status
-      reihen_titel
-      reihen_cover {
-        id
-        width
-        height
-      }
-      reihen_author
-      reihen_protagonist
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function LiteraturReihenPage() {
-  const { loading, error, data } = useQuery(LITERATUR_REIHEN)
+  return {
+    props: {
+      data: await data.literatur_reihen,
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
-
-  const Data = data.literatur_reihen
+export default function LiteraturReihenPage(data) {
+  const Data = data.data;
 
   return (
     <div className="pt-3 print:pt-0">
