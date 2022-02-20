@@ -1,37 +1,17 @@
 import Layout from 'pages/layout'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const ARIS_COMMLINKS = gql`
-  query Member($name: String!) {
-    member(
-      filter: { member_name: { _eq: $name } }
-      sort: ["sort", "member_name"]
-    ) {
-      id
-      status
-      member_name
-      member_titel
-      member_potrait {
-        id
-      }
-      member_biografie
-      member_steckbrief
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_MEMBER } from 'graphql/queries'
 
 export default function Biografie() {
   const router = useRouter()
   const { name } = router.query
 
-  const { loading, error, data } = useQuery(ARIS_COMMLINKS, {
+  const { loading, error, data } = useQuery(GET_MEMBER, {
     variables: { name },
   })
 
