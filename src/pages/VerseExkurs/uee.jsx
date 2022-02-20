@@ -1,43 +1,30 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
-import { Tabs } from 'react-tabs'
-import Link from 'next/link'
+import { client } from 'pages/_app'
+import { GET_VERSEEXKURS_UEE } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
 
-const UEE = gql`
-  query united_empire_of_earth {
-    united_empire_of_earth {
-      id
-      title
-      image {
-        id
-        width
-        height
-      }
-      text
-      sections
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VERSEEXKURS_UEE })
+
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function UEEPage() {
-  const { loading, error, data } = useQuery(UEE)
+  return {
+    props: {
+      data: await data.united_empire_of_earth,
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
-
-  const Data = data.united_empire_of_earth
+export default function UEEPage(data) {
+  const Data = data.data
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
