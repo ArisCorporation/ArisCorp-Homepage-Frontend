@@ -1,43 +1,18 @@
 import Layout from 'pages/layout'
 import { useRouter } from 'next/router'
-import { useEffect } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const ARIS_COMMLINKS = gql`
-  query ArisCommLinks($Id: Float!) {
-    comm_links(filter: { id: { _eq: $Id } }) {
-      id
-      status
-      comm_link_titel
-      comm_link_banner {
-        id
-        height
-        width
-      }
-      comm_link_author {
-        member_titel
-      }
-      comm_link
-      comm_link_beschreibung
-      comm_link_channel {
-        channel
-        beschreibung
-      }
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_COMM_LINK } from 'graphql/queries'
 
 export default function CommLinkDetailPage() {
   const router = useRouter()
   const { id } = router.query
 
   const Id = parseFloat(id)
-  const { loading, error, data } = useQuery(ARIS_COMMLINKS, {
+  const { loading, error, data } = useQuery(GET_COMM_LINK, {
     variables: { Id },
   })
 
