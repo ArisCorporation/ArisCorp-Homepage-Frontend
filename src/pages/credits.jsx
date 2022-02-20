@@ -2,36 +2,32 @@ import ReactMarkdown from 'react-markdown'
 import { SquareLoader } from 'react-spinners'
 import rehypeRaw from 'rehype-raw'
 import Layout from './layout'
-const { gql, useQuery } = require('@apollo/client')
+import { GET_CREDITS } from 'graphql/queries'
+import { client } from './_app'
 
-const CREDITS = gql`
-  query Credits {
-    credits {
-      id
-      status
-      credits
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_CREDITS })
+
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function CreditsPage() {
-  const { loading, error, data } = useQuery(CREDITS)
+  return {
+    props: {
+      data: await data.credits.credits,
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-  if (error) return <p>Error :(</p>
+export default function CreditsPage(data) {
   return (
-    <>
-      <div className="pt-32">
-        <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">
-          {data.credits.credits}
-        </ReactMarkdown>
-      </div>
-    </>
+    <div className="pt-32">
+      <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">
+        {data.data}
+      </ReactMarkdown>
+    </div>
   )
 }
 
