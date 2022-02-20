@@ -5,30 +5,14 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const ALIENRASSEN = gql`
-  query Alienrassen($alienrasse: String!) {
-    alienrassen(filter: { alienrassen_name: { _eq: $alienrasse } }) {
-      id
-      alienrassen_name
-      alienrassen_banner {
-        id
-        width
-        height
-      }
-      text
-      sections
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_ALIENRASSE } from 'graphql/queries'
 
 export default function AlienrassenDetailPage() {
   const router = useRouter()
   const { alienrasse } = router.query
 
-  const { loading, error, data } = useQuery(ALIENRASSEN, {
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_ALIENRASSE, {
     variables: { alienrasse },
   })
 
