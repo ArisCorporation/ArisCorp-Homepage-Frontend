@@ -1,62 +1,31 @@
 import Head from 'next/head'
-import Navbar from 'components/HomeNavbar'
-import Footer from 'components/Footer'
-import HeroSection from 'components/HomeHero'
 import AboutSection from 'components/HomeAbout'
 import OrgaSection from 'components/HomeOur'
 import CommLinksSection from 'components/HomeCommLinksSection'
 import RectruitmentSection from 'components/HomeRecruitment'
 import PartnerSection from 'components/HomePartnerSection'
 import Script from 'next/script'
-const { gql, useQuery } = require('@apollo/client')
+const { gql } = require('@apollo/client')
 import { client } from './_app'
 import { useEffect } from 'react'
 import Layout from './layout'
 
 export async function getServerSideProps() {
-  const { data: aboutData } = await client.query({
+  const { data } = await client.query({
     query: gql`
-      query DieArisCorp {
+      query GetIndexData {
         die_ariscorp {
           about_ariscorp
         }
-      }
-    `,
-  })
-
-  const { data: arisHistoryData } = await client.query({
-    query: gql`
-      query ArisHistory {
         ariscorp_history {
           ariscorp_history
         }
-      }
-    `,
-  })
-
-  const { data: manifestData } = await client.query({
-    query: gql`
-      query ArisManifest {
         manifest {
           manifest
         }
-      }
-    `,
-  })
-
-  const { data: chartaData } = await client.query({
-    query: gql`
-      query ArisCharta {
         charta {
           text
         }
-      }
-    `,
-  })
-
-  const { data: commsData } = await client.query({
-    query: gql`
-      query Comm_Links {
         comm_links(
           filter: { status: { _eq: "published" } }
           sort: ["sort", "-date_created"]
@@ -78,13 +47,6 @@ export async function getServerSideProps() {
             beschreibung
           }
         }
-      }
-    `,
-  })
-
-  const { data: partnerData } = await client.query({
-    query: gql`
-      query Partner {
         partner(filter: { status: { _eq: "published" } }) {
           id
           partner_name
@@ -98,7 +60,7 @@ export async function getServerSideProps() {
     `,
   })
 
-  if (!commsData || !aboutData || !arisHistoryData) {
+  if (!data) {
     return {
       notFound: true,
     }
@@ -106,19 +68,19 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      about: await aboutData.die_ariscorp.about_ariscorp,
-      history: await arisHistoryData.ariscorp_history.ariscorp_history,
-      manifest: await manifestData.manifest.manifest,
-      charta: await chartaData.charta.text,
+      about: await data.die_ariscorp.about_ariscorp,
+      history: await data.ariscorp_history.ariscorp_history,
+      manifest: await data.manifest.manifest,
+      charta: await data.charta.text,
 
-      comm_links: await commsData.comm_links,
+      comm_links: await data.comm_links,
 
-      partner: await partnerData.partner,
+      partner: await data.partner,
     },
   }
 }
 
-export default function Home({
+export default function IndexPage({
   about,
   history,
   manifest,
@@ -126,6 +88,7 @@ export default function Home({
   comm_links,
   partner,
 }) {
+  
   useEffect(() => {
     const script = document.createElement('script')
 
@@ -160,6 +123,6 @@ export default function Home({
   )
 }
 
-Home.getLayout = function getLayout(page) {
+IndexPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
