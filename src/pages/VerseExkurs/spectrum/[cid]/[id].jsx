@@ -3,34 +3,15 @@ import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
-
-const SPECTRUM = gql`
-  query Spectrum {
-    spectrum(filter: { status: { _eq: "published" } }, limit: 1000) {
-      id
-      status
-      spectrum_titel
-      spectrum_text
-      spectrum_beitrag_kateogrie
-      spectrum_kategorie_beschreibung
-      image {
-        id
-        width
-        height
-      }
-    }
-  }
-`
-
-export default function SpectrumCategoryPage() {
+export default function SpectrumArticlePage() {
   const router = useRouter()
   const { cid: cid, id: id } = router.query
 
-  const { loading, error, data } = useQuery(SPECTRUM)
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SPECTRUM_CATEGORY)
 
   if (loading)
     return (
@@ -46,8 +27,6 @@ export default function SpectrumCategoryPage() {
   const category = Data.filter(
     (data) => data.spectrum_kategorie_beschreibung == true && data.id == cid
   )[0]
-
-  console.log(Data)
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -94,6 +73,6 @@ export default function SpectrumCategoryPage() {
   )
 }
 
-SpectrumCategoryPage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
