@@ -1,40 +1,16 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const LITERATUR_LISTE = gql`
-  query Literatur_Liste {
-    literatur(
-      filter: { status: { _eq: "published" } }
-      sort: ["sort", "literatur_kapitel"]
-    ) {
-      id
-      status
-      literatur_reihe {
-        id
-        reihen_cover {
-          id
-          width
-          height
-        }
-        reihen_titel
-      }
-      literatur_kapitel
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_LITERATUR_REIHE } from 'graphql/queries'
 
 export default function LiteraturReihenPage() {
   const router = useRouter()
   const { rid } = router.query
   const rId = parseFloat(rid)
-  const { loading, error, data } = useQuery(LITERATUR_LISTE, {
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_LITERATUR_REIHE, {
     variables: { rId },
   })
 
