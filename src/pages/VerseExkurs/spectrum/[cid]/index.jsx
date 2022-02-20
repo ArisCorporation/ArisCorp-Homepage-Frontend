@@ -1,36 +1,16 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-
-const { gql, useQuery } = require('@apollo/client')
-
-const SPECTRUM = gql`
-  query Spectrum {
-    spectrum(filter: { status: { _eq: "published" } }, limit: 1000) {
-      id
-      status
-      spectrum_titel
-      spectrum_text
-      spectrum_beitrag_kateogrie
-      spectrum_kategorie_beschreibung
-      image {
-        id
-        width
-        height
-      }
-    }
-  }
-`
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
 
 export default function SpectrumCategoryPage() {
   const router = useRouter()
   const { cid } = router.query
 
-  const { loading, error, data } = useQuery(SPECTRUM)
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SPECTRUM_CATEGORY)
 
   if (loading)
     return (
