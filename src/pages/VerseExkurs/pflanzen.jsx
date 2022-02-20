@@ -125,7 +125,7 @@ export default function PflanzenPage(data) {
                   >
                     <a
                       className={
-                        'children-square mt-10 text-white children-square hover:text-secondary decoration-transparent mt-10 ' +
+                        'children-square mt-10 text-white children-square hover:text-secondary decoration-transparent ' +
                         (data.pflanze == true ? 'hidden' : '')
                       }
                     >
