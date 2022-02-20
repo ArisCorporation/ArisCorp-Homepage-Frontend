@@ -21,7 +21,7 @@ export async function getServerSideProps() {
 }
 
 export default function LiteraturReihenPage(data) {
-  const Data = data.data;
+  const Data = data.data
 
   return (
     <div className="pt-3 print:pt-0">

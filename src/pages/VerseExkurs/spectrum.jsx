@@ -7,7 +7,9 @@ import { client } from 'pages/_app'
 import { GET_VERSEEXKURS_SPECTRUM_ARTICLES } from 'graphql/queries'
 
 export async function getServerSideProps() {
-  const { data } = await client.query({ query: GET_VERSEEXKURS_SPECTRUM_ARTICLES })
+  const { data } = await client.query({
+    query: GET_VERSEEXKURS_SPECTRUM_ARTICLES,
+  })
 
   if (!data) {
     return {
@@ -78,10 +80,7 @@ export default function SpectrumPage(data) {
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
                     <h1 className="text-primary">{data.spectrum_titel}</h1>
-                    <ReactMarkdown
-                      rehypePlugins={[rehypeRaw]}
-                      className="pt-3"
-                    >
+                    <ReactMarkdown rehypePlugins={[rehypeRaw]} className="pt-3">
                       {data.spectrum_text}
                     </ReactMarkdown>
                   </div>

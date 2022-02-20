@@ -13,7 +13,7 @@ export default function OurGameplays() {
         <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
       </div>
     )
-    
+
   if (error) return <p>Error :(</p>
 
   return (

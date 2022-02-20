@@ -244,26 +244,26 @@ export default function StarmapPage() {
                     Cathcart 2438, Bremen 2441, Nexus 2445 und Corel 2449. Am
                     12. Juni 2438 hat die Menschheit endlich die Antwort auf die
                     große Frage erhalten, die sie sich seit Jahrtausenden
-                    stellt: {'"'}Sind wir allein im Universum?{'"'} Der erste Kontakt
-                    mit einer intelligenten und Hochentwickelten Alienrasse, den
-                    Banu, findet im Davien-System statt. Ein Friedensvertrag
-                    wird von General Neal Socolovich und seiner Delegation in
-                    nur wenigen Monaten unterzeichnet, um den Handel mit diesen
-                    neuen Verbündeten zu fördern. Die Galaxie wächst weiter in
-                    der zweiten Hälfte des Jahrhunderts mit Ferron 2460, Cano
-                    und Kilian 2463, Min 2473, Tiber 2474, Taranis 2478, Pyro
-                    und Idris 2493 und schließlich Magnus im Jahr 2499. Das
-                    Oretani-System, nicht in dieser Liste erwähnt, hatte ein
-                    tragisches Schicksal. Entdeckt im Jahr 2481, werden Teams in
-                    das System geschickt, um einen Planeten zu terraformen.
-                    Leider wird die Kommunikation mit der Expedition im Jahr
-                    2485 unterbrochen, als der einzige bekannte Sprungpunkt des
-                    Systems zusammenbricht, so dass die Menschen des Oritani
-                    systems von der restlichen Welt abgeschnitten werden. Am
-                    Ende des 25. Jahrhunderts wuchs der bekannte Raum der
-                    Galaxie von Jahrzehnt zu Jahrzehnt. Hinweis: Ungenauigkeiten
-                    der Daten auf den folgenden Systemen: Yulin, Tanga, Bacchus,
-                    Geddon und Ellis.
+                    stellt: {'"'}Sind wir allein im Universum?{'"'} Der erste
+                    Kontakt mit einer intelligenten und Hochentwickelten
+                    Alienrasse, den Banu, findet im Davien-System statt. Ein
+                    Friedensvertrag wird von General Neal Socolovich und seiner
+                    Delegation in nur wenigen Monaten unterzeichnet, um den
+                    Handel mit diesen neuen Verbündeten zu fördern. Die Galaxie
+                    wächst weiter in der zweiten Hälfte des Jahrhunderts mit
+                    Ferron 2460, Cano und Kilian 2463, Min 2473, Tiber 2474,
+                    Taranis 2478, Pyro und Idris 2493 und schließlich Magnus im
+                    Jahr 2499. Das Oretani-System, nicht in dieser Liste
+                    erwähnt, hatte ein tragisches Schicksal. Entdeckt im Jahr
+                    2481, werden Teams in das System geschickt, um einen
+                    Planeten zu terraformen. Leider wird die Kommunikation mit
+                    der Expedition im Jahr 2485 unterbrochen, als der einzige
+                    bekannte Sprungpunkt des Systems zusammenbricht, so dass die
+                    Menschen des Oritani systems von der restlichen Welt
+                    abgeschnitten werden. Am Ende des 25. Jahrhunderts wuchs der
+                    bekannte Raum der Galaxie von Jahrzehnt zu Jahrzehnt.
+                    Hinweis: Ungenauigkeiten der Daten auf den folgenden
+                    Systemen: Yulin, Tanga, Bacchus, Geddon und Ellis.
                   </p>
                 </div>
                 <div
@@ -298,14 +298,14 @@ export default function StarmapPage() {
                     Jahr 2530 verursachte einen großen diplomatischen
                     Zwischenfall, nach der Begegnung mit einer neuen
                     Alien-Rasse, den Xi{"'"}an. Das System heißt tatsächlich
-                    Th.us{"'"}ᾱng und gehört zu diesem Alien-Imperium. Die Entdecker
-                    wurden gefangen genommen und ihre sichere Rückkehr kostete
-                    der UPE viel Geld: Die Alien-Rasse verlangte die genaue
-                    Lokalisierung aller Systeme, die der Menschheit gehörten.
-                    Dieser Vorfall legte den Grundstein für eine schwierige
-                    Beziehung zwischen den beiden Rassen während der folgenden
-                    zwei Jahrhunderte. Hinweis: Ungenauigkeit des Datums zur
-                    Entdeckung des Goss-Systems.
+                    Th.us{"'"}ᾱng und gehört zu diesem Alien-Imperium. Die
+                    Entdecker wurden gefangen genommen und ihre sichere Rückkehr
+                    kostete der UPE viel Geld: Die Alien-Rasse verlangte die
+                    genaue Lokalisierung aller Systeme, die der Menschheit
+                    gehörten. Dieser Vorfall legte den Grundstein für eine
+                    schwierige Beziehung zwischen den beiden Rassen während der
+                    folgenden zwei Jahrhunderte. Hinweis: Ungenauigkeit des
+                    Datums zur Entdeckung des Goss-Systems.
                   </p>
                 </div>
                 <div
@@ -315,48 +315,50 @@ export default function StarmapPage() {
                 >
                   <h5>2530: Tevarin Krieg und der Beginn der Messer-Ära</h5>
                   <p>
-                    Die System-Entdeckungen gehen weiter mit Hades und Hadur
-                    (Yᾱ{"'"}mon) 2531, Odin im Jahr 2532, Charon 2538, Gurzil 2539,
+                    Die System-Entdeckungen gehen weiter mit Hades und Hadur (Yᾱ
+                    {"'"}mon) 2531, Odin im Jahr 2532, Charon 2538, Gurzil 2539,
                     Rihlah 2542, Castra 2544, Nyx 2582 und Oya 2587. Am 15.
                     November 2541 entdeckte Dr. Kellar Lench zum ersten Mal die
                     Rasse Tevarin in ihrem Geburtssystem Elysium, das von den
-                    Einheimischen Kaleth {"'"}ala genannt wurde. Dieses kriegerische
-                    Volk begann die Feindseligkeiten im folgenden Jahr durch die
-                    Gefangennahme des Planeten Idris IV nach einem massiven
-                    Orbitalangriff. Das ist der Beginn des ersten
+                    Einheimischen Kaleth {"'"}ala genannt wurde. Dieses
+                    kriegerische Volk begann die Feindseligkeiten im folgenden
+                    Jahr durch die Gefangennahme des Planeten Idris IV nach
+                    einem massiven Orbitalangriff. Das ist der Beginn des ersten
                     Tevarin-Krieges. Die Menschen haben den Angriff
                     vorausgesehen und die meisten Siedler rechtzeitig evakuiert.
                     Nur etwa 100 Menschen, die von Rachel Lock angeführt werden,
                     organisieren den Widerstand auf dem Planeten. Ihre
                     Sabotage-Operationen stören die Logistik der Tevarin-Armee.
-                    Diese Gruppe von Überlebenden ist bekannt als {'"'}The Grey{'"'}. Im
-                    Jahr 2544 starteten die Streitkräfte der UPE die Operation
-                    Nemesis. Der Widerstand der {'"'}Grey{'"'} unterstützt sie, indem
-                    sie wertvolle Informationen verbreiten. In der Schlacht von
-                    Idris IV zeichnet sich Oberst Ivar Messer als brillanter
-                    Stratege aus und wird nach dem Krieg zum ikonischen Gesicht
-                    der Armee. Ivar Messer wurde im Jahr 2546 beauftragt, den
-                    Führer der Tevarins zurück zu den UPE-Kommando zu bringen.
-                    Der Krieg ist vorbei. Messers Waffen haben ihn in den Rang
-                    eines hohen Generals katapultiert. Er schafft ein Klima der
-                    Angst und erklärt, dass die Menschheit eine harte Hand ohne
-                    Gegenmacht braucht. Die Posten des hohen Sekretärs und des
-                    hohen Richters werden als überholt angesehen. Ivar Messer
-                    schafft es, sein Endziel zu erreichen, die Schaffung einer
-                    Figur der höchsten Autorität: der Kaiser. Im selben Jahr
-                    wurde die UPE zur UEE (United Empire of Earth). Heute
-                    besteht der dringende Verdacht, dass Ivar Messer im Jahr
-                    2545 in Jata Terroranschläge herbeigeführt hat, die Tausende
-                    von Opfern gefordert haben, um dieses Klima des Terrors zu
-                    schaffen. Eine ängstliche Bevölkerung ist leichter
-                    beeinflussbar. Der Krieg der Tevarins ist zwar vorbei, aber
-                    eine neue Gefahr kann jederzeit mit einem viel heftigeren
-                    Gegner, den Xi{"'"}An, ausbrechen. Ein Niemandsland wird
-                    zwischen den beiden Fraktionen aufgestellt und wird die
-                    {'"'}Perry Line{'"'}genannt. Am Ende des 26. Jahrhunderts begann für
-                    die Menschheit eine dunkle Zeit, genannt die Messer Ära, die
-                    für mehr als zwei Jahrhunderte andauern wird. Hinweis:
-                    Ungenauigkeit des Datums zur Entdeckung des Kins-Systems.
+                    Diese Gruppe von Überlebenden ist bekannt als {'"'}The Grey
+                    {'"'}. Im Jahr 2544 starteten die Streitkräfte der UPE die
+                    Operation Nemesis. Der Widerstand der {'"'}Grey{'"'}{' '}
+                    unterstützt sie, indem sie wertvolle Informationen
+                    verbreiten. In der Schlacht von Idris IV zeichnet sich
+                    Oberst Ivar Messer als brillanter Stratege aus und wird nach
+                    dem Krieg zum ikonischen Gesicht der Armee. Ivar Messer
+                    wurde im Jahr 2546 beauftragt, den Führer der Tevarins
+                    zurück zu den UPE-Kommando zu bringen. Der Krieg ist vorbei.
+                    Messers Waffen haben ihn in den Rang eines hohen Generals
+                    katapultiert. Er schafft ein Klima der Angst und erklärt,
+                    dass die Menschheit eine harte Hand ohne Gegenmacht braucht.
+                    Die Posten des hohen Sekretärs und des hohen Richters werden
+                    als überholt angesehen. Ivar Messer schafft es, sein Endziel
+                    zu erreichen, die Schaffung einer Figur der höchsten
+                    Autorität: der Kaiser. Im selben Jahr wurde die UPE zur UEE
+                    (United Empire of Earth). Heute besteht der dringende
+                    Verdacht, dass Ivar Messer im Jahr 2545 in Jata
+                    Terroranschläge herbeigeführt hat, die Tausende von Opfern
+                    gefordert haben, um dieses Klima des Terrors zu schaffen.
+                    Eine ängstliche Bevölkerung ist leichter beeinflussbar. Der
+                    Krieg der Tevarins ist zwar vorbei, aber eine neue Gefahr
+                    kann jederzeit mit einem viel heftigeren Gegner, den Xi{"'"}
+                    An, ausbrechen. Ein Niemandsland wird zwischen den beiden
+                    Fraktionen aufgestellt und wird die
+                    {'"'}Perry Line{'"'}genannt. Am Ende des 26. Jahrhunderts
+                    begann für die Menschheit eine dunkle Zeit, genannt die
+                    Messer Ära, die für mehr als zwei Jahrhunderte andauern
+                    wird. Hinweis: Ungenauigkeit des Datums zur Entdeckung des
+                    Kins-Systems.
                   </p>
                 </div>
                 <div
@@ -379,27 +381,27 @@ export default function StarmapPage() {
                     dieser Zeit hat die Menschheit keine Zeit zum Atmen. Im Jahr
                     2617 entdeckten die Leutnants Ahmad Harar und Carl Dyson
                     einen Sprungpunkt zum Kayfa-System. Als sie auf der anderen
-                    Seite ankamen, stießen sie auf die Xi{"'"}an. Gefangen genommen
-                    und verhört werden die Offiziere drei Tage später wieder
-                    freigelassen. Die Xi{"'"}an kündigen an, dass jedes weitere
-                    Treffen dieser Art mit der Zerstörung des Schiffes und
-                    seiner Insassen enden wird. Diese historische Tatsache gilt
-                    als der Beginn des Kalten Krieges mit den Xi{"'"}an. Wir müssen
-                    bis 2638 warten, um das erste Zeichen der Rebellion gegen
-                    das Messer-Regime zu sehen. Senator Assan Kieren von Terra
-                    prangert die militärische Agenda der UEE an. Er fordert eine
-                    Neuwahl für die Unabhängigkeit von Terra und der
-                    angrenzenden Systeme. Livia Messer III diskreditiert ihn mit
-                    harter Propaganda. Assan Kieren verschwindet. Mord wird
-                    vermutet. Die Erforschung des Weltraums im Geltungs berreich
-                    der Xi{"'"}An-wurde im 27. Jahrhundert stark verlangsamt. Auf
-                    der anderen Seite wurden einige Systeme mit Orion im Jahr
-                    2650, Leir im Jahr 2677 und Viking im Jahr 2686 entdeckt. Am
-                    9. August 2681,als die Siedlungen auf der Armitage im
-                    Orion-System gut abliefen, bombardierte eine Gruppe von
-                    Schiffen die Stadt Dell und tötete 638 Menschen. Es ist die
-                    erste Begegnung der Menschheit mit den Vanduuls. Die
-                    Vanduuls führen in den folgenden 16 Jahren zahlreiche
+                    Seite ankamen, stießen sie auf die Xi{"'"}an. Gefangen
+                    genommen und verhört werden die Offiziere drei Tage später
+                    wieder freigelassen. Die Xi{"'"}an kündigen an, dass jedes
+                    weitere Treffen dieser Art mit der Zerstörung des Schiffes
+                    und seiner Insassen enden wird. Diese historische Tatsache
+                    gilt als der Beginn des Kalten Krieges mit den Xi{"'"}an.
+                    Wir müssen bis 2638 warten, um das erste Zeichen der
+                    Rebellion gegen das Messer-Regime zu sehen. Senator Assan
+                    Kieren von Terra prangert die militärische Agenda der UEE
+                    an. Er fordert eine Neuwahl für die Unabhängigkeit von Terra
+                    und der angrenzenden Systeme. Livia Messer III diskreditiert
+                    ihn mit harter Propaganda. Assan Kieren verschwindet. Mord
+                    wird vermutet. Die Erforschung des Weltraums im Geltungs
+                    berreich der Xi{"'"}An-wurde im 27. Jahrhundert stark
+                    verlangsamt. Auf der anderen Seite wurden einige Systeme mit
+                    Orion im Jahr 2650, Leir im Jahr 2677 und Viking im Jahr
+                    2686 entdeckt. Am 9. August 2681,als die Siedlungen auf der
+                    Armitage im Orion-System gut abliefen, bombardierte eine
+                    Gruppe von Schiffen die Stadt Dell und tötete 638 Menschen.
+                    Es ist die erste Begegnung der Menschheit mit den Vanduuls.
+                    Die Vanduuls führen in den folgenden 16 Jahren zahlreiche
                     Überfälle im Orion-System durch. Illyana Messer VI nutzt
                     diese Angriffe, um die Notwendigkeit einer obersten
                     Autorität der UEE zu rechtfertigen, aber nicht wirklich
@@ -410,10 +412,10 @@ export default function StarmapPage() {
                     der es vorzieht, seine Macht zu nutzen, um die Unterwerfung
                     des Volkes unter seine Autorität zu erzwingen, noch immer
                     nicht an erster Stelle. Am Ende des 27. Jahrhunderts ist die
-                    Menschheit zwischen der Xi{"'"}An-Bedrohung auf der einen und
-                    den Vanduul-Angriffen der anderen seite ihres territoriums
-                    umgeben. Hinweis: Ungenauigkeiten über das Datum zur
-                    Entdeckung des Ayr{"'"}ka Systems.
+                    Menschheit zwischen der Xi{"'"}An-Bedrohung auf der einen
+                    und den Vanduul-Angriffen der anderen seite ihres
+                    territoriums umgeben. Hinweis: Ungenauigkeiten über das
+                    Datum zur Entdeckung des Ayr{"'"}ka Systems.
                   </p>
                 </div>
                 <div
@@ -450,9 +452,9 @@ export default function StarmapPage() {
                     Vanduuls bleiben ein Jahr auf dem Planeten, um ihn
                     vollständig auszubeuten und gehen dann zurück in ihr
                     Territorium. Von 2715 bis 2788 wurde die Armee überall auf
-                    dem Territorium eingesetzt, um die Verteidigung gegen die
-                    Xi{"'"}an zu festigen, den Vanduul-Angriffen zu widerstehen, die
-                    fortgesetzt werden, und die Revolten überall auf dem
+                    dem Territorium eingesetzt, um die Verteidigung gegen die Xi
+                    {"'"}an zu festigen, den Vanduul-Angriffen zu widerstehen,
+                    die fortgesetzt werden, und die Revolten überall auf dem
                     Territorium gegen das autoritäre Regime zu beruhigen. Auch
                     in dieser Zeit wurden nur wenige Systeme entdeckt: Gliese
                     2712, Tohil 2716 und Vector 2726. Die imperiale Macht der
@@ -478,8 +480,8 @@ export default function StarmapPage() {
                     Kind wird getötet, sondern es ist auch ein Beweis dafür,
                     dass Kinderarbeit unter dem Messer-Regime real ist. Am 29.
                     März 2789 verkündete Senator Akari, dass er ein
-                    Friedensabkommen mit den Xi{"'"}an ausgehandelt habe und ließ
-                    diesen im Senat, ohne die Zustimmung des Imperators,
+                    Friedensabkommen mit den Xi{"'"}an ausgehandelt habe und
+                    ließ diesen im Senat, ohne die Zustimmung des Imperators,
                     abstimmen, der sich auf Goss beurlaubt hatte. Die Abstimmung
                     ist gültig, aber der Friedensvertrag wird nicht vom Kaiser
                     unterzeichnet, wenn er zurückkommt. Vor Ort beginnen die
@@ -496,25 +498,26 @@ export default function StarmapPage() {
                     Toi, der gerade zum Imperator ernannt wurde, setzt das
                     UEE-Tribunal wieder als Gegenmacht ein, um zu vermeiden,
                     dass sich die Fehler der Vergangenheit wiederholen. Im Jahr
-                    2793 kamen der Imperator des UEE und Kaiser Kr.e der Xi{"'"}an
-                    im Kayfa-System zusammen und die Freundschaft zwischen den
-                    beiden Völkern wurde durch die Unterzeichnung des Vertrags
-                    der Perry-Linie besiegelt, die die Systeme des Niemandslands
-                    gerecht auf die beiden Mächte verteilt. Erin Toi versucht
-                    auch Kontakt mit den Vanduul aufzunehmen, um die Beziehungen
-                    zu beruhigen, aber ohne Erfolg. Im Jahr 2795 wurde der Fair
-                    Chance Act ratifiziert. Mit dem das Terraformierung eines
-                    Planeten, auf dem sich Leben entwickelt, von nun an als
-                    Verbrechen gilt und die UEE die Sicherheit der betreffenden
-                    Systeme gewährleistet. Garron und Osiris stehen als erste
-                    Systeme unter dem Fair Chance Act. Anmerkung: Obwohl nicht
-                    von der Regierungskonferenz präzisiert, gehen wir in diesem
-                    Absatz davon aus, dass Ende des 28. Jahrhunderts alle
-                    verbleibenden Xi{"'"}An-Systeme von der UEE, als Folge der
-                    verbesserung der Beziehungen, entdeckt wurden. Das betrifft:
-                    Virtus, Eealus, El{"'"}sin, Khabari und Markahil. Man geht auch
-                    davon aus, dass die Entdeckung von Virtus das bekanntwerden
-                    von Trise-System der Banu mitermöglicht hat.
+                    2793 kamen der Imperator des UEE und Kaiser Kr.e der Xi{"'"}
+                    an im Kayfa-System zusammen und die Freundschaft zwischen
+                    den beiden Völkern wurde durch die Unterzeichnung des
+                    Vertrags der Perry-Linie besiegelt, die die Systeme des
+                    Niemandslands gerecht auf die beiden Mächte verteilt. Erin
+                    Toi versucht auch Kontakt mit den Vanduul aufzunehmen, um
+                    die Beziehungen zu beruhigen, aber ohne Erfolg. Im Jahr 2795
+                    wurde der Fair Chance Act ratifiziert. Mit dem das
+                    Terraformierung eines Planeten, auf dem sich Leben
+                    entwickelt, von nun an als Verbrechen gilt und die UEE die
+                    Sicherheit der betreffenden Systeme gewährleistet. Garron
+                    und Osiris stehen als erste Systeme unter dem Fair Chance
+                    Act. Anmerkung: Obwohl nicht von der Regierungskonferenz
+                    präzisiert, gehen wir in diesem Absatz davon aus, dass Ende
+                    des 28. Jahrhunderts alle verbleibenden Xi{"'"}An-Systeme
+                    von der UEE, als Folge der verbesserung der Beziehungen,
+                    entdeckt wurden. Das betrifft: Virtus, Eealus, El{"'"}sin,
+                    Khabari und Markahil. Man geht auch davon aus, dass die
+                    Entdeckung von Virtus das bekanntwerden von Trise-System der
+                    Banu mitermöglicht hat.
                   </p>
                 </div>
                 <div
@@ -578,7 +581,8 @@ export default function StarmapPage() {
                     Unternehmen, die jeweils die Planeten: ArcCorp, Crusader,
                     Hurston und Microtech Kauften. Der Kaiser Kelos Costigan im
                     Jahr 2949 wurde im Jahr 2928 gewählt. Es ist insbesondere
-                    bekannt für die Anwendung des {'"'}Historischen Wahrheitsaktes{'"'}
+                    bekannt für die Anwendung des {'"'}Historischen
+                    Wahrheitsaktes{'"'}
                     (Historical Truth Act), der die Freigabe vieler historischer
                     Akten ermöglicht, insbesondere während des Messer-Regimes.
                     Am 11. Oktober 2945 starteten die Vanduuls einen neuen
@@ -618,12 +622,12 @@ export default function StarmapPage() {
                 ihren beiden Enden zu reisen. Technisch gesehen handelt es sich
                 um Zugangspunkte zu einem vierdimensionalen Tunnel, der einen
                 Durchbruch in der Raum/Zeit schafft. Man muss an seinen Rändern
-                {'"'}surfen{'"'} und bestimmte Bahnen einhalten, um nicht mit Objekten
-                im Tunnel oder in instabilen Gebieten darin zu kollidieren, was
-                katastrophale Folgen hätte. In Star Citizen, aus Gründen der
-                Spielbarkeit, wurden die Entfernungen durch 10 und die Größe der
-                Sterne durch 6 geteilt (Nur im Spiel, nicht in der Lore). Man
-                erhält also folgende Werte:
+                {'"'}surfen{'"'} und bestimmte Bahnen einhalten, um nicht mit
+                Objekten im Tunnel oder in instabilen Gebieten darin zu
+                kollidieren, was katastrophale Folgen hätte. In Star Citizen,
+                aus Gründen der Spielbarkeit, wurden die Entfernungen durch 10
+                und die Größe der Sterne durch 6 geteilt (Nur im Spiel, nicht in
+                der Lore). Man erhält also folgende Werte:
               </p>
               <div className="w-full aspect-[3529/1245] relative">
                 <Image
@@ -660,7 +664,8 @@ export default function StarmapPage() {
               <p>
                 Die Theorie hinter den Jump-Points Sprungpunkte sind
                 Gravitationsbrunnen in der Raum-Zeit, die es den Raumschiffen
-                mit Sprungantrieb ermöglichen, einen {'"'}Sprung{'"'} durchzuführen.
+                mit Sprungantrieb ermöglichen, einen {'"'}Sprung{'"'}{' '}
+                durchzuführen.
               </p>
               <p>
                 Diese Anomalien bilden sich immer in der Nähe einer massiven
@@ -763,7 +768,8 @@ export default function StarmapPage() {
                 beiden Ankerpunkte dieser Karte sind die Systeme Sol (Erde) und
                 Terra. Die beiden wichtigsten Systeme des UEE. Um sie herum
                 organisieren sich die von den Menschen gesteuerten Systeme mit
-                den {'"'}westlichen Systemen{'"'} der Vanduul, den {'"'}südlichen Systemen{'"'}
+                den {'"'}westlichen Systemen{'"'} der Vanduul, den {'"'}
+                südlichen Systemen{'"'}
                 der Banu, und den {'"'}östlichen Systemen{'"'} der Xi{"'"}an.
               </p>
               <p>

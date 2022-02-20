@@ -6,7 +6,6 @@ import { Tab } from '@headlessui/react'
 import { client } from 'pages/_app'
 import { GET_VERSEEXKURS_UEE } from 'graphql/queries'
 
-
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_UEE })
 

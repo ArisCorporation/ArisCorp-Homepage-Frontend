@@ -88,7 +88,6 @@ export default function IndexPage({
   comm_links,
   partner,
 }) {
-  
   useEffect(() => {
     const script = document.createElement('script')
 
