@@ -11,6 +11,7 @@ import {
 const NextNProgress = dynamic(() => import('nextjs-progressbar'))
 
 export const client = new ApolloClient({
+  ssrMode: true,
   uri: 'https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr',
   cache: new InMemoryCache(),
 })
