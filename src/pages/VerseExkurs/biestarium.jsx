@@ -1,43 +1,29 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import { Tab } from '@headlessui/react'
-import { Tabs } from 'react-tabs'
 import Link from 'next/link'
+import { client } from 'pages/_app'
+import { GET_VERSEEXKURS_BIESTARIUM } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VERSEEXKURS_BIESTARIUM })
 
-const ALIENRASSEN = gql`
-  query Alienrassen {
-    alienrassen(filter: { alienrassen_name: { _eq: "Biestarium" } }) {
-      id
-      alienrassen_name
-      alienrassen_banner {
-        id
-        width
-        height
-      }
-      text
-      sections
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function PflanzenPage() {
-  const { loading, error, data } = useQuery(ALIENRASSEN)
+  return {
+    props: {
+      data: await data.alienrassen[0],
+    },
+  }
+}
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
-
-  const Data = data.alienrassen[0]
+export default function BiestariumPage(data) {
+  const Data = data.data
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
@@ -109,6 +95,6 @@ export default function PflanzenPage() {
   )
 }
 
-PflanzenPage.getLayout = function getLayout(page) {
+BiestariumPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
