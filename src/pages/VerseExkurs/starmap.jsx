@@ -21,7 +21,7 @@ export default function StarmapPage() {
   const [swiper, setSwiper] = useState(null)
 
   return (
-    <div className="pt-32 prose prose-td:align-middle prose-invert xl:max-w-[90%] mx-auto">
+    <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
       <Tab.Group>
         <Tab.List className="flex flex-wrap justify-between">
           <Tab

@@ -37,17 +37,23 @@ export default function VerseExkursIndex() {
       <h5 className="mt-3 text-center">
         Für ein paar mehr Daten können sie einfach nach einem Schiff suchen in
         dem sie diese url eingeben:
-        <p className='pt-1 opacity-80'>{'"'}https://ptu.ariscorp.de/ShipExkurs/{'['}
-        hersteller-code (bspw. anvl für Anvil){']'}_{'['}ship-model (bspw.
-        carrack){']'}{'"'}</p>
+        <p className="pt-1 opacity-80">
+          {'"'}https://ptu.ariscorp.de/ShipExkurs/{'['}
+          hersteller-code (bspw. anvl für Anvil){']'}_{'['}ship-model (bspw.
+          carrack){']'}
+          {'"'}
+        </p>
         Fertiger link:{' '}
         <Link href="/ShipExkurs/anvl_carrack">
-          <a className="text-secondary"> https://ptu.ariscorp.de/ShipExkurs/anvl_carrack</a>
+          <a className="text-secondary">
+            {' '}
+            https://ptu.ariscorp.de/ShipExkurs/anvl_carrack
+          </a>
         </Link>
       </h5>
       <p className="mt-3 text-sm italic text-center scale-90 opacity-70">
-        * Hinweis: für seitliches scrollen halten sie Umschalt/Shift gedrückt und drehen
-        sie ihr Mausrad *
+        * Hinweis: für seitliches scrollen halten sie Umschalt/Shift gedrückt
+        und drehen sie ihr Mausrad *
       </p>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
