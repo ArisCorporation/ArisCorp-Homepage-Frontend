@@ -8,7 +8,7 @@ import {
   RSIRoadmapIcon,
 } from 'components/icons'
 import { GET_VEXKURS_INDEX } from 'graphql/queries'
-import { client } from 'pages/_app'
+import client from 'apollo/clients'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VEXKURS_INDEX })

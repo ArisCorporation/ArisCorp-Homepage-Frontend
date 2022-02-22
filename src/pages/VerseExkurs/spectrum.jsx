@@ -3,7 +3,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
-import { client } from 'pages/_app'
+import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SPECTRUM_ARTICLES } from 'graphql/queries'
 
 export async function getServerSideProps() {

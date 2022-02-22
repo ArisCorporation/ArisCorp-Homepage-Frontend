@@ -1,7 +1,7 @@
 import Layout from 'pages/VerseExkurs/layout'
 import Image from 'next/image'
 import Link from 'next/link'
-import { client } from 'pages/_app'
+import client from 'apollo/clients'
 import { GET_VERSEEXKURS_LITERATUREN } from 'graphql/queries'
 
 export async function getServerSideProps() {

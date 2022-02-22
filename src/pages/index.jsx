@@ -6,7 +6,7 @@ import RectruitmentSection from 'components/HomeRecruitment'
 import PartnerSection from 'components/HomePartnerSection'
 import Script from 'next/script'
 const { gql } = require('@apollo/client')
-import { client } from './_app'
+import client from 'apollo/clients'
 import { useEffect } from 'react'
 import Layout from './layout'
 

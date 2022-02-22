@@ -3,7 +3,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
-import { client } from 'pages/_app'
+import client from 'apollo/clients'
 import { GET_VERSEEXKURS_UEE } from 'graphql/queries'
 
 export async function getServerSideProps() {

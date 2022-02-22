@@ -262,6 +262,22 @@ export const GET_VERSEEXKURS_UEE = gql`
   }
 `
 
+export const GET_VERSEEXKURS_ALIENRASSEN = gql`
+  query GetVerseExkursAlienrassen {
+    alienrassen(filter: { status: { _eq: published } }) {
+      id
+      alienrassen_name
+      alienrassen_banner {
+        id
+        width
+        height
+      }
+      text
+      sections
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_ALIENRASSE = gql`
   query GetVerseExkursAlienrasse($alienrasse: String!) {
     alienrassen(filter: { alienrassen_name: { _eq: $alienrasse } }) {

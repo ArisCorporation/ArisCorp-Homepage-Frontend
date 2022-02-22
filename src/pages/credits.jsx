@@ -3,7 +3,7 @@ import { SquareLoader } from 'react-spinners'
 import rehypeRaw from 'rehype-raw'
 import Layout from './layout'
 import { GET_CREDITS } from 'graphql/queries'
-import { client } from './_app'
+import client from 'apollo/clients'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_CREDITS })

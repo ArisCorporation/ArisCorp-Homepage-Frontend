@@ -24,7 +24,7 @@ const PartnerSection = ({ data }) => {
                   }
                   width={250}
                   height={250}
-                  alt={partner.partner_name + " Logo"}
+                  alt={partner.partner_name + ' Logo'}
                   placeholder="blur"
                   blurDataURL={
                     'https://cms.ariscorp.de/assets/' +

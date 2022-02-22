@@ -1,14 +1,15 @@
 import Footer from 'components/Footer'
 import HeroSection from 'components/HomeHero'
 import Navbar from 'components/HomeNavbar'
-import Sidebar from 'components/VerseExkursSidebar'
+import client from 'apollo/clients'
 import { useRouter } from 'next/router'
+import { ApolloProvider } from '@apollo/client'
 
 export default function Layout({ children }) {
   const router = useRouter()
 
   return (
-    <>
+    <ApolloProvider client={client}>
       <Navbar />
 
       {router.pathname == '/' ? <HeroSection /> : ''}
@@ -18,6 +19,6 @@ export default function Layout({ children }) {
       </div>
 
       <Footer />
-    </>
+    </ApolloProvider>
   )
 }
