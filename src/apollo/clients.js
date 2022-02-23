@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client'
 import { RestLink } from 'apollo-link-rest'
 
-const localRestLink = new RestLink({ uri: 'http://localhost:3000/api/' })
+const localRestLink = new RestLink({ uri: '/api/' })
 
 export const client = new ApolloClient({
   ssrMode: true,
