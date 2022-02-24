@@ -1,20 +1,32 @@
 import Layout from './layout'
 import Link from 'next/link'
 import { gql, useQuery } from '@apollo/client'
+import formatJson from 'cms/formatJson'
+import fetchCarrack from 'cms/fetchCarrack'
+import { Directus } from '@directus/sdk'
+
+const directus = new Directus('https://cms.ariscorp.de')
+
+directus.auth.static('ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr')
+
+const ships = directus.items('ships')
 
 const GET_SHIPS = gql`
   query getShips {
     ships @rest(path: "ships") {
       data {
+        ClassName
         Name
         Description
         Size
-        Manufacturer {
-          Name
-        }
-        RemoteTurrets {
-          Gimballed
-        }
+        Career
+        Role
+        Cargo
+        Crew
+        WeaponCrew
+        OperationsCrew
+        Mass
+        IsSpaceship
       }
     }
   }
@@ -27,6 +39,35 @@ export default function VerseExkursIndex() {
     return <div className="flex justify-center pt-32">loading...</div>
 
   if (error) return <p>Error :(</p>
+
+  async function test(data) {
+    // Replace-Function
+    function renameKey(obj, oldKey, newKey) {
+      obj[newKey] = obj[oldKey]
+      delete obj[oldKey]
+    }
+    // Replace Key: ClassName with Key: _slug
+    const sData = JSON.parse(JSON.stringify(data))
+    sData.ships.data.forEach((obj) => renameKey(obj, 'ClassName', '_slug'))
+
+    // Replace Key: Name with Key: model
+    sData.ships.data.forEach((obj) => renameKey(obj, 'Name', 'model'))
+
+    // Replace Key: Description with Key: description
+    sData.ships.data.forEach((obj) =>
+      renameKey(obj, 'Description', 'description')
+    )
+    // Remove Quotes && Replace "\n" with "<br />"
+    const shipjson = JSON.stringify(sData.ships.data)
+    const shipdata = shipjson
+      .replace(/"([^"]+)":/g, '$1:')
+      .replace(/\\n/g, '<br />')
+      .replace('}{', '},{')
+
+    const tetst = JSON.parse(shipjson.replace(/\\n/g, '<br />'))
+
+    console.log(await ships.createMany(tetst))
+  }
 
   return (
     <div className="[overflow-x:scroll!important]">
@@ -55,6 +96,7 @@ export default function VerseExkursIndex() {
         * Hinweis: für seitliches scrollen halten sie Umschalt/Shift gedrückt
         und drehen sie ihr Mausrad *
       </p>
+      <button onClick={() => formatJson(data)}>test</button>
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </div>
   )

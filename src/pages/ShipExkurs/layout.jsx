@@ -1,5 +1,6 @@
 import Footer from 'components/Footer'
 import Sidebar from 'components/VerseExkursSidebar'
+import client from 'apollo/clients'
 import { LocalApiClient } from 'apollo/clients'
 import { ApolloProvider } from '@apollo/client'
 
