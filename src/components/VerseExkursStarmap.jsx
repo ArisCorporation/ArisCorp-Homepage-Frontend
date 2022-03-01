@@ -4095,13 +4095,13 @@ export default function Starmap() {
         </div>
       </div>
 
-      <ReactTooltip
+      {/* <ReactTooltip
         place="right"
         effect="solid"
         arrowColor="transparent"
         type="dark"
         padding="8px"
-      />
+      /> */}
 
       <Image
         src={

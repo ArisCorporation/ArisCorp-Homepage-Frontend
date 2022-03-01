@@ -210,7 +210,10 @@ export default function Sidebar() {
         >
           <div className="relative min-h-full pb-[150px]">
             <ul className="pl-0 lg:pt-5 pt-[5px] m-0 list-none">
-              <li className="p-0 m-0 list-none group" data-tip="Home">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Home' : ''}
+              >
                 <Link href="/VerseExkurs">
                   <a
                     className={
@@ -255,7 +258,9 @@ export default function Sidebar() {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
-                      data-tip="Geschichte"
+                      data-tip={
+                        !mobileView && sidebarCollapsed ? 'Geschichte' : ''
+                      }
                     >
                       <div
                         className={
@@ -421,7 +426,10 @@ export default function Sidebar() {
                   </>
                 )}
               </Disclosure>
-              <li className="p-0 m-0 list-none group" data-tip="Home">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Home' : ''}
+              >
                 <Link href="/VerseExkurs/uee">
                   <a
                     className={
@@ -455,7 +463,10 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="p-0 m-0 list-none group" data-tip="ARK Starmap">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'ARK Starmap' : ''}
+              >
                 <Link href="/VerseExkurs/starmap">
                   <a
                     className={
@@ -499,7 +510,9 @@ export default function Sidebar() {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
-                      data-tip="Alienrassen"
+                      data-tip={
+                        !mobileView && sidebarCollapsed ? 'Alienrassen' : ''
+                      }
                     >
                       <div
                         className={
@@ -899,7 +912,7 @@ export default function Sidebar() {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
-                      data-tip="Firmen"
+                      data-tip={!mobileView && sidebarCollapsed ? 'Firmen' : ''}
                     >
                       <div
                         className={
@@ -1231,7 +1244,10 @@ export default function Sidebar() {
                   </>
                 )}
               </Disclosure>
-              <li className="p-0 m-0 list-none group" data-tip="Technologie">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Technologie' : ''}
+              >
                 <Link href="/VerseExkurs/technologie">
                   <a
                     className={
@@ -1264,7 +1280,10 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="p-0 m-0 list-none group" data-tip="Spectrum">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Spectrum' : ''}
+              >
                 <Link href="/VerseExkurs/spectrum">
                   <a
                     className={
@@ -1297,7 +1316,10 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li className="p-0 m-0 list-none group" data-tip="Literatur">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Literatur' : ''}
+              >
                 <Link href="/VerseExkurs/literatur">
                   <a
                     className={
@@ -1332,7 +1354,10 @@ export default function Sidebar() {
               </li>
             </ul>
             <ul className="absolute bottom-0 p-0 pb-[10px] lg:pb-5 m-0 list-none">
-              <li className="p-0 m-0 list-none group" data-tip="Zurück">
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Zurück' : ''}
+              >
                 <Link href="/">
                   <a
                     className={
@@ -1369,7 +1394,7 @@ export default function Sidebar() {
                 className={
                   'p-0 m-0 list-none group' + (mobileView ? ' hidden' : '')
                 }
-                data-tip="Expand"
+                data-tip={!mobileView && sidebarCollapsed ? 'Expand' : ''}
               >
                 <a
                   className={
@@ -1439,18 +1464,6 @@ export default function Sidebar() {
           </div>
         </div>
       </nav>
-
-      {!mobileView && sidebarCollapsed ? (
-        <ReactTooltip
-          place="right"
-          effect="solid"
-          arrowColor="transparent"
-          type="dark"
-          padding="8px"
-        />
-      ) : (
-        ''
-      )}
     </>
   )
 }
