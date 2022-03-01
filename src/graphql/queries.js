@@ -391,6 +391,7 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
     literatur(
       filter: { status: { _eq: "published" } }
       sort: ["sort", "literatur_kapitel"]
+      limit: 1000
     ) {
       id
       status
@@ -411,7 +412,7 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
 export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
   query GetVerseExkursLiteraturArticle($Id: Float!) {
     literatur(
-      filter: { id: { _eq: $Id } }
+      filter: { status: { _eq: "published" } literatur_kapitel: { _eq: $Id } }
       sort: ["sort", "literatur_kapitel"]
     ) {
       id

@@ -1,10 +1,10 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_LITERATUR_REIHE } from 'graphql/queries'
+import ArticleCard from 'components/VerseExkursArticleCard'
 
 export default function LiteraturReihenPage() {
   const router = useRouter()
@@ -25,7 +25,8 @@ export default function LiteraturReihenPage() {
 
   const Data = data.literatur
 
-  const reihe = Data[0].literatur_reihe
+  const reihe = Data.filter((data) => data.literatur_reihe.id == rid)[0]
+    .literatur_reihe
 
   return (
     <div className="pt-3 print:pt-0">
@@ -50,49 +51,13 @@ export default function LiteraturReihenPage() {
       </div>
       <div>
         {Data.filter((data) => data.literatur_reihe.id == rid).map((data) => (
-          <div
+          <ArticleCard
             key={data.id}
-            className="w-full h-48 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
-          >
-            <Link
-              href={
-                '/VerseExkurs/literatur/' +
-                reihe.id +
-                '/' +
-                data.literatur_kapitel
-              }
-            >
-              <a className="pr-0 text-white decoration-transparent">
-                <div className="flex items-center w-full h-full px-8">
-                  <div className={'relative h-3/4 w-1/3'}>
-                    <Image
-                      src={
-                        'https://cms.ariscorp.de/assets/' +
-                        reihe.reihen_cover?.id
-                      }
-                      layout="fill"
-                      alt={
-                        'Banner von der Literatur Reihe ' + reihe.reihen_titel
-                      }
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/' +
-                        reihe.reihen_cover?.id +
-                        '?width=16&quality=1'
-                      }
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-2xl text-primary md:text-3xl">
-                      {reihe.reihen_titel} - Kapitel: {data.literatur_kapitel}
-                    </h1>
-                  </div>
-                </div>
-              </a>
-            </Link>
-            <hr />
-          </div>
+            link={'literatur/' + reihe.id + '/' + data.literatur_kapitel}
+            title={reihe.reihen_titel + ' - Kapitel: ' + data.literatur_kapitel}
+            image={reihe.reihen_cover?.id}
+            seperator={true}
+          />
         ))}
       </div>
     </div>

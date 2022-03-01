@@ -1,8 +1,8 @@
 import Layout from 'pages/VerseExkurs/layout'
 import Image from 'next/image'
-import Link from 'next/link'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_LITERATUREN } from 'graphql/queries'
+import ArticleCard from 'components/VerseExkursArticleCard'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_LITERATUREN })
@@ -42,42 +42,13 @@ export default function LiteraturReihenPage(data) {
       </div>
       <div>
         {Data.map((data) => (
-          <div
+          <ArticleCard
             key={data.id}
-            className="w-full h-24 transition-all duration-300 ease-in-out sm:h-32 lg:h-40 xl:h-48 my-14 hover:shadow-2xl hover:shadow-secondary"
-          >
-            <Link href={'/VerseExkurs/literatur/' + data.id}>
-              <a className="pr-0 text-white decoration-transparent">
-                <div className="flex items-center w-full h-full px-8">
-                  <div className={'relative h-3/4 w-1/3'}>
-                    <Image
-                      src={
-                        'https://cms.ariscorp.de/assets/' +
-                        data.reihen_cover?.id
-                      }
-                      layout="fill"
-                      alt={
-                        'Banner von der Literatur Reihe ' + data.reihen_titel
-                      }
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/' +
-                        data.reihen_cover?.id +
-                        '?width=16&quality=1'
-                      }
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-base text-primary sm:text-2xl md:text-3xl">
-                      {data.reihen_titel}
-                    </h1>
-                  </div>
-                </div>
-              </a>
-            </Link>
-            <hr />
-          </div>
+            link={'literatur/' + data.id}
+            title={data.reihen_titel}
+            image={data.reihen_cover?.id}
+            seperator={true}
+          />
         ))}
       </div>
     </div>

@@ -1,10 +1,10 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
+import ArticleCard from 'components/VerseExkursArticleCard'
 
 export default function SpectrumCategoryPage() {
   const router = useRouter()
@@ -57,42 +57,13 @@ export default function SpectrumCategoryPage() {
             data.spectrum_beitrag_kateogrie ===
               category.spectrum_beitrag_kateogrie
         ).map((data) => (
-          <div
+          <ArticleCard
             key={data.id}
-            className="w-full h-48 my-10 transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-secondary"
-          >
-            <Link href={'/VerseExkurs/spectrum/' + category.id + '/' + data.id}>
-              <a className="text-white decoration-transparent">
-                <div className="flex items-center w-full h-full px-8">
-                  <div className={'relative h-3/4 w-1/3'}>
-                    <Image
-                      src={
-                        'https://cms.ariscorp.de/assets/' + category.image?.id
-                      }
-                      layout="fill"
-                      alt={
-                        'Banner von der Kategorie: ' +
-                        category.spectrum_beitrag_kateogrie
-                      }
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/' +
-                        category.image?.id +
-                        '?width=16&quality=1'
-                      }
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-2xl text-primary md:text-3xl">
-                      {data.spectrum_titel}
-                    </h1>
-                  </div>
-                </div>
-              </a>
-            </Link>
-            <hr />
-          </div>
+            link={'spectrum/' + category.id + '/' + data.id}
+            title={data.spectrum_titel}
+            image={category.image?.id}
+            seperator={true}
+          />
         ))}
       </div>
     </div>

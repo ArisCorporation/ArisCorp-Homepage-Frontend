@@ -1,11 +1,8 @@
 import Layout from 'pages/VerseExkurs/layout'
 import Image from 'next/image'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
-import Link from 'next/link'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SPECTRUM_ARTICLES } from 'graphql/queries'
-import ArticleCards from 'components/VerseExkursArticleCards'
+import ArticleCard from 'components/VerseExkursArticleCard'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -46,13 +43,18 @@ export default function SpectrumPage(data) {
         <hr />
       </div>
       <div>
-      <ArticleCards
-              title={"data.spectrum_beitrag_kateogrie"}
-              desc={"data.spectrum_text"}
-              image={"data.image?.id"}
-              link={"(data.id != 19 ? 'spectrum/' + data.id : 'spectrum/19/125')"}
-            />
-          
+        {Data.filter(
+          (data) => data.spectrum_kategorie_beschreibung == true
+        ).map((data) => (
+          <ArticleCard
+            key={data.id}
+            link={data.id == 19 ? "spectrum/19/125" : ("spectrum/" + data.id)}
+            title={data.spectrum_titel}
+            desc={data.spectrum_text}
+            image={data.image.id}
+            seperator={true}
+          />
+        ))}
       </div>
     </div>
   )

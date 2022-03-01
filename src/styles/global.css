@@ -79,7 +79,7 @@
     @apply hidden;
   }
   .desc-truncate p {
-    @apply truncate;
+    @apply truncate lg:whitespace-normal;
   }
 }
 hr {
