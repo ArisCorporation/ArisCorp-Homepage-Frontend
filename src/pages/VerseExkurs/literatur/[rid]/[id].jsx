@@ -37,7 +37,7 @@ export default function LiteraturArticlePage() {
             Literatur:{' '}
             <span className="text-primary">
               {Data.literatur_reihe.reihen_titel} - Kapitel:{' '}
-              {data.literatur_kapitel}
+              {Data.literatur_kapitel}
             </span>
           </h1>
           <hr />
