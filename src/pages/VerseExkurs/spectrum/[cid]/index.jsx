@@ -84,7 +84,9 @@ export default function SpectrumCategoryPage() {
                     />
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-primary">{data.spectrum_titel}</h1>
+                    <h1 className="text-2xl text-primary md:text-3xl">
+                      {data.spectrum_titel}
+                    </h1>
                   </div>
                 </div>
               </a>

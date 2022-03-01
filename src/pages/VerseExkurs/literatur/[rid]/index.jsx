@@ -84,7 +84,7 @@ export default function LiteraturReihenPage() {
                     />
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-primary">
+                    <h1 className="text-2xl text-primary md:text-3xl">
                       {reihe.reihen_titel} - Kapitel: {data.literatur_kapitel}
                     </h1>
                   </div>

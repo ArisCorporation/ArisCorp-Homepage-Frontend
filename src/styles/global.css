@@ -78,6 +78,9 @@
   .child-delete-image img {
     @apply hidden;
   }
+  .desc-truncate p {
+    @apply truncate;
+  }
 }
 hr {
   width: 100%;

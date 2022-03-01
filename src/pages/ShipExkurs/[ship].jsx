@@ -59,7 +59,7 @@ export default function VerseExkursIndex() {
     return <div className="flex justify-center pt-32">loading...</div>
 
   if (error) return <p>Error :(</p>
-  
+
   return (
     <>
       <h1 className="text-center">

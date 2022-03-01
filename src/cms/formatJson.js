@@ -393,6 +393,4 @@ export default async function formatJson(sdata) {
   // await articles.deleteMany([15, 42]);
 
   await ships.createMany(shipjson)
-
-
 }

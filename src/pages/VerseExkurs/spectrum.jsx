@@ -79,8 +79,13 @@ export default function SpectrumPage(data) {
                     />
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-primary">{data.spectrum_titel}</h1>
-                    <ReactMarkdown rehypePlugins={[rehypeRaw]} className="pt-3">
+                    <h1 className="text-2xl md:text-3xl text-primary">
+                      {data.spectrum_titel}
+                    </h1>
+                    <ReactMarkdown
+                      rehypePlugins={[rehypeRaw]}
+                      className="pt-3 desc-truncate lg:whitespace-pre-wrap"
+                    >
                       {data.spectrum_text}
                     </ReactMarkdown>
                   </div>
