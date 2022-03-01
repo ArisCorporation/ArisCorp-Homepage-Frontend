@@ -44,4 +44,4 @@ const ArticleCard = ({ link, title, desc, image, seperator, alt }) => {
   )
 }
 
-export default ArticleCards
+export default ArticleCard
