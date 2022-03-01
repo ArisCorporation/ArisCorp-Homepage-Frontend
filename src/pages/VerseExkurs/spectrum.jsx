@@ -5,6 +5,7 @@ import rehypeRaw from 'rehype-raw'
 import Link from 'next/link'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SPECTRUM_ARTICLES } from 'graphql/queries'
+import ArticleCards from 'components/VerseExkursArticleCards'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -45,56 +46,13 @@ export default function SpectrumPage(data) {
         <hr />
       </div>
       <div>
-        {Data.filter(
-          (data) => data.spectrum_kategorie_beschreibung == true
-        ).map((data) => (
-          <div
-            key={data.id}
-            className="w-full h-64 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
-          >
-            <Link
-              href={
-                data.id == 19
-                  ? '/VerseExkurs/spectrum/19/125'
-                  : '/VerseExkurs/spectrum/' + data.id
-              }
-            >
-              <a className="pr-0 decoration-transparent text-inherit">
-                <div className="flex items-center w-full h-full px-8">
-                  <div className={'relative h-3/4 w-1/3'}>
-                    <Image
-                      src={'https://cms.ariscorp.de/assets/' + data.image?.id}
-                      layout="fill"
-                      alt={
-                        'Banner von der Kategorie: ' +
-                        data.spectrum_beitrag_kateogrie
-                      }
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/' +
-                        data.image?.id +
-                        '?width=16&quality=1'
-                      }
-                      objectFit="cover"
-                    />
-                  </div>
-                  <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-2xl md:text-3xl text-primary">
-                      {data.spectrum_titel}
-                    </h1>
-                    <ReactMarkdown
-                      rehypePlugins={[rehypeRaw]}
-                      className="pt-3 desc-truncate lg:whitespace-pre-wrap"
-                    >
-                      {data.spectrum_text}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              </a>
-            </Link>
-            <hr />
-          </div>
-        ))}
+      <ArticleCards
+              title={"data.spectrum_beitrag_kateogrie"}
+              desc={"data.spectrum_text"}
+              image={"data.image?.id"}
+              link={"(data.id != 19 ? 'spectrum/' + data.id : 'spectrum/19/125')"}
+            />
+          
       </div>
     </div>
   )

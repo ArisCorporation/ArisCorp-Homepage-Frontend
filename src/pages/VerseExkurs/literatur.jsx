@@ -44,7 +44,7 @@ export default function LiteraturReihenPage(data) {
         {Data.map((data) => (
           <div
             key={data.id}
-            className="w-full h-48 transition-all duration-300 ease-in-out my-14 hover:shadow-2xl hover:shadow-secondary"
+            className="w-full h-24 transition-all duration-300 ease-in-out sm:h-32 lg:h-40 xl:h-48 my-14 hover:shadow-2xl hover:shadow-secondary"
           >
             <Link href={'/VerseExkurs/literatur/' + data.id}>
               <a className="pr-0 text-white decoration-transparent">
@@ -69,7 +69,7 @@ export default function LiteraturReihenPage(data) {
                     />
                   </div>
                   <div className="w-2/3 px-10 text-xs sm:text-base">
-                    <h1 className="text-2xl text-primary md:text-3xl">
+                    <h1 className="text-base text-primary sm:text-2xl md:text-3xl">
                       {data.reihen_titel}
                     </h1>
                   </div>
