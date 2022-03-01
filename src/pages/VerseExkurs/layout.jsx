@@ -9,13 +9,15 @@ export default function Layout({ children }) {
     <ApolloProvider client={client}>
       <div className="flex">
         <Sidebar />
-        <ReactTooltip
-          place="right"
-          effect="solid"
-          arrowColor="transparent"
-          type="dark"
-          padding="8px"
-        />
+        <div className="z-[999]">
+          <ReactTooltip
+            place="right"
+            effect="solid"
+            arrowColor="transparent"
+            type="dark"
+            padding="8px"
+          />
+        </div>
         <div
           className="flex flex-col justify-between flex-1 h-full max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"
           style={{ transition: 'left .5s ease,right .5s ease' }}

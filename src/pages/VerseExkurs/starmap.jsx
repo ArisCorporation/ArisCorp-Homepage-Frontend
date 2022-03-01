@@ -27,63 +27,55 @@ export default function StarmapPage() {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
-              <StarmapIcon classes="fill-white" width="150px" height="150px" />
+              <StarmapIcon classes="fill-white" width="100%" height="100%" />
             </h1>
           </Tab>
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
               <SystemHistoryIcon
                 classes="fill-white"
-                width="150px"
-                height="150px"
+                width="100%"
+                height="100%"
               />
             </h1>
           </Tab>
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
-              <DistancesIcon
-                classes="fill-white"
-                width="150px"
-                height="150px"
-              />
+              <DistancesIcon classes="fill-white" width="100%" height="100%" />
             </h1>
           </Tab>
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
-              <JumppointsIcon
-                classes="fill-white"
-                width="150px"
-                height="150px"
-              />
+              <JumppointsIcon classes="fill-white" width="100%" height="100%" />
             </h1>
           </Tab>
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
-              <BorderIcon classes="fill-white" width="150px" height="150px" />
+              <BorderIcon classes="fill-white" width="100%" height="100%" />
             </h1>
           </Tab>
           <hr />
@@ -94,15 +86,17 @@ export default function StarmapPage() {
               <h2>
                 Für die Systembeschreibung klicken sie auf das jeweilige System
               </h2>
-              <div className="w-[637px] h-[160px] relative">
-                <Image
-                  src="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b"
-                  layout="fill"
-                  alt="Starmap Legende"
-                  objectFit="contain"
-                  placeholder="blur"
-                  blurDataURL="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b?width=16&quality=1"
-                />
+              <div className="w-8/12 max-w-[630px] aspect-[637/160]">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b"
+                    layout="fill"
+                    alt="Starmap Legende"
+                    objectFit="contain"
+                    placeholder="blur"
+                    blurDataURL="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b?width=16&quality=1"
+                  />
+                </div>
               </div>
               <Starmap />
             </div>
