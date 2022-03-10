@@ -202,14 +202,14 @@ export default function Sidebar() {
       >
         <div
           className={
-            'fixed w-[300px] lg:h-full top-0 lg:top-auto lg:r-auto bottom-0 lg:bottom-auto left-auto lg:left-0 h-screen max-h-screen lg:max-h-full pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] lg:p-0 overflow-x-hidden overflow-y-auto bg-[rgba(39,43,48,.5)] border-r-[1px] border-solid border-r-[rgba(30,34,38,.5)] transition-[left] duration-500 ease-[right] ' +
+            'sidebar-scrollbar fixed w-[300px] lg:h-full top-0 lg:top-auto lg:r-auto bottom-0 lg:bottom-auto left-auto lg:left-0 h-screen max-h-screen lg:max-h-full pt-[env(safe-area-inset-top)] pl-[env(safe-area-inset-left)] lg:p-0 overflow-x-hidden overflow-y-auto bg-[rgba(39,43,48,.5)] border-r-[1px] border-solid border-r-[rgba(30,34,38,.5)] transition-[left] duration-500 ease-[right] ' +
             (mobileOpen ? ' right-0' : 'right-[-300px]') +
             (!mobileView && sidebarCollapsed ? ' w-[80px]' : '')
           }
           style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
         >
           <div className="relative min-h-full pb-[150px]">
-            <ul className="pl-0 lg:pt-5 pt-[5px] m-0 list-none">
+            <ul className="pl-0 lg:pt-5 pt-[5px] pb-[10px] lg:pb-8 m-0 list-none">
               <li
                 className="p-0 m-0 list-none group"
                 data-tip={!mobileView && sidebarCollapsed ? 'Home' : ''}

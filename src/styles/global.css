@@ -144,6 +144,25 @@ html::-webkit-scrollbar-thumb {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
+.sidebar-scrollbar {
+  overflow-x: hidden;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-track {
+  @apply rounded bg-bg-secondary;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  /*border-radius: 10px; */
+}
+
+.sidebar-scrollbar::-webkit-scrollbar {
+  @apply w-[4px] bg-bg-secondary;
+}
+
+.sidebar-scrollbar::-webkit-scrollbar-thumb {
+  @apply rounded bg-primary;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
 figcaption p span + figcaption p span::before {
   display: inline-block;
   white-space: pre;
