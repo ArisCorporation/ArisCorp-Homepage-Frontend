@@ -19,6 +19,15 @@ const xianIcon =
 export default function Starmap() {
   return (
     <div className="lg:w-full max-w-[1200px] aspect-[1200/841]">
+      <div className="z-50">
+        <ReactTooltip
+          place="right"
+          effect="solid"
+          arrowColor="transparent"
+          type="dark"
+          padding="8px"
+        />
+      </div>
       <div className="relative w-full h-full mx-auto">
         <div
           id="branaugh"

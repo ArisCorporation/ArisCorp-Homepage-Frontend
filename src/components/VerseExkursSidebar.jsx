@@ -1462,15 +1462,17 @@ export default function Sidebar() {
               </li>
             </ul>
           </div>
-          <div className="z-50">
-            <ReactTooltip
-              place="right"
-              effect="solid"
-              arrowColor="transparent"
-              type="dark"
-              padding="8px"
-            />
-          </div>
+          {router.asPath == '/VerseExkurs/technologie' ? (
+            <div className="z-50">
+              <ReactTooltip
+                place="right"
+                effect="solid"
+                arrowColor="transparent"
+                type="dark"
+                padding="8px"
+              />
+            </div>
+          ) : null}
         </div>
       </nav>
     </>
