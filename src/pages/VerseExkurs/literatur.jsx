@@ -22,6 +22,8 @@ export async function getServerSideProps() {
 
 export default function LiteraturReihenPage(data) {
   const Data = data.data
+  
+  console.log(Data)
 
   return (
     <div className="pt-3 print:pt-0">
@@ -44,7 +46,7 @@ export default function LiteraturReihenPage(data) {
         {Data.map((data) => (
           <ArticleCard
             key={data.id}
-            link={'literatur/' + data.id}
+            link={(data.literatur_reihen_single_kapitel_bool == true ? ('literatur/s/' + data.id) : ('literatur/' + data.id))}
             title={data.reihen_titel}
             image={data.reihen_cover?.id}
             seperator={true}

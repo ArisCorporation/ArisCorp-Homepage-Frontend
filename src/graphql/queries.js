@@ -382,6 +382,8 @@ export const GET_VERSEEXKURS_LITERATUREN = gql`
       }
       reihen_author
       reihen_protagonist
+      literatur_reihen_single_kapitel_bool
+      text
     }
   }
 `
@@ -403,8 +405,30 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
           height
         }
         reihen_titel
+        literatur_reihen_single_kapitel_bool
+        text
       }
       literatur_kapitel
+    }
+  }
+`
+export const GET_VERSEEXKURS_LITERATUR_REIHEN = gql`
+  query GetVerseExkursLiteraturReihen {
+    literatur_reihen(filter: { status: { _eq: "published" } }, limit: 400) {
+      id
+      status
+      reihen_cover {
+        id
+        width
+        height
+      }
+      reihen_titel
+      literatur_reihen_single_kapitel_bool
+      text
+      literatur(sort: ["sort", "literatur_kapitel"]) {
+        id
+        literatur_kapitel
+      }
     }
   }
 `
@@ -412,7 +436,7 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
 export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
   query GetVerseExkursLiteraturArticle($Id: Float!) {
     literatur(
-      filter: { status: { _eq: "published" } literatur_kapitel: { _eq: $Id } }
+      filter: { status: { _eq: "published" }, literatur_kapitel: { _eq: $Id } }
       sort: ["sort", "literatur_kapitel"]
     ) {
       id
