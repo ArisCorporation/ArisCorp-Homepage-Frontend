@@ -31,17 +31,13 @@ export default function LiteraturArticlePage() {
           <h1 className="uppercase">
             Literatur:{' '}
             <span className="text-primary">
-              {Data.reihen_titel} - Kapitel:{' '}
-                Einzelkapitel
+              {Data.reihen_titel} - Kapitel: Einzelkapitel
             </span>
           </h1>
           <hr />
           <div className="w-full">
             <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                Data.reihen_cover.id
-              }
+              src={'https://cms.ariscorp.de/assets/' + Data.reihen_cover.id}
               alt={'Banner'}
               width={Data.reihen_cover.width}
               height={Data.reihen_cover.height}
@@ -54,14 +50,10 @@ export default function LiteraturArticlePage() {
             />
           </div>
         </div>
-        <div
-          className={
-            'max-w-[' + Data.reihen_cover.width + 'px] mx-auto'
-          }
-        >
+        <div className={'max-w-[' + Data.reihen_cover.width + 'px] mx-auto'}>
           <h2 className="mt-3">
-            VerseExkurs - Literatur: {Data.reihen_titel} -
-            Kapitel: Einzelkapitel
+            VerseExkurs - Literatur: {Data.reihen_titel} - Kapitel:
+            Einzelkapitel
           </h2>
           <hr className="max-w-[80px]" />
         </div>

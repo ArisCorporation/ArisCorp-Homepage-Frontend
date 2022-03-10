@@ -48,7 +48,7 @@ export default function SpectrumPage(data) {
         ).map((data) => (
           <ArticleCard
             key={data.id}
-            link={data.id == 19 ? "spectrum/19/125" : ("spectrum/" + data.id)}
+            link={data.id == 19 ? 'spectrum/19/125' : 'spectrum/' + data.id}
             title={data.spectrum_titel}
             desc={data.spectrum_text}
             image={data.image.id}

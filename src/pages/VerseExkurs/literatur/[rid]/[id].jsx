@@ -27,7 +27,9 @@ export default function LiteraturArticlePage() {
 
   if (error) return <p>Error :(</p>
 
-  const Data = data.literatur.filter((data) => data.literatur_reihe.id == rid && data.literatur_kapitel == id)[0]
+  const Data = data.literatur.filter(
+    (data) => data.literatur_reihe.id == rid && data.literatur_kapitel == id
+  )[0]
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
