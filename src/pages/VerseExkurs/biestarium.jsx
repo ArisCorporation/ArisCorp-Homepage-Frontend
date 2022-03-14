@@ -24,6 +24,7 @@ export async function getServerSideProps() {
 
 export default function BiestariumPage(data) {
   const Data = data.data
+  // console.log((encodeURIComponent(Data.sections)))
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
@@ -70,7 +71,7 @@ export default function BiestariumPage(data) {
           <div className="flex flex-wrap items-center justify-between text-center">
             {Data.sections.map((data) => (
               <Link
-                href={'/VerseExkurs/biestarium/' + data.title}
+                href={'/VerseExkurs/biestarium/' + (encodeURIComponent(data.title))}
                 key={data.title}
               >
                 <a className="mx-1 mt-10 text-white children-square hover:text-secondary decoration-transparent">
