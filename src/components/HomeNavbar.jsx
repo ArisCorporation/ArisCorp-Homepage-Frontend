@@ -119,7 +119,7 @@ const Navbar = () => {
               </a>
             </Link>
           </div>
-          <button type="button" className="text-white" onClick={toggleMobile}>
+          <button type="button" aria-label="Expand Navbar" className="text-white" onClick={toggleMobile}>
             <FaBars />
           </button>
 
