@@ -8,6 +8,7 @@ module.exports = withPWA({
     runtimeCaching,
   },
   images: {
+    formats: ['image/webp'],
     domains: ['cms.ariscorp.de', 'i.pinimg.com'],
   },
 
