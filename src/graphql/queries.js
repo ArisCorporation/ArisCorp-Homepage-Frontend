@@ -326,6 +326,169 @@ export const GET_VERSEEXKURS_PFLANZEN = gql`
   }
 `
 
+export const GET_VERSEEXKURS_FIRMEN = gql`
+  query GetVerseExkursFirmen {
+    firmen(filter: { status: { _eq: "published" } }) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_HERSTELLER = gql`
+  query GetVerseExkursFirmenHersteller {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenkategorie: { _eq: "hersteller" }
+      }
+    ) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_DIENSTLEISTER = gql`
+  query GetVerseExkursFirmenDienstleister {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenkategorie: { _eq: "dienstleister" }
+      }
+    ) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_SHOPS = gql`
+  query GetVerseExkursFirmenShops {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenkategorie: { _eq: "geschäfte" }
+      }
+    ) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_ORGANISATIONS = gql`
+  query GetVerseExkursFirmenOrganisations {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenkategorie: { _eq: "organisation" }
+      }
+    ) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
+  query GetVerseExkursFirmenOther {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenkategorie: { _eq: "verschiedenes" }
+      }
+    ) {
+      id
+      status
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+      firmen_banner {
+        id
+        width
+        height
+      }
+      firmen_name
+      firmenkategorie
+      firmenherstellerkategorie
+      firmen_text
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_SPECTRUM_ARTICLES = gql`
   query GetVerseExkursSpectrumArticles {
     spectrum(
