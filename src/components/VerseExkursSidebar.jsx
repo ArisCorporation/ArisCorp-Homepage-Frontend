@@ -565,12 +565,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="BanuTip"
                           >
-                            <Link href="/VerseExkurs/alienrasse/Banu">
+                            <Link href="/VerseExkurs/banu">
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  '/VerseExkurs/alienrasse/Banu'
+                                  '/VerseExkurs/banu'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -621,12 +621,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="TevarinTip"
                           >
-                            <Link href="/VerseExkurs/alienrasse/Tevarin">
+                            <Link href="/VerseExkurs/tevarin">
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  '/VerseExkurs/alienrasse/Tevarin'
+                                  '/VerseExkurs/tevarin'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -677,12 +677,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="VanduulTip"
                           >
-                            <Link href="/VerseExkurs/alienrasse/Vanduul">
+                            <Link href="/VerseExkurs/vanduul">
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  '/VerseExkurs/alienrasse/Vanduul'
+                                  '/VerseExkurs/vanduul'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -733,12 +733,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="XiAnTip"
                           >
-                            <Link href="/VerseExkurs/alienrasse/XiAn">
+                            <Link href="/VerseExkurs/xian">
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  '/VerseExkurs/alienrasse/XiAn'
+                                  '/VerseExkurs/xian'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
