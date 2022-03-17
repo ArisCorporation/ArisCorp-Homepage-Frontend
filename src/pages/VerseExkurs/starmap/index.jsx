@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import ReactTooltip from 'react-tooltip'
-import Layout from '../../layout'
+import Layout from 'pages/VerseExkurs/layout'
 import { useState } from 'react'
 import Starmap from 'components/VerseExkursStarmap'
 import { Tab } from '@headlessui/react'
