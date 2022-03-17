@@ -96,7 +96,9 @@ export default function PflanzenPage(data) {
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
                   <Link
-                    href={'/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)}
+                    href={
+                      '/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)
+                    }
                     key={data.title}
                   >
                     <a
@@ -120,7 +122,9 @@ export default function PflanzenPage(data) {
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
                   <Link
-                    href={'/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)}
+                    href={
+                      '/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)
+                    }
                     key={data.title}
                   >
                     <a

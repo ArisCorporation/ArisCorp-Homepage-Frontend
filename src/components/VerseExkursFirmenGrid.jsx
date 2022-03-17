@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-const FirmenCard = ({data}) => {
+const FirmenCard = ({ data }) => {
   return (
     <div className="transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square opacity-80 hover:opacity-100">
       <div className="relative w-full h-full">

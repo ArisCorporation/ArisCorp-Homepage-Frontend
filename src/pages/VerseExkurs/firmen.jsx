@@ -210,10 +210,7 @@ export default function Firmen({ data }) {
             <div>
               <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
                 {data
-                  .filter(
-                    (data) =>
-                      data.firmenkategorie === 'dienstleister'
-                  )
+                  .filter((data) => data.firmenkategorie === 'dienstleister')
                   .map((data) => (
                     <>
                       <FirmenCard data={data} />
@@ -224,12 +221,9 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-            <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
                 {data
-                  .filter(
-                    (data) =>
-                      data.firmenkategorie === 'geschäfte'
-                  )
+                  .filter((data) => data.firmenkategorie === 'geschäfte')
                   .map((data) => (
                     <>
                       <FirmenCard data={data} />
@@ -240,12 +234,9 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-            <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
                 {data
-                  .filter(
-                    (data) =>
-                      data.firmenkategorie === 'organisation'
-                  )
+                  .filter((data) => data.firmenkategorie === 'organisation')
                   .map((data) => (
                     <>
                       <FirmenCard data={data} />
@@ -256,12 +247,9 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-            <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
                 {data
-                  .filter(
-                    (data) =>
-                      data.firmenkategorie === 'verschiedenes'
-                  )
+                  .filter((data) => data.firmenkategorie === 'verschiedenes')
                   .map((data) => (
                     <>
                       <FirmenCard data={data} />

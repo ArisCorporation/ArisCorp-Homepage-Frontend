@@ -71,7 +71,9 @@ export default function BiestariumPage(data) {
           <div className="flex flex-wrap items-center justify-between text-center">
             {Data.sections.map((data) => (
               <Link
-                href={'/VerseExkurs/biestarium/' + (encodeURIComponent(data.title))}
+                href={
+                  '/VerseExkurs/biestarium/' + encodeURIComponent(data.title)
+                }
                 key={data.title}
               >
                 <a className="mx-1 mt-10 text-white children-square hover:text-secondary decoration-transparent">

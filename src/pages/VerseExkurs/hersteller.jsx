@@ -1,15 +1,17 @@
-import Layout from '../layout'
+import Layout from './layout'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import client from 'apollo/clients'
-import { GET_VERSEEXKURS_FIRMEN } from 'graphql/queries'
+import { GET_VERSEEXKURS_FIRMEN_HERSTELLER } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
 import Image from 'next/image'
 import FirmenCard from 'components/VerseExkursFirmenGrid'
 import Link from 'next/link'
 
 export async function getServerSideProps() {
-  const { data } = await client.query({ query: GET_VERSEEXKURS_FIRMEN })
+  const { data } = await client.query({
+    query: GET_VERSEEXKURS_FIRMEN_HERSTELLER,
+  })
 
   if (!data) {
     return {
@@ -71,17 +73,25 @@ export default function Hersteller({ data }) {
           </Tab>
           <hr />
           <div className="flex px-4 space-x-4">
-            <Link href={"/VerseExkurs/dienstleister"}>
-              <a><p>Dienstleister,</p></a>
+            <Link href={'/VerseExkurs/dienstleister'}>
+              <a>
+                <p>Dienstleister,</p>
+              </a>
             </Link>
-            <Link href={"/VerseExkurs/geschafte"}>
-              <a><p>Geschäfte,</p></a>
+            <Link href={'/VerseExkurs/geschafte'}>
+              <a>
+                <p>Geschäfte,</p>
+              </a>
             </Link>
-            <Link href={"/VerseExkurs/organisationen"}>
-              <a><p>Organisationen,</p></a>
+            <Link href={'/VerseExkurs/organisationen'}>
+              <a>
+                <p>Organisationen,</p>
+              </a>
             </Link>
-            <Link href={"/VerseExkurs/Verschiedenes"}>
-              <a><p>Verschiedenes</p></a>
+            <Link href={'/VerseExkurs/verschiedene'}>
+              <a>
+                <p>Verschiedene</p>
+              </a>
             </Link>
           </div>
         </Tab.List>
@@ -91,7 +101,6 @@ export default function Hersteller({ data }) {
               {data
                 .filter(
                   (data) =>
-                    data.firmenkategorie === 'hersteller' &&
                     data.firmenherstellerkategorie === 'schiffshersteller'
                 )
                 .map((data) => (
@@ -106,7 +115,6 @@ export default function Hersteller({ data }) {
               {data
                 .filter(
                   (data) =>
-                    data.firmenkategorie === 'hersteller' &&
                     data.firmenherstellerkategorie === 'komponentenhersteller'
                 )
                 .map((data) => (
@@ -121,7 +129,6 @@ export default function Hersteller({ data }) {
               {data
                 .filter(
                   (data) =>
-                    data.firmenkategorie === 'hersteller' &&
                     data.firmenherstellerkategorie === 'waffenhersteller'
                 )
                 .map((data) => (
@@ -136,9 +143,8 @@ export default function Hersteller({ data }) {
               {data
                 .filter(
                   (data) =>
-                    data.firmenkategorie === 'hersteller' &&
                     data.firmenherstellerkategorie ===
-                      'Personenausruestungshersteller'
+                    'Personenausruestungshersteller'
                 )
                 .map((data) => (
                   <>
