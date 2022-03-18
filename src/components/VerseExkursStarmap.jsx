@@ -2,6 +2,7 @@ import ReactTooltip from 'react-tooltip'
 import ReactDOMServer from 'react-dom/server'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 const ueeIcon =
   'https://cms.ariscorp.de/assets/ab6330a8-40b6-40fd-ab8f-fac1d11741a3'
@@ -16,7 +17,8 @@ const vnclIcon =
 const xianIcon =
   'https://cms.ariscorp.de/assets/654272b0-6bfa-4e4c-87e7-cb690476dec5'
 
-export default function Starmap() {
+export default function Starmap({ data }) {
+  const router = useRouter()
   return (
     <div className="lg:w-full max-w-[1200px] aspect-[1200/841]">
       <div className="z-50">
@@ -28,10 +30,17 @@ export default function Starmap() {
           padding="8px"
         />
       </div>
+
       <div className="relative w-full h-full mx-auto">
         <div
           id="branaugh"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[26.47%] top-[0.28777%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[26.47%] top-[0.28777%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Branaugh')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/branaugh')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -80,7 +89,13 @@ export default function Starmap() {
 
         <div
           id="chronos"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[27.77%] top-[5.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[27.77%] top-[5.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Chronos')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/chronos')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -130,7 +145,13 @@ export default function Starmap() {
           */}
         <div
           id="volt"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[14.45%] top-[3.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[14.45%] top-[3.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Voltdd')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/volt')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -177,7 +198,13 @@ export default function Starmap() {
 
         <div
           id="veritas"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[9.1%] top-[8.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[9.1%] top-[8.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Veritas')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/veritas')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -224,7 +251,13 @@ export default function Starmap() {
 
         <div
           id="vermilion"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[5.8%] top-[12.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[5.8%] top-[12.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vermilion')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vermilion')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -271,7 +304,13 @@ export default function Starmap() {
 
         <div
           id="virgo"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[3.088%] top-[16.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[3.088%] top-[16.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Virgo')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/virgo')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -318,7 +357,12 @@ export default function Starmap() {
 
         <div
           id="vulture"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[22.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[22.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vulture')[0]
+              ? ''
+              : ' scale-0')
+          }
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -365,7 +409,13 @@ export default function Starmap() {
 
         <div
           id="vagabond"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[27.98%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[27.98%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vagabond')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vagabond')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -412,7 +462,13 @@ export default function Starmap() {
 
         <div
           id="vanguard"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[33.27%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[33.27%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vanguard')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vanguard')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -459,7 +515,13 @@ export default function Starmap() {
 
         <div
           id="voodoo"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[38.77%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[38.77%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Voodoo')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/voodoo')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -506,7 +568,13 @@ export default function Starmap() {
 
         <div
           id="vendetta"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[3.2%] top-[44.8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[3.2%] top-[44.8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vendetta')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vendetta')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -553,7 +621,13 @@ export default function Starmap() {
 
         <div
           id="vesper"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[5.8337%] top-[49.4%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[5.8337%] top-[49.4%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vesper')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vesper')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -600,7 +674,13 @@ export default function Starmap() {
 
         <div
           id="vector"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[21.36%] top-[-16.8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[21.36%] top-[-16.8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vector')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vector')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -647,7 +727,13 @@ export default function Starmap() {
 
         <div
           id="tiber"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[16.2%] top-[-14.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[16.2%] top-[-14.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Branaugh')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/Branaugh')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -694,7 +780,13 @@ export default function Starmap() {
 
         <div
           id="orion"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[12.13%] top-[-10.43%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[12.13%] top-[-10.43%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Orion')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/orion')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -741,7 +833,13 @@ export default function Starmap() {
 
         <div
           id="viking"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[8.9%] top-[-5.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[8.9%] top-[-5.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Viking')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/viking')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -788,7 +886,13 @@ export default function Starmap() {
 
         <div
           id="virgil"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-16.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-16.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Virgil')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/virgil')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -835,7 +939,13 @@ export default function Starmap() {
 
         <div
           id="caliban"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[13.8%] top-[-6.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[13.8%] top-[-6.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Caliban')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/caliban')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -885,7 +995,12 @@ export default function Starmap() {
           */}
         <div
           id="el-sin"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[80.55%] top-[-42.2%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[80.55%] top-[-42.2%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'El-sin')[0]
+              ? ''
+              : ' scale-0')
+          }
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -932,7 +1047,13 @@ export default function Starmap() {
 
         <div
           id="khabari"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[89.27%] top-[-38.87%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[89.27%] top-[-38.87%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Khabari')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/khabari')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -979,7 +1100,13 @@ export default function Starmap() {
 
         <div
           id="markahil"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[96.6%] top-[-32.47%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[96.6%] top-[-32.47%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Markahil')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/markahil')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1026,7 +1153,13 @@ export default function Starmap() {
 
         <div
           id="kayfa"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[79%] top-[-41.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[79%] top-[-41.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kayfa')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kayfa')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1073,7 +1206,13 @@ export default function Starmap() {
 
         <div
           id="rihlah"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[67.48%] top-[-44.81%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[67.48%] top-[-44.81%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Rihlah')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/rhilah')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1120,7 +1259,13 @@ export default function Starmap() {
 
         <div
           id="eealus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[60.66%] top-[-44.6999%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[60.66%] top-[-44.6999%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Eealus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/eealus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1167,7 +1312,13 @@ export default function Starmap() {
 
         <div
           id="virtus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[54.7%] top-[-42.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[54.7%] top-[-42.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Virtus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/virtus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1214,7 +1365,13 @@ export default function Starmap() {
 
         <div
           id="tal"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[88.17%] top-[-33.17%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[88.17%] top-[-33.17%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tal')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/tal')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1261,7 +1418,13 @@ export default function Starmap() {
 
         <div
           id="pallas"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[82.78%] top-[-28.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[82.78%] top-[-28.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Pallas')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/pallas')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1308,7 +1471,13 @@ export default function Starmap() {
 
         <div
           id="hadur"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[86.8%] top-[-15.78%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[86.8%] top-[-15.78%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Hadur')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/hadur')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1355,7 +1524,13 @@ export default function Starmap() {
 
         <div
           id="ayr-ka"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[85.3%] top-[-8.32%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[85.3%] top-[-8.32%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Ayrka')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/ayrka')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1404,7 +1579,13 @@ export default function Starmap() {
 
         <div
           id="indra"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[81.47%] top-[-3.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[81.47%] top-[-3.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Indra')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/indra')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1452,7 +1633,13 @@ export default function Starmap() {
           */}
         <div
           id="kins"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[86.27%] top-[1.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[86.27%] top-[1.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kins')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kins')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1499,7 +1686,13 @@ export default function Starmap() {
 
         <div
           id="geddon"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Geddon')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/geddon')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1546,7 +1739,13 @@ export default function Starmap() {
 
         <div
           id="bacchus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[29.3%] top-[4.8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[29.3%] top-[4.8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Bacchus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/bacchus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1591,7 +1790,13 @@ export default function Starmap() {
 
         <div
           id="gliese"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[11.39%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[11.39%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Gliese')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/gliese')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1638,7 +1843,13 @@ export default function Starmap() {
 
         <div
           id="yulin"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[13.1%] top-[6.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[13.1%] top-[6.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Yulin')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/yulin')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1688,7 +1899,13 @@ export default function Starmap() {
           */}
         <div
           id="odin"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[44.1%] top-[-73.8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[44.1%] top-[-73.8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Odin')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/odin')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1735,7 +1952,12 @@ export default function Starmap() {
 
         <div
           id="tohil"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-65.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-65.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tohil')[0]
+              ? ''
+              : ' scale-0')
+          }
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1782,7 +2004,13 @@ export default function Starmap() {
 
         <div
           id="bremen"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[29.8484%] top-[-67.73%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[29.8484%] top-[-67.73%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Bremen')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/bremen')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1829,7 +2057,13 @@ export default function Starmap() {
 
         <div
           id="vega"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[25.3%] top-[-67.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[25.3%] top-[-67.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Vega')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/vega')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1876,7 +2110,13 @@ export default function Starmap() {
 
         <div
           id="castra"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[58.4%] top-[-70.755%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[58.4%] top-[-70.755%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Castra')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/castra')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1923,7 +2163,13 @@ export default function Starmap() {
 
         <div
           id="oya"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[64.3%] top-[-67.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[64.3%] top-[-67.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Oya')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/oya')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1970,7 +2216,13 @@ export default function Starmap() {
 
         <div
           id="gurzil"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[69.1%] top-[-71.50797%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[69.1%] top-[-71.50797%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Gurzil')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/gurzil')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2017,7 +2269,13 @@ export default function Starmap() {
 
         <div
           id="horus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[75.4%] top-[-73.27%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[75.4%] top-[-73.27%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Horus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/horus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2064,7 +2322,13 @@ export default function Starmap() {
 
         <div
           id="kiel"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[72.7%] top-[-61.7%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[72.7%] top-[-61.7%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kiel')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kiel')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2111,7 +2375,13 @@ export default function Starmap() {
 
         <div
           id="hadrian"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[67.85%] top-[-62.969%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[67.85%] top-[-62.969%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Hadrian')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/hadrian')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2158,7 +2428,13 @@ export default function Starmap() {
 
         <div
           id="cano"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[44.4%] top-[-65.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[44.4%] top-[-65.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Cano')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/cano')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2205,7 +2481,13 @@ export default function Starmap() {
 
         <div
           id="sol"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.6%] top-[-69.23%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6%] top-[-69.23%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Sol')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/sol')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2252,7 +2534,13 @@ export default function Starmap() {
 
         <div
           id="centauri"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[11.89%] top-[-68.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[11.89%] top-[-68.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Centauri')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/centauri')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2299,7 +2587,13 @@ export default function Starmap() {
 
         <div
           id="baker"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[76.74%] top-[-65.89%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[76.74%] top-[-65.89%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Baker')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/baker')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2344,7 +2638,13 @@ export default function Starmap() {
 
         <div
           id="terra"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[65.38%] top-[-68.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[65.38%] top-[-68.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Terra')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/terra')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2391,7 +2691,13 @@ export default function Starmap() {
 
         <div
           id="stanton"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[59.63%] top-[-70.4%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[59.63%] top-[-70.4%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Stanton')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/stanton')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2438,7 +2744,13 @@ export default function Starmap() {
 
         <div
           id="magnus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[53.9398%] top-[-72.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[53.9398%] top-[-72.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Magnus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/magnus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2485,7 +2797,13 @@ export default function Starmap() {
 
         <div
           id="ellis"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-75.19%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-75.19%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Ellis')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/ellis')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2532,7 +2850,13 @@ export default function Starmap() {
 
         <div
           id="kilian"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[45.4%] top-[-77.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[45.4%] top-[-77.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kilian')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kilian')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2579,7 +2903,13 @@ export default function Starmap() {
 
         <div
           id="davien"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[40.3%] top-[-80.07%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[40.3%] top-[-80.07%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Davien')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/davien')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2626,7 +2956,13 @@ export default function Starmap() {
 
         <div
           id="croshaw"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[28.93%] top-[-82.4%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[28.93%] top-[-82.4%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Croshaw')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/croshaw')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2673,7 +3009,13 @@ export default function Starmap() {
 
         <div
           id="rhetor"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[23.77%] top-[-84.7%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[23.77%] top-[-84.7%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Rhetor')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/rhetor')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2720,7 +3062,13 @@ export default function Starmap() {
 
         <div
           id="idris"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-87%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-87%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Idris')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/idris')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2767,7 +3115,13 @@ export default function Starmap() {
 
         <div
           id="elysium"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[11.6%] top-[-89.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[11.6%] top-[-89.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Elysium')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/elysium')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2814,7 +3168,13 @@ export default function Starmap() {
 
         <div
           id="tayac"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[67.35%] top-[-85.77%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[67.35%] top-[-85.77%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tayac')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/tayac')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2861,7 +3221,13 @@ export default function Starmap() {
 
         <div
           id="goss"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[71.1364%] top-[-85.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[71.1364%] top-[-85.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Goss')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/goss')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2906,7 +3272,13 @@ export default function Starmap() {
 
         <div
           id="ferron"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-88.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-88.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Ferron')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/ferron')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -2953,7 +3325,13 @@ export default function Starmap() {
 
         <div
           id="oretani"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.63%] top-[-83.2%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.63%] top-[-83.2%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Oretani')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/oretani')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3000,7 +3378,13 @@ export default function Starmap() {
 
         <div
           id="nexus"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[48%] top-[-89.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[48%] top-[-89.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Nexus')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/nexus')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3047,7 +3431,13 @@ export default function Starmap() {
 
         <div
           id="banshee"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[24.78%] top-[-86.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[24.78%] top-[-86.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Banshee')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/banshee')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3094,7 +3484,13 @@ export default function Starmap() {
 
         <div
           id="helios"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[60.682%] top-[-89.236%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[60.682%] top-[-89.236%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Helios')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/helios')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3141,7 +3537,13 @@ export default function Starmap() {
 
         <div
           id="kabal"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[15.35%] top-[-90.317%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[15.35%] top-[-90.317%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kabal')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kabal')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3188,7 +3590,13 @@ export default function Starmap() {
 
         <div
           id="nemo"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[39.78%] top-[-89.57%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[39.78%] top-[-89.57%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Nemo')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/nemo')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3235,7 +3643,13 @@ export default function Starmap() {
 
         <div
           id="fora"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.57%] top-[-90.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.57%] top-[-90.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Fora')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/fora')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3282,7 +3696,13 @@ export default function Starmap() {
 
         <div
           id="charon"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[57.65%] top-[-93.8%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[57.65%] top-[-93.8%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Charon')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/charon')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3329,7 +3749,13 @@ export default function Starmap() {
 
         <div
           id="corel"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[42.28%] top-[-86.645%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[42.28%] top-[-86.645%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Corel')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/corel')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3376,7 +3802,13 @@ export default function Starmap() {
 
         <div
           id="tamsa"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[21.1%] top-[-83.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[21.1%] top-[-83.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tamsa')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/tamsa')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3426,7 +3858,13 @@ export default function Starmap() {
         */}
         <div
           id="kellog"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[-164.1%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[-164.1%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kellog')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kellog')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3473,7 +3911,13 @@ export default function Starmap() {
 
         <div
           id="kallis"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[30.9%] top-[-147.0589%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[30.9%] top-[-147.0589%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Kallis')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/kallis')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3520,7 +3964,13 @@ export default function Starmap() {
 
         <div
           id="oso"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[32%] top-[-142.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[32%] top-[-142.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Oso')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/oso')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3567,7 +4017,13 @@ export default function Starmap() {
 
         <div
           id="osiris"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[74.92%] top-[-123.7%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[74.92%] top-[-123.7%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Osiris')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/osiris')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3614,7 +4070,13 @@ export default function Starmap() {
 
         <div
           id="garron"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-125.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-125.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Garron')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/garron')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3661,7 +4123,13 @@ export default function Starmap() {
 
         <div
           id="genesis"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[49.1%] top-[-108.7%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[49.1%] top-[-108.7%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Genesis')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/genisis')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3711,7 +4179,13 @@ export default function Starmap() {
         */}
         <div
           id="tanga"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-172.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-172.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tanga')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/tanga')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3758,7 +4232,13 @@ export default function Starmap() {
 
         <div
           id="nyx"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[41.26%] top-[-166.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[41.26%] top-[-166.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Nyx')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/nyx')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3805,7 +4285,13 @@ export default function Starmap() {
 
         <div
           id="oberon"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[21.8%] top-[-164%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[21.8%] top-[-164%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Oberon')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/oberon')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3852,7 +4338,13 @@ export default function Starmap() {
 
         <div
           id="pyro"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[53.1%] top-[-157.4%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[53.1%] top-[-157.4%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Pyro')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/pyro')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3899,7 +4391,13 @@ export default function Starmap() {
 
         <div
           id="nul"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-153.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-153.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Nul')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/nul')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3946,7 +4444,13 @@ export default function Starmap() {
 
         <div
           id="cathcard"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[44.02%] top-[-141%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[44.02%] top-[-141%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Cathcard')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/cathcard')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -3993,7 +4497,13 @@ export default function Starmap() {
 
         <div
           id="taranis"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[56.742423%] top-[-142.4%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[56.742423%] top-[-142.4%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Taranis')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/taranis')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -4040,7 +4550,13 @@ export default function Starmap() {
 
         <div
           id="min"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[51.6%] top-[-138.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[51.6%] top-[-138.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Min')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/min')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -4087,7 +4603,13 @@ export default function Starmap() {
 
         <div
           id="hades"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[44.5%] top-[-138.5%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[44.5%] top-[-138.5%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Hades')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/hades')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -4134,7 +4656,13 @@ export default function Starmap() {
 
         <div
           id="tyrol"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[71.1%] top-[-129.3%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[71.1%] top-[-129.3%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Tyrol')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/tyrol')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div className="">
@@ -4180,7 +4708,13 @@ export default function Starmap() {
 
         <div
           id="leir"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[16.6666%] top-[-128.6%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[16.6666%] top-[-128.6%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Leir')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/leir')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -4230,7 +4764,13 @@ export default function Starmap() {
         */}
         <div
           id="trise"
-          className="relative z-10 w-[1.667%] h-[2.3789%] left-[51.4%] top-[-203.9%] group hover:cursor-pointer"
+          className={
+            'relative z-10 w-[1.667%] h-[2.3789%] left-[51.4%] top-[-203.9%] group hover:cursor-pointer' +
+            (data.filter((data) => data.system_name === 'Trise')[0]
+              ? ''
+              : ' scale-0')
+          }
+          onClick={() => router.push('/VerseExkurs/starmap/trise')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>

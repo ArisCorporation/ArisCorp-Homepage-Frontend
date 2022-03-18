@@ -16,9 +16,30 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination, Navigation } from 'swiper'
+import client from 'apollo/clients'
+import { GET_VERSEEXKURS_SYSTEME } from 'graphql/queries'
 
-export default function StarmapPage() {
+export async function getServerSideProps() {
+  const { data } = await client.query({
+    query: GET_VERSEEXKURS_SYSTEME,
+  })
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      data: await data.systeme,
+    },
+  }
+}
+
+export default function StarmapPage({data}) {
   const [swiper, setSwiper] = useState(null)
+  console.log(data)
 
   return (
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
@@ -98,7 +119,7 @@ export default function StarmapPage() {
                   />
                 </div>
               </div>
-              <Starmap />
+              <Starmap data={data} />
             </div>
           </Tab.Panel>
           <Tab.Panel>

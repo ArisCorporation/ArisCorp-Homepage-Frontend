@@ -262,6 +262,24 @@ export const GET_VERSEEXKURS_UEE = gql`
   }
 `
 
+export const GET_VERSEEXKURS_SYSTEME = gql`
+  query GetVerseExkursSysteme {
+    systeme(
+      filter: { status: { _eq: "published" }, system_boolean: { _eq: true } }
+    ) {
+      id
+      status
+      system_name
+      system_banner {
+        id
+        width
+        height
+      }
+      system_text
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_ALIENRASSEN = gql`
   query GetVerseExkursAlienrassen {
     alienrassen(filter: { status: { _eq: published } }) {
