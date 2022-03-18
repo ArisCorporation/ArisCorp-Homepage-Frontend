@@ -280,6 +280,24 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
   }
 `
 
+export const GET_VERSEEXKURS_SYSTEM = gql`
+  query GetVerseExkursSystem($System: String!) {
+    systeme(
+      filter: { status: { _eq: "published" }, system_name: { _eq: $System} }
+    ) {
+      id
+      status
+      system_name
+      system_banner {
+        id
+        width
+        height
+      }
+      system_text
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_ALIENRASSEN = gql`
   query GetVerseExkursAlienrassen {
     alienrassen(filter: { status: { _eq: published } }) {
