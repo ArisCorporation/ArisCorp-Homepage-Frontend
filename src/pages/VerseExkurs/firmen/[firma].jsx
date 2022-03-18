@@ -6,16 +6,14 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 
 const { gql, useQuery } = require('@apollo/client')
-import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
+import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
 
 export default function SystemDetailPage() {
   const router = useRouter()
-  const { system } = router.query
+  const { firma } = router.query
 
-  const System = system?.charAt(0).toUpperCase() + system?.slice(1)
-
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SYSTEM, {
-    variables: { System },
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_FIRMA, {
+    variables: { firma },
   })
 
   if (loading)
@@ -27,35 +25,35 @@ export default function SystemDetailPage() {
 
   if (error) return <p>Error :(</p>
 
-  data = data.systeme[0]
+  data = data.firmen[0]
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Sternensystem:{' '}
-            <span className="text-primary">{data.system_name}</span>
+            Firma:{' '}
+            <span className="text-primary">{data.firmen_name}</span>
           </h1>
           <hr />
           <div className="w-full">
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data.system_banner.id}
+              src={'https://cms.ariscorp.de/assets/' + data.firmen_banner.id}
               alt={'Banner'}
-              width={data.system_banner.width}
-              height={data.system_banner.height}
+              width={data.firmen_banner.width}
+              height={data.firmen_banner.height}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data.system_banner.id +
+                data.firmen_banner.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={'max-w-[' + data.system_banner.width + 'px] mx-auto'}>
+        <div className={'max-w-[' + data.firmen_banner.width + 'px] mx-auto'}>
           <h2 className="mt-3">
-            VerseExkurs - Sternensystem: {data.system_name}
+            VerseExkurs - Firma: {data.firmen_name}
           </h2>
           <hr className="max-w-[80px]" />
         </div>
@@ -64,7 +62,7 @@ export default function SystemDetailPage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.system_text}
+            {data.firmen_text}
           </ReactMarkdown>
         </div>
       </div>
