@@ -246,6 +246,51 @@ export const GET_VEXKURS_INDEX = gql`
   }
 `
 
+export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
+  query GetVerseExkursOneDayInHistoryKategories {
+    geschichte(
+      filter: {
+        status: { _eq: "published" }
+        geschichte_kategorie: { _eq: true }
+      }
+    ) {
+      id
+      geschichte_titel
+      geschichte_auswahlbild {
+        id
+        width
+        height
+      }
+      geschichte_datum
+      geschichte_kategorie
+      geschichte_beschreibung
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE = gql`
+  query GetVerseExkursOneDayInHistoryArticle($title: String!) {
+    geschichte(
+      filter: {
+        status: { _eq: "published" }
+        geschichte_titel: { _eq: $title }
+      }
+    ) {
+      id
+      geschichte_titel
+      geschichte_auswahlbild {
+        id
+        width
+        height
+      }
+      geschichte_datum
+      geschichte_kategorie
+      geschichte_beschreibung
+      geschichte_beitrag
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_UEE = gql`
   query GetVerseExkursUEE {
     united_empire_of_earth {
@@ -283,7 +328,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
 export const GET_VERSEEXKURS_SYSTEM = gql`
   query GetVerseExkursSystem($System: String!) {
     systeme(
-      filter: { status: { _eq: "published" }, system_name: { _eq: $System} }
+      filter: { status: { _eq: "published" }, system_name: { _eq: $System } }
     ) {
       id
       status

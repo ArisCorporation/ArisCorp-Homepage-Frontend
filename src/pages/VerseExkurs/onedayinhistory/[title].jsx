@@ -1,22 +1,22 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { useRouter } from 'next/router'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import { useRouter } from 'next/router'
+import { useQuery } from '@apollo/client'
+import { GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE } from 'graphql/queries'
 
-const { gql, useQuery } = require('@apollo/client')
-import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
-
-export default function SystemDetailPage() {
+export default function SpectrumArticlePage() {
   const router = useRouter()
-  const { system } = router.query
+  const { title } = router.query
 
-  const System = system?.charAt(0).toUpperCase() + system?.slice(1)
-
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SYSTEM, {
-    variables: { System },
-  })
+  const { loading, error, data } = useQuery(
+    GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE,
+    {
+      variables: { title },
+    }
+  )
 
   if (loading)
     return (
@@ -27,37 +27,42 @@ export default function SystemDetailPage() {
 
   if (error) return <p>Error :(</p>
 
-  data = data.systeme[0]
-
-  console.log(data)
+  data = data.geschichte[0]
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Sternensystem:{' '}
-            <span className="text-primary">{data.system_name}</span>
+            Ein Tag in der Geschichte:{' '}
+            <span className="text-primary">{data.geschichte_titel}</span>
           </h1>
           <hr />
           <div className="w-full">
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data.system_banner.id}
+              src={
+                'https://cms.ariscorp.de/assets/' +
+                data.geschichte_auswahlbild.id
+              }
               alt={'Banner'}
-              width={data.system_banner.width}
-              height={data.system_banner.height}
+              width={data.geschichte_auswahlbild.width}
+              height={data.geschichte_auswahlbild.height}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data.system_banner.id +
+                data.geschichte_auswahlbild.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={'max-w-[' + data.system_banner.width + 'px] mx-auto'}>
+        <div
+          className={
+            'max-w-[' + data.geschichte_auswahlbild.width + 'px] mx-auto'
+          }
+        >
           <h2 className="mt-3">
-            VerseExkurs - Sternensystem: {data.system_name}
+            VerseExkurs - Ein Tag in der Geschichte: {data.geschichte_titel}
           </h2>
           <hr className="max-w-[80px]" />
         </div>
@@ -66,7 +71,7 @@ export default function SystemDetailPage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.system_text}
+            {data.geschichte_beitrag}
           </ReactMarkdown>
         </div>
       </div>
@@ -74,6 +79,6 @@ export default function SystemDetailPage() {
   )
 }
 
-SystemDetailPage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }

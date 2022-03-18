@@ -369,12 +369,12 @@ export default function Sidebar() {
                             data-tip
                             data-for="oneDayInHistoryTip"
                           >
-                            <Link href="/VerseExkurs/one-day-in-history">
+                            <Link href="/VerseExkurs/onedayinhistory">
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.asPath ==
-                                  '/VerseExkurs/one-day-in-history'
+                                  '/VerseExkurs/onedayinhistory'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed

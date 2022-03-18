@@ -63,7 +63,10 @@ export default function OurMember() {
                   <hr className="w-[100px] h-[2px] m-auto" />
                   <ul className="pl-0 mt-3 mb-0 list-none">
                     <Link href={'/biografie/' + member.member_name}>
-                      <a className="italic bg-transparent text-secondary hover:underline" aria-label={"Biografie von" + member.member_name}>
+                      <a
+                        className="italic bg-transparent text-secondary hover:underline"
+                        aria-label={'Biografie von' + member.member_name}
+                      >
                         BIOGRAFIE
                       </a>
                     </Link>

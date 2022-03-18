@@ -16,7 +16,11 @@ const PartnerSection = ({ data }) => {
       <div className="flex flex-wrap justify-between space-x-20">
         {data.map((partner) => (
           <Link key={partner.id} href={partner.partner_website}>
-            <a target="_blank" className="group decoration-transparent" aria-label={"Website von der 501st "}>
+            <a
+              target="_blank"
+              className="group decoration-transparent"
+              aria-label={'Website von der 501st '}
+            >
               <figure className="mb-4">
                 <Image
                   src={

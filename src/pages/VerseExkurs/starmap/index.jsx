@@ -37,7 +37,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function StarmapPage({data}) {
+export default function StarmapPage({ data }) {
   const [swiper, setSwiper] = useState(null)
   console.log(data)
 
