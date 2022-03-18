@@ -47,8 +47,7 @@ export default function SpectrumPage({ data }) {
           <ArticleCard
             key={data.id}
             link={
-              'onedayinhistory/' +
-              encodeURIComponent(data.geschichte_titel)
+              'onedayinhistory/' + encodeURIComponent(data.geschichte_titel)
             }
             title={data.geschichte_titel}
             desc={data.geschichte_beschreibung}

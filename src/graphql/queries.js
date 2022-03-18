@@ -432,7 +432,9 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
 
 export const GET_VERSEEXKURS_FIRMA = gql`
   query GetVerseExkursFirma($firma: String!) {
-    firmen(filter: { status: { _eq: "published" } firmen_name: { _eq: $firma } }) {
+    firmen(
+      filter: { status: { _eq: "published" }, firmen_name: { _eq: $firma } }
+    ) {
       id
       status
       firmen_trans_logo {

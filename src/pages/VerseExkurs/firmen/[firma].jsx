@@ -32,8 +32,7 @@ export default function SystemDetailPage() {
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Firma:{' '}
-            <span className="text-primary">{data.firmen_name}</span>
+            Firma: <span className="text-primary">{data.firmen_name}</span>
           </h1>
           <hr />
           <div className="w-full">
@@ -52,9 +51,7 @@ export default function SystemDetailPage() {
           </div>
         </div>
         <div className={'max-w-[' + data.firmen_banner.width + 'px] mx-auto'}>
-          <h2 className="mt-3">
-            VerseExkurs - Firma: {data.firmen_name}
-          </h2>
+          <h2 className="mt-3">VerseExkurs - Firma: {data.firmen_name}</h2>
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
