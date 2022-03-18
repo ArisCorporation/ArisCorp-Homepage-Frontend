@@ -79,7 +79,7 @@
     @apply hidden;
   }
   .desc-truncate p {
-    @apply truncate lg:whitespace-normal;
+    @apply break-words truncate lg:whitespace-normal lg:text-clip;
   }
 }
 hr {
