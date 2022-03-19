@@ -1,4 +1,4 @@
-import Layout from './layout'
+import Layout from 'pages/VerseExkurs/layout'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import client from 'apollo/clients'
@@ -92,7 +92,7 @@ export default function Firmen({ data }) {
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-secondary' : 'opacity-50') +
-                    ' p-3 m-1 transition-all duration-300 ease-in-out'
+                    ' p-3 m-1 transition-all duration-300 ease-in-out flex w-full'
                   }
                 >
                   <h1 className="text-base uppercase md:text-lg lg:text-xl text-inherit">
@@ -130,7 +130,7 @@ export default function Firmen({ data }) {
                   </h1>
                 </Tab>
               </Tab.List>
-              <Tab.Panels className={'px-4'}>
+              <Tab.Panels className={'px-4 pt-16'}>
                 <Tab.Panel>
                   <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
                     {data
