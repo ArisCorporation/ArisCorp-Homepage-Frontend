@@ -9,6 +9,7 @@ import Script from 'next/script'
 import JsonFile from './timeline.json'
 import { useState, useEffect } from 'react'
 import loadTimelineScript from 'components/VerseExkursMountTimeline'
+import { useRouter } from 'next/router'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -36,6 +37,7 @@ function TSS(JsonFile) {
 export default function Timeline({ data }) {
   // data = data[0]
   const json_file = JSON.stringify(JsonFile)
+  const router = useRouter()
 
   const js = () => {
     var additionalOptions = {
@@ -72,6 +74,22 @@ export default function Timeline({ data }) {
 
     document.body.appendChild(script2)
 
+
+    const script3 = document.createElement('script')
+
+    script3.text = `
+      var slider = document.getElementsByClassName('tl-storyslider')
+
+      if(!slider){
+        location.reload()
+      }
+    `
+    script3.async = true
+
+    document.body.appendChild(script3)
+
+    
+
     return () => {
       document.body.removeChild(script)
       document.body.removeChild(script2)
@@ -86,6 +104,8 @@ export default function Timeline({ data }) {
         strategy="beforeInteractive"
         src="/timeline3/js/timeline.js"
       ></Script>
+
+      {/* {!document.getElementsByClassName('tl-storyslider') ? (router.reload) : (console.log('servs'))} */}
 
       <div id="timeline-embed" className="w-full h-[500px] hwite bw"></div>
 
