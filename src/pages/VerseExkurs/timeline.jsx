@@ -78,7 +78,7 @@ export default function Timeline({ data }) {
     const script3 = document.createElement('script')
 
     script3.text = `
-      var slider = document.getElementsByClassName('tl-storyslider')
+      var slider = document.getElementsByClassName('tl-storyslider')[0]
 
       if(!slider){
         location.reload()
