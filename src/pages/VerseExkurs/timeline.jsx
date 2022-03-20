@@ -73,21 +73,6 @@ export default function Timeline({ data }) {
     script2.async = true
 
     document.body.appendChild(script2)
-
-
-    const script3 = document.createElement('script')
-
-    script3.text = `
-      var slider = document.getElementsByClassName('tl-storyslider')[0]
-
-      if(!slider){
-        location.reload()
-      }
-    `
-    script3.async = true
-
-    document.body.appendChild(script3)
-
     
 
     return () => {
