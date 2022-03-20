@@ -26,6 +26,9 @@
   h6 {
     @apply text-white;
   }
+  .tl-storyslider {
+    @apply [height:69px!important]
+  }
 }
 
 @layer components {
@@ -81,6 +84,18 @@
   .desc-truncate p {
     @apply break-words truncate lg:whitespace-normal lg:text-clip;
   }
+  .hwhite h2 {
+    color: #fff!important
+  }
+  .bw p {
+    @apply text-[#d1d5dd]
+  }
+}
+.tl-storyslider {
+  height: 569px !important;
+}
+.tl-timenav {
+  max-height: 177px
 }
 hr {
   width: 100%;
@@ -401,3 +416,4 @@ button.swiper-pagination-bullet {
 .swiper-pagination-lock {
   display: none;
 }
+

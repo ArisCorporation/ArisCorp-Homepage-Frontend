@@ -9,7 +9,7 @@ import FirmenCard from 'components/VerseExkursFirmenGrid'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_FIRMEN })
-
+  
   if (!data) {
     return {
       notFound: true,

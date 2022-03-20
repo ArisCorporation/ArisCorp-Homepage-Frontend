@@ -246,6 +246,21 @@ export const GET_VEXKURS_INDEX = gql`
   }
 `
 
+export const GET_VERSEEXKURS_TIMELINE = gql`
+  query GetVerseExkursTimeline {
+    geschichte(
+      filter: {
+        status: { _eq: "published" }
+        geschichte_titel: {_eq: "Timeline"}
+      }
+    ) {
+      id
+      geschichte_titel
+      geschichte_beitrag
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
   query GetVerseExkursOneDayInHistoryKategories {
     geschichte(
