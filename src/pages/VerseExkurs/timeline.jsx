@@ -93,6 +93,7 @@ export default function Timeline({ data }) {
       {/* {!document.getElementsByClassName('tl-storyslider') ? (router.reload) : (console.log('servs'))} */}
 
       <div id="timeline-embed" className="w-full h-[500px] hwite bw"></div>
+      <p className="flex justify-center text-center">Falls du kein Inhalt sehen solltest,{' '}<span className="text-secondary/50 hover:text-secondary hover:cursor-pointer" onClick={() => router.reload()}>aktualisiere bitte die Seite</span></p>
 
       {/* <script
         dangerouslySetInnerHTML={{
