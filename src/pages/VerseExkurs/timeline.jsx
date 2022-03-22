@@ -57,6 +57,7 @@ export default function Timeline({ data }) {
         language: 'de',
         default_bg_color: { r: 17, g: 17, b: 17 },
         timenav_height: 600,
+        // initial_zoom: ,
       }
 
       timeline = new TL.Timeline('timeline-embed', ${json_file}, additionalOptions)

@@ -3,9 +3,11 @@ import { SquareLoader } from 'react-spinners'
 import { Tab } from '@headlessui/react'
 import { useQuery } from '@apollo/client'
 import { GET_GAMEPLAYS } from 'graphql/queries'
+import { useState } from 'react'
 
 export default function OurGameplays() {
   const { loading, error, data } = useQuery(GET_GAMEPLAYS)
+  const [selectedIndex, setSelectedIndex] = useState(0)
 
   if (loading)
     return (
@@ -18,7 +20,8 @@ export default function OurGameplays() {
 
   return (
     <>
-      <Tab.Group id="gameplays">
+      <div onClick={() => onOurIndexChange(1)}>rrr</div>
+      <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className={'flex flex-wrap justify-center max-w-7xl mx-auto'}>
           {data.gameplays.map((data) => (
             <Tab key={data.id} className={'p-3 m-1'}>

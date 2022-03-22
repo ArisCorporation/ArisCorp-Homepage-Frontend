@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import React from 'react'
 import MainLogo from './icons/MainLogo'
 import {
   MemberIcon,
@@ -11,11 +10,15 @@ import {
   ShipExkursBanner,
   VerseExkursBanner,
 } from './icons'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { FaBars } from 'react-icons/fa'
+import { useRouter } from 'next/router'
+import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 
-const Navbar = () => {
+function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  const router = useRouter()
 
   const toggleMobile = () => setMobileOpen((current) => !current)
 
@@ -24,9 +27,10 @@ const Navbar = () => {
       {/* Desktop menu */}
       <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>
-          <Link href="/">
-            <a className="absolute top-0 px-2 mt-[-16px] scale-75 xl:scale-100">
+          <Link href={router.pathname == "/" ? "https://robertsspaceindustries.com/orgs/ARISCORP" : "/"}>
+            <a className="absolute top-0 px-2 mt-[-16px] scale-75 xl:scale-100 group">
               <MainLogo width="128" height="128" />
+              <NavbarTooltip tooltip={router.pathname == "/" ? "Zur RSI-Homepage" : "Zurück zur Homepage"} />
             </a>
           </Link>
         </div>
@@ -34,22 +38,22 @@ const Navbar = () => {
           <div className="">
             <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100 mb-0">
               <NavbarItem
-                link="/#member"
                 tooltip="Unsere Member"
+                ourTab={"0"}
                 content={
                   <MemberIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
-                link="/#fleet"
                 tooltip="Unsere Flotte"
+                ourTab={"1"}
                 content={
                   <FleetIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
-                link="/#gameplays"
                 tooltip="Unsere Aufgabenfelder"
+                ourTab={"2"}
                 content={
                   <GameplaysIcon width="82" height="82" classes="navbar-icon" />
                 }
@@ -203,15 +207,31 @@ const Navbar = () => {
   )
 }
 
-const NavbarItem = ({ content, link, tooltip }) => {
+function NavbarItem({ content, link, tooltip, ourTab }) {
+  const router = useRouter()
+  const [selectedOurIndex, setSelectedOurIndex] = useContext(
+    OurTabSelectionContext
+  )
+
+  if (!ourTab) {
+    return (
+      <li className="pb-0 list-none">
+        <Link href={link}>
+          <a className="flex justify-center group">
+            {content}
+            <NavbarTooltip tooltip={tooltip} />
+          </a>
+        </Link>
+      </li>
+    )
+  }
+
   return (
     <li className="pb-0 list-none">
-      <Link href={link}>
-        <a className="flex justify-center group">
-          {content}
-          <NavbarTooltip tooltip={tooltip} />
-        </a>
-      </Link>
+      <a onClick={() => (selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null)} className="flex justify-center group">
+        {content}
+        <NavbarTooltip tooltip={tooltip} />
+      </a>
     </li>
   )
 }
