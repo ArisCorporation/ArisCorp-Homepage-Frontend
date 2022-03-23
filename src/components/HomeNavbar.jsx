@@ -20,6 +20,10 @@ function Navbar() {
 
   const router = useRouter()
 
+  const [selectedOurIndex, setSelectedOurIndex] = useContext(
+    OurTabSelectionContext
+  )
+
   const toggleMobile = () => setMobileOpen((current) => !current)
 
   return (
@@ -152,7 +156,13 @@ function Navbar() {
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
                   <Link href="#our">
-                    <a>
+                    <a
+                      onClick={() =>
+                        selectedOurIndex != 0
+                          ? setSelectedOurIndex(0)
+                          : null
+                      }
+                    >
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Member
                       </span>
@@ -161,7 +171,12 @@ function Navbar() {
                 </li>
                 <li className="block w-full">
                   <Link href="#our">
-                    <a>
+                    <a
+                      onClick={() =>
+                        selectedOurIndex != 1
+                          ? setSelectedOurIndex(1)
+                          : null
+                      }>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Flotte
                       </span>
@@ -170,7 +185,12 @@ function Navbar() {
                 </li>
                 <li className="block w-full">
                   <Link href="#our">
-                    <a>
+                    <a
+                      onClick={() =>
+                        selectedOurIndex != 2
+                          ? setSelectedOurIndex(2)
+                          : null
+                      }>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Arbeitsfelder
                       </span>
@@ -223,7 +243,6 @@ function Navbar() {
 }
 
 function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
-  const router = useRouter()
   const [selectedOurIndex, setSelectedOurIndex] = useContext(
     OurTabSelectionContext
   )
@@ -231,7 +250,7 @@ function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
   if (!ourTab) {
     return (
       <li className="pb-0 list-none">
-        <Link href={(link ? (link) : ("#" + AnkerLink))}>
+        <Link href={link ? link : '#' + AnkerLink}>
           <a className="flex justify-center group">
             {content}
             <NavbarTooltip tooltip={tooltip} />
@@ -243,7 +262,7 @@ function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
 
   return (
     <li className="pb-0 list-none">
-      <Link href={(link ? (link) : ("#" + AnkerLink))}>
+      <Link href={link ? link : '#' + AnkerLink}>
         <a
           onClick={() =>
             selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null
