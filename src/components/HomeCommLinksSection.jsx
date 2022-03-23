@@ -75,8 +75,8 @@ const CommLinksSection = ({ data }) => {
   }, [data])
 
   return (
-    <div id="comm-links" className="px-4 mb-24">
-      <h1 className="inline-block w-full text-lg sm:text-3xl md:text-4xl">
+    <div className="px-4 mb-24">
+      <h1 className="inline-block w-full text-lg sm:text-3xl md:text-4xl scroll-mt-28" id="comm-links">
         ARISCORP <span className="text-primary">COMM-LINKS</span>
         <span>
           <Link href="/comm-link">

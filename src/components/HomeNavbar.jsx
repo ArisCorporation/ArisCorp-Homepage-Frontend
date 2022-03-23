@@ -27,10 +27,22 @@ function Navbar() {
       {/* Desktop menu */}
       <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>
-          <Link href={router.pathname == "/" ? "https://robertsspaceindustries.com/orgs/ARISCORP" : "/"}>
+          <Link
+            href={
+              router.pathname == '/'
+                ? 'https://robertsspaceindustries.com/orgs/ARISCORP'
+                : '/'
+            }
+          >
             <a className="absolute top-0 px-2 mt-[-16px] scale-75 xl:scale-100 group">
               <MainLogo width="128" height="128" />
-              <NavbarTooltip tooltip={router.pathname == "/" ? "Zur RSI-Homepage" : "Zurück zur Homepage"} />
+              <NavbarTooltip
+                tooltip={
+                  router.pathname == '/'
+                    ? 'Zur RSI-Homepage'
+                    : 'Zurück zur Homepage'
+                }
+              />
             </a>
           </Link>
         </div>
@@ -38,35 +50,38 @@ function Navbar() {
           <div className="">
             <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100 mb-0">
               <NavbarItem
+                AnkerLink="our"
                 tooltip="Unsere Member"
-                ourTab={"0"}
+                ourTab={'0'}
                 content={
                   <MemberIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
+                AnkerLink="our"
                 tooltip="Unsere Flotte"
-                ourTab={"1"}
+                ourTab={'1'}
                 content={
                   <FleetIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
+                AnkerLink="our"
                 tooltip="Unsere Aufgabenfelder"
-                ourTab={"2"}
+                ourTab={'2'}
                 content={
                   <GameplaysIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
-                link="/#comm-links"
+                AnkerLink="comm-links"
                 tooltip="Comm-Links"
                 content={
                   <CommLinksIcon width="82" height="82" classes="navbar-icon" />
                 }
               />
               <NavbarItem
-                link="/#recruitment"
+                AnkerLink="recruitment"
                 tooltip="Rekrutierung"
                 content={
                   <RecruitmentIcon
@@ -77,7 +92,7 @@ function Navbar() {
                 }
               />
               <NavbarItem
-                link="/#member"
+                AnkerLink="partners"
                 tooltip="Unsere Partner"
                 content={
                   <PartnerIcon width="82" height="82" classes="navbar-icon" />
@@ -136,7 +151,7 @@ function Navbar() {
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
-                  <Link href="/">
+                  <Link href="#our">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Member
@@ -145,7 +160,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/">
+                  <Link href="#our">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Flotte
@@ -154,7 +169,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/">
+                  <Link href="#our">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Arbeitsfelder
@@ -163,7 +178,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/">
+                  <Link href="#comm-links">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Comm-Links
@@ -172,7 +187,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/">
+                  <Link href="#recruitment">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Rekrutierung
@@ -181,7 +196,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full mb-5">
-                  <Link href="/">
+                  <Link href="#partners">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Partner
@@ -207,7 +222,7 @@ function Navbar() {
   )
 }
 
-function NavbarItem({ content, link, tooltip, ourTab }) {
+function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
   const router = useRouter()
   const [selectedOurIndex, setSelectedOurIndex] = useContext(
     OurTabSelectionContext
@@ -216,7 +231,7 @@ function NavbarItem({ content, link, tooltip, ourTab }) {
   if (!ourTab) {
     return (
       <li className="pb-0 list-none">
-        <Link href={link}>
+        <Link href={(link ? (link) : ("#" + AnkerLink))}>
           <a className="flex justify-center group">
             {content}
             <NavbarTooltip tooltip={tooltip} />
@@ -228,10 +243,17 @@ function NavbarItem({ content, link, tooltip, ourTab }) {
 
   return (
     <li className="pb-0 list-none">
-      <a onClick={() => (selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null)} className="flex justify-center group">
-        {content}
-        <NavbarTooltip tooltip={tooltip} />
-      </a>
+      <Link href={(link ? (link) : ("#" + AnkerLink))}>
+        <a
+          onClick={() =>
+            selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null
+          }
+          className="flex justify-center group"
+        >
+          {content}
+          <NavbarTooltip tooltip={tooltip} />
+        </a>
+      </Link>
     </li>
   )
 }

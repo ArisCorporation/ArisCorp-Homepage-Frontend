@@ -24,18 +24,8 @@ const OrgaSection = () => {
         selectedIndex={selectedOurIndex}
         onChange={setSelectedOurIndex}
       >
-        <Tab.List className="flex flex-wrap justify-between">
-          <button
-            onClick={() =>
-              router.push({
-                query: { our: encodeURI('gameplays') },
-                shallow: true,
-              })
-            }
-          >
-            test
-          </button>
-          <h1>UNSERE</h1>
+        <Tab.List className="flex flex-wrap justify-between" >
+          <h1 className="scroll-mt-28" id="our">UNSERE</h1>
           <hr />
           <Tab
             className={({ selected }) =>

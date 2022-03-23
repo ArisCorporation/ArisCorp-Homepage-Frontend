@@ -20,7 +20,6 @@ export default function OurGameplays() {
 
   return (
     <>
-      <div onClick={() => onOurIndexChange(1)}>rrr</div>
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className={'flex flex-wrap justify-center max-w-7xl mx-auto'}>
           {data.gameplays.map((data) => (
