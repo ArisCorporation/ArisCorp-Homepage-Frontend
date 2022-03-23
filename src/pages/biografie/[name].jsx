@@ -35,7 +35,7 @@ export default function Biografie() {
         <div className="max-w-[95%] mx-auto">
           <div className={'mx-auto'}>
             <h2 className="mt-3">Bio von {Data.member_titel}</h2>
-            <div className="float-right">
+            <div className="float-left w-full mt-8 mb-6 sm:mt-0 sm:mb-0 sm:w-auto sm:float-right">
               <Image
                 src={'https://cms.ariscorp.de/assets/' + Data.member_potrait.id}
                 alt={'Banner'}
