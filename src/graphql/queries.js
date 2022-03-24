@@ -251,7 +251,7 @@ export const GET_VERSEEXKURS_TIMELINE = gql`
     geschichte(
       filter: {
         status: { _eq: "published" }
-        geschichte_titel: {_eq: "Timeline"}
+        geschichte_titel: { _eq: "Timeline" }
       }
     ) {
       id
@@ -606,6 +606,22 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
       firmenkategorie
       firmenherstellerkategorie
       firmen_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_TECHNOLOGYS = gql`
+  query GetVerseExkursTechnologys {
+    technologien(filter: { status: { _eq: "published" } }) {
+      id
+      category
+      technologie_banner {
+        id
+        width
+        height
+      }
+      technologie_name
+      technologie_beschreibung
     }
   }
 `
