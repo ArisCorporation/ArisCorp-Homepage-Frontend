@@ -40,7 +40,7 @@ export default function Technologie({ data }) {
                 .filter((data) => data.id == selectedTech)
                 .map((data) => (
                   <div key={data.id} className="relative hidden xl:block">
-                    <div className="absolute w-full h-36 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
+                    <div className="absolute w-full h-40 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
                       <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
                         <div className="flex flex-wrap items-center justify-center text-center">
                           <h5 className="w-full -mb-3">
@@ -95,7 +95,7 @@ export default function Technologie({ data }) {
                   .filter((data) => data.id == selectedTech)
                   .map((data) => (
                     <div key={data.id} className="relative block xl:hidden">
-                      <div className="absolute w-full h-36 lg:right-0 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
+                      <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
                         <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
                           <div className="flex flex-wrap items-center justify-center text-center">
                             <h5 className="w-full mb-2 lg:-mb-3">
