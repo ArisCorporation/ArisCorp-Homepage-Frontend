@@ -610,8 +610,8 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
   }
 `
 
-export const GET_VERSEEXKURS_TECHNOLOGYS = gql`
-  query GetVerseExkursTechnologys {
+export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
+  query GetVerseExkursTechnologies {
     technologien(filter: { status: { _eq: "published" } }) {
       id
       category
@@ -622,6 +622,22 @@ export const GET_VERSEEXKURS_TECHNOLOGYS = gql`
       }
       technologie_name
       technologie_beschreibung
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
+  query GetVerseExkursTechnologie($Technologie: String!) {
+    technologien(filter: { technologie_name: { _eq: $Technologie }}) {
+      id
+      category
+      technologie_banner {
+        id
+        width
+        height
+      }
+      technologie_name
+      technologie_text
     }
   }
 `

@@ -1,16 +1,16 @@
 import Image from 'next/image'
-import Layout from './layout'
+import Layout from 'pages/VerseExkurs/layout'
 import TechCarrack from 'components/VerseExkursTechCarrack'
 import { useContext } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import client from 'apollo/clients'
-import { GET_VERSEEXKURS_TECHNOLOGYS } from 'graphql/queries'
+import { GET_VERSEEXKURS_TECHNOLOGIES } from 'graphql/queries'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
-    query: GET_VERSEEXKURS_TECHNOLOGYS,
+    query: GET_VERSEEXKURS_TECHNOLOGIES,
   })
 
   if (!data) {

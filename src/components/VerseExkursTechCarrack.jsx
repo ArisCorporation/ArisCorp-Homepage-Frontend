@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import {useContext} from 'react'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
+import { useRouter } from 'next/router'
 
 const TechCarrack = () => {
   const [selectedTech, setSelectedTech] = useContext(ShipTechnologieModalContext)
+  const router = useRouter();
   
   return (
     <svg
@@ -72,9 +74,10 @@ const TechCarrack = () => {
       {/* PROPULSION */}
       <g
         id="propulsiongroup"
-        className="fill-[#fe0101]/50 hover:fill-[#fe0101] transition-colors duration-200 hover:duration-300"
+        className="fill-[#fe0101]/50 hover:fill-[#fe0101] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("11")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Fusionstriebwerke")}
       >
         <path
           id="propulsion"
@@ -97,9 +100,10 @@ const TechCarrack = () => {
       {/* CARGO */}
       <g
         id="cargogroup"
-        className="fill-[#fedc00]/50 hover:fill-[#fedc00] transition-colors duration-200 hover:duration-300"
+        className="fill-[#fedc00]/50 hover:fill-[#fedc00] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("1")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Fracht Mechanik")}
       >
         <path
           id="cargo1"
@@ -130,9 +134,10 @@ const TechCarrack = () => {
       {/* FUEL */}
       <g
         id="fuelgroup"
-        className="fill-[#feaa01]/50 hover:fill-[#feaa01] transition-colors duration-200 hover:duration-300"
+        className="fill-[#feaa01]/50 hover:fill-[#feaa01] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("10")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Treibstoff Mechanik")}
       >
         <path
           id="fuel1"
@@ -276,9 +281,10 @@ const TechCarrack = () => {
       {/* LIVESUPPORT */}
       <g
         id="livesupportgroup"
-        className="fill-[#02fee0]/50 hover:fill-[#02fee0] transition-colors duration-200 hover:duration-300"
+        className="fill-[#02fee0]/50 hover:fill-[#02fee0] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("13")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Lebenserhaltung")}
       >
         <path
           id="livesupport1"
@@ -297,9 +303,10 @@ const TechCarrack = () => {
       {/* QUANTUMDRIVE */}
       <g
         id="quantumdrivegroup"
-        className="fill-[#02aafe]/50 hover:fill-[#02aafe] transition-colors duration-200 hover:duration-300"
+        className="fill-[#02aafe]/50 hover:fill-[#02aafe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("6")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Quantum und Sprungantrieb")}
       >
         <path
           id="quantumjump1"
@@ -318,9 +325,10 @@ const TechCarrack = () => {
       {/* COMPUTER */}
       <g
         id="computergroup"
-        className="fill-[#0217fe]/50 hover:fill-[#0217fe] transition-colors duration-200 hover:duration-300"
+        className="fill-[#0217fe]/50 hover:fill-[#0217fe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("15")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Computer Systeme und Avionic")}
       >
         <path
           id="computer1"
@@ -347,9 +355,10 @@ const TechCarrack = () => {
       {/* RADAR */}
       <g
         id="radargroup"
-        className="fill-[#3c722e]/50 hover:fill-[#3c722e] transition-colors duration-200 hover:duration-300"
+        className="fill-[#3c722e]/50 hover:fill-[#3c722e] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("7")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Radar und Signaturen")}
       >
         <path
           id="radar1"
@@ -364,9 +373,10 @@ const TechCarrack = () => {
       {/* WEAPON */}
       <g
         id="weapongroup"
-        className="fill-[#f1fe03]/50 hover:fill-[#f1fe03] transition-colors duration-200 hover:duration-300"
+        className="fill-[#f1fe03]/50 hover:fill-[#f1fe03] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("12")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Waffensysteme")}
       >
         <path
           id="weapons1"
@@ -389,9 +399,10 @@ const TechCarrack = () => {
       {/* SHIELD */}
       <g
         id="shieldgroup"
-        className="fill-[#249800]/50 hover:fill-[#249800] transition-colors duration-200 hover:duration-300"
+        className="fill-[#249800]/50 hover:fill-[#249800] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("8")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Schutzschilde")}
       >
         <path
           id="shields1"
@@ -418,9 +429,10 @@ const TechCarrack = () => {
       {/* COOL */}
       <g
         id="coolgroup"
-        className="fill-[#02fe88]/50 hover:fill-[#02fe88] transition-colors duration-200 hover:duration-300"
+        className="fill-[#02fe88]/50 hover:fill-[#02fe88] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("16")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Kühlsysteme")}
       >
         <path
           id="cool1"
@@ -529,9 +541,10 @@ const TechCarrack = () => {
       {/* IFCS */}
       <g
         id="ifcsgroup"
-        className="fill-[#6804fe]/50 hover:fill-[#6804fe] transition-colors duration-200 hover:duration-300"
+        className="fill-[#6804fe]/50 hover:fill-[#6804fe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("2")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/IFCS")}
       >
         <path
           id="ifcs1"
@@ -586,9 +599,10 @@ const TechCarrack = () => {
       {/* POWERPLANT */}
       <g
         id="powerplantgroup"
-        className="fill-[#f502fe]/50 hover:fill-[#f502fe] transition-colors duration-200 hover:duration-300"
+        className="fill-[#f502fe]/50 hover:fill-[#f502fe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("powerplant")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Komponenten#Energiegeneratoren")}
       >
         <path
           id="powerplant"
@@ -599,9 +613,10 @@ const TechCarrack = () => {
       {/* GRAVITATIONGENERATOR */}
       <g
         id="gravitationsgeneratorgroup"
-        className="fill-[#fe0101]/50 hover:fill-[#fe0101] transition-colors duration-200 hover:duration-300"
+        className="fill-[#fe0101]/50 hover:fill-[#fe0101] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech("grav")}
         onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() => router.push("/VerseExkurs/technologie/Komponenten#Gravitationsgeneratoren")}
       >
         <path
           id="grav1"
