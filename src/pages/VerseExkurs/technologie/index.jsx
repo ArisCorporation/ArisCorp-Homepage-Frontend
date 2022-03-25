@@ -68,7 +68,7 @@ export default function Technologie({ data }) {
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
                         <div key={data.id} className="relative hidden xl:block">
-                          <div className="absolute w-full h-40 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
+                          <div className="absolute w-full h-40 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
                             <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
                               <div className="flex flex-wrap items-center justify-center text-center">
                                 <h5 className="w-full -mb-3">
@@ -93,7 +93,7 @@ export default function Technologie({ data }) {
                                   </div>
                                 </div>
                                 <div className="w-[48%]">
-                                  <p className="p-0 text-sm 2xl:text-base">
+                                  <p className="p-0 text-sm 2xl:text-sm">
                                     {data.technologie_beschreibung}
                                   </p>
                                 </div>
@@ -177,14 +177,14 @@ export default function Technologie({ data }) {
                             key={data.id}
                             className="relative hidden xl:block"
                           >
-                            <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[572px] md:bg-gray-800/50 propulsion-popup">
+                            <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
                               <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
                                 <div className="flex flex-wrap items-center justify-center text-center">
                                   <h5 className="w-full mb-2">
                                     {data.technologie_name}
                                   </h5>
                                   <div className="w-[47%]">
-                                    <div className="relative sm:w-64 md:w-72 lg:w-56 2xl:w-60 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                    <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
                                       <Image
                                         src={
                                           'https://cms.ariscorp.de/assets/' +
