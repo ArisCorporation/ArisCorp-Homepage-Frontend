@@ -63,7 +63,9 @@ export default function Technologie({ data }) {
           <Tab.Panel>
             <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
               {selectedTech
-                ? selectedTech != 'grav' && selectedTech != 'powerplant'
+                ? selectedTech != 'grav' &&
+                  selectedTech != 'powerplant' &&
+                  selectedTech != 'weaponexkurs'
                   ? data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
@@ -118,7 +120,9 @@ export default function Technologie({ data }) {
                 </div>
 
                 {selectedTech
-                  ? selectedTech != 'grav' && selectedTech != 'powerplant'
+                  ? selectedTech != 'grav' &&
+                    selectedTech != 'powerplant' &&
+                    selectedTech != 'weaponexkurs'
                     ? data
                         .filter((data) => data.id == selectedTech)
                         .map((data) => (
@@ -129,7 +133,7 @@ export default function Technologie({ data }) {
                             <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
                               <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
                                 <div className="flex flex-wrap items-center justify-center text-center">
-                                  <h5 className="w-full mb-2 lg:-mb-3">
+                                  <h5 className="w-full mb-2">
                                     {data.technologie_name}
                                   </h5>
                                   <div className="w-[47%]">
@@ -168,83 +172,22 @@ export default function Technologie({ data }) {
           <Tab.Panel>
             <div className="relative hidden w-full mt-12 sm:block">
               <div className="absolute right-0">
-                {selectedTech
-                  ? selectedTech != 'grav' && selectedTech != 'powerplant'
-                    ? data
-                        .filter((data) => data.id == selectedTech)
-                        .map((data) => (
-                          <div
-                            key={data.id}
-                            className="relative hidden xl:block"
-                          >
-                            <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
-                              <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
-                                <div className="flex flex-wrap items-center justify-center text-center">
-                                  <h5 className="w-full mb-2">
-                                    {data.technologie_name}
-                                  </h5>
-                                  <div className="w-[47%]">
-                                    <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
-                                      <Image
-                                        src={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          data.technologie_banner?.id
-                                        }
-                                        layout="fill"
-                                        objectFit="cover"
-                                        placeholder="blur"
-                                        blurDataURL={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          data.technologie_banner?.id +
-                                          '?width=16&quality=1'
-                                        }
-                                      />
-                                    </div>
-                                  </div>
-                                  <div className="w-[48%]">
-                                    <p className="p-0 text-sm 2xl:text-base">
-                                      {data.technologie_beschreibung}
-                                    </p>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        ))
-                    : null
-                  : null}
-              </div>
-              <div className="relative w-full max-h-[512px] aspect-[428/980] mx-auto xl:mr-0 xl:ml-52">
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/da73378c-1b9a-48c1-9bec-92c0ba814b08'
-                  }
-                  alt="test"
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="relative">
-                  <TechHuman />
-                </div>
-              </div>
-
-              {selectedTech
-                ? selectedTech != 'grav' && selectedTech != 'powerplant'
-                  ? data
+                {selectedTech ? (
+                  selectedTech != 'grav' &&
+                  selectedTech != 'powerplant' &&
+                  selectedTech != 'weaponexkurs' ? (
+                    data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
-                        <div
-                          key={data.id}
-                          className="relative block w-full mt-5 mb-48 xl:hidden"
-                        >
-                          <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md:bg-gray-800/50 propulsion-popup">
-                            <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                        <div key={data.id} className="relative hidden xl:block">
+                          <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
+                            <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
                               <div className="flex flex-wrap items-center justify-center text-center">
                                 <h5 className="w-full mb-2">
                                   {data.technologie_name}
                                 </h5>
                                 <div className="w-[47%]">
-                                  <div className="relative sm:w-60 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                  <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
                                     <Image
                                       src={
                                         'https://cms.ariscorp.de/assets/' +
@@ -262,7 +205,7 @@ export default function Technologie({ data }) {
                                   </div>
                                 </div>
                                 <div className="w-[48%]">
-                                  <p className="p-0 text-xs md:text-sm 2xl:text-base">
+                                  <p className="p-0 text-sm 2xl:text-base">
                                     {data.technologie_beschreibung}
                                   </p>
                                 </div>
@@ -271,8 +214,132 @@ export default function Technologie({ data }) {
                           </div>
                         </div>
                       ))
-                  : null
-                : null}
+                  ) : selectedTech == 'weaponexkurs' ? (
+                    <div className="relative hidden xl:block">
+                      <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
+                        <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
+                          <div className="flex flex-wrap items-center justify-center text-center">
+                            <h5 className="w-full mb-2">WeaponExkurs</h5>
+                            <div className="w-[47%]">
+                              <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                <Image
+                                  src={'https://cms.ariscorp.de/assets/'}
+                                  layout="fill"
+                                  objectFit="cover"
+                                  placeholder="blur"
+                                  blurDataURL={
+                                    'https://cms.ariscorp.de/assets/' +
+                                    '?width=16&quality=1'
+                                  }
+                                />
+                              </div>
+                            </div>
+                            <div className="w-[48%]">
+                              <p className="p-0 text-sm 2xl:text-base">
+                                Hier fehlt eine Beschreibung und ein Banner
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ) : null
+                ) : null}
+              </div>
+              <div className="relative w-full max-h-[512px] aspect-[428/980] mx-auto xl:mr-0 xl:ml-52">
+                <Image
+                  src={
+                    'https://cms.ariscorp.de/assets/da73378c-1b9a-48c1-9bec-92c0ba814b08'
+                  }
+                  alt="test"
+                  layout="fill"
+                  objectFit="cover"
+                />
+                <div className="relative">
+                  <TechHuman />
+                </div>
+              </div>
+
+              {selectedTech ? (
+                selectedTech != 'grav' &&
+                selectedTech != 'powerplant' &&
+                selectedTech != 'weaponexkurs' ? (
+                  data
+                    .filter((data) => data.id == selectedTech)
+                    .map((data) => (
+                      <div
+                        key={data.id}
+                        className="relative block w-full mt-5 mb-48 xl:hidden"
+                      >
+                        <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md:bg-gray-800/50 propulsion-popup">
+                          <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                            <div className="flex flex-wrap items-center justify-center text-center">
+                              <h5 className="w-full mb-2">
+                                {data.technologie_name}
+                              </h5>
+                              <div className="w-[47%]">
+                                <div className="relative sm:w-60 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                  <Image
+                                    src={
+                                      'https://cms.ariscorp.de/assets/' +
+                                      data.technologie_banner?.id
+                                    }
+                                    layout="fill"
+                                    objectFit="cover"
+                                    placeholder="blur"
+                                    blurDataURL={
+                                      'https://cms.ariscorp.de/assets/' +
+                                      data.technologie_banner?.id +
+                                      '?width=16&quality=1'
+                                    }
+                                  />
+                                </div>
+                              </div>
+                              <div className="w-[48%]">
+                                <p className="p-0 text-xs md:text-sm 2xl:text-base">
+                                  {data.technologie_beschreibung}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    ))
+                ) : selectedTech == 'weaponexkurs' ? (
+                  <div className="relative block w-full mt-5 mb-48 xl:hidden">
+                    <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md:bg-gray-800/50 propulsion-popup">
+                      <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                        <div className="flex flex-wrap items-center justify-center text-center">
+                          <h5 className="w-full mb-2">WeaponExkurs</h5>
+                          <div className="w-[47%]">
+                            <div className="relative sm:w-60 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                              <Image
+                                src={
+                                  'https://cms.ariscorp.de/assets/' +
+                                  data.technologie_banner?.id
+                                }
+                                layout="fill"
+                                objectFit="cover"
+                                placeholder="blur"
+                                blurDataURL={
+                                  'https://cms.ariscorp.de/assets/' +
+                                  data.technologie_banner?.id +
+                                  '?width=16&quality=1'
+                                }
+                              />
+                            </div>
+                          </div>
+                          <div className="w-[48%]">
+                            <p className="p-0 text-xs md:text-sm 2xl:text-base">
+                              Hier fehlt noch eine Beschreibung und ein Banner
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ) : null
+              ) : null}
             </div>
           </Tab.Panel>
         </Tab.Panels>
