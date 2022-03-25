@@ -70,8 +70,8 @@ export default function Technologie({ data }) {
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
                         <div key={data.id} className="relative hidden xl:block">
-                          <div className="absolute w-full h-40 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
-                            <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                          <div className="absolute w-full h-40 lg:right-0 top-46 sm:top-44 md:top-52 lg:top-48 xl:-top-4 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md: propulsion-popup">
+                            <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent ">
                               <div className="flex flex-wrap items-center justify-center text-center">
                                 <h5 className="w-full -mb-3">
                                   {data.technologie_name}
@@ -130,8 +130,8 @@ export default function Technologie({ data }) {
                             key={data.id}
                             className="relative block xl:hidden"
                           >
-                            <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
-                              <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                            <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 lg:w-[480px] 2xl:w-[512px] md: propulsion-popup">
+                              <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent ">
                                 <div className="flex flex-wrap items-center justify-center text-center">
                                   <h5 className="w-full mb-2">
                                     {data.technologie_name}
@@ -180,8 +180,8 @@ export default function Technologie({ data }) {
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
                         <div key={data.id} className="relative hidden xl:block">
-                          <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
-                            <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
+                          <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md: propulsion-popup">
+                            <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent ">
                               <div className="flex flex-wrap items-center justify-center text-center">
                                 <h5 className="w-full mb-2">
                                   {data.technologie_name}
@@ -216,8 +216,8 @@ export default function Technologie({ data }) {
                       ))
                   ) : selectedTech == 'weaponexkurs' ? (
                     <div className="relative hidden xl:block">
-                      <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md:bg-gray-800/50 propulsion-popup">
-                        <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent bg-gray-800/50">
+                      <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-40 top-46 sm:top-44 md:top-52 lg:top-48 2xl:h-44 lg:w-[480px] 2xl:w-[512px] md: propulsion-popup">
+                        <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent ">
                           <div className="flex flex-wrap items-center justify-center text-center">
                             <h5 className="w-full mb-2">WeaponExkurs</h5>
                             <div className="w-[47%]">
@@ -246,7 +246,7 @@ export default function Technologie({ data }) {
                   ) : null
                 ) : null}
               </div>
-              <div className="relative w-full max-h-[512px] aspect-[428/980] mx-auto xl:mr-0 xl:ml-52">
+              <div className="relative max-h-[512px] aspect-[428/980] mx-auto xl:mr-0 xl:ml-52">
                 <Image
                   src={
                     'https://cms.ariscorp.de/assets/da73378c-1b9a-48c1-9bec-92c0ba814b08'
@@ -271,8 +271,8 @@ export default function Technologie({ data }) {
                         key={data.id}
                         className="relative block w-full mt-5 mb-48 xl:hidden"
                       >
-                        <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md:bg-gray-800/50 propulsion-popup">
-                          <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                        <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md: propulsion-popup">
+                          <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent ">
                             <div className="flex flex-wrap items-center justify-center text-center">
                               <h5 className="w-full mb-2">
                                 {data.technologie_name}
@@ -307,8 +307,8 @@ export default function Technologie({ data }) {
                     ))
                 ) : selectedTech == 'weaponexkurs' ? (
                   <div className="relative block w-full mt-5 mb-48 xl:hidden">
-                    <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md:bg-gray-800/50 propulsion-popup">
-                      <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent bg-gray-800/50">
+                    <div className="absolute w-full h-36 lg:h-44 lg:right-0 2xl:h-40 md: propulsion-popup">
+                      <div className="md:w-full mx-auto h-full w-[80%] md:bg-transparent ">
                         <div className="flex flex-wrap items-center justify-center text-center">
                           <h5 className="w-full mb-2">WeaponExkurs</h5>
                           <div className="w-[47%]">
