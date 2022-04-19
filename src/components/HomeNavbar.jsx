@@ -155,7 +155,7 @@ function Navbar() {
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
-                  <Link href="#our">
+                  <Link href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 0
@@ -170,7 +170,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="#our">
+                  <Link href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 1
@@ -184,7 +184,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="#our">
+                  <Link href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 2
@@ -198,7 +198,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="#comm-links">
+                  <Link href="/#comm-links">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Comm-Links
@@ -207,7 +207,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="#recruitment">
+                  <Link href="/#recruitment">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Rekrutierung
@@ -216,7 +216,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full mb-5">
-                  <Link href="#partners">
+                  <Link href="/#partners">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Partner
@@ -262,7 +262,7 @@ function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
 
   return (
     <li className="pb-0 list-none">
-      <Link href={link ? link : '#' + AnkerLink}>
+      <Link href={link ? link : '/#' + AnkerLink}>
         <a
           onClick={() =>
             selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null
