@@ -8,44 +8,60 @@ import { useQuery } from '@apollo/client'
 import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
+import { useRouter } from 'next/router'
 
 const channels = [
-  { id: 0, name: 'Alle', unavailable: false },
-  { id: 1, name: 'ArisCorp PatchWatch', unavailable: false },
-  { id: 2, name: 'Ein Blick auf die Entwicklung', unavailable: false },
-  { id: 3, name: 'Gameplay Guides', unavailable: false },
-  { id: 4, name: 'Monthly Report', unavailable: false },
-  { id: 5, name: 'Special Report', unavailable: false },
+  { id: 0, name: 'Alle', value: ' ', unavailable: false },
+  {
+    id: 1,
+    name: 'ArisCorp PatchWatch',
+    value: 'ArisCorp PatchWatch',
+    unavailable: false,
+  },
+  {
+    id: 2,
+    name: 'Ein Blick auf die Entwicklung',
+    value: 'Ein Blick auf die Entwicklung',
+    unavailable: false,
+  },
+  {
+    id: 3,
+    name: 'Gameplay Guides',
+    value: 'Gameplay Guides',
+    unavailable: false,
+  },
+  {
+    id: 4,
+    name: 'Monthly Report',
+    value: 'Monthly Report',
+    unavailable: false,
+  },
+  {
+    id: 5,
+    name: 'Special Report',
+    value: 'Special Report',
+    unavailable: false,
+  },
 ]
 
 export default function CommLinksPage() {
+  const router = useRouter()
   const [children, setChildren] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [selectedChannel, setSelectedChannel] = useState(channels[0])
-  const [selectedQueryChannel, setSelectedQueryChannel] = useState(' ')
+  const urlquery = router.query.channel
+  const [queryChannel, setQueryChannel] = useState(' ')
   const { loading, error, data } = useQuery(GET_COMM_LINKS, {
-    variables: { selectedQueryChannel },
+    variables: { queryChannel },
   })
 
   useEffect(() => {
     setIsLoading(true)
 
-    function channelHandle() {
-      if (selectedChannel.id == 0) {
-        setSelectedQueryChannel(' ')
-      } else if (selectedChannel.id == 1) {
-        setSelectedQueryChannel(selectedChannel.name)
-      } else if (selectedChannel.id == 2) {
-        setSelectedQueryChannel(selectedChannel.name)
-      } else if (selectedChannel.id == 3) {
-        setSelectedQueryChannel(selectedChannel.name)
-      } else if (selectedChannel.id == 4) {
-        setSelectedQueryChannel(selectedChannel.name)
-      } else if (selectedChannel.id == 5) {
-        setSelectedQueryChannel(selectedChannel.name)
-      }
+    if (urlquery != 'Alle' && urlquery != null && urlquery != '') {
+      setQueryChannel(urlquery)
+    } else {
+      setQueryChannel(' ')
     }
-    channelHandle()
 
     const layout = []
 
@@ -226,7 +242,7 @@ export default function CommLinksPage() {
     setIsLoading(false)
 
     setChildren(layout)
-  }, [data?.comm_links, selectedChannel])
+  }, [data?.comm_links, urlquery])
 
   if (error) return <p>Error :(</p>
 
@@ -247,10 +263,17 @@ export default function CommLinksPage() {
       <div>
         <div className="w-1/4">
           <p>Channel:</p>
-          <Listbox value={selectedChannel} onChange={setSelectedChannel}>
+          <Listbox
+            value={urlquery}
+            onChange={(event) =>
+              router.replace({ query: { channel: event.name } })
+            }
+          >
             <div className="relative z-10 mt-1">
               <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-default border-bg-secondary bg-bg-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-bg-secondary focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:border-transparent sm:text-sm">
-                <span className="block truncate">{selectedChannel.name}</span>
+                <span className="block truncate">
+                  {urlquery != '' && urlquery != null ? urlquery : 'Alle'}
+                </span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <HiSelector
                     className="w-5 h-5 text-gray-400"
