@@ -1,10 +1,9 @@
 import Layout from './layout'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FIRMEN_HERSTELLER } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
-import Image from 'next/image'
 import FirmenCard from 'components/VerseExkursFirmenGrid'
 import Link from 'next/link'
 
@@ -27,9 +26,27 @@ export async function getServerSideProps() {
 }
 
 export default function Hersteller({ data }) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.tab
+
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
-      <Tab.Group>
+      <Tab.Group
+        selectedIndex={activeTab}
+        onChange={(event) =>
+          replace({ query: { tab: event } }, undefined, { shallow: true }) +
+          setActiveTab(event)
+        }
+      >
         <Tab.List className="flex flex-wrap justify-between">
           <Tab
             className={({ selected }) =>

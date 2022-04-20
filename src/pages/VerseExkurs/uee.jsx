@@ -1,5 +1,7 @@
 import Layout from 'pages/VerseExkurs/layout'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
@@ -23,7 +25,19 @@ export async function getServerSideProps() {
 }
 
 export default function UEEPage(data) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.tab
+
   const Data = data.data
+
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -62,7 +76,13 @@ export default function UEEPage(data) {
             </ReactMarkdown>
           </div>
           <hr />
-          <Tab.Group>
+          <Tab.Group
+            selectedIndex={activeTab}
+            onChange={(event) =>
+              replace({ query: { tab: event } }, undefined, { shallow: true }) +
+              setActiveTab(event)
+            }
+          >
             <Tab.List className="">
               {Data.sections.map((data) => (
                 <Tab

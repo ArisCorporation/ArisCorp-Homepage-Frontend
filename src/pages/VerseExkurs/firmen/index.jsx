@@ -1,15 +1,14 @@
 import Layout from 'pages/VerseExkurs/layout'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FIRMEN } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
-import Image from 'next/image'
 import FirmenCard from 'components/VerseExkursFirmenGrid'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_FIRMEN })
-  
+
   if (!data) {
     return {
       notFound: true,
@@ -24,12 +23,40 @@ export async function getServerSideProps() {
 }
 
 export default function Firmen({ data }) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState(0)
+  const [activeSecondaryTab, setActiveSecondaryTab] = useState(0)
+  const urlquery = query.tab
+  const urlqueryhersteller = query.hersteller
   console.log(data.filter((data) => data.firmenkategorie === 'hersteller'))
   const imglink = 'https://cms.ariscorp.de/assets/'
 
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+
+    if (urlqueryhersteller != null && urlqueryhersteller != '') {
+      setActiveSecondaryTab(urlqueryhersteller)
+    } else {
+      setActiveSecondaryTab(0)
+    }
+  }, [urlquery, urlqueryhersteller])
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
-      <Tab.Group>
+      <Tab.Group
+        selectedIndex={activeTab}
+        onChange={(event) =>
+          replace(
+            { query: { tab: event, hersteller: urlqueryhersteller } },
+            undefined,
+            { shallow: true }
+          ) + setActiveTab(event)
+        }
+      >
         <Tab.List className="flex flex-wrap justify-between">
           <h1>FIRMEN</h1>
           <hr />
@@ -87,7 +114,18 @@ export default function Firmen({ data }) {
         </Tab.List>
         <Tab.Panels className={'px-4'}>
           <Tab.Panel>
-            <Tab.Group>
+            <Tab.Group
+              selectedIndex={activeSecondaryTab}
+              onChange={(event) =>
+                replace(
+                  { query: { tab: urlquery, hersteller: event } },
+                  undefined,
+                  {
+                    shallow: true,
+                  }
+                ) + setActiveSecondaryTab(event)
+              }
+            >
               <Tab.List className="flex flex-wrap justify-between">
                 <Tab
                   className={({ selected }) =>

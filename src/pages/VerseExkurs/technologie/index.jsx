@@ -3,8 +3,8 @@ import Layout from 'pages/VerseExkurs/layout'
 import TechCarrack from 'components/VerseExkursTechCarrack'
 import TechHuman from 'components/VerseExkursTechHuman'
 import { useContext } from 'react'
-import ReactMarkdown from 'react-markdown'
-import rehypeRaw from 'rehype-raw'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_TECHNOLOGIES } from 'graphql/queries'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
@@ -29,13 +29,31 @@ export async function getServerSideProps() {
 }
 
 export default function Technologie({ data }) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.tab
+
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
+
   const [selectedTech, setSelectedTech] = useContext(
     ShipTechnologieModalContext
   )
-  console.log(data.filter((data) => data.id == selectedTech))
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
-      <Tab.Group>
+      <Tab.Group
+        selectedIndex={activeTab}
+        onChange={(event) =>
+          replace({ query: { tab: event } }, undefined, { shallow: true }) +
+          setActiveTab(event)
+        }
+      >
         <Tab.List className="flex flex-wrap justify-between">
           <Tab
             className={({ selected }) =>

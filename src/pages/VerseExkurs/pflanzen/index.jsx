@@ -1,5 +1,6 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { SquareLoader } from 'react-spinners'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
@@ -25,7 +26,19 @@ export async function getServerSideProps() {
 }
 
 export default function PflanzenPage(data) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.tab
+
   const Data = data.data
+
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
@@ -68,7 +81,11 @@ export default function PflanzenPage(data) {
           >
             {Data.text}
           </ReactMarkdown>
-          <Tab.Group>
+          <Tab.Group
+            selectedIndex={activeTab}
+            onChange={(event) =>
+              (replace({ query: { tab: event } }, undefined, { shallow: true })) + (setActiveTab(event))
+            }>
             <Tab.List className="flex flex-wrap justify-between">
               <Tab
                 className={({ selected }) =>

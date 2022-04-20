@@ -1,8 +1,7 @@
 import Image from 'next/image'
-import Link from 'next/link'
-import ReactTooltip from 'react-tooltip'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 import Layout from 'pages/VerseExkurs/layout'
-import { useState } from 'react'
 import Starmap from 'components/VerseExkursStarmap'
 import { Tab } from '@headlessui/react'
 import {
@@ -38,12 +37,27 @@ export async function getServerSideProps() {
 }
 
 export default function StarmapPage({ data }) {
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.tab
+
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
+
   const [swiper, setSwiper] = useState(null)
-  console.log(data)
 
   return (
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
-      <Tab.Group>
+      <Tab.Group
+            selectedIndex={activeTab}
+            onChange={(event) =>
+              (replace({ query: { tab: event } }, undefined, { shallow: true })) + (setActiveTab(event))
+            }>
         <Tab.List className="flex flex-wrap justify-between">
           <Tab
             className={({ selected }) =>

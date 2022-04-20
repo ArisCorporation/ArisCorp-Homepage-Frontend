@@ -45,10 +45,10 @@ const channels = [
 ]
 
 export default function CommLinksPage() {
-  const router = useRouter()
+  const { query, replace } = useRouter()
   const [children, setChildren] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const urlquery = router.query.channel
+  const urlquery = query.channel
   const [queryChannel, setQueryChannel] = useState(' ')
   const { loading, error, data } = useQuery(GET_COMM_LINKS, {
     variables: { queryChannel },
@@ -266,7 +266,9 @@ export default function CommLinksPage() {
           <Listbox
             value={urlquery}
             onChange={(event) =>
-              router.replace({ query: { channel: event.name } })
+              replace({ query: { channel: event.name } }, undefined, {
+                scroll: false,
+              })
             }
           >
             <div className="relative z-10 mt-1">

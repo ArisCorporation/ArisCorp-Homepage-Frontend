@@ -9,6 +9,7 @@ import {
 } from 'components/icons'
 import { GET_VEXKURS_INDEX } from 'graphql/queries'
 import client from 'apollo/clients'
+import router from 'next/router'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VEXKURS_INDEX })

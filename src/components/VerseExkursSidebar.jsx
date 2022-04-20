@@ -95,7 +95,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.asPath == '/VerseExkurs' ? '' : ' after:hidden')
+                (router.pathname == '/VerseExkurs' ? '' : ' after:hidden')
               }
             >
               <div
@@ -113,7 +113,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.asPath == '/VerseExkurs/firmen' ? '' : ' after:hidden')
+                (router.pathname == '/VerseExkurs/firmen' ? '' : ' after:hidden')
               }
             >
               <div
@@ -131,7 +131,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.asPath == '/VerseExkurs/search' ? '' : ' after:hidden')
+                (router.pathname == '/VerseExkurs/search' ? '' : ' after:hidden')
               }
             >
               <div
@@ -149,7 +149,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.asPath == '/VerseExkurs/alienrassen'
+                (router.pathname == '/VerseExkurs/alienrassen'
                   ? ''
                   : ' after:hidden')
               }
@@ -218,7 +218,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs'
+                      (router.pathname == '/VerseExkurs'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -317,7 +317,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/timeline'
+                                  (router.pathname == '/VerseExkurs/timeline'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -373,7 +373,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath ==
+                                  (router.pathname ==
                                   '/VerseExkurs/onedayinhistory'
                                     ? 'after:block '
                                     : 'after:hidden ') +
@@ -434,7 +434,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/uee'
+                      (router.pathname == '/VerseExkurs/uee'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -471,7 +471,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/starmap'
+                      (router.pathname == '/VerseExkurs/starmap'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -569,7 +569,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/banu'
+                                  (router.pathname == '/VerseExkurs/banu'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -624,7 +624,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/tevarin'
+                                  (router.pathname == '/VerseExkurs/tevarin'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -679,7 +679,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/vanduul'
+                                  (router.pathname == '/VerseExkurs/vanduul'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -734,7 +734,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/xian'
+                                  (router.pathname == '/VerseExkurs/xian'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -790,7 +790,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/biestarium'
+                                  (router.pathname == '/VerseExkurs/biestarium'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -845,7 +845,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/pflanzen'
+                                  (router.pathname == '/VerseExkurs/pflanzen'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -965,7 +965,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/hersteller'
+                                  (router.pathname == '/VerseExkurs/hersteller'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -1020,7 +1020,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/dienstleister'
+                                  (router.pathname == '/VerseExkurs/dienstleister'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -1075,7 +1075,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath ==
+                                  (router.pathname ==
                                   '/VerseExkurs/Firmen/geschafte'
                                     ? 'after:block '
                                     : 'after:hidden ') +
@@ -1131,7 +1131,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath ==
+                                  (router.pathname ==
                                   '/VerseExkurs/organisationen'
                                     ? 'after:block '
                                     : 'after:hidden ') +
@@ -1188,7 +1188,7 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.asPath == '/VerseExkurs/verschiedene'
+                                  (router.pathname == '/VerseExkurs/verschiedene'
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -1248,7 +1248,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/firmen'
+                      (router.pathname == '/VerseExkurs/firmen'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1284,7 +1284,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/technologie'
+                      (router.pathname == '/VerseExkurs/technologie'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1320,7 +1320,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/spectrum'
+                      (router.pathname == '/VerseExkurs/spectrum'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1356,7 +1356,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/VerseExkurs/literatur'
+                      (router.pathname == '/VerseExkurs/literatur'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1394,7 +1394,7 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.asPath == '/'
+                      (router.pathname == '/'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1494,7 +1494,7 @@ export default function Sidebar() {
               </li>
             </ul>
           </div>
-          {router.asPath == '/VerseExkurs/technologie' ? (
+          {router.pathname == '/VerseExkurs/technologie' ? (
             <div className="z-50">
               <ReactTooltip
                 place="right"
