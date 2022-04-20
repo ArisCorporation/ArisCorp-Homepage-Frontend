@@ -178,9 +178,9 @@ export const GET_GAMEPLAYS = gql`
 
 // COMM-LINK QUERYS
 export const GET_COMM_LINKS = gql`
-  query GetCommLinks {
+  query GetCommLinks($selectedQueryChannel: String!) {
     comm_links(
-      filter: { status: { _eq: "published" } }
+      filter: { comm_link_channel: { channel: { _contains: $selectedQueryChannel} } }
       sort: ["sort", "-date_created"]
     ) {
       id
@@ -195,8 +195,10 @@ export const GET_COMM_LINKS = gql`
       comm_link
       comm_link_beschreibung
       comm_link_channel {
+        id
         channel
         beschreibung
+        unavailable
       }
     }
   }
@@ -628,7 +630,7 @@ export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
 
 export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
   query GetVerseExkursTechnologie($Technologie: String!) {
-    technologien(filter: { technologie_name: { _eq: $Technologie }}) {
+    technologien(filter: { technologie_name: { _eq: $Technologie } }) {
       id
       category
       technologie_banner {

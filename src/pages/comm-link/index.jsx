@@ -1,16 +1,52 @@
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
-import Layout from './layout'
+import Layout from '../layout'
 import { OneThird, TwoThirds, ThreeThirds } from 'components/CommLinkCards'
 import { GET_COMM_LINKS } from 'graphql/queries'
 import { useQuery } from '@apollo/client'
+import { Listbox, Transition } from '@headlessui/react'
+import { AiOutlineCheck } from 'react-icons/ai'
+import { HiSelector } from 'react-icons/hi'
+
+const channels = [
+  { id: 0, name: 'Alle', unavailable: false },
+  { id: 1, name: 'ArisCorp PatchWatch', unavailable: false },
+  { id: 2, name: 'Ein Blick auf die Entwicklung', unavailable: false },
+  { id: 3, name: 'Gameplay Guides', unavailable: false },
+  { id: 4, name: 'Monthly Report', unavailable: false },
+  { id: 5, name: 'Special Report', unavailable: false },
+]
 
 export default function CommLinksPage() {
   const [children, setChildren] = useState([])
-  const { loading, error, data } = useQuery(GET_COMM_LINKS)
+  const [isLoading, setIsLoading] = useState(true)
+  const [selectedChannel, setSelectedChannel] = useState(channels[0])
+  const [selectedQueryChannel, setSelectedQueryChannel] = useState(' ')
+  const { loading, error, data } = useQuery(GET_COMM_LINKS, {
+    variables: { selectedQueryChannel },
+  })
 
   useEffect(() => {
+    setIsLoading(true)
+
+    function channelHandle() {
+      if (selectedChannel.id == 0) {
+        setSelectedQueryChannel(' ')
+      } else if (selectedChannel.id == 1) {
+        setSelectedQueryChannel(selectedChannel.name)
+      } else if (selectedChannel.id == 2) {
+        setSelectedQueryChannel(selectedChannel.name)
+      } else if (selectedChannel.id == 3) {
+        setSelectedQueryChannel(selectedChannel.name)
+      } else if (selectedChannel.id == 4) {
+        setSelectedQueryChannel(selectedChannel.name)
+      } else if (selectedChannel.id == 5) {
+        setSelectedQueryChannel(selectedChannel.name)
+      }
+    }
+    channelHandle()
+
     const layout = []
 
     for (let i = 0; i < data?.comm_links.length; i += 10) {
@@ -187,15 +223,14 @@ export default function CommLinksPage() {
       )
     }
 
-    setChildren(layout)
-  }, [data?.comm_links])
+    setIsLoading(false)
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
+    setChildren(layout)
+  }, [data?.comm_links, selectedChannel])
+
+  console.log(selectedChannel)
+  console.log('quer' + selectedQueryChannel)
+
   if (error) return <p>Error :(</p>
 
   return (
@@ -211,8 +246,77 @@ export default function CommLinksPage() {
         />
       </div>
       <hr />
+
+      <div>
+        <div className="w-1/4">
+          <p>Channel:</p>
+          <Listbox value={selectedChannel} onChange={setSelectedChannel}>
+            <div className="relative z-10 mt-1">
+              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-default border-bg-secondary bg-bg-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-bg-secondary focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:border-transparent sm:text-sm">
+                <span className="block truncate">{selectedChannel.name}</span>
+                <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                  <HiSelector
+                    className="w-5 h-5 text-gray-400"
+                    aria-hidden="true"
+                  />
+                </span>
+              </Listbox.Button>
+              <Transition
+                leave="transition ease-in duration-100"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Listbox.Options className="absolute w-full py-1 pl-0 mt-1 overflow-auto text-base rounded-md shadow-lg bg-bg-primary max-h-60 ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+                  {channels.map((channel, channelIdx) => (
+                    <Listbox.Option
+                      key={channelIdx}
+                      className={({ active }) =>
+                        `cursor-default select-none relative py-2 pl-4 pr-4 ${
+                          active
+                            ? 'text-secondary bg-bg-secondary'
+                            : 'opacity-50'
+                        }`
+                      }
+                      value={channel}
+                    >
+                      {({ selectedChannel }) => (
+                        <>
+                          <span
+                            className={`block truncate ${
+                              selectedChannel ? 'font-medium' : 'font-normal'
+                            }`}
+                          >
+                            {channel.name}
+                          </span>
+                          {selectedChannel ? (
+                            <span className="absolute inset-y-0 left-0 flex items-center text-secondary">
+                              <AiOutlineCheck
+                                className="w-5 h-5"
+                                aria-hidden="true"
+                              />
+                            </span>
+                          ) : null}
+                        </>
+                      )}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </Transition>
+            </div>
+          </Listbox>
+        </div>
+      </div>
+
       <div className="flex flex-wrap justify-center pt-12 mx-auto">
-        <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
+        {loading || isLoading == true ? (
+          <SquareLoader
+            color="#00ffe8"
+            speedMultiplier="0.8"
+            loading={loading}
+          />
+        ) : (
+          <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
+        )}
       </div>
     </div>
   )
