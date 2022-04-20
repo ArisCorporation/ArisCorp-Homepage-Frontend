@@ -4,28 +4,35 @@ import OurFleet from './HomeOurFleet'
 import dynamic from 'next/dynamic'
 import React, { useState, useEffect, useContext } from 'react'
 import { useRouter } from 'next/router'
-import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 
 const OurGameplays = dynamic(() => import('./HomeOurGameplays'), {})
 
 const OrgaSection = () => {
-  // const { selectedOurIndex, setSelectedOurIndex } =
-  //   useContext(OurTabDataContext)
-  // const [ourSelectedIndex, setOurSelectedIndex] = useState(0)
-  // const [selectedIndex, setSelectedIndex] = useState(0)
-  const { query } = useRouter()
-  const router = useRouter()
+  const { replace, query } = useRouter()
+  const [activeTab, setActiveTab] = useState()
+  const urlquery = query.our
 
-  const [selectedOurIndex, setSelectedOurIndex] = useContext(OurTabSelectionContext)
+  useEffect(() => {
+    if (urlquery != null && urlquery != '') {
+      setActiveTab(urlquery)
+    } else {
+      setActiveTab(0)
+    }
+  }, [urlquery])
 
   return (
     <div className="my-24">
       <Tab.Group
-        selectedIndex={selectedOurIndex}
-        onChange={setSelectedOurIndex}
+        selectedIndex={activeTab}
+        onChange={(event) =>
+          (query.about != null && query.about != '' ? (replace({ query: { about: query.about, our: event } }, undefined, { shallow: true })) : (replace({ query: { our: event, } }, undefined, { shallow: true }))) +
+          setActiveTab(event)
+        }
       >
-        <Tab.List className="flex flex-wrap justify-between" >
-          <h1 className="scroll-mt-28" id="our">UNSERE</h1>
+        <Tab.List className="flex flex-wrap justify-between">
+          <h1 className="scroll-mt-28" id="our">
+            UNSERE
+          </h1>
           <hr />
           <Tab
             className={({ selected }) =>

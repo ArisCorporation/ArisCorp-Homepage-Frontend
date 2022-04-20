@@ -18,7 +18,7 @@ import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const router = useRouter()
+  const {pathname, replace, query} = useRouter()
 
   const [selectedOurIndex, setSelectedOurIndex] = useContext(
     OurTabSelectionContext
@@ -33,7 +33,7 @@ function Navbar() {
         <div>
           <Link
             href={
-              router.pathname == '/'
+              pathname == '/'
                 ? 'https://robertsspaceindustries.com/orgs/ARISCORP'
                 : '/'
             }
@@ -42,7 +42,7 @@ function Navbar() {
               <MainLogo width="128" height="128" />
               <NavbarTooltip
                 tooltip={
-                  router.pathname == '/'
+                  pathname == '/'
                     ? 'Zur RSI-Homepage'
                     : 'Zurück zur Homepage'
                 }
@@ -243,9 +243,7 @@ function Navbar() {
 }
 
 function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
-  const [selectedOurIndex, setSelectedOurIndex] = useContext(
-    OurTabSelectionContext
-  )
+  const {pathname, replace, query} = useRouter()
 
   if (!ourTab) {
     return (
@@ -262,17 +260,15 @@ function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
 
   return (
     <li className="pb-0 list-none">
-      <Link href={link ? link : '/#' + AnkerLink}>
         <a
           onClick={() =>
-            selectedOurIndex != ourTab ? setSelectedOurIndex(ourTab) : null
+            (query.about != null && query.about != '' ? (replace({pathname: '/', hash: AnkerLink, query: { about: query.about, our: ourTab } }, undefined, { shallow: true })) : (replace({pathname: '/', hash: AnkerLink, query: { our: ourTab, } }, undefined, { shallow: true })))
           }
           className="flex justify-center group"
         >
           {content}
           <NavbarTooltip tooltip={tooltip} />
         </a>
-      </Link>
     </li>
   )
 }
