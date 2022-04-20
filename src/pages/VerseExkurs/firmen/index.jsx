@@ -50,11 +50,14 @@ export default function Firmen({ data }) {
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
-          replace(
-            { query: { tab: event, hersteller: urlqueryhersteller } },
-            undefined,
-            { shallow: true }
-          ) + setActiveTab(event)
+          urlqueryhersteller != null && urlqueryhersteller != ''
+            ? replace(
+                { query: { tab: event, hersteller: urlqueryhersteller } },
+                undefined,
+                { shallow: true }
+              )
+            : replace({ query: { tab: event } }, undefined, { shallow: true }) +
+              setActiveTab(event)
         }
       >
         <Tab.List className="flex flex-wrap justify-between">
@@ -117,13 +120,15 @@ export default function Firmen({ data }) {
             <Tab.Group
               selectedIndex={activeSecondaryTab}
               onChange={(event) =>
-                replace(
-                  { query: { tab: urlquery, hersteller: event } },
-                  undefined,
-                  {
-                    shallow: true,
-                  }
-                ) + setActiveSecondaryTab(event)
+                (urlquery != null && urlquery != ''
+                  ? replace(
+                      { query: { tab: urlquery, hersteller: event } },
+                      undefined,
+                      { shallow: true }
+                    )
+                  : replace({ query: { hersteller: event } }, undefined, {
+                      shallow: true,
+                    })) + setActiveSecondaryTab(event)
               }
             >
               <Tab.List className="flex flex-wrap justify-between">
