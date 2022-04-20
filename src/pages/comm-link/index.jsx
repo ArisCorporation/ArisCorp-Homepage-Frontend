@@ -228,9 +228,6 @@ export default function CommLinksPage() {
     setChildren(layout)
   }, [data?.comm_links, selectedChannel])
 
-  console.log(selectedChannel)
-  console.log('quer' + selectedQueryChannel)
-
   if (error) return <p>Error :(</p>
 
   return (
