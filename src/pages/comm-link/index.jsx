@@ -9,6 +9,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
 import { useRouter } from 'next/router'
+import { useQueryState } from 'next-usequerystate'
 
 const channels = [
   { id: 0, name: 'Alle', value: ' ', unavailable: false },
@@ -50,8 +51,9 @@ export default function CommLinksPage() {
   const [isLoading, setIsLoading] = useState(true)
   const urlquery = query.channel
   const [queryChannel, setQueryChannel] = useState(' ')
+  const [searchQuery, setSearchQuery] = useQueryState('q')
   const { loading, error, data } = useQuery(GET_COMM_LINKS, {
-    variables: { queryChannel },
+    variables: { queryChannel, searchQuery },
   })
 
   useEffect(() => {
@@ -266,7 +268,7 @@ export default function CommLinksPage() {
           <Listbox
             value={urlquery}
             onChange={(event) =>
-              replace({ query: { channel: event.name } }, undefined, {
+              replace({ query: { q: query.q, channel: event.name } }, undefined, {
                 scroll: false,
               })
             }
@@ -327,6 +329,10 @@ export default function CommLinksPage() {
             </div>
           </Listbox>
         </div>
+      </div>
+
+      <div>
+      <input value={searchQuery || ''} onChange={e => setSearchQuery(e.target.value)} />
       </div>
 
       <div className="flex flex-wrap justify-center pt-12 mx-auto">
