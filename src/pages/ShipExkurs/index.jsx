@@ -72,7 +72,7 @@ export default function VerseExkursIndex() {
   return (
     <div className="[overflow-x:scroll!important]">
       <h1 className="text-center scale-50 md:scale-75 lg:scale-100">
-        Das ist ein sehr kleiner Einblick in die Daten die, die ArisCorp für den
+        Das ist ein sehr kleiner Einblick in die Daten die, der ArisCorp für den
         ShipExkurs zur verfügung stehen
       </h1>
       <h5 className="mt-3 text-center">

@@ -18,7 +18,7 @@ import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
-  const {pathname, replace, query} = useRouter()
+  const { pathname, replace, query } = useRouter()
 
   const [selectedOurIndex, setSelectedOurIndex] = useContext(
     OurTabSelectionContext
@@ -42,9 +42,7 @@ function Navbar() {
               <MainLogo width="128" height="128" />
               <NavbarTooltip
                 tooltip={
-                  pathname == '/'
-                    ? 'Zur RSI-Homepage'
-                    : 'Zurück zur Homepage'
+                  pathname == '/' ? 'Zur RSI-Homepage' : 'Zurück zur Homepage'
                 }
               />
             </a>
@@ -158,9 +156,7 @@ function Navbar() {
                   <Link href="/#our">
                     <a
                       onClick={() =>
-                        selectedOurIndex != 0
-                          ? setSelectedOurIndex(0)
-                          : null
+                        selectedOurIndex != 0 ? setSelectedOurIndex(0) : null
                       }
                     >
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
@@ -173,10 +169,9 @@ function Navbar() {
                   <Link href="/#our">
                     <a
                       onClick={() =>
-                        selectedOurIndex != 1
-                          ? setSelectedOurIndex(1)
-                          : null
-                      }>
+                        selectedOurIndex != 1 ? setSelectedOurIndex(1) : null
+                      }
+                    >
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Flotte
                       </span>
@@ -187,10 +182,9 @@ function Navbar() {
                   <Link href="/#our">
                     <a
                       onClick={() =>
-                        selectedOurIndex != 2
-                          ? setSelectedOurIndex(2)
-                          : null
-                      }>
+                        selectedOurIndex != 2 ? setSelectedOurIndex(2) : null
+                      }
+                    >
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Unsere Arbeitsfelder
                       </span>
@@ -243,32 +237,51 @@ function Navbar() {
 }
 
 function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
-  const {pathname, replace, query} = useRouter()
+  const { pathname, push, replace, query } = useRouter()
 
   if (!ourTab) {
     return (
       <li className="pb-0 list-none">
-        <Link href={link ? link : '#' + AnkerLink}>
-          <a className="flex justify-center group">
-            {content}
-            <NavbarTooltip tooltip={tooltip} />
-          </a>
-        </Link>
-      </li>
-    )
-  }
-
-  return (
-    <li className="pb-0 list-none">
         <a
           onClick={() =>
-            (query.about != null && query.about != '' ? (replace({pathname: '/', hash: AnkerLink, query: { about: query.about, our: ourTab } }, undefined, { shallow: true })) : (replace({pathname: '/', hash: AnkerLink, query: { our: ourTab, } }, undefined, { shallow: true })))
+            link
+              ? push({ pathname: link })
+              : replace({ pathname: '/', hash: AnkerLink })
           }
           className="flex justify-center group"
         >
           {content}
           <NavbarTooltip tooltip={tooltip} />
         </a>
+      </li>
+    )
+  }
+
+  return (
+    <li className="pb-0 list-none">
+      <a
+        onClick={() =>
+          query.about != null && query.about != ''
+            ? replace(
+                {
+                  pathname: '/',
+                  hash: AnkerLink,
+                  query: { about: query.about, our: ourTab },
+                },
+                undefined,
+                { shallow: true }
+              )
+            : replace(
+                { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
+                undefined,
+                { shallow: true }
+              )
+        }
+        className="flex justify-center group"
+      >
+        {content}
+        <NavbarTooltip tooltip={tooltip} />
+      </a>
     </li>
   )
 }

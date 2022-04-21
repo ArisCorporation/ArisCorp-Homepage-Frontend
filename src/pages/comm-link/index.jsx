@@ -9,7 +9,6 @@ import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
 import { useRouter } from 'next/router'
-import { useQueryState } from 'next-usequerystate'
 
 const channels = [
   { id: 0, name: 'Alle', value: ' ', unavailable: false },
@@ -49,9 +48,11 @@ export default function CommLinksPage() {
   const { query, replace } = useRouter()
   const [children, setChildren] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const urlquery = query.channel
+  const channelquery = query.channel
   const [queryChannel, setQueryChannel] = useState(' ')
-  const [searchQuery, setSearchQuery] = useQueryState('q')
+  const squery = query.q
+  const [search, setSearch] = useState()
+  const [searchQuery, setSearchQuery] = useState();
   const { loading, error, data } = useQuery(GET_COMM_LINKS, {
     variables: { queryChannel, searchQuery },
   })
@@ -59,8 +60,8 @@ export default function CommLinksPage() {
   useEffect(() => {
     setIsLoading(true)
 
-    if (urlquery != 'Alle' && urlquery != null && urlquery != '') {
-      setQueryChannel(urlquery)
+    if (channelquery != 'Alle' && channelquery != null && channelquery != '') {
+      setQueryChannel(channelquery)
     } else {
       setQueryChannel(' ')
     }
@@ -244,7 +245,24 @@ export default function CommLinksPage() {
     setIsLoading(false)
 
     setChildren(layout)
-  }, [data?.comm_links, urlquery])
+  }, [data?.comm_links, channelquery])
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      if(channelquery != null && channelquery != ''){
+        replace({query: {q: search, channel: channelquery}}, undefined, {scroll: false})
+      } else {
+        replace({query: {q: search, channel: 'Alle'}}, undefined, {scroll: false})
+      }
+    }, 500)
+
+
+    return () => clearTimeout(timer)
+  }, [search])
+
+  useEffect(() =>{
+    setSearchQuery(squery)
+  }, [squery])
 
   if (error) return <p>Error :(</p>
 
@@ -266,17 +284,21 @@ export default function CommLinksPage() {
         <div className="w-1/4">
           <p>Channel:</p>
           <Listbox
-            value={urlquery}
+            value={channelquery}
             onChange={(event) =>
-              replace({ query: { q: query.q, channel: event.name } }, undefined, {
-                scroll: false,
-              })
+              replace(
+                { query: { q: query.q, channel: event.name } },
+                undefined,
+                {
+                  scroll: false,
+                }
+              )
             }
           >
             <div className="relative z-10 mt-1">
-              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-default border-bg-secondary bg-bg-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-bg-secondary focus-visible:ring-offset-transparent focus-visible:ring-offset-2 focus-visible:border-transparent sm:text-sm">
+              <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-pointer border-bg-secondary bg-bg-primary focus-visible:outline-none sm:text-sm">
                 <span className="block truncate">
-                  {urlquery != '' && urlquery != null ? urlquery : 'Alle'}
+                  {channelquery != '' && channelquery != null ? channelquery : 'Alle'}
                 </span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <HiSelector
@@ -295,7 +317,7 @@ export default function CommLinksPage() {
                     <Listbox.Option
                       key={channelIdx}
                       className={({ active }) =>
-                        `cursor-default select-none relative py-2 pl-4 pr-4 ${
+                        `cursor-pointer select-none relative py-2 pl-4 pr-4 ${
                           active
                             ? 'text-secondary bg-bg-secondary'
                             : 'opacity-50'
@@ -331,8 +353,14 @@ export default function CommLinksPage() {
         </div>
       </div>
 
-      <div>
-      <input value={searchQuery || ''} onChange={e => setSearchQuery(e.target.value)} />
+      <div className="flex justify-center">
+        <div className="mb-3 xl:w-96">
+          <input
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Suche..."
+            className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-bg-secondary/30 bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none "
+          />
+        </div>
       </div>
 
       <div className="flex flex-wrap justify-center pt-12 mx-auto">

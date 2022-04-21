@@ -45,14 +45,7 @@ export default function IndexPage({
   partner,
 }) {
   const [ourIndex, setOurIndex] = useState(0)
-  // useEffect(() => {
-  //   const script = document.createElement('script')
 
-  //   script.src = 'https://fleetyards.net/embed.js'
-  //   script.async = false
-
-  //   document.body.appendChild(script)
-  // })
   return (
     <OurTabSelectionProvider>
       <Layout ourIndex={ourIndex} onOurIndexChange={setOurIndex}>

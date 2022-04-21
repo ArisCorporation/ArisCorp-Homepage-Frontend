@@ -14,9 +14,12 @@ const localRestLink = new RestLink({ uri: '/api/' })
 
 export const client = new ApolloClient({
   ssrMode: true,
-  uri: 'https://cms.ariscorp.de/graphql?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr',
+  uri: process.env.NEXT_PUBLIC_GRAPH_SERVER,
   cache: new InMemoryCache(),
   defaultOptions: defaultOptions,
+  // headers: {
+  //   authorization: 'Bearer ',
+  // },
 })
 
 export const LocalApiClient = new ApolloClient({
