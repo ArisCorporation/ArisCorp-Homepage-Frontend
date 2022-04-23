@@ -22,7 +22,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function SpectrumPage({data}) {
+export default function SpectrumPage({ data }) {
   const Data = data.data
 
   return (
@@ -43,18 +43,18 @@ export default function SpectrumPage({data}) {
         <hr />
       </div>
       <div>
-        {data.filter(
-          (data) => data.spectrum_kategorie_beschreibung == true
-        ).map((data) => (
-          <ArticleCard
-            key={data.id}
-            link={data.id == 19 ? 'spectrum/19/125' : 'spectrum/' + data.id}
-            title={data.spectrum_titel}
-            desc={data.spectrum_text}
-            image={data.image?.id}
-            seperator={true}
-          />
-        ))}
+        {data
+          .filter((data) => data.spectrum_kategorie_beschreibung == true)
+          .map((data) => (
+            <ArticleCard
+              key={data.id}
+              link={data.id == 19 ? 'spectrum/19/125' : 'spectrum/' + data.id}
+              title={data.spectrum_titel}
+              desc={data.spectrum_text}
+              image={data.image?.id}
+              seperator={true}
+            />
+          ))}
       </div>
     </div>
   )

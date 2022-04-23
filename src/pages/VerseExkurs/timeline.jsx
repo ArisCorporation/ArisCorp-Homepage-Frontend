@@ -67,14 +67,12 @@ export default function Timeline({ data }) {
 
     document.body.appendChild(script)
 
-
     const script2 = document.createElement('script')
 
-    script2.src = "/timeline3/js/timeline.js"
+    script2.src = '/timeline3/js/timeline.js'
     script2.async = true
 
     document.body.appendChild(script2)
-    
 
     return () => {
       document.body.removeChild(script)
@@ -94,7 +92,15 @@ export default function Timeline({ data }) {
       {/* {!document.getElementsByClassName('tl-storyslider') ? (router.reload) : (console.log('servs'))} */}
 
       <div id="timeline-embed" className="w-full h-[500px] hwite bw"></div>
-      <p className="flex justify-center text-center">Falls du kein Inhalt sehen solltest,{' '}<span className="text-secondary/50 hover:text-secondary hover:cursor-pointer" onClick={() => router.reload()}>aktualisiere bitte die Seite</span></p>
+      <p className="flex justify-center text-center">
+        Falls du kein Inhalt sehen solltest,{' '}
+        <span
+          className="text-secondary/50 hover:text-secondary hover:cursor-pointer"
+          onClick={() => router.reload()}
+        >
+          aktualisiere bitte die Seite
+        </span>
+      </p>
 
       {/* <script
         dangerouslySetInnerHTML={{

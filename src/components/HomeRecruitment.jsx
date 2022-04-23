@@ -6,8 +6,11 @@ const RectruitmentSection = () => {
   let [isOpen, setIsOpen] = useState(false)
 
   return (
-    <div  className="px-4">
-      <h1 id="recruitment" className="text-lg scroll-mt-28 sm:text-3xl md:text-4xl">
+    <div className="px-4">
+      <h1
+        id="recruitment"
+        className="text-lg scroll-mt-28 sm:text-3xl md:text-4xl"
+      >
         WIR SUCHEN NEUE <span className="text-primary">MITGLIEDER</span>
       </h1>
       <hr />

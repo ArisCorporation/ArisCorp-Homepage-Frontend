@@ -169,9 +169,7 @@ const TechHuman = () => {
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
         onMouseEnter={() => setSelectedTech('weaponexkurs')}
         onMouseLeave={() => setSelectedTech(undefined)}
-        onClick={() =>
-          router.push('/VerseExkurs/weaponexkurs')
-        }
+        onClick={() => router.push('/VerseExkurs/weaponexkurs')}
       >
         <path
           id="weapons1"

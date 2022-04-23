@@ -27,7 +27,7 @@
     @apply text-white;
   }
   .tl-storyslider {
-    @apply [height:69px!important]
+    @apply [height:69px!important];
   }
 }
 
@@ -85,17 +85,17 @@
     @apply break-words truncate lg:whitespace-normal lg:text-clip;
   }
   .hwhite h2 {
-    color: #fff!important
+    color: #fff !important;
   }
   .bw p {
-    @apply text-[#d1d5dd]
+    @apply text-[#d1d5dd];
   }
 }
 .tl-storyslider {
   height: 569px !important;
 }
 .tl-timenav {
-  max-height: 177px
+  max-height: 177px;
 }
 hr {
   width: 100%;
@@ -416,4 +416,3 @@ button.swiper-pagination-bullet {
 .swiper-pagination-lock {
   display: none;
 }
-

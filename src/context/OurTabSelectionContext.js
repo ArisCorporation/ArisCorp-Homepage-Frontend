@@ -7,7 +7,9 @@ export const OurTabSelectionProvider = (props) => {
 
   return (
     <div>
-      <OurTabSelectionContext.Provider value={[selectedOurIndex, setSelectedOurIndex]}>
+      <OurTabSelectionContext.Provider
+        value={[selectedOurIndex, setSelectedOurIndex]}
+      >
         {props.children}
       </OurTabSelectionContext.Provider>
     </div>

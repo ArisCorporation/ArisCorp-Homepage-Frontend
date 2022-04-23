@@ -25,8 +25,15 @@ const OrgaSection = () => {
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
-          (query.about != null && query.about != '' ? (replace({ query: { about: query.about, our: event } }, undefined, { shallow: true })) : (replace({ query: { our: event, } }, undefined, { shallow: true }))) +
-          setActiveTab(event)
+          (query.about != null && query.about != ''
+            ? replace(
+                { query: { about: query.about, our: event } },
+                undefined,
+                { shallow: true }
+              )
+            : replace({ query: { our: event } }, undefined, {
+                shallow: true,
+              })) + setActiveTab(event)
         }
       >
         <Tab.List className="flex flex-wrap justify-between">

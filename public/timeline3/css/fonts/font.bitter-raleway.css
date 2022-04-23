@@ -24,25 +24,29 @@ https://www.google.com/fonts/specimen/Raleway
   font-family: 'Bitter';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/bitter/v25/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8RHYOLjOWA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/bitter/v25/raxhHiqOu8IVPmnRc6SY1KXhnF_Y8RHYOLjOWA.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 200;
-  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtaorCIPrQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVtaorCIPrQ.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
-  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVuEorCIPrQ.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/raleway/v26/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf)
+    format('truetype');
 }
 /*	Font Base
 ----------------------------------------------------- */
@@ -89,14 +93,14 @@ https://www.google.com/fonts/specimen/Raleway
   font-family: 'Raleway', sans-serif;
 }
 .tl-timeline .vcard {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif !important;
   font-weight: normal !important;
 }
 .tl-timeline .tl-slidenav-next,
 .tl-timeline .tl-slidenav-previous,
 .tl-timeline .tl-message,
 .tl-timeline .tl-timegroup-message {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif;
   font-weight: 700;
   text-transform: none;
 }
@@ -108,7 +112,7 @@ https://www.google.com/fonts/specimen/Raleway
 }
 .tl-timeline .tl-headline-date,
 .tl-timeline h3.tl-headline-date {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif !important;
   font-weight: normal !important;
   text-transform: none !important;
 }
@@ -117,7 +121,7 @@ https://www.google.com/fonts/specimen/Raleway
   font-weight: normal !important;
 }
 .tl-timeline .tl-timenav-slider {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif;
   font-weight: 700;
 }
 .tl-timeline .tl-timenav-slider h2.tl-headline {
@@ -126,12 +130,12 @@ https://www.google.com/fonts/specimen/Raleway
   text-transform: none;
 }
 .tl-timeline .tl-timenav-slider .tl-timeaxis {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif;
   font-weight: 700;
   text-transform: none;
 }
 .tl-timeline .tl-menubar {
-  font-family: 'Helvetica Neue', Helvetica, Arial, "MS Trebuchet", sans-serif;
+  font-family: 'Helvetica Neue', Helvetica, Arial, 'MS Trebuchet', sans-serif;
 }
 .tl-timeline blockquote,
 .tl-timeline blockquote p {
@@ -140,7 +144,7 @@ https://www.google.com/fonts/specimen/Raleway
   font-weight: 200;
   line-height: 1.3;
 }
-input[type="text"].editor-headline {
+input[type='text'].editor-headline {
   font-family: 'Bitter', serif;
   text-transform: none;
   font-weight: 700;

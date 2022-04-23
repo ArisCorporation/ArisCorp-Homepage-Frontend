@@ -84,8 +84,10 @@ export default function PflanzenPage(data) {
           <Tab.Group
             selectedIndex={activeTab}
             onChange={(event) =>
-              (replace({ query: { tab: event } }, undefined, { shallow: true })) + (setActiveTab(event))
-            }>
+              replace({ query: { tab: event } }, undefined, { shallow: true }) +
+              setActiveTab(event)
+            }
+          >
             <Tab.List className="flex flex-wrap justify-between">
               <Tab
                 className={({ selected }) =>

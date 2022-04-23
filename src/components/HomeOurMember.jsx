@@ -17,7 +17,7 @@ export default function OurMember() {
     )
   }
 
-  console.log(data);
+  console.log(data)
 
   return (
     <div id="member" className="flex items-center justify-center text-center">

@@ -15,7 +15,6 @@ const loadTimelineScript = (callback) => {
   if (existingScript && callback) callback()
 }
 
-
 const js = () => {
   var additionalOptions = {
     language: 'de',

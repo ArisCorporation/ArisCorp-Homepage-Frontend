@@ -178,10 +178,21 @@ export const GET_GAMEPLAYS = gql`
 
 // COMM-LINK QUERYS
 export const GET_COMM_LINKS = gql`
-  query GetCommLinks($queryChannel: String! $searchQuery: String = "") {
+  query GetCommLinks($queryChannel: String!, $squery: String!) {
     comm_links(
-      filter: { comm_link_channel: { channel: { _contains: $queryChannel} } }
-      search: $searchQuery,
+      #filter: { comm_link_channel: { channel: { _contains: $queryChannel} } }
+      filter: {
+        comm_link_channel: { channel: { _contains: $queryChannel } }
+        #_or: [
+        #  { comm_link_author: { member_name: { _contains: $searchQuery } } }
+        #  { comm_link_author: { member_titel: { _contains: $searchQuery } } }
+        #  { comm_link_beschreibung: { _contains: $searchQuery } }
+        #  { comm_link_titel: { _contains: $searchQuery } }
+        #  { comm_link_channel: { channel: { _contains: $searchQuery } } }
+        #  { comm_link: { _contains: $searchQuery } }
+        #]
+      }
+      search: $squery
       sort: ["sort", "-date_created"]
     ) {
       id

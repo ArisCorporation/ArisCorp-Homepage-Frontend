@@ -25,25 +25,29 @@ http://www.google.com/webfonts/specimen/PT+Serif
   font-family: 'PT Sans';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/ptsans/v16/jizaRExUiTo99u79D0KEwA.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/ptsans/v16/jizaRExUiTo99u79D0KEwA.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'PT Sans Narrow';
   font-style: normal;
   font-weight: 700;
-  src: url(https://fonts.gstatic.com/s/ptsansnarrow/v16/BngSUXNadjH0qYEzV7ab-oWlsbg95AiFW_g.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/ptsansnarrow/v16/BngSUXNadjH0qYEzV7ab-oWlsbg95AiFW_g.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'PT Serif';
   font-style: italic;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/ptserif/v16/EJRTQgYoZZY2vCFuvAFT_r21dw.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/ptserif/v16/EJRTQgYoZZY2vCFuvAFT_r21dw.ttf)
+    format('truetype');
 }
 @font-face {
   font-family: 'PT Serif';
   font-style: normal;
   font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/ptserif/v16/EJRVQgYoZZY2vCFuvAFWzro.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/ptserif/v16/EJRVQgYoZZY2vCFuvAFWzro.ttf)
+    format('truetype');
 }
 /*	Font Base
 ----------------------------------------------------- */
@@ -141,7 +145,7 @@ http://www.google.com/webfonts/specimen/PT+Serif
   font-weight: 400;
   line-height: 1.3;
 }
-input[type="text"].editor-headline {
+input[type='text'].editor-headline {
   font-family: 'PT Sans Narrow', sans-serif;
   text-transform: uppercase;
   font-weight: 700;

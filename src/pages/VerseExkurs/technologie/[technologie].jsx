@@ -11,7 +11,7 @@ export default function SpectrumArticlePage() {
   const router = useRouter()
   const { technologie: Technologie } = router.query
 
-  console.log(Technologie);
+  console.log(Technologie)
 
   const { loading, error, data } = useQuery(GET_VERSEEXKURS_TECHNOLOGIE, {
     variables: { Technologie: Technologie },

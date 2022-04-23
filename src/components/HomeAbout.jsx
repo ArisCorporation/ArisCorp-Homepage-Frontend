@@ -23,8 +23,13 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
     <Tab.Group
       selectedIndex={activeTab}
       onChange={(event) =>
-        (query.our != null && query.our != '' ? (replace({ query: { about: event, our: query.our } }, undefined, { shallow: true })) : (replace({ query: { about: event, } }, undefined, { shallow: true }))) +
-        setActiveTab(event)
+        (query.our != null && query.our != ''
+          ? replace({ query: { about: event, our: query.our } }, undefined, {
+              shallow: true,
+            })
+          : replace({ query: { about: event } }, undefined, {
+              shallow: true,
+            })) + setActiveTab(event)
       }
     >
       <Tab.List className="flex flex-wrap justify-between">

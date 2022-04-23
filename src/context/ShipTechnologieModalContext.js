@@ -7,7 +7,9 @@ export const ShipTechnologieModalProvider = (props) => {
 
   return (
     <div>
-      <ShipTechnologieModalContext.Provider value={[selectedTech, setSelectedTech]}>
+      <ShipTechnologieModalContext.Provider
+        value={[selectedTech, setSelectedTech]}
+      >
         {props.children}
       </ShipTechnologieModalContext.Provider>
     </div>

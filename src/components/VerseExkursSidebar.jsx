@@ -113,7 +113,9 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.pathname == '/VerseExkurs/firmen' ? '' : ' after:hidden')
+                (router.pathname == '/VerseExkurs/firmen'
+                  ? ''
+                  : ' after:hidden')
               }
             >
               <div
@@ -131,7 +133,9 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.pathname == '/VerseExkurs/search' ? '' : ' after:hidden')
+                (router.pathname == '/VerseExkurs/search'
+                  ? ''
+                  : ' after:hidden')
               }
             >
               <div

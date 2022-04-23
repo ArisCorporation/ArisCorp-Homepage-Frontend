@@ -4,7 +4,7 @@ import Navbar from 'components/HomeNavbar'
 import client from 'apollo/clients'
 import { useRouter } from 'next/router'
 import { ApolloProvider } from '@apollo/client'
-import {useState} from 'react'
+import { useState } from 'react'
 
 export default function Layout({ children, ourIndex, onOurIndexChange }) {
   const router = useRouter()

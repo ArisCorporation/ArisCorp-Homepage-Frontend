@@ -24,9 +24,12 @@ export async function getServerSideProps() {
 
 export default function SpectrumPage({ data }) {
   function sortDate(a, b) {
-    return new Date(a.geschichte_datum).getTime() - new Date(b.geschichte_datum).getTime();
+    return (
+      new Date(a.geschichte_datum).getTime() -
+      new Date(b.geschichte_datum).getTime()
+    )
   }
-  
+
   data = data.sort(sortDate)
 
   return (
