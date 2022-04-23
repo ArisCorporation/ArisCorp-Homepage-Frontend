@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback, useRef } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Layout from '../layout'
 import { OneThird, TwoThirds, ThreeThirds } from 'components/CommLinkCards'
@@ -9,6 +9,9 @@ import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
 import { useRouter } from 'next/router'
+import { useDebounce } from 'use-debounce'
+import { useQueryState } from 'next-usequerystate'
+import debounce from 'lodash.debounce'
 
 const channels = [
   { id: 0, name: 'Alle', value: ' ', unavailable: false },
@@ -45,16 +48,16 @@ const channels = [
 ]
 
 export default function CommLinksPage() {
-  const { query, replace } = useRouter()
+  const { query, replace, isReady } = useRouter()
+  const isMounted = useRef(false)
   const [children, setChildren] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const channelquery = query.channel
   const [queryChannel, setQueryChannel] = useState(' ')
-  const squery = query.q
   const [search, setSearch] = useState()
-  const [searchQuery, setSearchQuery] = useState();
+  const squery = query.q
+  const channelquery = query.channel
   const { loading, error, data } = useQuery(GET_COMM_LINKS, {
-    variables: { queryChannel, searchQuery },
+    variables: { queryChannel, squery },
   })
 
   useEffect(() => {
@@ -248,23 +251,29 @@ export default function CommLinksPage() {
   }, [data?.comm_links, channelquery])
 
   useEffect(() => {
-    let timer = setTimeout(() => {
-      if(channelquery != null && channelquery != ''){
-        replace({query: {q: search, channel: channelquery}}, undefined, {scroll: false})
-      } else {
-        replace({query: {q: search, channel: 'Alle'}}, undefined, {scroll: false})
-      }
-    }, 500)
+    if (isMounted.current) {
+      let timer = setTimeout(() => {
+        if (channelquery == null || channelquery == '') {
+          replace({ query: { q: search, channel: 'Alle' } }, undefined, {
+            scroll: false,
+          })
+        } else {
+          replace({ query: { q: search, channel: channelquery } }, undefined, {
+            scroll: false,
+          })
+        }
+      }, 500)
 
-
-    return () => clearTimeout(timer)
+      return () => clearTimeout(timer)
+    } else {
+      isMounted.current = true
+      setSearch(squery)
+    }
   }, [search])
 
-  useEffect(() =>{
-    setSearchQuery(squery)
-  }, [squery])
-
-  if (error) return <p>Error :(</p>
+  useEffect(() => {
+    if (isReady) setSearch(squery)
+  }, [isReady])
 
   return (
     <div>
@@ -298,7 +307,9 @@ export default function CommLinksPage() {
             <div className="relative z-10 mt-1">
               <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-pointer border-bg-secondary bg-bg-primary focus-visible:outline-none sm:text-sm">
                 <span className="block truncate">
-                  {channelquery != '' && channelquery != null ? channelquery : 'Alle'}
+                  {channelquery != '' && channelquery != null
+                    ? channelquery
+                    : 'Alle'}
                 </span>
                 <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                   <HiSelector
@@ -356,6 +367,7 @@ export default function CommLinksPage() {
       <div className="flex justify-center">
         <div className="mb-3 xl:w-96">
           <input
+            value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Suche..."
             className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-bg-secondary/30 bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none "
