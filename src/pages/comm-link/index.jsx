@@ -9,9 +9,6 @@ import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
 import { useRouter } from 'next/router'
-import { useDebounce } from 'use-debounce'
-import { useQueryState } from 'next-usequerystate'
-import debounce from 'lodash.debounce'
 
 const channels = [
   { id: 0, name: 'Alle', value: ' ', unavailable: false },
