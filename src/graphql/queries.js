@@ -178,7 +178,7 @@ export const GET_GAMEPLAYS = gql`
 
 // COMM-LINK QUERYS
 export const GET_COMM_LINKS = gql`
-  query GetCommLinks($queryChannel: String!, $squery: String!) {
+  query GetCommLinks($queryChannel: String!, $squery: String = "") {
     comm_links(
       #filter: { comm_link_channel: { channel: { _contains: $queryChannel} } }
       filter: {
