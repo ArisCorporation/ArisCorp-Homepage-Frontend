@@ -30,7 +30,7 @@ export async function getServerSideProps() {
 }
 
 export default function Technologie({ data }) {
-  const { replace, query } = useRouter()
+  const { push, replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
 
@@ -90,6 +90,7 @@ export default function Technologie({ data }) {
                   </div>
                 </BasicPanel>
               </div>
+
               {selectedTech
                 ? selectedTech != 'grav' &&
                   selectedTech != 'powerplant' &&
@@ -136,6 +137,29 @@ export default function Technologie({ data }) {
                       ))
                   : null
                 : null}
+
+              <div
+                className="relative top-0 left-0 flex mt-5 hover:cursor-pointer"
+                onMouseEnter={() => setSelectedTech('3')}
+                onMouseLeave={() => setSelectedTech(undefined)}
+                onClick={() =>
+                  router.push('/VerseExkurs/technologie/Komponenten')
+                }
+              >
+                <div className="relative w-60 aspect-square">
+                  <Image
+                    src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
+                    alt="Kompletter Tech Index"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
+                      '?width=16&quality=1'
+                    }
+                  />
+                </div>
+              </div>
             </div>
           </Tab.Panel>
           <Tab.Panel>
