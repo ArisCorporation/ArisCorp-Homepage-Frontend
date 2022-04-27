@@ -15,6 +15,9 @@ const TechHuman = () => {
       data-name="TechHuman"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 428 980"
+      width="100%"
+      height="100%"
+      className="bg-[url('https://cms.ariscorp.de/assets/da73378c-1b9a-48c1-9bec-92c0ba814b08')] bg-no-repeat bg-cover"
     >
       {/* <defs>
     <style>
@@ -48,7 +51,7 @@ const TechHuman = () => {
 
     </style>
   </defs> */}
-
+      {/* <rect width="100%" height="100%" /> */}
       <g
         id="armorgroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
