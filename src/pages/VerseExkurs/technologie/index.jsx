@@ -94,7 +94,8 @@ export default function Technologie({ data }) {
               {selectedTech
                 ? selectedTech != 'grav' &&
                   selectedTech != 'powerplant' &&
-                  selectedTech != 'weaponexkurs'
+                  selectedTech != 'weaponexkurs' &&
+                  selectedTech != 'armorexkurs'
                   ? data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
@@ -138,15 +139,15 @@ export default function Technologie({ data }) {
                   : null
                 : null}
 
-              <div
-                className="relative top-0 left-0 flex mt-5 hover:cursor-pointer"
-                onMouseEnter={() => setSelectedTech('3')}
-                onMouseLeave={() => setSelectedTech(undefined)}
-                onClick={() =>
-                  router.push('/VerseExkurs/technologie/Komponenten')
-                }
-              >
-                <div className="relative w-60 aspect-square">
+              <div className="relative top-0 left-0 flex mt-5 ">
+                <div
+                  className="relative w-60 aspect-square hover:cursor-pointer"
+                  onMouseEnter={() => setSelectedTech('3')}
+                  onMouseLeave={() => setSelectedTech(undefined)}
+                  onClick={() =>
+                    router.push('/VerseExkurs/technologie/Komponenten')
+                  }
+                >
                   <Image
                     src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
                     alt="Kompletter Tech Index"
@@ -163,12 +164,13 @@ export default function Technologie({ data }) {
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="relative hidden w-full mt-12 sm:block">
+            <div className="relative flex hidden w-full mt-12 sm:block">
               <div className="absolute right-0">
                 {selectedTech ? (
                   selectedTech != 'grav' &&
                   selectedTech != 'powerplant' &&
-                  selectedTech != 'weaponexkurs' ? (
+                  selectedTech != 'weaponexkurs' &&
+                  selectedTech != 'armorexkurs' ? (
                     data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
@@ -240,10 +242,40 @@ export default function Technologie({ data }) {
                         </div>
                       </div>
                     </div>
+                  ) : selectedTech == 'armorexkurs' ? (
+                    <div className="relative block">
+                      <div className="absolute w-full mr-0 2xl:mr-24 right-0 h-44 top-0 2xl:h-44 lg:w-[480px] 2xl:w-[548px] md: propulsion-popup">
+                        <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
+                          <BasicPanel>
+                            <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
+                              <h5 className="w-full mb-5">RüstungsExkurs</h5>
+                              <div className="w-[47%]">
+                                <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                  <Image
+                                    src={'https://cms.ariscorp.de/assets/'}
+                                    layout="fill"
+                                    objectFit="cover"
+                                    placeholder="blur"
+                                    blurDataURL={
+                                      'https://cms.ariscorp.de/assets/' +
+                                      '?width=16&quality=1'
+                                    }
+                                  />
+                                </div>
+                              </div>
+                              <div className="w-[48%]">
+                                <p className="p-0 text-sm 2xl:text-base">
+                                  Hier fehlt eine Beschreibung und ein Banner
+                                </p>
+                              </div>
+                            </div>
+                          </BasicPanel>
+                        </div>
+                      </div>
+                    </div>
                   ) : null
                 ) : null}
               </div>
-              {/* <div className="mx-auto xl:mr-0 xl:ml-52"> */}
               <div className="flex flex-wrap">
                 <BasicPanel bgo="0">
                   <div className="flex items-center justify-center p-10 text-center">
@@ -252,6 +284,46 @@ export default function Technologie({ data }) {
                     </div>
                   </div>
                 </BasicPanel>
+              </div>
+              <div className="absolute flex justify-between mt-5 space-x-12 right-32 top-52">
+                <div
+                  className="relative w-60 aspect-square hover:cursor-pointer"
+                  onMouseEnter={() => setSelectedTech('weaponexkurs')}
+                  onMouseLeave={() => setSelectedTech(undefined)}
+                  onClick={() => router.push('/WeaponExkurs')}
+                >
+                  <Image
+                    src="https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae"
+                    alt="Kompletter Tech Index"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae' +
+                      '?width=16&quality=1'
+                    }
+                  />
+                </div>
+                <div
+                  className="relative w-60 aspect-square hover:cursor-pointer"
+                  onMouseEnter={() => setSelectedTech('armorexkurs')}
+                  onMouseLeave={() => setSelectedTech(undefined)}
+                  onClick={() =>
+                    router.push('/VerseExkurs/technologie/Komponenten')
+                  }
+                >
+                  <Image
+                    src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
+                    alt="Kompletter Tech Index"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca' +
+                      '?width=16&quality=1'
+                    }
+                  />
+                </div>
               </div>
             </div>
           </Tab.Panel>
