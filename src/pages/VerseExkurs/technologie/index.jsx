@@ -248,7 +248,7 @@ export default function Technologie({ data }) {
                         <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
                           <BasicPanel>
                             <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
-                              <h5 className="w-full mb-5">RüstungsExkurs</h5>
+                              <h5 className="w-full mb-5">ArmorExkurs</h5>
                               <div className="w-[47%]">
                                 <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
                                   <Image
@@ -290,7 +290,7 @@ export default function Technologie({ data }) {
                   className="relative w-60 aspect-square hover:cursor-pointer"
                   onMouseEnter={() => setSelectedTech('weaponexkurs')}
                   onMouseLeave={() => setSelectedTech(undefined)}
-                  onClick={() => router.push('/WeaponExkurs')}
+                  // onClick={() => router.push('/WeaponExkurs')}
                 >
                   <Image
                     src="https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae"
@@ -308,9 +308,7 @@ export default function Technologie({ data }) {
                   className="relative w-60 aspect-square hover:cursor-pointer"
                   onMouseEnter={() => setSelectedTech('armorexkurs')}
                   onMouseLeave={() => setSelectedTech(undefined)}
-                  onClick={() =>
-                    router.push('/VerseExkurs/technologie/Komponenten')
-                  }
+                  // onClick={() => router.push('/ArmorExkurs')}
                 >
                   <Image
                     src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
