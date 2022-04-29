@@ -100,15 +100,15 @@ export default function Technologie({ data }) {
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
                         <div key={data.id} className="relative block">
-                          <div className="absolute w-full mt-5 right-0 h-44 top-0 2xl:h-44 lg:w-[480px] 2xl:w-[548px] md: propulsion-popup">
-                            <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
+                          <div className="relative w-full md:absolute mt-5 right-0 h-44 top-0 md:w-[480px] lg:w-[548px]">
+                            <div className="w-full h-full">
                               <BasicPanel>
                                 <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
                                   <h5 className="w-full mb-5">
                                     {data.technologie_name}
                                   </h5>
                                   <div className="w-[47%]">
-                                    <div className="relative sm:w-64 md:w-72 lg:w-52 2xl:w-56 sm:h-[4.6rem] 2xl:h-[5.5rem]">
+                                    <div className="relative w-56 h-[5.5rem]">
                                       <Image
                                         src={
                                           'https://cms.ariscorp.de/assets/' +
@@ -126,7 +126,7 @@ export default function Technologie({ data }) {
                                     </div>
                                   </div>
                                   <div className="w-[48%]">
-                                    <p className="p-0 text-sm 2xl:text-base">
+                                    <p className="p-0 text-base">
                                       {data.technologie_beschreibung}
                                     </p>
                                   </div>
@@ -139,9 +139,9 @@ export default function Technologie({ data }) {
                   : null
                 : null}
 
-              <div className="relative top-0 left-0 flex mt-5 ">
+              <div className="top-0 left-0 flex justify-center mt-24 md:justify-start md:mt-5 ">
                 <div
-                  className="relative w-60 aspect-square hover:cursor-pointer"
+                  className="relative w-52 aspect-square hover:cursor-pointer"
                   onMouseEnter={() => setSelectedTech('3')}
                   onMouseLeave={() => setSelectedTech(undefined)}
                   onClick={() =>
