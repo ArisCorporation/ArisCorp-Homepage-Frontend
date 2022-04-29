@@ -135,7 +135,7 @@ export default function Technologie({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div className="flex w-full mt-12">
-              <div className="flex flex-wrap w-4/12 bg-red-500">
+              <div className="flex flex-wrap w-4/12">
                 <BasicPanel bgo="0">
                   <div className="flex items-center justify-center p-10 text-center">
                     <div className="relative w-full aspect-[428/980]">
@@ -144,7 +144,7 @@ export default function Technologie({ data }) {
                   </div>
                 </BasicPanel>
               </div>
-              <div className="flex flex-wrap w-7/12 mx-auto bg-green-500">
+              <div className="flex flex-wrap w-7/12 mx-auto">
                 <div className="relative w-full">
                   {selectedTech ? (
                     selectedTech != 'grav' &&
