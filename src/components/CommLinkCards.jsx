@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import moment from 'moment'
 
 const OneThird = ({
   typeicon,
@@ -42,7 +43,7 @@ const OneThird = ({
             Channel: <span className="font-normal text-primary">{channel}</span>
           </div>
           <div className="absolute mt-20 text-[#5e7a8d] text-[11px] font-bold border-r-[1px] border-solid border-[#4a4241] float-left pr-[13px]">
-            Posted: <span className="font-normal text-primary">{posted}</span>
+            Posted: <span className="font-normal text-primary">{moment(posted).from((moment().add(930, 'years')))}</span>
           </div>
         </div>
         <div className="w-[338px] h-[315px] transition-opacity duration-200 opacity-0 group-hover:opacity-90 bg-lines absolute overflow-hidden z-10 top-[10px]">
@@ -113,7 +114,7 @@ const TwoThirds = ({
             Channel: <span className="font-normal text-primary">{channel}</span>
           </div>
           <div className="text-[#5e7a8d] text-[11px] xl:text-xs font-bold border-r-[1px] border-solid border-[#4a4241] float-left pr-[13px]">
-            Posted: <span className="font-normal text-primary">{posted}</span>
+            Posted: <span className="font-normal text-primary">{moment(posted).from((moment().add(930, 'years')))}</span>
           </div>
         </div>
         <div className="w-[338px] h-[315px] xl:w-[729px] xl:h-[315px] transition-opacity duration-200 opacity-0 group-hover:opacity-100 bg-lines absolute overflow-hidden z-10 top-[10px]">
@@ -184,7 +185,7 @@ const ThreeThirds = ({
             Channel: <span className="font-normal text-primary">{channel}</span>
           </div>
           <div className="text-[#5e7a8d] text-[11px] lg:text-xs font-bold border-r-[1px] border-solid border-[#4a4241] float-left pr-[13px]">
-            Posted: <span className="font-normal text-primary">{posted}</span>
+            Posted: <span className="font-normal text-primary">{moment(posted).from((moment().add(930, 'years')))}</span>
           </div>
         </div>
         <div className="w-[338px] h-[315px] lg:w-[729px] lg:h-[315px] xl:w-[1119px] xl:h-[315px] transition-opacity duration-200 opacity-0 group-hover:opacity-100 bg-lines absolute overflow-hidden z-10 top-[10px]">

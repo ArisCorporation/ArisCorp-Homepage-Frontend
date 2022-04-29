@@ -212,6 +212,7 @@ export const GET_COMM_LINKS = gql`
         beschreibung
         unavailable
       }
+      date_created
     }
   }
 `
