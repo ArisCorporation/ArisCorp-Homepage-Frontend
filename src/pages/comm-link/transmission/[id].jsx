@@ -6,6 +6,8 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useQuery } from '@apollo/client'
 import { GET_COMM_LINK } from 'graphql/queries'
+import moment from 'moment'
+import 'moment/locale/de'
 
 export default function CommLinkDetailPage() {
   const router = useRouter()
@@ -32,7 +34,6 @@ export default function CommLinkDetailPage() {
             Comm-Link:{' '}
             <span className="text-primary">{Data.comm_link_titel}</span>
           </h1>
-          <hr />
           <div className="w-full">
             <Image
               src={'https://cms.ariscorp.de/assets/' + Data.comm_link_banner.id}
@@ -55,6 +56,44 @@ export default function CommLinkDetailPage() {
             ArisCorp - Comm-Links: {Data.comm_link_titel}
           </h2>
           <hr className="max-w-[80px]" />
+          <div className="relative flex flex-wrap justify-between w-full h-6 xs:h-8 md:h-20 lg:h-32 xs:flex-nowrap">
+            <div className="flex h-full w-full xs:w-6/12 after:content-[''] after:bg-secondary after:w-6/12 after:-bottom-3 after:absolute after:h-[2px] lg:after:h-[3px] xs:after:block after:hidden">
+              <div className="absolute md:relative aspect-[270/320] h-full md:block hidden">
+                <Image
+                  src={
+                    'https://cms.ariscorp.de/assets/' +
+                    Data.comm_link_author.member_potrait?.id
+                  }
+                  alt={'Author Potrait'}
+                  placeholder="blur"
+                  layout="fill"
+                  objectFit="cover"
+                  blurDataURL={
+                    'https://cms.ariscorp.de/assets/' +
+                    Data.comm_link_author.member_potrait?.id +
+                    '?width=16&quality=1'
+                  }
+                />
+              </div>
+              <div className="relative ml-0 uppercase md:ml-4 lg:ml-8">
+                <p className="absolute bottom-0 m-0 text-xs italic leading-[0rem] lg:text-lg xl:text-xl text-bold text-inherit whitespace-nowrap">
+                  <span className="text-secondary">Author:</span>
+                  {' ' + Data.comm_link_author.member_titel}
+                </p>
+              </div>
+            </div>
+            <div className="relative flex float-none xs:float-right w-full xs:w-[28%] h-full after:content-[''] after:bg-secondary after:w-full after:-bottom-3 after:absolute after:h-[2px] lg:after:h-[3px]">
+              <div className="absolute bottom-0 uppercase xs:right-0">
+                <p className="bottom-0 m-0 text-xs italic lg:text-lg xl:text-xl text-bold text-inherit whitespace-nowrap leading-[0rem]">
+                  <span className="bottom-0 m-0 text-secondary xl:text-xl text-bold whitespace-nowrap">
+                    Gepostet:
+                  </span>{' '}
+                  {moment(Data.date_created).locale("de").format('Do MMMM YYYY')}
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr className="scale-0"></hr>
         </div>
         <div className="font-nasa article-font">
           <ReactMarkdown

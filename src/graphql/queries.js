@@ -230,6 +230,9 @@ export const GET_COMM_LINK = gql`
       }
       comm_link_author {
         member_titel
+        member_potrait {
+          id
+        }
       }
       comm_link
       comm_link_beschreibung
@@ -237,6 +240,7 @@ export const GET_COMM_LINK = gql`
         channel
         beschreibung
       }
+      date_created
     }
   }
 `
