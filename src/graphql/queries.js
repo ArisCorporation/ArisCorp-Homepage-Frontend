@@ -95,6 +95,7 @@ export const GET_INDEX_DATA = gql`
       comm_link_banner {
         id
       }
+      date_created
       comm_link_author {
         member_titel
       }
@@ -104,6 +105,7 @@ export const GET_INDEX_DATA = gql`
         channel
         beschreibung
       }
+      date_created
     }
     partner(filter: { status: { _eq: "published" } }) {
       id

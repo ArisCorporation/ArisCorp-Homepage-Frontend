@@ -16,7 +16,7 @@ const CommLinksSection = ({ data }) => {
             typename="post"
             title={data[i].comm_link_titel}
             channel={data[i].comm_link_channel?.channel}
-            posted="1 day ago"
+            posted={data[i].date_created}
             description={data[i].comm_link_channel?.beschreibung}
             image={data[i].comm_link_banner.id}
             id={data[i].id}
@@ -38,7 +38,7 @@ const CommLinksSection = ({ data }) => {
             image={data[i + 1].comm_link_banner.id}
             title={data[i + 1].comm_link_titel}
             channel={data[i + 1].comm_link_channel.channel}
-            posted="1 day ago"
+            posted={data[i + 1].date_created}
             description={data[i + 1].comm_link_channel?.beschreibung}
             id={data[i + 1].id}
           />
@@ -50,7 +50,7 @@ const CommLinksSection = ({ data }) => {
               image={data[i + 2].comm_link_banner.id}
               title={data[i + 2].comm_link_titel}
               channel={data[i + 2].comm_link_channel.channel}
-              posted="1 day ago"
+              posted={data[i + 2].date_created}
               description={data[i + 2].comm_link_channel?.beschreibung}
               id={data[i + 2].id}
             />
@@ -62,7 +62,7 @@ const CommLinksSection = ({ data }) => {
               image={data[i + 3].comm_link_banner.id}
               title={data[i + 3].comm_link_titel}
               channel={data[i + 3].comm_link_channel.channel}
-              posted="1 day ago"
+              posted={data[i + 3].date_created}
               description={data[i + 3].comm_link_channel?.beschreibung}
               id={data[i + 3].id}
             />
