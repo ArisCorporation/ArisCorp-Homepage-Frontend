@@ -66,7 +66,7 @@ export default async function handler(req, res) {
           )
 
           if (search != null) {
-            await axios
+            axios
               .patch(
                 `https://cms.ariscorp.de/items/ships/${search.id}?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
                 object
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
                 console.log(error)
               })
           } else {
-            await axios
+            axios
               .post(
                 `https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
                 object
