@@ -631,6 +631,49 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
   }
 `
 
+export const GET_VERSEEXKURS_FRAKTIONEN_UND_GRUPPIERUNGEN = gql`
+  query GetVerseExkursFraktionenUndGruppierungen {
+  fraktionengruppierungen(filter: {status: {_eq: "published"}}) {
+    id
+    status
+    trans_logo {
+      id
+      width
+      height
+    }
+    banner {
+      id
+      width
+      height
+    }
+    name
+    text
+  }
+}
+
+`
+
+export const GET_VERSEEXKURS_FRAKTION_ODER_GRUPPIERUNG = gql`
+  query GetVerseExkursFraktionOderGruppierung($name: String!) {
+    fraktionengruppierungen(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
+      id
+      status
+      trans_logo {
+        id
+        width
+        height
+      }
+      banner {
+        id
+        width
+        height
+      }
+      name
+      text
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
   query GetVerseExkursTechnologies {
     technologien(filter: { status: { _eq: "published" } }) {
