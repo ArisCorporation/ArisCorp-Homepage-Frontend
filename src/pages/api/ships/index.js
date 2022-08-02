@@ -53,7 +53,7 @@ export default async function handler(req, res) {
   const data = new Object(await formatJson())
 
   if (req.method === 'POST') {
-    axios
+    await axios
       .get(
         'https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr&limit=1200'
       )
@@ -66,7 +66,7 @@ export default async function handler(req, res) {
           )
 
           if (search != null) {
-            axios
+            await axios
               .patch(
                 `https://cms.ariscorp.de/items/ships/${search.id}?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
                 object
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
                 console.log(error)
               })
           } else {
-            axios
+            await axios
               .post(
                 `https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
                 object
