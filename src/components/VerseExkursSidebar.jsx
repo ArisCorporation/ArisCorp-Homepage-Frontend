@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa'
 import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
 import { FiCpu } from 'react-icons/fi'
-import { MdHistoryEdu, MdTimeline } from 'react-icons/md'
+import { MdGroups, MdHistoryEdu, MdTimeline } from 'react-icons/md'
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import { ImBook } from 'react-icons/im'
 import { useState, useEffect, useRef } from 'react'
@@ -1275,6 +1275,42 @@ export default function Sidebar() {
                       >
                         {' '}
                         Firmen{' '}
+                      </span>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip={!mobileView && sidebarCollapsed ? 'Fractions' : ''}
+              >
+                <Link href="/VerseExkurs/fraktionen-und-gruppierungen">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.pathname == '/VerseExkurs/fraktionen-und-gruppierungen'
+                        ? 'after:block '
+                        : 'after:hidden ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
+                      }
+                    >
+                      <MdGroups className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          'ml-[5px] text-sm' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
+                        }
+                      >
+                        {' '}
+                        Fraktionen und Gruppierungen{' '}
                       </span>
                     </div>
                   </a>
