@@ -4,6 +4,7 @@ import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import { BasicPanel } from 'components/panels'
 
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
@@ -60,6 +61,50 @@ export default function SystemDetailPage() {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
+          <div className="float-right">
+            <BasicPanel>
+              <div className="italic uppercase">
+                <div className="">
+                  <h3 className="pt-2 pl-3 m-0 text-secondary">System Infobox</h3>
+                </div>
+                <div className="p-5 px-7">
+                  <table className="w-full">
+                    <tr className="">
+                      <th className="text-left">Sternen Typ:</th>
+                      <td className="text-left text-primary">Einzel</td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">Sternen Klasse:</th>
+                      <td className="text-left text-primary">GZ-V</td>
+                    </tr>
+                  </table>
+                  <hr />
+                  <table>
+                    <tr className="">
+                      <th className="pr-5 text-left">Zugehörigkeit:</th>
+                      <td className="text-left text-primary">UEE</td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">System Größe:</th>
+                      <td className="text-left text-primary">28 AE</td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">Planeten:</th>
+                      <td className="text-left text-primary">3</td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">Monde:</th>
+                      <td className="text-left text-primary">3</td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">Sprungpunkte:</th>
+                      <td className="text-left text-primary">7</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </BasicPanel>
+          </div>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
