@@ -103,13 +103,13 @@ export default function SystemDetailPage() {
                     <tr className="">
                       <th className="text-left">Sternen Typ:</th>
                       <td className="text-left text-primary">
-                        {data.star_type}
+                        {data.star_type != null ? data.star_type : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
                       <th className="pr-5 text-left">Sternen Klasse:</th>
                       <td className="text-left text-primary">
-                        {data.star_class}
+                        {data.star_class != null ? data.star_class : 'N/A'}
                       </td>
                     </tr>
                   </table>
@@ -119,48 +119,58 @@ export default function SystemDetailPage() {
                       <th className="pr-5 text-left">Zugehörigkeit:</th>
                       <td className="text-left text-primary">
                         <div className="relative w-6 h-6">
-                          <Image
-                            src={
-                              data.system_affiliation == 'uee'
-                                ? ueeIcon
-                                : data.system_affiliation == 'indevelopment'
-                                ? devIcon
-                                : data.system_affiliation == 'unclaimed'
-                                ? unclIcon
-                                : data.system_affiliation == 'banu'
-                                ? banuIcon
-                                : data.system_affiliation == 'xian'
-                                ? xianIcon
-                                : data.system_affiliation == 'vanduul'
-                                ? vnclIcon
-                                : null
-                            }
-                            layout="fill"
-                            placeholder="blur"
-                            blurDataURL={unclIcon + '?width=16&quality=1'}
-                            draggable="false"
-                          />
+                          {data.system_affiliation != null ? (
+                            <Image
+                              src={
+                                data.system_affiliation == 'uee'
+                                  ? ueeIcon
+                                  : data.system_affiliation == 'indevelopment'
+                                  ? devIcon
+                                  : data.system_affiliation == 'unclaimed'
+                                  ? unclIcon
+                                  : data.system_affiliation == 'banu'
+                                  ? banuIcon
+                                  : data.system_affiliation == 'xian'
+                                  ? xianIcon
+                                  : data.system_affiliation == 'vanduul'
+                                  ? vnclIcon
+                                  : null
+                              }
+                              layout="fill"
+                              placeholder="blur"
+                              blurDataURL={unclIcon + '?width=16&quality=1'}
+                              draggable="false"
+                            />
+                          ) : (
+                            'N/A'
+                          )}
                         </div>
                       </td>
                     </tr>
                     <tr className="">
                       <th className="pr-5 text-left">System Größe:</th>
                       <td className="text-left text-primary">
-                        {data.system_size} AE
+                        {data.system_size != null
+                          ? data.system_size + 'AE'
+                          : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
                       <th className="pr-5 text-left">Planeten:</th>
-                      <td className="text-left text-primary">{data.planets}</td>
+                      <td className="text-left text-primary">
+                        {data.planets != null ? data.planets : 'N/A'}
+                      </td>
                     </tr>
                     <tr className="">
                       <th className="pr-5 text-left">Monde:</th>
-                      <td className="text-left text-primary">{data.moons}</td>
+                      <td className="text-left text-primary">
+                        {data.moons != null ? data.moons : 'N/A'}
+                      </td>
                     </tr>
                     <tr className="">
                       <th className="pr-5 text-left">Sprungpunkte:</th>
                       <td className="text-left text-primary">
-                        {data.jumppoints}
+                        {data.jumppoints != null ? data.jumppoints : 'N/A'}
                       </td>
                     </tr>
                   </table>
