@@ -151,7 +151,7 @@ export default function SystemDetailPage() {
                       <th className="pr-5 text-left">System Größe:</th>
                       <td className="text-left text-primary">
                         {data.system_size != null
-                          ? data.system_size + 'AE'
+                          ? data.system_size + ' AE'
                           : 'N/A'}
                       </td>
                     </tr>
