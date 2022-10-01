@@ -1,7 +1,7 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
-  mode: 'jit',
+  // mode: 'jit',
   content: ['src/pages/**/*.{js,jsx}', 'src/components/**/*.{js,jsx}'],
   theme: {
     screens: {
