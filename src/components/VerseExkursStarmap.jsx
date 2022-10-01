@@ -4443,18 +4443,18 @@ export default function Starmap({ data }) {
         </div>
 
         <div
-          id="cathcard"
+          id="cathcart"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[44.02%] top-[-141%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Cathcard')[0]
+            (data.filter((data) => data.system_name === 'Cathcart')[0]
               ? ''
               : ' scale-0')
           }
-          onClick={() => router.push('/VerseExkurs/starmap/cathcard')}
+          onClick={() => router.push('/VerseExkurs/starmap/cathcart')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
-              <h3 className="p-0 m-0">Cathcard</h3>
+              <h3 className="p-0 m-0">Cathcart</h3>
               <img
                 src={
                   'https://cms.ariscorp.de/assets/643e7e25-d2d1-465c-ad7d-3e2e35445c00'
