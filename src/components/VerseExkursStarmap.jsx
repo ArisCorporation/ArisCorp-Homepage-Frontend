@@ -363,6 +363,7 @@ export default function Starmap({ data }) {
               ? ''
               : ' scale-0')
           }
+          onClick={() => router.push('/VerseExkurs/starmap/vulture')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1001,6 +1002,7 @@ export default function Starmap({ data }) {
               ? ''
               : ' scale-0')
           }
+          onClick={() => router.push('/VerseExkurs/starmap/el-sin')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
@@ -1958,6 +1960,7 @@ export default function Starmap({ data }) {
               ? ''
               : ' scale-0')
           }
+          onClick={() => router.push('/VerseExkurs/starmap/tohil')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
