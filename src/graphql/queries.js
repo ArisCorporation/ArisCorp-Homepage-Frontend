@@ -685,7 +685,9 @@ export const GET_VERSEEXKURS_FRAKTION_ODER_GRUPPIERUNG = gql`
 
 export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
   query GetVerseExkursTechnologies {
-    technologien(filter: { status: { _eq: "published" } }) {
+    technologien(
+      filter: { status: { _eq: "published" }, category: { _eq: "other" } }
+    ) {
       id
       category
       technologie_banner {
@@ -701,7 +703,12 @@ export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
 
 export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
   query GetVerseExkursTechnologie($Technologie: String!) {
-    technologien(filter: { technologie_name: { _eq: $Technologie } }) {
+    technologien(
+      filter: {
+        technologie_name: { _eq: $Technologie }
+        category: { _eq: "other" }
+      }
+    ) {
       id
       category
       technologie_banner {
@@ -711,6 +718,122 @@ export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
       }
       technologie_name
       technologie_text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_WEAPONS = gql`
+  query GetVerseExkursTechnologies {
+    technologien(
+      filter: { status: { _eq: "published" }, category: { _eq: "weapons" } }
+    ) {
+      id
+      waffen_name
+      waffen_preis
+      waffen_bild {
+        id
+        width
+        height
+      }
+      waffenhersteller {
+        id
+        firmen_name
+        firmen_trans_logo {
+          id
+          width
+          height
+        }
+        firmen_text
+      }
+      waffen_klasse {
+        id
+        waffenklasse
+        waffenklassensize {
+          waffensize
+        }
+      }
+      waffengewicht
+      waffen_kaliber
+      wafffen_schadenstyp {
+        id
+        schadenstyp
+      }
+      waffen_feuerrate_einzel
+      waffen_feuerrate_salve
+      waffen_feuerrate_vollauto
+      waffen_feuerrate_aufgeladen
+      waffen_magazin
+      waffen_visier {
+        id
+        visiername
+      }
+      waffen_muendungs_geschwindigkeit
+      waffen_locktime
+      waffen_beschreibung
+      waffen_maximale_reichweite
+      waffen_effektive_reichweite
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_WEAPON = gql`
+  query GetVerseExkursTechnologie($Weapon: String!) {
+    technologien(
+      filter: { waffen_name: { _eq: $Weapon }, category: { _eq: "weapons" } }
+    ) {
+      id
+      waffen_name
+      waffen_preis
+      waffen_bild {
+        id
+        width
+        height
+      }
+      waffenhersteller {
+        id
+        firmen_name
+        firmen_trans_logo {
+          id
+          width
+          height
+        }
+        firmen_text
+      }
+      waffen_klasse {
+        id
+        waffenklasse
+        waffenklassensize {
+          waffensize
+        }
+      }
+      waffengewicht
+      waffen_kaliber
+      wafffen_schadenstyp {
+        id
+        schadenstyp
+      }
+      waffen_feuerrate_einzel
+      waffen_feuerrate_salve
+      waffen_feuerrate_vollauto
+      waffen_feuerrate_aufgeladen
+      waffen_magazin
+      waffen_visier {
+        id
+        visiername
+      }
+      waffen_muendungs_geschwindigkeit
+      waffen_locktime
+      waffen_beschreibung
+      waffen_maximale_reichweite
+      waffen_effektive_reichweite
+    }
+    technologien_waffen_feuermodi_1 {
+      technologien_id(filter: { waffen_name: { _eq: $Weapon } }) {
+        waffen_name
+      }
+      waffen_feuermodi_id {
+        feuermodus
+      }
     }
   }
 `
