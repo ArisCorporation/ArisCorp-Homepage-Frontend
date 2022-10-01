@@ -150,9 +150,15 @@ export default function SystemDetailPage() {
                     <tr className="">
                       <th className="pr-5 text-left">System Größe:</th>
                       <td className="text-left text-primary">
-                        {data.system_size != null
-                          ? data.system_size + ' AE'
+                        {data.size != null
+                          ? data.size + ' AE'
                           : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-5 text-left">Hauptplanet:</th>
+                      <td className="text-left text-primary">
+                        {data.main_planet != null ? data.main_planet : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
