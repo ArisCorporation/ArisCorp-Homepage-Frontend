@@ -84,7 +84,7 @@ export default function SpectrumArticlePage() {
         <hr />
       </div>
       <div className="flex w-full space-x-2">
-        <BasicPanel width="3/5" bottom>
+        <BasicPanel className="w-3/5" width="3/5" bottom>
           <div className="relative rounded-3xl overflow-hidden w-full aspect-[760/430]">
             <Image
               src={'https://cms.ariscorp.de/assets/' + data1.waffen_bild.id}
@@ -101,7 +101,7 @@ export default function SpectrumArticlePage() {
             />
           </div>
         </BasicPanel>
-        <BasicPanel width="2/5">
+        <BasicPanel className="w-2/5" width="2/5">
           <div className="w-full h-full pb-2 italic uppercase">
             <div className="">
               <p className="pt-2 pl-3 m-0 text-secondary">Spezifikationen</p>
