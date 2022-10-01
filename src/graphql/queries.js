@@ -378,10 +378,11 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
       star_type
       star_class
       system_affiliation
-      system_size
+      size
       planets
       moons
       jumppoints
+      main_planet
     }
   }
 `
