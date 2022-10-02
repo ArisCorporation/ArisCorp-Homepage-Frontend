@@ -867,6 +867,7 @@ export const GET_VERSEEXKURS_SPECTRUM_CATEGORY = gql`
       status
       spectrum_titel
       spectrum_text
+      text
       spectrum_beitrag_kateogrie
       spectrum_kategorie_beschreibung
       image {
