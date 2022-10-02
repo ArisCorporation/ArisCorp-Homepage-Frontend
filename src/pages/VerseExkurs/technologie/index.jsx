@@ -115,7 +115,7 @@ export default function Technologie({ data }) {
                   onMouseEnter={() => setSelectedTech('3')}
                   onMouseLeave={() => setSelectedTech(undefined)}
                   onClick={() =>
-                    router.push('/VerseExkurs/technologie/Komponenten')
+                    push('/VerseExkurs/technologie/Komponenten')
                   }
                 >
                   <Image
@@ -165,7 +165,7 @@ export default function Technologie({ data }) {
                       <PersonalInfo
                         name={'WeaponExkurs'}
                         desc={'Hier fehlt eine Beschreibung und ein Banner'}
-                        image={null}
+                        image={'fbd2c23c-74bc-4142-a145-f2f43dbfdc77'}
                       />
                     ) : selectedTech == 'armorexkurs' ? (
                       <PersonalInfo
@@ -180,7 +180,7 @@ export default function Technologie({ data }) {
                       className="relative w-60 aspect-square hover:cursor-pointer"
                       onMouseEnter={() => setSelectedTech('weaponexkurs')}
                       onMouseLeave={() => setSelectedTech(undefined)}
-                      // onClick={() => router.push('/WeaponExkurs')}
+                      onClick={() => push('/VerseExkurs/waffen')}
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae"
@@ -260,7 +260,7 @@ const ShipInfo = ({ name, desc, image }) => (
         <BasicPanel>
           <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
             <h5 className="w-full mb-5">{name}</h5>
-            <div className="w-[47%]">
+            <div className="w-[44%]">
               <div className="relative w-56 h-[5.5rem]">
                 <Image
                   src={'https://cms.ariscorp.de/assets/' + image}
