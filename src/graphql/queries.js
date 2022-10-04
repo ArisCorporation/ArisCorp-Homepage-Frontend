@@ -339,6 +339,7 @@ export const GET_VERSEEXKURS_UEE = gql`
       }
       text
       sections
+      feiertage
     }
   }
 `

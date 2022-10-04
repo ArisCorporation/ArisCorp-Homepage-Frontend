@@ -1,12 +1,16 @@
 import Layout from 'pages/VerseExkurs/layout'
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import { Tab } from '@headlessui/react'
+import { Tab, Listbox } from '@headlessui/react'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_UEE } from 'graphql/queries'
+import { AiOutlineCheck } from 'react-icons/ai'
+import { BsArrowsExpand } from 'react-icons/bs'
+import { BasicPanel } from 'components/panels'
+import { FaChevronDown } from 'react-icons/fa'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_UEE })
@@ -27,7 +31,9 @@ export async function getServerSideProps() {
 export default function UEEPage(data) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
+  const [activeFeiertag, setActiveFeiertag] = useState(0)
   const urlquery = query.tab
+  const urlquery2 = query.feiertag
 
   const Data = data.data
 
@@ -37,7 +43,13 @@ export default function UEEPage(data) {
     } else {
       setActiveTab(0)
     }
-  }, [urlquery])
+
+    if (urlquery2 != null && urlquery2 != '') {
+      setActiveFeiertag(urlquery2)
+    } else {
+      setActiveFeiertag(0)
+    }
+  }, [urlquery, urlquery2])
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -108,9 +120,75 @@ export default function UEEPage(data) {
                   >
                     {data.content}
                   </ReactMarkdown>
+                  {data.title == 'Feiertage & Events' ? (
+                    <Tab.Group
+                      selectedIndex={activeFeiertag}
+                      onChange={(event2) =>
+                        replace(
+                          { query: { tab: activeTab, feiertag: event2 } },
+                          undefined,
+                          {
+                            shallow: true,
+                          }
+                        ) + setActiveFeiertag(event2)
+                      }
+                      as={Fragment}
+                    >
+                      <div className='flex space-x-6'>
+                        <Tab.List>
+                          <ul className="py-2 pl-0 mr-12 rounded-md w-96">
+                            <BasicPanel>
+                              {Data.feiertage.map((data) => (
+                                <Tab key={data.name} as={Fragment}>
+                                  {({ selected }) => (
+                                    <li
+                                      className={
+                                        // (selected ? 'text-secondary ' : null) +
+                                        // (active
+                                        //   ? ' bg-bg-primary cursor-pointer '
+                                        //   : null) +
+
+                                        (selected
+                                          ? 'text-secondary '
+                                          : 'text-white/70 hover:text-white ') +
+                                        'list-none hover:bg-bg-primary hover:cursor-pointer flex space-x-4 my-2 rounded-lg ml-0 p-2'
+                                      }
+                                    >
+                                      {data.name}
+                                      <div className="ml-auto text-sm">
+                                        {data.datum}
+                                      </div>
+                                    </li>
+                                  )}
+                                </Tab>
+                              ))}
+                            </BasicPanel>
+                          </ul>
+                        </Tab.List>
+                        <Tab.Panels className={'px-4 xl:px-0'}>
+                          {Data.feiertage.map((data) => (
+                            <Tab.Panel key={data.name}>
+                              <h3 className="text-secondary">
+                                {data.name} - {data.datum}
+                              </h3>
+                              <ReactMarkdown
+                                rehypePlugins={[rehypeRaw]}
+                                className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
+                              >
+                                {data.beschreibung}
+                              </ReactMarkdown>
+                            </Tab.Panel>
+                          ))}
+                        </Tab.Panels>
+                      </div>
+                    </Tab.Group>
+                  ) : (
+                    ''
+                  )}
                 </Tab.Panel>
               ))}
             </Tab.Panels>
+            <hr />
           </Tab.Group>
         </div>
       </div>
