@@ -90,16 +90,20 @@ export default function SystemDetailPage() {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <div className="float-right pb-2 ml-6">
-            <BasicPanel>
+          {/* <BasicPanel>
               <div className="italic uppercase">
                 <div className="">
                   <h3 className="pt-2 pl-3 m-0 text-secondary">
                     System Infobox
                   </h3>
                 </div>
-                <div className="p-5 px-7">
-                  <table className="w-full">
+                <div className="pb-2 text-xs italic uppercase xs:text-sm md:text-base">
+                  <table className="w-full ml-5">
+                    <div>
+                      <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                        Astronomische Informationen
+                      </p>
+                    </div>
                     <tr className="">
                       <th className="text-left">Sternen Typ:</th>
                       <td className="text-left text-primary">
@@ -107,17 +111,56 @@ export default function SystemDetailPage() {
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">Sternen Klasse:</th>
+                      <th className="pr-0 text-left">Sternen Klasse:</th>
                       <td className="text-left text-primary">
                         {data.star_class != null ? data.star_class : 'N/A'}
                       </td>
                     </tr>
-                  </table>
-                  <hr />
-                  <table>
                     <tr className="">
-                      <th className="pr-5 text-left">Zugehörigkeit:</th>
+                      <th className="pr-0 text-left">System Größe:</th>
                       <td className="text-left text-primary">
+                        {data.size != null ? data.size + ' AE' : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-0 text-left">Planeten:</th>
+                      <td className="text-left text-primary">
+                        {data.planets != null ? data.planets : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-0 text-left">Monde:</th>
+                      <td className="text-left text-primary">
+                        {data.moons != null ? data.moons : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-0 text-left">Asteroidengürtel:</th>
+                      <td className="text-left text-primary">
+                        {data.asteroid_belt != null
+                          ? data.asteroid_belt
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr className="">
+                      <th className="pr-0 text-left">Jumppoints:</th>
+                      <td className="text-left text-primary">
+                        {data.jumppoints != null ? data.jumppoints : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-[85%] mt-3 -ml-1 mb-0 sm:mt-5 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                    <div>
+                      <p className="pt-0 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                        Wirtschaft & Politik
+                      </p>
+                    </div>
+                    <tr className="">
+                      <th className="pr-0 text-left">Zugehörigkeit:</th>
+                      <td className="flex text-left text-primary">
                         <div className="relative w-6 h-6">
                           {data.system_affiliation != null ? (
                             <Image
@@ -140,50 +183,207 @@ export default function SystemDetailPage() {
                               placeholder="blur"
                               blurDataURL={unclIcon + '?width=16&quality=1'}
                               draggable="false"
+                              alt="Affiliation"
                             />
                           ) : (
                             'N/A'
                           )}
                         </div>
+                        <div className="ml-2">
+                          {data.system_affiliation == 'uee'
+                            ? 'UEE'
+                            : data.system_affiliation == 'indevelopment'
+                            ? 'In Entwicklung'
+                            : data.system_affiliation == 'unclaimed'
+                            ? 'Nicht Beansprucht'
+                            : data.system_affiliation == 'banu'
+                            ? 'Banu'
+                            : data.system_affiliation == 'xian'
+                            ? "Xi'An"
+                            : data.system_affiliation == 'vanduul'
+                            ? 'Vanduul'
+                            : null}
+                        </div>
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">System Größe:</th>
+                      <th className="pr-0 text-left">Entdeckungsjahr:</th>
                       <td className="text-left text-primary">
-                        {data.size != null
-                          ? data.size + ' AE'
+                        {data.discovery_year != null
+                          ? data.discovery_year
                           : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">Hauptplanet:</th>
+                      <th className="pr-0 text-left">Hauptplanet:</th>
                       <td className="text-left text-primary">
                         {data.main_planet != null ? data.main_planet : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">Planeten:</th>
+                      <th className="pr-0 text-left">Bevölkerung:</th>
                       <td className="text-left text-primary">
-                        {data.planets != null ? data.planets : 'N/A'}
+                        {data.population != null ? data.population : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">Monde:</th>
+                      <th className="pr-0 text-left">Wirtschaft:</th>
                       <td className="text-left text-primary">
-                        {data.moons != null ? data.moons : 'N/A'}
+                        {data.economy != null ? data.economy : 'N/A'}
                       </td>
                     </tr>
                     <tr className="">
-                      <th className="pr-5 text-left">Sprungpunkte:</th>
+                      <th className="pr-0 text-left">Gefahrensituation:</th>
                       <td className="text-left text-primary">
-                        {data.jumppoints != null ? data.jumppoints : 'N/A'}
+                        {data.danger_level != null ? data.danger_level : 'N/A'}
                       </td>
                     </tr>
                   </table>
                 </div>
               </div>
-            </BasicPanel>
-          </div>
+            </BasicPanel> */}
+          <BasicPanel className="float-right w-2/5 mb-2 ml-8 mr-12">
+            <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
+              <h3 className="pt-2 pl-3 m-0 text-secondary">System Infobox</h3>
+              <table className="w-full ml-5 table-auto">
+                <div>
+                  <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                    Astronomisch
+                  </p>
+                </div>
+                <tr>
+                  <th className="pr-2 text-left">Sternen Typ:</th>
+                  <td className="text-left text-primary">
+                    {data.star_type != null ? data.star_type : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Sternenklasse:</th>
+                  <td className="text-left text-primary">
+                    {data.star_class != null ? data.star_class : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Systemgröße:</th>
+                  <td className="text-left text-primary">
+                    {data.size != null ? data.size : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Planeten:</th>
+                  <td className="text-left text-primary">
+                    {data.planets != null ? data.planets : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Monde:</th>
+                  <td className="text-left break-words text-primary">
+                    {data.moons != null ? data.moons : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Asteroidengürtel:</th>
+                  <td className="text-left text-primary">
+                    {data.asteroid_belt != null ? data.asteroid_belt : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Jumppoints:</th>
+                  <td className="text-left text-primary">
+                    {data.jumppoints != null ? data.jumppoints : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan="2">
+                    <hr className="relative w-[85%] my-3 -ml-1 sm:mt-5 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                  </td>
+                </tr>
+                <div>
+                  <p className="pt-0 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                    Politik & Wirtschaft
+                  </p>
+                </div>
+                <tr>
+                  <th className="pr-0 text-left">Zugehörigkeit:</th>
+                  <td className="flex text-left text-primary">
+                    <div className="relative w-6 h-6">
+                      {data.system_affiliation != null ? (
+                        <Image
+                          src={
+                            data.system_affiliation == 'uee'
+                              ? ueeIcon
+                              : data.system_affiliation == 'indevelopment'
+                              ? devIcon
+                              : data.system_affiliation == 'unclaimed'
+                              ? unclIcon
+                              : data.system_affiliation == 'banu'
+                              ? banuIcon
+                              : data.system_affiliation == 'xian'
+                              ? xianIcon
+                              : data.system_affiliation == 'vanduul'
+                              ? vnclIcon
+                              : null
+                          }
+                          layout="fill"
+                          placeholder="blur"
+                          blurDataURL={unclIcon + '?width=16&quality=1'}
+                          draggable="false"
+                          alt="Affiliation"
+                        />
+                      ) : (
+                        'N/A'
+                      )}
+                    </div>
+                    <div className="ml-2">
+                      {data.system_affiliation == 'uee'
+                        ? 'UEE'
+                        : data.system_affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.system_affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.system_affiliation == 'banu'
+                        ? 'Banu'
+                        : data.system_affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.system_affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Entdeckungsdatum:</th>
+                  <td className="text-left text-primary">
+                    {data.discovery_year != null ? data.discovery_year : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Hauptplanet:</th>
+                  <td className="text-left text-primary">
+                    {data.main_planet != null ? data.main_planet : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Bevölkerung:</th>
+                  <td className="text-left text-primary">
+                    {data.population != null ? data.population : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Wirtschaft:</th>
+                  <td className="text-left text-primary">
+                    {data.economy != null ? data.economy : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Gefahrenstufe:</th>
+                  <td className="text-left text-primary">
+                    {data.danger_level != null ? data.danger_level : 'N/A'}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </BasicPanel>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"

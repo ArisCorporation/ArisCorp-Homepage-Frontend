@@ -378,12 +378,17 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
       system_text
       star_type
       star_class
-      system_affiliation
       size
       planets
       moons
+      asteroid_belt
       jumppoints
+      system_affiliation
+      discovery_year
       main_planet
+      population
+      economy
+      danger_level
     }
   }
 `
