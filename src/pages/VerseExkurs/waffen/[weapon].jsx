@@ -64,7 +64,7 @@ export default function SpectrumArticlePage() {
               {data1.waffen_klasse.waffenklasse}
             </span>{' '}
           </h1>
-          <div className="relative ml-auto -my-10 xs:h-32 h-28 xmlnsXlink sm:h-40 md:h-48 aspect-square">
+          <div className="relative ml-auto -my-10 xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square">
             <Image
               src={
                 'https://cms.ariscorp.de/assets/' +
@@ -277,7 +277,7 @@ export default function SpectrumArticlePage() {
           <Tab.Panels className={'px-4 xl:px-0 pt-5'}>
             <BasicPanel>
               <Tab.Panel>
-                <div className="flex flex-wrap text-xs lg:flex-nowrap sm:text-sm md:text-base">
+                <div className="flex flex-wrap text-xs xl:flex-nowrap sm:text-sm md:text-base">
                   <div className="pb-5 ml-5 italic uppercase lg:w-5/12">
                     <p className="text-secondary">Statistiken</p>
                     <table>
