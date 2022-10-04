@@ -500,6 +500,50 @@ export const GET_VERSEEXKURS_FIRMA = gql`
   }
 `
 
+export const GET_VERSEEXKURS_FRAKTIONEN = gql`
+  query GetVerseExkursFraktion {
+    fraktionengruppierungen(filter: { status: { _eq: "published" } }) {
+      id
+      status
+      trans_logo {
+        id
+        width
+        height
+      }
+      banner {
+        id
+        width
+        height
+      }
+      name
+      category
+      text
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FRAKTION = gql`
+  query GetVerseExkursFraktion($fraktion: String!) {
+    fraktionengruppierungen(filter: { status: { _eq: "published" }, name: { _eq: $fraktion } }) {
+      id
+      status
+      trans_logo {
+        id
+        width
+        height
+      }
+      banner {
+        id
+        width
+        height
+      }
+      name
+      category
+      text
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_FIRMEN_HERSTELLER = gql`
   query GetVerseExkursFirmenHersteller {
     firmen(

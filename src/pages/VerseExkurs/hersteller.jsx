@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FIRMEN_HERSTELLER } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
-import FirmenCard from 'components/VerseExkursFirmenGrid'
+import CardDisplay from 'components/VerseExkursCardDisplay'
 import Link from 'next/link'
 
 export async function getServerSideProps() {
@@ -122,7 +122,7 @@ export default function Hersteller({ data }) {
                 )
                 .map((data) => (
                   <>
-                    <FirmenCard data={data} />
+                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                   </>
                 ))}
             </div>
@@ -136,7 +136,7 @@ export default function Hersteller({ data }) {
                 )
                 .map((data) => (
                   <>
-                    <FirmenCard data={data} />
+                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                   </>
                 ))}
             </div>
@@ -150,7 +150,7 @@ export default function Hersteller({ data }) {
                 )
                 .map((data) => (
                   <>
-                    <FirmenCard data={data} />
+                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                   </>
                 ))}
             </div>
@@ -165,7 +165,7 @@ export default function Hersteller({ data }) {
                 )
                 .map((data) => (
                   <>
-                    <FirmenCard data={data} />
+                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                   </>
                 ))}
             </div>

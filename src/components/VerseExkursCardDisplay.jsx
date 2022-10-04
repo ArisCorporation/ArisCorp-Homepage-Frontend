@@ -1,19 +1,19 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const FirmenCard = ({ data }) => {
+const CardDisplay = ({link, image, alt}) => {
   return (
-    <Link href={'/VerseExkurs/firmen/' + data.firmen_name}>
+    <Link href={link}>
       <a>
         <div className="transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square opacity-80 hover:opacity-100">
           <div className="relative w-full h-full">
             <Image
               src={
-                'https://cms.ariscorp.de/assets/' + data.firmen_trans_logo.id
+                'https://cms.ariscorp.de/assets/' + image
               }
               layout="fill"
               objectFit="cover"
-              alt="test"
+              alt={alt}
             />
           </div>
         </div>
@@ -22,4 +22,4 @@ const FirmenCard = ({ data }) => {
   )
 }
 
-export default FirmenCard
+export default CardDisplay

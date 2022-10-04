@@ -6,14 +6,14 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 
 const { gql, useQuery } = require('@apollo/client')
-import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
+import { GET_VERSEEXKURS_FRAKTION } from 'graphql/queries'
 
 export default function SystemDetailPage() {
   const router = useRouter()
-  const { firma } = router.query
+  const { fraktion } = router.query
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_FIRMA, {
-    variables: { firma },
+  const { loading, error, data } = useQuery(GET_VERSEEXKURS_FRAKTION, {
+    variables: { fraktion },
   })
 
   if (loading)
@@ -25,33 +25,35 @@ export default function SystemDetailPage() {
 
   if (error) return <p>Error :(</p>
 
-  data = data.firmen[0]
+  data = data.fraktionengruppierungen[0]
+
+  console.log(data);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Firma: <span className="text-primary">{data.firmen_name}</span>
+            Fraktion: <span className="text-primary">{data.name}</span>
           </h1>
           <hr />
           <div className="w-full">
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data.firmen_banner.id}
+              src={'https://cms.ariscorp.de/assets/' + data.banner.id}
               alt={'Banner'}
-              width={data.firmen_banner.width}
-              height={data.firmen_banner.height}
+              width={data.banner.width}
+              height={data.banner.height}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data.firmen_banner.id +
+                data.banner.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={'max-w-[' + data.firmen_banner.width + 'px] mx-auto'}>
-          <h2 className="mt-3">VerseExkurs - Firma: {data.firmen_name}</h2>
+        <div className={'max-w-[' + data.banner.width + 'px] mx-auto'}>
+          <h2 className="mt-3">VerseExkurs - Fraktion: {data.name}</h2>
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
@@ -59,7 +61,7 @@ export default function SystemDetailPage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.firmen_text}
+            {data.text}
           </ReactMarkdown>
         </div>
       </div>

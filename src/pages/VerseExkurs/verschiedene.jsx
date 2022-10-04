@@ -5,7 +5,7 @@ import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FIRMEN_OTHER } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
 import Image from 'next/image'
-import FirmenCard from 'components/VerseExkursFirmenGrid'
+import CardDisplay from 'components/VerseExkursCardDisplay'
 import Link from 'next/link'
 
 export async function getServerSideProps() {
@@ -62,7 +62,7 @@ export default function Verschiedenes({ data }) {
       <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
         {data.map((data) => (
           <>
-            <FirmenCard data={data} />
+            <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
           </>
         ))}
       </div>

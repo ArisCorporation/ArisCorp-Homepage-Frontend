@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FIRMEN } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
-import FirmenCard from 'components/VerseExkursFirmenGrid'
+import CardDisplay from 'components/VerseExkursCardDisplay'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_FIRMEN })
@@ -184,7 +184,7 @@ export default function Firmen({ data }) {
                       )
                       .map((data) => (
                         <>
-                          <FirmenCard data={data} />
+                          <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                         </>
                       ))}
                   </div>
@@ -200,7 +200,7 @@ export default function Firmen({ data }) {
                       )
                       .map((data) => (
                         <>
-                          <FirmenCard data={data} />
+                          <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                         </>
                       ))}
                   </div>
@@ -215,7 +215,7 @@ export default function Firmen({ data }) {
                       )
                       .map((data) => (
                         <>
-                          <FirmenCard data={data} />
+                          <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                         </>
                       ))}
                   </div>
@@ -231,7 +231,7 @@ export default function Firmen({ data }) {
                       )
                       .map((data) => (
                         <>
-                          <FirmenCard data={data} />
+                          <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                         </>
                       ))}
                   </div>
@@ -243,7 +243,7 @@ export default function Firmen({ data }) {
                 .filter((data) => data.firmenkategorie === 'hersteller')
                 .map((data) => (
                   <>
-                    <FirmenCard data={data} />
+                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                   </>
                 ))} 
             </div>*/}
@@ -255,7 +255,7 @@ export default function Firmen({ data }) {
                   .filter((data) => data.firmenkategorie === 'dienstleister')
                   .map((data) => (
                     <>
-                      <FirmenCard data={data} />
+                      <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                     </>
                   ))}
               </div>
@@ -268,7 +268,7 @@ export default function Firmen({ data }) {
                   .filter((data) => data.firmenkategorie === 'geschäfte')
                   .map((data) => (
                     <>
-                      <FirmenCard data={data} />
+                      <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                     </>
                   ))}
               </div>
@@ -281,7 +281,7 @@ export default function Firmen({ data }) {
                   .filter((data) => data.firmenkategorie === 'organisation')
                   .map((data) => (
                     <>
-                      <FirmenCard data={data} />
+                      <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                     </>
                   ))}
               </div>
@@ -294,7 +294,7 @@ export default function Firmen({ data }) {
                   .filter((data) => data.firmenkategorie === 'verschiedenes')
                   .map((data) => (
                     <>
-                      <FirmenCard data={data} />
+                      <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
                     </>
                   ))}
               </div>

@@ -1282,13 +1282,13 @@ export default function Sidebar() {
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Fractions' : ''}
+                data-tip={!mobileView && sidebarCollapsed ? 'Fraktionen' : ''}
               >
-                <Link href="/VerseExkurs/fraktionen-und-gruppierungen">
+                <Link href="/VerseExkurs/fraktionen">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/fraktionen-und-gruppierungen'
+                      (router.pathname == '/VerseExkurs/fraktionen'
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1305,12 +1305,12 @@ export default function Sidebar() {
                       <MdGroups className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          'ml-[5px] text-sm' +
+                          'ml-[5px] ' +
                           (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
                         {' '}
-                        Fraktionen und Gruppierungen{' '}
+                        Fraktionen{' '}
                       </span>
                     </div>
                   </a>
