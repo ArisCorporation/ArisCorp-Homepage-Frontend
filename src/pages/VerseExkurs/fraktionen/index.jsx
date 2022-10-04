@@ -90,7 +90,11 @@ export default function Firmen({ data }) {
                   .filter((data) => data.category === 'friendly')
                   .map((data) => (
                     <>
-                      <CardDisplay data={data} />
+                      <CardDisplay
+                        image={data.trans_logo.id}
+                        alt={data.name}
+                        link={'/VerseExkurs/fraktionen/' + data.name}
+                      />
                     </>
                   ))}
               </div>
@@ -103,7 +107,11 @@ export default function Firmen({ data }) {
                   .filter((data) => data.category === 'neutral')
                   .map((data) => (
                     <>
-                      <CardDisplay data={data} />
+                      <CardDisplay
+                        image={data.trans_logo.id}
+                        alt={data.name}
+                        link={'/VerseExkurs/fraktionen/' + data.name}
+                      />
                     </>
                   ))}
               </div>
