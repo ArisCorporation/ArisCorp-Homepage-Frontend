@@ -19,38 +19,6 @@ const TechHuman = () => {
       height="100%"
       className="bg-[url('https://cms.ariscorp.de/assets/da73378c-1b9a-48c1-9bec-92c0ba814b08')] bg-no-repeat bg-cover"
     >
-      {/* <defs>
-    <style>
-      .cls-1 {
-        fill: #01a6fe;
-      }
-
-      .cls-2 {
-        fill: #0109fe;
-      }
-
-      .cls-3 {
-        fill: #febf02;
-      }
-
-      .cls-4 {
-        fill: #fe7803;
-      }
-
-      .cls-5 {
-        fill: #5202fe;
-      }
-
-      .cls-6 {
-        fill: #fe0000;
-      }
-
-      .cls-7 {
-        fill: #54fe05;
-      }
-
-    </style>
-  </defs> */}
       {/* <rect width="100%" height="100%" /> */}
       <g
         id="armorgroup"

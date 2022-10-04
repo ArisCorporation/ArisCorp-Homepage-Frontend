@@ -238,15 +238,6 @@ export default function Firmen({ data }) {
                 </Tab.Panel>
               </Tab.Panels>
             </Tab.Group>
-            {/* <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
-              {data
-                .filter((data) => data.firmenkategorie === 'hersteller')
-                .map((data) => (
-                  <>
-                    <CardDisplay image={data.firmen_trans_logo.id} link={'/VerseExkurs/firmen/' + data.firmen_name} alt={data.firmen_name} />
-                  </>
-                ))} 
-            </div>*/}
           </Tab.Panel>
           <Tab.Panel>
             <div>

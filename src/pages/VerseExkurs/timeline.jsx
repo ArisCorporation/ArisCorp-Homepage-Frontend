@@ -89,8 +89,6 @@ export default function Timeline({ data }) {
         src="/timeline3/js/timeline.js"
       ></Script>
 
-      {/* {!document.getElementsByClassName('tl-storyslider') ? (router.reload) : (console.log('servs'))} */}
-
       <div id="timeline-embed" className="w-full h-[500px] hwite bw"></div>
       <p className="flex justify-center text-center">
         Falls du kein Inhalt sehen solltest,{' '}
@@ -101,22 +99,6 @@ export default function Timeline({ data }) {
           aktualisiere bitte die Seite
         </span>
       </p>
-
-      {/* <script
-        dangerouslySetInnerHTML={{
-          __html: `
-          var additionalOptions = {
-            language: 'de',
-            default_bg_color: {r:17, g:17, b:17},
-            timenav_height: 600
-          }
-
-
-        timeline = new TL.Timeline('timeline-embed', ${json_file}, additionalOptions
-              )
-        `,
-        }}
-      ></script> */}
     </div>
   )
 }

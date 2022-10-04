@@ -27,8 +27,6 @@ export default function SystemDetailPage() {
 
   data = data.fraktionengruppierungen[0]
 
-  console.log(data);
-
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>

@@ -23,8 +23,6 @@ export async function getServerSideProps() {
 export default function LiteraturReihenPage(data) {
   const Data = data.data
 
-  console.log(Data)
-
   return (
     <div className="pt-3 print:pt-0">
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">

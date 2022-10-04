@@ -19,62 +19,6 @@ const TechCarrack = () => {
       width="100%"
       height="100%"
     >
-      {/* <defs>
-    <style>
-      .cls-1 {
-        fill: #fe0101;
-      }
-
-      .cls-2 {
-        fill: #fedc00;
-      }
-
-      .cls-3 {
-        fill: #feaa01;
-      }
-
-      .cls-4 {
-        fill: #02fee0;
-      }
-
-      .cls-5 {
-        fill: #0217fe;
-      }
-
-      .cls-6 {
-        fill: #02aafe;
-      }
-
-      .cls-7 {
-        fill: #3c722e;
-      }
-
-      .cls-8 {
-        fill: #f1fe03;
-      }
-
-      .cls-9 {
-        fill: #249800;
-      }
-
-      .cls-10 {
-        fill: #02fe88;
-      }
-
-      .cls-11 {
-        fill: #6804fe;
-      }
-
-      .cls-12 {
-        fill: #f502fe;
-      }
-
-      .cls-13 {
-        fill: #fecc6a;
-      }
-
-    </style>
-  </defs> */}
       {/* PROPULSION */}
       <g
         id="propulsiongroup"

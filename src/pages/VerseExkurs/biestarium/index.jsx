@@ -24,7 +24,6 @@ export async function getServerSideProps() {
 
 export default function BiestariumPage(data) {
   const Data = data.data
-  // console.log((encodeURIComponent(Data.sections)))
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">

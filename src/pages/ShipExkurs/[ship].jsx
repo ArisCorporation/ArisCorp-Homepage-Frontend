@@ -66,11 +66,7 @@ export default function VerseExkursIndex() {
         Das ist ein kleiner Einblick in die Daten die, die ArisCorp für den
         ShipExkurs zur verfügung stehen
       </h1>
-      {/* <button onClick={() => fetchCarrack()}>jdk</button> */}
       <br />
-      {/* <ApolloProvider client={client}>
-        <FetchCarrackGraphQL data={data.ship.data} />
-      </ApolloProvider> */}
       <pre>{JSON.stringify(data, null, 2)}</pre>
     </>
   )

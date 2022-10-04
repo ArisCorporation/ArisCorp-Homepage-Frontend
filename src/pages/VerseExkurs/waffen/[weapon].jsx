@@ -352,12 +352,6 @@ export default function SpectrumArticlePage() {
                     </ReactMarkdown>
                   </div>
                 </div>
-
-                {/* <ReactMarkdown
-                  rehypePlugins={[rehypeRaw]}
-                  className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
-                >
-                </ReactMarkdown> */}
               </Tab.Panel>
               <Tab.Panel>
                 <ReactMarkdown

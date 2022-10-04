@@ -4818,14 +4818,6 @@ export default function Starmap({ data }) {
           </div>
         </div>
 
-        {/* <ReactTooltip
-        place="right"
-        effect="solid"
-        arrowColor="transparent"
-        type="dark"
-        padding="8px"
-      /> */}
-
         <Image
           src={
             'https://cms.ariscorp.de/assets/59e8771b-d5a2-468e-971d-7594da3c113e'

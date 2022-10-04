@@ -17,8 +17,6 @@ export default function OurMember() {
     )
   }
 
-  console.log(data)
-
   return (
     <div id="member" className="flex items-center justify-center text-center">
       <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
