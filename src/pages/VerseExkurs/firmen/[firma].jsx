@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw'
 
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
+import { BasicPanel } from 'components/panels'
 
 export default function SystemDetailPage() {
   const router = useRouter()
@@ -55,6 +56,55 @@ export default function SystemDetailPage() {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
+          <BasicPanel className="w-full mb-2 mr-12 lg:ml-8 lg:float-right lg:w-2/5">
+            <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
+              <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
+              <table className="w-full ml-5">
+                <tr className='border-b-0 border-transparent'>
+                  <th className="pr-2 text-left">Hauptsitz:</th>
+                  <td className="text-left text-primary">
+                    {data.headquarter && data.headquarter_system != null
+                      ? data.headquarter + '/' + data.headquarter_system
+                      : 'N/A'}
+                  </td>
+                </tr>
+                <tr className='border-b-0 border-transparent'>
+                  <th className="pr-2 text-left">Aktueller C.E.O.:</th>
+                  <td className="text-left text-primary">
+                    {data.current_ceo != null ? data.current_ceo : 'N/A'}
+                  </td>
+                </tr>
+                <tr className='border-b-0 border-transparent'>
+                  <th className="pr-2 text-left">Gründungsdatum:</th>
+                  <td className="text-left text-primary">
+                    {data.founding != null ? data.founding : 'N/A'}
+                  </td>
+                </tr>
+                <tr className='border-b-0 border-transparent'>
+                  <th className="pr-2 text-left">Gründer:</th>
+                  <td className="text-left break-words text-primary">
+                    {data.founder != null ? data.founder : 'N/A'}
+                  </td>
+                </tr>
+                <tr className='border-b-0 border-transparent'>
+                  <th className="pr-2 text-left">Kategorie:</th>
+                  <td className="text-left text-primary">
+                    {data.firmenkategorie != null
+                      ? data.firmenkategorie == 'hersteller'
+                        ? data.firmenherstellerkategorie
+                        : data.firmenkategorie
+                      : 'N/A'}
+                  </td>
+                </tr>
+                <tr>
+                  <th className="pr-2 text-left">Bekannteste Waren:</th>
+                  <td className="text-left text-primary">
+                    {data.famous_goods != null ? data.famous_goods : 'N/A'}
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </BasicPanel>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"

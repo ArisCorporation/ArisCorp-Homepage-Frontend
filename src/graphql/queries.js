@@ -476,6 +476,15 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
       firmenkategorie
       firmenherstellerkategorie
       firmen_text
+      headquarter
+			headquarter_system{
+				id
+				system_name
+			}
+			current_ceo
+			founding
+			founder
+			famous_goods
     }
   }
 `
@@ -501,6 +510,15 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       firmenkategorie
       firmenherstellerkategorie
       firmen_text
+      headquarter
+			headquarter_system{
+				id
+				system_name
+			}
+			current_ceo
+			founding
+			founder
+			famous_goods
     }
   }
 `
