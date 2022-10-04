@@ -204,7 +204,7 @@ export default function SpectrumArticlePage() {
                 <th className="pr-2 text-left">Visierung:</th>
                 <td className="text-left text-primary">
                   {data1.waffen_visier != null
-                    ? data1.waffen_visier
+                    ? data1.waffen_visier.visiername
                     : 'Leer' +
                       ' (S' +
                       data1.waffen_klasse.waffenklassensize.waffensize +
@@ -244,7 +244,7 @@ export default function SpectrumArticlePage() {
           onChange={(event) =>
             replace(
               {
-                pathname: `/VerseExkurs/weapon/${Weapon}`,
+                pathname: `${Weapon}`,
                 query: { tab: event },
               },
               undefined,
