@@ -134,9 +134,9 @@ export default function UEEPage(data) {
                       }
                       as={Fragment}
                     >
-                      <div className='flex space-x-6'>
+                      <div className='w-full space-x-6 lg:flex'>
                         <Tab.List>
-                          <ul className="py-2 pl-0 mr-12 rounded-md w-96">
+                          <ul className="w-full py-2 pl-0 rounded-md lg:mr-12 lg:w-96">
                             <BasicPanel>
                               {Data.feiertage.map((data) => (
                                 <Tab key={data.name} as={Fragment}>
@@ -155,7 +155,7 @@ export default function UEEPage(data) {
                                       }
                                     >
                                       {data.name}
-                                      <div className="ml-auto text-sm">
+                                      <div className="hidden ml-auto text-sm xs:block">
                                         {data.datum}
                                       </div>
                                     </li>
