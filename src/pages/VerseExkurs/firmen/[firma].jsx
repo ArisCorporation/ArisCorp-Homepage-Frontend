@@ -88,10 +88,10 @@ export default function SystemDetailPage() {
                 </tr>
                 <tr className='border-b-0 border-transparent'>
                   <th className="pr-2 text-left">Kategorie:</th>
-                  <td className="text-left text-primary">
+                  <td className="text-left break-words text-primary">
                     {data.firmenkategorie != null
                       ? data.firmenkategorie == 'hersteller'
-                        ? data.firmenherstellerkategorie
+                        ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
                         : data.firmenkategorie
                       : 'N/A'}
                   </td>
