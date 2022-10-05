@@ -109,11 +109,9 @@ export default function Technologie({ data }) {
                   : null
                 : null}
 
-              <div className="top-0 left-0 flex justify-center mt-24 md:justify-start md:mt-5 ">
+              <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
                 <div
                   className="relative w-52 aspect-square hover:cursor-pointer"
-                  onMouseEnter={() => setSelectedTech('3')}
-                  onMouseLeave={() => setSelectedTech(undefined)}
                   onClick={() =>
                     push('/VerseExkurs/technologie/Komponenten')
                   }

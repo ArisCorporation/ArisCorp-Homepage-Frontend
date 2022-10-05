@@ -3,28 +3,51 @@ import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
+import client from 'apollo/clients'
+import rehypeSlug from 'rehype-slug'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
+import { useEffect } from 'react'
 import { GET_VERSEEXKURS_TECHNOLOGIE } from 'graphql/queries'
 
-export default function SpectrumArticlePage() {
-  const router = useRouter()
-  const { technologie: Technologie } = router.query
+export async function getServerSideProps(context) {
+  const { params } = context
+  const { technologie } = params
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_TECHNOLOGIE, {
-    variables: { Technologie: Technologie },
+  const { data } = await client.query({
+    query: GET_VERSEEXKURS_TECHNOLOGIE,
+    variables: { Technologie: technologie },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
-  if (error) return <p>Error :(</p>
+  return {
+    props: {
+      data: await data.technologien[0],
+    },
+  }
+}
 
-  data = data.technologien[0]
+export default function SpectrumArticlePage({ data }) {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.asPath ==
+    '/VerseExkurs/technologie/Komponenten#gravitationsgeneratoren'
+      ? document
+          .getElementById('treibstoff-tanks')
+          .scrollIntoView({ behavior: 'smooth', block: 'start' })
+      : (router.asPath ==
+        '/VerseExkurs/technologie/Komponenten#energiegeneratoren'
+      ? document
+          .getElementById('schildgeneratoren')
+          .scrollIntoView({ behavior: 'smooth', block: 'start' })
+      : null)
+  }, [])
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -62,7 +85,7 @@ export default function SpectrumArticlePage() {
         </div>
         <div className="font-nasa article-font">
           <ReactMarkdown
-            rehypePlugins={[rehypeRaw]}
+            rehypePlugins={[rehypeRaw, rehypeSlug]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
             {data.technologie_text}
