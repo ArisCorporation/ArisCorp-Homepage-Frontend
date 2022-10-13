@@ -81,7 +81,7 @@ const TimelineComponent = ({ events, data }) => (
       <Timeline
         target={<div className="timeline" style={{ height: 600 }} />}
         events={events}
-        options={options} // optional
+        options={options}
       />
       <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/themes/timeline.theme.dark.css" />
       <style>{`
