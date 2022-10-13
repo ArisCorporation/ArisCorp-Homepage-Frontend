@@ -220,7 +220,7 @@ export const GET_COMM_LINKS = gql`
 `
 
 export const GET_COMM_LINK = gql`
-  query GetCommLink($Id: Float!) {
+  query GetCommLink($Id: String!) {
     comm_links(filter: { id: { _eq: $Id } }) {
       id
       status
@@ -315,7 +315,7 @@ export const GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE = gql`
       geschichte_datum
       geschichte_kategorie
       geschichte_beschreibung
-      geschichte_beitrag
+      text
     }
   }
 `
@@ -344,13 +344,25 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
     ) {
       id
       status
-      system_name
-      system_banner {
+      name
+      banner {
         id
         width
         height
       }
-      text
+      star_type
+      star_class
+      size
+      planets
+      moons
+      asteroid_belt
+      jumppoints
+      affiliation
+      discovery_year
+      main_planet
+      population
+      economy
+      danger_level
     }
   }
 `
@@ -358,7 +370,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
 export const GET_VERSEEXKURS_SYSTEM = gql`
   query GetVerseExkursSystem($System: String!) {
     systeme(
-      filter: { status: { _eq: "published" }, system_name: { _eq: $System } }
+      filter: { status: { _eq: "published" }, name: { _eq: $System } }
     ) {
       id
       status
