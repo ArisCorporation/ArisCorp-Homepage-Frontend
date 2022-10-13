@@ -36,7 +36,7 @@ export default function Starmap({ data }) {
           id="branaugh"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[26.47%] top-[0.28777%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Branaugh')[0]
+            (data.filter((data) => data.name === 'Branaugh')[0]
               ? ''
               : ' scale-0')
           }
@@ -47,7 +47,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Branaugh</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/93a6280a-7ff9-4083-90d8-e544089a5eb4'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Branaugh')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -55,19 +56,46 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Branaugh')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Branaugh')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Branaugh')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Nicht beansprucht
+                      {data.filter((data) => data.name === 'Branaugh')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Branaugh')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Branaugh')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Branaugh')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Branaugh')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Branaugh')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
                     </p>
                   </li>
                 </ul>
@@ -91,7 +119,7 @@ export default function Starmap({ data }) {
           id="chronos"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[27.77%] top-[5.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Chronos')[0]
+            (data.filter((data) => data.name === 'Chronos')[0]
               ? ''
               : ' scale-0')
           }
@@ -102,7 +130,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Chronos</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Chronos')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -110,18 +139,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Chronos')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Chronos')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Chronos')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Chronos')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Chronos')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Chronos')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Chronos')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Chronos')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Chronos')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -147,9 +205,7 @@ export default function Starmap({ data }) {
           id="volt"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[14.45%] top-[3.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Voltdd')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Volt')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/volt')}
           data-html={true}
@@ -158,7 +214,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Volt</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Volt')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -166,18 +223,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Volt')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Volt')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Volt')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Volt')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Volt')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Volt')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Volt')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Volt')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Volt')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -200,7 +286,7 @@ export default function Starmap({ data }) {
           id="veritas"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[9.1%] top-[8.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Veritas')[0]
+            (data.filter((data) => data.name === 'Veritas')[0]
               ? ''
               : ' scale-0')
           }
@@ -211,7 +297,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Veritas</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Veritas')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -219,18 +306,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Veritas')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Veritas')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Veritas')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Veritas')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Veritas')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Veritas')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Veritas')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Veritas')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Veritas')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -253,7 +369,7 @@ export default function Starmap({ data }) {
           id="vermilion"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[5.8%] top-[12.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vermilion')[0]
+            (data.filter((data) => data.name === 'Vermilion')[0]
               ? ''
               : ' scale-0')
           }
@@ -264,7 +380,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vermilion</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vermilion')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -272,18 +389,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vermilion')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vermilion')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vermilion')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vermilion')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vermilion')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vermilion')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vermilion')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vermilion')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vermilion')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -306,9 +452,7 @@ export default function Starmap({ data }) {
           id="virgo"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[3.088%] top-[16.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Virgo')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Virgo')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/virgo')}
           data-html={true}
@@ -317,7 +461,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vulture</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Virgo')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -325,18 +470,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Virgo')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Virgo')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">7 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virgo')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virgo')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Virgo')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Virgo')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Virgo')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Virgo')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Virgo')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -359,7 +533,7 @@ export default function Starmap({ data }) {
           id="vulture"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[22.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vulture')[0]
+            (data.filter((data) => data.name === 'Vulture')[0]
               ? ''
               : ' scale-0')
           }
@@ -370,7 +544,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Chronos</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vulture')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -378,18 +553,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vulture')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vulture')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vulture')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vulture')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vulture')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vulture')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vulture')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vulture')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vulture')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -412,7 +616,7 @@ export default function Starmap({ data }) {
           id="vagabond"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[27.98%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vagabond')[0]
+            (data.filter((data) => data.name === 'Vagabond')[0]
               ? ''
               : ' scale-0')
           }
@@ -423,7 +627,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vagabond</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vagabond')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -431,18 +636,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vagabond')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vagabond')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vagabond')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vagabond')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vagabond')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vagabond')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vagabond')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vagabond')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vagabond')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -465,7 +699,7 @@ export default function Starmap({ data }) {
           id="vanguard"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[0.4%] top-[33.27%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vanguard')[0]
+            (data.filter((data) => data.name === 'Vanguard')[0]
               ? ''
               : ' scale-0')
           }
@@ -476,7 +710,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vanguard</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vanguard')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -484,18 +719,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vanguard')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vanguard')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vanguard')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vanguard')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vanguard')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vanguard')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vanguard')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vanguard')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vanguard')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -518,9 +782,7 @@ export default function Starmap({ data }) {
           id="voodoo"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[1.27%] top-[38.77%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Voodoo')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Voodoo')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/voodoo')}
           data-html={true}
@@ -529,7 +791,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Voodoo</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Voodoo')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -537,18 +800,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Voodoo')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Voodoo')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Voodoo')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Voodoo')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Voodoo')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Voodoo')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Voodoo')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Voodoo')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Voodoo')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -571,7 +863,7 @@ export default function Starmap({ data }) {
           id="vendetta"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[3.2%] top-[44.8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vendetta')[0]
+            (data.filter((data) => data.name === 'Vendetta')[0]
               ? ''
               : ' scale-0')
           }
@@ -582,7 +874,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vendetta</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vendetta')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -590,18 +883,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vendetta')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vendetta')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vendetta')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vendetta')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vendetta')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vendetta')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vendetta')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vendetta')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vendetta')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -624,9 +946,7 @@ export default function Starmap({ data }) {
           id="vesper"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[5.8337%] top-[49.4%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vesper')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Vesper')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/vesper')}
           data-html={true}
@@ -635,7 +955,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vesper</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vesper')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -643,18 +964,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vesper')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vesper')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vesper')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vesper')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vesper')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vesper')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vesper')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vesper')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vesper')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -677,9 +1027,7 @@ export default function Starmap({ data }) {
           id="vector"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[21.36%] top-[-16.8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vector')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Vector')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/vector')}
           data-html={true}
@@ -688,7 +1036,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vector</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vector')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -696,18 +1045,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vector')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vector')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vector')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vector')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vector')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vector')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vector')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vector')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vector')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -730,18 +1108,19 @@ export default function Starmap({ data }) {
           id="tiber"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[16.2%] top-[-14.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Branaugh')[0]
+            (data.filter((data) => data.name === 'Tiber')[0]
               ? ''
               : ' scale-0')
           }
-          onClick={() => router.push('/VerseExkurs/starmap/Branaugh')}
+          onClick={() => router.push('/VerseExkurs/starmap/tiber')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
               <h3 className="p-0 m-0">Tiber</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/810fabfb-ff91-4eb0-8c52-2bc124c91d8c'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tiber')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -749,18 +1128,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tiber')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tiber')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tiber')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tiber')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tiber')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tiber')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tiber')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tiber')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tiber')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -783,9 +1191,7 @@ export default function Starmap({ data }) {
           id="orion"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[12.13%] top-[-10.43%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Orion')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Orion')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/orion')}
           data-html={true}
@@ -794,7 +1200,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Orion</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/a4cb72c5-e65d-4d4f-ac37-afd88d1459eb'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Orion')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -802,18 +1209,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Orion')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Orion')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">5 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Orion')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Orion')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Orion')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Orion')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Orion')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Orion')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Orion')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -836,9 +1272,7 @@ export default function Starmap({ data }) {
           id="viking"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[8.9%] top-[-5.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Viking')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Viking')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/viking')}
           data-html={true}
@@ -847,7 +1281,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Viking</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Viking')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -855,18 +1290,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Viking')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Viking')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Viking')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Viking')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Viking')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Viking')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Viking')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Viking')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Viking')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -889,9 +1353,7 @@ export default function Starmap({ data }) {
           id="virgil"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-16.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Virgil')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Virgil')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/virgil')}
           data-html={true}
@@ -900,7 +1362,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Virgil</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/a4741cec-c3f5-4c4e-af7b-9c5a61124fda'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Virgil')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -908,18 +1371,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Virgil')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Virgil')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">16 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virgil')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virgil')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Virgil')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Virgil')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Virgil')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Virgil')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Virgil')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -942,7 +1434,7 @@ export default function Starmap({ data }) {
           id="caliban"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[13.8%] top-[-6.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Caliban')[0]
+            (data.filter((data) => data.name === 'Caliban')[0]
               ? ''
               : ' scale-0')
           }
@@ -953,7 +1445,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Caliban</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/609c4bdf-da44-48ae-96fe-80d2b3ed160a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Caliban')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -961,18 +1454,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Caliban')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Caliban')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Caliban')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Vanduul</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Caliban')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Caliban')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Caliban')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Caliban')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Caliban')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Caliban')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -998,9 +1520,7 @@ export default function Starmap({ data }) {
           id="el-sin"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[80.55%] top-[-42.2%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'El-sin')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'El-sin')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/el-sin')}
           data-html={true}
@@ -1009,7 +1529,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">El{"'"}Sin</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'El-sin')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1017,18 +1538,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'El-sin')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'El-sin')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'El-sin')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'El-sin')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'El-sin')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'El-sin')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'El-sin')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'El-sin')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'El-sin')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1051,7 +1601,7 @@ export default function Starmap({ data }) {
           id="khabari"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[89.27%] top-[-38.87%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Khabari')[0]
+            (data.filter((data) => data.name === 'Khabari')[0]
               ? ''
               : ' scale-0')
           }
@@ -1062,7 +1612,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Khabari</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Khabari')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1070,18 +1621,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Khabari')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Khabari')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Khabari')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Khabari')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Khabari')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Khabari')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Khabari')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Khabari')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Khabari')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1104,7 +1684,7 @@ export default function Starmap({ data }) {
           id="markahil"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[96.6%] top-[-32.47%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Markahil')[0]
+            (data.filter((data) => data.name === 'Markahil')[0]
               ? ''
               : ' scale-0')
           }
@@ -1115,7 +1695,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Markahil</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Markahil')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1123,18 +1704,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Markahil')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Markahil')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">0 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Markahil')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Markahil')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Markahil')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Markahil')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Markahil')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Markahil')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Markahil')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1157,9 +1767,7 @@ export default function Starmap({ data }) {
           id="kayfa"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[79%] top-[-41.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kayfa')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kayfa')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kayfa')}
           data-html={true}
@@ -1168,7 +1776,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kayfa</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/3e76c029-a4bd-42f2-a560-d7398b350c75'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kayfa')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1176,18 +1785,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kayfa')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kayfa')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">12 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kayfa')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kayfa')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kayfa')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kayfa')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kayfa')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kayfa')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kayfa')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1210,9 +1848,7 @@ export default function Starmap({ data }) {
           id="rihlah"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[67.48%] top-[-44.81%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Rihlah')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Rihlah')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/rhilah')}
           data-html={true}
@@ -1221,7 +1857,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Rihlah</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/00740cb8-f204-4083-81ff-0a8eac10fc39'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Rihlah')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1229,18 +1866,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Rihlah')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Rihlah')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">36 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Rihlah')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Rihlah')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Rihlah')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Rihlah')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Rihlah')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Rihlah')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Rihlah')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1263,9 +1929,7 @@ export default function Starmap({ data }) {
           id="eealus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[60.66%] top-[-44.6999%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Eealus')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Eealus')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/eealus')}
           data-html={true}
@@ -1274,7 +1938,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Eealus</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/00740cb8-f204-4083-81ff-0a8eac10fc39'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Eealus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1282,18 +1947,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Eealus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Eealus')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">3 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Eealus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Eealus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Eealus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Eealus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Eealus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Eealus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Eealus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1316,9 +2010,7 @@ export default function Starmap({ data }) {
           id="virtus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[54.7%] top-[-42.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Virtus')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Virtus')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/virtus')}
           data-html={true}
@@ -1327,7 +2019,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">La{"'"}Uo (Virtus)</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Virtus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1335,18 +2028,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Virtus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Virtus')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">98 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virtus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Virtus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Virtus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Virtus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Virtus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Virtus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Virtus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1369,9 +2091,7 @@ export default function Starmap({ data }) {
           id="tal"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[88.17%] top-[-33.17%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tal')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tal')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tal')}
           data-html={true}
@@ -1380,7 +2100,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tal</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/70a14032-20fd-4bba-a3af-5459b2946d7d'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tal')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1388,18 +2109,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tal')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tal')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">12 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tal')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tal')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tal')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tal')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tal')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tal')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tal')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1422,9 +2172,7 @@ export default function Starmap({ data }) {
           id="pallas"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[82.78%] top-[-28.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Pallas')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Pallas')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/pallas')}
           data-html={true}
@@ -1433,7 +2181,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Th.Us{"'"}Ūng (Pallas)</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/83c18dd7-58cf-464c-b0c4-780124206cf2'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Pallas')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1441,18 +2190,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Pallas')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Pallas')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">40 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Pallas')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Pallas')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Pallas')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Pallas')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Pallas')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Pallas')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Pallas')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1475,9 +2253,7 @@ export default function Starmap({ data }) {
           id="hadur"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[86.8%] top-[-15.78%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Hadur')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Hadur')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/hadur')}
           data-html={true}
@@ -1486,7 +2262,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Yā{"'"}mon (Hadur)</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/03692dd3-eabf-4808-b5c0-d68e1d37711e'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Hadur')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1494,18 +2271,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Hadur')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Hadur')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">15 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hadur')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hadur')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Hadur')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Hadur')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Hadur')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Hadur')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Hadur')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1528,9 +2334,7 @@ export default function Starmap({ data }) {
           id="ayr-ka"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[85.3%] top-[-8.32%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Ayrka')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Ayrka')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/ayrka')}
           data-html={true}
@@ -1541,7 +2345,8 @@ export default function Starmap({ data }) {
               </h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/6db8d285-c55d-49b1-8a3e-4ba481f911b4'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Ayrka')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1549,18 +2354,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Ayrka')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Ayrka')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">199 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ayrka')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ayrka')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Ayrka')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Ayrka')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Ayrka')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Ayrka')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Ayrka')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1583,9 +2417,7 @@ export default function Starmap({ data }) {
           id="indra"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[81.47%] top-[-3.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Indra')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Indra')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/indra')}
           data-html={true}
@@ -1594,7 +2426,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kyuk{"'"}ya (Indra)</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Indra')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1602,16 +2435,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Doppelstern</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data
+                        .filter((data) => data.name === 'Indra')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Indra')[0]
+                          ?.star_type?.slice(1)}
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">13 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Indra')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Xi{"'"}An</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Indra')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Indra')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Indra')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Indra')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Indra')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Indra')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1637,9 +2501,7 @@ export default function Starmap({ data }) {
           id="kins"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[86.27%] top-[1.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kins')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kins')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kins')}
           data-html={true}
@@ -1648,7 +2510,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kins</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kins')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1656,18 +2519,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kins')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kins')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kins')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Banu</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kins')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kins')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kins')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kins')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kins')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kins')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1690,9 +2582,7 @@ export default function Starmap({ data }) {
           id="geddon"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Geddon')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Geddon')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/geddon')}
           data-html={true}
@@ -1701,7 +2591,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Geddon</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/2a43ff5d-e879-4beb-a2d3-c46d5921a87a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Geddon')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1709,18 +2600,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Geddon')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Geddon')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">128 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Geddon')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Banu</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Geddon')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Geddon')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Geddon')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Geddon')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Geddon')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Geddon')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1743,7 +2663,7 @@ export default function Starmap({ data }) {
           id="bacchus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[29.3%] top-[4.8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Bacchus')[0]
+            (data.filter((data) => data.name === 'Bacchus')[0]
               ? ''
               : ' scale-0')
           }
@@ -1754,7 +2674,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Bacchus</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Bacchus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1762,16 +2683,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Doppelstern</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data
+                        .filter((data) => data.name === 'Bacchus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Bacchus')[0]
+                          ?.star_type?.slice(1)}
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Bacchus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Banu</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Bacchus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Bacchus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Bacchus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Bacchus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Bacchus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Bacchus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1794,9 +2746,7 @@ export default function Starmap({ data }) {
           id="gliese"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[11.39%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Gliese')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Gliese')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/gliese')}
           data-html={true}
@@ -1805,7 +2755,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Gliese</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/5c5ea017-33d5-48c5-bc8c-caf2fe21f817'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Gliese')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1813,18 +2764,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Gliese')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Gliese')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">13 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Gliese')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Banu</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Gliese')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Gliese')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Gliese')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Gliese')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Gliese')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Gliese')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1847,9 +2827,7 @@ export default function Starmap({ data }) {
           id="yulin"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[13.1%] top-[6.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Yulin')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Yulin')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/yulin')}
           data-html={true}
@@ -1858,7 +2836,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Yulin</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/b3571b52-7bee-4113-b67e-9d22a8b1885a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Yulin')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1866,18 +2845,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Yulin')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Yulin')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">30 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Yulin')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Banu</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Yulin')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Yulin')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Yulin')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Yulin')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Yulin')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Yulin')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1903,9 +2911,7 @@ export default function Starmap({ data }) {
           id="odin"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[44.1%] top-[-73.8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Odin')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Odin')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/odin')}
           data-html={true}
@@ -1914,7 +2920,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Odin</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/ab5e7a6b-04fd-4fff-acfc-45c1f1140d2a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Odin')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1922,18 +2929,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Odin')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Odin')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">21 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Odin')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Odin')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Odin')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Odin')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Odin')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Odin')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Odin')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -1956,9 +2992,7 @@ export default function Starmap({ data }) {
           id="tohil"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-65.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tohil')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tohil')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tohil')}
           data-html={true}
@@ -1967,7 +3001,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tohil</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/393778fa-4fcb-48e3-9d45-662174ca5753'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tohil')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -1975,18 +3010,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tohil')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tohil')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tohil')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tohil')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tohil')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tohil')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tohil')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tohil')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tohil')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2009,9 +3073,7 @@ export default function Starmap({ data }) {
           id="bremen"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[29.8484%] top-[-67.73%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Bremen')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Bremen')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/bremen')}
           data-html={true}
@@ -2020,7 +3082,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Bremen</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/3dc2bcce-ef90-4ec9-a3d2-188acc39cc25'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Bremen')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2028,18 +3091,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Bremen')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Bremen')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Bremen')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Bremen')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Bremen')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Bremen')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Bremen')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Bremen')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Bremen')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2062,9 +3154,7 @@ export default function Starmap({ data }) {
           id="vega"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[25.3%] top-[-67.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Vega')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Vega')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/vega')}
           data-html={true}
@@ -2073,7 +3163,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Vega</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/6223549a-3109-4008-a751-571d6fbd02b9'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Vega')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2081,18 +3172,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Vega')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Vega')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">8 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vega')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Vega')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Vega')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Vega')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Vega')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Vega')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Vega')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2115,9 +3235,7 @@ export default function Starmap({ data }) {
           id="castra"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[58.4%] top-[-70.755%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Castra')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Castra')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/castra')}
           data-html={true}
@@ -2126,7 +3244,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Castra</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/5578cc6e-f89b-4795-8552-d49704b6c349'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Castra')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2134,18 +3253,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Castra')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Castra')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">22 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Castra')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Castra')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Castra')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Castra')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Castra')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Castra')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Castra')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2168,9 +3316,7 @@ export default function Starmap({ data }) {
           id="oya"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[64.3%] top-[-67.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Oya')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Oya')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/oya')}
           data-html={true}
@@ -2179,7 +3325,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Oya</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Oya')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2187,18 +3334,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Oya')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Oya')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">44 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oya')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oya')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Oya')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Oya')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Oya')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Oya')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Oya')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2221,9 +3397,7 @@ export default function Starmap({ data }) {
           id="gurzil"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[69.1%] top-[-71.50797%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Gurzil')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Gurzil')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/gurzil')}
           data-html={true}
@@ -2232,7 +3406,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Gurzil</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/56f3f28f-2a20-4857-8eda-8d36bebbad45'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Gurzil')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2240,18 +3415,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Gurzil')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Gurzil')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">4 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Gurzil')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Gurzil')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Gurzil')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Gurzil')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Gurzil')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Gurzil')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Gurzil')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2274,9 +3478,7 @@ export default function Starmap({ data }) {
           id="horus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[75.4%] top-[-73.27%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Horus')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Horus')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/horus')}
           data-html={true}
@@ -2285,7 +3487,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Horus</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/961f88c8-6723-4b6b-af9b-5cfb9af6b9cd'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Horus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2293,18 +3496,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Horus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Horus')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">4 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Horus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Horus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Horus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Horus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Horus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Horus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Horus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2327,9 +3559,7 @@ export default function Starmap({ data }) {
           id="kiel"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[72.7%] top-[-61.7%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kiel')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kiel')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kiel')}
           data-html={true}
@@ -2338,7 +3568,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kiel</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/ed28d073-a848-4efe-a20b-89945dbaa51d'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kiel')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2346,18 +3577,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kiel')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kiel')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">28 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kiel')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kiel')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kiel')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kiel')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kiel')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kiel')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kiel')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2380,7 +3640,7 @@ export default function Starmap({ data }) {
           id="hadrian"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[67.85%] top-[-62.969%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Hadrian')[0]
+            (data.filter((data) => data.name === 'Hadrian')[0]
               ? ''
               : ' scale-0')
           }
@@ -2391,7 +3651,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Hadrian</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/ba70df5f-941f-43b1-91ec-82ed6e18cb06'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Hadrian')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2399,18 +3660,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Hadrian')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Hadrian')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">65 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hadrian')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hadrian')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Hadrian')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Hadrian')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Hadrian')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Hadrian')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Hadrian')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2433,9 +3723,7 @@ export default function Starmap({ data }) {
           id="cano"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[44.4%] top-[-65.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Cano')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Cano')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/cano')}
           data-html={true}
@@ -2444,7 +3732,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Cano</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/a904ac5c-f1e4-4ef4-9c1e-357128941b71'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Cano')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2452,18 +3741,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Cano')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Cano')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">4 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Cano')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Cano')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Cano')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Cano')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Cano')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Cano')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Cano')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2486,9 +3804,7 @@ export default function Starmap({ data }) {
           id="sol"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6%] top-[-69.23%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Sol')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Sol')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/sol')}
           data-html={true}
@@ -2497,7 +3813,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Sol</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/ea79291d-3266-4bf2-b471-51308aefb23b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Sol')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2505,18 +3822,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Sol')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Sol')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">51 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Sol')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Sol')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Sol')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Sol')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Sol')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Sol')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Sol')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2539,7 +3885,7 @@ export default function Starmap({ data }) {
           id="centauri"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[11.89%] top-[-68.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Centauri')[0]
+            (data.filter((data) => data.name === 'Centauri')[0]
               ? ''
               : ' scale-0')
           }
@@ -2550,7 +3896,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Centauri</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/e8770b8b-ce8d-4ba4-a8f9-4c0004a8b5bd'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Centauri')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2558,18 +3905,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Centauri')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Centauri')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">10 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Centauri')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Centauri')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Centauri')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Centauri')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Centauri')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Centauri')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Centauri')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2592,9 +3968,7 @@ export default function Starmap({ data }) {
           id="baker"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[76.74%] top-[-65.89%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Baker')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Baker')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/baker')}
           data-html={true}
@@ -2603,7 +3977,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Baker</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/3328e2b7-bdd6-40b6-8797-8dd6287430b5'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Baker')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2611,16 +3986,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Doppelstern</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data
+                        .filter((data) => data.name === 'Baker')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Baker')[0]
+                          ?.star_type?.slice(1)}
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">8 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Baker')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Baker')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Baker')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Baker')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Baker')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Baker')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Baker')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2643,9 +4049,7 @@ export default function Starmap({ data }) {
           id="terra"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[65.38%] top-[-68.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Terra')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Terra')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/terra')}
           data-html={true}
@@ -2654,7 +4058,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Terra</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/20fb3546-c28b-4dc3-b7cf-a44d932eddb4'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Terra')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2662,18 +4067,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Terra')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Terra')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">12 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Terra')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Terra')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Terra')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Terra')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Terra')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Terra')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Terra')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2696,7 +4130,7 @@ export default function Starmap({ data }) {
           id="stanton"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[59.63%] top-[-70.4%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Stanton')[0]
+            (data.filter((data) => data.name === 'Stanton')[0]
               ? ''
               : ' scale-0')
           }
@@ -2707,7 +4141,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Stanton</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/8041eebd-99f5-4559-834d-b6743fbe072b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Stanton')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2715,18 +4150,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Stanton')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Stanton')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">5 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Stanton')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Stanton')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Stanton')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Stanton')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Stanton')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Stanton')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Stanton')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2749,9 +4213,7 @@ export default function Starmap({ data }) {
           id="magnus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[53.9398%] top-[-72.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Magnus')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Magnus')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/magnus')}
           data-html={true}
@@ -2760,7 +4222,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Magnus</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/dd005eb1-25b0-4ee6-8531-f62735d2dcac'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Magnus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2768,18 +4231,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Magnus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Magnus')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">14 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Magnus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Magnus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Magnus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Magnus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Magnus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Magnus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Magnus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2802,9 +4294,7 @@ export default function Starmap({ data }) {
           id="ellis"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[50.3%] top-[-75.19%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Ellis')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Ellis')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/ellis')}
           data-html={true}
@@ -2813,7 +4303,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Ellis</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/44eaa042-1be7-46c4-8649-5406d781332d'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Ellis')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2821,18 +4312,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Ellis')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Ellis')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">101 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ellis')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ellis')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Ellis')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Ellis')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Ellis')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Ellis')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Ellis')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2855,9 +4375,7 @@ export default function Starmap({ data }) {
           id="kilian"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[45.4%] top-[-77.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kilian')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kilian')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kilian')}
           data-html={true}
@@ -2866,7 +4384,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kilian</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/3f96b8ff-e5e5-4412-b911-69ed28d59fb3'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kilian')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2874,18 +4393,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kilian')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kilian')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">194 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kilian')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kilian')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2908,9 +4456,7 @@ export default function Starmap({ data }) {
           id="davien"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[40.3%] top-[-80.07%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Davien')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Davien')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/davien')}
           data-html={true}
@@ -2919,7 +4465,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Davien</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/a23a5ad0-a893-4055-9f6e-94dcd0901630'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Davien')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2927,18 +4474,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kilian')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kilian')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">17 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kilian')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kilian')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kilian')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -2961,7 +4537,7 @@ export default function Starmap({ data }) {
           id="croshaw"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[28.93%] top-[-82.4%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Croshaw')[0]
+            (data.filter((data) => data.name === 'Croshaw')[0]
               ? ''
               : ' scale-0')
           }
@@ -2972,7 +4548,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Croshaw</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/c25e0c3c-e480-4e76-afd9-10fe95ec085f'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Croshaw')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -2980,18 +4557,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Croshaw')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Croshaw')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">8 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Croshaw')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Croshaw')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Croshaw')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Croshaw')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Croshaw')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Croshaw')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Croshaw')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3014,9 +4620,7 @@ export default function Starmap({ data }) {
           id="rhetor"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[23.77%] top-[-84.7%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Rhetor')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Rhetor')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/rhetor')}
           data-html={true}
@@ -3025,7 +4629,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Rhetor</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/643736c6-a922-4ca7-9080-042d02745c8b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Rhetor')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3033,18 +4638,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Rhetor')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Rhetor')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">4 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Rhetor')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Rhetor')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Rhetor')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Rhetor')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Rhetor')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Rhetor')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Rhetor')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3067,9 +4701,7 @@ export default function Starmap({ data }) {
           id="idris"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[19%] top-[-87%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Idris')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Idris')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/idris')}
           data-html={true}
@@ -3078,7 +4710,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Idris</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/d8562614-d518-4b9c-8ea1-9cddc13d58a0'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Idris')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3086,18 +4719,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Idris')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Idris')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">9 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Idris')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Idris')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Idris')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Idris')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Idris')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Idris')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Idris')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3120,7 +4782,7 @@ export default function Starmap({ data }) {
           id="elysium"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[11.6%] top-[-89.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Elysium')[0]
+            (data.filter((data) => data.name === 'Elysium')[0]
               ? ''
               : ' scale-0')
           }
@@ -3131,7 +4793,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Elysium</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Elysium')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3139,18 +4802,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Elysium')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Elysium')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">9 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Elysium')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Elysium')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Elysium')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Elysium')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Elysium')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Elysium')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Elysium')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3173,9 +4865,7 @@ export default function Starmap({ data }) {
           id="tayac"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[67.35%] top-[-85.77%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tayac')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tayac')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tayac')}
           data-html={true}
@@ -3184,7 +4874,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tayac</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/9aab8d14-c9c3-45e4-ac51-19a76d14ad21'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tayac')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3192,18 +4883,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tayac')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tayac')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">3 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tayac')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tayac')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tayac')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tayac')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tayac')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tayac')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tayac')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3226,9 +4946,7 @@ export default function Starmap({ data }) {
           id="goss"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[71.1364%] top-[-85.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Goss')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Goss')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/goss')}
           data-html={true}
@@ -3237,7 +4955,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Goss</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/3cca4555-46ec-4e41-9311-333d1c4bf2a8'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Goss')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3245,16 +4964,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Doppelstern</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data
+                        .filter((data) => data.name === 'Goss')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Goss')[0]
+                          ?.star_type?.slice(1)}
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Goss')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Goss')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Goss')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Goss')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Goss')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Goss')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Goss')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3277,9 +5027,7 @@ export default function Starmap({ data }) {
           id="ferron"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-88.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Ferron')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Ferron')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/ferron')}
           data-html={true}
@@ -3288,7 +5036,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Ferron</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/cc34de9a-3bce-457a-aadf-0c9aad8f55d6'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Ferron')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3296,18 +5045,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Ferron')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Ferron')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">18 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ferron')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Ferron')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Ferron')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Ferron')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Ferron')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Ferron')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Ferron')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3330,7 +5108,7 @@ export default function Starmap({ data }) {
           id="oretani"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.63%] top-[-83.2%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Oretani')[0]
+            (data.filter((data) => data.name === 'Oretani')[0]
               ? ''
               : ' scale-0')
           }
@@ -3341,7 +5119,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Markahil</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/6843a1d1-63c3-4eff-9b9e-2260396c4303'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Oretani')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3349,18 +5128,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Oretani')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Oretani')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">37 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oretani')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oretani')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Oretani')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Oretani')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Oretani')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Oretani')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Oretani')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3383,9 +5191,7 @@ export default function Starmap({ data }) {
           id="nexus"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[48%] top-[-89.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Nexus')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Nexus')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/nexus')}
           data-html={true}
@@ -3394,7 +5200,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Nexus</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/8f6256f2-493d-439c-af0d-c30bbf06f1c6'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Nexus')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3402,18 +5209,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Nexus')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Nexus')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nexus')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nexus')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Nexus')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Nexus')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Nexus')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Nexus')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Nexus')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3436,7 +5272,7 @@ export default function Starmap({ data }) {
           id="banshee"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[24.78%] top-[-86.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Banshee')[0]
+            (data.filter((data) => data.name === 'Banshee')[0]
               ? ''
               : ' scale-0')
           }
@@ -3447,7 +5283,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Banshee</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/2813eb71-a28c-4eac-916c-b0b7de2a2f81'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Banshee')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3455,18 +5292,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Banshee')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Banshee')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">56 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Banshee')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Banshee')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Banshee')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Banshee')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Banshee')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Banshee')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Banshee')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3489,9 +5355,7 @@ export default function Starmap({ data }) {
           id="helios"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[60.682%] top-[-89.236%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Helios')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Helios')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/helios')}
           data-html={true}
@@ -3500,7 +5364,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Helios</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/0876509d-ea09-42d8-8414-899f786b777c'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Helios')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3508,18 +5373,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Helios')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Helios')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">237 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Helios')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Helios')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Helios')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Helios')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Helios')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Helios')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Helios')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3542,9 +5436,7 @@ export default function Starmap({ data }) {
           id="kabal"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[15.35%] top-[-90.317%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kabal')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kabal')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kabal')}
           data-html={true}
@@ -3553,7 +5445,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kabal</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/c1886326-5933-4c7f-800c-4bc68143f078'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kabal')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3561,18 +5454,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kabal')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kabal')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">4 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kabal')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kabal')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kabal')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kabal')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kabal')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kabal')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kabal')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3595,9 +5517,7 @@ export default function Starmap({ data }) {
           id="nemo"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[39.78%] top-[-89.57%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Nemo')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Nemo')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/nemo')}
           data-html={true}
@@ -3606,7 +5526,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Nemo</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/9dccfdcc-e054-4fe3-a0ef-e1656b2bdc4c'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Nemo')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3614,18 +5535,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Nemo')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Nemo')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">2 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nemo')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nemo')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Nemo')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Nemo')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Nemo')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Nemo')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Nemo')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3648,9 +5598,7 @@ export default function Starmap({ data }) {
           id="fora"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.57%] top-[-90.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Fora')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Fora')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/fora')}
           data-html={true}
@@ -3659,7 +5607,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Fora</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Fora')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3667,18 +5616,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Fora')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Fora')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">14 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Fora')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Fora')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Fora')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Fora')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Fora')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Fora')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Fora')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3701,9 +5679,7 @@ export default function Starmap({ data }) {
           id="charon"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[57.65%] top-[-93.8%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Charon')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Charon')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/charon')}
           data-html={true}
@@ -3712,7 +5688,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Charon</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/d454ee21-e28d-4b2f-9424-11d2b5f1021a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Charon')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3720,18 +5697,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Charon')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Charon')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Charon')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Charon')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Charon')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Charon')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Charon')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Charon')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Charon')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3754,9 +5760,7 @@ export default function Starmap({ data }) {
           id="corel"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[42.28%] top-[-86.645%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Corel')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Corel')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/corel')}
           data-html={true}
@@ -3765,7 +5769,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Corel</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/186998f4-327b-4008-a709-6242a816d100'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Corel')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3773,18 +5778,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Corel')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Corel')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">9 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Corel')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Corel')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Corel')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Corel')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Corel')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Corel')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Corel')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3807,9 +5841,7 @@ export default function Starmap({ data }) {
           id="tamsa"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[21.1%] top-[-83.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tamsa')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tamsa')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tamsa')}
           data-html={true}
@@ -3818,7 +5850,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tamsa</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/2813eb71-a28c-4eac-916c-b0b7de2a2f81'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tamsa')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3826,18 +5859,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tamsa')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tamsa')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">304 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'BranTamsaaugh')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tamsa')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tamsa')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tamsa')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tamsa')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tamsa')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tamsa')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3863,9 +5925,7 @@ export default function Starmap({ data }) {
           id="kellog"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.6212%] top-[-164.1%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kellog')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kellog')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kellog')}
           data-html={true}
@@ -3874,7 +5934,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kellog</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/29bf8d1c-a5f6-4a81-95f8-24ce060d072b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kellog')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3882,18 +5943,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kellog')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kellog')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">33 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kellog')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kellog')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kellog')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kellog')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kellog')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kellog')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kellog')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3916,9 +6006,7 @@ export default function Starmap({ data }) {
           id="kallis"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[30.9%] top-[-147.0589%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Kallis')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Kallis')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/kallis')}
           data-html={true}
@@ -3927,7 +6015,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Kallis</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/350afc90-4e4a-49b4-8c59-130ad5752595'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Kallis')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3935,18 +6024,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Kallis')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Kallis')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">23 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kallis')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Kallis')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Kallis')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Kallis')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Kallis')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Kallis')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Kallis')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -3969,9 +6087,7 @@ export default function Starmap({ data }) {
           id="oso"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[32%] top-[-142.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Oso')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Oso')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/oso')}
           data-html={true}
@@ -3980,7 +6096,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Oso</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/9f4aa16f-2d87-4040-8af1-1289772dce29'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Oso')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -3988,18 +6105,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Oso')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Oso')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">16 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oso')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oso')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Oso')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Oso')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Oso')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Oso')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Oso')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4022,9 +6168,7 @@ export default function Starmap({ data }) {
           id="osiris"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[74.92%] top-[-123.7%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Osiris')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Osiris')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/osiris')}
           data-html={true}
@@ -4033,7 +6177,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Osiris</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/081a22d1-993b-4f79-b9ef-4a695492ba63'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Osiris')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4041,18 +6186,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Osiris')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Osiris')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">2 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Osiris')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Osiris')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Osiris')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Osiris')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Osiris')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Osiris')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Osiris')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4075,9 +6249,7 @@ export default function Starmap({ data }) {
           id="garron"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-125.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Garron')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Garron')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/garron')}
           data-html={true}
@@ -4086,7 +6258,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Garron</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/4735cfe7-6301-40dd-8ff6-a7e3939c6010'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Garron')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4094,18 +6267,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Garron')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Garron')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">6 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Garron')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Garron')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Garron')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Garron')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Garron')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Garron')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Garron')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4128,7 +6330,7 @@ export default function Starmap({ data }) {
           id="genesis"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[49.1%] top-[-108.7%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Genesis')[0]
+            (data.filter((data) => data.name === 'Genesis')[0]
               ? ''
               : ' scale-0')
           }
@@ -4139,7 +6341,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Genesis</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Genesis')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4147,18 +6350,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Genesis')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Genesis')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">25 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Genesis')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Genesis')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Genesis')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Genesis')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Genesis')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Genesis')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Genesis')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4184,9 +6416,7 @@ export default function Starmap({ data }) {
           id="tanga"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[34.62%] top-[-172.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tanga')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tanga')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tanga')}
           data-html={true}
@@ -4195,7 +6425,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tanga</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tanga')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4203,18 +6434,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Tanga')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tanga')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">83 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tanga')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tanga')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tanga')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tanga')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tanga')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tanga')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tanga')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4237,9 +6497,7 @@ export default function Starmap({ data }) {
           id="nyx"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[41.26%] top-[-166.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Nyx')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Nyx')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/nyx')}
           data-html={true}
@@ -4248,7 +6506,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Nyx</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/bc470d99-66e6-4daa-8b49-dc9dfd99571d'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Nyx')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4256,18 +6515,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Nyx')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Nyx')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nyx')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nyx')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Nyx')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Nyx')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Nyx')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Nyx')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Nyx')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4290,9 +6578,7 @@ export default function Starmap({ data }) {
           id="oberon"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[21.8%] top-[-164%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Oberon')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Oberon')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/oberon')}
           data-html={true}
@@ -4301,7 +6587,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Oberon</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/03ffedd1-d17a-4fa1-8afb-eebb98d6fda8'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Oberon')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4309,18 +6596,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Oberon')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Oberon')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">18 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oberon')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Oberon')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Oberon')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Oberon')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Oberon')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Oberon')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Oberon')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4343,9 +6659,7 @@ export default function Starmap({ data }) {
           id="pyro"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[53.1%] top-[-157.4%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Pyro')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Pyro')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/pyro')}
           data-html={true}
@@ -4354,7 +6668,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Pyro</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/578e2c12-5ebf-4a57-b7db-30f45217e2b6'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Pyro')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4362,18 +6677,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Pyro')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Pyro')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">13 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Pyro')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Pyro')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Pyro')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Pyro')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Pyro')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Pyro')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Pyro')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4396,9 +6740,7 @@ export default function Starmap({ data }) {
           id="nul"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[19.65%] top-[-153.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Nul')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Nul')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/nul')}
           data-html={true}
@@ -4407,7 +6749,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Nul</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/ff770ef8-08b0-474c-ae22-2dd547541b7a'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Nul')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4415,18 +6758,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Nul')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Nul')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">120 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nul')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Nul')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Nul')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Nul')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Nul')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Nul')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Nul')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4449,7 +6821,7 @@ export default function Starmap({ data }) {
           id="cathcart"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[44.02%] top-[-141%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Cathcart')[0]
+            (data.filter((data) => data.name === 'Cathcart')[0]
               ? ''
               : ' scale-0')
           }
@@ -4460,7 +6832,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Cathcart</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/643e7e25-d2d1-465c-ad7d-3e2e35445c00'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Cathcart')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4468,18 +6841,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Cathcart')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Cathcart')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">22 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Cathcart')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Cathcart')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Cathcart')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Cathcart')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Cathcart')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Cathcart')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Cathcart')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4502,7 +6904,7 @@ export default function Starmap({ data }) {
           id="taranis"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[56.742423%] top-[-142.4%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Taranis')[0]
+            (data.filter((data) => data.name === 'Taranis')[0]
               ? ''
               : ' scale-0')
           }
@@ -4513,7 +6915,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Taranis</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/4de287b7-e9dc-4e2e-9d4b-ad1d7c77eda3'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Taranis')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4521,18 +6924,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Taranis')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Taranis')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">18 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Taranis')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Taranis')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Taranis')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Taranis')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Taranis')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Taranis')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Taranis')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4555,9 +6987,7 @@ export default function Starmap({ data }) {
           id="min"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[51.6%] top-[-138.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Min')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Min')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/min')}
           data-html={true}
@@ -4566,7 +6996,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Taranis</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/4a409816-ca6e-4688-b88c-8bbc3af6e429'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Min')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4574,18 +7005,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Min')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Min')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">1 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Min')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Min')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Min')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Min')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Min')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Min')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Min')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4608,9 +7068,7 @@ export default function Starmap({ data }) {
           id="hades"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[44.5%] top-[-138.5%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Hades')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Hades')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/hades')}
           data-html={true}
@@ -4619,7 +7077,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Hades</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/23d4f010-dcb8-45fd-b3ba-52e8b079a344'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Hades')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4627,18 +7086,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Hades')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Hades')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">22 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hades')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Hades')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Hades')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Hades')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Hades')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Hades')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Hades')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4661,9 +7149,7 @@ export default function Starmap({ data }) {
           id="tyrol"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[71.1%] top-[-129.3%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Tyrol')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Tyrol')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/tyrol')}
           data-html={true}
@@ -4672,7 +7158,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Tyrol</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/87c159ed-ddd4-440e-9bf4-ee93bacde547'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Tyrol')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4681,16 +7168,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">Doppelstern</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data
+                        .filter((data) => data.name === 'Tyrol')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Tyrol')[0]
+                          ?.star_type?.slice(1)}
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">56 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tyrol')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Tyrol')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Tyrol')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Tyrol')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Tyrol')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Tyrol')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Tyrol')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4713,9 +7231,7 @@ export default function Starmap({ data }) {
           id="leir"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[16.6666%] top-[-128.6%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Leir')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Leir')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/leir')}
           data-html={true}
@@ -4724,7 +7240,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Leir</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/17f1c6ef-8d07-41ef-994a-d97b558d4f9b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Leir')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4732,18 +7249,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Leir')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Leir')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Leir')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Leir')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Leir')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Leir')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Leir')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Leir')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Leir')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
@@ -4769,9 +7315,7 @@ export default function Starmap({ data }) {
           id="trise"
           className={
             'relative z-10 w-[1.667%] h-[2.3789%] left-[51.4%] top-[-203.9%] group hover:cursor-pointer' +
-            (data.filter((data) => data.system_name === 'Trise')[0]
-              ? ''
-              : ' scale-0')
+            (data.filter((data) => data.name === 'Trise')[0] ? '' : ' scale-0')
           }
           onClick={() => router.push('/VerseExkurs/starmap/trise')}
           data-html={true}
@@ -4780,7 +7324,8 @@ export default function Starmap({ data }) {
               <h3 className="p-0 m-0">Trise</h3>
               <img
                 src={
-                  'https://cms.ariscorp.de/assets/72304396-e46c-4484-817c-961dbd704b5b'
+                  'https://cms.ariscorp.de/assets/' +
+                  data.filter((data) => data.name === 'Trise')[0]?.banner.id
                 }
                 className="object-cover w-32 h-16 rounded"
               />
@@ -4788,18 +7333,47 @@ export default function Starmap({ data }) {
                 <h4>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
-                    <p className="p-0 m-0 text-base">System Typ</p>
+                    <p className="p-0 m-0 text-base">Sternen Typ</p>
                     <p className="p-0 m-0 [font-size:0.6rem]">
-                      Einzelner Stern
+                      {data
+                        .filter((data) => data.name === 'Trise')[0]
+                        ?.star_type?.charAt(0)
+                        .toUpperCase() +
+                        data
+                          .filter((data) => data.name === 'Trise')[0]
+                          ?.star_type?.slice(1)}
                     </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Größe</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">11 AE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Trise')[0]?.size}{' '}
+                      AE
+                    </p>
                   </li>
                   <li>
                     <p className="p-0 m-0 text-base">Zugehörigkeit</p>
-                    <p className="p-0 m-0 [font-size:0.6rem]">UEE</p>
+                    <p className="p-0 m-0 [font-size:0.6rem]">
+                      {data.filter((data) => data.name === 'Trise')[0]
+                        ?.affiliation == 'uee'
+                        ? 'UEE'
+                        : data.filter((data) => data.name === 'Trise')[0]
+                            ?.affiliation == 'indevelopment'
+                        ? 'In Entwicklung'
+                        : data.filter((data) => data.name === 'Trise')[0]
+                            ?.affiliation == 'unclaimed'
+                        ? 'Nicht Beansprucht'
+                        : data.filter((data) => data.name === 'Trise')[0]
+                            ?.affiliation == 'banu'
+                        ? 'Banu'
+                        : data.filter((data) => data.name === 'Trise')[0]
+                            ?.affiliation == 'xian'
+                        ? "Xi'An"
+                        : data.filter((data) => data.name === 'Trise')[0]
+                            ?.affiliation == 'vanduul'
+                        ? 'Vanduul'
+                        : null}
+                    </p>
                   </li>
                 </ul>
               </div>
