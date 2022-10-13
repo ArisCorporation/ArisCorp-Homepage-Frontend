@@ -1,7 +1,10 @@
 const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
+const { withGlobalCss } = require('next-global-css')
 
-module.exports = withPWA({
+const withConfig = withGlobalCss()
+
+module.exports = withPWA(withConfig({
   reactStrictMode: true,
   pwa: {
     dest: 'public',
@@ -18,4 +21,17 @@ module.exports = withPWA({
   },
 
   target: 'serverless',
-})
+
+  webpack: (config, options) => {
+    patchWebpackConfig(config, options)
+
+    if (options.isServer) {
+      config.externals = webpackNodeExternals({
+        // Uses list to add this modules for server bundle and process.
+        allowlist: [/design-system/],
+      })
+    }
+
+    return config
+  },
+}))

@@ -1,20 +1,46 @@
 import Layout from 'pages/VerseExkurs/layout'
-import client from 'apollo/clients'
 import { GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import HorizontalTimeline from 'react-horizontal-timeline'
-import Head from 'next/head'
-import Script from 'next/script'
-import JsonFile from './timeline.json'
 import { useState, useEffect } from 'react'
-import loadTimelineScript from 'components/VerseExkursMountTimeline'
-import { useRouter } from 'next/router'
+import React from 'react'
+import client from 'apollo/clients'
+import TLComponent from 'components/VerseExkursTimeline'
 
 export async function getServerSideProps() {
-  const { data } = await client.query({
-    query: GET_VERSEEXKURS_TIMELINE,
-    variables: { titel: 'Timeline' },
+  const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
+  const timelineEvents = []
+  data.timeline.event.forEach((object, index) => {
+    const start_date = object.dates.find((item) => item.type == 'start_date')
+    const end_date = object.dates.find((item) => item.type == 'end_date')
+    // const banner = object.banner.match(/\bhttps?:\/\/\S+/gi)[0]
+    const banner = 'https://cms.ariscorp.de/assets/21193739-402c-48fc-9a04-f6a8ca1537ea?width=1118&height=351'
+    var group
+    if(object.category == 'ariscorp'){
+       group = 'ArisCorp'
+    } else if (object.category == 'verse'){
+       group = 'Verse Timeline'
+    } else if(object.category == 'one_day_in_history'){
+       group = 'Ein Tag in der Geschichte'
+    }
+
+    timelineEvents.push({
+      start_date: {
+        year: start_date.year,
+        month: start_date.month,
+        day: start_date.day
+      },
+      media: {
+        url: banner,
+        thumbnail: banner
+      },
+      unique_id: index,
+      text: {
+        headline: object.title,
+        text: object.short_caption
+      },
+      group: group
+    })
   })
 
   if (!data) {
@@ -23,86 +49,46 @@ export async function getServerSideProps() {
     }
   }
 
+
   return {
     props: {
-      data: await data.geschichte,
+      data: await data.timeline,
+      events: await timelineEvents,
     },
   }
 }
 
-function TSS(JsonFile) {
-  return {}
-}
 
-export default function Timeline({ data }) {
-  // data = data[0]
-  const json_file = JSON.stringify(JsonFile)
-  const router = useRouter()
 
-  const js = () => {
-    var additionalOptions = {
-      language: 'de',
-      default_bg_color: { r: 17, g: 17, b: 17 },
-      timenav_height: 600,
-    }
+export default function TimelinePage({ data, events }) {
 
-    timeline = new TL.Timeline('timeline-embed', json_file, additionalOptions)
-  }
-
-  useEffect(() => {
-    const script = document.createElement('script')
-
-    script.text = `
-      var additionalOptions = {
-        language: 'de',
-        default_bg_color: { r: 17, g: 17, b: 17 },
-        timenav_height: 600,
-        // initial_zoom: ,
-      }
-
-      timeline = new TL.Timeline('timeline-embed', ${json_file}, additionalOptions)
-    `
-    script.id = 'lul'
-    script.async = true
-
-    document.body.appendChild(script)
-
-    const script2 = document.createElement('script')
-
-    script2.src = '/timeline3/js/timeline.js'
-    script2.async = true
-
-    document.body.appendChild(script2)
-
-    return () => {
-      document.body.removeChild(script)
-      document.body.removeChild(script2)
-    }
-  }, [])
+  // {
+  //   start_date: {
+  //     year: 2021,
+  //     month: 6,
+  //     day: 5,
+  //   },
+  //   media: {
+  //     url: 'https://picsum.photos/200/300',
+  //     thumbnail: 'https://picsum.photos/200/300',
+  //     caption: 'google',
+  //     link: 'https://google.de',
+  //   },
+  //   unique_id: '1',
+  //   text: {
+  //     headline: 'Event1',
+  //     text: '',
+  //   },
+  //   group: 'Catégorie1',
+  // }
 
   return (
     <div>
-      <link rel="stylesheet" href="/timeline3/css/timeline.css"></link>
-
-      <Script
-        strategy="beforeInteractive"
-        src="/timeline3/js/timeline.js"
-      ></Script>
-
-      <div id="timeline-embed" className="w-full h-[500px] hwite bw"></div>
-      <p className="flex justify-center text-center">
-        Falls du kein Inhalt sehen solltest,{' '}
-        <span
-          className="text-secondary/50 hover:text-secondary hover:cursor-pointer"
-          onClick={() => router.reload()}
-        >
-          aktualisiere bitte die Seite
-        </span>
-      </p>
+        <TLComponent data={data} events={events} />
     </div>
   )
 }
 
-Timeline.getLayout = function getLayout(page) {
+TimelinePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }

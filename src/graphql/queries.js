@@ -269,15 +269,8 @@ export const GET_VEXKURS_INDEX = gql`
 
 export const GET_VERSEEXKURS_TIMELINE = gql`
   query GetVerseExkursTimeline {
-    geschichte(
-      filter: {
-        status: { _eq: "published" }
-        geschichte_titel: { _eq: "Timeline" }
-      }
-    ) {
-      id
-      geschichte_titel
-      geschichte_beitrag
+    timeline {
+      event
     }
   }
 `
@@ -477,14 +470,14 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
       firmenherstellerkategorie
       firmen_text
       headquarter
-			headquarter_system{
-				id
-				system_name
-			}
-			current_ceo
-			founding
-			founder
-			famous_goods
+      headquarter_system {
+        id
+        system_name
+      }
+      current_ceo
+      founding
+      founder
+      famous_goods
     }
   }
 `
@@ -511,14 +504,14 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       firmenherstellerkategorie
       firmen_text
       headquarter
-			headquarter_system{
-				id
-				system_name
-			}
-			current_ceo
-			founding
-			founder
-			famous_goods
+      headquarter_system {
+        id
+        system_name
+      }
+      current_ceo
+      founding
+      founder
+      famous_goods
     }
   }
 `
@@ -547,7 +540,9 @@ export const GET_VERSEEXKURS_FRAKTIONEN = gql`
 
 export const GET_VERSEEXKURS_FRAKTION = gql`
   query GetVerseExkursFraktion($fraktion: String!) {
-    fraktionengruppierungen(filter: { status: { _eq: "published" }, name: { _eq: $fraktion } }) {
+    fraktionengruppierungen(
+      filter: { status: { _eq: "published" }, name: { _eq: $fraktion } }
+    ) {
       id
       status
       trans_logo {
@@ -791,9 +786,14 @@ export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
 `
 
 export const GET_VERSEEXKURS_WEAPONS = gql`
-  query GetVerseExkursTechnologies {
+  query GetVerseExkursTechnologies($squery: String, $weaponClass: String) {
     technologien(
-      filter: { status: { _eq: "published" }, category: { _eq: "weapons" } }
+      filter: {
+        status: { _eq: "published" }
+        category: { _eq: "weapons" }
+        waffen_klasse: { waffenklasse: { _contains: $weaponClass } }
+      }
+      search: $squery
     ) {
       id
       waffen_name
