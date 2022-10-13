@@ -78,11 +78,11 @@ const options = {
 }
 const TimelineComponent = ({ events, data }) => (
   <>
-      {/* <Timeline
+      <Timeline
         target={<div className="timeline" style={{ height: 600 }} />}
         events={events}
         options={options} // optional
-      /> */}
+      />
       <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/themes/timeline.theme.dark.css" />
       <style>{`
         .tl-slider-background{
