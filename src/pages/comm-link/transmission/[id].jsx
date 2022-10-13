@@ -13,7 +13,8 @@ export default function CommLinkDetailPage() {
   const router = useRouter()
   const { id } = router.query
 
-  const Id = parseFloat(id)
+  const Id = id
+
   const { loading, error, data } = useQuery(GET_COMM_LINK, {
     variables: { Id },
   })
