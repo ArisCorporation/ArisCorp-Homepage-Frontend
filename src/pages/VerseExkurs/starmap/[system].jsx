@@ -47,17 +47,17 @@ export default function SystemDetailPage() {
     'https://cms.ariscorp.de/assets/654272b0-6bfa-4e4c-87e7-cb690476dec5'
 
   const currentIcon =
-    data.system_affiliation == 'uee'
+    data.affiliation == 'uee'
       ? ueeIcon
-      : data.system_affiliation == 'indevelopment'
+      : data.affiliation == 'indevelopment'
       ? devIcon
-      : data.system_affiliation == 'unclaimed'
+      : data.affiliation == 'unclaimed'
       ? unclIcon
-      : data.system_affiliation == 'banu'
+      : data.affiliation == 'banu'
       ? banuIcon
-      : data.system_affiliation == 'xian'
+      : data.affiliation == 'xian'
       ? xianIcon
-      : data.system_affiliation == 'vanduul'
+      : data.affiliation == 'vanduul'
       ? vnclIcon
       : null
 
@@ -67,27 +67,27 @@ export default function SystemDetailPage() {
         <div className="items-center text-center">
           <h1 className="uppercase">
             Sternensystem:{' '}
-            <span className="text-primary">{data.system_name}</span>
+            <span className="text-primary">{data.name}</span>
           </h1>
           <hr />
           <div className="w-full">
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data.system_banner.id}
+              src={'https://cms.ariscorp.de/assets/' + data.banner.id}
               alt={'Banner'}
-              width={data.system_banner.width}
-              height={data.system_banner.height}
+              width={data.banner.width}
+              height={data.banner.height}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data.system_banner.id +
+                data.banner.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={'max-w-[' + data.system_banner.width + 'px] mx-auto'}>
+        <div className={'max-w-[' + data.banner.width + 'px] mx-auto'}>
           <h2 className="mt-3">
-            VerseExkurs - Sternensystem: {data.system_name}
+            VerseExkurs - Sternensystem: {data.name}
           </h2>
           <hr className="max-w-[80px]" />
         </div>
@@ -159,20 +159,20 @@ export default function SystemDetailPage() {
                   <th className="pr-0 text-left">Zugehörigkeit:</th>
                   <td className="flex text-left text-primary">
                     <div className="relative w-6 h-6">
-                      {data.system_affiliation != null ? (
+                      {data.affiliation != null ? (
                         <Image
                           src={
-                            data.system_affiliation == 'uee'
+                            data.affiliation == 'uee'
                               ? ueeIcon
-                              : data.system_affiliation == 'indevelopment'
+                              : data.affiliation == 'indevelopment'
                               ? devIcon
-                              : data.system_affiliation == 'unclaimed'
+                              : data.affiliation == 'unclaimed'
                               ? unclIcon
-                              : data.system_affiliation == 'banu'
+                              : data.affiliation == 'banu'
                               ? banuIcon
-                              : data.system_affiliation == 'xian'
+                              : data.affiliation == 'xian'
                               ? xianIcon
-                              : data.system_affiliation == 'vanduul'
+                              : data.affiliation == 'vanduul'
                               ? vnclIcon
                               : null
                           }
@@ -187,17 +187,17 @@ export default function SystemDetailPage() {
                       )}
                     </div>
                     <div className="ml-2">
-                      {data.system_affiliation == 'uee'
+                      {data.affiliation == 'uee'
                         ? 'UEE'
-                        : data.system_affiliation == 'indevelopment'
+                        : data.affiliation == 'indevelopment'
                         ? 'In Entwicklung'
-                        : data.system_affiliation == 'unclaimed'
+                        : data.affiliation == 'unclaimed'
                         ? 'Nicht Beansprucht'
-                        : data.system_affiliation == 'banu'
+                        : data.affiliation == 'banu'
                         ? 'Banu'
-                        : data.system_affiliation == 'xian'
+                        : data.affiliation == 'xian'
                         ? "Xi'An"
-                        : data.system_affiliation == 'vanduul'
+                        : data.affiliation == 'vanduul'
                         ? 'Vanduul'
                         : null}
                     </div>
@@ -240,7 +240,7 @@ export default function SystemDetailPage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.system_text}
+            {data.text}
           </ReactMarkdown>
         </div>
       </div>
