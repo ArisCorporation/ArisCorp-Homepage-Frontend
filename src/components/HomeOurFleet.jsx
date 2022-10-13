@@ -4,9 +4,13 @@ import { SquareLoader } from 'react-spinners'
 
 export default function OurFleet() {
   return (
-    <div>
-      <div id="fleetyards-view"></div>
-      <Script src="/FleetYards.js"></Script>
-    </div>
+    <>
+      <h1 className="text-center text-primary">Comming Soon</h1>
+
+      <p className="mt-6 text-center">
+        Sobald der ShipExkurs fertiggestellt ist, wird hier unsere Flotte zu
+        sehen sein!
+      </p>
+    </>
   )
 }
