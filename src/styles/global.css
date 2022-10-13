@@ -160,7 +160,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar {
-  @apply w-[5px] bg-bg-secondary;
+  @apply w-[7px] bg-bg-secondary;
 }
 
 html::-webkit-scrollbar-thumb {
@@ -179,7 +179,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 .sidebar-scrollbar::-webkit-scrollbar {
-  @apply w-[4px] bg-bg-secondary;
+  @apply w-[6px] bg-bg-secondary;
 }
 
 .sidebar-scrollbar::-webkit-scrollbar-thumb {
