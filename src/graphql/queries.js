@@ -125,6 +125,7 @@ export const GET_MEMBERS = gql`
     member(
       filter: { status: { _eq: "published" } }
       sort: ["sort", "member_name"]
+      limit: -1
     ) {
       id
       status
@@ -160,7 +161,11 @@ export const GET_MEMBER = gql`
 // GAMEPLAY QUERYS
 export const GET_GAMEPLAYS = gql`
   query GetGameplays {
-    gameplays(filter: { status: { _eq: "published" } }, sort: ["sort", "id"]) {
+    gameplays(
+      filter: { status: { _eq: "published" } }
+      sort: ["sort", "id"]
+      limit: -1
+    ) {
       id
       status
       gameplay_name
@@ -196,6 +201,7 @@ export const GET_COMM_LINKS = gql`
       }
       search: $squery
       sort: ["sort", "-date_created"]
+      limit: -1
     ) {
       id
       status
@@ -282,6 +288,7 @@ export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
         status: { _eq: "published" }
         geschichte_kategorie: { _eq: true }
       }
+      limit: -1
     ) {
       id
       geschichte_titel
@@ -341,6 +348,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
   query GetVerseExkursSysteme {
     systeme(
       filter: { status: { _eq: "published" }, is_system: { _eq: true } }
+      limit: -1
     ) {
       id
       status
@@ -369,9 +377,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
 
 export const GET_VERSEEXKURS_SYSTEM = gql`
   query GetVerseExkursSystem($System: String!) {
-    systeme(
-      filter: { status: { _eq: "published" }, name: { _eq: $System } }
-    ) {
+    systeme(filter: { status: { _eq: "published" }, name: { _eq: $System } }) {
       id
       status
       name
@@ -400,7 +406,7 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
 
 export const GET_VERSEEXKURS_ALIENRASSEN = gql`
   query GetVerseExkursAlienrassen {
-    alienrassen(filter: { status: { _eq: published } }) {
+    alienrassen(filter: { status: { _eq: published } }, limit: -1) {
       id
       alienrassen_name
       alienrassen_banner {
@@ -448,7 +454,7 @@ export const GET_VERSEEXKURS_BIESTARIUM = gql`
 
 export const GET_VERSEEXKURS_PFLANZEN = gql`
   query GetVerseExkursPflanzen {
-    alienrassen(filter: { alienrassen_name: { _eq: "Pflanzen" } }) {
+    alienrassen(filter: { alienrassen_name: { _eq: "Pflanzen" } }, limit: -1) {
       id
       alienrassen_name
       alienrassen_banner {
@@ -464,7 +470,7 @@ export const GET_VERSEEXKURS_PFLANZEN = gql`
 
 export const GET_VERSEEXKURS_FIRMEN = gql`
   query GetVerseExkursFirmen {
-    firmen(filter: { status: { _eq: "published" } }) {
+    firmen(filter: { status: { _eq: "published" } }, limit: -1) {
       id
       status
       firmen_trans_logo {
@@ -540,6 +546,7 @@ export const GET_VERSEEXKURS_FRAKTION = gql`
   query GetVerseExkursFraktion($fraktion: String!) {
     fraktionengruppierungen(
       filter: { status: { _eq: "published" }, name: { _eq: $fraktion } }
+      limit: -1
     ) {
       id
       status
@@ -567,6 +574,7 @@ export const GET_VERSEEXKURS_FIRMEN_HERSTELLER = gql`
         status: { _eq: "published" }
         firmenkategorie: { _eq: "hersteller" }
       }
+      limit: -1
     ) {
       id
       status
@@ -595,6 +603,7 @@ export const GET_VERSEEXKURS_FIRMEN_DIENSTLEISTER = gql`
         status: { _eq: "published" }
         firmenkategorie: { _eq: "dienstleister" }
       }
+      limit: -1
     ) {
       id
       status
@@ -623,6 +632,7 @@ export const GET_VERSEEXKURS_FIRMEN_SHOPS = gql`
         status: { _eq: "published" }
         firmenkategorie: { _eq: "geschäfte" }
       }
+      limit: -1
     ) {
       id
       status
@@ -651,6 +661,7 @@ export const GET_VERSEEXKURS_FIRMEN_ORGANISATIONS = gql`
         status: { _eq: "published" }
         firmenkategorie: { _eq: "organisation" }
       }
+      limit: -1
     ) {
       id
       status
@@ -679,6 +690,7 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
         status: { _eq: "published" }
         firmenkategorie: { _eq: "verschiedenes" }
       }
+      limit: -1
     ) {
       id
       status
@@ -702,7 +714,10 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
 
 export const GET_VERSEEXKURS_FRAKTIONEN_UND_GRUPPIERUNGEN = gql`
   query GetVerseExkursFraktionenUndGruppierungen {
-    fraktionengruppierungen(filter: { status: { _eq: "published" } }) {
+    fraktionengruppierungen(
+      filter: { status: { _eq: "published" } }
+      limit: -1
+    ) {
       id
       status
       trans_logo {
@@ -725,6 +740,7 @@ export const GET_VERSEEXKURS_FRAKTION_ODER_GRUPPIERUNG = gql`
   query GetVerseExkursFraktionOderGruppierung($name: String!) {
     fraktionengruppierungen(
       filter: { status: { _eq: "published" }, name: { _eq: $name } }
+      limit: -1
     ) {
       id
       status
@@ -748,6 +764,7 @@ export const GET_VERSEEXKURS_TECHNOLOGIES = gql`
   query GetVerseExkursTechnologies {
     technologien(
       filter: { status: { _eq: "published" }, category: { _eq: "other" } }
+      limit: -1
     ) {
       id
       category
@@ -792,6 +809,7 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
         waffen_klasse: { waffenklasse: { _contains: $weaponClass } }
       }
       search: $squery
+      limit: -1
     ) {
       id
       waffen_name
@@ -928,7 +946,7 @@ export const GET_VERSEEXKURS_SPECTRUM_ARTICLES = gql`
 
 export const GET_VERSEEXKURS_SPECTRUM_CATEGORY = gql`
   query Spectrum {
-    spectrum(filter: { status: { _eq: "published" } }, limit: 1000) {
+    spectrum(filter: { status: { _eq: "published" } }, limit: -1) {
       id
       status
       spectrum_titel
@@ -950,6 +968,7 @@ export const GET_VERSEEXKURS_LITERATUREN = gql`
     literatur_reihen(
       filter: { status: { _eq: "published" } }
       sort: ["sort", "reihen_titel"]
+      limit: -1
     ) {
       id
       status
@@ -972,7 +991,7 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
     literatur(
       filter: { status: { _eq: "published" } }
       sort: ["sort", "literatur_kapitel"]
-      limit: 1000
+      limit: -1
     ) {
       id
       status
@@ -993,7 +1012,7 @@ export const GET_VERSEEXKURS_LITERATUR_REIHE = gql`
 `
 export const GET_VERSEEXKURS_LITERATUR_REIHEN = gql`
   query GetVerseExkursLiteraturReihen {
-    literatur_reihen(filter: { status: { _eq: "published" } }, limit: 400) {
+    literatur_reihen(filter: { status: { _eq: "published" } }, limit: -1) {
       id
       status
       reihen_cover {
@@ -1017,6 +1036,7 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
     literatur(
       filter: { status: { _eq: "published" }, literatur_kapitel: { _eq: $Id } }
       sort: ["sort", "literatur_kapitel"]
+      limit: -1
     ) {
       id
       status
