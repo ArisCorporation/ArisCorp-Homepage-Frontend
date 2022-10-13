@@ -340,7 +340,7 @@ export const GET_VERSEEXKURS_UEE = gql`
 export const GET_VERSEEXKURS_SYSTEME = gql`
   query GetVerseExkursSysteme {
     systeme(
-      filter: { status: { _eq: "published" }, system_boolean: { _eq: true } }
+      filter: { status: { _eq: "published" }, is_system: { _eq: true } }
     ) {
       id
       status
@@ -350,7 +350,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
         width
         height
       }
-      system_text
+      text
     }
   }
 `
@@ -362,13 +362,13 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
     ) {
       id
       status
-      system_name
-      system_banner {
+      name
+      banner {
         id
         width
         height
       }
-      system_text
+      text
       star_type
       star_class
       size
@@ -376,7 +376,7 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
       moons
       asteroid_belt
       jumppoints
-      system_affiliation
+      affiliation
       discovery_year
       main_planet
       population
@@ -494,10 +494,6 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       firmenherstellerkategorie
       firmen_text
       headquarter
-      headquarter_system {
-        id
-        system_name
-      }
       current_ceo
       founding
       founder
