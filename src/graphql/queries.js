@@ -486,6 +486,9 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
+      firmenpersonenasrustungsherstellerkategorie
+      othercategory
+      medicinecategory
     }
   }
 `
