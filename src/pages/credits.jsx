@@ -16,16 +16,16 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      data: await data.credits.credits,
+      data: await data.credits.text,
     },
   }
 }
 
-export default function CreditsPage(data) {
+export default function CreditsPage({data}) {
   return (
     <div className="pt-32">
       <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">
-        {data.data}
+        {data}
       </ReactMarkdown>
     </div>
   )

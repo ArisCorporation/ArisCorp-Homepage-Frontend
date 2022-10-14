@@ -259,7 +259,7 @@ export const GET_CREDITS = gql`
     credits {
       id
       status
-      credits
+      text
     }
   }
 `
@@ -1034,10 +1034,9 @@ export const GET_VERSEEXKURS_LITERATUR_REIHEN = gql`
 `
 
 export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
-  query GetVerseExkursLiteraturArticle($Id: Float!) {
+  query GetVerseExkursLiteraturArticle($rId: String!) {
     literatur(
-      filter: { status: { _eq: "published" }, literatur_kapitel: { _eq: $Id } }
-      sort: ["sort", "literatur_kapitel"]
+      filter: { status: { _eq: "published" }, literatur_reihe: { id: {_eq: $rId }} }
       limit: -1
     ) {
       id

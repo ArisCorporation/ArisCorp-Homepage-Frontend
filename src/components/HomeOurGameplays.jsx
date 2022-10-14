@@ -92,7 +92,7 @@ export default function OurGameplays() {
                   </div>
 
                   <div className="max-w-5xl mx-auto mt-4 text-center">
-                    <p>{data.gameplay_text}</p>
+                    <p>{data.text}</p>
                   </div>
                 </div>
                 <hr />

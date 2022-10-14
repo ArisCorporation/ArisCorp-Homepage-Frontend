@@ -30,7 +30,7 @@ export default function LiteraturReihenPage() {
 
   return (
     <div className="pt-3 print:pt-0">
-      <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
+      <div className={"px-12 flex flex-wrap w-full aspect-[" + reihe.reihen_cover?.width + "/" + reihe.reihen_cover?.height + "]"}>
         <div className="relative w-full">
           <Image
             src={'https://cms.ariscorp.de/assets/' + reihe.reihen_cover?.id}
@@ -46,7 +46,7 @@ export default function LiteraturReihenPage() {
           />
         </div>
       </div>
-      <div className="-mt-5 scale-95">
+      <div className="scale-95">
         <hr />
       </div>
       <div>

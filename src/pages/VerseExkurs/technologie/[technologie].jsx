@@ -88,7 +88,7 @@ export default function SpectrumArticlePage({ data }) {
             rehypePlugins={[rehypeRaw, rehypeSlug]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.technologie_text}
+            {data.text}
           </ReactMarkdown>
         </div>
       </div>

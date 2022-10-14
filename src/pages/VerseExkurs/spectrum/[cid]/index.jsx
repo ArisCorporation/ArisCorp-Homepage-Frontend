@@ -29,7 +29,7 @@ export default function SpectrumCategoryPage() {
 
   return (
     <div className="pt-3 print:pt-0">
-      <div className="flex flex-wrap w-full aspect-[40/21] scale-[.8]">
+      <div className={"px-12 flex flex-wrap w-full aspect-[" + category.image?.width + "/" + category.image?.height + "]"}>
         <div className="relative w-full">
           <Image
             src={'https://cms.ariscorp.de/assets/' + category.image?.id}
@@ -47,7 +47,7 @@ export default function SpectrumCategoryPage() {
           />
         </div>
       </div>
-      <div className="-mt-12 scale-95">
+      <div className="scale-95">
         <hr />
       </div>
       <div>
