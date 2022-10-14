@@ -24,9 +24,9 @@ export async function getServerSideProps() {
 
   return {
     props: {
-      about: await data?.die_ariscorp?.about_ariscorp,
-      history: await data?.ariscorp_history?.ariscorp_history,
-      manifest: await data?.manifest?.manifest,
+      about: await data?.die_ariscorp?.text,
+      history: await data?.ariscorp_history?.text,
+      manifest: await data?.manifest?.text,
       charta: await data?.charta?.text,
 
       comm_links: await data?.comm_links,

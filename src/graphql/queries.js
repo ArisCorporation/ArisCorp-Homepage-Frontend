@@ -5,7 +5,7 @@ const { gql } = require('@apollo/client')
 export const GET_INDEX_THE_ARISCORP = gql`
   query GetTheArisCorp {
     die_ariscorp {
-      about_ariscorp
+      text
     }
   }
 `
@@ -13,7 +13,7 @@ export const GET_INDEX_THE_ARISCORP = gql`
 export const GET_INDEX_ARISCORP_HISTORY = gql`
   query GetArisCorpHistory {
     ariscorp_history {
-      ariscorp_history
+      text
     }
   }
 `
@@ -21,7 +21,7 @@ export const GET_INDEX_ARISCORP_HISTORY = gql`
 export const GET_INDEX_ARISCORP_MANIFEST = gql`
   query GetArisCorpManifest {
     manifest {
-      manifest
+      text
     }
   }
 `
@@ -73,13 +73,13 @@ export const GET_INDEX_PARTNERS = gql`
 export const GET_INDEX_DATA = gql`
   query GetIndexData {
     die_ariscorp {
-      about_ariscorp
+      text
     }
     ariscorp_history {
-      ariscorp_history
+      text
     }
     manifest {
-      manifest
+      text
     }
     charta {
       text
@@ -178,7 +178,7 @@ export const GET_GAMEPLAYS = gql`
       gameplay_bild_rechts {
         id
       }
-      gameplay_text
+      text
     }
   }
 `
@@ -406,7 +406,7 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
 
 export const GET_VERSEEXKURS_ALIENRASSEN = gql`
   query GetVerseExkursAlienrassen {
-    alienrassen(filter: { status: { _eq: published } }, limit: -1) {
+    alienrassen(filter: { status: { _eq: "published" } }, limit: -1) {
       id
       alienrassen_name
       alienrassen_banner {
@@ -513,7 +513,7 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
       headquarter
       current_ceo
       founding
@@ -594,7 +594,7 @@ export const GET_VERSEEXKURS_FIRMEN_HERSTELLER = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
     }
   }
 `
@@ -623,7 +623,7 @@ export const GET_VERSEEXKURS_FIRMEN_DIENSTLEISTER = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
     }
   }
 `
@@ -652,7 +652,7 @@ export const GET_VERSEEXKURS_FIRMEN_SHOPS = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
     }
   }
 `
@@ -681,7 +681,7 @@ export const GET_VERSEEXKURS_FIRMEN_ORGANISATIONS = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
     }
   }
 `
@@ -710,7 +710,7 @@ export const GET_VERSEEXKURS_FIRMEN_OTHER = gql`
       firmen_name
       firmenkategorie
       firmenherstellerkategorie
-      firmen_text
+      text
     }
   }
 `
@@ -798,7 +798,7 @@ export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
         height
       }
       technologie_name
-      technologie_text
+      text
     }
   }
 `
@@ -830,7 +830,7 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
           width
           height
         }
-        firmen_text
+        text
       }
       waffen_klasse {
         id
@@ -884,7 +884,7 @@ export const GET_VERSEEXKURS_WEAPON = gql`
           width
           height
         }
-        firmen_text
+        text
       }
       waffen_klasse {
         id
@@ -935,7 +935,7 @@ export const GET_VERSEEXKURS_SPECTRUM_ARTICLES = gql`
       id
       status
       spectrum_titel
-      spectrum_text
+      text
       spectrum_beitrag_kateogrie
       spectrum_kategorie_beschreibung
       image {
@@ -953,7 +953,6 @@ export const GET_VERSEEXKURS_SPECTRUM_CATEGORY = gql`
       id
       status
       spectrum_titel
-      spectrum_text
       text
       spectrum_beitrag_kateogrie
       spectrum_kategorie_beschreibung
@@ -1053,7 +1052,7 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
         reihen_titel
       }
       literatur_kapitel
-      literatur_text
+      text
     }
   }
 `
