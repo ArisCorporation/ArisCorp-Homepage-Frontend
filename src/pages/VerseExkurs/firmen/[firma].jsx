@@ -60,33 +60,33 @@ export default function SystemDetailPage() {
             <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
               <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
               <table className="w-full ml-5">
-                <tr className='border-b-0 border-transparent'>
+                <tr className={'border-b-0 border-transparent' + (data.headquarter == null && data.headquarter_system == null ? ' hidden' : null)}>
                   <th className="pr-2 text-left">Hauptsitz:</th>
                   <td className="text-left text-primary">
                     {data.headquarter && data.headquarter_system != null
-                      ? data.headquarter + '/' + data.headquarter_system
-                      : 'N/A'}
+                      ? data.headquarter + '(' + data.headquarter_system + ')'
+                      : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
                   </td>
                 </tr>
-                <tr className='border-b-0 border-transparent'>
+                <tr className={'border-b-0 border-transparent' + (data.current_ceo == null ? ' hidden' : null)}>
                   <th className="pr-2 text-left">Aktueller C.E.O.:</th>
                   <td className="text-left text-primary">
                     {data.current_ceo != null ? data.current_ceo : 'N/A'}
                   </td>
                 </tr>
-                <tr className='border-b-0 border-transparent'>
+                <tr className={'border-b-0 border-transparent' + (data.founding == null ? ' hidden' : null)}>
                   <th className="pr-2 text-left">Gründungsdatum:</th>
                   <td className="text-left text-primary">
                     {data.founding != null ? data.founding : 'N/A'}
                   </td>
                 </tr>
-                <tr className='border-b-0 border-transparent'>
+                <tr className={'border-b-0 border-transparent' + (data.founder == null ? ' hidden' : null)}>
                   <th className="pr-2 text-left">Gründer:</th>
                   <td className="text-left break-words text-primary">
                     {data.founder != null ? data.founder : 'N/A'}
                   </td>
                 </tr>
-                <tr className='border-b-0 border-transparent'>
+                <tr className={'border-b-0 border-transparent' + (data.firmenkategorie == null ? ' hidden' : null)}>
                   <th className="pr-2 text-left">Kategorie:</th>
                   <td className="text-left break-words text-primary">
                     {data.firmenkategorie != null
@@ -109,7 +109,7 @@ export default function SystemDetailPage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
           >
-            {data.firmen_text}
+            {data.text}
           </ReactMarkdown>
         </div>
       </div>
