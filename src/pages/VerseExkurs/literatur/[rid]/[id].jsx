@@ -12,10 +12,11 @@ export default function LiteraturArticlePage() {
   const { rid: rid, id: id } = router.query
 
   const Id = parseFloat(id)
-  const rId = parseFloat(rid)
+  const rId = rid
 
+  console.log(Id);
   const { loading, error, data } = useQuery(GET_VERSEEXKURS_LITERATUR_ARTICLE, {
-    variables: { rId, Id },
+    variables: { rId },
   })
 
   if (loading)
@@ -77,7 +78,7 @@ export default function LiteraturArticlePage() {
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
           >
-            {Data.literatur_text}
+            {Data.text}
           </ReactMarkdown>
         </div>
       </div>

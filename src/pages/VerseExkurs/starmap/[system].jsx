@@ -31,7 +31,6 @@ export default function SystemDetailPage() {
   if (error) return <p>Error :(</p>
 
   data = data.systeme[0]
-  console.log(systemSizeAE);
 
   const ueeIcon =
     'https://cms.ariscorp.de/assets/ab6330a8-40b6-40fd-ab8f-fac1d11741a3'
@@ -70,22 +69,22 @@ export default function SystemDetailPage() {
             <span className="text-primary">{data.name}</span>
           </h1>
           <hr />
-          <div className="w-full">
+          <div className={"w-full" + (data.banner?.id == null ? ' hidden' : null)}>
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data.banner.id}
+              src={'https://cms.ariscorp.de/assets/' + data.banner?.id}
               alt={'Banner'}
-              width={data.banner.width}
-              height={data.banner.height}
+              width={(data.banner?.width != null ? data.banner?.width : '0px')}
+              height={(data.banner?.height != null ? data.banner?.height : '0px')}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data.banner.id +
+                data.banner?.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
-        <div className={'max-w-[' + data.banner.width + 'px] mx-auto'}>
+        <div className={'max-w-[' + data.banner?.width + 'px] mx-auto'}>
           <h2 className="mt-3">
             VerseExkurs - Sternensystem: {data.name}
           </h2>
