@@ -804,12 +804,19 @@ export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
 `
 
 export const GET_VERSEEXKURS_WEAPONS = gql`
-  query GetVerseExkursTechnologies($squery: String, $weaponClass: String) {
+  query GetVerseExkursTechnologies(
+    $squery: String
+    $classquery: String
+    $dmgquery: [String]
+    $manuquery: String
+  ) {
     technologien(
       filter: {
         status: { _eq: "published" }
         category: { _eq: "weapons" }
-        waffen_klasse: { waffenklasse: { _contains: $weaponClass } }
+        waffen_klasse: { waffenklasse: { _contains: $classquery } }
+        wafffen_schadenstyp: { schadenstyp: { _in: $dmgquery } }
+        waffenhersteller: { firmen_name: { _contains: $manuquery } }
       }
       search: $squery
       limit: -1
@@ -1036,7 +1043,10 @@ export const GET_VERSEEXKURS_LITERATUR_REIHEN = gql`
 export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
   query GetVerseExkursLiteraturArticle($rId: String!) {
     literatur(
-      filter: { status: { _eq: "published" }, literatur_reihe: { id: {_eq: $rId }} }
+      filter: {
+        status: { _eq: "published" }
+        literatur_reihe: { id: { _eq: $rId } }
+      }
       limit: -1
     ) {
       id
