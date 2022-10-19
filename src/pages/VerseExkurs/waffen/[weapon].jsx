@@ -4,7 +4,7 @@ import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_WEAPON } from 'graphql/queries'
 import { BasicPanel } from 'components/panels'
@@ -25,7 +25,6 @@ export default function SpectrumArticlePage() {
     }
   }, [urlquery])
 
-  console.log(Weapon)
 
   const { loading, error, data } = useQuery(GET_VERSEEXKURS_WEAPON, {
     variables: { Weapon: Weapon },
@@ -64,7 +63,7 @@ export default function SpectrumArticlePage() {
               {data1.waffen_klasse.waffenklasse}
             </span>{' '}
           </h1>
-          <div className="relative ml-auto -my-10 xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square">
+          <div className="relative ml-auto -my-10 hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square" onClick={() => router.push("/VerseExkurs/firmen/" + data1.waffenhersteller.firmen_name)}>
             <Image
               src={
                 'https://cms.ariscorp.de/assets/' +
