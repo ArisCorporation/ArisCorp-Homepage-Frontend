@@ -85,8 +85,6 @@ export default function Weapons() {
     if (isReady) setSearch(squery)
   }, [isReady])
 
-  if (error) return <p>Error :(</p>
-
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <div>
