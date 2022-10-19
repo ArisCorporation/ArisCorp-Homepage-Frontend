@@ -374,8 +374,8 @@ export default function Weapons() {
               data?.technologien.map((object, index) => (
                 <div key={object.id} className="w-1/3 px-2 pb-8">
                   <BasicPanel className={'hover:cursor-pointer'}>
-                    <div className="overflow-hidden h-44 rounded-t-3xl" onClick={() => handleClick(object.waffen_name)}>
-                      <div className="relative w-full h-5/6">
+                    <div className="overflow-hidden h-44 rounded-3xl" onClick={() => handleClick(object.waffen_name)}>
+                      <div className="relative w-full h-full">
                         <Image
                           src={
                             'https://cms.ariscorp.de/assets/' +
