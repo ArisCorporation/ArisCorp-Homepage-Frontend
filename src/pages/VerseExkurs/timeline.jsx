@@ -11,10 +11,16 @@ export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
   const timelineEvents = []
 
+
+  // console.log(data.timeline.event.length);
+
   data.timeline.event.map((object, index) => {
-    console.log('duchlauf: ' + index)
+    // console.log('duchlauf: ' + index)
+    // console.log(object.title)
     const start_date = object.dates.find((item) => item.type == 'start_date')
     const end_date = object.dates.find((item) => item.type == 'end_date')
+    // console.log(start_date.year)
+
     // const banner = object.banner.match(/\bhttps?:\/\/\S+/gi)[0]
     const banner =
       'https://cms.ariscorp.de/assets/21193739-402c-48fc-9a04-f6a8ca1537ea?width=1118&height=351'
@@ -28,6 +34,10 @@ export async function getServerSideProps() {
       group = 'Ein Tag in der Geschichte'
     } else if (object.category == 'firma'){
       group = 'Firmengründungen'
+    } else if (object.category == 'epoche'){
+      group = 'Epochen'
+    } else {
+      group = 'undefined'
     }
 
     timelineEvents.push({
@@ -150,6 +160,8 @@ export default function TimelinePage({ data, events }) {
   //   },
   //   group: 'Catégorie1',
   // }
+
+
 
   return (
     <div>
