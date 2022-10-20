@@ -808,7 +808,7 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
     $squery: String
     $classquery: [String]
     $dmgquery: [String]
-    $manuquery: String
+    $manuquery: [String]
   ) {
     technologien(
       filter: {
@@ -816,8 +816,9 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
         category: { _eq: "weapons" }
         waffen_klasse: { waffenklasse: { _in: $classquery } }
         wafffen_schadenstyp: { schadenstyp: { _in: $dmgquery } }
-        waffenhersteller: { firmen_name: { _contains: $manuquery } }
+        waffenhersteller: { firmen_name: { _in: $manuquery } }
       }
+      sort: ["sort", "waffen_name"]
       search: $squery
       limit: -1
     ) {
@@ -866,6 +867,24 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
       waffen_beschreibung
       waffen_maximale_reichweite
       waffen_effektive_reichweite
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_WEAPONUTILS = gql`
+  query GetVerseExkursWeaponUtils {
+    firmen(
+      filter: { status: { _eq: "published" }, handweapon: { _eq: true } }
+    ) {
+      firmen_name
+    }
+
+    waffen_klassen {
+      waffenklasse
+    }
+
+    waffen_schadenstyp {
+      schadenstyp
     }
   }
 `

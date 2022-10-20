@@ -1,19 +1,53 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { GET_VERSEEXKURS_WEAPONS } from 'graphql/queries'
+import {
+  GET_VERSEEXKURS_WEAPONS,
+  GET_VERSEEXKURS_WEAPONUTILS,
+} from 'graphql/queries'
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
 import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
+import client from 'apollo/clients'
 
-export default function Weapons() {
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VERSEEXKURS_WEAPONUTILS })
+
+  let utils = { classes: [], dmgtype: [], manufacturers: [] }
+
+  data.waffen_klassen.forEach((object, index) => {
+    utils.classes.push(object.waffenklasse)
+  })
+
+  data.waffen_schadenstyp.forEach((object, index) => {
+    utils.dmgtype.push(object.schadenstyp)
+  })
+
+  data.firmen.forEach((object, index) => {
+    utils.manufacturers.push(object.firmen_name)
+  })
+
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  return {
+    props: {
+      utils: await utils,
+    },
+  }
+}
+
+export default function Weapons({ utils }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
   const [weaponClass, setWeaponClass] = useState([])
   const [damageType, setDamageType] = useState([])
-  const [manufacturer, setManufacturer] = useState()
+  const [manufacturer, setManufacturer] = useState([])
   const squery = query.q
   const classquery = query.class
   const dmgquery = query.dmg
@@ -26,39 +60,28 @@ export default function Weapons() {
     push('/VerseExkurs/waffen/' + name)
   }
 
+  console.log(utils.classes);
+
   useEffect(() => {
     if (isMounted.current) {
       let clsName
       let dmgType
       let manufactr
 
-      if (weaponClass == null || weaponClass == '') {
-        clsName = [
-          'Taser',
-          'Pistole',
-          'SMG',
-          'Sturmgewehr',
-          'Schrotgewehr',
-          'LMG',
-          'Scharfschützen Gewehr',
-          'HMG',
-          'Armbrust',
-          'Granatwerfer',
-          'Raketenwerfer',
-          'Railgun',
-        ]
+      if (weaponClass == null || weaponClass == '' || weaponClass == []) {
+        clsName = utils.classes
       } else {
         clsName = weaponClass
       }
 
-      if (damageType == null || damageType == '') {
-        dmgType = ['Elektronen', 'Ballistisch', 'Laser', 'Plasma', 'Explosiv']
+      if (damageType == null || damageType == '' || weaponClass == []) {
+        dmgType = utils.dmgtype
       } else {
         dmgType = damageType
       }
 
-      if (manufacturer == null || manufacturer == '') {
-        manufactr = ' '
+      if (manufacturer == null || manufacturer == '' || weaponClass == []) {
+        manufactr = utils.manufacturers
       } else {
         manufactr = manufacturer
       }
@@ -93,8 +116,6 @@ export default function Weapons() {
   useEffect(() => {
     if (isReady) setSearch(squery)
   }, [isReady])
-
-  console.log(dmgquery)
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
