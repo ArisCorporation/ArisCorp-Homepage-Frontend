@@ -55,7 +55,6 @@ export default function IndexPage({
           </title>
         </Head>
 
-        <Script src="/FleetYards.js"></Script>
         <div className="no-marker">
           <AboutSection
             aboutData={about}
