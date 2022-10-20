@@ -2,7 +2,6 @@ import Footer from 'components/Footer'
 import Sidebar from 'components/VerseExkursSidebar'
 import client from 'apollo/clients'
 import { ApolloProvider } from '@apollo/client'
-import ReactTooltip from 'react-tooltip'
 import { ShipTechnologieModalProvider } from 'context/ShipTechnologieModalContext'
 import { useRouter } from 'next/router'
 
@@ -23,6 +22,7 @@ export default function Layout({ children }) {
                 className="block w-full min-h-screen px-[15px] mx-auto 2xl:container relative"
                 style={{ transition: 'left .5s ease,right .5s ease' }}
               >
+                
                 {children}
               </main>
               <Footer />

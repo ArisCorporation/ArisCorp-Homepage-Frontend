@@ -12,7 +12,7 @@ export default function SystemDetailPage() {
   const router = useRouter()
   const { fraktion } = router.query
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_FRAKTION, {
+  let { loading, error, data } = useQuery(GET_VERSEEXKURS_FRAKTION, {
     variables: { fraktion },
   })
 

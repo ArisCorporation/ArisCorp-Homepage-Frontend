@@ -95,7 +95,9 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname == '/VerseExkurs' ? '' : ' after:hidden')
+                (router.pathname.startsWith('/VerseExkurs')
+                  ? ''
+                  : ' after:hidden')
               }
             >
               <div
@@ -113,7 +115,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.pathname == '/VerseExkurs/firmen'
+                (router.pathname.startsWith('/VerseExkurs/firmen')
                   ? ''
                   : ' after:hidden')
               }
@@ -133,7 +135,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
-                (router.pathname == '/VerseExkurs/search'
+                (router.pathname.startsWith('/VerseExkurs/search')
                   ? ''
                   : ' after:hidden')
               }
@@ -153,7 +155,7 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname == '/VerseExkurs/alienrassen'
+                (router.pathname.startsWith('/VerseExkurs/alienrassen')
                   ? ''
                   : ' after:hidden')
               }
@@ -216,7 +218,8 @@ export default function Sidebar() {
             <ul className="pl-0 lg:pt-5 pt-[5px] pb-[10px] lg:pb-8 m-0 list-none">
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Home' : ''}
+                data-tip
+                data-for="HomeTip"
               >
                 <Link href="/VerseExkurs">
                   <a
@@ -246,7 +249,20 @@ export default function Sidebar() {
                         {' '}
                         Home{' '}
                       </span>
-                      {!mobileView && sidebarCollapsed ? <div></div> : ''}
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="HomeTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Home
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
@@ -262,9 +278,8 @@ export default function Sidebar() {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
-                      data-tip={
-                        !mobileView && sidebarCollapsed ? 'Geschichte' : ''
-                      }
+                      data-tip
+                      data-for="GeschichteTip"
                     >
                       <div
                         className={
@@ -282,6 +297,20 @@ export default function Sidebar() {
                           {' '}
                           Geschichte{' '}
                         </span>
+                        {!mobileView && sidebarCollapsed ? (
+                          <ReactTooltip
+                            id="GeschichteTip"
+                            place="right"
+                            effect="solid"
+                            arrowColor="transparent"
+                            type="dark"
+                            padding="8px"
+                          >
+                            Geschichte
+                          </ReactTooltip>
+                        ) : (
+                          ''
+                        )}
                       </div>
                       <span
                         className={
@@ -321,7 +350,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/timeline'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/timeline'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -432,13 +463,14 @@ export default function Sidebar() {
               </Disclosure>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Home' : ''}
+                data-tip
+                data-for="UEETip"
               >
                 <Link href="/VerseExkurs/uee">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/uee'
+                      (router.pathname.startsWith('/VerseExkurs/uee')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -462,20 +494,34 @@ export default function Sidebar() {
                         {' '}
                         UEE{' '}
                       </span>
-                      {!mobileView && sidebarCollapsed ? <div></div> : ''}
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="UEETip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          UEE
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'ARK Starmap' : ''}
+                data-tip
+                data-for="StarmapTip"
               >
                 <Link href="/VerseExkurs/starmap">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/starmap'
+                      (router.pathname.startsWith('/VerseExkurs/starmap')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -499,6 +545,20 @@ export default function Sidebar() {
                         {' '}
                         ARK Starmap{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="StarmapTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Starmap
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
@@ -509,14 +569,21 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent' +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                        (router.pathname.startsWith('/VerseExkurs/banu') ||
+                        router.pathname.startsWith('/VerseExkurs/tevarin') ||
+                        router.pathname.startsWith('/VerseExkurs/vanduul') ||
+                        router.pathname.startsWith('/VerseExkurs/xian') ||
+                        router.pathname.startsWith('/VerseExkurs/biestarium') ||
+                        router.pathname.startsWith('/VerseExkurs/pflanzen')
+                          ? 'after:block '
+                          : 'after:hidden ') +
                         (!mobileView && sidebarCollapsed
-                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
-                          : '')
+                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
+                          : ' py-[10px] pl-10 pr-[15px] ')
                       }
-                      data-tip={
-                        !mobileView && sidebarCollapsed ? 'Alienrassen' : ''
-                      }
+                      data-tip
+                      data-for="AlienrassenTip"
                     >
                       <div
                         className={
@@ -534,6 +601,20 @@ export default function Sidebar() {
                           {' '}
                           Alienrassen{' '}
                         </span>
+                        {!mobileView && sidebarCollapsed ? (
+                          <ReactTooltip
+                            id="AlienrassenTip"
+                            place="right"
+                            effect="solid"
+                            arrowColor="transparent"
+                            type="dark"
+                            padding="8px"
+                          >
+                            Alienrassen
+                          </ReactTooltip>
+                        ) : (
+                          ''
+                        )}
                       </div>
                       <span
                         className={
@@ -573,7 +654,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/banu'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/banu'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -628,7 +711,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/tevarin'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/tevarin'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -683,7 +768,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/vanduul'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/vanduul'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -738,7 +825,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/xian'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/xian'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -794,7 +883,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/biestarium'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/biestarium'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -849,7 +940,9 @@ export default function Sidebar() {
                               <a
                                 className={
                                   'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname == '/VerseExkurs/pflanzen'
+                                  (router.pathname.startsWith(
+                                    '/VerseExkurs/pflanzen'
+                                  )
                                     ? 'after:block '
                                     : 'after:hidden ') +
                                   (!mobileView && sidebarCollapsed
@@ -903,13 +996,14 @@ export default function Sidebar() {
               </Disclosure>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Firmen' : ''}
+                data-tip
+                data-for="FirmenTip"
               >
                 <Link href="/VerseExkurs/firmen">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/firmen'
+                      (router.pathname.startsWith('/VerseExkurs/firmen')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -933,19 +1027,34 @@ export default function Sidebar() {
                         {' '}
                         Firmen{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="FirmenTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Firmen
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Fraktionen' : ''}
+                data-tip
+                data-for="FraktionenTip"
               >
                 <Link href="/VerseExkurs/fraktionen">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/fraktionen'
+                      (router.pathname.startsWith('/VerseExkurs/fraktionen')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -969,19 +1078,35 @@ export default function Sidebar() {
                         {' '}
                         Fraktionen{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="FraktionenTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Fraktionen
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Technologie' : ''}
+                data-tip
+                data-for="TechnologieTip"
               >
                 <Link href="/VerseExkurs/technologie">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/technologie'
+                      (router.pathname.startsWith('/VerseExkurs/technologie') ||
+                      router.pathname.startsWith('/VerseExkurs/waffen')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1005,19 +1130,34 @@ export default function Sidebar() {
                         {' '}
                         Technologie{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="TechnologieTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Technologie
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Spectrum' : ''}
+                data-tip
+                data-for="SpectrumTip"
               >
                 <Link href="/VerseExkurs/spectrum">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/spectrum'
+                      (router.pathname.startsWith('/VerseExkurs/spectrum')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1041,19 +1181,34 @@ export default function Sidebar() {
                         {' '}
                         Spectrum{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="SpectrumTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Spectrum
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
               </li>
               <li
                 className="p-0 m-0 list-none group"
-                data-tip={!mobileView && sidebarCollapsed ? 'Literatur' : ''}
+                data-tip
+                data-for="LiteraturTip"
               >
                 <Link href="/VerseExkurs/literatur">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname == '/VerseExkurs/literatur'
+                      (router.pathname.startsWith('/VerseExkurs/literatur')
                         ? 'after:block '
                         : 'after:hidden ') +
                       (!mobileView && sidebarCollapsed
@@ -1077,6 +1232,20 @@ export default function Sidebar() {
                         {' '}
                         Literatur{' '}
                       </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="LiteraturTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Literatur
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
                     </div>
                   </a>
                 </Link>
@@ -1190,17 +1359,6 @@ export default function Sidebar() {
               </li>
             </ul>
           </div>
-          {router.pathname == '/VerseExkurs/technologie' ? (
-            <div className="z-50">
-              <ReactTooltip
-                place="right"
-                effect="solid"
-                arrowColor="transparent"
-                type="dark"
-                padding="8px"
-              />
-            </div>
-          ) : null}
         </div>
       </nav>
     </>

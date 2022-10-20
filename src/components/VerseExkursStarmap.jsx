@@ -52,8 +52,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -135,8 +135,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -219,8 +219,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -302,8 +302,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -385,8 +385,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -466,8 +466,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -549,8 +549,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -632,8 +632,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -715,8 +715,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -796,8 +796,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -879,8 +879,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -960,8 +960,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1041,8 +1041,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1124,8 +1124,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1205,8 +1205,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1286,8 +1286,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1367,8 +1367,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1450,8 +1450,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1534,8 +1534,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1617,8 +1617,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1700,8 +1700,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1781,8 +1781,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1862,8 +1862,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -1943,8 +1943,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2024,8 +2024,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2105,8 +2105,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2186,8 +2186,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2267,8 +2267,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2350,8 +2350,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2431,8 +2431,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2515,8 +2515,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2596,8 +2596,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2679,8 +2679,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2760,8 +2760,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2841,8 +2841,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -2925,8 +2925,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3006,8 +3006,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3087,8 +3087,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3168,8 +3168,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3249,8 +3249,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3330,8 +3330,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3411,8 +3411,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3492,8 +3492,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3573,8 +3573,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3656,8 +3656,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3737,8 +3737,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3818,8 +3818,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3901,8 +3901,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -3982,8 +3982,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4063,8 +4063,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4146,8 +4146,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4227,8 +4227,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4308,8 +4308,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4389,8 +4389,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4470,8 +4470,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4553,8 +4553,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4634,8 +4634,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4715,8 +4715,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4798,8 +4798,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4879,8 +4879,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -4960,8 +4960,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5041,8 +5041,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5124,8 +5124,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5205,8 +5205,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5288,8 +5288,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5369,8 +5369,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5450,8 +5450,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5531,8 +5531,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5612,8 +5612,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5693,8 +5693,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5774,8 +5774,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5855,8 +5855,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -5939,8 +5939,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6020,8 +6020,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6101,8 +6101,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6182,8 +6182,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6263,8 +6263,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6346,8 +6346,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6430,8 +6430,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6511,8 +6511,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6592,8 +6592,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6673,8 +6673,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6754,8 +6754,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6837,8 +6837,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -6920,8 +6920,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -7001,8 +7001,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -7082,8 +7082,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -7164,8 +7164,8 @@ export default function Starmap({ data }) {
                 className="object-cover w-32 h-16 rounded"
               />
 
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -7245,8 +7245,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>
@@ -7329,8 +7329,8 @@ export default function Starmap({ data }) {
                 }
                 className="object-cover w-32 h-16 rounded"
               />
-              <div>
-                <h4>Starsystem:</h4>
+              <div className='-mt-6'>
+                <h4 className='p-0 m-0'>Starsystem:</h4>
                 <ul className="pl-0 list-none no-marker">
                   <li>
                     <p className="p-0 m-0 text-base">Sternen Typ</p>

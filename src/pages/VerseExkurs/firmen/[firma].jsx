@@ -13,7 +13,7 @@ export default function SystemDetailPage() {
   const router = useRouter()
   const { firma } = router.query
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_FIRMA, {
+  let { loading, error, data } = useQuery(GET_VERSEEXKURS_FIRMA, {
     variables: { firma },
   })
 

@@ -17,7 +17,7 @@ export default function SystemDetailPage() {
 
   const System = system?.charAt(0).toUpperCase() + system?.slice(1)
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SYSTEM, {
+  let { loading, error, data } = useQuery(GET_VERSEEXKURS_SYSTEM, {
     variables: { System },
   })
 
