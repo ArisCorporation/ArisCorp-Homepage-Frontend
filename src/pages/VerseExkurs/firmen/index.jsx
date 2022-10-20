@@ -185,7 +185,7 @@ export default function Firmen({ data }) {
               </Tab.List>
               <Tab.Panels className={'px-4 pt-16'}>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>
@@ -204,7 +204,7 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>
@@ -224,7 +224,7 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>
@@ -243,10 +243,10 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
@@ -282,7 +282,7 @@ export default function Firmen({ data }) {
                       ))}
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
@@ -318,7 +318,7 @@ export default function Firmen({ data }) {
                       ))}
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
@@ -359,7 +359,7 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                 {data
                   .filter((data) => data.firmenkategorie === 'dienstleister')
                   .map((data) => (
@@ -376,7 +376,7 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                 {data
                   .filter((data) => data.firmenkategorie === 'geschäfte')
                   .map((data) => (
@@ -456,7 +456,7 @@ export default function Firmen({ data }) {
               </Tab.List>
               <Tab.Panels className={'px-4 pt-16'}>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>
@@ -475,10 +475,10 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'verschiedenes' &&
@@ -510,7 +510,7 @@ export default function Firmen({ data }) {
                       ))}
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'verschiedenes' &&
@@ -544,7 +544,7 @@ export default function Firmen({ data }) {
                       ))}
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'verschiedenes' &&
@@ -576,7 +576,7 @@ export default function Firmen({ data }) {
                       ))}
                     <div
                       className={
-                        'col-span-4' +
+                        'col-span-2 xs:col-span-4' +
                         (data.filter(
                           (data) =>
                             data.firmenkategorie === 'verschiedenes' &&
@@ -611,7 +611,7 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>
@@ -630,7 +630,7 @@ export default function Firmen({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                     {data
                       .filter(
                         (data) =>

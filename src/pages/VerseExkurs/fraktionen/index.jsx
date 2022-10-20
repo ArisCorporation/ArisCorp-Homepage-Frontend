@@ -85,7 +85,7 @@ export default function Firmen({ data }) {
         <Tab.Panels className={'px-4'}>
           <Tab.Panel>
             <div>
-              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                 {data
                   .filter((data) => data.category === 'friendly')
                   .map((data) => (
@@ -102,7 +102,7 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                 {data
                   .filter((data) => data.category === 'neutral')
                   .map((data) => (
@@ -119,7 +119,7 @@ export default function Firmen({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div>
-              <div className="grid justify-between grid-cols-4 gap-x-10 gap-y-8">
+              <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
                 {data
                   .filter((data) => data.category == 'hostile')
                   .map((data) => (
