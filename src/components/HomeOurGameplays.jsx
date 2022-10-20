@@ -4,6 +4,8 @@ import { Tab } from '@headlessui/react'
 import { useQuery } from '@apollo/client'
 import { GET_GAMEPLAYS } from 'graphql/queries'
 import { useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
 
 export default function OurGameplays() {
   const { loading, error, data } = useQuery(GET_GAMEPLAYS)
@@ -92,7 +94,12 @@ export default function OurGameplays() {
                   </div>
 
                   <div className="max-w-5xl mx-auto mt-4 text-center">
-                    <p>{data.text}</p>
+                    <ReactMarkdown
+                      rehypePlugins={[rehypeRaw]}
+                      className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"
+                    >
+                      {data.text}
+                    </ReactMarkdown>
                   </div>
                 </div>
                 <hr />
