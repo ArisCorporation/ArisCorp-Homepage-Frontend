@@ -578,9 +578,9 @@ export default function Sidebar() {
                         router.pathname.startsWith('/VerseExkurs/pflanzen')
                           ? 'after:block '
                           : 'after:hidden ') +
-                        (!mobileView && sidebarCollapsed
-                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                          : ' py-[10px] pl-10 pr-[15px] ')
+                          (!mobileView && sidebarCollapsed
+                            ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                            : '')
                       }
                       data-tip
                       data-for="AlienrassenTip"

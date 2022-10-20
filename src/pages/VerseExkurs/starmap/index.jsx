@@ -139,7 +139,7 @@ export default function StarmapPage({ data }) {
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="text-center">
+            <div className="max-w-2xl mx-auto text-center xl:max-w-4xl 2xl:max-w-6xl lg:max-w-2xl">
               <p>
                 Star Citizens Lore umfasst 800 Jahre in der Zukunft. Die
                 Redaktion bietet Ihnen eine schnelle Chronologie der großen
@@ -149,81 +149,85 @@ export default function StarmapPage({ data }) {
               <h3>
                 Klicke einfach weiter, um die Entwicklung des Verse zu sehen.
               </h3>
-              <Swiper
-                grabCursor={true}
-                navigation={true}
-                pagination={true}
-                speed={0}
-                onRealIndexChange={(index) => setSwiper({ swiperIndex: index })}
-                modules={[Navigation, Pagination]}
-              >
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2000.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2300.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2400.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2500a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2530a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2600a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2700a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2750a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2800a.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2900.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-                <SwiperSlide>
-                  <img
-                    src="https://www.ariscorp.de/assets/img/exkurs/starmap/2945.webp"
-                    alt=""
-                  />
-                </SwiperSlide>
-              </Swiper>
+              <div>
+                <Swiper
+                  grabCursor={true}
+                  navigation={true}
+                  pagination={true}
+                  speed={0}
+                  onRealIndexChange={(index) =>
+                    setSwiper({ swiperIndex: index })
+                  }
+                  modules={[Navigation, Pagination]}
+                >
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2000.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2300.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2400.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2500a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2530a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2600a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2700a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2750a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2800a.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2900.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                  <SwiperSlide>
+                    <img
+                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2945.webp"
+                      alt=""
+                    />
+                  </SwiperSlide>
+                </Swiper>
+              </div>
               <div>
                 <div
                   className={
