@@ -64,7 +64,7 @@ export default function StarmapPage({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[65px] h-[65px] xs:-[75px] xs:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -74,7 +74,7 @@ export default function StarmapPage({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[65px] h-[65px] xs:-[75px] xs:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -88,7 +88,7 @@ export default function StarmapPage({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[65px] h-[65px] xs:-[75px] xs:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -98,7 +98,7 @@ export default function StarmapPage({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[65px] h-[65px] xs:-[75px] xs:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -108,19 +108,19 @@ export default function StarmapPage({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[50px] h-[50px] sm:w-[75px] sm:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
+              ' p-1 xl:p-3 m-1 transition-all duration-300 ease-in-out w-[65px] h-[65px] xs:-[75px] xs:h-[75px] md:w-[110px] md:h-[110px] lg:w-[125px] lg:h-[125px] xl:w-[170px] xl:h-[170px]'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
               <BorderIcon classes="fill-white" width="100%" height="100%" />
             </h1>
           </Tab>
-          <hr />
+          <hr className='my-4 lg:my-12' />
         </Tab.List>
         <Tab.Panels className={'px-4'}>
           <Tab.Panel>
             <div className="">
-              <h2>
+              <h2 className='mt-0 text-center'>
                 Für die Systembeschreibung klicken sie auf das jeweilige System
               </h2>
               <div className="w-8/12 max-w-[630px] aspect-[637/160]">
