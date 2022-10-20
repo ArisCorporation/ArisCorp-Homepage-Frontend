@@ -1,22 +1,18 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import client from 'apollo/clients'
 import { GET_VERSEEXKURS_WEAPONS } from 'graphql/queries'
-import { Tab } from '@headlessui/react'
-import CardDisplay from 'components/VerseExkursCardDisplay'
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
 import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
-import { push } from 'next-pwa/cache'
 
 export default function Weapons() {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
-  const [weaponClass, setWeaponClass] = useState(' ')
-  const [damageType, setDamageType] = useState()
+  const [weaponClass, setWeaponClass] = useState([])
+  const [damageType, setDamageType] = useState([])
   const [manufacturer, setManufacturer] = useState()
   const squery = query.q
   const classquery = query.class
@@ -37,7 +33,20 @@ export default function Weapons() {
       let manufactr
 
       if (weaponClass == null || weaponClass == '') {
-        clsName = ' '
+        clsName = [
+          'Taser',
+          'Pistole',
+          'SMG',
+          'Sturmgewehr',
+          'Schrotgewehr',
+          'LMG',
+          'Scharfschützen Gewehr',
+          'HMG',
+          'Armbrust',
+          'Granatwerfer',
+          'Raketenwerfer',
+          'Railgun',
+        ]
       } else {
         clsName = weaponClass
       }
@@ -145,18 +154,39 @@ export default function Weapons() {
               <p
                 className={
                   'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                  (classquery == ' ' &&
-                  dmgquery.every(
-                    (val, index) =>
-                      val ===
-                      [
-                        'Elektronen',
-                        'Ballistisch',
-                        'Laser',
-                        'Plasma',
-                        'Explosiv',
-                      ][index]
-                  ) &&
+                  ((Array.isArray(classquery)
+                    ? classquery.every(
+                        (val, index) =>
+                          val ===
+                          [
+                            'Taser',
+                            'Pistole',
+                            'SMG',
+                            'Sturmgewehr',
+                            'Schrotgewehr',
+                            'LMG',
+                            'Scharfschützen Gewehr',
+                            'HMG',
+                            'Armbrust',
+                            'Granatwerfer',
+                            'Raketenwerfer',
+                            'Railgun',
+                          ][index]
+                      )
+                    : null) &&
+                  (Array.isArray(dmgquery)
+                    ? dmgquery.every(
+                        (val, index) =>
+                          val ===
+                          [
+                            'Elektronen',
+                            'Ballistisch',
+                            'Laser',
+                            'Plasma',
+                            'Explosiv',
+                          ][index]
+                      )
+                    : null) &&
                   manuquery == ' '
                     ? ' text-secondary'
                     : ' group-hover:text-white')
@@ -188,9 +218,13 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (dmgquery.every(
-                      (val, index) =>
-                        val === ['Elektronen', 'Laser', 'Plasma'][index]
+                    ((
+                      Array.isArray(dmgquery)
+                        ? dmgquery.every(
+                            (val, index) =>
+                              val === ['Elektronen', 'Laser', 'Plasma'][index]
+                          )
+                        : null
                     )
                       ? ' text-secondary'
                       : ' group-hover:text-white')
@@ -221,8 +255,13 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (dmgquery.every(
-                      (val, index) => val === ['Ballistisch', 'Explosiv'][index]
+                    ((
+                      Array.isArray(dmgquery)
+                        ? dmgquery.every(
+                            (val, index) =>
+                              val === ['Ballistisch', 'Explosiv'][index]
+                          )
+                        : null
                     )
                       ? ' text-secondary'
                       : ' group-hover:text-white')
@@ -235,7 +274,7 @@ export default function Weapons() {
             <div className="flex ml-5 space-x-2">
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('Pistole')}
+                onClick={() => setWeaponClass(['Pistole'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -255,7 +294,9 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Pistole' ? ' text-secondary' : ' group-hover:text-white')
+                    (classquery == 'Pistole'
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Pistolen
@@ -263,7 +304,7 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('SMG')}
+                onClick={() => setWeaponClass(['SMG'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -283,7 +324,9 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'SMG' ? ' text-secondary' : ' group-hover:text-white')
+                    (classquery == 'SMG'
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Maschinen Pistolen
@@ -291,7 +334,7 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('Sturmgewehr')}
+                onClick={() => setWeaponClass(['Sturmgewehr'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -311,7 +354,9 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Sturmgewehr' ? ' text-secondary' : ' group-hover:text-white')
+                    (classquery == 'Sturmgewehr'
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Sturmgewehre
@@ -319,7 +364,7 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('Schrotgewehr')}
+                onClick={() => setWeaponClass(['Schrotgewehr'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -339,7 +384,9 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Schrotgewehr' ? ' text-secondary' : ' group-hover:text-white')
+                    (classquery == 'Schrotgewehr'
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Schrotgewehre
@@ -347,7 +394,7 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('LMG')}
+                onClick={() => setWeaponClass(['LMG'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -367,7 +414,9 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'LMG' ? ' text-secondary' : ' group-hover:text-white')
+                    (classquery == 'LMG'
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Leichtmaschienen Gewehre
@@ -375,7 +424,7 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('Scharfschützen Gewehr')}
+                onClick={() => setWeaponClass(['Scharfschützen Gewehr'])}
               >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
@@ -405,9 +454,16 @@ export default function Weapons() {
               </div>
               <div
                 className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass('Schwer')}
+                onClick={() =>
+                  setWeaponClass([
+                    'HMG',
+                    'Granatwerfer',
+                    'Raketenwerfer',
+                    'Railgun',
+                  ])
+                }
               >
-                <div className="relative w-24 mx-auto aspect-square">
+                <div className="relative w-24 mx-auto group aspect-square">
                   <Image
                     src={
                       'https://cms.ariscorp.de/assets/' +
@@ -425,7 +481,22 @@ export default function Weapons() {
                 <p
                   className={
                     'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Schwer' ? ' text-secondary' : ' group-hover:text-white')
+                    ((
+                      Array.isArray(classquery)
+                        ? classquery.every(
+                            (val, index) =>
+                              val ===
+                              [
+                                'HMG',
+                                'Granatwerfer',
+                                'Raketenwerfer',
+                                'Railgun',
+                              ][index]
+                          )
+                        : null
+                    )
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
                   Schwere Waffen
@@ -448,7 +519,9 @@ export default function Weapons() {
                   }
                 />
               </div>
-              <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">Hersteller</p>
+              <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                Hersteller
+              </p>
             </div>
           </div>
           <hr />

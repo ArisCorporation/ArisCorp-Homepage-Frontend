@@ -806,7 +806,7 @@ export const GET_VERSEEXKURS_TECHNOLOGIE = gql`
 export const GET_VERSEEXKURS_WEAPONS = gql`
   query GetVerseExkursTechnologies(
     $squery: String
-    $classquery: String
+    $classquery: [String]
     $dmgquery: [String]
     $manuquery: String
   ) {
@@ -814,7 +814,7 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
       filter: {
         status: { _eq: "published" }
         category: { _eq: "weapons" }
-        waffen_klasse: { waffenklasse: { _contains: $classquery } }
+        waffen_klasse: { waffenklasse: { _in: $classquery } }
         wafffen_schadenstyp: { schadenstyp: { _in: $dmgquery } }
         waffenhersteller: { firmen_name: { _contains: $manuquery } }
       }
