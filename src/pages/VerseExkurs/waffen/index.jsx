@@ -26,8 +26,8 @@ export default function Weapons() {
     variables: { squery, classquery, dmgquery, manuquery },
   })
 
-  function handleClick(name){
-    push("/VerseExkurs/waffen/" + name)
+  function handleClick(name) {
+    push('/VerseExkurs/waffen/' + name)
   }
 
   useEffect(() => {
@@ -121,7 +121,9 @@ export default function Weapons() {
           <div className="flex">
             <div
               className="w-24 hover:cursor-pointer"
-              onClick={() => {setWeaponClass(), setDamageType(), setManufacturer()}}
+              onClick={() => {
+                setWeaponClass(), setDamageType(), setManufacturer()
+              }}
             >
               <div className="relative w-24 mx-auto aspect-square">
                 <Image
@@ -160,7 +162,9 @@ export default function Weapons() {
                     }
                   />
                 </div>
-                <p className="p-0 mx-auto text-xs text-center">Energie</p>
+                <p className={'p-0 mx-auto text-xs text-center text-secondary'}>
+                  Energie
+                </p>
               </div>
               <div
                 className="w-24 hover:cursor-pointer"
@@ -374,7 +378,10 @@ export default function Weapons() {
               data?.technologien.map((object, index) => (
                 <div key={object.id} className="w-1/3 px-2 pb-8">
                   <BasicPanel className={'hover:cursor-pointer'}>
-                    <div className="overflow-hidden h-44 rounded-3xl" onClick={() => handleClick(object.waffen_name)}>
+                    <div
+                      className="overflow-hidden h-44 rounded-3xl"
+                      onClick={() => handleClick(object.waffen_name)}
+                    >
                       <div className="relative w-full h-full">
                         <Image
                           src={
