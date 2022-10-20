@@ -380,7 +380,7 @@ export default function CommLinksPage() {
             loading={loading}
           />
         ) : (
-          <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
+          <div className="mx-auto">{children}</div>
         )}
       </div>
     </div>

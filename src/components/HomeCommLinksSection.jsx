@@ -94,7 +94,7 @@ const CommLinksSection = ({ data }) => {
       </h1>
       <hr />
       <div className="flex flex-wrap justify-center px-4 mx-auto">
-        <div className="mx-auto scale-[.77] xs:scale-100">{children}</div>
+        <div className="mx-auto">{children}</div>
       </div>
     </div>
   )
