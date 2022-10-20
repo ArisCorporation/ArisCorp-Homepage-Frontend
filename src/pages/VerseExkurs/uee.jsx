@@ -134,7 +134,7 @@ export default function UEEPage(data) {
                       }
                       as={Fragment}
                     >
-                      <div className='w-full space-x-6 lg:flex'>
+                      <div className='w-full lg:space-x-6 lg:flex'>
                         <Tab.List>
                           <ul className="w-full py-2 pl-0 rounded-md lg:mr-12 lg:w-96">
                             <BasicPanel>
