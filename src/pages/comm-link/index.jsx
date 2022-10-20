@@ -287,7 +287,7 @@ export default function CommLinksPage() {
       <hr />
 
       <div>
-        <div className="w-1/4">
+        <div className="w-full mb-4 xs:mb-0 xs:w-1/4">
           <p>Channel:</p>
           <Listbox
             value={channelquery}
@@ -387,6 +387,4 @@ export default function CommLinksPage() {
   )
 }
 
-CommLinksPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
-}
+
