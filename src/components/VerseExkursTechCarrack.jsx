@@ -557,8 +557,8 @@ const TechCarrack = () => {
       {/* POWERPLANT */}
       <g
         id="powerplantgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == 'powerplant' ? 'fill-primary/70' : 'fill-transparent')}
-        onMouseEnter={() => setSelectedTech('powerplant')}
+        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '5f235080-66a5-4ea5-970a-9c3aa83dbc69' ? 'fill-primary/70' : 'fill-transparent')}
+        onMouseEnter={() => setSelectedTech('5f235080-66a5-4ea5-970a-9c3aa83dbc69')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push(
