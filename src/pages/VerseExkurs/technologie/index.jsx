@@ -214,8 +214,8 @@ export default function Technologie({ data }) {
                 </div>
                 {selectedTech && activeTab == 0 ? (
                   selectedTech != 'grav' &&
-                  selectedTech != 'weaponexkurs' &&
-                  selectedTech != 'armorexkurs' ? (
+                  selectedTech != 'weaponindex' &&
+                  selectedTech != 'armorindex' ? (
                     data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
@@ -279,8 +279,8 @@ export default function Technologie({ data }) {
                   {selectedTech ? (
                     selectedTech != 'grav' &&
                     selectedTech != 'powerplant' &&
-                    selectedTech != 'weaponexkurs' &&
-                    selectedTech != 'armorexkurs' ? (
+                    selectedTech != 'weaponindex' &&
+                    selectedTech != 'armorindex' ? (
                       data
                         .filter((data) => data.id == selectedTech)
                         .map((data) => (
@@ -291,15 +291,15 @@ export default function Technologie({ data }) {
                             image={data.technologie_banner?.id}
                           />
                         ))
-                    ) : selectedTech == 'weaponexkurs' ? (
+                    ) : selectedTech == 'weaponindex' ? (
                       <PersonalInfo
-                        name={'WeaponExkurs'}
+                        name={'WeaponIndex'}
                         desc={'Hier fehlt eine Beschreibung und ein Banner'}
                         image={'fbd2c23c-74bc-4142-a145-f2f43dbfdc77'}
                       />
-                    ) : selectedTech == 'armorexkurs' ? (
+                    ) : selectedTech == 'armorindex' ? (
                       <PersonalInfo
-                        name={'ArmorExkurs'}
+                        name={'ArmorIndex'}
                         desc={'Hier fehlt eine Beschreibung und ein Banner'}
                         image={null}
                       />
@@ -308,7 +308,7 @@ export default function Technologie({ data }) {
                   <div className="absolute flex flex-wrap justify-between w-full mx-auto xs:flex-nowrap h-36 md:h-48 lg:px-6 top-64 lg:h-60">
                     <div
                       className="relative w-60 aspect-square hover:cursor-pointer"
-                      onMouseEnter={() => setSelectedTech('weaponexkurs')}
+                      onMouseEnter={() => setSelectedTech('weaponindex')}
                       onMouseLeave={() => setSelectedTech(undefined)}
                       onClick={() => push('/VerseExkurs/waffen')}
                     >
@@ -326,9 +326,9 @@ export default function Technologie({ data }) {
                     </div>
                     <div
                       className="relative w-60 aspect-square hover:cursor-pointer"
-                      onMouseEnter={() => setSelectedTech('armorexkurs')}
+                      onMouseEnter={() => setSelectedTech('armorindex')}
                       onMouseLeave={() => setSelectedTech(undefined)}
-                      // onClick={() => router.push('/ArmorExkurs')}
+                      // onClick={() => router.push('/armorindex')}
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
@@ -395,7 +395,7 @@ const ComponentDisplay = ({ obj }) => {
 }
 
 const PersonalInfo = ({ name, desc, image }) => (
-  <div className="top-4 relative h-44 lg:w-[516px] xl:w-[548px] lg:float-right">
+  <div className="top-4 relative h-44 lg:w-[516px] xl:w-[650px] lg:float-right">
     <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
       <BasicPanel>
         <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">

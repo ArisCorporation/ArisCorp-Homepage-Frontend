@@ -23,7 +23,9 @@ const TechHuman = () => {
       <g
         id="armorgroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('9')}
+        onMouseEnter={() =>
+          setSelectedTech('0e824394-db91-4d4a-a547-7ff684e9ea50')
+        }
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Raumanzüge und Rüstungen')
@@ -31,50 +33,95 @@ const TechHuman = () => {
       >
         {/* LEGS */}
         <path
-          className="fill-[#01a6fe]/50 group-hover:fill-[#01a6fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            'transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#01a6fe] duration-300'
+              : 'fill-[#01a6fe]/50 duration-200')
+          }
           id="legs1"
           d="M108,981c-.23-1.12-.11-2.51-.74-3.31-4.69-6-4.14-12.26-.84-18.49,2.72-5.11,5.77-10.06,8.81-15A43.26,43.26,0,0,0,122,925.74c.49-4.76,1.69-9.48,1.79-14.23a158.22,158.22,0,0,0-1-17.39c-.38-4.23-1.42-8.4-1.7-12.63-.56-8.4-.8-16.84-1.2-25.75l-2.1-1.87c-.62-11.3-1.23-22.9-1.88-34.5q-1-17.14-2-34.3-1-15.9-2-31.79c-.17-2.64-.75-5.27-.72-7.9,0-3.27.81-6.53.77-9.79-.07-6.12-.59-12.23-.71-18.35-.07-3.13.29-6.21,2.54-8.79,2.84-3.25,5.42-6.74,8.29-10a10,10,0,0,0,3-7.14,8,8,0,0,1,.77-3.82c5-9.49,10.19-18.93,15.43-28.61,5.26.38,10.35.16,14.79-2.66,7.47,5.34,12.45,11.37,14.13,20.13,2.39,12.48,5.33,24.84,8.17,37.23a44.4,44.4,0,0,1,1,11.64c-.32,10.62.2,21.27.46,31.91.22,8.79.33,17.53-2.41,26.09-3.21,10-2.18,20.24-1.78,30.54.45,11.57,1.41,23.19-1.18,34.76-1.94,8.69-2.94,17.6-4.41,26.39-1.52,9.12-3.18,18.22-4.63,27.35a109.56,109.56,0,0,0-1.28,11.84c-.52,10.79-.82,21.6-1.27,32.4-.26,6.47-.35,13-1,19.39C161.25,971,160,976,159,981Z"
         />
         <path
           id="legs2"
-          className="fill-[#01a6fe]/50 group-hover:fill-[#01a6fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            '  transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#01a6fe] duration-300'
+              : 'fill-[#01a6fe]/50 duration-200')
+          }
           d="M272,981c.48-2.8-1.55-4.58-2.79-6.73-.44-10.26-.83-20.55-1.32-30.84-.64-13.76-1-27.56-2.17-41.28-.84-9.85-2.67-19.63-4.35-29.39-2.74-15.85-5.52-31.67-4.17-47.88.27-3.29.34-6.62.73-9.9.8-6.64-.79-12.83-3.46-18.78A28.54,28.54,0,0,1,252,784.15c.06-24.14,0-48.29,0-72.63l3.84-1.86c2.39-9.94,4.82-20,7.24-30.08l12.55-13.94,13,1.15c4.23,7.63,8.19,14.7,12.11,21.81s8.11,14.44,11.82,21.84c1.76,3.52,5.36,4.26,8.07,6.7.38.83.85,1.86,1.42,3.13-2.71,5.1.42,11-1.94,16.35a4.4,4.4,0,0,0-.15,1.47c-.33,7.75-.61,15.5-1,23.25-.19,3.6-.7,7.18-1,10.77-.25,3.43.12,6.83-.86,10.3-.74,2.63-.07,5.63-.18,8.46-.09,2.26-.41,4.5-.58,6.28.24,3.38.7,6.31.61,9.23-.29,10-.71,19.93-1.19,29.89q-.92,18.88-2,37.78c-.12,2.13-.56,4.25-.85,6.32l-2.21,1.25c-.24,5.11-.05,10.59-.89,15.91s-.62,10.87-.94,16.29c-.27,4.75-.85,9.48-1.29,14.21l3.37,1.78v7.1l16.18,28.63c-1.18,4.55-2.26,8.51-3.2,12.5a12.22,12.22,0,0,0,0,3Z"
         />
         {/* SUIT */}
         <path
           id="suit1"
-          className="fill-[#0109fe]/50 group-hover:fill-[#0109fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#0109fe] duration-300'
+              : 'fill-[#0109fe]/50 duration-200')
+          }
           d="M161,174.09l4.5-5-10.89-11.23,14-12.82,10.38,1-.11-.13,1.11,1.11-.11-.09a7.78,7.78,0,0,0,.92,2.14q13,15.17,26,30.28c.54.63,1,1.34,1.23,1.67h8.64c-.23,3.29-.56,6.34-.62,9.4-.16,8.15-.1,16.31-.33,24.47-.12,4.46-.65,8.92-1,13.47l-9.69,4.93q-8.55,55.9-17.19,112.34l-18.38,1.14-34.91-22.75v-108c7.31-11.33,14.54-22.47,21.67-33.66A24.9,24.9,0,0,0,158.1,178l-.07,0c2.28,0,2.26-1.44,2.05-3.06l-.07.07,1.07-1.07Z"
         />
         <path
           id="suit2"
-          className="fill-[#0109fe]/50 group-hover:fill-[#0109fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#0109fe] duration-300'
+              : 'fill-[#0109fe]/50 duration-200')
+          }
           d="M276.9,178a24.9,24.9,0,0,0,1.78,4.39c7.05,11.05,14.18,22.05,21.59,33.53V324.07l-34.8,22.73-18.41-1.13c-5.72-37.37-11.43-74.69-17.18-112.28l-10-5.17c-.32-8.59-.73-17.37-.95-26.15-.13-5,.13-10,0-15a42.72,42.72,0,0,0-1-6h8.53l14.18-16.36c4.46-5.16,8.93-10.31,13.34-15.51a25.11,25.11,0,0,0,2-3.29l-.09.1,10.26-1,14.19,12.79L269.54,169c1.55,1.77,3,3.42,4.44,5.06l-.06-.09,1.07,1.08-.07-.07c-.21,1.62-.23,3.1,2.05,3.06Z"
         />
         <path
           id="suit3"
-          className="fill-[#0109fe]/50 group-hover:fill-[#0109fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#0109fe] duration-300'
+              : 'fill-[#0109fe]/50 duration-200')
+          }
           d="M212.56,355.76,190.7,344.83q8.13-53,16.46-105.59c1.32-.92,2.47-1.82,3.71-2.58,1.07-.66,2.24-1.18,3.77-2,.15,1.48.29,2.55.35,3.63,0,.83,0,1.66,0,2.49-1.36,32.19-.87,64.39-1.06,96.59C213.9,343.45,213.05,349.5,212.56,355.76Z"
         />
         <path
           id="suit4"
-          className="fill-[#0109fe]/50 group-hover:fill-[#0109fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#0109fe] duration-300'
+              : 'fill-[#0109fe]/50 duration-200')
+          }
           d="M220,234.33l7.8,4.68q8.22,52.5,16.55,105.79l-21.83,10.88c-.26-1.47-.46-2.21-.51-3-1.79-29.22-.4-58.48-1.22-87.7-.24-8.57-.63-17.16-.79-25.74C220,238,220,236.65,220,234.33Z"
         />
         <path
           id="suit5"
-          className="fill-[#0109fe]/50 group-hover:fill-[#0109fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            'transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#0109fe] duration-300'
+              : 'fill-[#0109fe]/50 duration-200')
+          }
           d="M179.05,146.07c-.07-1.13-.13-2.25-.21-3.58l3.42-2.57h34.26l.94,1.91,1-1.77c10.86,0,21.79-.05,32.72.06,1.54,0,3.07.86,4.77,1.37v4.58l.09-.1c-2.1-1.08-3,.76-4.11,1.82q-10.23,9.86-20.35,19.82c-1.3,1.28-2.42,2.74-2.85,3.24-4,1.71-6.19-.06-8.53-1.21-1.19-4.19-2.21-8.42-1.77-12.92.35-3.62.38-7.27.37-10.91a3.55,3.55,0,0,0-1.86-2.76L216,169.5l-5,2.21-4.4-.8c-.34-.28-.74-.57-1.1-.91-7.34-7-14.66-14-22.05-20.91a19.22,19.22,0,0,0-3.54-2.13l.11.09-1.11-1.11Z"
         />
         {/* Arms */}
         <path
           id="arms1"
-          className="fill-[#5202fe]/50 group-hover:fill-[#5202fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#5202fe]/50 duration-200'
+              : 'fill-[#5202fe]')
+          }
           d="M158.1,178a19.93,19.93,0,0,0-3,2.84c-7.8,11.12-15.52,22.3-23.28,33.46-.56.81-1.25,1.53-1.59,1.95-7.23,2-14.06,3.8-20.86,5.74s-13.61,4-20.94,6.15c-2.06-3-4.19-6.08-6.72-9.74a50.16,50.16,0,0,1,2-6.1c3.14-6.93,6.44-13.78,9.68-20.67.7-1.49,1.36-3,1.88-4.17l46-25.36h8.7l10.9,9.3c0,.43.12,1.55.21,2.66l.06-.08L160,175.08l.07-.07c-1.59.41-2.42,1.34-2.05,3.06Z"
         />
         <path
           id="arms2"
-          className="fill-[#5202fe]/50 group-hover:fill-[#5202fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '0e824394-db91-4d4a-a547-7ff684e9ea50'
+              ? 'fill-[#5202fe]/50 duration-200'
+              : 'fill-[#5202fe]')
+          }
           d="M274,174.09c.09-1.11.18-2.23.26-3.33,4.36-1.67,6.75-5.75,10.63-8.51H294l45.57,25.12c3.78,8,7.65,16.53,11.91,24.91,1.88,3.71,1.91,6.81-.73,10-1.45,1.78-2.66,3.76-4.06,5.76l-42.15-12c-5.46-7.79-11.37-16.18-17.26-24.6-2.56-3.67-5-7.41-7.62-11A16.12,16.12,0,0,0,276.9,178l.07,0c.36-1.72-.46-2.65-2.05-3.06l.07.07L273.92,174Z"
         />
       </g>
@@ -82,7 +129,9 @@ const TechHuman = () => {
       <g
         id="pengroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('18')}
+        onMouseEnter={() =>
+          setSelectedTech('b69bb675-77fc-42e5-93ed-9e973d5101cc')
+        }
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Medizinische Ausrüstung')
@@ -90,17 +139,32 @@ const TechHuman = () => {
       >
         <path
           id="oxypen"
-          className="fill-[#01a6fe]/50 group-hover:fill-[#01a6fe] transition-colors duration-200 group-hover:duration-300"
+          className={
+            'fill-[#01a6fe]/50 duration-200 group-hover:fill-[#01a6fe] transition-colors  ' +
+            (selectedTech == 'b69bb675-77fc-42e5-93ed-9e973d5101cc'
+              ? 'fill-[#01a6fe] duration-300'
+              : 'fill-[#01a6fe]/50 duration-200')
+          }
           d="M168.94,441.91c.91-1.7,1.76-3.3,2.85-5.32L170,434.2c0-3.79-.78-7.82,2.14-11.22a24.41,24.41,0,0,1,7.42-21.84h10.75c.59,1.57,1.24,3.26,2.1,5.51l2.62-2.75.75.43c-1.1,2.5-2.19,5-3.13,7.14-1.24,7.65-2.48,15-3.58,22.38a16,16,0,0,0,.38,3.87c-.21,2.91-.43,6-.72,9.89-.82,1.21-2.1,3.08-3.65,5.34-.07.62-.2,1.75-.34,3.05-3.71,1.25-4.65,4.71-6.31,7.85h-5l-3.25-6.33.93-1.89-2.22-1.14c.18-1.39.33-3,.6-4.53s.61-2.82,1-4.71C170.25,444.58,169.69,443.45,168.94,441.91Z"
         />
         <path
           id="medpen1"
-          className="fill-[#fe0000]/50 group-hover:fill-[#fe0000] transition-colors duration-200 group-hover:duration-300"
+          className={
+            'fill-[#fe0000]/50 duration-200 group-hover:fill-[#fe0000] transition-colors  ' +
+            (selectedTech == 'b69bb675-77fc-42e5-93ed-9e973d5101cc'
+              ? 'fill-[#01a6fe] duration-300'
+              : 'fill-[#01a6fe]/50 duration-200')
+          }
           d="M139.73,441.7c-.74,1.08-1.93,2.82-3.6,5.28,0,.39-.21,1.67-.39,3.08-3.7,1.28-4.54,4.81-6.3,7.81h-5l-3.25-6.39,1-1.8-2.36-1.3c.5-2.79,1.06-5.88,1.69-9.31-.37-.74-1-1.9-1.6-3.22l2.86-5.19-1.68-2.35v-7.53l2-3.93c-.91-8,.76-15.47,7.81-21.65H141.7c.74,1.51-.48,4.23,2.4,4.69l2-2,.72.45-3.21,7.07c-1.2,7.63-2.39,14.84-3.44,22.08a25.33,25.33,0,0,0,.28,4.74C140.29,434.75,140,437.83,139.73,441.7Z"
         />
         <path
           id="medpen2"
-          className="fill-[#fe0000]/50 group-hover:fill-[#fe0000] transition-colors duration-200 group-hover:duration-300"
+          className={
+            'fill-[#fe0000]/50 duration-200 group-hover:fill-[#fe0000] transition-colors  ' +
+            (selectedTech == 'b69bb675-77fc-42e5-93ed-9e973d5101cc'
+              ? 'fill-[#01a6fe] duration-300'
+              : 'fill-[#01a6fe]/50 duration-200')
+          }
           d="M146.54,443.07,145,440c.77-1.47,1.67-3.19,2.82-5.41l-1.68-2.26v-7.52c.58-1.15,1.24-2.46,2-4-.8-8,.67-15.55,7.84-21.63h10.54c.55,1.67,1.07,3.28,1.77,5.41l3-2.67.67.48c-1.15,2.53-2.31,5.07-3.21,7-1.23,7.71-2.44,14.92-3.5,22.15a18.31,18.31,0,0,0,.34,4.17c-.23,3.07-.47,6.15-.77,10l-3.65,5.21c-.06.66-.14,1.64-.12,1.44l-7.11,9.52h-4.4c-1.09-2.17-2.18-4.31-3.22-6.38l.94-1.91-2.39-1.14C145.33,449.53,145.91,446.44,146.54,443.07Z"
         />
       </g>
@@ -108,7 +172,9 @@ const TechHuman = () => {
       <g
         id="toolsgroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('5')}
+        onMouseEnter={() =>
+          setSelectedTech('08470bfa-3e7c-487c-bde3-810895cdfa92')
+        }
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Personen Ausrüstung')
@@ -116,7 +182,12 @@ const TechHuman = () => {
       >
         <path
           id="tools1"
-          className="fill-[#febf02]/50 group-hover:fill-[#febf02] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == '08470bfa-3e7c-487c-bde3-810895cdfa92'
+              ? 'fill-[#febf02] duration-300'
+              : 'fill-[#febf02]/50 duration-200')
+          }
           d="M125,576V560.35c2.81-5.47,7.67-5.61,12.77-5.38V544.6c-.92-.44-2.3-.75-3.11-1.6s-.74-2.08-1-3l3.84-3.42-3.12-.79c-.58,1.3-1.08,2.45-1.76,4H122.49l-3.21-4.17c-.37-2.1-.73-4.19-1.12-6.37-4.78-1.83-9.43-3.28-14.51-3.29-5.45,0-10.9-.42-16.53-.66l-4.94-8.81c.22-4.53-1.58-10.38,3.66-14.66l6.8,2.56,3.83-2.7,31.2,7.59,3.18-2.09h4.56l2.55,2.68c.49-3,.92-5.78,1.45-9.11l5.74-1c3,3.74,7.3,5.17,10.54,8.12a17.89,17.89,0,0,1,6,9.91c1,5,1.6,10.1,2.14,15.18.52,4.93,0,10.1,1.33,14.79,1.1,4,.3,7.37-.78,10.87l11.13,9.22c1.14,9.29,2.31,18.14,3.24,27,.22,2.06-.4,4.21-.63,6.26l-2.83,1.27c.81,3.28,1.54,6.26,2.2,9-1.48,1.74-2.54,3-3.92,4.64.42,2.15.89,4.53,1.44,7.36l-3.84,6-4.75-3.92-3.39,2.46-4.73.27L153,622l-3.89-.19c-2.31,1.88-4.51,3.87-7.83,4.34l-.47-3.47-14.67-1.23v-9c4.63-2.11,9.51-1.13,14.54-1.52v-5.48L139,606.75l-2.14-2-4.69,4.43c-9.12-5.33-16.15-13.27-25-20l-2.76-.35-11.11-9.67-3.76-.28-2.66-3c.45-4.84,1.09-9.44,4.84-13.17,2.57-2.54,4.63-5.6,7-8.56h1.8l8.3,6.76c.35,1.18.87,2.91,1.38,4.61,4.21,3.31,8.37,6.6,12.59,9.82a6.88,6.88,0,0,0,2.2.74l.48.93.45-.38Z"
         />
       </g>
@@ -124,13 +195,20 @@ const TechHuman = () => {
       <g
         id="mobiglasgroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('4')}
+        onMouseEnter={() =>
+          setSelectedTech('effabe5a-6b80-4b2f-8e72-7d3c74c08cef')
+        }
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Mobiglas')}
       >
         <path
           id="mobiglas1"
-          className="fill-[#54fe05]/50 group-hover:fill-[#54fe05] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == 'effabe5a-6b80-4b2f-8e72-7d3c74c08cef'
+              ? 'fill-[#54fe05] duration-300'
+              : 'fill-[#54fe05]/50 duration-200')
+          }
           d="M377.66,442.18c2.11,4.74,3.71,8.35,5.51,12.38L343,472.94c-4.68-.54-4.78-4.94-7.05-7v-4.61C349.74,455.1,363.08,447.94,377.66,442.18Z"
         />
       </g>
@@ -138,13 +216,18 @@ const TechHuman = () => {
       <g
         id="weaponsgroup"
         className="transition-colors duration-200 group hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('weaponexkurs')}
+        onMouseEnter={() => setSelectedTech('weaponindex')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/waffen')}
       >
         <path
           id="weapons1"
-          className="fill-[#fe7803]/50 group-hover:fill-[#fe7803] transition-colors duration-200 group-hover:duration-300"
+          className={
+            ' transition-colors  ' +
+            (selectedTech == 'weaponindex'
+              ? 'fill-[#fe7803] duration-300'
+              : 'fill-[#fe7803]/50 duration-200')
+          }
           d="M285,505.12a10.15,10.15,0,0,0,8.1-3.62,48.14,48.14,0,0,1,5.36-4.26l4.35,1.13c2.19,2.44,2.26,5.27,2.22,8.11l5.53,5.35c2.84.67,5.34-.12,8-1.54a73.58,73.58,0,0,1,21-7.34c4-.79,7.76-3.17,13-1.33l1.89,1.78c-1.23,8.36,1.1,16.78-2.66,25.08-4.48-2.74-8.29-1.42-12.25.14-4.74,1.86-9.64,3.33-14.63,5-.89,2.49-1.71,4.78-2.52,7.08l.78.07a60.28,60.28,0,0,1,.84,6.76c.1,8.49,0,17,0,25.58l-6.27,3.94c-.58,10.66-1.16,21.4-1.73,32l-5.61,4.65-5,1c-.61-.79-1.29-1.66-2-2.66-.51,1.9-1,3.64-1.48,5.53a8.81,8.81,0,0,1-8.22-2.52l-4.27,1.2c-.27-1.56-.49-2.82-.74-4.22h-3.89c-1.2-3.23-2.4-6.44-3.73-10l2.23-1.8c0-14.87-.11-30,0-45.17.14-14.8.52-29.61.86-44.41A42.53,42.53,0,0,1,285,505.12Z"
         />
       </g>

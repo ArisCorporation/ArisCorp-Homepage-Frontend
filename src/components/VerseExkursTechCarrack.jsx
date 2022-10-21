@@ -22,7 +22,7 @@ const TechCarrack = () => {
       {/* PROPULSION */}
       <g
         id="propulsiongroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == 'c5fba33f-9cdc-42b2-b601-6e7e6f59621b' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'c5fba33f-9cdc-42b2-b601-6e7e6f59621b' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('c5fba33f-9cdc-42b2-b601-6e7e6f59621b')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -50,7 +50,7 @@ const TechCarrack = () => {
       {/* CARGO */}
       <g
         id="cargogroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == 'e1c5e831-534e-473b-856b-bb8ba33655ac' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'e1c5e831-534e-473b-856b-bb8ba33655ac' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('e1c5e831-534e-473b-856b-bb8ba33655ac')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Fracht Mechanik')}
@@ -84,7 +84,7 @@ const TechCarrack = () => {
       {/* FUEL */}
       <g
         id="fuelgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '07ff69e2-31b4-4fe6-ad09-3719a659aa51' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '07ff69e2-31b4-4fe6-ad09-3719a659aa51' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('07ff69e2-31b4-4fe6-ad09-3719a659aa51')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -233,7 +233,7 @@ const TechCarrack = () => {
       {/* LIVESUPPORT */}
       <g
         id="livesupportgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '744474da-0797-4959-bb75-40edc134a607' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '744474da-0797-4959-bb75-40edc134a607' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('744474da-0797-4959-bb75-40edc134a607')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Lebenserhaltung')}
@@ -255,7 +255,7 @@ const TechCarrack = () => {
       {/* QUANTUMDRIVE */}
       <g
         id="quantumdrivegroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '165f1bde-3678-4f85-bb8b-0e4c5e20e67f' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '165f1bde-3678-4f85-bb8b-0e4c5e20e67f' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('165f1bde-3678-4f85-bb8b-0e4c5e20e67f')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -279,7 +279,7 @@ const TechCarrack = () => {
       {/* COMPUTER */}
       <g
         id="computergroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '1c44c62a-e1f6-4dfb-a907-90de864dde29' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '1c44c62a-e1f6-4dfb-a907-90de864dde29' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('1c44c62a-e1f6-4dfb-a907-90de864dde29')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -311,7 +311,7 @@ const TechCarrack = () => {
       {/* RADAR */}
       <g
         id="radargroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '41db2450-c335-4bfb-bdc3-c21ca8c934e7' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '41db2450-c335-4bfb-bdc3-c21ca8c934e7' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('41db2450-c335-4bfb-bdc3-c21ca8c934e7')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -331,7 +331,7 @@ const TechCarrack = () => {
       {/* WEAPON */}
       <g
         id="weapongroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == 'ac4583c6-8df9-4faf-97c6-0881eedf3afe' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'ac4583c6-8df9-4faf-97c6-0881eedf3afe' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('ac4583c6-8df9-4faf-97c6-0881eedf3afe')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Waffensysteme')}
@@ -357,7 +357,7 @@ const TechCarrack = () => {
       {/* SHIELD */}
       <g
         id="shieldgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '94cb2026-4b08-4f4e-b5cf-8a24574cf576' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '94cb2026-4b08-4f4e-b5cf-8a24574cf576' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('94cb2026-4b08-4f4e-b5cf-8a24574cf576')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Schutzschilde')}
@@ -387,7 +387,7 @@ const TechCarrack = () => {
       {/* COOL */}
       <g
         id="coolgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '691372da-bca6-4ca9-9bb8-2c7ddb28d928' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '691372da-bca6-4ca9-9bb8-2c7ddb28d928' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('691372da-bca6-4ca9-9bb8-2c7ddb28d928')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Kühlsysteme')}
@@ -499,7 +499,7 @@ const TechCarrack = () => {
       {/* IFCS */}
       <g
         id="ifcsgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '63d432e4-eafa-4ea1-9870-4610dd74d087' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '63d432e4-eafa-4ea1-9870-4610dd74d087' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('63d432e4-eafa-4ea1-9870-4610dd74d087')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/IFCS')}
@@ -557,7 +557,7 @@ const TechCarrack = () => {
       {/* POWERPLANT */}
       <g
         id="powerplantgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == '5f235080-66a5-4ea5-970a-9c3aa83dbc69' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '5f235080-66a5-4ea5-970a-9c3aa83dbc69' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('5f235080-66a5-4ea5-970a-9c3aa83dbc69')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -577,7 +577,7 @@ const TechCarrack = () => {
       {/* GRAVITATIONGENERATOR */}
       <g
         id="gravitationsgeneratorgroup"
-        className={"transition-colors duration-200 hover:duration-300 hover:cursor-pointer " + (selectedTech == 'grav' ? 'fill-primary/70' : 'fill-transparent')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'grav' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('grav')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
@@ -616,49 +616,49 @@ const TechCarrack = () => {
 
       <g id="transparent">
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="508"
           cy="431"
           rx="32.53"
           ry="1.41"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="562"
           cy="357.5"
           rx="39.6"
           ry="0.71"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="561.5"
           cy="360.5"
           rx="38.89"
           ry="0.71"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1194.5"
           cy="223"
           rx="0.71"
           ry="25.46"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1197.5"
           cy="223"
           rx="0.71"
           ry="25.46"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1306.5"
           cy="222.5"
           rx="0.71"
           ry="24.75"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1312.5"
           cy="222.5"
           rx="0.71"
@@ -666,42 +666,42 @@ const TechCarrack = () => {
         />
         <ellipse className="cls-11" cx="1598.5" cy="318" rx="0.71" ry="18.38" />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="348.5"
           cy="346.5"
           rx="0.71"
           ry="16.26"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1189.5"
           cy="230.5"
           rx="0.71"
           ry="13.43"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1245.5"
           cy="230.5"
           rx="0.71"
           ry="12.02"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1242.5"
           cy="230.5"
           rx="0.71"
           ry="12.02"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1224.5"
           cy="229"
           rx="0.71"
           ry="11.31"
         />
         <ellipse
-          className="fill-transparent"
+          className="duration-300 fill-transparent"
           cx="1207.5"
           cy="231"
           rx="0.71"
