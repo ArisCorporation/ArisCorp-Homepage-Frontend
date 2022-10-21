@@ -2,13 +2,13 @@ const axios = require('axios')
 
 const url = 'https://api.fleetyards.net/v1/shops'
 
-const flpage = 1
-const Datastore = { data: [] }
+let flpage = 1
+let Datastore = { data: [] }
 
 async function getShops() {
   do {
-    const response = await fetch(url + '?page=' + flpage + '&perPage=100')
-    const data = await response.json()
+    let response = await fetch(url + '?page=' + flpage + '&perPage=100')
+    let data = await response.json()
 
     Datastore.data.push(data)
     ++flpage

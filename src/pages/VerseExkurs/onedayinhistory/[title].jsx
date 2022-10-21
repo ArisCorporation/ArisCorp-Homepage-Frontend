@@ -11,7 +11,7 @@ export default function SpectrumArticlePage() {
   const router = useRouter()
   const { title } = router.query
 
-  const { loading, error, data } = useQuery(
+  let { loading, error, data } = useQuery(
     GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE,
     {
       variables: { title },
