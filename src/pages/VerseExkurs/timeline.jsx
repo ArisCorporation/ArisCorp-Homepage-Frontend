@@ -165,7 +165,6 @@ export default function TimelinePage({ data, events }) {
 
   return (
     <div>
-      <p>test</p>
       <TLComponent data={data} events={events} />
     </div>
   )

@@ -12,7 +12,7 @@ const TimelineComponent = ({ events, data }) => (
         events={events}
         options={{start_at_end: true}}
       />
-      <link rel="stylesheet" href="https://cdn.knightlab.com/libs/timeline3/latest/css/themes/timeline.theme.dark.css" />
+      <link rel="stylesheet" href="/timeline.theme.ariscorp.css" />
       <style>{`
         .tl-slider-background{
           display: none

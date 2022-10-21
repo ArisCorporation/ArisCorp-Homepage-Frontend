@@ -273,7 +273,11 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent' +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                        (router.pathname.startsWith('/VerseExkurs/timeline') ||
+                        router.pathname.startsWith('/VerseExkurs/onedayinhistory')
+                          ? 'after:block '
+                          : 'after:hidden ') +
                         (!mobileView && sidebarCollapsed
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
@@ -578,9 +582,9 @@ export default function Sidebar() {
                         router.pathname.startsWith('/VerseExkurs/pflanzen')
                           ? 'after:block '
                           : 'after:hidden ') +
-                          (!mobileView && sidebarCollapsed
-                            ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
-                            : '')
+                        (!mobileView && sidebarCollapsed
+                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                          : '')
                       }
                       data-tip
                       data-for="AlienrassenTip"
