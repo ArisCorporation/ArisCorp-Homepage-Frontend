@@ -23,7 +23,7 @@ const TechCarrack = () => {
       <g
         id="propulsiongroup"
         className="fill-[#fe0101]/50 hover:fill-[#fe0101] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('11')}
+        onMouseEnter={() => setSelectedTech('c5fba33f-9cdc-42b2-b601-6e7e6f59621b')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Fusionstriebwerke')
@@ -51,7 +51,7 @@ const TechCarrack = () => {
       <g
         id="cargogroup"
         className="fill-[#fedc00]/50 hover:fill-[#fedc00] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('1')}
+        onMouseEnter={() => setSelectedTech('e1c5e831-534e-473b-856b-bb8ba33655ac')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Fracht Mechanik')}
       >
@@ -85,7 +85,7 @@ const TechCarrack = () => {
       <g
         id="fuelgroup"
         className="fill-[#feaa01]/50 hover:fill-[#feaa01] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('10')}
+        onMouseEnter={() => setSelectedTech('07ff69e2-31b4-4fe6-ad09-3719a659aa51')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Treibstoff Mechanik')
@@ -234,7 +234,7 @@ const TechCarrack = () => {
       <g
         id="livesupportgroup"
         className="fill-[#02fee0]/50 hover:fill-[#02fee0] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('13')}
+        onMouseEnter={() => setSelectedTech('744474da-0797-4959-bb75-40edc134a607')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Lebenserhaltung')}
       >
@@ -280,7 +280,7 @@ const TechCarrack = () => {
       <g
         id="computergroup"
         className="fill-[#0217fe]/50 hover:fill-[#0217fe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('15')}
+        onMouseEnter={() => setSelectedTech('1c44c62a-e1f6-4dfb-a907-90de864dde29')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Computer Systeme und Avionic')
@@ -312,7 +312,7 @@ const TechCarrack = () => {
       <g
         id="radargroup"
         className="fill-[#3c722e]/50 hover:fill-[#3c722e] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('7')}
+        onMouseEnter={() => setSelectedTech('41db2450-c335-4bfb-bdc3-c21ca8c934e7')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push('/VerseExkurs/technologie/Radar und Signaturen')
@@ -332,7 +332,7 @@ const TechCarrack = () => {
       <g
         id="weapongroup"
         className="fill-[#f1fe03]/50 hover:fill-[#f1fe03] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('12')}
+        onMouseEnter={() => setSelectedTech('ac4583c6-8df9-4faf-97c6-0881eedf3afe')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Waffensysteme')}
       >
@@ -358,7 +358,7 @@ const TechCarrack = () => {
       <g
         id="shieldgroup"
         className="fill-[#249800]/50 hover:fill-[#249800] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('8')}
+        onMouseEnter={() => setSelectedTech('94cb2026-4b08-4f4e-b5cf-8a24574cf576')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Schutzschilde')}
       >
@@ -388,7 +388,7 @@ const TechCarrack = () => {
       <g
         id="coolgroup"
         className="fill-[#02fe88]/50 hover:fill-[#02fe88] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('16')}
+        onMouseEnter={() => setSelectedTech('691372da-bca6-4ca9-9bb8-2c7ddb28d928')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/Kühlsysteme')}
       >
@@ -500,7 +500,7 @@ const TechCarrack = () => {
       <g
         id="ifcsgroup"
         className="fill-[#6804fe]/50 hover:fill-[#6804fe] transition-colors duration-200 hover:duration-300 hover:cursor-pointer"
-        onMouseEnter={() => setSelectedTech('2')}
+        onMouseEnter={() => setSelectedTech('63d432e4-eafa-4ea1-9870-4610dd74d087')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() => router.push('/VerseExkurs/technologie/IFCS')}
       >
