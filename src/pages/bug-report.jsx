@@ -107,7 +107,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function CreditsPage({ data }) {
+export default function BugReportPage({ data }) {
   const [title, setTitle] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [selectedTask, setSelectedTask] = useState()
@@ -847,4 +847,8 @@ export default function CreditsPage({ data }) {
       </div>
     </div>
   )
+}
+
+BugReportPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
 }
