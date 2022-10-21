@@ -95,13 +95,13 @@ export default function Sidebar() {
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/VerseExkurs')
-                  ? ''
-                  : ' after:hidden')
+                (router.pathname == '/VerseExkurs'
+                  ? ' text-white'
+                  : ' after:hidden text-[#c8c8c8]')
               }
             >
               <div
-                className="px-4 py-2 overflow-hidden text-center text-white whitespace-normal transition-all duration-500 ease-linear rounded-md text-ellipsis"
+                className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
                 <FaHome
@@ -114,14 +114,14 @@ export default function Sidebar() {
           <Link href="/VerseExkurs/firmen">
             <a
               className={
-                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
                 (router.pathname.startsWith('/VerseExkurs/firmen')
-                  ? ''
-                  : ' after:hidden')
+                  ? ' after:block text-white'
+                  : ' after:hidden text-[#c8c8c8]')
               }
             >
               <div
-                className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
+                className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
                 <FaPlaceOfWorship
@@ -134,14 +134,14 @@ export default function Sidebar() {
           <Link href="/VerseExkurs/search">
             <a
               className={
-                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow after:hidden' +
+                'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
                 (router.pathname.startsWith('/VerseExkurs/search')
-                  ? ''
-                  : ' after:hidden')
+                  ? ' after:block text-white'
+                  : ' after:hidden text-[#c8c8c8]')
               }
             >
               <div
-                className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
+                className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
                 <FaSearch
@@ -156,12 +156,12 @@ export default function Sidebar() {
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
                 (router.pathname.startsWith('/VerseExkurs/alienrassen')
-                  ? ''
-                  : ' after:hidden')
+                  ? ' after:block text-white'
+                  : ' after:hidden text-[#c8c8c8]')
               }
             >
               <div
-                className="py-2 px-4 whitespace-normal overflow-hidden text-[#c8c8c8] text-center text-ellipsis rounded-md transition-all duration-500 ease-linear"
+                className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
                 <GiAlienSkull
@@ -224,10 +224,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname == '/VerseExkurs'
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -273,11 +273,11 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                         (router.pathname.startsWith('/VerseExkurs/timeline') ||
                         router.pathname.startsWith('/VerseExkurs/onedayinhistory')
-                          ? 'after:block '
-                          : 'after:hidden ') +
+                          ? 'after:block text-white '
+                          : 'after:hidden text-[#afafaf] ') +
                         (!mobileView && sidebarCollapsed
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
@@ -353,12 +353,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/timeline">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/timeline'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -411,11 +411,11 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/onedayinhistory">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname ==
                                   '/VerseExkurs/onedayinhistory'
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -473,10 +473,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/uee">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/uee')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -524,10 +524,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/starmap">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/starmap')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -573,15 +573,16 @@ export default function Sidebar() {
                     <Disclosure.Button
                       as="a"
                       className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                        (router.pathname.startsWith('/VerseExkurs/banu') ||
+                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                        (router.pathname.startsWith('/VerseExkurs/alienrassen') || 
+                        router.pathname.startsWith('/VerseExkurs/banu') ||
                         router.pathname.startsWith('/VerseExkurs/tevarin') ||
                         router.pathname.startsWith('/VerseExkurs/vanduul') ||
                         router.pathname.startsWith('/VerseExkurs/xian') ||
                         router.pathname.startsWith('/VerseExkurs/biestarium') ||
                         router.pathname.startsWith('/VerseExkurs/pflanzen')
-                          ? 'after:block '
-                          : 'after:hidden ') +
+                          ? 'after:block text-white '
+                          : 'after:hidden text-[#afafaf] ') +
                         (!mobileView && sidebarCollapsed
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
@@ -657,12 +658,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/banu">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/banu'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -714,12 +715,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/tevarin">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/tevarin'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -771,12 +772,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/vanduul">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/vanduul'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -828,12 +829,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/xian">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/xian'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -886,12 +887,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/biestarium">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/biestarium'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -943,12 +944,12 @@ export default function Sidebar() {
                             <Link href="/VerseExkurs/pflanzen">
                               <a
                                 className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block text-[#afafaf] whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                                   (router.pathname.startsWith(
                                     '/VerseExkurs/pflanzen'
                                   )
-                                    ? 'after:block '
-                                    : 'after:hidden ') +
+                                    ? 'after:block text-white '
+                                    : 'after:hidden text-[#afafaf] ') +
                                   (!mobileView && sidebarCollapsed
                                     ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
                                     : ' py-[10px] pl-10 pr-[15px] ')
@@ -1006,10 +1007,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/firmen">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/firmen')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -1057,10 +1058,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/fraktionen">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/fraktionen')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -1108,11 +1109,11 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/technologie">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/technologie') ||
                       router.pathname.startsWith('/VerseExkurs/waffen')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -1160,10 +1161,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/spectrum">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/spectrum')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -1211,10 +1212,10 @@ export default function Sidebar() {
                 <Link href="/VerseExkurs/literatur">
                   <a
                     className={
-                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/literatur')
-                        ? 'after:block '
-                        : 'after:hidden ') +
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
@@ -1262,10 +1263,10 @@ export default function Sidebar() {
               >
                 <div
                   className={
-                    'group-hover:text-[#e2e2e2] hover:cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                    'group-hover:text-[#e2e2e2] hover:cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                     (router.pathname == '/'
-                      ? 'after:block '
-                      : 'after:hidden ') +
+                      ? 'after:block text-white '
+                      : 'after:hidden text-[#afafaf] ') +
                     (!mobileView && sidebarCollapsed
                       ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                       : '')
@@ -1299,7 +1300,7 @@ export default function Sidebar() {
               >
                 <a
                   className={
-                    'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent ' +
+                    'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] text-[#afafaf] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent ' +
                     (sidebarCollapsed
                       ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                       : '')
@@ -1329,12 +1330,12 @@ export default function Sidebar() {
                   </div>
                 </a>
               </li>
-              <li className="min-h-[60px] list-none">
+              <li className="min-h-[60px] list-none group">
                 <Link href="/">
-                  <a className="decoration-transparent">
+                  <a className="group-hover:text-[#e2e2e2] text-[#afafaf] transition-all duration-500 ease-linear decoration-transparent">
                     <span
                       className={
-                        'relative block py-[10px] pl-[30px] pr-[15px] text-[#afafaf] text-lg whitespace-nowrap' +
+                        'relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap' +
                         (!mobileView && sidebarCollapsed ? ' w-16 h-16' : '')
                       }
                       style={{ transition: 'all .5s ease' }}
