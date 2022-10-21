@@ -221,11 +221,7 @@ export default function Technologie({ data }) {
                         onMouseEnter={() => setSelectedTech(object.id)}
                         onMouseLeave={() => setSelectedTech(undefined)}
                       >
-                        <Link
-                          href={
-                            '/VerseExkurs/technologie/' + object.name
-                          }
-                        >
+                        <Link href={'/VerseExkurs/technologie/' + object.name}>
                           <a>
                             <div
                               className={
@@ -305,12 +301,19 @@ export default function Technologie({ data }) {
                         />
                       )
                     ) : (
-                      <ShipInfo
-                        key={'idle'}
-                        name={'Komponenten'}
-                        desc={'Komponenten sind die Zentralen Elemente eines jeden Raumschiffes. Erst sie ermöglichen dass das Schiff sich bewegt, seine Crew am leben erhalten wird und es sich im Fall aller fälle verteidigen kann. Es sind alle Geräte, Ausrüstungen und Werkzeuge, die die "funktionierenden" Teile eines Schiffes ausmachen. Im Tech Index bekommen Sie eine Übersicht über alle Komponententypen und deren Funktionieren. '}
-                        image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
-                      />
+                      data
+                        .filter(
+                          (data) =>
+                            data.id == '3f533c4e-bfb0-4c6f-8151-5b002056da28'
+                        )
+                        .map((data) => (
+                          <ShipInfo
+                            key={data.id}
+                            name={data.technologie_name}
+                            desc={data.technologie_beschreibung}
+                            image={data.technologie_banner?.id}
+                          />
+                        ))
                     )}
                   </div>
                 </div>
@@ -355,7 +358,9 @@ export default function Technologie({ data }) {
                     <PersonalInfo
                       key={'idle'}
                       name={'Personenausrüstung'}
-                      desc={'Unsere Personenausrüstung ist ein wesentlicher Bestandteil des Überlebens- und Arbeitens im Weltraum. Von Raum- und Schutzanzügen über Werkzeuge und andere Hilfsmittel wie das Persönliche Mobiglas sind sie ein unerlässlicher Teil eines jeden Raumfahrers'}
+                      desc={
+                        'Personenausrüstung ist ein wesentlicher Bestandteil des Überlebens- und Arbeitens im Weltraum. Von Raum- und Schutzanzügen über Werkzeuge und andere Hilfsmittel sind sie ein unerlässlicher Teil eines jeden Raumfahrers'
+                      }
                       image={'327e44ea-3045-44a9-a8f0-1fc1279df782'}
                     />
                   )}
