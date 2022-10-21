@@ -387,4 +387,6 @@ export default function CommLinksPage() {
   )
 }
 
-
+CommLinksPage.getLayout = function getLayout(page) {
+  return <Layout>{page}</Layout>
+}
