@@ -165,14 +165,9 @@ export default function TimelinePage({ data, events }) {
 
   return (
     <div>
-      <TLComponent data={data} events={events} />
-      <div className="mt-24 ml-2">
-        <p className="pl-6">
-          Klicke auf das Banner um auf die direkt Ansicht von {'"'}Ein Tag in
-          der Geschichte{'"'} zu gelangen.
-        </p>
+      <div className="mt-2 mb-12 ml-2">
         <div
-          className="flex pl-4 flex-wrap hover:cursor-pointer h-full w-2/3 aspect-[1118/351]"
+          className="flex pl-4 mx-auto flex-wrap grayscale hover:grayscale-0 duration-150 hover:duration-300 hover:cursor-pointer h-full w-1/2 aspect-[1118/351]"
           onClick={() => push('/VerseExkurs/onedayinhistory')}
         >
           <div className="relative w-full h-full">
@@ -190,6 +185,7 @@ export default function TimelinePage({ data, events }) {
           <hr />
         </div>
       </div>
+      <TLComponent data={data} events={events} />
     </div>
   )
 }
