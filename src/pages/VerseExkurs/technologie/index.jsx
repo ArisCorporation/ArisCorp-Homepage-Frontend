@@ -34,12 +34,12 @@ export default function Technologie({ data }) {
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
 
-  const components = [
+  const items = [
     {
       id: '63d432e4-eafa-4ea1-9870-4610dd74d087',
       icon: '0db5201a-cbca-483f-b3a3-af677a5b3310',
       name: 'IFCS',
-      desc: ''
+      desc: '',
     },
     {
       id: '5f235080-66a5-4ea5-970a-9c3aa83dbc69',
@@ -73,7 +73,7 @@ export default function Technologie({ data }) {
     },
     {
       id: '165f1bde-3678-4f85-bb8b-0e4c5e20e67f',
-      icon: '',
+      icon: '6d850ace-295f-49c2-8669-bb7774934e76',
       name: 'Quantum und Sprungantrieb',
     },
     {
@@ -90,7 +90,7 @@ export default function Technologie({ data }) {
       id: 'grav',
       icon: 'bb487d7c-d4bb-41e8-8f67-c14d52ecc6fa',
       name: 'Gravitationsgenerator',
-      desc: 'noch keine Beschreibung für Grav gens'
+      desc: 'noch keine Beschreibung für Grav gens',
     },
     {
       id: '94cb2026-4b08-4f4e-b5cf-8a24574cf576',
@@ -109,8 +109,6 @@ export default function Technologie({ data }) {
     },
   ]
 
-  const complength = components.length
-
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
       setActiveTab(urlquery)
@@ -122,8 +120,6 @@ export default function Technologie({ data }) {
   const [selectedTech, setSelectedTech] = useContext(
     ShipTechnologieModalContext
   )
-
-  console.log(selectedTech)
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -169,9 +165,9 @@ export default function Technologie({ data }) {
                   </div>
                 </BasicPanel>
                 <div
-                  className={`grid justify-between grid-cols-[repeat(${complength},_minmax(0,_1fr))] mt-6 gap-x-4`}
+                  className={`grid justify-between grid-cols-[repeat(14,_minmax(0,_1fr))] mt-6 gap-x-4`}
                 >
-                  {components.map((object, index) => (
+                  {items.map((object, index) => (
                     <div
                       key={object.id}
                       onMouseEnter={() => setSelectedTech(object.id)}
@@ -216,7 +212,7 @@ export default function Technologie({ data }) {
                     </div>
                   ))}
                 </div>
-                {selectedTech ? (
+                {selectedTech && activeTab == 0 ? (
                   selectedTech != 'grav' &&
                   selectedTech != 'weaponexkurs' &&
                   selectedTech != 'armorexkurs' ? (
@@ -233,19 +229,19 @@ export default function Technologie({ data }) {
                   ) : (
                     <ShipInfo
                       key={selectedTech}
-                      name={components.find((e) => e.id == selectedTech).name}
-                      desc={components.find((e) => e.id == selectedTech).desc}
+                      name={items.find((e) => e.id == selectedTech).name}
+                      desc={items.find((e) => e.id == selectedTech).desc}
                       image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
                     />
                   )
-                ) : activeTab == 0 ? (
+                ) : (
                   <ShipInfo
                     key={'idle'}
                     name={'Komponenten'}
                     desc={'idle anzeige, noch kein text vorhanden'}
                     image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
                   />
-                ) : null}
+                )}
                 <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
                   <div
                     className="relative w-52 aspect-square hover:cursor-pointer"
