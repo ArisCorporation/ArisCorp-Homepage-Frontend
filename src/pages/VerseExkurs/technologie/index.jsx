@@ -40,72 +40,120 @@ export default function Technologie({ data }) {
       icon: '0db5201a-cbca-483f-b3a3-af677a5b3310',
       name: 'IFCS',
       desc: '',
+      category: 'ship',
     },
     {
       id: '5f235080-66a5-4ea5-970a-9c3aa83dbc69',
       icon: '0e5f5484-b084-4758-857e-161340276737',
       name: 'Energiegeneratoren',
+      category: 'ship',
     },
     {
       id: '1c44c62a-e1f6-4dfb-a907-90de864dde29',
       icon: '338c5195-5425-4c1e-9777-443e7ac14060',
       name: 'Computer Systeme und Avionic',
+      category: 'ship',
     },
     {
       id: '691372da-bca6-4ca9-9bb8-2c7ddb28d928',
       icon: '8a559a38-820d-4179-a335-82124dc1b703',
       name: 'Kühlsysteme',
+      category: 'ship',
     },
     {
       id: '41db2450-c335-4bfb-bdc3-c21ca8c934e7',
       icon: 'e11dcb3a-4978-4b6e-9acc-15a9755bfcbf',
       name: 'Radar und Signaturen',
+      category: 'ship',
     },
     {
       id: 'c5fba33f-9cdc-42b2-b601-6e7e6f59621b',
       icon: '25985e91-fe8a-49be-b9a2-0a2b5106a56a',
       name: 'Fusionstriebwerke',
+      category: 'ship',
     },
     {
       id: '165f1bde-3678-4f85-bb8b-0e4c5e20e67f',
       icon: 'f53d657b-aa5b-423d-b468-fe2bc02c5c80',
       name: 'Quantum und Sprungantrieb',
+      category: 'ship',
     },
     {
       id: '165f1bde-3678-4f85-bb8b-0e4c5e20e67f',
       icon: '6d850ace-295f-49c2-8669-bb7774934e76',
       name: 'Quantum und Sprungantrieb',
+      category: 'ship',
     },
     {
       id: '07ff69e2-31b4-4fe6-ad09-3719a659aa51',
       icon: '06a914e5-ce11-4e06-8358-88001d86f439',
       name: 'Treibstoff Mechanik',
+      category: 'ship',
     },
     {
       id: '07ff69e2-31b4-4fe6-ad09-3719a659aa51',
       icon: 'e722f37f-c5a5-47a0-8fb3-e3203417c8dd',
       name: 'Treibstoff Mechanik',
+      category: 'ship',
     },
     {
-      id: 'grav',
+      id: '39efc5e7-0113-4fe3-9fb7-c4776fdd0786',
       icon: 'bb487d7c-d4bb-41e8-8f67-c14d52ecc6fa',
       name: 'Gravitationsgenerator',
       desc: 'noch keine Beschreibung für Grav gens',
+      category: 'ship',
     },
     {
       id: '94cb2026-4b08-4f4e-b5cf-8a24574cf576',
       icon: 'c0f5954b-e122-4a72-92dd-e7828f4c7bf0',
       name: 'Schutzschilde',
+      category: 'ship',
     },
     {
       id: 'ac4583c6-8df9-4faf-97c6-0881eedf3afe',
       icon: '8fcfe5e8-ac21-40cd-ae7d-5f5148991850',
       name: 'Waffensysteme',
+      category: 'ship',
     },
     {
       id: 'e1c5e831-534e-473b-856b-bb8ba33655ac',
       icon: 'a8d6fcac-0374-4e26-ad7d-22aa8ece821f',
       name: 'Fracht Mechanik',
+      category: 'ship',
+    },
+    {
+      id: '0e824394-db91-4d4a-a547-7ff684e9ea50',
+      icon: '',
+      name: 'Raumanzüge und Rüstungen',
+      category: 'person',
+    },
+    {
+      id: '08470bfa-3e7c-487c-bde3-810895cdfa92',
+      icon: '',
+      name: 'Personen Ausrüstung',
+      category: 'person',
+    },
+    {
+      id: 'b69bb675-77fc-42e5-93ed-9e973d5101cc',
+      icon: '',
+      name: 'Medizinische Ausrüstung',
+      category: 'person',
+    },
+    {
+      id: 'weaponindex',
+      icon: '',
+      name: 'Weapon Index',
+      category: 'person',
+      image: 'fbd2c23c-74bc-4142-a145-f2f43dbfdc77',
+      desc: 'beschreibung',
+    },
+    {
+      id: 'armorindex',
+      icon: '',
+      name: 'Armor Index',
+      category: 'person',
+      image: 'b4e16143-82a9-48f9-a58c-927732996a38',
+      desc: 'Coming Soon',
     },
   ]
 
@@ -167,97 +215,107 @@ export default function Technologie({ data }) {
                 <div
                   className={`grid justify-between grid-cols-[repeat(14,_minmax(0,_1fr))] mt-6 gap-x-4`}
                 >
-                  {items.map((object, index) => (
-                    <div
-                      key={object.id}
-                      onMouseEnter={() => setSelectedTech(object.id)}
-                      onMouseLeave={() => setSelectedTech(undefined)}
-                    >
-                      <Link
-                        href={
-                          object.link == null
-                            ? '/VerseExkurs/technologie/komponenten'
-                            : '/VerseExkurs/technologie/' + object.name
+                  {items
+                    .filter((e) => e.category == 'ship')
+                    .map((object, index) => (
+                      <div
+                        key={object.id}
+                        onMouseEnter={() => setSelectedTech(object.id)}
+                        onMouseLeave={() => setSelectedTech(undefined)}
+                      >
+                        <Link
+                          href={
+                            object.link == null
+                              ? '/VerseExkurs/technologie/komponenten'
+                              : '/VerseExkurs/technologie/' + object.name
+                          }
+                        >
+                          <a>
+                            <div
+                              className={
+                                'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square ' +
+                                (selectedTech == object.id
+                                  ? 'opacity-100'
+                                  : 'opacity-80')
+                              }
+                            >
+                              <div className="relative w-full h-full">
+                                <Image
+                                  src={
+                                    'https://cms.ariscorp.de/assets/' +
+                                    object.icon
+                                  }
+                                  layout="fill"
+                                  objectFit="cover"
+                                  alt={'icon von: ' + object.name}
+                                  placeholder="blur"
+                                  blurDataURL={
+                                    'https://cms.ariscorp.de/assets/' +
+                                    object.icon +
+                                    '?width=16&quality=1'
+                                  }
+                                />
+                              </div>
+                            </div>
+                          </a>
+                        </Link>
+                      </div>
+                    ))}
+                </div>
+                <div className="relative flex w-full space-x-4">
+                  <div className="w-1/4">
+                    <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
+                      <div
+                        className="relative w-52 aspect-square hover:cursor-pointer"
+                        onClick={() =>
+                          push('/VerseExkurs/technologie/Komponenten')
                         }
                       >
-                        <a>
-                          <div
-                            className={
-                              'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square ' +
-                              (selectedTech == object.id
-                                ? 'opacity-100'
-                                : 'opacity-80')
-                            }
-                          >
-                            <div className="relative w-full h-full">
-                              <Image
-                                src={
-                                  'https://cms.ariscorp.de/assets/' +
-                                  object.icon
-                                }
-                                layout="fill"
-                                objectFit="cover"
-                                alt={'icon von: ' + object.name}
-                                placeholder="blur"
-                                blurDataURL={
-                                  'https://cms.ariscorp.de/assets/' +
-                                  object.icon +
-                                  '?width=16&quality=1'
-                                }
-                              />
-                            </div>
-                          </div>
-                        </a>
-                      </Link>
-                    </div>
-                  ))}
-                </div>
-                {selectedTech && activeTab == 0 ? (
-                  selectedTech != 'grav' &&
-                  selectedTech != 'weaponindex' &&
-                  selectedTech != 'armorindex' ? (
-                    data
-                      .filter((data) => data.id == selectedTech)
-                      .map((data) => (
-                        <ShipInfo
-                          key={data.id}
-                          name={data.technologie_name}
-                          desc={data.technologie_beschreibung}
-                          image={data.technologie_banner?.id}
+                        <Image
+                          src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
+                          alt="Kompletter Tech Index"
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={
+                            'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
+                            '?width=16&quality=1'
+                          }
                         />
-                      ))
-                  ) : (
-                    <ShipInfo
-                      key={selectedTech}
-                      name={items.find((e) => e.id == selectedTech).name}
-                      desc={items.find((e) => e.id == selectedTech).desc}
-                      image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
-                    />
-                  )
-                ) : (
-                  <ShipInfo
-                    key={'idle'}
-                    name={'Komponenten'}
-                    desc={'idle anzeige, noch kein text vorhanden'}
-                    image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
-                  />
-                )}
-                <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
-                  <div
-                    className="relative w-52 aspect-square hover:cursor-pointer"
-                    onClick={() => push('/VerseExkurs/technologie/Komponenten')}
-                  >
-                    <Image
-                      src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
-                      alt="Kompletter Tech Index"
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
-                        '?width=16&quality=1'
-                      }
-                    />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="w-3/4">
+                    {selectedTech && activeTab == 0 ? (
+                      selectedTech != 'grav' &&
+                      selectedTech != 'weaponindex' &&
+                      selectedTech != 'armorindex' ? (
+                        data
+                          .filter((data) => data.id == selectedTech)
+                          .map((data) => (
+                            <ShipInfo
+                              key={data.id}
+                              name={data.technologie_name}
+                              desc={data.technologie_beschreibung}
+                              image={data.technologie_banner?.id}
+                            />
+                          ))
+                      ) : (
+                        <ShipInfo
+                          key={selectedTech}
+                          name={items.find((e) => e.id == selectedTech).name}
+                          desc={items.find((e) => e.id == selectedTech).desc}
+                          image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
+                        />
+                      )
+                    ) : (
+                      <ShipInfo
+                        key={'idle'}
+                        name={'Komponenten'}
+                        desc={'idle anzeige, noch kein text vorhanden'}
+                        image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
+                      />
+                    )}
                   </div>
                 </div>
               </div>
@@ -276,9 +334,7 @@ export default function Technologie({ data }) {
               </div>
               <div className="flex flex-wrap w-7/12 mx-auto">
                 <div className="relative w-full">
-                  {selectedTech ? (
-                    selectedTech != 'grav' &&
-                    selectedTech != 'powerplant' &&
+                  {selectedTech && activeTab == 1 ? (
                     selectedTech != 'weaponindex' &&
                     selectedTech != 'armorindex' ? (
                       data
@@ -291,20 +347,22 @@ export default function Technologie({ data }) {
                             image={data.technologie_banner?.id}
                           />
                         ))
-                    ) : selectedTech == 'weaponindex' ? (
+                    ) : (
                       <PersonalInfo
-                        name={'WeaponIndex'}
-                        desc={'Hier fehlt eine Beschreibung und ein Banner'}
-                        image={'fbd2c23c-74bc-4142-a145-f2f43dbfdc77'}
+                        key={selectedTech}
+                        name={items.find((e) => e.id == selectedTech).name}
+                        desc={items.find((e) => e.id == selectedTech).desc}
+                        image={items.find((e) => e.id == selectedTech).image}
                       />
-                    ) : selectedTech == 'armorindex' ? (
-                      <PersonalInfo
-                        name={'ArmorIndex'}
-                        desc={'Hier fehlt eine Beschreibung und ein Banner'}
-                        image={null}
-                      />
-                    ) : null
-                  ) : null}
+                    )
+                  ) : (
+                    <PersonalInfo
+                      key={'idle'}
+                      name={'Personenausrüstung'}
+                      desc={'idle anzeige, noch kein text vorhanden'}
+                      image={'327e44ea-3045-44a9-a8f0-1fc1279df782'}
+                    />
+                  )}
                   <div className="absolute flex flex-wrap justify-between w-full mx-auto xs:flex-nowrap h-36 md:h-48 lg:px-6 top-64 lg:h-60">
                     <div
                       className="relative w-60 aspect-square hover:cursor-pointer"
@@ -353,53 +411,12 @@ export default function Technologie({ data }) {
   )
 }
 
-const ComponentDisplay = ({ obj }) => {
-  const [selectedTech, setSelectedTech] = useContext(
-    ShipTechnologieModalContext
-  )
-
-  return (
-    <Link
-      href={
-        obj.link == null
-          ? '/VerseExkurs/technologie/komponenten'
-          : '/VerseExkurs/technologie/' + obj.name
-      }
-    >
-      <a>
-        <div
-          className={
-            'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square opacity-80' +
-              selectedTech ==
-            obj.id
-          }
-        >
-          <div className="relative w-full h-full">
-            <Image
-              src={'https://cms.ariscorp.de/assets/' + obj.icon}
-              layout="fill"
-              objectFit="cover"
-              alt={'icon von: ' + obj.name}
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                obj.icon +
-                '?width=16&quality=1'
-              }
-            />
-          </div>
-        </div>
-      </a>
-    </Link>
-  )
-}
-
 const PersonalInfo = ({ name, desc, image }) => (
   <div className="top-4 relative h-44 lg:w-[516px] xl:w-[650px] lg:float-right">
     <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
       <BasicPanel>
         <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
-          <h5 className="w-full mb-5">{name}</h5>
+          <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
           <div className="w-[47%]">
             <div className="relative sm:w-64 w-56 h-[5.5rem]">
               <Image
@@ -425,12 +442,12 @@ const PersonalInfo = ({ name, desc, image }) => (
 )
 
 const ShipInfo = ({ name, desc, image }) => (
-  <div className="relative block">
-    <div className="relative w-full md:absolute mt-5 right-0 h-44 top-0 md:w-[480px] lg:w-[548px]">
+  <div className="relative block lg:right-0">
+    <div className="relative w-full md:absolute mt-5 right-0 h-44 top-0 md:w-[480px] lg:w-full">
       <div className="w-full h-full">
         <BasicPanel>
           <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
-            <h5 className="w-full mb-5">{name}</h5>
+            <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
             <div className="w-[44%]">
               <div className="relative w-56 h-[5.5rem]">
                 <Image

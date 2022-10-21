@@ -87,6 +87,10 @@ const Footer = () => {
           <Link href="/credits">
             <a className="text-secondary">Credits</a>
           </Link>
+          <span> - </span>
+          <Link href="/bug-report">
+            <a className="text-secondary">Bug-Report Tool</a>
+          </Link>
         </div>
       </div>
     </footer>

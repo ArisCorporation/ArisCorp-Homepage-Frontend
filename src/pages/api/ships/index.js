@@ -144,10 +144,6 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     soldAt.push({
       name: object2.name,
       slug: object2.slug,
-      // storeImage
-      // storeImageLarge
-      // storeImageMedium
-      // storeImageSmall
       category: object2.category,
       subCategory: object2.subCategory,
       subCategoryLabel: object2.subCategoryLabel,
@@ -175,10 +171,6 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     boughtAt.push({
       name: object2.name,
       slug: object2.slug,
-      // storeImage
-      // storeImageLarge
-      // storeImageMedium
-      // storeImageSmall
       category: object2.category,
       subCategory: object2.subCategory,
       subCategoryLabel: object2.subCategoryLabel,
@@ -206,10 +198,6 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     listedAt.push({
       name: object2.name,
       slug: object2.slug,
-      // storeImage
-      // storeImageLarge
-      // storeImageMedium
-      // storeImageSmall
       category: object2.category,
       subCategory: object2.subCategory,
       subCategoryLabel: object2.subCategoryLabel,
@@ -237,10 +225,6 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     rentalAt.push({
       name: object2.name,
       slug: object2.slug,
-      // storeImage
-      // storeImageLarge
-      // storeImageMedium
-      // storeImageSmall
       category: object2.category,
       subCategory: object2.subCategory,
       subCategoryLabel: object2.subCategoryLabel,
@@ -301,10 +285,6 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     zaxisAcceleration: object.zaxisAcceleration,
     size: object.size,
     sizeLabel: object.sizeLabel,
-    // storeImage
-    // storeImageLarge
-    // storeImageMedium
-    // storeImageSmall
     brochure: FileIds.brochure,
     holo: FileIds.holo,
     holoColored: object.holoColored,

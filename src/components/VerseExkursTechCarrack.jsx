@@ -577,8 +577,8 @@ const TechCarrack = () => {
       {/* GRAVITATIONGENERATOR */}
       <g
         id="gravitationsgeneratorgroup"
-        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'grav' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
-        onMouseEnter={() => setSelectedTech('grav')}
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == '39efc5e7-0113-4fe3-9fb7-c4776fdd0786' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
+        onMouseEnter={() => setSelectedTech('39efc5e7-0113-4fe3-9fb7-c4776fdd0786')}
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push(
