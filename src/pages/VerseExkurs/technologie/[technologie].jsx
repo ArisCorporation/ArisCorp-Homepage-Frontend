@@ -14,9 +14,11 @@ export async function getServerSideProps(context) {
   const { params } = context
   const { technologie } = params
 
+  const Technologie = technologie?.charAt(0).toUpperCase() + technologie?.slice(1)
+
   const { data } = await client.query({
     query: GET_VERSEEXKURS_TECHNOLOGIE,
-    variables: { Technologie: technologie },
+    variables: { Technologie },
   })
 
   if (!data) {

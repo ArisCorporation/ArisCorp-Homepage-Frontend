@@ -39,7 +39,6 @@ export default function Technologie({ data }) {
       id: '63d432e4-eafa-4ea1-9870-4610dd74d087',
       icon: '0db5201a-cbca-483f-b3a3-af677a5b3310',
       name: 'IFCS',
-      desc: '',
       category: 'ship',
     },
     {
@@ -100,7 +99,6 @@ export default function Technologie({ data }) {
       id: '39efc5e7-0113-4fe3-9fb7-c4776fdd0786',
       icon: 'bb487d7c-d4bb-41e8-8f67-c14d52ecc6fa',
       name: 'Gravitationsgenerator',
-      desc: 'noch keine Beschreibung für Grav gens',
       category: 'ship',
     },
     {
@@ -145,7 +143,7 @@ export default function Technologie({ data }) {
       name: 'Weapon Index',
       category: 'person',
       image: 'fbd2c23c-74bc-4142-a145-f2f43dbfdc77',
-      desc: 'beschreibung',
+      desc: 'Im Waffen Index werden alle Waffen die im Verse zur Verfügung stehen aufgeführt. Inklusive Beschreibung, Kategorisierungen von Art, Typ, Wirkung und anderen wichtigen Statistiken die von Interesse sein könnten',
     },
     {
       id: 'armorindex',
@@ -225,9 +223,7 @@ export default function Technologie({ data }) {
                       >
                         <Link
                           href={
-                            object.link == null
-                              ? '/VerseExkurs/technologie/komponenten'
-                              : '/VerseExkurs/technologie/' + object.name
+                            '/VerseExkurs/technologie/' + object.name
                           }
                         >
                           <a>
@@ -312,7 +308,7 @@ export default function Technologie({ data }) {
                       <ShipInfo
                         key={'idle'}
                         name={'Komponenten'}
-                        desc={'idle anzeige, noch kein text vorhanden'}
+                        desc={'Komponenten sind die Zentralen Elemente eines jeden Raumschiffes. Erst sie ermöglichen dass das Schiff sich bewegt, seine Crew am leben erhalten wird und es sich im Fall aller fälle verteidigen kann. Es sind alle Geräte, Ausrüstungen und Werkzeuge, die die "funktionierenden" Teile eines Schiffes ausmachen. Im Tech Index bekommen Sie eine Übersicht über alle Komponententypen und deren Funktionieren. '}
                         image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
                       />
                     )}
@@ -359,11 +355,11 @@ export default function Technologie({ data }) {
                     <PersonalInfo
                       key={'idle'}
                       name={'Personenausrüstung'}
-                      desc={'idle anzeige, noch kein text vorhanden'}
+                      desc={'Unsere Personenausrüstung ist ein wesentlicher Bestandteil des Überlebens- und Arbeitens im Weltraum. Von Raum- und Schutzanzügen über Werkzeuge und andere Hilfsmittel wie das Persönliche Mobiglas sind sie ein unerlässlicher Teil eines jeden Raumfahrers'}
                       image={'327e44ea-3045-44a9-a8f0-1fc1279df782'}
                     />
                   )}
-                  <div className="absolute flex flex-wrap justify-between w-full mx-auto xs:flex-nowrap h-36 md:h-48 lg:px-6 top-64 lg:h-60">
+                  <div className="absolute flex flex-wrap justify-between w-full mx-auto xs:flex-nowrap h-36 md:h-48 lg:px-6 top-96 lg:h-60">
                     <div
                       className="relative w-60 aspect-square hover:cursor-pointer"
                       onMouseEnter={() => setSelectedTech('weaponindex')}
