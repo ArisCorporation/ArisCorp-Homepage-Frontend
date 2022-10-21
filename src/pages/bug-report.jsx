@@ -74,6 +74,21 @@ const projects = [
   },
 ]
 
+const focuses = [
+  {
+    id: 0,
+    name: 'Inhalt',
+    value: 'content',
+    unavailable: false,
+  },
+  {
+    id: 1,
+    name: 'Technik',
+    value: 'tech',
+    unavailable: false,
+  },
+]
+
 export async function getServerSideProps() {
   const res = await axios.get(
     `https://api.awork.io/api/v1/projects/005bb376-e97c-eb11-a607-00155d314496/projecttasks`,
@@ -100,11 +115,17 @@ export default function CreditsPage({ data }) {
   const [firstStepSelection, setFirstStepSelection] = useState()
   const [secondStepSelection, setSecondStepSelection] = useState()
   const [second2StepSelection, setSecond2StepSelection] = useState()
-  const [thirdStepSelection, setThirdStepSelection] = useState()
   const [browser, setBrowser] = useState()
   const [OS, setOS] = useState()
+  const [bugIsDone, setBugIsDone] = useState(false)
   const [bugDescription, setBugDescription] = useState()
   const [project, setProject] = useState({
+    id: -1,
+    name: 'Please set a Value',
+    value: '',
+    unavailable: false,
+  })
+  const [focus, setFocus] = useState({
     id: -1,
     name: 'Please set a Value',
     value: '',
@@ -219,17 +240,142 @@ export default function CreditsPage({ data }) {
       })
       return
     }
-    const newBug = {
-      title: title,
-      project: project,
-      os: OS,
-      browser: browser,
-      description: bugDescription,
+    if (focuses.indexOf(focus) <= -1) {
+      setSubmitError({ id: 4, message: 'Art des Bugs muss ausgewählt sein!' })
+      return
     }
-    
-    
+    // const description = bugDescription.replace(/\n/g, ",")
+    // bugDescription.value.re
+    const newBug = {
+      name: title,
+      description:
+        `<p>` +
+        bugDescription.replace(/\n/g, '<p><br /></p>') +
+        ` <p><br></p><p><br></p> <p>OS: ${OS}</p> <p>Browser: ${browser}</p></p>`,
+      typeOfWorkId: '4b21fdf6-bf0e-4db1-6756-08d8df08faff',
+      taskStatusId: 'efa885e5-174c-ed11-ade6-cc60c8b6347d',
+      order: 0,
+      entityId: '005bb376-e97c-eb11-a607-00155d314496',
+      baseType: 'projecttask',
+      lists: [
+        {
+          id: '51310d1d-3e0f-ec11-b563-dc984023d47e',
+          order: 0,
+        },
+      ],
+    }
 
-    return 'done'
+    const tags = [
+      {
+        name: 'Bug-Report',
+        color: 'yellow',
+      },
+    ]
+    const assignees = []
+
+    if (project.value == 'homepage') {
+      tags.push({
+        name: 'Homepage',
+        color: 'blue',
+      })
+    } else if (project.value == 'verseexkurs') {
+      tags.push({
+        name: 'VerseExkurs',
+        color: 'blue',
+      })
+    } else if (project.value == 'shipexkurs') {
+      tags.push({
+        name: 'ShipExkurs',
+        color: 'azure',
+      })
+    }
+
+    if (focus.value == 'content') {
+      tags.push({
+        name: 'Content',
+        color: 'green',
+      })
+      assignees.push('3cdd29dc-4083-eb11-a607-00155d314496')
+    } else if (focus.value == 'tech') {
+      tags.push({
+        name: 'Tech',
+        color: 'purple',
+      })
+      assignees.push('c804d639-e97c-eb11-a607-00155d314496')
+    }
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3aWQiOiI5MDA0ZDYzOS1lOTdjLWViMTEtYTYwNy0wMDE1NWQzMTQ0OTYiLCJpaWQiOiI0NzVlZDZjNC0xNDRjLWVkMTEtYWRlNi1jYzYwYzhiNjM0N2QiLCJ1aWQiOiI0NzVlZDZjNC0xNDRjLWVkMTEtYWRlNi1jYzYwYzhiNjM0N2QiLCJuYW1lIjoiYnVnLXJlcG9ydCIsImF6cCI6ImJ1Zy1yZXBvcnQiLCJzY29wZSI6Im9mZmxpbmVfYWNjZXNzIiwicnRpZCI6IjQ3NWVkNmM0LTE0NGMtZWQxMS1hZGU2LWNjNjBjOGI2MzQ3ZCIsIm5iZiI6MTY2NTc4ODc2MiwiZXhwIjo0Nzg5OTI2MzYyLCJpc3MiOiJodHRwczovL2F3b3JrLmlvLyIsImF1ZCI6ImF3LWFjY291bnRzIn0.7OyiskCz7ZCE9GyRN7kDBe3cepMoIQVYZSEArdVrnRQ',
+    }
+
+    axios
+      .post(`https://api.awork.io/api/v1/tasks`, newBug, {
+        headers: headers,
+      })
+      .then((resp) => {
+        let tid = resp.data.id
+        axios
+          .post(`https://api.awork.io/api/v1/tasks/${tid}/addtags`, tags, {
+            headers: headers,
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+        axios
+          .post(
+            `https://api.awork.io/api/v1/tasks/${tid}/setassignees`,
+            assignees,
+            {
+              headers: headers,
+            }
+          )
+          .catch(function (error) {
+            console.log(error)
+          })
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
+
+    setBugIsDone(true)
+  }
+
+  function handleChange() {
+    const reassign = [
+      {
+        taskId: selectedTask,
+        statusId: 'efa885e5-174c-ed11-ade6-cc60c8b6347d',
+        order: 0,
+      },
+    ]
+
+    const newList = [
+      {
+        taskId: selectedTask,
+        taskLists: [
+          {
+            id: '3fa85f64-5717-4562-b3fc-2c963f66afa6',
+            order: 0,
+          },
+        ],
+      },
+    ]
+
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3aWQiOiI5MDA0ZDYzOS1lOTdjLWViMTEtYTYwNy0wMDE1NWQzMTQ0OTYiLCJpaWQiOiI0NzVlZDZjNC0xNDRjLWVkMTEtYWRlNi1jYzYwYzhiNjM0N2QiLCJ1aWQiOiI0NzVlZDZjNC0xNDRjLWVkMTEtYWRlNi1jYzYwYzhiNjM0N2QiLCJuYW1lIjoiYnVnLXJlcG9ydCIsImF6cCI6ImJ1Zy1yZXBvcnQiLCJzY29wZSI6Im9mZmxpbmVfYWNjZXNzIiwicnRpZCI6IjQ3NWVkNmM0LTE0NGMtZWQxMS1hZGU2LWNjNjBjOGI2MzQ3ZCIsIm5iZiI6MTY2NTc4ODc2MiwiZXhwIjo0Nzg5OTI2MzYyLCJpc3MiOiJodHRwczovL2F3b3JrLmlvLyIsImF1ZCI6ImF3LWFjY291bnRzIn0.7OyiskCz7ZCE9GyRN7kDBe3cepMoIQVYZSEArdVrnRQ',
+    }
+
+    axios
+      .post(`https://api.awork.io/api/v1/tasks/changestatuses`, reassign, {
+        headers: headers,
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 
   return (
@@ -238,7 +384,13 @@ export default function CreditsPage({ data }) {
       <div className="min-h-screen mt-12 rounded-lg drop-shadow-xl bg-bg-secondary/70">
         <div className="pt-4">
           <div className="flex mx-6">
-            <div className="w-full mb-3">
+            <div
+              className={
+                'w-full mb-3 transition-opacity duration-300' +
+                (currentStep == 'done' || secondStepSelection != null || firstStepSelection == 'yes' ? ' opacity-0' : ' opacity-100')
+              }
+            >
+              <p>Titel</p>
               <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
@@ -359,7 +511,8 @@ export default function CreditsPage({ data }) {
                     <button
                       onClick={() => {
                         setSecondStepSelection('yes'),
-                          setTimeout(() => setCurrentStep(2.5), 300)
+                          handleChange(selectedTask)
+                        setTimeout(() => setCurrentStep(2.5), 300)
                       }}
                       className="px-12 py-3 text-center transition-all duration-150 ease-out rounded-lg hover:cursor-pointer hover:duration-200 bg-bg-primary/50 hover:bg-bg-primary hover:shadow-lg"
                     >
@@ -438,9 +591,9 @@ export default function CreditsPage({ data }) {
               'transition-all duration-300' +
               (firstStepSelection == null || firstStepSelection != 'no'
                 ? ' hidden'
-                : currentStep != 2 && secondStepSelection != null
+                : currentStep != 2 && bugIsDone != false
                 ? ' hidden'
-                : currentStep != 2 || secondStepSelection != null
+                : currentStep != 2 || bugIsDone != false
                 ? ' opacity-0'
                 : '')
             }
@@ -472,7 +625,7 @@ export default function CreditsPage({ data }) {
                   </div>
                 </div>
               </div>
-              <div>
+              <div className="flex w-full space-x-4">
                 <div className="w-1/3">
                   <p className='after:content-["*"] after:ml-0.5'>Project</p>
                   <Listbox value={project} onChange={setProject}>
@@ -544,6 +697,85 @@ export default function CreditsPage({ data }) {
                   <p
                     className={
                       'tracking-wide text-red-500 text-xs ml-1' +
+                      (submitError.id != 4 ? ' hidden' : '')
+                    }
+                  >
+                    {submitError.message}
+                  </p>
+                </div>
+                <div className="w-1/3">
+                  <p className='after:content-["*"] after:ml-0.5'>
+                    Art des Bugs
+                  </p>
+                  <Listbox value={focus} onChange={setFocus}>
+                    <div className="relative z-10 mt-1">
+                      <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-pointer border-bg-secondary bg-bg-primary focus-visible:outline-none sm:text-sm">
+                        <span
+                          className={
+                            'block truncate' +
+                            (focus.name == 'Please set a Value'
+                              ? ' invisible'
+                              : '')
+                          }
+                        >
+                          {focus.name}
+                        </span>
+                        <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
+                          <HiSelector
+                            className="w-5 h-5 text-gray-400"
+                            aria-hidden="true"
+                          />
+                        </span>
+                      </Listbox.Button>
+                      <Transition
+                        leave="transition ease-in duration-100"
+                        leaveFrom="opacity-100"
+                        leaveTo="opacity-0"
+                      >
+                        <Listbox.Options className="absolute w-full py-1 pl-0 mt-1 overflow-auto text-base rounded-md shadow-lg bg-bg-primary max-h-60 ring-1 ring-white ring-opacity-5 focus:outline-none sm:text-sm">
+                          {focuses.map((focus, index) => (
+                            <Listbox.Option
+                              key={index}
+                              className={({ active }) =>
+                                `cursor-pointer select-none relative py-2 pl-4 pr-4 ${
+                                  active
+                                    ? 'text-secondary bg-bg-secondary'
+                                    : 'opacity-50'
+                                }`
+                              }
+                              value={focus}
+                            >
+                              {({ selectedFocus }) => (
+                                <>
+                                  <span
+                                    className={`block truncate ${
+                                      selectedFocus
+                                        ? 'font-medium'
+                                        : 'font-normal'
+                                    }`}
+                                  >
+                                    {focus.name}
+                                  </span>
+                                  {selectedFocus ? (
+                                    <span className="absolute inset-y-0 left-0 flex items-center text-secondary">
+                                      <AiOutlineCheck
+                                        className="w-5 h-5"
+                                        aria-hidden="true"
+                                      />
+                                    </span>
+                                  ) : null}
+                                </>
+                              )}
+                            </Listbox.Option>
+                          ))}
+                        </Listbox.Options>
+                      </Transition>
+                    </div>
+                  </Listbox>
+
+                  <p
+                    className={
+                      'tracking-wide text-red-500 text-xs ml-1' +
                       (submitError.id != 2 ? ' hidden' : '')
                     }
                   >
@@ -578,7 +810,10 @@ export default function CreditsPage({ data }) {
               </div>
               <div className="w-full mt-12">
                 <button
-                  onClick={() => handleSubmit()}
+                  onClick={() => {
+                    handleSubmit('yes'),
+                      setTimeout(() => setCurrentStep('done'), 300)
+                  }}
                   className="w-full px-8 py-3 text-center transition-all duration-150 ease-out rounded-lg hover:duration-200 bg-bg-primary/50 hover:bg-bg-primary hover:shadow-lg"
                 >
                   <div>
@@ -589,12 +824,27 @@ export default function CreditsPage({ data }) {
               </div>
             </div>
           </div>
+          <div
+            className={
+              'transition-all duration-300' +
+              (firstStepSelection == null || firstStepSelection != 'no'
+                ? ' hidden'
+                : currentStep != 'done' && bugIsDone != true
+                ? ' hidden'
+                : currentStep != 'done' || bugIsDone != true
+                ? ' opacity-0'
+                : '')
+            }
+          >
+            <div className="text-center">
+              <h2 className="text-primary">
+                Danke das du unser Bug Reporting Tool benutzt hast!
+              </h2>
+              <h3>Wir wünschen dir noch viel Spaß im Verse!</h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   )
-}
-
-CreditsPage.getLayout = function getLayout(page) {
-  return <Layout>{page}</Layout>
 }
