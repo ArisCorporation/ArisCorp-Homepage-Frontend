@@ -2,14 +2,14 @@ import Image from 'next/image'
 import Layout from 'pages/VerseExkurs/layout'
 import TechCarrack from 'components/VerseExkursTechCarrack'
 import TechHuman from 'components/VerseExkursTechHuman'
-import { useContext } from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import { useRouter } from 'next/router'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_TECHNOLOGIES } from 'graphql/queries'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
 import { Tab } from '@headlessui/react'
 import { BasicPanel } from 'components/panels'
+import Link from 'next/link'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -34,6 +34,83 @@ export default function Technologie({ data }) {
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
 
+  const components = [
+    {
+      id: '63d432e4-eafa-4ea1-9870-4610dd74d087',
+      icon: '0db5201a-cbca-483f-b3a3-af677a5b3310',
+      name: 'IFCS',
+      desc: ''
+    },
+    {
+      id: '5f235080-66a5-4ea5-970a-9c3aa83dbc69',
+      icon: '0e5f5484-b084-4758-857e-161340276737',
+      name: 'Energiegeneratoren',
+    },
+    {
+      id: '1c44c62a-e1f6-4dfb-a907-90de864dde29',
+      icon: '338c5195-5425-4c1e-9777-443e7ac14060',
+      name: 'Computer Systeme und Avionic',
+    },
+    {
+      id: '691372da-bca6-4ca9-9bb8-2c7ddb28d928',
+      icon: '8a559a38-820d-4179-a335-82124dc1b703',
+      name: 'Kühlsysteme',
+    },
+    {
+      id: '41db2450-c335-4bfb-bdc3-c21ca8c934e7',
+      icon: 'e11dcb3a-4978-4b6e-9acc-15a9755bfcbf',
+      name: 'Radar und Signaturen',
+    },
+    {
+      id: 'c5fba33f-9cdc-42b2-b601-6e7e6f59621b',
+      icon: '25985e91-fe8a-49be-b9a2-0a2b5106a56a',
+      name: 'Fusionstriebwerke',
+    },
+    {
+      id: '165f1bde-3678-4f85-bb8b-0e4c5e20e67f',
+      icon: 'f53d657b-aa5b-423d-b468-fe2bc02c5c80',
+      name: 'Quantum und Sprungantrieb',
+    },
+    {
+      id: '165f1bde-3678-4f85-bb8b-0e4c5e20e67f',
+      icon: '',
+      name: 'Quantum und Sprungantrieb',
+    },
+    {
+      id: '07ff69e2-31b4-4fe6-ad09-3719a659aa51',
+      icon: '06a914e5-ce11-4e06-8358-88001d86f439',
+      name: 'Treibstoff Mechanik',
+    },
+    {
+      id: '07ff69e2-31b4-4fe6-ad09-3719a659aa51',
+      icon: 'e722f37f-c5a5-47a0-8fb3-e3203417c8dd',
+      name: 'Treibstoff Mechanik',
+    },
+    {
+      id: 'grav',
+      icon: 'bb487d7c-d4bb-41e8-8f67-c14d52ecc6fa',
+      name: 'Gravitationsgenerator',
+      desc: 'noch keine Beschreibung für Grav gens'
+    },
+    {
+      id: '94cb2026-4b08-4f4e-b5cf-8a24574cf576',
+      icon: 'c0f5954b-e122-4a72-92dd-e7828f4c7bf0',
+      name: 'Schutzschilde',
+    },
+    {
+      id: 'ac4583c6-8df9-4faf-97c6-0881eedf3afe',
+      icon: '8fcfe5e8-ac21-40cd-ae7d-5f5148991850',
+      name: 'Waffensysteme',
+    },
+    {
+      id: 'e1c5e831-534e-473b-856b-bb8ba33655ac',
+      icon: 'a8d6fcac-0374-4e26-ad7d-22aa8ece821f',
+      name: 'Fracht Mechanik',
+    },
+  ]
+
+  const complength = components.length
+
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
       setActiveTab(urlquery)
@@ -45,6 +122,8 @@ export default function Technologie({ data }) {
   const [selectedTech, setSelectedTech] = useContext(
     ShipTechnologieModalContext
   )
+
+  console.log(selectedTech)
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -89,14 +168,59 @@ export default function Technologie({ data }) {
                     </div>
                   </div>
                 </BasicPanel>
-              </div>
-
-              {selectedTech
-                ? selectedTech != 'grav' &&
-                  selectedTech != 'powerplant' &&
+                <div
+                  className={`grid justify-between grid-cols-[repeat(${complength},_minmax(0,_1fr))] mt-6 gap-x-4`}
+                >
+                  {components.map((object, index) => (
+                    <div
+                      key={object.id}
+                      onMouseEnter={() => setSelectedTech(object.id)}
+                      onMouseLeave={() => setSelectedTech(undefined)}
+                    >
+                      <Link
+                        href={
+                          object.link == null
+                            ? '/VerseExkurs/technologie/komponenten'
+                            : '/VerseExkurs/technologie/' + object.name
+                        }
+                      >
+                        <a>
+                          <div
+                            className={
+                              'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square ' +
+                              (selectedTech == object.id
+                                ? 'opacity-100'
+                                : 'opacity-80')
+                            }
+                          >
+                            <div className="relative w-full h-full">
+                              <Image
+                                src={
+                                  'https://cms.ariscorp.de/assets/' +
+                                  object.icon
+                                }
+                                layout="fill"
+                                objectFit="cover"
+                                alt={'icon von: ' + object.name}
+                                placeholder="blur"
+                                blurDataURL={
+                                  'https://cms.ariscorp.de/assets/' +
+                                  object.icon +
+                                  '?width=16&quality=1'
+                                }
+                              />
+                            </div>
+                          </div>
+                        </a>
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+                {selectedTech ? (
+                  selectedTech != 'grav' &&
                   selectedTech != 'weaponexkurs' &&
-                  selectedTech != 'armorexkurs'
-                  ? data
+                  selectedTech != 'armorexkurs' ? (
+                    data
                       .filter((data) => data.id == selectedTech)
                       .map((data) => (
                         <ShipInfo
@@ -106,27 +230,39 @@ export default function Technologie({ data }) {
                           image={data.technologie_banner?.id}
                         />
                       ))
-                  : null
-                : null}
-
-              <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
-                <div
-                  className="relative w-52 aspect-square hover:cursor-pointer"
-                  onClick={() =>
-                    push('/VerseExkurs/technologie/Komponenten')
-                  }
-                >
-                  <Image
-                    src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
-                    alt="Kompletter Tech Index"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
-                      '?width=16&quality=1'
-                    }
+                  ) : (
+                    <ShipInfo
+                      key={selectedTech}
+                      name={components.find((e) => e.id == selectedTech).name}
+                      desc={components.find((e) => e.id == selectedTech).desc}
+                      image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
+                    />
+                  )
+                ) : activeTab == 0 ? (
+                  <ShipInfo
+                    key={'idle'}
+                    name={'Komponenten'}
+                    desc={'idle anzeige, noch kein text vorhanden'}
+                    image={'811cff57-2e74-4b1c-a872-d2b8acbf9218'}
                   />
+                ) : null}
+                <div className="top-0 left-0 flex justify-center mt-24 md md:justify-start md:mt-5 ">
+                  <div
+                    className="relative w-52 aspect-square hover:cursor-pointer"
+                    onClick={() => push('/VerseExkurs/technologie/Komponenten')}
+                  >
+                    <Image
+                      src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
+                      alt="Kompletter Tech Index"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
+                        '?width=16&quality=1'
+                      }
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -218,6 +354,47 @@ export default function Technologie({ data }) {
         </Tab.Panels>
       </Tab.Group>
     </div>
+  )
+}
+
+const ComponentDisplay = ({ obj }) => {
+  const [selectedTech, setSelectedTech] = useContext(
+    ShipTechnologieModalContext
+  )
+
+  return (
+    <Link
+      href={
+        obj.link == null
+          ? '/VerseExkurs/technologie/komponenten'
+          : '/VerseExkurs/technologie/' + obj.name
+      }
+    >
+      <a>
+        <div
+          className={
+            'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square opacity-80' +
+              selectedTech ==
+            obj.id
+          }
+        >
+          <div className="relative w-full h-full">
+            <Image
+              src={'https://cms.ariscorp.de/assets/' + obj.icon}
+              layout="fill"
+              objectFit="cover"
+              alt={'icon von: ' + obj.name}
+              placeholder="blur"
+              blurDataURL={
+                'https://cms.ariscorp.de/assets/' +
+                obj.icon +
+                '?width=16&quality=1'
+              }
+            />
+          </div>
+        </div>
+      </a>
+    </Link>
   )
 }
 
