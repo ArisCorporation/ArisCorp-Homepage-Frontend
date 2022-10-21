@@ -9,13 +9,11 @@ import {
 } from 'react-icons/fa'
 import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
 import { FiCpu } from 'react-icons/fi'
-import { MdGroups, MdHistoryEdu, MdTimeline } from 'react-icons/md'
+import { MdGroups, MdHistoryEdu } from 'react-icons/md'
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import { ImBook } from 'react-icons/im'
 import { useState, useEffect, useRef } from 'react'
-import { Disclosure, Transition } from '@headlessui/react'
 import {
-  BsCalendar3,
   BsChevronDoubleLeft,
   BsShieldShaded,
   BsTriangleFill,
@@ -267,204 +265,58 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <Disclosure as="li" className="p-0 m-0 list-none">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button
-                      as="a"
-                      className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                        (router.pathname.startsWith('/VerseExkurs/timeline') ||
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip
+                data-for="GeschichteTip"
+              >
+                <Link href="/VerseExkurs/timeline">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.pathname.startsWith('/VerseExkurs/timeline') ||
                         router.pathname.startsWith('/VerseExkurs/onedayinhistory')
-                          ? 'after:block text-white '
-                          : 'after:hidden text-[#afafaf] ') +
-                        (!mobileView && sidebarCollapsed
-                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
-                          : '')
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
-                      data-tip
-                      data-for="GeschichteTip"
                     >
-                      <div
-                        className={
-                          'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
-                          (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
-                        }
-                      >
-                        <MdHistoryEdu className="min-w-[30px] text-center relative antialiased inline-block" />
-                        <span
-                          className={
-                            'ml-[5px] ' +
-                            (!mobileView && sidebarCollapsed ? 'hidden' : '')
-                          }
-                        >
-                          {' '}
-                          Geschichte{' '}
-                        </span>
-                        {!mobileView && sidebarCollapsed ? (
-                          <ReactTooltip
-                            id="GeschichteTip"
-                            place="right"
-                            effect="solid"
-                            arrowColor="transparent"
-                            type="dark"
-                            padding="8px"
-                          >
-                            Geschichte
-                          </ReactTooltip>
-                        ) : (
-                          ''
-                        )}
-                      </div>
+                      <MdHistoryEdu className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          'absolute top-1/2 right-[20px] mt-[-10px]' +
+                          'ml-[5px] ' +
                           (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        <FaChevronRight
-                          className={`${
-                            open ? 'transform rotate-90' : ''
-                          } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? 'hidden' : ''
-                          }`}
-                        />
+                        {' '}
+                        Geschichte{' '}
                       </span>
-                    </Disclosure.Button>
-
-                    <Transition>
-                      <Disclosure.Panel
-                        as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden pl-0"
-                      >
-                        <Transition.Child
-                          enter="transform transition-all duration-300 ease-linear"
-                          enterFrom="transform h-0"
-                          enterTo="transform h-[99px]"
-                          leave="transform transition-all duration-300 ease-linear"
-                          leaveFrom="transform h-[99px]"
-                          leaveTo="transform h-0"
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="GeschichteTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
                         >
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="timelineTip"
-                          >
-                            <Link href="/VerseExkurs/timeline">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/timeline'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <MdTimeline className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Zeitleiste des Verse{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="timelineTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Zeitleiste des Verse
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li className="h-[1px] list-none my-[5px] mx-[15px] bg-[#272b30]"></li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="oneDayInHistoryTip"
-                          >
-                            <Link href="/VerseExkurs/onedayinhistory">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname ==
-                                  '/VerseExkurs/onedayinhistory'
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative h-6 whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <BsCalendar3 className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Ein Tag in der Geschichte{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="oneDayInHistoryTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Ein Tag in der Geschichte
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                        </Transition.Child>
-                      </Disclosure.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Disclosure>
+                          Geschichte
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </a>
+                </Link>
+              </li>
               <li
                 className="p-0 m-0 list-none group"
                 data-tip
@@ -558,7 +410,7 @@ export default function Sidebar() {
                           type="dark"
                           padding="8px"
                         >
-                          Starmap
+                          ARK Starmap
                         </ReactTooltip>
                       ) : (
                         ''
@@ -567,438 +419,63 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <Disclosure as="li" className="p-0 m-0 list-none">
-                {({ open }) => (
-                  <>
-                    <Disclosure.Button
-                      as="a"
-                      className={
-                        'hover:text-[#e2e2e2] cursor-pointer relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                        (router.pathname.startsWith('/VerseExkurs/alienrassen') || 
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip
+                data-for="AlienrassenTip"
+              >
+                <Link href="/VerseExkurs/alienrassen">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.pathname.startsWith('/VerseExkurs/alienrassen') || 
                         router.pathname.startsWith('/VerseExkurs/banu') ||
                         router.pathname.startsWith('/VerseExkurs/tevarin') ||
                         router.pathname.startsWith('/VerseExkurs/vanduul') ||
                         router.pathname.startsWith('/VerseExkurs/xian') ||
                         router.pathname.startsWith('/VerseExkurs/biestarium') ||
                         router.pathname.startsWith('/VerseExkurs/pflanzen')
-                          ? 'after:block text-white '
-                          : 'after:hidden text-[#afafaf] ') +
-                        (!mobileView && sidebarCollapsed
-                          ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
-                          : '')
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
-                      data-tip
-                      data-for="AlienrassenTip"
                     >
-                      <div
-                        className={
-                          'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
-                          (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
-                        }
-                      >
-                        <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                        <span
-                          className={
-                            'ml-[5px] ' +
-                            (!mobileView && sidebarCollapsed ? 'hidden' : '')
-                          }
-                        >
-                          {' '}
-                          Alienrassen{' '}
-                        </span>
-                        {!mobileView && sidebarCollapsed ? (
-                          <ReactTooltip
-                            id="AlienrassenTip"
-                            place="right"
-                            effect="solid"
-                            arrowColor="transparent"
-                            type="dark"
-                            padding="8px"
-                          >
-                            Alienrassen
-                          </ReactTooltip>
-                        ) : (
-                          ''
-                        )}
-                      </div>
+                      <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
                       <span
                         className={
-                          'absolute top-1/2 right-[20px] mt-[-10px]' +
+                          'ml-[5px] ' +
                           (!mobileView && sidebarCollapsed ? 'hidden' : '')
                         }
                       >
-                        <FaChevronRight
-                          className={`${
-                            open ? 'transform rotate-90' : ''
-                          } transition-all duration-300 ease-linear antialiased ${
-                            !mobileView && sidebarCollapsed ? 'hidden' : ''
-                          }`}
-                        />
+                        {' '}
+                        Alienrassen{' '}
                       </span>
-                    </Disclosure.Button>
-
-                    <Transition>
-                      <Disclosure.Panel
-                        as="ul"
-                        className="mb-[10px] list-none relative overflow-hidden pl-0"
-                      >
-                        <Transition.Child
-                          enter="transform transition-all duration-300 ease-linear"
-                          enterFrom="transform h-0"
-                          enterTo="transform h-[275px]"
-                          leave="transform transition-all duration-300 ease-linear"
-                          leaveFrom="transform h-[275px]"
-                          leaveTo="transform h-0"
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="AlienrassenTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
                         >
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="BanuTip"
-                          >
-                            <Link href="/VerseExkurs/banu">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/banu'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Banu{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="BanuTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Banu
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="TevarinTip"
-                          >
-                            <Link href="/VerseExkurs/tevarin">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/tevarin'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Tevarin{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="TevarinTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Tevarin
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="VanduulTip"
-                          >
-                            <Link href="/VerseExkurs/vanduul">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/vanduul'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Vanduul{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="VanduulTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Vanduul
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="XiAnTip"
-                          >
-                            <Link href="/VerseExkurs/xian">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/xian'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Xi{"'"}An{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="XiAnTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Xi{"'"}An
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li className="h-[1px] my-[5px] mx-[15px] bg-[#272b30] list-none"></li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="BiestariumTip"
-                          >
-                            <Link href="/VerseExkurs/biestarium">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/biestarium'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative h-6 whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Biestarium{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="BiestariumTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Biestarium
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                          <li
-                            className="p-0 m-0 list-none group"
-                            data-tip
-                            data-for="PflanzenTip"
-                          >
-                            <Link href="/VerseExkurs/pflanzen">
-                              <a
-                                className={
-                                  'group-hover:text-[#e2e2e2] text-base relative block whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                                  (router.pathname.startsWith(
-                                    '/VerseExkurs/pflanzen'
-                                  )
-                                    ? 'after:block text-white '
-                                    : 'after:hidden text-[#afafaf] ') +
-                                  (!mobileView && sidebarCollapsed
-                                    ? 'py-[10px] pl-[25px] pr-[10px] text-2xl '
-                                    : ' py-[10px] pl-10 pr-[15px] ')
-                                }
-                              >
-                                <div
-                                  className={
-                                    'relative h-6 whitespace-nowrap ' +
-                                    (!mobileView && sidebarCollapsed
-                                      ? 'h-[30px]'
-                                      : 'h-6')
-                                  }
-                                >
-                                  <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
-                                  <span
-                                    className={
-                                      'ml-[5px] ' +
-                                      (!mobileView && sidebarCollapsed
-                                        ? 'hidden'
-                                        : '')
-                                    }
-                                  >
-                                    {' '}
-                                    Pflanzen{' '}
-                                  </span>
-                                  {!mobileView && sidebarCollapsed ? (
-                                    <ReactTooltip
-                                      id="PflanzenTip"
-                                      place="right"
-                                      effect="solid"
-                                      arrowColor="transparent"
-                                      type="dark"
-                                      padding="8px"
-                                    >
-                                      Pflanzen
-                                    </ReactTooltip>
-                                  ) : (
-                                    ''
-                                  )}
-                                </div>
-                              </a>
-                            </Link>
-                          </li>
-                        </Transition.Child>
-                      </Disclosure.Panel>
-                    </Transition>
-                  </>
-                )}
-              </Disclosure>
+                          Alienrassen
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </a>
+                </Link>
+              </li>
               <li
                 className="p-0 m-0 list-none group"
                 data-tip
