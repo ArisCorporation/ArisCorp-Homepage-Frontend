@@ -2412,7 +2412,6 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   text-overflow: ellipsis;
-  color: #E48632 !important;
   /* Non standard for webkit */
   /*
 	   -webkit-hyphens: auto;
@@ -2460,6 +2459,9 @@
 .tl-slidenav-next .tl-slidenav-content-container .tl-slidenav-description {
   text-shadow: 1px 1px 1px #333;
   color: #ccc;
+}
+.tl-slidenav-icon{
+  color: #E48632 !important;
 }
 .tl-slidenav-previous
   .tl-slidenav-content-container.tl-slidenav-inverted
