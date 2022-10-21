@@ -182,6 +182,7 @@ export default function Firmen({ data }) {
                     Personenausrüstung
                   </h1>
                 </Tab>
+                <hr />
               </Tab.List>
               <Tab.Panels className={'px-4 pt-16'}>
                 <Tab.Panel>
@@ -453,6 +454,7 @@ export default function Firmen({ data }) {
                     Software Entwickler
                   </h1>
                 </Tab>
+                <hr />
               </Tab.List>
               <Tab.Panels className={'px-4 pt-16'}>
                 <Tab.Panel>
