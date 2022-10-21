@@ -2412,6 +2412,7 @@
   -webkit-line-clamp: 2;
   line-clamp: 2;
   text-overflow: ellipsis;
+  color: #E48632 !important;
   /* Non standard for webkit */
   /*
 	   -webkit-hyphens: auto;
