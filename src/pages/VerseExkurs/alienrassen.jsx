@@ -28,93 +28,113 @@ export default function Alienrassen({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
-      <h1 className='mb-4 text-lg text-center md:mb-6 lg:mb-12 text-primary md:text-xl lg:text-3xl'>Clicken sie auf die Alienrasse die sie sehen wollen.</h1>
+      <h1 className="mb-4 text-lg text-center md:mb-6 lg:mb-12 text-primary md:text-xl lg:text-3xl">
+        Clicken sie auf die Alienrasse die sie sehen wollen.
+      </h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
         <Link href="/VerseExkurs/banu">
-          <a className="relative aspect-[750/1100] hover:cursor-pointer">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                '5c801a7b-89b5-481d-bce9-623b869c83ae'
-              }
-              alt="Banu Potrait"
-              className=""
-              blurDataURL={''}
-              layout="fill"
-              placeholder={''}
-            />
+          <a className=" hover:cursor-pointer">
+            <div className="relative aspect-[750/1100]">
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  '5c801a7b-89b5-481d-bce9-623b869c83ae'
+                }
+                alt="Banu Potrait"
+                className=""
+                blurDataURL={''}
+                layout="fill"
+                placeholder={''}
+              />
+            </div>
+            <h2 className="text-center text-secondary">Banu</h2>
           </a>
         </Link>
         <Link href="/VerseExkurs/tevarin">
-          <a className="relative aspect-[750/1100] hover:cursor-pointer">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                '90e34d34-7b8a-4f74-90aa-62f6e220ed65'
-              }
-              alt="Banu Potrait"
-              blurDataURL={''}
-              layout="fill"
-              placeholder={''}
-            />
+          <a className="hover:cursor-pointer">
+            <div className="relative aspect-[750/1100]">
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  '90e34d34-7b8a-4f74-90aa-62f6e220ed65'
+                }
+                alt="Tevarin Potrait"
+                blurDataURL={''}
+                layout="fill"
+                placeholder={''}
+              />
+            </div>
+            <h2 className="text-center text-secondary">Tevarin</h2>
           </a>
         </Link>
         <Link href="/VerseExkurs/vanduul">
-          <a className="relative aspect-[750/1100] hover:cursor-pointer">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                '137383b7-5c18-4247-8b10-a575bce24cd5'
-              }
-              alt="Banu Potrait"
-              blurDataURL={''}
-              layout="fill"
-              placeholder={''}
-            />
+          <a className="hover:cursor-pointer">
+            <div className="relative aspect-[750/1100]">
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  '137383b7-5c18-4247-8b10-a575bce24cd5'
+                }
+                alt="Vanduul Potrait"
+                blurDataURL={''}
+                layout="fill"
+                placeholder={''}
+              />
+            </div>
+            <h2 className="text-center text-secondary">Vanduul</h2>
           </a>
         </Link>
         <Link href="/VerseExkurs/xian">
-          <a className="relative aspect-[750/1100] hover:cursor-pointer">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                '58708a2f-ac13-438c-8df0-dc84dc628ce9'
-              }
-              alt="Banu Potrait"
-              blurDataURL={''}
-              layout="fill"
-              placeholder={''}
-            />
+          <a className="hover:cursor-pointer">
+            <div className="relative aspect-[750/1100]">
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  '58708a2f-ac13-438c-8df0-dc84dc628ce9'
+                }
+                alt="Xi'An Potrait"
+                blurDataURL={''}
+                layout="fill"
+                placeholder={''}
+              />
+            </div>
+            <h2 className="text-center text-secondary">Xi{"'"}An</h2>
           </a>
         </Link>
         <Link href="/VerseExkurs/biestarium">
-          <a className="relative sm:col-span-2 md:col-span-4 aspect-[3160/1100] hover:cursor-pointer">
+          <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
+            <div className="relative aspect-[3160/1100]">
             <Image
               src={
                 'https://cms.ariscorp.de/assets/' +
                 'a1f0653a-65a2-45c6-964f-9c5b9cb3d4f0'
               }
-              alt="Banu Potrait"
+              alt="Biestarium Potrait"
               blurDataURL={''}
               layout="fill"
               objectFit="cover"
               placeholder={''}
             />
+            </div>
+            <h2 className="text-center text-secondary">Biestarium</h2>
           </a>
         </Link>
         <Link href="/VerseExkurs/pflanzen">
-          <a className="relative sm:col-span-2 md:col-span-4 aspect-[3160/1100] hover:cursor-pointer">
+          <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
+            <div className="relative aspect-[3160/1100]">
             <Image
               src={
                 'https://cms.ariscorp.de/assets/' +
                 '15c5cc03-b23d-4b73-ad27-d4e0b2eb9837'
               }
-              alt="Banu Potrait"
+              alt="Pflanzen Potrait"
               blurDataURL={''}
               layout="fill"
               objectFit="cover"
               placeholder={''}
             />
+            </div>
+            <h2 className="text-center text-secondary">Pflanzen</h2>
           </a>
         </Link>
       </div>
