@@ -1,12 +1,11 @@
 import Footer from 'components/Footer'
-import Sidebar from 'components/VerseExkursSidebar'
+import Sidebar from 'components/ShipExkursSidebar'
 import client from 'apollo/clients'
-import { LocalApiClient } from 'apollo/clients'
 import { ApolloProvider } from '@apollo/client'
 
 export default function Layout({ children }) {
   return (
-    <ApolloProvider client={LocalApiClient}>
+    <ApolloProvider client={client}>
       <div className="flex">
         <Sidebar />
         <div

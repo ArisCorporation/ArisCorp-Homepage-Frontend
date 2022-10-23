@@ -1086,3 +1086,77 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 `
 
 // SHIPEXKURS QUERYS
+export const GET_SHIPEXKURS_SHIPS = gql`
+  query GerShipExkursShips {
+    ships(filter: { status: { _eq: "published" } }, limit: -1) {
+      id
+      name
+      manufacturer {
+        id
+        firmen_name
+        firmen_trans_logo {
+          id
+        }
+      }
+    }
+  }
+`
+
+export const GET_SHIPEXKURS_SHIP = gql`
+  query GerShipExkursShips($slug: String!) {
+    ships(
+      filter: { status: { _eq: "published" }, slug: { _eq: $slug } }
+      limit: -1
+    ) {
+      id
+      name
+      erkulIdentifier
+      slug
+      length
+      beam
+      height
+      mass
+      cargo
+      hydrogenFuelTankSize
+      quantumFuelTankSize
+      minCrew
+      maxCrew
+      scmSpeed
+      afterburnerSpeed
+      size
+      holoColored
+      storeUrl
+      salesPageUrl
+      price
+      pledgePrice
+      onSale
+      productionStatus
+      productionNote
+      classification
+      focus
+      hasModules
+      hasUpgrades
+      hasPaints
+      brochure {
+        id
+      }
+      holo {
+        id
+      }
+      manufacturer {
+        id
+        firmen_name
+        firmen_trans_logo {
+          id
+        }
+      }
+      storeImage {
+        id
+      }
+      description
+      history
+      ratings
+      s_w
+    }
+  }
+`

@@ -1,104 +1,77 @@
 import Layout from './layout'
-import Link from 'next/link'
-import { gql, useQuery } from '@apollo/client'
-import formatJson from 'cms/formatJson'
-import fetchCarrack from 'cms/fetchCarrack'
-import { Directus } from '@directus/sdk'
+import ReactMarkdown from 'react-markdown'
+import rehypeRaw from 'rehype-raw'
+import {
+  ARKIcon,
+  GalactapediaIcon,
+  RSICommLinksIcon,
+  RSIRoadmapIcon,
+} from 'components/icons'
+import { GET_VEXKURS_INDEX } from 'graphql/queries'
+import client from 'apollo/clients'
+import router from 'next/router'
 
-const directus = new Directus('https://cms.ariscorp.de')
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_VEXKURS_INDEX })
 
-directus.auth.static('ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr')
-
-const ships = directus.items('ships')
-
-const GET_SHIPS = gql`
-  query getShips {
-    ships @rest(path: "ships") {
-      data {
-        ClassName
-        Name
-        Description
-        Size
-        Career
-        Role
-        Cargo
-        Crew
-        WeaponCrew
-        OperationsCrew
-        Mass
-        IsSpaceship
-      }
+  if (!data) {
+    return {
+      notFound: true,
     }
   }
-`
 
-export default function VerseExkursIndex() {
-  const { loading, error, data } = useQuery(GET_SHIPS)
-
-  if (loading)
-    return <div className="flex justify-center pt-32">loading...</div>
-
-  if (error) return <p>Error :(</p>
-
-  async function test(data) {
-    // Replace-Function
-    function renameKey(obj, oldKey, newKey) {
-      obj[newKey] = obj[oldKey]
-      delete obj[oldKey]
-    }
-    // Replace Key: ClassName with Key: _slug
-    const sData = JSON.parse(JSON.stringify(data))
-    sData.ships.data.forEach((obj) => renameKey(obj, 'ClassName', '_slug'))
-
-    // Replace Key: Name with Key: model
-    sData.ships.data.forEach((obj) => renameKey(obj, 'Name', 'model'))
-
-    // Replace Key: Description with Key: description
-    sData.ships.data.forEach((obj) =>
-      renameKey(obj, 'Description', 'description')
-    )
-    // Remove Quotes && Replace "\n" with "<br />"
-    const shipjson = JSON.stringify(sData.ships.data)
-    const shipdata = shipjson
-      .replace(/"([^"]+)":/g, '$1:')
-      .replace(/\\n/g, '<br />')
-      .replace('}{', '},{')
-
-    const tetst = JSON.parse(shipjson.replace(/\\n/g, '<br />'))
-
-    console.log(await ships.createMany(tetst))
+  return {
+    props: {
+      data: await data.exkurs_index,
+    },
   }
+}
 
+export default function VerseExkursIndex(data) {
   return (
-    <div className="[overflow-x:scroll!important]">
-      <h1 className="text-center scale-50 md:scale-75 lg:scale-100">
-        Das ist ein sehr kleiner Einblick in die Daten die, der ArisCorp für den
-        ShipExkurs zur verfügung stehen
-      </h1>
-      <h5 className="mt-3 text-center">
-        Für ein paar mehr Daten können sie einfach nach einem Schiff suchen in
-        dem sie diese url eingeben:
-        <p className="pt-1 opacity-80">
-          {'"'}https://ptu.ariscorp.de/ShipExkurs/{'['}
-          hersteller-code (bspw. anvl für Anvil){']'}_{'['}ship-model (bspw.
-          carrack){']'}
-          {'"'}
-        </p>
-        Fertiger link:{' '}
-        <Link href="/ShipExkurs/anvl_carrack">
-          <a className="text-secondary">
-            {' '}
-            https://ptu.ariscorp.de/ShipExkurs/anvl_carrack
-          </a>
-        </Link>
-      </h5>
-      <p className="mt-3 text-sm italic text-center scale-90 opacity-70">
-        * Hinweis: für seitliches scrollen halten sie Umschalt/Shift gedrückt
-        und drehen sie ihr Mausrad *
-      </p>
-      <button onClick={() => formatJson(data)}>test</button>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
-    </div>
+    <>
+      <ReactMarkdown
+        rehypePlugins={[rehypeRaw]}
+        className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
+      >
+        {data.data.text}
+      </ReactMarkdown>
+      <div className="flex flex-wrap items-center justify-center text-center lg:justify-between scale-70 xl:scale-100">
+        <a
+          href="https://robertsspaceindustries.com/starmap"
+          target="_blank"
+          rel="noreferrer"
+          className="flex mt-8 group"
+        >
+          <ARKIcon classes="fill-white" width="200" height="200" />
+        </a>
+        <a
+          href="https://robertsspaceindustries.com/galactapedia"
+          target="_blank"
+          rel="noreferrer"
+          className="flex mt-8 group"
+        >
+          <GalactapediaIcon classes="fill-white" width="200" height="200" />
+        </a>
+        <a
+          href="https://robertsspaceindustries.com/comm-link"
+          target="_blank"
+          rel="noreferrer"
+          className="flex mt-8 group"
+        >
+          <RSICommLinksIcon classes="fill-white" width="200" height="200" />
+        </a>
+        <a
+          href="https://robertsspaceindustries.com/roadmap"
+          target="_blank"
+          rel="noreferrer"
+          className="flex mt-8 group"
+        >
+          <RSIRoadmapIcon classes="fill-white" width="200" height="200" />
+        </a>
+      </div>
+      <hr />
+    </>
   )
 }
 
