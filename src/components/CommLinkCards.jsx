@@ -12,7 +12,7 @@ const OneThird = ({
   id,
 }) => {
   return (
-    <Link href={'/comm-link/transmission/' + id}>
+    <Link legacyBehavior href={'/comm-link/transmission/' + id}>
       <a
         className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer"
         aria-label={'Comm-Link: ' + title}
@@ -69,7 +69,7 @@ const TwoThirds = ({
   id,
 }) => {
   return (
-    <Link href={'/comm-link/transmission/' + id}>
+    <Link legacyBehavior href={'/comm-link/transmission/' + id}>
       <a
         className="hover:no-underline mt-10 mr-[30px] xl:w-[729px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer"
         aria-label={'Comm-Link: ' + title}
@@ -140,7 +140,7 @@ const ThreeThirds = ({
   id,
 }) => {
   return (
-    <Link href={'/comm-link/transmission/' + id}>
+    <Link legacyBehavior href={'/comm-link/transmission/' + id}>
       <a
         className="hover:no-underline mt-10 md:mx-[30px] lg:mx-0 lg:mr-[30px] lg:w-[729px] xl:w-[1119px] h-[315px] block p-[10px] float-left border-[1px] border-primary boder-solid border-opacity-20 relative box-content group cursor-pointer"
         aria-label={'Comm-Link: ' + title}

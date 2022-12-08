@@ -221,7 +221,7 @@ export default function Technologie({ data }) {
                         onMouseEnter={() => setSelectedTech(object.id)}
                         onMouseLeave={() => setSelectedTech(undefined)}
                       >
-                        <Link href={'/VerseExkurs/technologie/' + object.name}>
+                        <Link legacyBehavior href={'/VerseExkurs/technologie/' + object.name}>
                           <a>
                             <div
                               className={

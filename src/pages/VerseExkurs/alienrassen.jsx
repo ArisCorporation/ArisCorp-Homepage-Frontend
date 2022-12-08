@@ -32,7 +32,7 @@ export default function Alienrassen({ data }) {
         Clicken sie auf die Alienrasse die sie sehen wollen.
       </h1>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4">
-        <Link href="/VerseExkurs/banu">
+        <Link legacyBehavior href="/VerseExkurs/banu">
           <a className=" hover:cursor-pointer">
             <div className="relative aspect-[750/1100]">
               <Image
@@ -50,7 +50,7 @@ export default function Alienrassen({ data }) {
             <h2 className="text-center text-secondary">Banu</h2>
           </a>
         </Link>
-        <Link href="/VerseExkurs/tevarin">
+        <Link legacyBehavior href="/VerseExkurs/tevarin">
           <a className="hover:cursor-pointer">
             <div className="relative aspect-[750/1100]">
               <Image
@@ -67,7 +67,7 @@ export default function Alienrassen({ data }) {
             <h2 className="text-center text-secondary">Tevarin</h2>
           </a>
         </Link>
-        <Link href="/VerseExkurs/vanduul">
+        <Link legacyBehavior href="/VerseExkurs/vanduul">
           <a className="hover:cursor-pointer">
             <div className="relative aspect-[750/1100]">
               <Image
@@ -84,7 +84,7 @@ export default function Alienrassen({ data }) {
             <h2 className="text-center text-secondary">Vanduul</h2>
           </a>
         </Link>
-        <Link href="/VerseExkurs/xian">
+        <Link legacyBehavior href="/VerseExkurs/xian">
           <a className="hover:cursor-pointer">
             <div className="relative aspect-[750/1100]">
               <Image
@@ -101,7 +101,7 @@ export default function Alienrassen({ data }) {
             <h2 className="text-center text-secondary">Xi{"'"}An</h2>
           </a>
         </Link>
-        <Link href="/VerseExkurs/biestarium">
+        <Link legacyBehavior href="/VerseExkurs/biestarium">
           <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
             <div className="relative aspect-[3160/1100]">
             <Image
@@ -119,7 +119,7 @@ export default function Alienrassen({ data }) {
             <h2 className="text-center text-secondary">Biestarium</h2>
           </a>
         </Link>
-        <Link href="/VerseExkurs/pflanzen">
+        <Link legacyBehavior href="/VerseExkurs/pflanzen">
           <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
             <div className="relative aspect-[3160/1100]">
             <Image

@@ -37,22 +37,22 @@ export default function Organisationen({ data }) {
         </div>
         <hr />
         <div className="flex px-4 space-x-4">
-          <Link href={'/VerseExkurs/hersteller'}>
+          <Link legacyBehavior href={'/VerseExkurs/hersteller'}>
             <a>
               <p>Hersteller,</p>
             </a>
           </Link>
-          <Link href={'/VerseExkurs/dienstleister'}>
+          <Link legacyBehavior href={'/VerseExkurs/dienstleister'}>
             <a>
               <p>Dienstleister,</p>
             </a>
           </Link>
-          <Link href={'/VerseExkurs/geschafte'}>
+          <Link legacyBehavior href={'/VerseExkurs/geschafte'}>
             <a>
               <p>Geschäfte,</p>
             </a>
           </Link>
-          <Link href={'/VerseExkurs/verschiedene'}>
+          <Link legacyBehavior href={'/VerseExkurs/verschiedene'}>
             <a>
               <p>Verschiedene</p>
             </a>

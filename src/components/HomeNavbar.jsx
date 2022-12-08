@@ -31,7 +31,7 @@ function Navbar() {
       {/* Desktop menu */}
       <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>
-          <Link
+          <Link legacyBehavior
             href={
               pathname == '/'
                 ? 'https://robertsspaceindustries.com/orgs/ARISCORP'
@@ -131,7 +131,7 @@ function Navbar() {
       <div className="flex flex-wrap items-center justify-between w-full px-5 mx-auto bg-black lg:hidden bg-opacity-80">
         <div className="container flex flex-wrap items-center justify-between mx-auto">
           <div>
-            <Link href="/">
+            <Link legacyBehavior href="/">
               <a className="top-0 flex items-center px-2 ">
                 <MainLogo width="64" height="64" />
                 <span className="pl-5 text-xl font-bold text-white">
@@ -153,7 +153,7 @@ function Navbar() {
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
-                  <Link href="/#our">
+                  <Link legacyBehavior href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 0 ? setSelectedOurIndex(0) : null
@@ -166,7 +166,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/#our">
+                  <Link legacyBehavior href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 1 ? setSelectedOurIndex(1) : null
@@ -179,7 +179,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/#our">
+                  <Link legacyBehavior href="/#our">
                     <a
                       onClick={() =>
                         selectedOurIndex != 2 ? setSelectedOurIndex(2) : null
@@ -192,7 +192,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/#comm-links">
+                  <Link legacyBehavior href="/#comm-links">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Comm-Links
@@ -201,7 +201,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full">
-                  <Link href="/#recruitment">
+                  <Link legacyBehavior href="/#recruitment">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Rekrutierung
@@ -210,7 +210,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full mb-5">
-                  <Link href="/#partners">
+                  <Link legacyBehavior href="/#partners">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         Partner
@@ -219,7 +219,7 @@ function Navbar() {
                   </Link>
                 </li>
                 <li className="block w-full mb-5">
-                  <Link href="/VerseExkurs">
+                  <Link legacyBehavior href="/VerseExkurs">
                     <a>
                       <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
                         VerseExkurs

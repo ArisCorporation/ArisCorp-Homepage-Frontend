@@ -114,7 +114,7 @@ export default function PflanzenPage(data) {
             <Tab.Panels className={'px-4'}>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <Link
+                  <Link legacyBehavior
                     href={
                       '/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)
                     }
@@ -140,7 +140,7 @@ export default function PflanzenPage(data) {
               </Tab.Panel>
               <Tab.Panel className="flex flex-wrap items-center justify-between text-center">
                 {Data.sections.map((data) => (
-                  <Link
+                  <Link legacyBehavior
                     href={
                       '/VerseExkurs/pflanzen/' + encodeURIComponent(data.title)
                     }

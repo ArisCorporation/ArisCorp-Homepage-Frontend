@@ -69,7 +69,7 @@ export default function BiestariumPage(data) {
           <hr />
           <div className="flex flex-wrap items-center justify-between text-center">
             {Data.sections.map((data) => (
-              <Link
+              <Link legacyBehavior
                 href={
                   '/VerseExkurs/biestarium/' + encodeURIComponent(data.title)
                 }

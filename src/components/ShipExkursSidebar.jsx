@@ -89,7 +89,7 @@ export default function Sidebar() {
         style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
       >
         <div className="flex items-stretch justify-between min-h-[60px] pb-5 bg-[rgba(23,25,28,.95)] border-t-[1px] border-solid border-t-[rgba(30,34,38,.5)]">
-          <Link href="/VerseExkurs">
+          <Link legacyBehavior href="/VerseExkurs">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -109,7 +109,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="/ShipExkurs/ships">
+          <Link legacyBehavior href="/ShipExkurs/ships">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -129,7 +129,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="/VerseExkurs/search">
+          <Link legacyBehavior href="/VerseExkurs/search">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -149,7 +149,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link href="/ShipExkurs/firmen">
+          <Link legacyBehavior href="/ShipExkurs/firmen">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -219,7 +219,7 @@ export default function Sidebar() {
                 data-tip
                 data-for="HomeTip"
               >
-                <Link href="/ShipExkurs">
+                <Link legacyBehavior href="/ShipExkurs">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
@@ -270,7 +270,7 @@ export default function Sidebar() {
                 data-tip
                 data-for="ShipsTip"
               >
-                <Link href="/ShipExkurs/ships">
+                <Link legacyBehavior href="/ShipExkurs/ships">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
@@ -321,7 +321,7 @@ export default function Sidebar() {
                 data-tip
                 data-for="FirmenTip"
               >
-                <Link href="/ShipExkurs/firmen">
+                <Link legacyBehavior href="/ShipExkurs/firmen">
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
@@ -443,7 +443,7 @@ export default function Sidebar() {
                 </a>
               </li>
               <li className="min-h-[60px] list-none group">
-                <Link href="/">
+                <Link legacyBehavior href="/">
                   <a className="group-hover:text-[#e2e2e2] text-[#afafaf] transition-all duration-500 ease-linear decoration-transparent">
                     <span
                       className={

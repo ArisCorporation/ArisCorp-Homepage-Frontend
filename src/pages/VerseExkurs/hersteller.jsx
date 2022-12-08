@@ -90,22 +90,22 @@ export default function Hersteller({ data }) {
           </Tab>
           <hr />
           <div className="flex px-4 space-x-4">
-            <Link href={'/VerseExkurs/dienstleister'}>
+            <Link legacyBehavior href={'/VerseExkurs/dienstleister'}>
               <a>
                 <p>Dienstleister,</p>
               </a>
             </Link>
-            <Link href={'/VerseExkurs/geschafte'}>
+            <Link legacyBehavior href={'/VerseExkurs/geschafte'}>
               <a>
                 <p>Geschäfte,</p>
               </a>
             </Link>
-            <Link href={'/VerseExkurs/organisationen'}>
+            <Link legacyBehavior href={'/VerseExkurs/organisationen'}>
               <a>
                 <p>Organisationen,</p>
               </a>
             </Link>
-            <Link href={'/VerseExkurs/verschiedene'}>
+            <Link legacyBehavior href={'/VerseExkurs/verschiedene'}>
               <a>
                 <p>Verschiedene</p>
               </a>

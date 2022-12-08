@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw'
 const ArticleCard = ({ link, title, desc, image, seperator, alt }) => {
   return (
     <div className="w-full h-24 transition-all duration-300 ease-in-out sm:h-32 lg:h-40 xl:h-48 my-14 hover:shadow-2xl hover:shadow-secondary">
-      <Link href={'/VerseExkurs/' + link}>
+      <Link legacyBehavior href={'/VerseExkurs/' + link}>
         <a className="pr-0 text-white decoration-transparent">
           <div className="flex items-center w-full h-full px-8">
             <div className={'relative h-3/4 w-1/3'}>

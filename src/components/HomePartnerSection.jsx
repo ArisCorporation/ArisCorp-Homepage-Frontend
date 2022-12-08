@@ -15,7 +15,7 @@ const PartnerSection = ({ data }) => {
       </h2>
       <div className="flex flex-wrap justify-between space-x-20">
         {data.map((partner) => (
-          <Link key={partner.id} href={partner.partner_website}>
+          <Link legacyBehavior key={partner.id} href={partner.partner_website}>
             <a
               target="_blank"
               className="group decoration-transparent"
