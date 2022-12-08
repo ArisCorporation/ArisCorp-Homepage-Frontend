@@ -10,6 +10,41 @@ import { GET_SHIPEXKURS_SHIP } from 'graphql/queries'
 import { BasicPanel } from 'components/panels'
 import { Tab } from '@headlessui/react'
 import client from 'apollo/clients'
+import {
+  CircularProgressbar,
+  CircularProgressbarWithChildren,
+  buildStyles,
+} from 'react-circular-progressbar'
+// import 'react-circular-progressbar/dist/styles.css'
+import './progressbar.css'
+
+import React from 'react'
+
+import _ from 'lodash'
+
+// Animation
+import { easeQuadInOut } from 'd3-ease'
+
+function Separator(props) {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        height: '100%',
+        transform: `rotate(${props.turns}turn)`,
+      }}
+    >
+      <div style={props.style} />
+    </div>
+  )
+}
+
+function RadialSeparators(props) {
+  const turns = 1 / props.count
+  return _.range(props.count).map((index) => (
+    <Separator turns={index * turns} style={props.style} />
+  ))
+}
 
 export async function getServerSideProps(context) {
   const { params } = context
@@ -161,170 +196,180 @@ export default function SpectrumArticlePage({ ships }) {
           <BasicPanel childClassName={'overflow-hidden'}>
             <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
               <table className="w-full table-fixed">
-                <div>
-                  <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Spezifikationen
-                  </p>
-                </div>
-                <tr className="">
-                  <th className="pr-2 text-left">Länge:</th>
-                  <td className="text-left text-primary">
-                    {data.length != null ? data.length + 'M' : 'N/A'}
-                  </td>
-                  <th className="pr-2 text-left">Breite:</th>
-                  <td className="text-left text-primary">
-                    {data.beam != null ? data.beam + 'M' : 'N/A'}
-                  </td>
-                  <th className="pr-2 text-left">Höhe:</th>
-                  <td className="text-left text-primary">
-                    {data.height != null ? data.height + 'M' : 'N/A'}
-                  </td>
-                </tr>
+                <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                  Spezifikationen
+                </caption>
+                <tbody>
+                  <tr className="">
+                    <th className="pr-2 text-left">Länge:</th>
+                    <td className="text-left text-primary">
+                      {data.length != null ? data.length + 'M' : 'N/A'}
+                    </td>
+                    <th className="pr-2 text-left">Breite:</th>
+                    <td className="text-left text-primary">
+                      {data.beam != null ? data.beam + 'M' : 'N/A'}
+                    </td>
+                    <th className="pr-2 text-left">Höhe:</th>
+                    <td className="text-left text-primary">
+                      {data.height != null ? data.height + 'M' : 'N/A'}
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <table className="w-full table-auto">
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Typ Klassifizierung:</th>
-                  <td className="text-left text-primary">
-                    {data.classification != null ? data.classification : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Größen Klassifizierung:</th>
-                  <td className="text-left text-primary">
-                    {data.classification != null
-                      ? data.size == 'small'
-                        ? 'Klein'
-                        : data.size == 'medium'
-                        ? 'Medium'
-                        : data.size == 'large'
-                        ? 'Groß'
-                        : data.size == 'capital'
-                        ? data.size
-                        : 'N/A'
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td colSpan="2">
+                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Typ Klassifizierung:</th>
+                    <td className="text-left text-primary">
+                      {data.classification != null
+                        ? data.classification
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Größen Klassifizierung:</th>
+                    <td className="text-left text-primary">
+                      {data.classification != null
+                        ? data.size == 'small'
+                          ? 'Klein'
+                          : data.size == 'medium'
+                          ? 'Medium'
+                          : data.size == 'large'
+                          ? 'Groß'
+                          : data.size == 'capital'
+                          ? data.size
+                          : 'N/A'
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <table className="w-full table-fixed">
-                <tr>
-                  <th className="pr-2 text-left">Min Crew:</th>
-                  <td className="text-left text-primary">
-                    {data.minCrew != null
-                      ? data.minCrew +
-                        (data.minCrew > 1 ? ' Personen' : ' Person')
-                      : 'N/A'}
-                  </td>
-                  <th className="pr-2 text-left">Max Crew:</th>
-                  <td className="text-left text-primary">
-                    {data.minCrew != null
-                      ? data.maxCrew +
-                        (data.maxCrew > 1 ? ' Personen' : ' Person')
-                      : 'N/A'}
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th className="pr-2 text-left">Min Crew:</th>
+                    <td className="text-left text-primary">
+                      {data.minCrew != null
+                        ? data.minCrew +
+                          (data.minCrew > 1 ? ' Personen' : ' Person')
+                        : 'N/A'}
+                    </td>
+                    <th className="pr-2 text-left">Max Crew:</th>
+                    <td className="text-left text-primary">
+                      {data.minCrew != null
+                        ? data.maxCrew +
+                          (data.maxCrew > 1 ? ' Personen' : ' Person')
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <table className="w-full table-auto">
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Kaufpreis:</th>
-                  <td className="text-left text-primary">
-                    {data.price != null ? (
-                      <div className="flex items-center">
-                        <p>
-                          {data.price
+                <tbody>
+                  <tr>
+                    <td colSpan="2">
+                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Kaufpreis:</th>
+                    <td className="text-left text-primary">
+                      {data.price != null ? (
+                        <div className="flex items-center">
+                          <p>
+                            {data.price
+                              .toString()
+                              .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')}
+                            <span className="lowercase"> a</span>UEC
+                          </p>
+                        </div>
+                      ) : (
+                        'N/A'
+                      )}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Kaufbar Bei:</th>
+                    <td className="text-left text-primary">N/A</td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Pledgewert:</th>
+                    <td className="text-left text-primary">
+                      {data.pledgePrice != null
+                        ? data.pledgePrice
                             .toString()
-                            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')}
-                          <span className="lowercase"> a</span>UEC
-                        </p>
-                      </div>
-                    ) : (
-                      'N/A'
-                    )}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Kaufbar Bei:</th>
-                  <td className="text-left text-primary">N/A</td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Pledgewert:</th>
-                  <td className="text-left text-primary">
-                    {data.pledgePrice != null
-                      ? data.pledgePrice
-                          .toString()
-                          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + '$'
-                      : 'N/A'}
-                  </td>
-                </tr>
+                            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + '$'
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </BasicPanel>
           <BasicPanel childClassName={'overflow-hidden'}>
             <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
               <table className="w-full table-fixed">
-                <div>
-                  <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Geschwindigkeit
-                  </p>
-                </div>
-                <tr>
-                  <th className="pr-2 text-left scale-60">
-                    SCM Geschwindigkeit:
-                  </th>
+                <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                  Geschwindigkeit
+                </caption>
+                <tbody>
+                  <tr>
+                    <th className="pr-2 text-left scale-60">
+                      SCM Geschwindigkeit:
+                    </th>
 
-                  <th className="pr-2 text-xs text-left">
-                    Afterburner Geschwindigkeit:
-                  </th>
-                </tr>
-                <tr>
-                  <td className="text-left text-primary">
-                    {data.ScmSpeed != null ? data.ScmSpeed + ' M/S' : 'N/A'}
-                  </td>
-                  <td className="text-left text-primary">
-                    {data.afterburnerSpeed != null
-                      ? data.afterburnerSpeed + 'M/S'
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-[85%] mt-3 sm:mt-3 sm:mb-2 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
+                    <th className="pr-2 text-xs text-left">
+                      Afterburner Geschwindigkeit:
+                    </th>
+                  </tr>
+                  <tr>
+                    <td className="text-left text-primary">
+                      {data.ScmSpeed != null ? data.ScmSpeed + ' M/S' : 'N/A'}
+                    </td>
+                    <td className="text-left text-primary">
+                      {data.afterburnerSpeed != null
+                        ? data.afterburnerSpeed + 'M/S'
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <hr className="relative w-[85%] mt-3 sm:mt-3 sm:mb-2 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                    </td>
+                  </tr>
+                </tbody>
               </table>
               <table className="w-full table-fixed">
-                <tr>
-                  <th className="pr-2 text-left">Pitch Max:</th>
-                  <td className="text-left text-primary">N/A</td>
-                  <th className="pr-2 text-left">X-Achse:</th>
-                  <td className="text-left text-primary">N/A</td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Yaw Max:</th>
-                  <td className="text-left text-primary">N/A</td>
-                  <th className="pr-2 text-left">Y-Achse:</th>
-                  <td className="text-left text-primary">N/A</td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Roll Max:</th>
-                  <td className="text-left text-primary">N/A</td>
-                  <th className="pr-2 text-left">Z-Achse:</th>
-                  <td className="text-left text-primary">N/A</td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <th className="pr-2 text-left">Pitch Max:</th>
+                    <td className="text-left text-primary">N/A</td>
+                    <th className="pr-2 text-left">X-Achse:</th>
+                    <td className="text-left text-primary">N/A</td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Yaw Max:</th>
+                    <td className="text-left text-primary">N/A</td>
+                    <th className="pr-2 text-left">Y-Achse:</th>
+                    <td className="text-left text-primary">N/A</td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Roll Max:</th>
+                    <td className="text-left text-primary">N/A</td>
+                    <th className="pr-2 text-left">Z-Achse:</th>
+                    <td className="text-left text-primary">N/A</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </BasicPanel>
@@ -792,10 +837,6 @@ export default function SpectrumArticlePage({ ships }) {
                           {data.history}
                         </ReactMarkdown>
                       </div>
-                      <h2>Die {data.name}</h2>
-                      <p className="whitespace-normal">
-                        Erreichte eine Wertung von: {overallScore}
-                      </p>
                     </div>
                     <div className="w-3/12">
                       <ul className="pl-1">
@@ -837,7 +878,7 @@ export default function SpectrumArticlePage({ ships }) {
                               : 'nicht vorhanden'}
                           </span>
                         </p>
-                        <p className='-mt-3'>{fightReason}</p>
+                        <p className="-mt-3">{fightReason}</p>
                       </div>
                       <div>
                         <p className="text-secondary">
@@ -854,7 +895,7 @@ export default function SpectrumArticlePage({ ships }) {
                               : 'nicht vorhanden'}
                           </span>
                         </p>
-                        <p className='-mt-3'>{ecoReason}</p>
+                        <p className="-mt-3">{ecoReason}</p>
                       </div>
                       <div>
                         <p className="text-secondary">
@@ -871,7 +912,7 @@ export default function SpectrumArticlePage({ ships }) {
                               : 'nicht vorhanden'}
                           </span>
                         </p>
-                        <p className='-mt-3'>{useReason}</p>
+                        <p className="-mt-3">{useReason}</p>
                       </div>
                       <div>
                         <p className="text-secondary">
@@ -888,9 +929,36 @@ export default function SpectrumArticlePage({ ships }) {
                               : 'nicht vorhanden'}
                           </span>
                         </p>
-                        <p className='-mt-3'>{ppReason}</p>
+                        <p className="-mt-3">{ppReason}</p>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center py-6 whitespace-normal">
+                  <div>
+                    <h2 className="w-full">Die {data.name}</h2>
+                    <p>Erreichte eine Wertung von:</p>
+                  </div>
+                  <div className="w-1/12 pl-2">
+                    <CircularProgressbarWithChildren
+                      value={overallScore}
+                      text={`${80}%`}
+                      strokeWidth={10}
+                      styles={buildStyles({
+                        strokeLinecap: 'butt',
+                      })}
+                    >
+                      <RadialSeparators
+                        count={12}
+                        style={{
+                          background: '#666',
+                          width: '2px',
+                          // This needs to be equal to props.strokeWidth
+                          height: `${10}%`,
+                        }}
+                      />
+                    </CircularProgressbarWithChildren>
                   </div>
                 </div>
               </BasicPanel>
