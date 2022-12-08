@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import Link from 'next/link'
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
