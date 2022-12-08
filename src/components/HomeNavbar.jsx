@@ -101,13 +101,13 @@ function Navbar() {
                 }
               />
               <NavbarItem
-                link="/"
-                tooltip="ShipExkurs - COMMING SOON"
+                link="/ShipExkurs"
+                tooltip="ShipExkurs"
                 content={
                   <ShipExkursBanner
                     width="120"
                     height="120"
-                    classes="navbar-banner-soon"
+                    classes="navbar-banner"
                   />
                 }
               />
