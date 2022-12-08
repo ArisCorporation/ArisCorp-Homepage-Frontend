@@ -1,5 +1,5 @@
 import Layout from 'pages/VerseExkurs/layout'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useEffect, useState, Fragment } from 'react'
 import { useRouter } from 'next/router'
 import ReactMarkdown from 'react-markdown'

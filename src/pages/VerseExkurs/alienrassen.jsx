@@ -1,5 +1,5 @@
 import Layout from './layout'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { GET_VERSEEXKURS_ALIENRASSEN } from 'graphql/queries'
 import client from 'apollo/clients'
 import { useRouter } from 'next/router'
