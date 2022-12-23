@@ -20,8 +20,6 @@ module.exports = withPWA(withConfig({
     defaultLocale: 'de',
   },
 
-  target: 'serverless',
-
   webpack: (config, options) => {
     patchWebpackConfig(config, options)
 
