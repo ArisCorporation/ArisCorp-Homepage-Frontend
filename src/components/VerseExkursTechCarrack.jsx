@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { useContext } from 'react'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
 import { useRouter } from 'next/router'
@@ -326,6 +326,7 @@ const TechCarrack = () => {
           id="radar2"
           d="M409.53,331.82c.22-2.14.43-4.15.69-6.55l3.57-3.24h7.93l3.48-5.94h14.51l2.17,3.5V327c-1.26,1.28-2.51,2.55-3.62,3.66-3.14-.21-6.33-.55-9.53-.62A7.5,7.5,0,0,1,423,327.5V323c-2.2,1.55-4.46.71-6.58,1-4.44,2.75-5.07,4.09-3.51,7.76Z"
         />
+        <path id="radar3" d="M1501,322.82v-.5c-.4-16.06.2-13.11,15-13.54,9.92-.29,10,.61,10,10.8,0,3.82,0,7.65,0,11.48,0,3.41-1.47,5.16-5.19,5-4.82-.21-9.66-.17-14.48,0-3.79.13-5.59-1.32-5.35-5.23C1501.13,328.15,1501,325.48,1501,322.82Z" />
       </g>
 
       {/* WEAPON */}
