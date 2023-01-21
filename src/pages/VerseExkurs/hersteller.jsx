@@ -6,8 +6,9 @@ import { GET_VERSEEXKURS_FIRMEN_HERSTELLER } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
 import CardDisplay from 'components/VerseExkursCardDisplay'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_FIRMEN_HERSTELLER,
   })
@@ -25,7 +26,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Hersteller({ data }) {
+export default function Hersteller ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -40,6 +41,11 @@ export default function Hersteller({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Hersteller
+        </title>
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
@@ -176,6 +182,6 @@ export default function Hersteller({ data }) {
   )
 }
 
-Hersteller.getLayout = function getLayout(page) {
+Hersteller.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

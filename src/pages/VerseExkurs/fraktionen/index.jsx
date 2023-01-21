@@ -5,8 +5,9 @@ import client from 'apollo/clients'
 import { GET_VERSEEXKURS_FRAKTIONEN } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
 import CardDisplay from 'components/VerseExkursCardDisplay'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_FRAKTIONEN })
 
   if (!data) {
@@ -22,7 +23,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Firmen({ data }) {
+export default function Firmen ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState(0)
   const [activeSecondaryTab, setActiveSecondaryTab] = useState(0)
@@ -36,10 +37,15 @@ export default function Firmen({ data }) {
     }
   }, [urlquery])
 
-  // console.log(data.filter((data) => data.category == 'hostile'))
+    (data.filter((data) => data.category == 'hostile'))
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Fraktionen
+        </title>
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
@@ -140,6 +146,6 @@ export default function Firmen({ data }) {
   )
 }
 
-Firmen.getLayout = function getLayout(page) {
+Firmen.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

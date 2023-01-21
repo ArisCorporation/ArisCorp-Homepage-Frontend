@@ -17,8 +17,9 @@ import 'swiper/css/pagination'
 import { Pagination, Navigation } from 'swiper'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SYSTEME } from 'graphql/queries'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_SYSTEME,
   })
@@ -36,7 +37,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function StarmapPage({ data }) {
+export default function StarmapPage ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -53,6 +54,11 @@ export default function StarmapPage({ data }) {
 
   return (
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Starmap
+        </title>
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
@@ -232,7 +238,7 @@ export default function StarmapPage({ data }) {
                 <div
                   className={
                     swiper?.swiperIndex?.activeIndex == 0 ||
-                    swiper?.swiperIndex?.activeIndex == null
+                      swiper?.swiperIndex?.activeIndex == null
                       ? 'block'
                       : 'hidden'
                   }
@@ -860,6 +866,6 @@ export default function StarmapPage({ data }) {
   )
 }
 
-StarmapPage.getLayout = function getLayout(page) {
+StarmapPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

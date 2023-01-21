@@ -6,8 +6,9 @@ import rehypeRaw from 'rehype-raw'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
+import Head from 'next/head'
 
-export default function SpectrumArticlePage() {
+export default function SpectrumArticlePage () {
   const router = useRouter()
   const { cid: cid, id: id } = router.query
 
@@ -30,6 +31,11 @@ export default function SpectrumArticlePage() {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {category.spectrum_titel} / {data.spectrum_titel}
+        </title>
+      </Head>
       {Data.filter((data) => data.id == id).map((data) => (
         <div key={data.id}>
           <div className="items-center text-center">
@@ -73,6 +79,6 @@ export default function SpectrumArticlePage() {
   )
 }
 
-SpectrumArticlePage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

@@ -9,8 +9,9 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { useEffect } from 'react'
 import { GET_VERSEEXKURS_TECHNOLOGIE } from 'graphql/queries'
+import Head from 'next/head'
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps (context) {
   const { params } = context
   const { technologie } = params
 
@@ -34,25 +35,30 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function SpectrumArticlePage({ data }) {
+export default function SpectrumArticlePage ({ data }) {
   const router = useRouter()
 
   useEffect(() => {
     router.asPath ==
-    '/VerseExkurs/technologie/Komponenten#gravitationsgeneratoren'
+      '/VerseExkurs/technologie/Komponenten#gravitationsgeneratoren'
       ? document
-          .getElementById('treibstoff-tanks')
-          .scrollIntoView({ behavior: 'smooth', block: 'start' })
+        .getElementById('treibstoff-tanks')
+        .scrollIntoView({ behavior: 'smooth', block: 'start' })
       : (router.asPath ==
         '/VerseExkurs/technologie/Komponenten#energiegeneratoren'
-      ? document
+        ? document
           .getElementById('schildgeneratoren')
           .scrollIntoView({ behavior: 'smooth', block: 'start' })
-      : null)
+        : null)
   }, [])
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {data.technologie_name}
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -98,6 +104,6 @@ export default function SpectrumArticlePage({ data }) {
   )
 }
 
-SpectrumArticlePage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

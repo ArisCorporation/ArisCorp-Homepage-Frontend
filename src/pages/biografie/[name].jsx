@@ -6,8 +6,9 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useQuery } from '@apollo/client'
 import { GET_MEMBER } from 'graphql/queries'
+import Head from 'next/head'
 
-export default function Biografie() {
+export default function Biografie () {
   const router = useRouter()
   const { name } = router.query
 
@@ -25,6 +26,11 @@ export default function Biografie() {
   const Data = data.member[0]
   return (
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Biografie: {Data.member_name}
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -74,6 +80,6 @@ export default function Biografie() {
   )
 }
 
-Biografie.getLayout = function getLayout(page) {
+Biografie.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

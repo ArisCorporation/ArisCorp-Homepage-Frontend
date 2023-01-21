@@ -6,8 +6,9 @@ import { GET_VERSEEXKURS_FIRMEN } from 'graphql/queries'
 import { Tab } from '@headlessui/react'
 import CardDisplay from 'components/VerseExkursCardDisplay'
 import { data } from 'autoprefixer'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_FIRMEN })
 
   if (!data) {
@@ -23,7 +24,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Firmen({ data }) {
+export default function Firmen ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState(0)
   const [activeSecondaryTab, setActiveSecondaryTab] = useState(0)
@@ -55,23 +56,28 @@ export default function Firmen({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Firmen
+        </title>
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
           urlqueryhersteller != null && urlqueryhersteller != ''
             ? replace(
-                {
-                  query: {
-                    tab: event,
-                    hersteller: urlqueryhersteller,
-                    other: urlqueryother,
-                  },
+              {
+                query: {
+                  tab: event,
+                  hersteller: urlqueryhersteller,
+                  other: urlqueryother,
                 },
-                undefined,
-                { shallow: true }
-              )
+              },
+              undefined,
+              { shallow: true }
+            )
             : replace({ query: { tab: event } }, undefined, { shallow: true }) +
-              setActiveTab(event)
+            setActiveTab(event)
         }
       >
         <Tab.List className="flex flex-wrap justify-between">
@@ -126,19 +132,19 @@ export default function Firmen({ data }) {
               onChange={(event) =>
                 (urlquery != null && urlquery != ''
                   ? replace(
-                      {
-                        query: {
-                          tab: urlquery,
-                          hersteller: event,
-                          other: urlqueryother,
-                        },
+                    {
+                      query: {
+                        tab: urlquery,
+                        hersteller: event,
+                        other: urlqueryother,
                       },
-                      undefined,
-                      { shallow: true }
-                    )
+                    },
+                    undefined,
+                    { shallow: true }
+                  )
                   : replace({ query: { hersteller: event } }, undefined, {
-                      shallow: true,
-                    })) + setActiveSecondaryTab(event)
+                    shallow: true,
+                  })) + setActiveSecondaryTab(event)
               }
             >
               <Tab.List className="flex flex-wrap justify-between">
@@ -211,7 +217,7 @@ export default function Firmen({ data }) {
                         (data) =>
                           data.firmenkategorie === 'hersteller' &&
                           data.firmenherstellerkategorie ===
-                            'komponentenhersteller'
+                          'komponentenhersteller'
                       )
                       .map((data) => (
                         <>
@@ -252,9 +258,9 @@ export default function Firmen({ data }) {
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
                             data.firmenherstellerkategorie ===
-                              'Personenausruestungshersteller' &&
+                            'Personenausruestungshersteller' &&
                             data.firmenpersonenasrustungsherstellerkategorie ===
-                              'armor'
+                            'armor'
                         )[0] == null
                           ? ' hidden'
                           : '')
@@ -268,9 +274,9 @@ export default function Firmen({ data }) {
                         (data) =>
                           data.firmenkategorie === 'hersteller' &&
                           data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
+                          'Personenausruestungshersteller' &&
                           data.firmenpersonenasrustungsherstellerkategorie ===
-                            'armor'
+                          'armor'
                       )
                       .map((data) => (
                         <>
@@ -288,9 +294,9 @@ export default function Firmen({ data }) {
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
                             data.firmenherstellerkategorie ===
-                              'Personenausruestungshersteller' &&
+                            'Personenausruestungshersteller' &&
                             data.firmenpersonenasrustungsherstellerkategorie ===
-                              'clothing'
+                            'clothing'
                         )[0] == null
                           ? ' hidden'
                           : '')
@@ -304,9 +310,9 @@ export default function Firmen({ data }) {
                         (data) =>
                           data.firmenkategorie === 'hersteller' &&
                           data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
+                          'Personenausruestungshersteller' &&
                           data.firmenpersonenasrustungsherstellerkategorie ===
-                            'clothing'
+                          'clothing'
                       )
                       .map((data) => (
                         <>
@@ -324,9 +330,9 @@ export default function Firmen({ data }) {
                           (data) =>
                             data.firmenkategorie === 'hersteller' &&
                             data.firmenherstellerkategorie ===
-                              'Personenausruestungshersteller' &&
+                            'Personenausruestungshersteller' &&
                             data.firmenpersonenasrustungsherstellerkategorie ===
-                              'weapon_mods'
+                            'weapon_mods'
                         )[0] == null
                           ? ' hidden'
                           : '')
@@ -340,9 +346,9 @@ export default function Firmen({ data }) {
                         (data) =>
                           data.firmenkategorie === 'hersteller' &&
                           data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
+                          'Personenausruestungshersteller' &&
                           data.firmenpersonenasrustungsherstellerkategorie ===
-                            'weapon_mods'
+                          'weapon_mods'
                       )
                       .map((data) => (
                         <>
@@ -398,19 +404,19 @@ export default function Firmen({ data }) {
               onChange={(event) =>
                 (urlquery != null && urlquery != ''
                   ? replace(
-                      {
-                        query: {
-                          tab: urlquery,
-                          hersteller: urlqueryhersteller,
-                          other: event,
-                        },
+                    {
+                      query: {
+                        tab: urlquery,
+                        hersteller: urlqueryhersteller,
+                        other: event,
                       },
-                      undefined,
-                      { shallow: true }
-                    )
+                    },
+                    undefined,
+                    { shallow: true }
+                  )
                   : replace({ query: { other: event } }, undefined, {
-                      shallow: true,
-                    })) + setActiveOtherTab(event)
+                    shallow: true,
+                  })) + setActiveOtherTab(event)
               }
             >
               <Tab.List className="flex flex-wrap justify-between">
@@ -659,6 +665,6 @@ export default function Firmen({ data }) {
   )
 }
 
-Firmen.getLayout = function getLayout(page) {
+Firmen.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

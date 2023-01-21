@@ -338,7 +338,18 @@ export default async function handler(req, res) {
   const Datastore = await postSCData()
 
   if (req.method === 'GET') {
-    res.status(200).json(Datastore)
+    // res.status(200).json(Datastore)
+    const test = Datastore.find((e) => e.slug == "c1-spirit")
+    // res.status(200).send(Datastore.find((e) => e.slug == "c1-spirit"))
+    await axios
+      .get(
+        'https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr&limit=-1'
+      )
+      .then((resp) => {
+        res.status(200).send(resp.data.data.find((e) => e.slug == test.slug))
+        // res.status(200).send(resp.data.data)
+        // res.status(200).send(resp.data.data)
+      })
   } else if (req.method === 'POST') {
     await axios
       .get(
@@ -357,7 +368,6 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
               })
           } else {
             axios
@@ -366,7 +376,6 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
               })
           }
         })

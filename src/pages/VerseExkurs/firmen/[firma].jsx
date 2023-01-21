@@ -8,8 +8,9 @@ import rehypeRaw from 'rehype-raw'
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
 import { BasicPanel } from 'components/panels'
+import Head from 'next/head'
 
-export default function SystemDetailPage() {
+export default function SystemDetailPage () {
   const router = useRouter()
   const { firma } = router.query
 
@@ -30,6 +31,11 @@ export default function SystemDetailPage() {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {data.firmen_name}
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -117,6 +123,6 @@ export default function SystemDetailPage() {
   )
 }
 
-SystemDetailPage.getLayout = function getLayout(page) {
+SystemDetailPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

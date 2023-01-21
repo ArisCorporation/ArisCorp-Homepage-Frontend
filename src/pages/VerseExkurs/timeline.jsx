@@ -8,19 +8,20 @@ import React from 'react'
 import client from 'apollo/clients'
 import TLComponent from 'components/VerseExkursTimeline'
 import Image from 'next/image'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
   const timelineEvents = []
 
-  // console.log(data.timeline.event.length);
+    (data.timeline.event.length);
 
   data.timeline.event.map((object, index) => {
-    // console.log('duchlauf: ' + index)
-    // console.log(object.title)
+    ('duchlauf: ' + index)
+      (object.title)
     const start_date = object.dates.find((item) => item.type == 'start_date')
     const end_date = object.dates.find((item) => item.type == 'end_date')
-    // console.log(start_date.year)
+      (start_date.year)
 
     // const banner = object.banner.match(/\bhttps?:\/\/\S+/gi)[0]
     const banner =
@@ -141,7 +142,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function TimelinePage({ data, events }) {
+export default function TimelinePage ({ data, events }) {
   const { push } = useRouter()
   // {
   //   start_date: {
@@ -165,6 +166,11 @@ export default function TimelinePage({ data, events }) {
 
   return (
     <div>
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Timeline
+        </title>
+      </Head>
       <div className="mt-2 mb-12 ml-2">
         <div
           className="flex pl-4 mx-auto flex-wrap grayscale hover:grayscale-0 duration-150 hover:duration-300 hover:cursor-pointer h-full w-1/2 aspect-[1118/351]"
@@ -190,6 +196,6 @@ export default function TimelinePage({ data, events }) {
   )
 }
 
-TimelinePage.getLayout = function getLayout(page) {
+TimelinePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

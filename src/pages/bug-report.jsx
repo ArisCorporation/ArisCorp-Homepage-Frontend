@@ -1,4 +1,5 @@
 import { Listbox, Transition } from '@headlessui/react'
+import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import { AiOutlineCheck, AiOutlinePlus } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
@@ -89,7 +90,7 @@ const focuses = [
   },
 ]
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const res = await axios.get(
     `https://api.awork.io/api/v1/projects/005bb376-e97c-eb11-a607-00155d314496/projecttasks`,
     {
@@ -107,7 +108,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function BugReportPage({ data }) {
+export default function BugReportPage ({ data }) {
   const [title, setTitle] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [selectedTask, setSelectedTask] = useState()
@@ -181,7 +182,7 @@ export default function BugReportPage({ data }) {
   }, [title])
 
   useEffect(() => {
-    function getOperatingSystem(window) {
+    function getOperatingSystem (window) {
       let operatingSystem = 'Not known'
       if (window.navigator.appVersion.indexOf('Win') !== -1) {
         operatingSystem = 'Windows OS'
@@ -199,7 +200,7 @@ export default function BugReportPage({ data }) {
       return operatingSystem
     }
 
-    function getBrowser(window) {
+    function getBrowser (window) {
       let currentBrowser = 'Not known'
       if (window.navigator.userAgent.indexOf('Chrome') !== -1) {
         currentBrowser = 'Google Chrome'
@@ -224,7 +225,7 @@ export default function BugReportPage({ data }) {
     setBrowser(getBrowser(window))
   }, [])
 
-  function handleSubmit() {
+  function handleSubmit () {
     if (!title) {
       setSubmitError({ id: 1, message: 'Titel muss vorhanden sein!' })
       return
@@ -321,7 +322,6 @@ export default function BugReportPage({ data }) {
             headers: headers,
           })
           .catch(function (error) {
-            console.log(error)
           })
         axios
           .post(
@@ -332,17 +332,15 @@ export default function BugReportPage({ data }) {
             }
           )
           .catch(function (error) {
-            console.log(error)
           })
       })
       .catch(function (error) {
-        console.log(error)
       })
 
     setBugIsDone(true)
   }
 
-  function handleChange() {
+  function handleChange () {
     const reassign = [
       {
         taskId: selectedTask,
@@ -374,12 +372,16 @@ export default function BugReportPage({ data }) {
         headers: headers,
       })
       .catch(function (error) {
-        console.log(error)
       })
   }
 
   return (
     <div className="px-24 pt-32">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Bug Reporting Tool
+        </title>
+      </Head>
       <h1>Bug Melden:</h1>
       <div className="min-h-screen mt-12 rounded-lg drop-shadow-xl bg-bg-secondary/70">
         <div className="pt-4">
@@ -439,10 +441,10 @@ export default function BugReportPage({ data }) {
                       {object.tags.includes('Bug-Report')
                         ? 'Reported'
                         : object.taskStatus
-                            .toLowerCase()
-                            .charAt(0)
-                            .toUpperCase() +
-                          object.taskStatus.toLowerCase().slice(1)}
+                          .toLowerCase()
+                          .charAt(0)
+                          .toUpperCase() +
+                        object.taskStatus.toLowerCase().slice(1)}
                     </div>
                     <div className="absolute text-sm bottom-4 text-secondary/75">
                       {object.tags.join(', ')}
@@ -489,10 +491,10 @@ export default function BugReportPage({ data }) {
               (firstStepSelection == null || firstStepSelection != 'yes'
                 ? ' hidden'
                 : currentStep != 2 && secondStepSelection != null
-                ? ' hidden'
-                : currentStep != 2 || secondStepSelection != null
-                ? ' opacity-0'
-                : '')
+                  ? ' hidden'
+                  : currentStep != 2 || secondStepSelection != null
+                    ? ' opacity-0'
+                    : '')
             }
           >
             <div
@@ -501,7 +503,7 @@ export default function BugReportPage({ data }) {
               }
             >
               {knownBugs.find((e) => e.oId == selectedTask)?.taskStatus ==
-              'COMITTED' ? (
+                'COMITTED' ? (
                 <>
                   <h2>Dieser Task ist bereits Comitted.</h2>
                   <h3>Teste bitte ob er immer noch vorhanden ist.</h3>
@@ -558,10 +560,10 @@ export default function BugReportPage({ data }) {
               (secondStepSelection == null
                 ? ' hidden'
                 : currentStep != 2.5 && second2StepSelection != null
-                ? ' hidden'
-                : currentStep != 2.5 || second2StepSelection != null
-                ? ' opacity-0'
-                : '')
+                  ? ' hidden'
+                  : currentStep != 2.5 || second2StepSelection != null
+                    ? ' opacity-0'
+                    : '')
             }
           >
             {secondStepSelection == 'no' ? (
@@ -592,10 +594,10 @@ export default function BugReportPage({ data }) {
               (firstStepSelection == null || firstStepSelection != 'no'
                 ? ' hidden'
                 : currentStep != 2 && bugIsDone != false
-                ? ' hidden'
-                : currentStep != 2 || bugIsDone != false
-                ? ' opacity-0'
-                : '')
+                  ? ' hidden'
+                  : currentStep != 2 || bugIsDone != false
+                    ? ' opacity-0'
+                    : '')
             }
           >
             <div className="w-full ml-6">
@@ -658,10 +660,9 @@ export default function BugReportPage({ data }) {
                             <Listbox.Option
                               key={index}
                               className={({ active }) =>
-                                `cursor-pointer select-none relative py-2 pl-4 pr-4 ${
-                                  active
-                                    ? 'text-secondary bg-bg-secondary'
-                                    : 'opacity-50'
+                                `cursor-pointer select-none relative py-2 pl-4 pr-4 ${active
+                                  ? 'text-secondary bg-bg-secondary'
+                                  : 'opacity-50'
                                 }`
                               }
                               value={project}
@@ -669,11 +670,10 @@ export default function BugReportPage({ data }) {
                               {({ selectedProject }) => (
                                 <>
                                   <span
-                                    className={`block truncate ${
-                                      selectedProject
+                                    className={`block truncate ${selectedProject
                                         ? 'font-medium'
                                         : 'font-normal'
-                                    }`}
+                                      }`}
                                   >
                                     {project.name}
                                   </span>
@@ -737,10 +737,9 @@ export default function BugReportPage({ data }) {
                             <Listbox.Option
                               key={index}
                               className={({ active }) =>
-                                `cursor-pointer select-none relative py-2 pl-4 pr-4 ${
-                                  active
-                                    ? 'text-secondary bg-bg-secondary'
-                                    : 'opacity-50'
+                                `cursor-pointer select-none relative py-2 pl-4 pr-4 ${active
+                                  ? 'text-secondary bg-bg-secondary'
+                                  : 'opacity-50'
                                 }`
                               }
                               value={focus}
@@ -748,11 +747,10 @@ export default function BugReportPage({ data }) {
                               {({ selectedFocus }) => (
                                 <>
                                   <span
-                                    className={`block truncate ${
-                                      selectedFocus
+                                    className={`block truncate ${selectedFocus
                                         ? 'font-medium'
                                         : 'font-normal'
-                                    }`}
+                                      }`}
                                   >
                                     {focus.name}
                                   </span>
@@ -830,10 +828,10 @@ export default function BugReportPage({ data }) {
               (firstStepSelection == null || firstStepSelection != 'no'
                 ? ' hidden'
                 : currentStep != 'done' && bugIsDone != true
-                ? ' hidden'
-                : currentStep != 'done' || bugIsDone != true
-                ? ' opacity-0'
-                : '')
+                  ? ' hidden'
+                  : currentStep != 'done' || bugIsDone != true
+                    ? ' opacity-0'
+                    : '')
             }
           >
             <div className="text-center">
@@ -849,6 +847,6 @@ export default function BugReportPage({ data }) {
   )
 }
 
-BugReportPage.getLayout = function getLayout(page) {
+BugReportPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

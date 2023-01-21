@@ -5,8 +5,9 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_LITERATUR_REIHE } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
+import Head from 'next/head'
 
-export default function LiteraturReihenPage() {
+export default function LiteraturReihenPage () {
   const router = useRouter()
   const { rid } = router.query
   const rId = parseFloat(rid)
@@ -30,6 +31,11 @@ export default function LiteraturReihenPage() {
 
   return (
     <div className="pt-3 print:pt-0">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {reihe.reihen_titel}
+        </title>
+      </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + reihe.reihen_cover?.width + "/" + reihe.reihen_cover?.height + "]"}>
         <div className="relative w-full">
           <Image
@@ -64,6 +70,6 @@ export default function LiteraturReihenPage() {
   )
 }
 
-LiteraturReihenPage.getLayout = function getLayout(page) {
+LiteraturReihenPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

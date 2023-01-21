@@ -10,8 +10,9 @@ import {
 import { GET_VEXKURS_INDEX } from 'graphql/queries'
 import client from 'apollo/clients'
 import router from 'next/router'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VEXKURS_INDEX })
 
   if (!data) {
@@ -27,9 +28,14 @@ export async function getServerSideProps() {
   }
 }
 
-export default function VerseExkursIndex(data) {
+export default function VerseExkursIndex (data) {
   return (
     <>
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs
+        </title>
+      </Head>
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
@@ -75,6 +81,6 @@ export default function VerseExkursIndex(data) {
   )
 }
 
-VerseExkursIndex.getLayout = function getLayout(page) {
+VerseExkursIndex.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

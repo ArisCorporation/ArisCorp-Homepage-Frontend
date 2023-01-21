@@ -388,8 +388,6 @@ export default async function formatJson(sdata) {
 
   // const ttt = shipjson.forEach(obj => (JSON.parse((JSON.stringify(obj).replace("\"size\":2", "\"size\":\"5c06c444-b847-43f9-b4c2-620371a4d3b6\"")))))
 
-  console.log(shipjson)
-
   // await articles.deleteMany([15, 42]);
 
   await ships.createMany(shipjson)

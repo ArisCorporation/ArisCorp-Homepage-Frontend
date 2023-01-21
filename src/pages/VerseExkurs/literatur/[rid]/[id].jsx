@@ -6,8 +6,9 @@ import rehypeRaw from 'rehype-raw'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_LITERATUR_ARTICLE } from 'graphql/queries'
+import Head from 'next/head'
 
-export default function LiteraturArticlePage() {
+export default function LiteraturArticlePage () {
   const router = useRouter()
   const { rid: rid, id: id } = router.query
 
@@ -34,6 +35,11 @@ export default function LiteraturArticlePage() {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {Data.literatur_reihe.reihen_titel} - Kapitel: {Data.literatur_kapitel}
+        </title>
+      </Head>
       <div key={Data.id}>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -86,6 +92,6 @@ export default function LiteraturArticlePage() {
   )
 }
 
-LiteraturArticlePage.getLayout = function getLayout(page) {
+LiteraturArticlePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

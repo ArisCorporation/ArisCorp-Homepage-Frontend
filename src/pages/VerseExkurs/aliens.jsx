@@ -1,8 +1,14 @@
+import Head from 'next/head'
 import Image from 'next/image'
 
-export default function Alienrassen({ data }) {
+export default function Alienrassen ({ data }) {
   return (
     <div className="flex items-center justify-center w-full h-full pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Aliens
+        </title>
+      </Head>
       <div className="my-auto">
         <Image
           src={

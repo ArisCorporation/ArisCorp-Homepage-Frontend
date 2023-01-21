@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
 import { GET_VERSEEXKURS_ALIENRASSE } from 'graphql/queries'
 import client from 'apollo/clients'
+import Head from 'next/head'
 
 export async function getServerSideProps() {
   const { data } = await client.query({
@@ -44,6 +45,11 @@ export default function Banu({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <Head>
+      <title>
+        Astro Research and Industrial Service Corporation - VerseExurs: Xi&apos;An
+      </title>
+    </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">

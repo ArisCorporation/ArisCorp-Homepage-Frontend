@@ -10,8 +10,9 @@ import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext
 import { Tab } from '@headlessui/react'
 import { BasicPanel } from 'components/panels'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_TECHNOLOGIES,
   })
@@ -29,7 +30,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Technologie({ data }) {
+export default function Technologie ({ data }) {
   const { push, replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -175,6 +176,11 @@ export default function Technologie({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Technologien
+        </title>
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
@@ -286,8 +292,8 @@ export default function Technologie({ data }) {
                   <div className="w-3/4">
                     {selectedTech && activeTab == 0 ? (
                       selectedTech != 'grav' &&
-                      selectedTech != 'weaponindex' &&
-                      selectedTech != 'armorindex' ? (
+                        selectedTech != 'weaponindex' &&
+                        selectedTech != 'armorindex' ? (
                         data
                           .filter((data) => data.id == selectedTech)
                           .map((data) => (
@@ -341,7 +347,7 @@ export default function Technologie({ data }) {
                 <div className="relative w-full">
                   {selectedTech && activeTab == 1 ? (
                     selectedTech != 'weaponindex' &&
-                    selectedTech != 'armorindex' ? (
+                      selectedTech != 'armorindex' ? (
                       data
                         .filter((data) => data.id == selectedTech)
                         .map((data) => (
@@ -393,7 +399,7 @@ export default function Technologie({ data }) {
                       className="relative w-60 aspect-square hover:cursor-pointer"
                       onMouseEnter={() => setSelectedTech('armorindex')}
                       onMouseLeave={() => setSelectedTech(undefined)}
-                      // onClick={() => router.push('/armorindex')}
+                    // onClick={() => router.push('/armorindex')}
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
@@ -480,6 +486,6 @@ const ShipInfo = ({ name, desc, image }) => (
   </div>
 )
 
-Technologie.getLayout = function getLayout(page) {
+Technologie.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

@@ -10,8 +10,9 @@ import { useQuery } from '@apollo/client'
 import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_WEAPONUTILS })
 
   let utils = { classes: [], dmgtype: [], manufacturers: [] }
@@ -41,7 +42,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Weapons({ utils }) {
+export default function Weapons ({ utils }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
@@ -56,11 +57,11 @@ export default function Weapons({ utils }) {
     variables: { squery, classquery, dmgquery, manuquery },
   })
 
-  function handleClick(name) {
+  function handleClick (name) {
     push('/VerseExkurs/waffen/' + name)
   }
 
-  console.log(utils.classes);
+  // console.log(utils.classes);
 
   useEffect(() => {
     if (isMounted.current) {
@@ -119,6 +120,11 @@ export default function Weapons({ utils }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Waffenindex
+        </title>
+      </Head>
       <div>
         <div className="w-full">
           <Image
@@ -177,26 +183,26 @@ export default function Weapons({ utils }) {
                   'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
                   ((Array.isArray(classquery)
                     ? classquery.every(
-                        (val, index) =>
-                          val ===
-                          [
-                            'Taser',
-                            'Pistole',
-                            'SMG',
-                            'Sturmgewehr',
-                            'Schrotgewehr',
-                            'LMG',
-                            'Scharfschützen Gewehr',
-                            'HMG',
-                            'Armbrust',
-                            'Granatwerfer',
-                            'Raketenwerfer',
-                            'Railgun',
-                          ][index]
-                      )
+                      (val, index) =>
+                        val ===
+                        [
+                          'Taser',
+                          'Pistole',
+                          'SMG',
+                          'Sturmgewehr',
+                          'Schrotgewehr',
+                          'LMG',
+                          'Scharfschützen Gewehr',
+                          'HMG',
+                          'Armbrust',
+                          'Granatwerfer',
+                          'Raketenwerfer',
+                          'Railgun',
+                        ][index]
+                    )
                     : null) &&
-                  (Array.isArray(dmgquery)
-                    ? dmgquery.every(
+                    (Array.isArray(dmgquery)
+                      ? dmgquery.every(
                         (val, index) =>
                           val ===
                           [
@@ -207,8 +213,8 @@ export default function Weapons({ utils }) {
                             'Explosiv',
                           ][index]
                       )
-                    : null) &&
-                  manuquery == ' '
+                      : null) &&
+                    manuquery == ' '
                     ? ' text-secondary'
                     : ' group-hover:text-white')
                 }
@@ -242,9 +248,9 @@ export default function Weapons({ utils }) {
                     ((
                       Array.isArray(dmgquery)
                         ? dmgquery.every(
-                            (val, index) =>
-                              val === ['Elektronen', 'Laser', 'Plasma'][index]
-                          )
+                          (val, index) =>
+                            val === ['Elektronen', 'Laser', 'Plasma'][index]
+                        )
                         : null
                     )
                       ? ' text-secondary'
@@ -279,9 +285,9 @@ export default function Weapons({ utils }) {
                     ((
                       Array.isArray(dmgquery)
                         ? dmgquery.every(
-                            (val, index) =>
-                              val === ['Ballistisch', 'Explosiv'][index]
-                          )
+                          (val, index) =>
+                            val === ['Ballistisch', 'Explosiv'][index]
+                        )
                         : null
                     )
                       ? ' text-secondary'
@@ -505,15 +511,15 @@ export default function Weapons({ utils }) {
                     ((
                       Array.isArray(classquery)
                         ? classquery.every(
-                            (val, index) =>
-                              val ===
-                              [
-                                'HMG',
-                                'Granatwerfer',
-                                'Raketenwerfer',
-                                'Railgun',
-                              ][index]
-                          )
+                          (val, index) =>
+                            val ===
+                            [
+                              'HMG',
+                              'Granatwerfer',
+                              'Raketenwerfer',
+                              'Railgun',
+                            ][index]
+                        )
                         : null
                     )
                       ? ' text-secondary'
@@ -595,6 +601,6 @@ export default function Weapons({ utils }) {
   )
 }
 
-Weapons.getLayout = function getLayout(page) {
+Weapons.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }
