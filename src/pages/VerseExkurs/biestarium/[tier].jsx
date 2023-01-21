@@ -5,6 +5,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
+import Head from 'next/head'
 
 const { gql, useQuery } = require('@apollo/client')
 
@@ -24,7 +25,7 @@ const ALIENRASSEN = gql`
   }
 `
 
-export default function AlienrassenDetailPage() {
+export default function AlienrassenDetailPage () {
   const router = useRouter()
   const { tier } = router.query
 
@@ -45,6 +46,11 @@ export default function AlienrassenDetailPage() {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {data.title}
+        </title>
+      </Head>
       <div>
         {Data.filter((tiere) => tiere.title === tier).map((data) => (
           <div key={data.title}>
@@ -81,6 +87,6 @@ export default function AlienrassenDetailPage() {
   )
 }
 
-AlienrassenDetailPage.getLayout = function getLayout(page) {
+AlienrassenDetailPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

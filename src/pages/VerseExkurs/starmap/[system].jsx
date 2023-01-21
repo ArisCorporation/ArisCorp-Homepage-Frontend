@@ -9,8 +9,9 @@ import { useEffect, useState } from 'react'
 
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
+import Head from 'next/head'
 
-export default function SystemDetailPage() {
+export default function SystemDetailPage () {
   const router = useRouter()
   const { system } = router.query
   const [systemSizeAE, setSystemSizeAE] = useState(true)
@@ -49,19 +50,24 @@ export default function SystemDetailPage() {
     data.affiliation == 'uee'
       ? ueeIcon
       : data.affiliation == 'indevelopment'
-      ? devIcon
-      : data.affiliation == 'unclaimed'
-      ? unclIcon
-      : data.affiliation == 'banu'
-      ? banuIcon
-      : data.affiliation == 'xian'
-      ? xianIcon
-      : data.affiliation == 'vanduul'
-      ? vnclIcon
-      : null
+        ? devIcon
+        : data.affiliation == 'unclaimed'
+          ? unclIcon
+          : data.affiliation == 'banu'
+            ? banuIcon
+            : data.affiliation == 'xian'
+              ? xianIcon
+              : data.affiliation == 'vanduul'
+                ? vnclIcon
+                : null
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {data.name}
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -116,7 +122,7 @@ export default function SystemDetailPage() {
                   <th className="pr-2 text-left">Systemgröße:</th>
                   <td className="text-left text-primary">
                     {data.size != null ? (
-                      systemSizeAE ? (data.size + ' AE') : ((data.size*'149597870.7').toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' KM')
+                      systemSizeAE ? (data.size + ' AE') : ((data.size * '149597870.7').toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' KM')
                     ) : 'N/A'}
                   </td>
                 </tr>
@@ -164,16 +170,16 @@ export default function SystemDetailPage() {
                             data.affiliation == 'uee'
                               ? ueeIcon
                               : data.affiliation == 'indevelopment'
-                              ? devIcon
-                              : data.affiliation == 'unclaimed'
-                              ? unclIcon
-                              : data.affiliation == 'banu'
-                              ? banuIcon
-                              : data.affiliation == 'xian'
-                              ? xianIcon
-                              : data.affiliation == 'vanduul'
-                              ? vnclIcon
-                              : null
+                                ? devIcon
+                                : data.affiliation == 'unclaimed'
+                                  ? unclIcon
+                                  : data.affiliation == 'banu'
+                                    ? banuIcon
+                                    : data.affiliation == 'xian'
+                                      ? xianIcon
+                                      : data.affiliation == 'vanduul'
+                                        ? vnclIcon
+                                        : null
                           }
                           layout="fill"
                           placeholder="blur"
@@ -189,16 +195,16 @@ export default function SystemDetailPage() {
                       {data.affiliation == 'uee'
                         ? 'UEE'
                         : data.affiliation == 'indevelopment'
-                        ? 'In Entwicklung'
-                        : data.affiliation == 'unclaimed'
-                        ? 'Nicht Beansprucht'
-                        : data.affiliation == 'banu'
-                        ? 'Banu'
-                        : data.affiliation == 'xian'
-                        ? "Xi'An"
-                        : data.affiliation == 'vanduul'
-                        ? 'Vanduul'
-                        : null}
+                          ? 'In Entwicklung'
+                          : data.affiliation == 'unclaimed'
+                            ? 'Nicht Beansprucht'
+                            : data.affiliation == 'banu'
+                              ? 'Banu'
+                              : data.affiliation == 'xian'
+                                ? "Xi'An"
+                                : data.affiliation == 'vanduul'
+                                  ? 'Vanduul'
+                                  : null}
                     </div>
                   </td>
                 </tr>
@@ -247,6 +253,6 @@ export default function SystemDetailPage() {
   )
 }
 
-SystemDetailPage.getLayout = function getLayout(page) {
+SystemDetailPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

@@ -9,8 +9,9 @@ import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_WEAPON } from 'graphql/queries'
 import { BasicPanel } from 'components/panels'
 import { Tab } from '@headlessui/react'
+import Head from 'next/head'
 
-export default function SpectrumArticlePage() {
+export default function SpectrumArticlePage () {
   const router = useRouter()
   const { weapon: Weapon } = router.query
   const [activeTab, setActiveTab] = useState()
@@ -49,10 +50,14 @@ export default function SpectrumArticlePage() {
   let data2arr = []
   data2.map((data) => data2arr.push(data.waffen_feuermodi_id.feuermodus))
   data2arr = data2arr.join(' / ')
-  (data2arr);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: { data1.waffen_name }
+        </title>
+      </Head>
       <div>
         <div className="flex items-center justify-center align-center">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
@@ -125,9 +130,9 @@ export default function SpectrumArticlePage() {
                   <td className="text-left text-primary">
                     {data1.waffen_klasse.waffenklasse != null
                       ? data1.waffen_klasse.waffenklasse +
-                        ' (S' +
-                        data1.waffen_klasse.waffenklassensize.waffensize +
-                        ')'
+                      ' (S' +
+                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      ')'
                       : 'N/A'}
                   </td>
                 </tr>
@@ -170,21 +175,21 @@ export default function SpectrumArticlePage() {
                   <th className="pr-2 text-left">Feuerrate:</th>
                   <td className="text-left text-primary">
                     {data1.waffen_feuerrate_einzel ||
-                    data1.waffen_feuerrate_salve ||
-                    data1.waffen_feuerrate_vollauto ||
-                    data1.waffen_feuerrate_aufgeladen != null
+                      data1.waffen_feuerrate_salve ||
+                      data1.waffen_feuerrate_vollauto ||
+                      data1.waffen_feuerrate_aufgeladen != null
                       ? (data1.waffen_feuerrate_einzel != null
-                          ? data1.waffen_feuerrate_einzel + '/Einzel  '
-                          : '') +
-                        (data1.waffen_feuerrate_salve != null
-                          ? data1.waffen_feuerrate_salve + '/Salve  '
-                          : '') +
-                        (data1.waffen_feuerrate_vollauto != null
-                          ? data1.waffen_feuerrate_vollauto + '/Gebündelt  '
-                          : '') +
-                        (data1.waffen_feuerrate_aufgeladen != null
-                          ? data1.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
-                          : '')
+                        ? data1.waffen_feuerrate_einzel + '/Einzel  '
+                        : '') +
+                      (data1.waffen_feuerrate_salve != null
+                        ? data1.waffen_feuerrate_salve + '/Salve  '
+                        : '') +
+                      (data1.waffen_feuerrate_vollauto != null
+                        ? data1.waffen_feuerrate_vollauto + '/Gebündelt  '
+                        : '') +
+                      (data1.waffen_feuerrate_aufgeladen != null
+                        ? data1.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
+                        : '')
                       : 'N/A'}
                   </td>
                 </tr>
@@ -220,9 +225,9 @@ export default function SpectrumArticlePage() {
                     {data1.waffen_visier != null
                       ? data1.waffen_visier.visiername
                       : 'Leer' +
-                        ' (S' +
-                        data1.waffen_klasse.waffenklassensize.waffensize +
-                        ')'}
+                      ' (S' +
+                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      ')'}
                   </td>
                 </tr>
                 <tr>
@@ -231,9 +236,9 @@ export default function SpectrumArticlePage() {
                     {data1.waffen_lauf != null
                       ? data1.waffengewicht + ' KG'
                       : 'Leer' +
-                        ' (S' +
-                        data1.waffen_klasse.waffenklassensize.waffensize +
-                        ')'}
+                      ' (S' +
+                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      ')'}
                   </td>
                 </tr>
                 <tr>
@@ -242,9 +247,9 @@ export default function SpectrumArticlePage() {
                     {data1.waffen_unterlauf != null
                       ? data1.waffengewicht + ' KG'
                       : 'Leer' +
-                        ' (S' +
-                        data1.waffen_klasse.waffenklassensize.waffensize +
-                        ')'}
+                      ' (S' +
+                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      ')'}
                   </td>
                 </tr>
               </table>
@@ -384,6 +389,6 @@ export default function SpectrumArticlePage() {
   )
 }
 
-SpectrumArticlePage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

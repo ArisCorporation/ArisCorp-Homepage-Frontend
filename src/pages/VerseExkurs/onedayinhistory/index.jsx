@@ -3,8 +3,9 @@ import Image from 'next/image'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES,
   })
@@ -22,8 +23,8 @@ export async function getServerSideProps() {
   }
 }
 
-export default function SpectrumPage({ data }) {
-  function sortDate(a, b) {
+export default function SpectrumPage ({ data }) {
+  function sortDate (a, b) {
     return (
       new Date(a.geschichte_datum).getTime() -
       new Date(b.geschichte_datum).getTime()
@@ -34,6 +35,11 @@ export default function SpectrumPage({ data }) {
 
   return (
     <div className="pt-3 print:pt-0">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Ein Tag in der Geschichte
+        </title>
+      </Head>
       <div className="flex flex-wrap w-full aspect-[1118/351] scale-90">
         <div className="relative w-full">
           <Image
@@ -67,6 +73,6 @@ export default function SpectrumPage({ data }) {
   )
 }
 
-SpectrumPage.getLayout = function getLayout(page) {
+SpectrumPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

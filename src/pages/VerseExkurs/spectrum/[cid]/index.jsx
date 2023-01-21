@@ -5,8 +5,9 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
+import Head from 'next/head'
 
-export default function SpectrumCategoryPage() {
+export default function SpectrumCategoryPage () {
   const router = useRouter()
   const { cid } = router.query
 
@@ -29,6 +30,11 @@ export default function SpectrumCategoryPage() {
 
   return (
     <div className="pt-3 print:pt-0">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: {data.spectrum_titel}
+        </title>
+      </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + category.image?.width + "/" + category.image?.height + "]"}>
         <div className="relative w-full">
           <Image
@@ -55,7 +61,7 @@ export default function SpectrumCategoryPage() {
           (data) =>
             data.spectrum_kategorie_beschreibung == false &&
             data.spectrum_beitrag_kateogrie ===
-              category.spectrum_beitrag_kateogrie
+            category.spectrum_beitrag_kateogrie
         ).map((data) => (
           <ArticleCard
             key={data.id}
@@ -70,6 +76,6 @@ export default function SpectrumCategoryPage() {
   )
 }
 
-SpectrumCategoryPage.getLayout = function getLayout(page) {
+SpectrumCategoryPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

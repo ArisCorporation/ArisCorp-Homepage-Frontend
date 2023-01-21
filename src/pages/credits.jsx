@@ -4,8 +4,9 @@ import rehypeRaw from 'rehype-raw'
 import Layout from './layout'
 import { GET_CREDITS } from 'graphql/queries'
 import client from 'apollo/clients'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_CREDITS })
 
   if (!data) {
@@ -21,9 +22,14 @@ export async function getServerSideProps() {
   }
 }
 
-export default function CreditsPage({data}) {
+export default function CreditsPage ({ data }) {
   return (
     <div className="pt-32">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Credits
+        </title>
+      </Head>
       <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">
         {data}
       </ReactMarkdown>
@@ -31,6 +37,6 @@ export default function CreditsPage({data}) {
   )
 }
 
-CreditsPage.getLayout = function getLayout(page) {
+CreditsPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

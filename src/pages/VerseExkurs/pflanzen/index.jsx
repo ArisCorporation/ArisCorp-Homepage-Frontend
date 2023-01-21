@@ -8,8 +8,9 @@ import { Tab } from '@headlessui/react'
 import Link from 'next/link'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_PFLANZEN } from 'graphql/queries'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_PFLANZEN })
 
   if (!data) {
@@ -25,7 +26,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function PflanzenPage(data) {
+export default function PflanzenPage (data) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -42,6 +43,11 @@ export default function PflanzenPage(data) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Pflanzen
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -175,6 +181,6 @@ export default function PflanzenPage(data) {
   )
 }
 
-PflanzenPage.getLayout = function getLayout(page) {
+PflanzenPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

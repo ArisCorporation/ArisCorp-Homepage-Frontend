@@ -4,8 +4,9 @@ import { GET_VERSEEXKURS_ALIENRASSEN } from 'graphql/queries'
 import client from 'apollo/clients'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_ALIENRASSEN,
   })
@@ -23,11 +24,16 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Alienrassen({ data }) {
+export default function Alienrassen ({ data }) {
   const router = useRouter()
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Alle Alienrassen
+        </title>
+      </Head>
       <h1 className="mb-4 text-lg text-center md:mb-6 lg:mb-12 text-primary md:text-xl lg:text-3xl">
         Clicken sie auf die Alienrasse die sie sehen wollen.
       </h1>
@@ -104,17 +110,17 @@ export default function Alienrassen({ data }) {
         <Link legacyBehavior href="/VerseExkurs/biestarium">
           <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
             <div className="relative aspect-[3160/1100]">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                'a1f0653a-65a2-45c6-964f-9c5b9cb3d4f0'
-              }
-              alt="Biestarium Potrait"
-              blurDataURL={''}
-              layout="fill"
-              objectFit="cover"
-              placeholder={''}
-            />
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  'a1f0653a-65a2-45c6-964f-9c5b9cb3d4f0'
+                }
+                alt="Biestarium Potrait"
+                blurDataURL={''}
+                layout="fill"
+                objectFit="cover"
+                placeholder={''}
+              />
             </div>
             <h2 className="text-center text-secondary">Biestarium</h2>
           </a>
@@ -122,17 +128,17 @@ export default function Alienrassen({ data }) {
         <Link legacyBehavior href="/VerseExkurs/pflanzen">
           <a className="sm:col-span-2 md:col-span-4 hover:cursor-pointer">
             <div className="relative aspect-[3160/1100]">
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                '15c5cc03-b23d-4b73-ad27-d4e0b2eb9837'
-              }
-              alt="Pflanzen Potrait"
-              blurDataURL={''}
-              layout="fill"
-              objectFit="cover"
-              placeholder={''}
-            />
+              <Image
+                src={
+                  'https://cms.ariscorp.de/assets/' +
+                  '15c5cc03-b23d-4b73-ad27-d4e0b2eb9837'
+                }
+                alt="Pflanzen Potrait"
+                blurDataURL={''}
+                layout="fill"
+                objectFit="cover"
+                placeholder={''}
+              />
             </div>
             <h2 className="text-center text-secondary">Pflanzen</h2>
           </a>
@@ -142,6 +148,6 @@ export default function Alienrassen({ data }) {
   )
 }
 
-Alienrassen.getLayout = function getLayout(page) {
+Alienrassen.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

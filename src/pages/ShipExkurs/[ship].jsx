@@ -26,6 +26,7 @@ import _ from 'lodash'
 
 // Animation
 import { easeQuadInOut } from 'd3-ease'
+import Head from 'next/head'
 
 function Separator (props) {
   return (
@@ -146,6 +147,11 @@ export default function SpectrumArticlePage ({ ships }) {
 
   return (
     <div className="items-center max-w-6xl mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - ShipExkurs: {data.name}
+        </title>
+      </Head>
       <div>
         <div className="relative flex items-center align-center">
           <div className="absolute bottom-0">
@@ -190,18 +196,18 @@ export default function SpectrumArticlePage ({ ships }) {
             className={'h-full'}
             childClassName={'h-full'}
           >
-              <Image
-                src={'https://cms.ariscorp.de/assets/' + data.storeImage.id}
-                alt={'Bild von ' + data.name}
-                fill
-                className="object-cover"
-                placeholder="blur"
-                blurDataURL={
-                  'https://cms.ariscorp.de/assets/' +
-                  data.storeImage.id +
-                  '?width=16&quality=1'
-                }
-              />
+            <Image
+              src={'https://cms.ariscorp.de/assets/' + data.storeImage.id}
+              alt={'Bild von ' + data.name}
+              fill
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={
+                'https://cms.ariscorp.de/assets/' +
+                data.storeImage.id +
+                '?width=16&quality=1'
+              }
+            />
           </BasicPanel>
         </div>
         <div className="w-full xl:w-2/5">

@@ -7,8 +7,9 @@ import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
 import { GET_VERSEEXKURS_ALIENRASSE } from 'graphql/queries'
 import client from 'apollo/clients'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_ALIENRASSE,
     variables: { alienrasse: 'Banu' },
@@ -27,7 +28,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Banu({ data }) {
+export default function Banu ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -44,6 +45,11 @@ export default function Banu({ data }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Banu
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -126,6 +132,6 @@ export default function Banu({ data }) {
   )
 }
 
-Banu.getLayout = function getLayout(page) {
+Banu.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

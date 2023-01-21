@@ -11,8 +11,9 @@ import { AiOutlineCheck } from 'react-icons/ai'
 import { BsArrowsExpand } from 'react-icons/bs'
 import { BasicPanel } from 'components/panels'
 import { FaChevronDown } from 'react-icons/fa'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_UEE })
 
   if (!data) {
@@ -28,7 +29,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function UEEPage(data) {
+export default function UEEPage (data) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const [activeFeiertag, setActiveFeiertag] = useState(0)
@@ -53,6 +54,11 @@ export default function UEEPage(data) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: United Empire of Earth
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -196,6 +202,6 @@ export default function UEEPage(data) {
   )
 }
 
-UEEPage.getLayout = function getLayout(page) {
+UEEPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

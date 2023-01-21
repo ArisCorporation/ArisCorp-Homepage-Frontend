@@ -8,8 +8,9 @@ import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
 
   let utils = { classes: [], focuses: [], sizes: [], manufacturers: [] }
@@ -59,7 +60,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Ships({ utils }) {
+export default function Ships ({ utils }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
@@ -72,7 +73,7 @@ export default function Ships({ utils }) {
   const manuquery = query.manuf
   const { loading, error, data } = useQuery(GET_SHIPEXKURS_SHIPS)
 
-  function handleClick(name) {
+  function handleClick (name) {
     push('/ShipExkurs/' + name)
   }
 
@@ -135,6 +136,11 @@ export default function Ships({ utils }) {
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - ShipExkurs
+        </title>
+      </Head>
       <div>
         <div className="w-full">
           <Image
@@ -164,41 +170,41 @@ export default function Ships({ utils }) {
             {loading
               ? ''
               : data?.ships.map((object, index) => (
-                  <div key={object.id} className="w-1/3 px-2 pb-8">
-                    <BasicPanel>
-                      <div className="overflow-hidden rounded-2xl">
-                        <p className="absolute">{object.name}</p>
-                        <div className="relative w-full aspect-[18/9]">
-                          <Image
-                            src={
-                              'https://cms.ariscorp.de/assets/' +
-                              object.storeImage?.id
-                            }
-                            alt={'Bild von ' + object.name}
-                            fill
-                            className="object-cover"
-                            placeholder="blur"
-                            blurDataURL={
-                              'https://cms.ariscorp.de/assets/' +
-                              object.storeImage?.id +
-                              '?width=16&quality=1'
-                            }
-                          />
-                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                            <p className="pb-0 mb-0 leading-none transition-colors duration-200 hover:cursor-pointer text-secondary/90 hover:text-secondary hover:duration-300">
-                              {object.name}
-                            </p>
-                            <Link to={"/VerseExkurs/firmen/" + object.manufacturer.firmen_name}>
-                              <a className="mt-0 text-[8px] leading-none text-white/50 hover:text-white/80 transition-colors hover:cursor-pointer duration-200 hover:duration-300">
-                                {object.manufacturer.firmen_name}
-                              </a>
-                            </Link>
-                          </div>
+                <div key={object.id} className="w-1/3 px-2 pb-8">
+                  <BasicPanel>
+                    <div className="overflow-hidden rounded-2xl">
+                      <p className="absolute">{object.name}</p>
+                      <div className="relative w-full aspect-[18/9]">
+                        <Image
+                          src={
+                            'https://cms.ariscorp.de/assets/' +
+                            object.storeImage?.id
+                          }
+                          alt={'Bild von ' + object.name}
+                          fill
+                          className="object-cover"
+                          placeholder="blur"
+                          blurDataURL={
+                            'https://cms.ariscorp.de/assets/' +
+                            object.storeImage?.id +
+                            '?width=16&quality=1'
+                          }
+                        />
+                        <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
+                          <p className="pb-0 mb-0 leading-none transition-colors duration-200 hover:cursor-pointer text-secondary/90 hover:text-secondary hover:duration-300">
+                            {object.name}
+                          </p>
+                          <Link to={"/VerseExkurs/firmen/" + object.manufacturer.firmen_name}>
+                            <a className="mt-0 text-[8px] leading-none text-white/50 hover:text-white/80 transition-colors hover:cursor-pointer duration-200 hover:duration-300">
+                              {object.manufacturer.firmen_name}
+                            </a>
+                          </Link>
                         </div>
                       </div>
-                    </BasicPanel>
-                  </div>
-                ))}
+                    </div>
+                  </BasicPanel>
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -206,6 +212,6 @@ export default function Ships({ utils }) {
   )
 }
 
-Ships.getLayout = function getLayout(page) {
+Ships.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

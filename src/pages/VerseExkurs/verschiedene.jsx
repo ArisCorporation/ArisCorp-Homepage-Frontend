@@ -7,8 +7,9 @@ import { Tab } from '@headlessui/react'
 import Image from 'next/image'
 import CardDisplay from 'components/VerseExkursCardDisplay'
 import Link from 'next/link'
+import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_FIRMEN_OTHER,
   })
@@ -26,9 +27,14 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Verschiedenes({ data }) {
+export default function Verschiedenes ({ data }) {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - VerseExurs: Verschiedene Firmen
+        </title>
+      </Head>
       <div className="flex flex-wrap">
         <div className="mx-auto text-primary">
           <h1 className="text-base uppercase text-primary sm:text-lg md:text-xl lg:text-3xl text-inherit">
@@ -70,6 +76,6 @@ export default function Verschiedenes({ data }) {
   )
 }
 
-Verschiedenes.getLayout = function getLayout(page) {
+Verschiedenes.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

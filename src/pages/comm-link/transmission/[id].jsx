@@ -8,8 +8,9 @@ import { useQuery } from '@apollo/client'
 import { GET_COMM_LINK } from 'graphql/queries'
 import moment from 'moment'
 import 'moment/locale/de'
+import Head from 'next/head'
 
-export default function CommLinkDetailPage() {
+export default function CommLinkDetailPage () {
   const router = useRouter()
   const { id } = router.query
 
@@ -29,6 +30,11 @@ export default function CommLinkDetailPage() {
   const Data = data.comm_links[0]
   return (
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Comm-Links: {Data.comm_link_titel}
+        </title>
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -109,6 +115,6 @@ export default function CommLinkDetailPage() {
   )
 }
 
-CommLinkDetailPage.getLayout = function getLayout(page) {
+CommLinkDetailPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

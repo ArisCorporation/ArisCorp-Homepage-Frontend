@@ -9,6 +9,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 
 const channels = [
   { id: 0, name: 'Alle', value: ' ', unavailable: false },
@@ -44,7 +45,7 @@ const channels = [
   },
 ]
 
-export default function CommLinksPage() {
+export default function CommLinksPage () {
   const { query, replace, isReady } = useRouter()
   const isMounted = useRef(false)
   const [children, setChildren] = useState([])
@@ -274,6 +275,11 @@ export default function CommLinksPage() {
 
   return (
     <div>
+      <Head>
+        <title>
+          Astro Research and Industrial Service Corporation - Comm-Links
+        </title>
+      </Head>
       <div className="flex items-center justify-center pt-32">
         <Image
           src="https://cms.ariscorp.de/assets/2f7590ef-c84a-495c-8acc-93653f0cddd3"
@@ -325,10 +331,9 @@ export default function CommLinksPage() {
                     <Listbox.Option
                       key={channelIdx}
                       className={({ active }) =>
-                        `cursor-pointer select-none relative py-2 pl-4 pr-4 ${
-                          active
-                            ? 'text-secondary bg-bg-secondary'
-                            : 'opacity-50'
+                        `cursor-pointer select-none relative py-2 pl-4 pr-4 ${active
+                          ? 'text-secondary bg-bg-secondary'
+                          : 'opacity-50'
                         }`
                       }
                       value={channel}
@@ -336,9 +341,8 @@ export default function CommLinksPage() {
                       {({ selectedChannel }) => (
                         <>
                           <span
-                            className={`block truncate ${
-                              selectedChannel ? 'font-medium' : 'font-normal'
-                            }`}
+                            className={`block truncate ${selectedChannel ? 'font-medium' : 'font-normal'
+                              }`}
                           >
                             {channel.name}
                           </span>
@@ -387,6 +391,6 @@ export default function CommLinksPage() {
   )
 }
 
-CommLinksPage.getLayout = function getLayout(page) {
+CommLinksPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }
