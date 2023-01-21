@@ -84,11 +84,11 @@ const Footer = () => {
             }}
           />
           <span> - </span>
-          <Link href="/credits">
+          <Link legacyBehavior href="/credits">
             <a className="text-secondary">Credits</a>
           </Link>
           <span> - </span>
-          <Link href="/bug-report">
+          <Link legacyBehavior href="/bug-report">
             <a className="text-secondary">Bug-Report Tool</a>
           </Link>
         </div>

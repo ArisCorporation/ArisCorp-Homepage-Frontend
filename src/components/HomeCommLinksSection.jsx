@@ -82,7 +82,7 @@ const CommLinksSection = ({ data }) => {
       >
         ARISCORP <span className="text-primary">COMM-LINKS</span>
         <span>
-          <Link href="/comm-link">
+          <Link legacyBehavior href="/comm-link">
             <a
               className="inline-block float-right text-base text-right text-white transition-colors duration-300 decoration-transparent hover:decoration-transparent hover:cursor-pointer font-nasa hover:text-secondary"
               aria-label="Alle Comm-Links"

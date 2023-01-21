@@ -108,6 +108,12 @@ export default function Technologie({ data }) {
       category: 'ship',
     },
     {
+      id: 'bb58aaab-a6e0-4f9c-b9d1-0880cb985543',
+      icon: '18410645-9926-4ea4-8ab6-9c852b067bd7',
+      name: 'Drohnensysteme',
+      category: 'ship',
+    },
+    {
       id: 'ac4583c6-8df9-4faf-97c6-0881eedf3afe',
       icon: '8fcfe5e8-ac21-40cd-ae7d-5f5148991850',
       name: 'Waffensysteme',
@@ -211,7 +217,7 @@ export default function Technologie({ data }) {
                   </div>
                 </BasicPanel>
                 <div
-                  className={`grid justify-between grid-cols-[repeat(14,_minmax(0,_1fr))] mt-6 gap-x-4`}
+                  className={`grid justify-between grid-cols-[repeat(15,_minmax(0,_1fr))] mt-6 gap-x-4`}
                 >
                   {items
                     .filter((e) => e.category == 'ship')
@@ -221,7 +227,7 @@ export default function Technologie({ data }) {
                         onMouseEnter={() => setSelectedTech(object.id)}
                         onMouseLeave={() => setSelectedTech(undefined)}
                       >
-                        <Link href={'/VerseExkurs/technologie/' + object.name}>
+                        <Link legacyBehavior href={'/VerseExkurs/technologie/' + object.name}>
                           <a>
                             <div
                               className={

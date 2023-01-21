@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 const CardDisplay = ({link, image, alt}) => {
   return (
-    <Link href={link}>
+    <Link legacyBehavior href={link}>
       <a>
         <div className="transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square opacity-80 hover:opacity-100">
           <div className="relative w-full h-full">

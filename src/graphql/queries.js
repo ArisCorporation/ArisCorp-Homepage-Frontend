@@ -1091,6 +1091,47 @@ export const GET_SHIPEXKURS_SHIPS = gql`
     ships(filter: { status: { _eq: "published" } }, limit: -1) {
       id
       name
+      erkulIdentifier
+      slug
+      length
+      beam
+      height
+      mass
+      cargo
+      hydrogenFuelTankSize
+      quantumFuelTankSize
+      minCrew
+      maxCrew
+      scmSpeed
+      afterburnerSpeed
+      groundSpeed
+      afterburnerGroundSpeed
+      pitchMax
+      yawMax
+      rollMax
+      xaxisAcceleration
+      yaxisAcceleration
+      zaxisAcceleration
+      size
+      holoColored
+      storeUrl
+      salesPageUrl
+      price
+      pledgePrice
+      onSale
+      productionStatus
+      productionNote
+      classification
+      focus
+      hasModules
+      hasUpgrades
+      hasPaints
+      brochure {
+        id
+      }
+      holo {
+        id
+      }
       manufacturer {
         id
         firmen_name
@@ -1098,6 +1139,25 @@ export const GET_SHIPEXKURS_SHIPS = gql`
           id
         }
       }
+      storeImage {
+        id
+      }
+      description
+      history
+      ratings
+      s_w
+    }
+  }
+`
+
+export const GET_SHIPEXKURS_SHIPUTILS = gql`
+  query GetShipExkursShipUtils {
+    ships {
+      size
+      sizeLabel
+      classification
+      classificationLabel
+      focus
     }
   }
 `
@@ -1152,6 +1212,13 @@ export const GET_SHIPEXKURS_SHIP = gql`
       }
       storeImage {
         id
+      }
+      gallery {
+        directus_files_id {
+          id
+          width
+          height
+        }
       }
       description
       history
