@@ -60,7 +60,7 @@ export default function Weapons({ utils }) {
     push('/VerseExkurs/waffen/' + name)
   }
 
-  console.log(utils.classes);
+  // console.log(utils.classes);
 
   useEffect(() => {
     if (isMounted.current) {

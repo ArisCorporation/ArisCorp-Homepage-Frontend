@@ -49,7 +49,7 @@ export default function SpectrumArticlePage() {
   let data2arr = []
   data2.map((data) => data2arr.push(data.waffen_feuermodi_id.feuermodus))
   data2arr = data2arr.join(' / ')
-  // console.log(data2arr);
+  (data2arr);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">

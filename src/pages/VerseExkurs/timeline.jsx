@@ -13,14 +13,14 @@ export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
   const timelineEvents = []
 
-  // console.log(data.timeline.event.length);
+  (data.timeline.event.length);
 
   data.timeline.event.map((object, index) => {
-    // console.log('duchlauf: ' + index)
-    // console.log(object.title)
+    ('duchlauf: ' + index)
+    (object.title)
     const start_date = object.dates.find((item) => item.type == 'start_date')
     const end_date = object.dates.find((item) => item.type == 'end_date')
-    // console.log(start_date.year)
+    (start_date.year)
 
     // const banner = object.banner.match(/\bhttps?:\/\/\S+/gi)[0]
     const banner =

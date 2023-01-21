@@ -36,7 +36,7 @@ export default function Firmen({ data }) {
     }
   }, [urlquery])
 
-  // console.log(data.filter((data) => data.category == 'hostile'))
+  (data.filter((data) => data.category == 'hostile'))
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">

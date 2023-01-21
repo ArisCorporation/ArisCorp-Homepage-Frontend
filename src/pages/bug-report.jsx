@@ -321,7 +321,6 @@ export default function BugReportPage({ data }) {
             headers: headers,
           })
           .catch(function (error) {
-            console.log(error)
           })
         axios
           .post(
@@ -332,11 +331,9 @@ export default function BugReportPage({ data }) {
             }
           )
           .catch(function (error) {
-            console.log(error)
           })
       })
       .catch(function (error) {
-        console.log(error)
       })
 
     setBugIsDone(true)
@@ -374,7 +371,6 @@ export default function BugReportPage({ data }) {
         headers: headers,
       })
       .catch(function (error) {
-        console.log(error)
       })
   }
 

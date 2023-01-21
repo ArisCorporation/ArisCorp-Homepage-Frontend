@@ -187,7 +187,7 @@ async function getSCData() {
 
   const getEntireData = async function (pageNo = 1) {
     const results = await getData(pageNo)
-    console.log('Retreiving data from API for page : ' + pageNo)
+    // console.log('Retreiving data from API for page : ' + pageNo)
     if (results.length > 0) {
       return results.concat(await getEntireData(pageNo + 1))
     } else {
@@ -891,9 +891,9 @@ async function dpostSCData() {
     //   }
     // }
 
-    // console.log(object.brochure);
-    // console.log(object.name);
-    console.log(BackendObject.brochureImported)
+    (object.brochure);
+    (object.name);
+    // console.log(BackendObject.brochureImported)
 
     async function pushToDatastore() {
       Datastore.data.push({
@@ -1116,7 +1116,7 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
+                // console.log(error)
               })
           } else {
             axios
@@ -1125,7 +1125,7 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
+                // console.log(error)
               })
           }
         })

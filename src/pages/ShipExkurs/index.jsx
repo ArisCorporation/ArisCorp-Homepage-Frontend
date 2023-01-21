@@ -76,9 +76,7 @@ export default function Ships({ utils }) {
     push('/ShipExkurs/' + name)
   }
 
-  console.log(data)
-
-  // console.log(utils.classes)
+  (utils.classes)
 
   // useEffect(() => {
   //   if (isMounted.current) {

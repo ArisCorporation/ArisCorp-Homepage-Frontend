@@ -40,7 +40,7 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
+                // console.log(error)
               })
           } else {
             axios
@@ -49,7 +49,7 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
-                console.log(error)
+                // console.log(error)
               })
           }
         })
