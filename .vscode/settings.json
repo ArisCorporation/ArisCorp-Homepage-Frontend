@@ -10,5 +10,11 @@
   },
   "[css]": {
     "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
