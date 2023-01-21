@@ -614,6 +614,25 @@ const TechCarrack = () => {
         <path id="grav11" d="M481,253l.83.67L481,254Z" />
       </g>
 
+      {/* DRONES */}
+      <g
+        id="dronegroup"
+        className={"transition-colors hover:cursor-pointer " + (selectedTech == 'bb58aaab-a6e0-4f9c-b9d1-0880cb985543' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
+        onMouseEnter={() => setSelectedTech('bb58aaab-a6e0-4f9c-b9d1-0880cb985543')}
+        onMouseLeave={() => setSelectedTech(undefined)}
+        onClick={() =>
+          router.push(
+            '/VerseExkurs/technologie/Drohnensysteme',
+            undefined,
+            { scroll: false }
+          )
+        }
+      >
+        <path id="drone1" d="M1300.67,256.22c-5.84,0-10.64.18-15.41-.17-.81-.06-2.22-2.53-2-3.61.4-1.93,1.81-3.66,3.19-6.19h9.93Z" />
+        <path id="drone2" d="M1314.54,245.4l10.28-.05c.55,2.35-.79,5.31,2.62,6.78.69.3.47,2.69.76,4.8l-17.77-.79Z" />
+        <path id="drone3" d="M1335.88,286l-1,.31-28.85-.09h-30.27c1.38-5.6-2.09-11.11,1.79-16A6.5,6.5,0,0,1,1282,268c15.65-.25,31.3-.39,47-.21,1.95,0,3.88,2,5.82,3.1Z" />
+      </g>
+
       <g id="transparent">
         <ellipse
           className="duration-300 fill-transparent"
