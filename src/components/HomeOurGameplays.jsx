@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { SquareLoader } from 'react-spinners'
 import { Tab } from '@headlessui/react'
 import { useQuery } from '@apollo/client'

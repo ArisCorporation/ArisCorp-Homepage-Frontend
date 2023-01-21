@@ -1,5 +1,5 @@
 import Layout from 'pages/VerseExkurs/layout'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_LITERATUREN } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 
 const RectruitmentSection = () => {
   let [isOpen, setIsOpen] = useState(false)

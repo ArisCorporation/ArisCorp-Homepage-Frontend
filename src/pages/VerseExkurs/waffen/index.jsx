@@ -7,7 +7,7 @@ import {
 } from 'graphql/queries'
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Head from 'next/head'

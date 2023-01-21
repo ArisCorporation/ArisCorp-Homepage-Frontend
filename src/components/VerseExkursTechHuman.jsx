@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import { useContext } from 'react'
 import { ShipTechnologieModalContext } from 'context/ShipTechnologieModalContext'
 import { useRouter } from 'next/router'

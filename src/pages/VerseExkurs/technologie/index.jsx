@@ -1,4 +1,4 @@
-import Image from 'next/legacy/image'
+import Image from 'next/image'
 import Layout from 'pages/VerseExkurs/layout'
 import TechCarrack from 'components/VerseExkursTechCarrack'
 import TechHuman from 'components/VerseExkursTechHuman'
