@@ -1,4 +1,4 @@
-import Layout from '../layout'
+import Layout from './layout'
 import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/future/image'
@@ -15,8 +15,10 @@ import {
   CircularProgressbarWithChildren,
   buildStyles,
 } from 'react-circular-progressbar'
+import ImageGallery from 'react-image-gallery';
 // import 'react-circular-progressbar/dist/styles.css'
 import './progressbar.css'
+import "react-image-gallery/styles/css/image-gallery.css";
 
 import React from 'react'
 
@@ -25,7 +27,7 @@ import _ from 'lodash'
 // Animation
 import { easeQuadInOut } from 'd3-ease'
 
-function Separator(props) {
+function Separator (props) {
   return (
     <div
       style={{
@@ -39,14 +41,14 @@ function Separator(props) {
   )
 }
 
-function RadialSeparators(props) {
+function RadialSeparators (props) {
   const turns = 1 / props.count
   return _.range(props.count).map((index) => (
-    <Separator turns={index * turns} style={props.style} />
+    <Separator key={index} turns={index * turns} style={props.style} />
   ))
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps (context) {
   const { params } = context
   const { ship } = params
 
@@ -68,7 +70,7 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function SpectrumArticlePage({ ships }) {
+export default function SpectrumArticlePage ({ ships }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
   const { replace, query } = useRouter()
@@ -85,7 +87,7 @@ export default function SpectrumArticlePage({ ships }) {
 
   const data = ships[0]
 
-  function getScore(array) {
+  function getScore (array) {
     let ratings = []
     let sum = 0
 
@@ -132,6 +134,16 @@ export default function SpectrumArticlePage({ ships }) {
   )[0].begrundung
   const overallScore = getScore(data.ratings)
 
+  const galleryImages = data.gallery.map((i) => {
+    const original = ("https://cms.ariscorp.de/assets/" + i.directus_files_id.id)
+    const thumbnail = ("https://cms.ariscorp.de/assets/" + i.directus_files_id.id + "?width=250")
+
+    return {
+      original,
+      thumbnail
+    }
+  })
+
   return (
     <div className="items-center max-w-6xl mx-auto print:pt-5">
       <div>
@@ -176,201 +188,205 @@ export default function SpectrumArticlePage({ ships }) {
         <div className="w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
           <BasicPanel
             className={'h-full'}
-            childClassName={'h-full overflow-hidden'}
+            childClassName={'h-full'}
           >
-            <Image
-              src={'https://cms.ariscorp.de/assets/' + data.storeImage.id}
-              alt={'Bild von ' + data.name}
-              fill
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                data.storeImage.id +
-                '?width=16&quality=1'
-              }
-            />
+              <Image
+                src={'https://cms.ariscorp.de/assets/' + data.storeImage.id}
+                alt={'Bild von ' + data.name}
+                fill
+                className="object-cover"
+                placeholder="blur"
+                blurDataURL={
+                  'https://cms.ariscorp.de/assets/' +
+                  data.storeImage.id +
+                  '?width=16&quality=1'
+                }
+              />
           </BasicPanel>
         </div>
         <div className="w-full xl:w-2/5">
-          <BasicPanel childClassName={'overflow-hidden'}>
-            <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
-              <table className="w-full table-fixed">
-                <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
-                  Spezifikationen
-                </caption>
-                <tbody>
-                  <tr className="">
-                    <th className="pr-2 text-left">Länge:</th>
-                    <td className="text-left text-primary">
-                      {data.length != null ? data.length + 'M' : 'N/A'}
-                    </td>
-                    <th className="pr-2 text-left">Breite:</th>
-                    <td className="text-left text-primary">
-                      {data.beam != null ? data.beam + 'M' : 'N/A'}
-                    </td>
-                    <th className="pr-2 text-left">Höhe:</th>
-                    <td className="text-left text-primary">
-                      {data.height != null ? data.height + 'M' : 'N/A'}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="w-full table-auto">
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Typ Klassifizierung:</th>
-                    <td className="text-left text-primary">
-                      {data.classification != null
-                        ? data.classification
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Größen Klassifizierung:</th>
-                    <td className="text-left text-primary">
-                      {data.classification != null
-                        ? data.size == 'small'
-                          ? 'Klein'
-                          : data.size == 'medium'
-                          ? 'Medium'
-                          : data.size == 'large'
-                          ? 'Groß'
-                          : data.size == 'capital'
-                          ? data.size
-                          : 'N/A'
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="w-full table-fixed">
-                <tbody>
-                  <tr>
-                    <th className="pr-2 text-left">Min Crew:</th>
-                    <td className="text-left text-primary">
-                      {data.minCrew != null
-                        ? data.minCrew +
+          <BasicPanel>
+            <div className='overflow-hidden rounded-2xl'>
+              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
+                <table className="w-full table-fixed">
+                  <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                    Spezifikationen
+                  </caption>
+                  <tbody>
+                    <tr className="">
+                      <th className="pr-2 text-left">Länge:</th>
+                      <td className="text-left text-primary">
+                        {data.length != null ? data.length + 'M' : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Breite:</th>
+                      <td className="text-left text-primary">
+                        {data.beam != null ? data.beam + 'M' : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Höhe:</th>
+                      <td className="text-left text-primary">
+                        {data.height != null ? data.height + 'M' : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-auto">
+                  <tbody>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Typ Klassifizierung:</th>
+                      <td className="text-left text-primary">
+                        {data.classification != null
+                          ? data.classification
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Größen Klassifizierung:</th>
+                      <td className="text-left text-primary">
+                        {data.classification != null
+                          ? data.size == 'small'
+                            ? 'Klein'
+                            : data.size == 'medium'
+                              ? 'Medium'
+                              : data.size == 'large'
+                                ? 'Groß'
+                                : data.size == 'capital'
+                                  ? data.size
+                                  : 'N/A'
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-fixed">
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left">Min Crew:</th>
+                      <td className="text-left text-primary">
+                        {data.minCrew != null
+                          ? data.minCrew +
                           (data.minCrew > 1 ? ' Personen' : ' Person')
-                        : 'N/A'}
-                    </td>
-                    <th className="pr-2 text-left">Max Crew:</th>
-                    <td className="text-left text-primary">
-                      {data.minCrew != null
-                        ? data.maxCrew +
+                          : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Max Crew:</th>
+                      <td className="text-left text-primary">
+                        {data.minCrew != null
+                          ? data.maxCrew +
                           (data.maxCrew > 1 ? ' Personen' : ' Person')
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="w-full table-auto">
-                <tbody>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Kaufpreis:</th>
-                    <td className="text-left text-primary">
-                      {data.price != null ? (
-                        <div className="flex items-center">
-                          <p>
-                            {data.price
-                              .toString()
-                              .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')}
-                            <span className="lowercase"> a</span>UEC
-                          </p>
-                        </div>
-                      ) : (
-                        'N/A'
-                      )}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Kaufbar Bei:</th>
-                    <td className="text-left text-primary">N/A</td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Pledgewert:</th>
-                    <td className="text-left text-primary">
-                      {data.pledgePrice != null
-                        ? data.pledgePrice
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-auto">
+                  <tbody>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Kaufpreis:</th>
+                      <td className="text-left text-primary">
+                        {data.price != null ? (
+                          <div className="flex items-center">
+                            <p>
+                              {data.price
+                                .toString()
+                                .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')}
+                              <span className="lowercase"> a</span>UEC
+                            </p>
+                          </div>
+                        ) : (
+                          'N/A'
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Kaufbar Bei:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Pledgewert:</th>
+                      <td className="text-left text-primary">
+                        {data.pledgePrice != null
+                          ? data.pledgePrice
                             .toString()
                             .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + '$'
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </BasicPanel>
-          <BasicPanel childClassName={'overflow-hidden'}>
-            <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
-              <table className="w-full table-fixed">
-                <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
-                  Geschwindigkeit
-                </caption>
-                <tbody>
-                  <tr>
-                    <th className="pr-2 text-left scale-60">
-                      SCM Geschwindigkeit:
-                    </th>
+          <BasicPanel>
+            <div className='overflow-hidden rounded-2xl'>
+              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
+                <table className="w-full table-fixed">
+                  <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                    Geschwindigkeit
+                  </caption>
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left scale-60">
+                        SCM Geschwindigkeit:
+                      </th>
 
-                    <th className="pr-2 text-xs text-left">
-                      Afterburner Geschwindigkeit:
-                    </th>
-                  </tr>
-                  <tr>
-                    <td className="text-left text-primary">
-                      {data.ScmSpeed != null ? data.ScmSpeed + ' M/S' : 'N/A'}
-                    </td>
-                    <td className="text-left text-primary">
-                      {data.afterburnerSpeed != null
-                        ? data.afterburnerSpeed + 'M/S'
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-[85%] mt-3 sm:mt-3 sm:mb-2 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <table className="w-full table-fixed">
-                <tbody>
-                  <tr>
-                    <th className="pr-2 text-left">Pitch Max:</th>
-                    <td className="text-left text-primary">N/A</td>
-                    <th className="pr-2 text-left">X-Achse:</th>
-                    <td className="text-left text-primary">N/A</td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Yaw Max:</th>
-                    <td className="text-left text-primary">N/A</td>
-                    <th className="pr-2 text-left">Y-Achse:</th>
-                    <td className="text-left text-primary">N/A</td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Roll Max:</th>
-                    <td className="text-left text-primary">N/A</td>
-                    <th className="pr-2 text-left">Z-Achse:</th>
-                    <td className="text-left text-primary">N/A</td>
-                  </tr>
-                </tbody>
-              </table>
+                      <th className="pr-2 text-xs text-left">
+                        Afterburner Geschwindigkeit:
+                      </th>
+                    </tr>
+                    <tr>
+                      <td className="text-left text-primary">
+                        {data.ScmSpeed != null ? data.ScmSpeed + ' M/S' : 'N/A'}
+                      </td>
+                      <td className="text-left text-primary">
+                        {data.afterburnerSpeed != null
+                          ? data.afterburnerSpeed + 'M/S'
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-[85%] mt-3 sm:mt-3 sm:mb-2 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-fixed">
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left">Pitch Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">X-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Yaw Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">Y-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Roll Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">Z-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           </BasicPanel>
         </div>
@@ -815,7 +831,9 @@ export default function SpectrumArticlePage({ ships }) {
             </Tab.Panel>
             <Tab.Panel>
               <BasicPanel>
-                <div className="text-center text-primary">Gallery</div>
+                <div className="overflow-hidden rounded-2xl">
+                  <ImageGallery items={galleryImages} />
+                </div>
               </BasicPanel>
             </Tab.Panel>
             <Tab.Panel>
@@ -870,12 +888,12 @@ export default function SpectrumArticlePage({ ships }) {
                             {fightScore == 10
                               ? 'Gering'
                               : fightScore == 15
-                              ? 'Mittel'
-                              : fightScore == 20
-                              ? 'Gut'
-                              : fightScore == 25
-                              ? 'Sehr Gut'
-                              : 'nicht vorhanden'}
+                                ? 'Mittel'
+                                : fightScore == 20
+                                  ? 'Gut'
+                                  : fightScore == 25
+                                    ? 'Sehr Gut'
+                                    : 'nicht vorhanden'}
                           </span>
                         </p>
                         <p className="-mt-3">{fightReason}</p>
@@ -887,12 +905,12 @@ export default function SpectrumArticlePage({ ships }) {
                             {ecoScore == 10
                               ? 'Gering'
                               : ecoScore == 15
-                              ? 'Mittel'
-                              : ecoScore == 20
-                              ? 'Gut'
-                              : ecoScore == 25
-                              ? 'Sehr Gut'
-                              : 'nicht vorhanden'}
+                                ? 'Mittel'
+                                : ecoScore == 20
+                                  ? 'Gut'
+                                  : ecoScore == 25
+                                    ? 'Sehr Gut'
+                                    : 'nicht vorhanden'}
                           </span>
                         </p>
                         <p className="-mt-3">{ecoReason}</p>
@@ -904,12 +922,12 @@ export default function SpectrumArticlePage({ ships }) {
                             {useScore == 10
                               ? 'Gering'
                               : useScore == 15
-                              ? 'Mittel'
-                              : useScore == 20
-                              ? 'Gut'
-                              : useScore == 25
-                              ? 'Sehr Gut'
-                              : 'nicht vorhanden'}
+                                ? 'Mittel'
+                                : useScore == 20
+                                  ? 'Gut'
+                                  : useScore == 25
+                                    ? 'Sehr Gut'
+                                    : 'nicht vorhanden'}
                           </span>
                         </p>
                         <p className="-mt-3">{useReason}</p>
@@ -921,12 +939,12 @@ export default function SpectrumArticlePage({ ships }) {
                             {ppScore == 10
                               ? 'Gering'
                               : ppScore == 15
-                              ? 'Mittel'
-                              : ppScore == 20
-                              ? 'Gut'
-                              : ppScore == 25
-                              ? 'Sehr Gut'
-                              : 'nicht vorhanden'}
+                                ? 'Mittel'
+                                : ppScore == 20
+                                  ? 'Gut'
+                                  : ppScore == 25
+                                    ? 'Sehr Gut'
+                                    : 'nicht vorhanden'}
                           </span>
                         </p>
                         <p className="-mt-3">{ppReason}</p>
@@ -943,7 +961,7 @@ export default function SpectrumArticlePage({ ships }) {
                   <div className="w-1/12 pl-2">
                     <CircularProgressbarWithChildren
                       value={overallScore}
-                      text={`${80}%`}
+                      text={`${overallScore}%`}
                       strokeWidth={10}
                       styles={buildStyles({
                         strokeLinecap: 'butt',
@@ -1041,6 +1059,6 @@ export default function SpectrumArticlePage({ ships }) {
   )
 }
 
-SpectrumArticlePage.getLayout = function getLayout(page) {
+SpectrumArticlePage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }
