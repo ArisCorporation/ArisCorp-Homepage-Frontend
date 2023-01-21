@@ -16,8 +16,9 @@ import {
   buildStyles,
 } from 'react-circular-progressbar'
 import ImageGallery from 'react-image-gallery';
+// import 'react-circular-progressbar/dist/styles.css'
 import './progressbar.css'
-import "./image-gallery.css";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 import React from 'react'
 
