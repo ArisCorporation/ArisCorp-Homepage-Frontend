@@ -160,12 +160,26 @@ export default function TimelinePage ({ data, events }) {
   //   group: 'Catégorie1',
   // }
 
+  const siteTitle = "Timeline - Astro Research and Industrial Service Corporation"
   return (
     <div>
       <Head>
         <title>
-          Timeline - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="mt-2 mb-12 ml-2">
         <div

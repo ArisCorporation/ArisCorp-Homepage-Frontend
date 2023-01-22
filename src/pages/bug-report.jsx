@@ -101,9 +101,12 @@ export async function getServerSideProps () {
     }
   )
 
+  const siteTitle = "Bug Reporting Tool - Astro Research and Industrial Service Corporation"
+
   return {
     props: {
       data: res.data,
+      siteTitle
     },
   }
 }
@@ -375,13 +378,10 @@ export default function BugReportPage ({ data }) {
       })
   }
 
+  // const siteTitle = ""
+
   return (
     <div className="px-24 pt-32">
-      <Head>
-        <title>
-          Bug Reporting Tool - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
       <h1>Bug Melden:</h1>
       <div className="min-h-screen mt-12 rounded-lg drop-shadow-xl bg-bg-secondary/70">
         <div className="pt-4">
@@ -848,5 +848,5 @@ export default function BugReportPage ({ data }) {
 }
 
 BugReportPage.getLayout = function getLayout (page) {
-  return <Layout>{page}</Layout>
+  return <Layout> {page}</Layout>
 }

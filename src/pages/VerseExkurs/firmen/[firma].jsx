@@ -9,32 +9,55 @@ const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
 import { BasicPanel } from 'components/panels'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function SystemDetailPage () {
-  const router = useRouter()
-  const { firma } = router.query
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { firma } = params
 
-  let { loading, error, data } = useQuery(GET_VERSEEXKURS_FIRMA, {
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_FIRMA,
     variables: { firma },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
   data = data.firmen[0]
 
+  const siteTitle = data.firmen_name + " - Astro Research and Service Industrial Corporation"
+
+  return {
+    props: {
+      data,
+      siteTitle
+    },
+  }
+}
+
+export default function SystemDetailPage ({ data, siteTitle }) {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          {data.firmen_name} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">

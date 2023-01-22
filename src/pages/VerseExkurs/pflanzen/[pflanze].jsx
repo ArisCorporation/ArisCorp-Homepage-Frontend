@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Tab } from '@headlessui/react'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
 const { gql, useQuery } = require('@apollo/client')
 
@@ -25,63 +26,68 @@ const ALIENRASSEN = gql`
   }
 `
 
-export default function AlienrassenDetailPage () {
-  const router = useRouter()
-  const { pflanze } = router.query
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { pflanze } = params
 
-  const { loading, error, data } = useQuery(ALIENRASSEN, {
-    variables: { pflanze },
+  let { data } = await client.query({
+    query: ALIENRASSEN,
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
-  if (error) return <p>Error :(</p>
+  data = data.alienrassen[0].sections.filter((pflanzen) => pflanzen.title == pflanze)[0]
+  const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
 
-  const Data = data.alienrassen[0].sections
+  return {
+    props: {
+      data,
+      siteTitle
+    },
+  }
+}
 
+export default function AlienrassenDetailPage ({ data, siteTitle }) {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <div>
-        {Data.filter((pflanzen) => pflanzen.title === pflanze).map((data) => (
-          <div key={data.title}>
-            <Head>
-              <title>
-                {data.title} - Astro Research and Industrial Service Corporation
-              </title>
-            </Head>
-            <div className="items-center text-center">
-              <h1 className="uppercase">
-                Alienrasse: <span className="text-primary">{data.title}</span>
-              </h1>
-              <hr />
-              <div className="w-full">
-                <ReactMarkdown
-                  rehypePlugins={[rehypeRaw]}
-                  className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
-                >
-                  {data.image}
-                </ReactMarkdown>
-              </div>
-            </div>
-            <div className={'px-5 mx-auto'}>
-              <h2 className="mt-3">VerseExkurs - Pflanzen: {data.title}</h2>
-              <hr className="max-w-[80px]" />
-            </div>
-            <div className="font-nasa article-font">
+        <div key={data.title}>
+          <Head>
+            <title>
+              {data.title} - Astro Research and Industrial Service Corporation
+            </title>
+          </Head>
+          <div className="items-center text-center">
+            <h1 className="uppercase">
+              Alienrasse: <span className="text-primary">{data.title}</span>
+            </h1>
+            <hr />
+            <div className="w-full">
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
-                className="child-delete-image mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
+                className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
               >
-                {data.content}
+                {data.image}
               </ReactMarkdown>
             </div>
           </div>
-        ))}
+          <div className={'px-5 mx-auto'}>
+            <h2 className="mt-3">VerseExkurs - Pflanzen: {data.title}</h2>
+            <hr className="max-w-[80px]" />
+          </div>
+          <div className="font-nasa article-font">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              className="child-delete-image mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
+            >
+              {data.content}
+            </ReactMarkdown>
+          </div>
+        </div>
       </div>
     </div>
   )

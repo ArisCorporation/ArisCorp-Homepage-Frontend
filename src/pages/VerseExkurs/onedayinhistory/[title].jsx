@@ -7,35 +7,54 @@ import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE } from 'graphql/queries'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function SpectrumArticlePage () {
-  const router = useRouter()
-  const { title } = router.query
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { title } = params
 
-  let { loading, error, data } = useQuery(
-    GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE,
-    {
-      variables: { title },
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE,
+    variables: { title },
+  })
+
+  if (!data) {
+    return {
+      notFound: true,
     }
-  )
-
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
+  }
 
   data = data.geschichte[0]
+  const siteTitle = data.geschichte_titel + " - Astro Research and Industrial Service Corporation"
 
+  return {
+    props: {
+      data,
+      siteTitle
+    },
+  }
+}
+
+export default function SpectrumArticlePage ({ data, siteTitle }) {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          {data.geschichte_titel} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">

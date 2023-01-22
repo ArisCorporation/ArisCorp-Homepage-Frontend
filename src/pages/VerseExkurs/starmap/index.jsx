@@ -95,12 +95,27 @@ export default function StarmapPage ({ data }) {
     },
   ]
 
+  const siteTitle = "ARK Starmap - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
       <Head>
         <title>
-          ARK Starmap - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <Tab.Group
         selectedIndex={activeTab}

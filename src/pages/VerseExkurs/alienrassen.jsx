@@ -26,13 +26,27 @@ export async function getServerSideProps () {
 
 export default function Alienrassen ({ data }) {
   const router = useRouter()
+  const siteTitle = "Alienrassen - Astro Research and Industrial Service Corporation"
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Alle Alienrassen - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <h1 className="mb-4 text-lg text-center md:mb-6 lg:mb-12 text-primary md:text-xl lg:text-3xl">
         Clicken sie auf die Alienrasse die sie sehen wollen.

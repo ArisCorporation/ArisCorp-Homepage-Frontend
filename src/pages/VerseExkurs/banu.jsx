@@ -43,13 +43,28 @@ export default function Banu ({ data }) {
     }
   }, [urlquery])
 
+  const siteTitle = "Banu - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
-      <Head>
-        <title>
-          Banu - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">

@@ -53,7 +53,7 @@ export async function getServerSideProps (context) {
   const { params } = context
   const { ship } = params
 
-  const { data } = await client.query({
+  let { data } = await client.query({
     query: GET_SHIPEXKURS_SHIP,
     variables: { slug: ship },
   })
@@ -64,14 +64,19 @@ export async function getServerSideProps (context) {
     }
   }
 
+  data = data.ships[0]
+
+  const siteTitle = data.name + " - Astro Research and Service Industrial Corporation"
+
   return {
     props: {
-      ships: await data.ships,
+      data,
+      siteTitle
     },
   }
 }
 
-export default function SpectrumArticlePage ({ ships }) {
+export default function SpectrumArticlePage ({ data, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
   const { replace, query } = useRouter()
@@ -85,8 +90,6 @@ export default function SpectrumArticlePage ({ ships }) {
       setActiveTab(0)
     }
   }, [urlquery])
-
-  const data = ships[0]
 
   function getScore (array) {
     let ratings = []
@@ -149,8 +152,21 @@ export default function SpectrumArticlePage ({ ships }) {
     <div className="items-center max-w-6xl mx-auto print:pt-5">
       <Head>
         <title>
-          {data.name} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="relative flex items-center align-center">

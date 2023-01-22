@@ -15,21 +15,37 @@ export async function getServerSideProps () {
     }
   }
 
+  const siteTitle = "Credits - Astro Research and Service Industrial Corporation"
+
   return {
     props: {
       data: await data.credits.text,
+      siteTitle
     },
   }
 }
 
-export default function CreditsPage ({ data }) {
+export default function CreditsPage ({ data, siteTitle }) {
   return (
     <div className="pt-32">
-      <Head>
-        <title>
-          Credits - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">
         {data}
       </ReactMarkdown>

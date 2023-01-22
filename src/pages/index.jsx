@@ -11,7 +11,7 @@ import Layout from './layout'
 import { OurTabSelectionProvider } from 'context/OurTabSelectionContext'
 import { GET_INDEX_DATA } from 'graphql/queries'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_INDEX_DATA,
   })
@@ -21,6 +21,8 @@ export async function getServerSideProps() {
       notFound: true,
     }
   }
+
+  const siteTitle = "Astro Research and Service Industrial Corporation"
 
   return {
     props: {
@@ -32,17 +34,20 @@ export async function getServerSideProps() {
       comm_links: await data?.comm_links,
 
       partner: await data?.partner,
+
+      siteTitle
     },
   }
 }
 
-export default function IndexPage({
+export default function IndexPage ({
   about,
   history,
   manifest,
   charta,
   comm_links,
   partner,
+  siteTitle
 }) {
   const [ourIndex, setOurIndex] = useState(0)
 
@@ -51,8 +56,21 @@ export default function IndexPage({
       <Layout ourIndex={ourIndex} onOurIndexChange={setOurIndex}>
         <Head>
           <title>
-            Astro Research and Industrial Service Corporation - test
+            {siteTitle}
           </title>
+
+          <meta
+            property="twitter:title"
+            content={siteTitle}
+          />
+          <meta
+            property="og:title"
+            content={siteTitle}
+          />
+          <meta
+            name="title"
+            content={siteTitle}
+          />
         </Head>
 
         <div className="no-marker">

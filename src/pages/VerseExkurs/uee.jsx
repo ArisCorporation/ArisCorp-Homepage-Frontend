@@ -52,12 +52,28 @@ export default function UEEPage (data) {
     }
   }, [urlquery, urlquery2])
 
+
+  const siteTitle = "United Empire of Earth - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          United Empire of Earth - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">

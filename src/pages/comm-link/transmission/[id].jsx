@@ -9,58 +9,81 @@ import { GET_COMM_LINK } from 'graphql/queries'
 import moment from 'moment'
 import 'moment/locale/de'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function CommLinkDetailPage () {
-  const router = useRouter()
-  const { id } = router.query
+export async function getServerSideProps (context) {
+  const { id } = context.query
 
-  const Id = id
-
-  const { loading, error, data } = useQuery(GET_COMM_LINK, {
-    variables: { Id },
+  let { data } = await client.query({
+    query: GET_COMM_LINK,
+    variables: { Id: id },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-  if (error) return <p>Error :(</p>
-  const Data = data.comm_links[0]
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
+
+  data = data.comm_links[0]
+
+  const siteTitle = data.comm_link_titel + " - Astro Research and Industrial Service Corporation"
+
+  return {
+    props: {
+      data,
+      siteTitle
+    }
+  }
+}
+
+export default function CommLinkDetailPage ({data, siteTitle}) {
   return (
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <Head>
         <title>
-          {Data.comm_link_titel} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
             Comm-Link:{' '}
-            <span className="text-primary">{Data.comm_link_titel}</span>
+            <span className="text-primary">{data.comm_link_titel}</span>
           </h1>
           <div className="w-full">
             <Image
-              src={'https://cms.ariscorp.de/assets/' + Data.comm_link_banner.id}
+              src={'https://cms.ariscorp.de/assets/' + data.comm_link_banner.id}
               alt={'Banner'}
-              width={Data.comm_link_banner.width}
-              height={Data.comm_link_banner.height}
+              width={data.comm_link_banner.width}
+              height={data.comm_link_banner.height}
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                Data.comm_link_banner.id +
+                data.comm_link_banner.id +
                 '?width=16&quality=1'
               }
             />
           </div>
         </div>
         <div
-          className={'max-w-[' + Data.comm_link_banner.width + 'px] mx-auto'}
+          className={'max-w-[' + data.comm_link_banner.width + 'px] mx-auto'}
         >
           <h2 className="mt-3">
-            Astro Research and Industrial Service Corporation - Comm-Links: {Data.comm_link_titel}
+            Astro Research and Industrial Service Corporation - Comm-Links: {data.comm_link_titel}
           </h2>
           <hr className="max-w-[80px]" />
           <div className="relative flex flex-wrap justify-between w-full h-6 xs:h-8 md:h-20 lg:h-32 xs:flex-nowrap">
@@ -69,7 +92,7 @@ export default function CommLinkDetailPage () {
                 <Image
                   src={
                     'https://cms.ariscorp.de/assets/' +
-                    Data.comm_link_author.member_potrait?.id
+                    data.comm_link_author.member_potrait?.id
                   }
                   alt={'Author Potrait'}
                   placeholder="blur"
@@ -77,7 +100,7 @@ export default function CommLinkDetailPage () {
                   objectFit="cover"
                   blurDataURL={
                     'https://cms.ariscorp.de/assets/' +
-                    Data.comm_link_author.member_potrait?.id +
+                    data.comm_link_author.member_potrait?.id +
                     '?width=16&quality=1'
                   }
                 />
@@ -85,7 +108,7 @@ export default function CommLinkDetailPage () {
               <div className="relative ml-0 uppercase md:ml-4 lg:ml-8">
                 <p className="absolute bottom-0 m-0 text-xs italic leading-[0rem] lg:text-lg xl:text-xl text-bold text-inherit whitespace-nowrap">
                   <span className="text-secondary">Author:</span>
-                  {' ' + Data.comm_link_author.member_titel}
+                  {' ' + data.comm_link_author.member_titel}
                 </p>
               </div>
             </div>
@@ -95,7 +118,7 @@ export default function CommLinkDetailPage () {
                   <span className="bottom-0 m-0 text-secondary xl:text-xl text-bold whitespace-nowrap">
                     Gepostet:
                   </span>{' '}
-                  {moment(Data.date_created).locale("de").format('Do MMMM YYYY')}
+                  {moment(data.date_created).locale("de").format('Do MMMM YYYY')}
                 </p>
               </div>
             </div>
@@ -107,7 +130,7 @@ export default function CommLinkDetailPage () {
             rehypePlugins={[rehypeRaw]}
             className="justify-center mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"
           >
-            {Data.comm_link}
+            {data.comm_link}
           </ReactMarkdown>
         </div>
       </div>

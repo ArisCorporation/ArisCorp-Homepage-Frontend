@@ -6,7 +6,7 @@ import ArticleCard from 'components/VerseExkursArticleCard'
 import Head from 'next/head'
 
 export async function getServerSideProps () {
-  const { data } = await client.query({ query: GET_VERSEEXKURS_LITERATUREN })
+  let { data } = await client.query({ query: GET_VERSEEXKURS_LITERATUREN })
 
   if (!data) {
     return {
@@ -21,15 +21,28 @@ export async function getServerSideProps () {
   }
 }
 
-export default function LiteraturReihenPage (data) {
-  const Data = data.data
+export default function LiteraturReihenPage ({ data }) {
+  const siteTitle = "Literatur - Astro Research and Industrial Service Corporation"
 
   return (
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Literatur - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
         <div className="relative w-full">
@@ -47,7 +60,7 @@ export default function LiteraturReihenPage (data) {
         <hr />
       </div>
       <div>
-        {Data.map((data) => (
+        {data.map((data) => (
           <ArticleCard
             key={data.id}
             link={

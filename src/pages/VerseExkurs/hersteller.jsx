@@ -39,12 +39,27 @@ export default function Hersteller ({ data }) {
     }
   }, [urlquery])
 
+  const siteTitle = "Aliens - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          Hersteller - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <Tab.Group
         selectedIndex={activeTab}

@@ -7,50 +7,76 @@ import rehypeRaw from 'rehype-raw'
 import { useQuery } from '@apollo/client'
 import { GET_MEMBER } from 'graphql/queries'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function Biografie () {
-  const router = useRouter()
-  const { name } = router.query
+export async function getServerSideProps (context) {
+  const { name } = context.query
 
-  const { loading, error, data } = useQuery(GET_MEMBER, {
+  let { data } = await client.query({
+    query: GET_MEMBER,
     variables: { name },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-10">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-  if (error) return <p>Error :(</p>
-  const Data = data.member[0]
+  if (!data) {
+    return {
+      notFound: true,
+    }
+
+  }
+
+  data = data.member[0]
+
+  const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
+
+  return {
+    props: {
+      data,
+      siteTitle
+    }
+  }
+}
+
+export default function Biografie ({ data, siteTitle }) {
   return (
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <Head>
         <title>
-          {Data.member_name} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Biografie: <span className="text-primary">{Data.member_name}</span>
+            Biografie: <span className="text-primary">{data.member_name}</span>
           </h1>
           <hr />
         </div>
         <div className="max-w-[95%] mx-auto">
           <div className={'mx-auto'}>
-            <h2 className="mt-3">Bio von {Data.member_titel}</h2>
+            <h2 className="mt-3">Bio von {data.member_titel}</h2>
             <div className="float-left w-full mt-8 mb-6 sm:mt-0 sm:mb-0 sm:w-auto sm:float-right">
               <Image
-                src={'https://cms.ariscorp.de/assets/' + Data.member_potrait.id}
+                src={'https://cms.ariscorp.de/assets/' + data.member_potrait.id}
                 alt={'Banner'}
                 width={270}
                 height={320}
                 placeholder="blur"
                 blurDataURL={
                   'https://cms.ariscorp.de/assets/' +
-                  Data.member_potrait.id +
+                  data.member_potrait.id +
                   '?width=16&quality=1'
                 }
               />
@@ -62,7 +88,7 @@ export default function Biografie () {
               rehypePlugins={[rehypeRaw]}
               className="justify-center prose steckbrief prose-td:align-middle prose-invert xl:max-w-full"
             >
-              {Data.member_steckbrief}
+              {data.member_steckbrief}
             </ReactMarkdown>
           </div>
         </div>
@@ -72,7 +98,7 @@ export default function Biografie () {
             rehypePlugins={[rehypeRaw]}
             className="justify-center steckbrief"
           >
-            {Data.member_biografie}
+            {data.member_biografie}
           </ReactMarkdown>
         </div>
       </div>

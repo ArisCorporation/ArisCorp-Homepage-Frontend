@@ -6,34 +6,57 @@ import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_SPECTRUM_CATEGORY } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function SpectrumCategoryPage () {
-  const router = useRouter()
-  const { cid } = router.query
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { cid } = params
 
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_SPECTRUM_CATEGORY)
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_SPECTRUM_CATEGORY,
+    variables: { cid },
+  })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
-  if (error) return <p>Error :(</p>
+  data = data.spectrum
+  const category = data.filter((data) => data.spectrum_kategorie_beschreibung == true && data.id == cid)[0]
+  data = data.filter((data) => data.spectrum_kategorie_beschreibung == false && data.spectrum_beitrag_kateogrie === category.spectrum_beitrag_kateogrie)[0]
+  const siteTitle = data.spectrum_titel + " - Astro Research and Industrial Service Corporation"
 
-  const Data = data.spectrum
+  return {
+    props: {
+      data,
+      category,
+      siteTitle
+    },
+  }
+}
 
-  const category = Data.filter(
-    (data) => data.spectrum_kategorie_beschreibung == true && data.id == cid
-  )[0]
-
+export default function SpectrumCategoryPage ({ data, category, siteTitle }) {
   return (
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          {category.spectrum_titel} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + category.image?.width + "/" + category.image?.height + "]"}>
         <div className="relative w-full">
@@ -57,20 +80,13 @@ export default function SpectrumCategoryPage () {
         <hr />
       </div>
       <div>
-        {Data.filter(
-          (data) =>
-            data.spectrum_kategorie_beschreibung == false &&
-            data.spectrum_beitrag_kateogrie ===
-            category.spectrum_beitrag_kateogrie
-        ).map((data) => (
-          <ArticleCard
-            key={data.id}
-            link={'spectrum/' + category.id + '/' + data.id}
-            title={data.spectrum_titel}
-            image={category.image?.id}
-            seperator={true}
-          />
-        ))}
+        <ArticleCard
+          key={data.id}
+          link={'spectrum/' + category.id + '/' + data.id}
+          title={data.spectrum_titel}
+          image={category.image?.id}
+          seperator={true}
+        />
       </div>
     </div>
   )

@@ -5,8 +5,9 @@ import client from 'apollo/clients'
 import { useRouter } from 'next/router'
 import { ApolloProvider } from '@apollo/client'
 import { useState } from 'react'
+import Head from 'next/head'
 
-export default function Layout({ children, ourIndex, onOurIndexChange }) {
+export default function Layout ({ children, ourIndex, onOurIndexChange }) {
   const router = useRouter()
   return (
     <ApolloProvider client={client}>
