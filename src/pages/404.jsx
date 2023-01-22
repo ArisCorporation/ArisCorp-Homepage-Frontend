@@ -5,13 +5,28 @@ import { useRouter } from 'next/router'
 export default function Error404 () {
   const router = useRouter()
 
+  const siteTitle = "404 - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="flex flex-wrap items-center justify-center">
-      <Head>
-        <title>
-        404 - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <div className="mx-auto">
         <div className="pt-16 mx-auto">
           <h1 className="uppercase text-primary">Status Code: 404</h1>

@@ -14,10 +14,9 @@ import Head from 'next/head'
 export async function getServerSideProps (context) {
   const { params } = context
   const { technologie } = params
-
   const Technologie = technologie?.charAt(0).toUpperCase() + technologie?.slice(1)
 
-  const { data } = await client.query({
+  let { data } = await client.query({
     query: GET_VERSEEXKURS_TECHNOLOGIE,
     variables: { Technologie },
   })
@@ -28,16 +27,19 @@ export async function getServerSideProps (context) {
     }
   }
 
+  data = data.technologien[0]
+  const siteTitle = data.technologie_name + " - Astro Research and Industrial Service Corporation"
+
   return {
     props: {
-      data: await data.technologien[0],
+      data,
+      siteTitle
     },
   }
 }
 
-export default function SpectrumArticlePage ({ data }) {
+export default function SpectrumArticlePage ({ data, siteTitle }) {
   const router = useRouter()
-
   useEffect(() => {
     router.asPath ==
       '/VerseExkurs/technologie/Komponenten#gravitationsgeneratoren'
@@ -56,8 +58,21 @@ export default function SpectrumArticlePage ({ data }) {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          {data.technologie_name} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">

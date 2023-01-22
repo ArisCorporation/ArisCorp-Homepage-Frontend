@@ -279,6 +279,19 @@ export default function CommLinksPage () {
         <title>
           Comm-Link - Astro Research and Industrial Service Corporation
         </title>
+
+        <meta
+          property="twitter:title"
+          content="Comm-Link - Astro Research and Industrial Service Corporation"
+        />
+        <meta
+          property="og:title"
+          content="Comm-Link - Astro Research and Industrial Service Corporation"
+        />
+        <meta
+          name="title"
+          content="Comm-Link - Astro Research and Industrial Service Corporation"
+        />
       </Head>
       <div className="flex items-center justify-center pt-32">
         <Image

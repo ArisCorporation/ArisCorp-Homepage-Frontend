@@ -2,12 +2,26 @@ import Head from 'next/head'
 import Image from 'next/image'
 
 export default function Alienrassen ({ data }) {
+  const siteTitle = "Aliens - Astro Research and Industrial Service Corporation"
   return (
     <div className="flex items-center justify-center w-full h-full pt-5">
       <Head>
         <title>
-          Aliens - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="my-auto">
         <Image

@@ -28,12 +28,27 @@ export async function getServerSideProps () {
 }
 
 export default function Verschiedenes ({ data }) {
+
+  const siteTitle = "Verschiedene Firmen - Astro Research and Industrial Service Corporation"
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          Verschiedene Firmen - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="flex flex-wrap">
         <div className="mx-auto text-primary">

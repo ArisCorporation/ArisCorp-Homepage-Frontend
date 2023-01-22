@@ -10,29 +10,37 @@ import { useEffect, useState } from 'react'
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function SystemDetailPage () {
-  const router = useRouter()
-  const { system } = router.query
-  const [systemSizeAE, setSystemSizeAE] = useState(true)
-
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { system } = params
   const System = system?.charAt(0).toUpperCase() + system?.slice(1)
 
-  let { loading, error, data } = useQuery(GET_VERSEEXKURS_SYSTEM, {
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_SYSTEM,
     variables: { System },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
   data = data.systeme[0]
+  const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
 
+  return {
+    props: {
+      data,
+      siteTitle
+    },
+  }
+}
+
+export default function SystemDetailPage ({ data, siteTitle }) {
+  const [systemSizeAE, setSystemSizeAE] = useState(true)
   const ueeIcon =
     'https://cms.ariscorp.de/assets/ab6330a8-40b6-40fd-ab8f-fac1d11741a3'
   const unclIcon =
@@ -65,8 +73,21 @@ export default function SystemDetailPage () {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          {data.name} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="items-center text-center">

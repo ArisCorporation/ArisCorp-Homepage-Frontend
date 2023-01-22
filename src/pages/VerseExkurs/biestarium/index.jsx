@@ -26,13 +26,28 @@ export async function getServerSideProps () {
 export default function BiestariumPage (data) {
   const Data = data.data
 
+  const siteTitle = "Biestarium - Astro Research and Industrial Service Corporation"
+  
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
-      <Head>
-        <title>
-          Biestarium - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">

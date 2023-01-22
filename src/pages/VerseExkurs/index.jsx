@@ -29,13 +29,28 @@ export async function getServerSideProps () {
 }
 
 export default function VerseExkursIndex (data) {
+
+  const siteTitle = "VerseExkurs - Astro Research and Industrial Service Corporation"
   return (
     <>
-      <Head>
-        <title>
-          VerseExkurs - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <ReactMarkdown
         rehypePlugins={[rehypeRaw]}
         className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%]"

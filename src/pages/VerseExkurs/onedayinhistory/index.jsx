@@ -33,12 +33,27 @@ export default function SpectrumPage ({ data }) {
 
   data = data.sort(sortDate)
 
+  const siteTitle = "Ein Tag in der Geschichte - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Ein Tag in der Geschichte - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="flex flex-wrap w-full aspect-[1118/351] scale-90">
         <div className="relative w-full">

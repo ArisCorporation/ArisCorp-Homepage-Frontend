@@ -168,11 +168,6 @@ class MyDocument extends Document {
             media="(prefers-color-scheme: dark) and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)"
           />
 
-          {/* <meta
-            name="title"
-            content="Astro Research and Industrial Service Corporation"
-          /> */}
-
           <meta
             name="description"
             content="Die Website der Star Citizen Organisation ArisCorp bietet euch eine Übersicht der Orga und allen Informationen die über das Verse verfügbar sind."
@@ -189,10 +184,6 @@ class MyDocument extends Document {
 
           <meta property="og:url" content="https://ariscorp.de" />
 
-          {/* <meta
-            property="og:title"
-            content="Astro Research and Industrial Service Corporation"
-          /> */}
 
           <meta
             property="og:description"
@@ -207,11 +198,6 @@ class MyDocument extends Document {
           <meta property="twitter:card" content="summary_large_image" />
 
           <meta property="twitter:url" content="https://ariscorp.de" />
-
-          {/* <meta
-            property="twitter:title"
-            content="Astro Research and Industrial Service Corporation"
-          /> */}
 
           <meta
             property="twitter:description"

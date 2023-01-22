@@ -54,13 +54,27 @@ export default function Firmen ({ data }) {
     }
   }, [urlquery, urlqueryhersteller, urlqueryother])
 
+  const siteTitle = "Firmen - Astro Research and Industrial Service Corporation"
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
-      <Head>
-        <title>
-          Firmen - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>

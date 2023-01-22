@@ -6,35 +6,60 @@ import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_LITERATUR_REIHE } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function LiteraturReihenPage () {
-  const router = useRouter()
-  const { rid } = router.query
+export async function getServerSideProps (context) {
+  const { params } = context
+  const { rid } = params
   const rId = parseFloat(rid)
-  const { loading, error, data } = useQuery(GET_VERSEEXKURS_LITERATUR_REIHE, {
+
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_LITERATUR_REIHE,
     variables: { rId },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
-  if (error) return <p>Error :(</p>
+  data = data.literatur
+  const reihe = data.filter((data) => data.literatur_reihe.id == rid)[0].literatur_reihe
+  const reihen = data.filter((data) => data.literatur_reihe.id == rid)
 
-  const Data = data.literatur
+  const siteTitle = reihe.reihen_titel + " - Astro Research and Industrial Service Corporation"
 
-  const reihe = Data.filter((data) => data.literatur_reihe.id == rid)[0]
-    .literatur_reihe
+  return {
+    props: {
+      data,
+      reihe,
+      reihen,
+      siteTitle
+    },
+  }
+}
 
+export default function LiteraturReihenPage ({ data, reihe, reihen, siteTitle }) {
   return (
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          {reihe.reihen_titel} - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + reihe.reihen_cover?.width + "/" + reihe.reihen_cover?.height + "]"}>
         <div className="relative w-full">
@@ -56,7 +81,7 @@ export default function LiteraturReihenPage () {
         <hr />
       </div>
       <div>
-        {Data.filter((data) => data.literatur_reihe.id == rid).map((data) => (
+        {reihen.map((data) => (
           <ArticleCard
             key={data.id}
             link={'literatur/' + reihe.id + '/' + data.literatur_kapitel}

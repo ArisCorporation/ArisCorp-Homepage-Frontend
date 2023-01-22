@@ -9,7 +9,7 @@ import { GET_VERSEEXKURS_ALIENRASSE } from 'graphql/queries'
 import client from 'apollo/clients'
 import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_ALIENRASSE,
     variables: { alienrasse: 'XiAn' },
@@ -28,7 +28,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Banu({ data }) {
+export default function Banu ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -43,13 +43,30 @@ export default function Banu({ data }) {
     }
   }, [urlquery])
 
+
+
+  const siteTitle = "Xi'An - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
-    <Head>
-      <title>
-        Xi&apos;An - Astro Research and Industrial Service Corporation
-      </title>
-    </Head>
+      <Head>
+        <title>
+          {siteTitle}
+        </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
+      </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
@@ -132,6 +149,6 @@ export default function Banu({ data }) {
   )
 }
 
-Banu.getLayout = function getLayout(page) {
+Banu.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

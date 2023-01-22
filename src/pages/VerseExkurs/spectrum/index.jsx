@@ -23,6 +23,9 @@ export async function getServerSideProps () {
   }
 }
 
+
+const siteTitle = "Spectrum - Astro Research and Industrial Service Corporation"
+
 export default function SpectrumPage ({ data }) {
   const Data = data.data
 
@@ -30,8 +33,21 @@ export default function SpectrumPage ({ data }) {
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Spectrum - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
         <div className="relative w-full">

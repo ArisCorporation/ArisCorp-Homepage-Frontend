@@ -8,33 +8,55 @@ import rehypeRaw from 'rehype-raw'
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_FRAKTION } from 'graphql/queries'
 import Head from 'next/head'
+import client from 'apollo/clients'
 
-export default function SystemDetailPage () {
-  const router = useRouter()
-  const { fraktion } = router.query
+export async function getServerSideProps(context) {
+  const { params } = context
+  const { fraktion } = params
 
-  let { loading, error, data } = useQuery(GET_VERSEEXKURS_FRAKTION, {
+  let { data } = await client.query({
+    query: GET_VERSEEXKURS_FRAKTION,
     variables: { fraktion },
   })
 
-  if (loading)
-    return (
-      <div className="flex justify-center pt-32">
-        <SquareLoader color="#00ffe8" speedMultiplier="0.8" loading={loading} />
-      </div>
-    )
-
-  if (error) return <p>Error :(</p>
+  if (!data) {
+    return {
+      notFound: true,
+    }
+  }
 
   data = data.fraktionengruppierungen[0]
+  const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
 
+  return {
+    props: {
+      data,
+      siteTitle
+    },
+  }
+}
+
+export default function SystemDetailPage ({data, siteTitle}) {
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
-      <Head>
-        <title>
-          {data.name} - Astro Research and Industrial Service Corporation
-        </title>
-      </Head>
+    <Head>
+      <title>
+        {siteTitle}
+      </title>
+
+      <meta
+        property="twitter:title"
+        content={siteTitle}
+      />
+      <meta
+        property="og:title"
+        content={siteTitle}
+      />
+      <meta
+        name="title"
+        content={siteTitle}
+      />
+    </Head>
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">

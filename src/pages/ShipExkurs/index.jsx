@@ -134,12 +134,27 @@ export default function Ships ({ utils }) {
   //   if (isReady) setSearch(squery)
   // }, [isReady])
 
+  const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
+
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          ShipExurs - Astro Research and Industrial Service Corporation
+          {siteTitle}
         </title>
+
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
       </Head>
       <div>
         <div className="w-full">
