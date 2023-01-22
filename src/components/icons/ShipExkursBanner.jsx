@@ -11,7 +11,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -33,7 +33,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -75,7 +75,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -87,7 +87,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -99,7 +99,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -111,7 +111,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -123,7 +123,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -135,7 +135,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -147,7 +147,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -159,7 +159,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -171,7 +171,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -183,7 +183,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -195,7 +195,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -207,7 +207,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -219,7 +219,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -231,7 +231,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -243,7 +243,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -255,7 +255,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -267,7 +267,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -279,7 +279,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -291,7 +291,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -303,7 +303,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -315,7 +315,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -327,7 +327,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -339,7 +339,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -351,7 +351,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -363,7 +363,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -375,7 +375,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -387,7 +387,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -399,7 +399,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -411,7 +411,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -423,7 +423,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -435,7 +435,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -447,7 +447,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -459,7 +459,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -471,7 +471,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -483,7 +483,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -495,7 +495,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -507,7 +507,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -519,7 +519,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -531,7 +531,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -543,7 +543,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -555,7 +555,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -567,7 +567,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-secondary'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-secondary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -579,7 +579,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -591,7 +591,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -603,7 +603,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -615,7 +615,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -627,7 +627,7 @@ const ShipExkursIcon = ({ width, height, classes }) => {
       <path
         className={
           classes === 'navbar-banner'
-            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            ? 'transition-all duration-100 ease-linear fill-gray-300 group-hoverDisabled:fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
