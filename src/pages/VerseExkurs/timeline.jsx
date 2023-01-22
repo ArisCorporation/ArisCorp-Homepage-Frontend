@@ -182,6 +182,7 @@ export default function TimelinePage ({ data, events }) {
         />
       </Head>
       <div className="mt-2 mb-12 ml-2">
+        <h2 className='mb-4 text-center text-primary'>Klicken sie auf den Banner um in die rubrik: {'"'}Ein Tag in der Geschichte{'"'} zu gelangen</h2>
         <div
           className="flex pl-4 mx-auto flex-wrap grayscale hover:grayscale-0 duration-150 hover:duration-300 hover:cursor-pointer h-full w-1/2 aspect-[1118/351]"
           onClick={() => push('/VerseExkurs/onedayinhistory')}
