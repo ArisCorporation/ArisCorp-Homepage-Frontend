@@ -18,6 +18,8 @@ import { Pagination, Navigation } from 'swiper'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SYSTEME } from 'graphql/queries'
 import Head from 'next/head'
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 
 export async function getServerSideProps () {
   const { data } = await client.query({
@@ -41,6 +43,7 @@ export default function StarmapPage ({ data }) {
   const { replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
+  const [galleryIndex, setGalleryIndex] = useState(0)
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -50,7 +53,51 @@ export default function StarmapPage ({ data }) {
     }
   }, [urlquery])
 
-  const [swiper, setSwiper] = useState(null)
+  // const galleryImages = data.gallery.map((i) => {
+  //   const original = ("https://cms.ariscorp.de/assets/" + i.directus_files_id.id)
+  //   const thumbnail = ("https://cms.ariscorp.de/assets/" + i.directus_files_id.id + "?width=250")
+
+  //   return {
+  //     original,
+  //     thumbnail
+  //   }
+  // })
+
+  const galleryImages = [
+    {
+      original: "https://cms.ariscorp.de/assets/9d395347-e164-49ef-97d9-1164059397c6",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/3b1b865f-0be6-4ac2-b973-50481d83ca5d",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/da08adbc-e833-47b5-802f-80808ef6903c",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/ee8b3689-fc15-485b-9eb1-0a9196b3a9a0",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/f8df2255-967d-4ba3-9998-9020f69a9a89",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/546cdf0b-7a70-4e64-a8df-0a5f7bd66abf",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/68d14500-1837-496a-9d3c-e8326be51c77",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/4c531bad-eae3-444e-b6d9-9ba6189add1b",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/289d2059-9bad-4156-9322-dd4c82f5e0fd",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/2777209c-920d-4b5a-b8e7-befe88ed76c3",
+    },
+    {
+      original: "https://cms.ariscorp.de/assets/2e66112a-971a-4681-9fea-607859459ab2",
+    },
+  ]
 
   return (
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
@@ -156,96 +203,12 @@ export default function StarmapPage ({ data }) {
                 Klicke einfach weiter, um die Entwicklung des Verse zu sehen.
               </h3>
               <div>
-                <Swiper
-                  grabCursor={true}
-                  navigation={true}
-                  pagination={true}
-                  speed={0}
-                  onRealIndexChange={(index) =>
-                    setSwiper({ swiperIndex: index })
-                  }
-                  modules={[Navigation, Pagination]}
-                >
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2000.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2300.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2400.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2500a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2530a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2600a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2700a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2750a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2800a.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2900.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                  <SwiperSlide>
-                    <img
-                      src="https://www.ariscorp.de/assets/img/exkurs/starmap/2945.webp"
-                      alt=""
-                    />
-                  </SwiperSlide>
-                </Swiper>
+                <ImageGallery infinite={false} showFullscreenButton={false} showBullets={true} slideDuration={0} slideInterval={500} onSlide={setGalleryIndex} items={galleryImages} />
               </div>
               <div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 0 ||
-                      swiper?.swiperIndex?.activeIndex == null
-                      ? 'block'
-                      : 'hidden'
-                  }
-                ></div>
-                <div
-                  className={
-                    swiper?.swiperIndex?.activeIndex == 1 ? 'block' : 'hidden'
+                    galleryIndex == 1 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2300: Die Eroberung der Sterne</h5>
@@ -275,7 +238,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 2 ? 'block' : 'hidden'
+                    galleryIndex == 2 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2400: Erster Kontakt</h5>
@@ -309,7 +272,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 3 ? 'block' : 'hidden'
+                    galleryIndex == 3 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2500: Der diplomatische Zwischenfll mit den Xi{"'"}An</h5>
@@ -351,7 +314,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 4 ? 'block' : 'hidden'
+                    galleryIndex == 4 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2530: Tevarin Krieg und der Beginn der Messer-Ära</h5>
@@ -404,7 +367,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 5 ? 'block' : 'hidden'
+                    galleryIndex == 5 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2600: Die Vanduul Bedrohung</h5>
@@ -461,7 +424,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 6 ? 'block' : 'hidden'
+                    galleryIndex == 6 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2700: Der Fall von Orion</h5>
@@ -504,7 +467,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 7 ? 'block' : 'hidden'
+                    galleryIndex == 7 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2750: Der Fall der Messer-Dynastie</h5>
@@ -563,7 +526,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 8 ? 'block' : 'hidden'
+                    galleryIndex == 8 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2800: Das UEE baut sich neu auf</h5>
@@ -605,7 +568,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 9 ? 'block' : 'hidden'
+                    galleryIndex == 9 ? 'block' : 'hidden'
                   }
                 >
                   <h5>2900: Die Vanduul-Bedrohung eindämmen</h5>
@@ -640,7 +603,7 @@ export default function StarmapPage ({ data }) {
                 </div>
                 <div
                   className={
-                    swiper?.swiperIndex?.activeIndex == 10 ? 'block' : 'hidden'
+                    galleryIndex == 10 ? 'block' : 'hidden'
                   }
                 ></div>
               </div>
