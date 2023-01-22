@@ -11,10 +11,6 @@ import {
   JumppointsIcon,
   BorderIcon,
 } from 'components/icons'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import 'swiper/css'
-import 'swiper/css/pagination'
-import { Pagination, Navigation } from 'swiper'
 import client from 'apollo/clients'
 import { GET_VERSEEXKURS_SYSTEME } from 'graphql/queries'
 import Head from 'next/head'
