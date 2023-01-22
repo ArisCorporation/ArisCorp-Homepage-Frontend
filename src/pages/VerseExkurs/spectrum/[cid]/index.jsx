@@ -32,7 +32,7 @@ export default function SpectrumCategoryPage () {
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: {data.spectrum_titel}
+          {category.spectrum_titel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + category.image?.width + "/" + category.image?.height + "]"}>

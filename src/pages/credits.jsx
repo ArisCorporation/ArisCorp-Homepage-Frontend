@@ -27,7 +27,7 @@ export default function CreditsPage ({ data }) {
     <div className="pt-32">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - Credits
+          Credits - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <ReactMarkdown rehypePlugins={[rehypeRaw]} className="justify-center">

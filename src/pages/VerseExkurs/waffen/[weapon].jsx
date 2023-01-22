@@ -55,7 +55,7 @@ export default function SpectrumArticlePage () {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: { data1.waffen_name }
+          {data1.waffen_name} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>

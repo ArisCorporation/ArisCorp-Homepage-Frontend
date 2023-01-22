@@ -6,7 +6,7 @@ export default function Alienrassen ({ data }) {
     <div className="flex items-center justify-center w-full h-full pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Aliens
+          Aliens - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="my-auto">

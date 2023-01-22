@@ -9,7 +9,7 @@ export default function Error404 () {
     <div className="flex flex-wrap items-center justify-center">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - 404
+        404 - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="mx-auto">

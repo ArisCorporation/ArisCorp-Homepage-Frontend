@@ -28,7 +28,7 @@ export default function Biografie () {
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - Biografie: {Data.member_name}
+          {Data.member_name} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>

@@ -103,7 +103,7 @@ export default function StarmapPage ({ data }) {
     <div className="pt-10 mx-auto print:pt-5 prose prose-td:align-middle prose-invert xl:max-w-[90%]">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Starmap
+          ARK Starmap - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <Tab.Group

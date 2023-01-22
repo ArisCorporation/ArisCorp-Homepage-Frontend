@@ -379,7 +379,7 @@ export default function BugReportPage ({ data }) {
     <div className="px-24 pt-32">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - Bug Reporting Tool
+          Bug Reporting Tool - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <h1>Bug Melden:</h1>
@@ -671,8 +671,8 @@ export default function BugReportPage ({ data }) {
                                 <>
                                   <span
                                     className={`block truncate ${selectedProject
-                                        ? 'font-medium'
-                                        : 'font-normal'
+                                      ? 'font-medium'
+                                      : 'font-normal'
                                       }`}
                                   >
                                     {project.name}
@@ -748,8 +748,8 @@ export default function BugReportPage ({ data }) {
                                 <>
                                   <span
                                     className={`block truncate ${selectedFocus
-                                        ? 'font-medium'
-                                        : 'font-normal'
+                                      ? 'font-medium'
+                                      : 'font-normal'
                                       }`}
                                   >
                                     {focus.name}

@@ -51,7 +51,7 @@ export default function IndexPage({
       <Layout ourIndex={ourIndex} onOurIndexChange={setOurIndex}>
         <Head>
           <title>
-            Astro Research and Industrial Service Corporation - Homepage
+            Astro Research and Industrial Service Corporation
           </title>
         </Head>
 

@@ -32,7 +32,7 @@ export default function Organisationen ({ data }) {
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Organisationen
+          Organisationen - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="flex flex-wrap">

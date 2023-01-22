@@ -51,7 +51,7 @@ export default function AlienrassenDetailPage () {
           <div key={data.title}>
             <Head>
               <title>
-                Astro Research and Industrial Service Corporation - VerseExurs: {data.title}
+                {data.title} - Astro Research and Industrial Service Corporation
               </title>
             </Head>
             <div className="items-center text-center">

@@ -32,7 +32,7 @@ export default function Geschafte ({ data }) {
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Geschäfte
+          Geschäfte - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="flex flex-wrap">

@@ -6,7 +6,7 @@ export default function VerseExkursSearch () {
     <div>
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Search
+          Search - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <h1 className='mt-4 text-center text-primary'>Comming Soon</h1>

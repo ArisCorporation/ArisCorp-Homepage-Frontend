@@ -58,7 +58,7 @@ export default function Firmen ({ data }) {
     <div className="items-center max-w-6xl pt-10 mx-auto">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Firmen
+          Firmen - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <Tab.Group

@@ -5,7 +5,7 @@ import { GET_VERSEEXKURS_LITERATUREN } from 'graphql/queries'
 import ArticleCard from 'components/VerseExkursArticleCard'
 import Head from 'next/head'
 
-export async function getServerSideProps() {
+export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_LITERATUREN })
 
   if (!data) {
@@ -21,16 +21,16 @@ export async function getServerSideProps() {
   }
 }
 
-export default function LiteraturReihenPage(data) {
+export default function LiteraturReihenPage (data) {
   const Data = data.data
 
   return (
     <div className="pt-3 print:pt-0">
-    <Head>
-      <title>
-        Astro Research and Industrial Service Corporation - VerseExurs: Literatur
-      </title>
-    </Head>
+      <Head>
+        <title>
+          Literatur - Astro Research and Industrial Service Corporation
+        </title>
+      </Head>
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">
         <div className="relative w-full">
           <Image
@@ -65,6 +65,6 @@ export default function LiteraturReihenPage(data) {
   )
 }
 
-LiteraturReihenPage.getLayout = function getLayout(page) {
+LiteraturReihenPage.getLayout = function getLayout (page) {
   return <Layout>{page}</Layout>
 }

@@ -33,7 +33,7 @@ export default function LiteraturReihenPage () {
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: {reihe.reihen_titel}
+          {reihe.reihen_titel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className={"px-12 flex flex-wrap w-full aspect-[" + reihe.reihen_cover?.width + "/" + reihe.reihen_cover?.height + "]"}>

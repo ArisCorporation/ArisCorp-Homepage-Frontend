@@ -33,7 +33,7 @@ export default function SpectrumArticlePage () {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: {category.spectrum_titel} / {data.spectrum_titel}
+          {category.spectrum_titel} / {(Data.filter((data) => data.id == id)[0]).spectrum_titel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       {Data.filter((data) => data.id == id).map((data) => (

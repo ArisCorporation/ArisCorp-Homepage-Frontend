@@ -34,7 +34,7 @@ export default function SpectrumArticlePage () {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Ein Tag in der Geschichte / {data.geschichte_titel}
+          {data.geschichte_titel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>

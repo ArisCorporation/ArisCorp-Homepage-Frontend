@@ -32,7 +32,7 @@ export default function CommLinkDetailPage () {
     <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - Comm-Links: {Data.comm_link_titel}
+          {Data.comm_link_titel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>
@@ -60,7 +60,7 @@ export default function CommLinkDetailPage () {
           className={'max-w-[' + Data.comm_link_banner.width + 'px] mx-auto'}
         >
           <h2 className="mt-3">
-            ArisCorp - Comm-Links: {Data.comm_link_titel}
+            Astro Research and Industrial Service Corporation - Comm-Links: {Data.comm_link_titel}
           </h2>
           <hr className="max-w-[80px]" />
           <div className="relative flex flex-wrap justify-between w-full h-6 xs:h-8 md:h-20 lg:h-32 xs:flex-nowrap">

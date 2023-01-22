@@ -56,7 +56,7 @@ export default function UEEPage (data) {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: United Empire of Earth
+          United Empire of Earth - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>

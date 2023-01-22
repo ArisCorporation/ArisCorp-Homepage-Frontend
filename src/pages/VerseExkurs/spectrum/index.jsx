@@ -30,7 +30,7 @@ export default function SpectrumPage ({ data }) {
     <div className="pt-3 print:pt-0">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Spectrum
+          Spectrum - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="flex flex-wrap w-full aspect-[40/21] scale-90">

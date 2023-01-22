@@ -33,7 +33,7 @@ export default function VerseExkursIndex (data) {
     <>
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs
+          VerseExkurs - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <ReactMarkdown

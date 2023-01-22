@@ -31,7 +31,7 @@ export default function Alienrassen ({ data }) {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Alle Alienrassen
+          Alle Alienrassen - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <h1 className="mb-4 text-lg text-center md:mb-6 lg:mb-12 text-primary md:text-xl lg:text-3xl">

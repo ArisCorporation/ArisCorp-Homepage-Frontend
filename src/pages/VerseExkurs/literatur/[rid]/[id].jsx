@@ -37,7 +37,7 @@ export default function LiteraturArticlePage () {
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: {Data.literatur_reihe.reihen_titel} - Kapitel: {Data.literatur_kapitel}
+          {Data.literatur_reihe.reihen_titel} - Kapitel: {Data.literatur_kapitel} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div key={Data.id}>

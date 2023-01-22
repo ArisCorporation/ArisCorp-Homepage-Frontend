@@ -277,7 +277,7 @@ export default function CommLinksPage () {
     <div>
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - Comm-Links
+          Comm-Link - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="flex items-center justify-center pt-32">

@@ -149,7 +149,7 @@ export default function SpectrumArticlePage ({ ships }) {
     <div className="items-center max-w-6xl mx-auto print:pt-5">
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - ShipExkurs: {data.name}
+          {data.name} - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div>

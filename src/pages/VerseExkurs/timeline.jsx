@@ -164,7 +164,7 @@ export default function TimelinePage ({ data, events }) {
     <div>
       <Head>
         <title>
-          Astro Research and Industrial Service Corporation - VerseExurs: Timeline
+          Timeline - Astro Research and Industrial Service Corporation
         </title>
       </Head>
       <div className="mt-2 mb-12 ml-2">
