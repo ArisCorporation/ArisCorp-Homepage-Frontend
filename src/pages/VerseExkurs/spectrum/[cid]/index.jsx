@@ -25,8 +25,8 @@ export async function getServerSideProps (context) {
 
   data = data.spectrum
   const category = data.filter((data) => data.spectrum_kategorie_beschreibung == true && data.id == cid)[0]
-  data = data.filter((data) => data.spectrum_kategorie_beschreibung == false && data.spectrum_beitrag_kateogrie === category.spectrum_beitrag_kateogrie)[0]
-  const siteTitle = data.spectrum_titel + " - Astro Research and Industrial Service Corporation"
+  data = data.filter((data) => data.spectrum_kategorie_beschreibung == false && data.spectrum_beitrag_kateogrie === category.spectrum_beitrag_kateogrie)
+  const siteTitle = data[0].spectrum_titel + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
@@ -80,13 +80,15 @@ export default function SpectrumCategoryPage ({ data, category, siteTitle }) {
         <hr />
       </div>
       <div>
-        <ArticleCard
-          key={data.id}
-          link={'spectrum/' + category.id + '/' + data.id}
-          title={data.spectrum_titel}
-          image={category.image?.id}
-          seperator={true}
-        />
+        {data.map((data) => (
+          <ArticleCard
+            key={data.id}
+            link={'spectrum/' + category.id + '/' + data.id}
+            title={data.spectrum_titel}
+            image={category.image?.id}
+            seperator={true}
+          />
+        ))}
       </div>
     </div>
   )
