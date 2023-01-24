@@ -61,6 +61,12 @@ export default function Technologie ({ data }) {
       category: 'ship',
     },
     {
+      id: '744474da-0797-4959-bb75-40edc134a607',
+      icon: 'eb9f8c16-0dc2-418d-b3a1-09382f4e352e',
+      name: 'Kühlsysteme',
+      category: 'ship',
+    },
+    {
       id: '41db2450-c335-4bfb-bdc3-c21ca8c934e7',
       icon: 'e11dcb3a-4978-4b6e-9acc-15a9755bfcbf',
       name: 'Radar und Signaturen',
@@ -238,7 +244,7 @@ export default function Technologie ({ data }) {
                   </div>
                 </BasicPanel>
                 <div
-                  className={`grid justify-between grid-cols-[repeat(15,_minmax(0,_1fr))] mt-6 gap-x-4`}
+                  className={`grid justify-between grid-cols-[repeat(16,_minmax(0,_1fr))] mt-6 gap-x-4`}
                 >
                   {items
                     .filter((e) => e.category == 'ship')
