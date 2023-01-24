@@ -63,7 +63,7 @@ export default function Technologie ({ data }) {
     {
       id: '744474da-0797-4959-bb75-40edc134a607',
       icon: 'eb9f8c16-0dc2-418d-b3a1-09382f4e352e',
-      name: 'Kühlsysteme',
+      name: 'Lebenserhaltungssysteme',
       category: 'ship',
     },
     {

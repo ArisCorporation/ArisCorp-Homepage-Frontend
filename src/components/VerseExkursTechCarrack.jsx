@@ -236,7 +236,7 @@ const TechCarrack = () => {
         className={"transition-colors hover:cursor-pointer " + (selectedTech == '744474da-0797-4959-bb75-40edc134a607' ? 'fill-primary/70 duration-200' : 'fill-transparent duration-300')}
         onMouseEnter={() => setSelectedTech('744474da-0797-4959-bb75-40edc134a607')}
         onMouseLeave={() => setSelectedTech(undefined)}
-        onClick={() => router.push('/VerseExkurs/technologie/Lebenserhaltung')}
+        onClick={() => router.push('/VerseExkurs/technologie/Lebenserhaltungssysteme')}
       >
         <path
           id="livesupport1"
