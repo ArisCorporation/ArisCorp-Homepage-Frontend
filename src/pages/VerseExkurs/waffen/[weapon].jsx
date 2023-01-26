@@ -374,23 +374,33 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
                       <tr>
                         <th className="py-2 pr-6 text-left">Entfernung</th>
                         {table[0][0] ? (<th className="px-2">0M</th>) : ""}
+                        {table[0][15] ? (<th className="px-2">15M</th>) : ""}
                         {table[0][20] ? (<th className="px-2">20M</th>) : ""}
                         {table[0][25] ? (<th className="px-2">25M</th>) : ""}
                         {table[0][30] ? (<th className="px-2">30M</th>) : ""}
                         {table[0][40] ? (<th className="px-2">40M</th>) : ""}
                         {table[0][50] ? (<th className="px-2">50M</th>) : ""}
                         {table[0][100] ? (<th className="px-2">100M</th>) : ""}
+                        {table[0][200] ? (<th className="px-2">200M</th>) : ""}
+                        {table[0][400] ? (<th className="px-2">400M</th>) : ""}
+                        {table[0][800] ? (<th className="px-2">800M</th>) : ""}
+                        {table[0][1000] ? (<th className="px-2">1000M</th>) : ""}
                       </tr>
                       {table.map((obj) => (
                         <tr key={obj.reihe}>
                           <th className="py-2 pr-6 text-left">{obj.label}</th>
                           {obj[0] ? (<td className="px-2 text-center text-primary">{obj[0]}</td>) : ""}
+                          {obj[15] ? (<td className="px-2 text-center text-primary">{obj[15]}</td>) : ""}
                           {obj[20] ? (<td className="px-2 text-center text-primary">{obj[20]}</td>) : ""}
                           {obj[25] ? (<td className="px-2 text-center text-primary">{obj[25]}</td>) : ""}
                           {obj[30] ? (<td className="px-2 text-center text-primary">{obj[30]}</td>) : ""}
                           {obj[40] ? (<td className="px-2 text-center text-primary">{obj[40]}</td>) : ""}
                           {obj[50] ? (<td className="px-2 text-center text-primary">{obj[50]}</td>) : ""}
                           {obj[100] ? (<td className="px-2 text-center text-primary">{obj[100]}</td>) : ""}
+                          {obj[200] ? (<td className="px-2 text-center text-primary">{obj[200]}</td>) : ""}
+                          {obj[400] ? (<td className="px-2 text-center text-primary">{obj[400]}</td>) : ""}
+                          {obj[800] ? (<td className="px-2 text-center text-primary">{obj[800]}</td>) : ""}
+                          {obj[1000] ? (<td className="px-2 text-center text-primary">{obj[1000]}</td>) : ""}
                         </tr>
                       ))}
                     </table>
