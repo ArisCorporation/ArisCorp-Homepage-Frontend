@@ -27,11 +27,11 @@ export async function getServerSideProps (context) {
     }
   }
 
-  const weapon = data.waffen_feuermodi_technologien[0].technologien_id
+  const weapon = data.technologien[0]
   const feuermodi = []
   let table = []
 
-  data.waffen_feuermodi_technologien.map((obj) => {
+  weapon.feuermodi.map((obj) => {
     feuermodi.push(obj.waffen_feuermodi_id.feuermodus)
   })
 

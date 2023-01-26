@@ -891,69 +891,129 @@ export const GET_VERSEEXKURS_WEAPONUTILS = gql`
 
 export const GET_VERSEEXKURS_WEAPON = gql`
   query GetVerseExkursTechnologie($Weapon: String!) {
-    waffen_feuermodi_technologien(
-      filter: {
-        technologien_id: {
-          waffen_name: { _eq: $Weapon }
-          category: { _eq: "weapons" }
-        }
-      }
+    technologien(
+      filter: { waffen_name: { _eq: $Weapon }, category: { _eq: "weapons" } }
     ) {
-      technologien_id {
+      id
+      waffen_name
+      waffen_preis
+      waffen_bild {
         id
-        waffen_name
-        waffen_preis
-        waffen_bild {
+        width
+        height
+      }
+      waffenhersteller {
+        id
+        firmen_name
+        firmen_trans_logo {
           id
           width
           height
         }
-        waffenhersteller {
-          id
-          firmen_name
-          firmen_trans_logo {
-            id
-            width
-            height
-          }
-          text
-        }
-        waffen_klasse {
-          id
-          waffenklasse
-          waffenklassensize {
-            waffensize
-          }
-        }
-        waffengewicht
-        waffen_kaliber
-        wafffen_schadenstyp {
-          id
-          schadenstyp
-        }
-        waffen_feuerrate_einzel
-        waffen_feuerrate_salve
-        waffen_feuerrate_vollauto
-        waffen_feuerrate_aufgeladen
-        waffen_magazin
-        waffen_visier {
-          id
-          visiername
-        }
-        waffen_muendungs_geschwindigkeit
-        waffen_locktime
-        waffen_beschreibung
-        waffen_maximale_reichweite
-        waffen_effektive_reichweite
-        tabelle
+        text
       }
-
-      waffen_feuermodi_id {
-        feuermodus
+      waffen_klasse {
+        id
+        waffenklasse
+        waffenklassensize {
+          waffensize
+        }
       }
+      waffengewicht
+      waffen_kaliber
+      wafffen_schadenstyp {
+        id
+        schadenstyp
+      }
+      waffen_feuerrate_einzel
+      waffen_feuerrate_salve
+      waffen_feuerrate_vollauto
+      waffen_feuerrate_aufgeladen
+      waffen_magazin
+      waffen_visier {
+        id
+        visiername
+      }
+      waffen_muendungs_geschwindigkeit
+      waffen_locktime
+      waffen_beschreibung
+      waffen_maximale_reichweite
+      waffen_effektive_reichweite
+      feuermodi {
+        waffen_feuermodi_id {
+          feuermodus
+        }
+      }
+      tabelle
     }
   }
 `
+
+// export const GET_VERSEEXKURS_WEAPON = gql`
+//   query GetVerseExkursTechnologie($Weapon: String!) {
+//     waffen_feuermodi_technologien(
+//       filter: {
+//         technologien_id: {
+//           waffen_name: { _eq: $Weapon }
+//           category: { _eq: "weapons" }
+//         }
+//       }
+//     ) {
+//       technologien_id {
+//         id
+//         waffen_name
+//         waffen_preis
+//         waffen_bild {
+//           id
+//           width
+//           height
+//         }
+//         waffenhersteller {
+//           id
+//           firmen_name
+//           firmen_trans_logo {
+//             id
+//             width
+//             height
+//           }
+//           text
+//         }
+//         waffen_klasse {
+//           id
+//           waffenklasse
+//           waffenklassensize {
+//             waffensize
+//           }
+//         }
+//         waffengewicht
+//         waffen_kaliber
+//         wafffen_schadenstyp {
+//           id
+//           schadenstyp
+//         }
+//         waffen_feuerrate_einzel
+//         waffen_feuerrate_salve
+//         waffen_feuerrate_vollauto
+//         waffen_feuerrate_aufgeladen
+//         waffen_magazin
+//         waffen_visier {
+//           id
+//           visiername
+//         }
+//         waffen_muendungs_geschwindigkeit
+//         waffen_locktime
+//         waffen_beschreibung
+//         waffen_maximale_reichweite
+//         waffen_effektive_reichweite
+//         tabelle
+//       }
+
+//       waffen_feuermodi_id {
+//         feuermodus
+//       }
+//     }
+//   }
+// `
 
 export const GET_VERSEEXKURS_SPECTRUM_ARTICLES = gql`
   query GetVerseExkursSpectrumArticles {
@@ -1090,6 +1150,33 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 `
 
 // SHIPEXKURS QUERYS
+export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
+  query GetShipExkursShipsIndex($squery: String) {
+    ships(
+      filter: { status: { _eq: "published" } }
+      sort: ["sort", "name"]
+      search: $squery
+      limit: -1
+    ) {
+      id
+      name
+      slug
+      price
+      pledgePrice
+      onSale
+      productionStatus
+      manufacturer {
+        firmen_name
+      }
+      storeImage {
+        id
+        width
+        height
+      }
+    }
+  }
+`
+
 export const GET_SHIPEXKURS_SHIPS = gql`
   query GerShipExkursShips {
     ships(filter: { status: { _eq: "published" } }, limit: -1) {
@@ -1156,6 +1243,20 @@ export const GET_SHIPEXKURS_SHIPS = gql`
 
 export const GET_SHIPEXKURS_SHIPUTILS = gql`
   query GetShipExkursShipUtils {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenherstellerkategorie: { _eq: "schiffshersteller" }
+      }
+    ) {
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+    }
+
     ships {
       size
       sizeLabel
