@@ -29,9 +29,36 @@ export async function getServerSideProps (context) {
 
   const weapon = data.waffen_feuermodi_technologien[0].technologien_id
   const feuermodi = []
+  let table = []
 
   data.waffen_feuermodi_technologien.map((obj) => {
     feuermodi.push(obj.waffen_feuermodi_id.feuermodus)
+  })
+
+  weapon.tabelle.map((obj) => {
+    if (obj.reihe == "alpha") {
+      obj.label = "Alpha Schaden"
+    }
+    if (obj.reihe == "dps_single") {
+      obj.label = "DPS Einzel"
+    }
+    if (obj.reihe == "dps_burst") {
+      obj.label = "DPS Salve"
+    }
+    if (obj.reihe == "dps_vollauto") {
+      obj.label = "DPS Gebündelt"
+    }
+    if (obj.reihe == "damage_reduction") {
+      obj.label = "Schadensreduktion"
+    }
+    if (obj.reihe == "bullets_per_shot") {
+      obj.label = "Geschosse pro Schuss"
+    }
+    if (obj.reihe == "damage_per_bullet") {
+      obj.label = "Schaden pro Geschoss"
+    }
+
+    table.push(obj)
   })
 
   const siteTitle = weapon.waffen_name + " - Astro Research and Industrial Service Corporation"
@@ -40,12 +67,13 @@ export async function getServerSideProps (context) {
     props: {
       weapon,
       feuermodi,
+      table,
       siteTitle
     },
   }
 }
 
-export default function SpectrumArticlePage ({ weapon, feuermodi, siteTitle }) {
+export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
   const { replace, query } = useRouter()
@@ -58,20 +86,6 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, siteTitle }) {
       setActiveTab(0)
     }
   }, [urlquery])
-
-  // const data1 = Object.assign({}, data.technologien[0])
-  // const data2 = JSON.parse(
-  //   JSON.stringify(
-  //     data.technologien_waffen_feuermodi_1.filter(
-  //       (data) => data.technologien_id != null
-  //     )
-  //   )
-  // )
-  // let data2arr = []
-  // data2.map((data) => data2arr.push(data.waffen_feuermodi_id.feuermodus))
-  // data2arr = data2arr.join(' / ')
-  console.log(feuermodi);
-  console.log(weapon);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -359,39 +373,26 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, siteTitle }) {
                     <table className="table-auto">
                       <tr>
                         <th className="py-2 pr-6 text-left">Entfernung</th>
-                        <th className="px-2">0M</th>
-                        <th className="px-2">25M</th>
-                        <th className="px-2">50M</th>
-                        <th className="px-2">100M</th>
+                        {table[0][0] ? (<th className="px-2">0M</th>) : ""}
+                        {table[0][20] ? (<th className="px-2">20M</th>) : ""}
+                        {table[0][25] ? (<th className="px-2">25M</th>) : ""}
+                        {table[0][30] ? (<th className="px-2">30M</th>) : ""}
+                        {table[0][40] ? (<th className="px-2">40M</th>) : ""}
+                        {table[0][50] ? (<th className="px-2">50M</th>) : ""}
+                        {table[0][100] ? (<th className="px-2">100M</th>) : ""}
                       </tr>
-                      <tr>
-                        <th className="py-2 pr-6 text-left">Alpha Schaden</th>
-                        <td className="px-2 text-center text-primary">1</td>
-                        <td className="px-2 text-center text-primary">1</td>
-                        <td className="px-2 text-center text-primary">1</td>
-                        <td className="px-2 text-center text-primary">1</td>
-                      </tr>
-                      <tr>
-                        <th className="py-2 pr-6 text-left">DPS Einzel</th>
-                        <td className="px-2 text-center text-primary">2</td>
-                        <td className="px-2 text-center text-primary">2</td>
-                        <td className="px-2 text-center text-primary">2</td>
-                        <td className="px-2 text-center text-primary">2</td>
-                      </tr>
-                      <tr>
-                        <th className="py-2 pr-6 text-left">DPS Salve</th>
-                        <td className="px-2 text-center text-primary">3</td>
-                        <td className="px-2 text-center text-primary">3</td>
-                        <td className="px-2 text-center text-primary">3</td>
-                        <td className="px-2 text-center text-primary">3</td>
-                      </tr>
-                      <tr>
-                        <th className="py-2 pr-6 text-left">DPS Gebündelt*</th>
-                        <td className="px-2 text-center text-primary">4</td>
-                        <td className="px-2 text-center text-primary">4</td>
-                        <td className="px-2 text-center text-primary">4</td>
-                        <td className="px-2 text-center text-primary">4</td>
-                      </tr>
+                      {table.map((obj) => (
+                        <tr key={obj.reihe}>
+                          <th className="py-2 pr-6 text-left">{obj.label}</th>
+                          {obj[0] ? (<td className="px-2 text-center text-primary">{obj[0]}</td>) : ""}
+                          {obj[20] ? (<td className="px-2 text-center text-primary">{obj[20]}</td>) : ""}
+                          {obj[25] ? (<td className="px-2 text-center text-primary">{obj[25]}</td>) : ""}
+                          {obj[30] ? (<td className="px-2 text-center text-primary">{obj[30]}</td>) : ""}
+                          {obj[40] ? (<td className="px-2 text-center text-primary">{obj[40]}</td>) : ""}
+                          {obj[50] ? (<td className="px-2 text-center text-primary">{obj[50]}</td>) : ""}
+                          {obj[100] ? (<td className="px-2 text-center text-primary">{obj[100]}</td>) : ""}
+                        </tr>
+                      ))}
                     </table>
                     <hr className="w-[98%] relative mt-1 mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
                   </div>

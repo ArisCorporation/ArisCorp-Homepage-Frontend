@@ -945,6 +945,7 @@ export const GET_VERSEEXKURS_WEAPON = gql`
         waffen_beschreibung
         waffen_maximale_reichweite
         waffen_effektive_reichweite
+        tabelle
       }
 
       waffen_feuermodi_id {
