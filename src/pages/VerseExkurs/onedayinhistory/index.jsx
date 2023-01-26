@@ -57,7 +57,7 @@ export default function SpectrumPage ({ data }) {
       </Head>
       <div className="flex flex-wrap w-full aspect-[1118/351] scale-90">
         <div className="relative w-full">
-          <Image
+          <Image 
             src="https://cms.ariscorp.de/assets/c0a200fa-83d3-48f1-b6e4-905960cab504"
             layout="fill"
             alt="Spectrum Banner"

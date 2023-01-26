@@ -891,59 +891,62 @@ export const GET_VERSEEXKURS_WEAPONUTILS = gql`
 
 export const GET_VERSEEXKURS_WEAPON = gql`
   query GetVerseExkursTechnologie($Weapon: String!) {
-    technologien(
-      filter: { waffen_name: { _eq: $Weapon }, category: { _eq: "weapons" } }
-    ) {
-      id
-      waffen_name
-      waffen_preis
-      waffen_bild {
-        id
-        width
-        height
+    waffen_feuermodi_technologien(
+      filter: {
+        technologien_id: {
+          waffen_name: { _eq: $Weapon }
+          category: { _eq: "weapons" }
+        }
       }
-      waffenhersteller {
+    ) {
+      technologien_id {
         id
-        firmen_name
-        firmen_trans_logo {
+        waffen_name
+        waffen_preis
+        waffen_bild {
           id
           width
           height
         }
-        text
-      }
-      waffen_klasse {
-        id
-        waffenklasse
-        waffenklassensize {
-          waffensize
+        waffenhersteller {
+          id
+          firmen_name
+          firmen_trans_logo {
+            id
+            width
+            height
+          }
+          text
         }
+        waffen_klasse {
+          id
+          waffenklasse
+          waffenklassensize {
+            waffensize
+          }
+        }
+        waffengewicht
+        waffen_kaliber
+        wafffen_schadenstyp {
+          id
+          schadenstyp
+        }
+        waffen_feuerrate_einzel
+        waffen_feuerrate_salve
+        waffen_feuerrate_vollauto
+        waffen_feuerrate_aufgeladen
+        waffen_magazin
+        waffen_visier {
+          id
+          visiername
+        }
+        waffen_muendungs_geschwindigkeit
+        waffen_locktime
+        waffen_beschreibung
+        waffen_maximale_reichweite
+        waffen_effektive_reichweite
       }
-      waffengewicht
-      waffen_kaliber
-      wafffen_schadenstyp {
-        id
-        schadenstyp
-      }
-      waffen_feuerrate_einzel
-      waffen_feuerrate_salve
-      waffen_feuerrate_vollauto
-      waffen_feuerrate_aufgeladen
-      waffen_magazin
-      waffen_visier {
-        id
-        visiername
-      }
-      waffen_muendungs_geschwindigkeit
-      waffen_locktime
-      waffen_beschreibung
-      waffen_maximale_reichweite
-      waffen_effektive_reichweite
-    }
-    technologien_waffen_feuermodi_1 {
-      technologien_id(filter: { waffen_name: { _eq: $Weapon } }) {
-        waffen_name
-      }
+
       waffen_feuermodi_id {
         feuermodus
       }

@@ -27,17 +27,25 @@ export async function getServerSideProps (context) {
     }
   }
 
-  const siteTitle = data.technologien[0].waffen_name + " - Astro Research and Industrial Service Corporation"
+  const weapon = data.waffen_feuermodi_technologien[0].technologien_id
+  const feuermodi = []
+
+  data.waffen_feuermodi_technologien.map((obj) => {
+    feuermodi.push(obj.waffen_feuermodi_id.feuermodus)
+  })
+
+  const siteTitle = weapon.waffen_name + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
-      data,
+      weapon,
+      feuermodi,
       siteTitle
     },
   }
 }
 
-export default function SpectrumArticlePage ({ data, siteTitle }) {
+export default function SpectrumArticlePage ({ weapon, feuermodi, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
   const { replace, query } = useRouter()
@@ -51,17 +59,19 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
     }
   }, [urlquery])
 
-  const data1 = Object.assign({}, data.technologien[0])
-  const data2 = JSON.parse(
-    JSON.stringify(
-      data.technologien_waffen_feuermodi_1.filter(
-        (data) => data.technologien_id != null
-      )
-    )
-  )
-  let data2arr = []
-  data2.map((data) => data2arr.push(data.waffen_feuermodi_id.feuermodus))
-  data2arr = data2arr.join(' / ')
+  // const data1 = Object.assign({}, data.technologien[0])
+  // const data2 = JSON.parse(
+  //   JSON.stringify(
+  //     data.technologien_waffen_feuermodi_1.filter(
+  //       (data) => data.technologien_id != null
+  //     )
+  //   )
+  // )
+  // let data2arr = []
+  // data2.map((data) => data2arr.push(data.waffen_feuermodi_id.feuermodus))
+  // data2arr = data2arr.join(' / ')
+  console.log(feuermodi);
+  console.log(weapon);
 
   return (
     <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
@@ -87,30 +97,30 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
         <div className="flex items-center justify-center align-center">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {' '}
-            <span>{data1.waffen_name}</span>{' '}
+            <span>{weapon.waffen_name}</span>{' '}
             <span className="text-secondary">
-              {data1.waffen_klasse.waffenklasse}
+              {weapon.waffen_klasse.waffenklasse}
             </span>{' '}
           </h1>
           <div
             className="relative ml-auto -my-10 hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square"
             onClick={() =>
               router.push(
-                '/VerseExkurs/firmen/' + data1.waffenhersteller.firmen_name
+                '/VerseExkurs/firmen/' + weapon.waffenhersteller.firmen_name
               )
             }
           >
             <Image
               src={
                 'https://cms.ariscorp.de/assets/' +
-                data1.waffenhersteller.firmen_trans_logo.id
+                weapon.waffenhersteller.firmen_trans_logo.id
               }
-              alt={'Logo von ' + data1.waffenhersteller.firmen_name}
+              alt={'Logo von ' + weapon.waffenhersteller.firmen_name}
               fill
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data1.waffenhersteller.firmen_trans_logo.id +
+                weapon.waffenhersteller.firmen_trans_logo.id +
                 '?width=16&quality=1'
               }
             />
@@ -125,14 +135,14 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
             childClassName={'h-full overflow-hidden'}
           >
             <Image
-              src={'https://cms.ariscorp.de/assets/' + data1.waffen_bild.id}
-              alt={'Bild von ' + data1.waffen_name}
+              src={'https://cms.ariscorp.de/assets/' + weapon.waffen_bild.id}
+              alt={'Bild von ' + weapon.waffen_name}
               fill
               className="object-cover"
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                data1.waffen_bild.id +
+                weapon.waffen_bild.id +
                 '?width=16&quality=1'
               }
             />
@@ -153,10 +163,10 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                 <tr>
                   <th className="pr-2 text-left">Klassifizierung:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_klasse.waffenklasse != null
-                      ? data1.waffen_klasse.waffenklasse +
+                    {weapon.waffen_klasse.waffenklasse != null
+                      ? weapon.waffen_klasse.waffenklasse +
                       ' (S' +
-                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      weapon.waffen_klasse.waffenklassensize.waffensize +
                       ')'
                       : 'N/A'}
                   </td>
@@ -164,16 +174,16 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                 <tr>
                   <th className="pr-2 text-left">Hersteller:</th>
                   <td className="text-left text-primary">
-                    {data1.waffenhersteller.firmen_name != null
-                      ? data1.waffenhersteller.firmen_name
+                    {weapon.waffenhersteller.firmen_name != null
+                      ? weapon.waffenhersteller.firmen_name
                       : 'N/A'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Gewicht:</th>
                   <td className="text-left text-primary">
-                    {data1.waffengewicht != null
-                      ? data1.waffengewicht + ' KG'
+                    {weapon.waffengewicht != null
+                      ? weapon.waffengewicht + ' KG'
                       : 'N/A'}
                   </td>
                 </tr>
@@ -185,35 +195,35 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                 <tr>
                   <th className="pr-2 text-left">Schadenstyp:</th>
                   <td className="text-left text-primary">
-                    {data1.wafffen_schadenstyp.schadenstyp != null
-                      ? data1.wafffen_schadenstyp.schadenstyp
+                    {weapon.wafffen_schadenstyp.schadenstyp != null
+                      ? weapon.wafffen_schadenstyp.schadenstyp
                       : 'N/A'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Feuermodi:</th>
                   <td className="text-left break-words text-primary">
-                    {data2[0] != null ? data2arr : 'N/A'}
+                    {feuermodi[0] != null ? feuermodi.join(", ") : 'N/A'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Feuerrate:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_feuerrate_einzel ||
-                      data1.waffen_feuerrate_salve ||
-                      data1.waffen_feuerrate_vollauto ||
-                      data1.waffen_feuerrate_aufgeladen != null
-                      ? (data1.waffen_feuerrate_einzel != null
-                        ? data1.waffen_feuerrate_einzel + '/Einzel  '
+                    {weapon.waffen_feuerrate_einzel ||
+                      weapon.waffen_feuerrate_salve ||
+                      weapon.waffen_feuerrate_vollauto ||
+                      weapon.waffen_feuerrate_aufgeladen != null
+                      ? (weapon.waffen_feuerrate_einzel != null
+                        ? weapon.waffen_feuerrate_einzel + '/Einzel  '
                         : '') +
-                      (data1.waffen_feuerrate_salve != null
-                        ? data1.waffen_feuerrate_salve + '/Salve  '
+                      (weapon.waffen_feuerrate_salve != null
+                        ? weapon.waffen_feuerrate_salve + '/Salve  '
                         : '') +
-                      (data1.waffen_feuerrate_vollauto != null
-                        ? data1.waffen_feuerrate_vollauto + '/Gebündelt  '
+                      (weapon.waffen_feuerrate_vollauto != null
+                        ? weapon.waffen_feuerrate_vollauto + '/Gebündelt  '
                         : '') +
-                      (data1.waffen_feuerrate_aufgeladen != null
-                        ? data1.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
+                      (weapon.waffen_feuerrate_aufgeladen != null
+                        ? weapon.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
                         : '')
                       : 'N/A'}
                   </td>
@@ -221,8 +231,8 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                 <tr>
                   <th className="pr-2 text-left">Mündungs Geschwindigkeit:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_muendungs_geschwindigkeit != null
-                      ? data1.waffen_muendungs_geschwindigkeit
+                    {weapon.waffen_muendungs_geschwindigkeit != null
+                      ? weapon.waffen_muendungs_geschwindigkeit
                       : 'N/A'}
                   </td>
                 </tr>
@@ -239,41 +249,41 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                 <tr>
                   <th className="pr-2 text-left">Magazine:</th>
                   <td className="text-left break-words text-primary">
-                    {data1.waffen_magazin != null
-                      ? data1.waffen_magazin
+                    {weapon.waffen_magazin != null
+                      ? weapon.waffen_magazin
                       : 'N/A'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Visierung:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_visier != null
-                      ? data1.waffen_visier.visiername
+                    {weapon.waffen_visier != null
+                      ? weapon.waffen_visier.visiername
                       : 'Leer' +
                       ' (S' +
-                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      weapon.waffen_klasse.waffenklassensize.waffensize +
                       ')'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Lauf:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_lauf != null
-                      ? data1.waffengewicht + ' KG'
+                    {weapon.waffen_lauf != null
+                      ? weapon.waffengewicht + ' KG'
                       : 'Leer' +
                       ' (S' +
-                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      weapon.waffen_klasse.waffenklassensize.waffensize +
                       ')'}
                   </td>
                 </tr>
                 <tr>
                   <th className="pr-2 text-left">Unterlauf:</th>
                   <td className="text-left text-primary">
-                    {data1.waffen_unterlauf != null
-                      ? data1.waffengewicht + ' KG'
+                    {weapon.waffen_unterlauf != null
+                      ? weapon.waffengewicht + ' KG'
                       : 'Leer' +
                       ' (S' +
-                      data1.waffen_klasse.waffenklassensize.waffensize +
+                      weapon.waffen_klasse.waffenklassensize.waffensize +
                       ')'}
                   </td>
                 </tr>
@@ -329,8 +339,8 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                       <tr>
                         <th className="text-left">Maximale Reichweite:</th>
                         <td className="text-left text-primary">
-                          {data1.waffen_maximale_reichweite != null
-                            ? data1.waffen_maximale_reichweite
+                          {weapon.waffen_maximale_reichweite != null
+                            ? weapon.waffen_maximale_reichweite
                             : 'N/A'}
                         </td>
                       </tr>
@@ -339,8 +349,8 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                           Effektive Reichweite:
                         </th>
                         <td className="text-left text-primary">
-                          {data1.waffen_effektive_reichweite != null
-                            ? data1.waffen_effektive_reichweite
+                          {weapon.waffen_effektive_reichweite != null
+                            ? weapon.waffen_effektive_reichweite
                             : 'N/A'}
                         </td>
                       </tr>
@@ -393,7 +403,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                       rehypePlugins={[rehypeRaw]}
                       className="prose prose-td:align-middle prose-invert xl:max-w-[90%] md:text-lg"
                     >
-                      {data1.waffen_beschreibung}
+                      {weapon.waffen_beschreibung}
                     </ReactMarkdown>
                   </div>
                 </div>
