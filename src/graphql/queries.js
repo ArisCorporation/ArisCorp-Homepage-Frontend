@@ -1022,8 +1022,93 @@ export const GET_VERSEEXKURS_ATTACHMENTS = gql`
   }
 `
 
+export const GET_VERSEEXKURS_ATTACHMENT = gql`
+  query GetVerseExkursAttachment($name: String!) {
+    optics(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+      gallery {
+        id
+      }
+      classification
+      size
+      manufacturer {
+        firmen_name
+        firmen_trans_logo {
+          id
+          width
+          height
+        }
+      }
+      weight
+      price
+      zoomLevel
+      autoZeroing
+      zeroingRange
+      rangefinder
+      description
+    }
+    
+    barrel(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+      gallery {
+        id
+      }
+      classification
+      size
+      manufacturer {
+        firmen_name
+        firmen_trans_logo {
+          id
+          width
+          height
+        }
+      }
+      weight
+      price
+      stats
+      description
+    }
+    
+    underbarrel(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+      gallery {
+        id
+      }
+      classification
+      size
+      manufacturer {
+        firmen_name
+        firmen_trans_logo {
+          id
+          width
+          height
+        }
+      }
+      weight
+      price
+      stats
+      description
+    }
+  }
+`
+
 export const GET_VERSEEXKURS_ATTACHMENTUTILS = gql`
-  query GetVerseExkursWeaponUtils {
+  query GetVerseExkursAttachmentUtils {
     firmen(
       filter: {
         status: { _eq: "published" }
