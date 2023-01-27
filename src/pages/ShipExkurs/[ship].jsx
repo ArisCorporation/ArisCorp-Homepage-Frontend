@@ -846,7 +846,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                     rehypePlugins={[rehypeRaw]}
                     className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%] md:text-"
                   >
-                    {data.description}
+                    {data.history}
                   </ReactMarkdown>
                 </div>
               </BasicPanel>
@@ -874,7 +874,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                           rehypePlugins={[rehypeRaw]}
                           className="text-xs"
                         >
-                          {data.history}
+                          {data.description}
                         </ReactMarkdown>
                       </div>
                     </div>
