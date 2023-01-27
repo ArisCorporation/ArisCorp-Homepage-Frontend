@@ -971,6 +971,23 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                         </p>
                         <p className="-mt-3">{ppReason}</p>
                       </div>
+                      <div>
+                        <p className="text-secondary">
+                          <span>Schlussfolgerung - </span>
+                          <span>
+                            {conclusionScore == 10
+                              ? 'Gering'
+                              : conclusionScore == 15
+                                ? 'Mittel'
+                                : conclusionScore == 20
+                                  ? 'Gut'
+                                  : conclusionScore == 25
+                                    ? 'Sehr Gut'
+                                    : 'nicht vorhanden'}
+                          </span>
+                        </p>
+                        <p className="-mt-3">{conclusionReason}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
