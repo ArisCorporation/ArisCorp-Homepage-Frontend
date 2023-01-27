@@ -264,6 +264,7 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     rsiName: object.rsiName,
     slug: object.slug,
     rsiSlug: object.rsiSlug,
+    apiid: object.id,
     length: object.length,
     beam: object.beam,
     height: object.height,
@@ -338,18 +339,7 @@ export default async function handler(req, res) {
   const Datastore = await postSCData()
 
   if (req.method === 'GET') {
-    // res.status(200).json(Datastore)
-    const test = Datastore.find((e) => e.slug == "c1-spirit")
-    // res.status(200).send(Datastore.find((e) => e.slug == "c1-spirit"))
-    await axios
-      .get(
-        'https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr&limit=-1'
-      )
-      .then((resp) => {
-        res.status(200).send(resp.data.data.find((e) => e.slug == test.slug))
-        // res.status(200).send(resp.data.data)
-        // res.status(200).send(resp.data.data)
-      })
+    res.status(200).send(Datastore);
   } else if (req.method === 'POST') {
     await axios
       .get(
@@ -359,7 +349,7 @@ export default async function handler(req, res) {
         Datastore.forEach((object, index) => {
           const directusData = resp.data.data
           const search = directusData.find(
-            (element) => element.slug == object.slug
+            (element) => element.apiid == object.apiid
           )
           if (search != null) {
             axios
@@ -376,6 +366,7 @@ export default async function handler(req, res) {
                 object
               )
               .catch(function (error) {
+                res.status(401).send(error)
               })
           }
         })
