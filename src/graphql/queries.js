@@ -957,71 +957,92 @@ export const GET_VERSEEXKURS_WEAPON = gql`
   }
 `
 
-// export const GET_VERSEEXKURS_WEAPON = gql`
-//   query GetVerseExkursTechnologie($Weapon: String!) {
-//     waffen_feuermodi_technologien(
-//       filter: {
-//         technologien_id: {
-//           waffen_name: { _eq: $Weapon }
-//           category: { _eq: "weapons" }
-//         }
-//       }
-//     ) {
-//       technologien_id {
-//         id
-//         waffen_name
-//         waffen_preis
-//         waffen_bild {
-//           id
-//           width
-//           height
-//         }
-//         waffenhersteller {
-//           id
-//           firmen_name
-//           firmen_trans_logo {
-//             id
-//             width
-//             height
-//           }
-//           text
-//         }
-//         waffen_klasse {
-//           id
-//           waffenklasse
-//           waffenklassensize {
-//             waffensize
-//           }
-//         }
-//         waffengewicht
-//         waffen_kaliber
-//         wafffen_schadenstyp {
-//           id
-//           schadenstyp
-//         }
-//         waffen_feuerrate_einzel
-//         waffen_feuerrate_salve
-//         waffen_feuerrate_vollauto
-//         waffen_feuerrate_aufgeladen
-//         waffen_magazin
-//         waffen_visier {
-//           id
-//           visiername
-//         }
-//         waffen_muendungs_geschwindigkeit
-//         waffen_locktime
-//         waffen_beschreibung
-//         waffen_maximale_reichweite
-//         waffen_effektive_reichweite
-//         tabelle
-//       }
+export const GET_VERSEEXKURS_ATTACHMENTS = gql`
+  query GetVerseExkursTechnologies(
+    $squery: String
+    $sizequery: [String]
+    $manuquery: [String]
+  ) {
+    optics(
+      filter: {
+        status: { _eq: "published" }
+        size: { _in: $sizequery }
+        manufacturer: { firmen_name: { _in: $manuquery } }
+      }
+      sort: ["sort", "name"]
+      search: $squery
+      limit: -1
+    ) {
+      id
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+    }
 
-//       waffen_feuermodi_id {
-//         feuermodus
-//       }
-//     }
-//   }
-// `
+    barrel(
+      filter: {
+        status: { _eq: "published" }
+        size: { _in: $sizequery }
+        manufacturer: { firmen_name: { _in: $manuquery } }
+      }
+      sort: ["sort", "name"]
+      search: $squery
+      limit: -1
+    ) {
+      id
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+    }
+
+    underbarrel(
+      filter: {
+        status: { _eq: "published" }
+        size: { _in: $sizequery }
+        manufacturer: { firmen_name: { _in: $manuquery } }
+      }
+      sort: ["sort", "name"]
+      search: $squery
+      limit: -1
+    ) {
+      id
+      name
+      storeImage {
+        id
+        width
+        height
+      }
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_ATTACHMENTUTILS = gql`
+  query GetVerseExkursWeaponUtils {
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        _or: [
+          { optics: { id: { _nnull: true } } }
+          { barrels: { id: { _nnull: true } } }
+          { underbarrels: { id: { _nnull: true } } }
+        ]
+      }
+    ) {
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+    }
+  }
+`
 
 export const GET_VERSEEXKURS_SPECTRUM_ARTICLES = gql`
   query GetVerseExkursSpectrumArticles {

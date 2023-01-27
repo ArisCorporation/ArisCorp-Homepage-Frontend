@@ -159,6 +159,14 @@ export default function Technologie ({ data }) {
       desc: 'Im Waffen Index werden alle Waffen die im Verse zur Verfügung stehen aufgeführt. Inklusive Beschreibung, Kategorisierungen von Art, Typ, Wirkung und anderen wichtigen Statistiken die von Interesse sein könnten',
     },
     {
+      id: 'attachmentindex',
+      icon: '',
+      name: 'Attachment Index',
+      category: 'person',
+      image: '5099cf97-7b38-41a9-8002-d9859bff689d',
+      desc: 'Im Waffen Aufsätze Index werden alle Erweiterungsmöglichkeiten und Anbauteile für Handfeuerwaffen und Gewehre aufgeführt. Inklusive aller werte angaben um die Gesamtleistung der Waffen zu Optimieren.',
+    },
+    {
       id: 'armorindex',
       icon: '',
       name: 'Armor Index',
@@ -355,7 +363,7 @@ export default function Technologie ({ data }) {
           </Tab.Panel>
           <Tab.Panel>
             <div className="flex w-full mt-12">
-              <div className="flex flex-wrap w-4/12">
+              <div className="flex flex-wrap w-4/12 mb-12">
                 <BasicPanel bgo="0">
                   <div className="flex items-center justify-center p-10 text-center">
                     <div className="relative w-full aspect-[428/980]">
@@ -368,7 +376,8 @@ export default function Technologie ({ data }) {
                 <div className="relative w-full">
                   {selectedTech && activeTab == 1 ? (
                     selectedTech != 'weaponindex' &&
-                      selectedTech != 'armorindex' ? (
+                      selectedTech != 'armorindex' &&
+                      selectedTech != 'attachmentindex' ? (
                       data
                         .filter((data) => data.id == selectedTech)
                         .map((data) => (
@@ -397,7 +406,7 @@ export default function Technologie ({ data }) {
                       image={'327e44ea-3045-44a9-a8f0-1fc1279df782'}
                     />
                   )}
-                  <div className="absolute flex flex-wrap justify-between w-full mx-auto xs:flex-nowrap h-36 md:h-48 lg:px-6 top-96 lg:h-60">
+                  <div className="relative flex flex-wrap justify-between mx-auto h-36 md:h-48 lg:px-6 top-36 lg:h-60">
                     <div
                       className="relative w-60 aspect-square hover:cursor-pointer"
                       onMouseEnter={() => setSelectedTech('weaponindex')}
@@ -406,7 +415,7 @@ export default function Technologie ({ data }) {
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae"
-                        alt="Kompletter Tech Index"
+                        alt="Waffenindex"
                         layout="fill"
                         objectFit="contain"
                         placeholder="blur"
@@ -424,12 +433,30 @@ export default function Technologie ({ data }) {
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
-                        alt="Kompletter Tech Index"
+                        alt="Armorindex"
                         layout="fill"
                         objectFit="contain"
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca' +
+                          '?width=16&quality=1'
+                        }
+                      />
+                    </div>
+                    <div
+                      className="relative mx-auto w-60 aspect-square hover:cursor-pointer"
+                      onMouseEnter={() => setSelectedTech('attachmentindex')}
+                      onMouseLeave={() => setSelectedTech(undefined)}
+                      onClick={() => push('/VerseExkurs/attachments')}
+                    >
+                      <Image
+                        src="https://cms.ariscorp.de/assets/72e4d24c-0469-4873-8034-f785af65619f"
+                        alt="Attachmentindex"
+                        layout="fill"
+                        objectFit="contain"
+                        placeholder="blur"
+                        blurDataURL={
+                          'https://cms.ariscorp.de/assets/72e4d24c-0469-4873-8034-f785af65619f' +
                           '?width=16&quality=1'
                         }
                       />
