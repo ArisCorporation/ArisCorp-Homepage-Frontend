@@ -64,9 +64,6 @@ export default function Weapons ({ utils, manufacturers }) {
     push('/VerseExkurs/waffen/' + name)
   }
 
-  console.log(manuquery);
-  console.log(manuquery.includes("Apocalypse Arms"));
-
   useEffect(() => {
     if (isMounted.current) {
       let clsName
