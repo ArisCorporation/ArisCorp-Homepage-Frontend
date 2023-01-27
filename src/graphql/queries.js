@@ -874,9 +874,17 @@ export const GET_VERSEEXKURS_WEAPONS = gql`
 export const GET_VERSEEXKURS_WEAPONUTILS = gql`
   query GetVerseExkursWeaponUtils {
     firmen(
-      filter: { status: { _eq: "published" }, handweapon: { _eq: true } }
+      filter: {
+        status: { _eq: "published" }
+        weapons: { id: { _nnull: true } }
+      }
     ) {
       firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
     }
 
     waffen_klassen {

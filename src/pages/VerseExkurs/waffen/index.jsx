@@ -16,6 +16,7 @@ export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_WEAPONUTILS })
 
   let utils = { classes: [], dmgtype: [], manufacturers: [] }
+  const manufacturers = data.firmen
 
   data.waffen_klassen.forEach((object, index) => {
     utils.classes.push(object.waffenklasse)
@@ -37,17 +38,19 @@ export async function getServerSideProps () {
 
   return {
     props: {
-      utils: await utils,
+      utils,
+      manufacturers
     },
   }
 }
 
-export default function Weapons ({ utils }) {
+export default function Weapons ({ utils, manufacturers }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
   const [weaponClass, setWeaponClass] = useState([])
   const [damageType, setDamageType] = useState([])
+  const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [manufacturer, setManufacturer] = useState([])
   const squery = query.q
   const classquery = query.class
@@ -61,7 +64,8 @@ export default function Weapons ({ utils }) {
     push('/VerseExkurs/waffen/' + name)
   }
 
-  // console.log(utils.classes);
+  console.log(manuquery);
+  console.log(manuquery.includes("Apocalypse Arms"));
 
   useEffect(() => {
     if (isMounted.current) {
@@ -546,7 +550,7 @@ export default function Weapons ({ utils }) {
                 </p>
               </div>
             </div>
-            <div className="w-24 ml-4">
+            <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-4 hover:cursor-pointer">
               <div className="relative w-24 mx-auto aspect-square">
                 <Image
                   src={
@@ -568,6 +572,73 @@ export default function Weapons ({ utils }) {
             </div>
           </div>
           <hr />
+          {!manufacturerMenu ? '' : (
+            <div className="flex">
+              <div
+                className="w-24 hover:cursor-pointer group"
+                onClick={() => {
+                  setManufacturer()
+                }}
+              >
+                <div className="relative w-24 mx-auto aspect-square">
+                  <Image
+                    src={
+                      'https://cms.ariscorp.de/assets/' +
+                      '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
+                    }
+                    alt="Alle-Icon"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                    }
+                  />
+                </div>
+                <p
+                  className={
+                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                  }
+                >
+                  Alle Hersteller
+                </p>
+              </div>
+              <div className="flex mx-auto space-x-2">
+                {manufacturers.map((obj) => (
+                  <div
+                    key={obj.firmen_name}
+                    className="w-24 hover:cursor-pointer group"
+                    onClick={() => setManufacturer([obj.firmen_name])}
+                  >
+                    <div className="relative w-24 mx-auto aspect-square">
+                      <Image
+                        src={
+                          'https://cms.ariscorp.de/assets/' +
+                          obj.firmen_trans_logo?.id
+                        }
+                        alt="Energie-Icon"
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={
+                          'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
+                        }
+                      />
+                    </div>
+                    <p
+                      className={
+                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                        (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+                      }
+                    >
+                      {obj.firmen_name}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+          {!manufacturerMenu ? '' : <hr />}
           <div className="flex flex-wrap px-2">
             {loading ? (
               <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
