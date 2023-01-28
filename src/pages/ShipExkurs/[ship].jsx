@@ -16,7 +16,8 @@ import {
   buildStyles,
 } from 'react-circular-progressbar'
 import ImageGallery from 'react-image-gallery';
-// import 'react-circular-progressbar/dist/styles.css'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify';
 import './progressbar.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 
@@ -95,7 +96,20 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
   const urlquery = query.tab
   const { ship: Ship } = router.query
   const shareUrl = "https://ariscorp.de/ShipExkurs/" + data.slug + (urlquery ? "?tab=" + urlquery : "")
-  console.log(loaners);
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(shareUrl)
+    toast.info('URL in Zwischenablage kopiert!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -164,6 +178,18 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
 
   return (
     <div className="items-center max-w-6xl mx-auto print:pt-5">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Head>
         <title>
           {siteTitle}
@@ -461,7 +487,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 <p className='p-0'>Broschüre</p>
               }
             </BasicPanelButton>
-            <BasicPanelButton onClick={() => navigator.clipboard.writeText(shareUrl)} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+            <BasicPanelButton onClick={() => handleShare()} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
               {
                 <p className='w-full p-0'>Teilen</p>
               }
