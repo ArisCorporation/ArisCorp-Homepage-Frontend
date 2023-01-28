@@ -38,6 +38,7 @@
     "react-spinners": "^0.11.0",
     "react-spinners-kit": "^1.9.1",
     "react-tabs": "^3.2.3",
+    "react-toastify": "^9.1.1",
     "react-tooltip": "^4.2.21",
     "rehype-raw": "^6.1.1",
     "rehype-slug": "^5.0.1",
