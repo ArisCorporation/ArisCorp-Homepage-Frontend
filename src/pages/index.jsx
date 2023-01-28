@@ -22,7 +22,7 @@ export async function getServerSideProps () {
     }
   }
 
-  const siteTitle = "Astro Research and Service Industrial Corporation"
+  const siteTitle = "Astro Research and Industrial Service Corporation"
 
   return {
     props: {

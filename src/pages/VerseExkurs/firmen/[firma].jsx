@@ -28,7 +28,7 @@ export async function getServerSideProps (context) {
 
   data = data.firmen[0]
 
-  const siteTitle = data.firmen_name + " - Astro Research and Service Industrial Corporation"
+  const siteTitle = data.firmen_name + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
