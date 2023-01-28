@@ -6,8 +6,8 @@ import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
-import { GET_SHIPEXKURS_SHIP } from 'graphql/queries'
-import { BasicPanel } from 'components/panels'
+import { GET_SHIPEXKURS_SHIP, GET_SHIPEXKURS_SHIPLOANERS } from 'graphql/queries'
+import { BasicPanel, BasicPanelButton } from 'components/panels'
 import { Tab } from '@headlessui/react'
 import client from 'apollo/clients'
 import {
@@ -27,6 +27,7 @@ import _ from 'lodash'
 // Animation
 import { easeQuadInOut } from 'd3-ease'
 import Head from 'next/head'
+import Link from 'next/link'
 
 function Separator (props) {
   return (
@@ -65,23 +66,36 @@ export async function getServerSideProps (context) {
   }
 
   data = data.ships[0]
+  const loaners = []
+  if (data.loaners) {
+    let { data: shipList } = await client.query({ query: GET_SHIPEXKURS_SHIPLOANERS })
+    data.loaners.map((obj) => {
+      const search = shipList.ships.find((e) => e.slug === obj.slug)
+      if (search) {
+        loaners.push(search)
+      }
+    })
+  }
 
   const siteTitle = data.name + " - Astro Research and Service Industrial Corporation"
 
   return {
     props: {
       data,
+      loaners,
       siteTitle
     },
   }
 }
 
-export default function SpectrumArticlePage ({ data, siteTitle }) {
+export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
-  const { replace, query } = useRouter()
+  const { replace, query, push } = useRouter()
   const urlquery = query.tab
   const { ship: Ship } = router.query
+  const shareUrl = "https://ariscorp.de/ShipExkurs/" + data.slug + (urlquery ? "?tab=" + urlquery : "")
+  console.log(loaners);
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -172,7 +186,6 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
         <div className="relative flex items-center align-center">
           <div className="absolute bottom-0">
             <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-              {/* <span>{data.manufacturer.firmen_name} </span> */}
               <span className="text-secondary">{data.name}</span>{' '}
             </h1>
             <h3 className="mb-0 uppercase">
@@ -226,7 +239,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
             />
           </BasicPanel>
         </div>
-        <div className="w-full xl:w-2/5">
+        <div className="w-full space-y-2 xl:w-2/5">
           <BasicPanel>
             <div className='overflow-hidden rounded-2xl'>
               <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
@@ -411,6 +424,49 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
               </div>
             </div>
           </BasicPanel>
+        </div>
+      </div>
+      <div className='grid grid-cols-5 gap-2 mt-4'>
+        <div className='col-span-3'>
+          <BasicPanel>
+            <div>
+              <ReactMarkdown
+                rehypePlugins={[rehypeRaw]}
+                className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[95%] md:text-"
+              >
+                {data.introduction}
+              </ReactMarkdown>
+            </div>
+          </BasicPanel>
+        </div>
+        <div className='flex col-span-2 max-h-24'>
+          <div className='grid w-full grid-cols-2 grid-rows-2 gap-2'>
+            <BasicPanelButton a external href={data.onSale ? data.storeUrl + "#buying-options" : data.storeUrl} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                data.onSale ? (
+                  <p className='p-0 text-sm'>On Sale: ${data.pledgePrice} excl. VAT</p>
+                ) :
+                  (
+                    <p className='p-0'>RSI Page</p>
+                  )
+              }
+            </BasicPanelButton>
+            <BasicPanelButton a external href={data.salesPageUrl} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='p-0'>Zur RSI Promoseite</p>
+              }
+            </BasicPanelButton>
+            <BasicPanelButton childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='p-0'>Broschüre</p>
+              }
+            </BasicPanelButton>
+            <BasicPanelButton onClick={() => navigator.clipboard.writeText(shareUrl)} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='w-full p-0'>Teilen</p>
+              }
+            </BasicPanelButton>
+          </div>
         </div>
       </div>
       <hr />
@@ -862,160 +918,160 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
               <BasicPanel>
                 <div>
                   <div>
-                    <h1>
-                      <span className="text-primary">ArisCorp</span>
-                      <span> Wertung</span>
-                    </h1>
-                  </div>
-                  <div className="flex mt-4">
-                    <div className="w-3/12">
-                      <div className="text-xs border border-secondary">
-                        <ReactMarkdown
-                          rehypePlugins={[rehypeRaw]}
-                          className="text-xs"
-                        >
-                          {data.description}
-                        </ReactMarkdown>
-                      </div>
+                    <div>
+                      <h1 className='pl-4'>
+                        <span className="text-primary">ArisCorp</span>
+                        <span> Wertung</span>
+                      </h1>
                     </div>
-                    <div className="w-3/12">
-                      <ul className="pl-1">
-                        {data.s_w
-                          .filter((e) => e.kategorie == 'positive')
-                          .map((object, index) => (
-                            <li
-                              key={index}
-                              className='list-none before:content-["+"] before:text-green-500 before:mr-2'
-                            >
-                              {object.name}
-                            </li>
-                          ))}
-                        {data.s_w
-                          .filter((e) => e.kategorie == 'negative')
-                          .map((object, index) => (
-                            <li
-                              key={index}
-                              className='list-none before:content-["-"] before:text-red-500 before:mr-2'
-                            >
-                              {object.name}
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
-                    <div className="w-6/12">
+                    <div className="grid grid-cols-2 px-8 mt-4 space-x-8">
                       <div>
-                        <p className="text-secondary">
-                          <span>Kampfpontenzial - </span>
-                          <span>
-                            {fightScore == 10
-                              ? 'Gering'
-                              : fightScore == 15
-                                ? 'Mittel'
-                                : fightScore == 20
-                                  ? 'Gut'
-                                  : fightScore == 25
-                                    ? 'Sehr Gut'
-                                    : 'nicht vorhanden'}
-                          </span>
-                        </p>
-                        <p className="-mt-3">{fightReason}</p>
-                      </div>
-                      <div>
-                        <p className="text-secondary">
-                          <span>Wirtschaftliches Potenzial - </span>
-                          <span>
-                            {ecoScore == 10
-                              ? 'Gering'
-                              : ecoScore == 15
-                                ? 'Mittel'
-                                : ecoScore == 20
-                                  ? 'Gut'
-                                  : ecoScore == 25
-                                    ? 'Sehr Gut'
-                                    : 'nicht vorhanden'}
-                          </span>
-                        </p>
-                        <p className="-mt-3">{ecoReason}</p>
-                      </div>
-                      <div>
-                        <p className="text-secondary">
-                          <span>Benutzungspotenzial - </span>
-                          <span>
-                            {useScore == 10
-                              ? 'Gering'
-                              : useScore == 15
-                                ? 'Mittel'
-                                : useScore == 20
-                                  ? 'Gut'
-                                  : useScore == 25
-                                    ? 'Sehr Gut'
-                                    : 'nicht vorhanden'}
-                          </span>
-                        </p>
-                        <p className="-mt-3">{useReason}</p>
-                      </div>
-                      <div>
-                        <p className="text-secondary">
-                          <span>Preis-Leistungsverhältnis - </span>
-                          <span>
-                            {ppScore == 10
-                              ? 'Gering'
-                              : ppScore == 15
-                                ? 'Mittel'
-                                : ppScore == 20
-                                  ? 'Gut'
-                                  : ppScore == 25
-                                    ? 'Sehr Gut'
-                                    : 'nicht vorhanden'}
-                          </span>
-                        </p>
-                        <p className="-mt-3">{ppReason}</p>
-                      </div>
-                      <div>
-                        <p className="text-secondary">
-                          <span>Schlussfolgerung - </span>
-                          <span>
-                            {conclusionScore == 10
-                              ? 'Gering'
-                              : conclusionScore == 15
-                                ? 'Mittel'
-                                : conclusionScore == 20
-                                  ? 'Gut'
-                                  : conclusionScore == 25
-                                    ? 'Sehr Gut'
-                                    : 'nicht vorhanden'}
-                          </span>
-                        </p>
-                        <p className="-mt-3">{conclusionReason}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        <div className="mb-8 border border-secondary">
+                          <ReactMarkdown
+                            rehypePlugins={[rehypeRaw]}
+                          >
+                            {data.description}
+                          </ReactMarkdown>
+                        </div>
 
-                <div className="flex flex-wrap items-center py-6 whitespace-normal">
-                  <div>
-                    <h2 className="w-full">Die {data.name}</h2>
-                    <p>Erreichte eine Wertung von:</p>
-                  </div>
-                  <div className="w-1/12 pl-2">
-                    <CircularProgressbarWithChildren
-                      value={overallScore}
-                      text={`${overallScore}%`}
-                      strokeWidth={10}
-                      styles={buildStyles({
-                        strokeLinecap: 'butt',
-                      })}
-                    >
-                      <RadialSeparators
-                        count={12}
-                        style={{
-                          background: '#666',
-                          width: '2px',
-                          // This needs to be equal to props.strokeWidth
-                          height: `${10}%`,
-                        }}
-                      />
-                    </CircularProgressbarWithChildren>
+                        <ul className="pl-1">
+                          {data.s_w
+                            .filter((e) => e.kategorie == 'positive')
+                            .map((object, index) => (
+                              <li
+                                key={index}
+                                className='list-none before:content-["+"] before:text-green-500 before:mr-2'
+                              >
+                                {object.name}
+                              </li>
+                            ))}
+                          {data.s_w
+                            .filter((e) => e.kategorie == 'negative')
+                            .map((object, index) => (
+                              <li
+                                key={index}
+                                className='list-none before:content-["-"] before:text-red-500 before:mr-2'
+                              >
+                                {object.name}
+                              </li>
+                            ))}
+                        </ul>
+
+                        <div className="flex flex-wrap items-center py-6 pl-12 mx-auto whitespace-normal">
+                          <div>
+                            <h2 className="w-full">Die {data.name}</h2>
+                            <p>Erreichte eine Wertung von:</p>
+                          </div>
+                          <div className="w-3/12 pl-2">
+                            <CircularProgressbarWithChildren
+                              value={overallScore}
+                              text={`${overallScore}%`}
+                              strokeWidth={10}
+                              styles={buildStyles({
+                                strokeLinecap: 'butt',
+                              })}
+                            >
+                              <RadialSeparators
+                                count={12}
+                                style={{
+                                  background: '#666',
+                                  width: '2px',
+                                  // This needs to be equal to props.strokeWidth
+                                  height: `${10}%`,
+                                }}
+                              />
+                            </CircularProgressbarWithChildren>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div>
+                          <p className="text-secondary">
+                            <span>Kampfpontenzial - </span>
+                            <span>
+                              {fightScore == 10
+                                ? 'Gering'
+                                : fightScore == 15
+                                  ? 'Mittel'
+                                  : fightScore == 20
+                                    ? 'Gut'
+                                    : fightScore == 25
+                                      ? 'Sehr Gut'
+                                      : 'nicht vorhanden'}
+                            </span>
+                          </p>
+                          <p className="-mt-3">{fightReason}</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary">
+                            <span>Wirtschaftliches Potenzial - </span>
+                            <span>
+                              {ecoScore == 10
+                                ? 'Gering'
+                                : ecoScore == 15
+                                  ? 'Mittel'
+                                  : ecoScore == 20
+                                    ? 'Gut'
+                                    : ecoScore == 25
+                                      ? 'Sehr Gut'
+                                      : 'nicht vorhanden'}
+                            </span>
+                          </p>
+                          <p className="-mt-3">{ecoReason}</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary">
+                            <span>Benutzungspotenzial - </span>
+                            <span>
+                              {useScore == 10
+                                ? 'Gering'
+                                : useScore == 15
+                                  ? 'Mittel'
+                                  : useScore == 20
+                                    ? 'Gut'
+                                    : useScore == 25
+                                      ? 'Sehr Gut'
+                                      : 'nicht vorhanden'}
+                            </span>
+                          </p>
+                          <p className="-mt-3">{useReason}</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary">
+                            <span>Preis-Leistungsverhältnis - </span>
+                            <span>
+                              {ppScore == 10
+                                ? 'Gering'
+                                : ppScore == 15
+                                  ? 'Mittel'
+                                  : ppScore == 20
+                                    ? 'Gut'
+                                    : ppScore == 25
+                                      ? 'Sehr Gut'
+                                      : 'nicht vorhanden'}
+                            </span>
+                          </p>
+                          <p className="-mt-3">{ppReason}</p>
+                        </div>
+                        <div>
+                          <p className="text-secondary">
+                            <span>Schlussfolgerung - </span>
+                            <span>
+                              {conclusionScore == 10
+                                ? 'Gering'
+                                : conclusionScore == 15
+                                  ? 'Mittel'
+                                  : conclusionScore == 20
+                                    ? 'Gut'
+                                    : conclusionScore == 25
+                                      ? 'Sehr Gut'
+                                      : 'nicht vorhanden'}
+                            </span>
+                          </p>
+                          <p className="-mt-3">{conclusionReason}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </BasicPanel>
@@ -1026,45 +1082,94 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
         <div className="flex w-full space-x-4 italic uppercase text-secondary">
           <div className="w-1/3">
             <h3 className="mt-0 text-secondary">Varianten</h3>
-            <div>
-              <BasicPanel>
-                <div className="overflow-hidden rounded-2xl">
-                  <p className="absolute">Carrack Expedition</p>
-                  <div className="relative w-full aspect-[18/9]">
-                    <Image
-                      src={
-                        'https://cms.ariscorp.de/assets/' + data.storeImage.id
-                      }
-                      alt={'Bild von ' + data.name}
-                      fill
-                      className="object-cover"
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/' +
-                        data.storeImage.id +
-                        '?width=16&quality=1'
-                      }
-                    />
-                    <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                      <p className="pb-0 mb-0 leading-none transition-colors duration-200 hover:cursor-pointer text-secondary/90 hover:text-secondary hover:duration-300">
-                        Carrack Expedition
-                      </p>
-                      <p className="mt-0 text-[8px] leading-none text-white/50 hover:text-white/80 transition-colors hover:cursor-pointer duration-200 hover:duration-300">
-                        Anvil Aerospace
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </BasicPanel>
+            <div className='space-y-2'>
+              {data.varianten.map((obj) => (
+                <BasicPanel key={obj.ship2.id}>
+                  <Link href={'/ShipExkurs/' + obj.ship2.slug}>
+                    <a className='group'>
+                      <div className="overflow-hidden rounded-2xl">
+                        <div className="relative w-full aspect-[18/10]">
+                          <Image
+                            src={
+                              'https://cms.ariscorp.de/assets/' + obj.ship2.storeImage?.id
+                            }
+                            alt={'Bild von ' + obj.ship2.name}
+                            fill
+                            className="object-cover"
+                            placeholder="blur"
+                            blurDataURL={
+                              'https://cms.ariscorp.de/assets/' +
+                              obj.ship2.storeImage?.id +
+                              '?width=16&quality=1'
+                            }
+                          />
+                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
+                            <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
+                              {obj.ship2.name}
+                            </p>
+                            <Link href={"/VerseExkurs/firmen/" + data.manufacturer.firmen_name}>
+                              <a className='decoration-transparent'>
+                                <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
+                                  {data.manufacturer.firmen_name}
+                                </p>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                </BasicPanel>
+              ))}
             </div>
           </div>
           <div className="w-1/3">
-            <h3 className="mt-0 text-secondary">Loaner</h3>
+            <h3 className="mt-0 text-secondary">Loaners</h3>
+            <div className='space-y-2'>
+              {loaners.map((obj) => (
+                <BasicPanel key={obj.id}>
+                  <Link href={'/ShipExkurs/' + obj.slug}>
+                    <a className='group'>
+                      <div className="overflow-hidden rounded-2xl">
+                        <div className="relative w-full aspect-[18/10]">
+                          <Image
+                            src={
+                              'https://cms.ariscorp.de/assets/' + obj.storeImage?.id
+                            }
+                            alt={'Bild von ' + obj.name}
+                            fill
+                            className="object-cover"
+                            placeholder="blur"
+                            blurDataURL={
+                              'https://cms.ariscorp.de/assets/' +
+                              obj.storeImage?.id +
+                              '?width=16&quality=1'
+                            }
+                          />
+                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
+                            <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
+                              {obj.name}
+                            </p>
+                            <Link href={"/VerseExkurs/firmen/" + obj.manufacturer.firmen_name}>
+                              <a className='decoration-transparent'>
+                                <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
+                                  {obj.manufacturer.firmen_name}
+                                </p>
+                              </a>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                </BasicPanel>
+              ))}
+            </div>
           </div>
           <div className="w-1/3">
             <h3 className="mt-0 text-secondary">Paints</h3>
             <div>
-              <BasicPanel>
+              {/* <BasicPanel>
                 <div className="overflow-hidden rounded-2xl">
                   <p className="absolute">Carrack Expedition</p>
                   <div className="relative w-full aspect-[18/9]">
@@ -1089,7 +1194,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
                     </p>
                   </div>
                 </div>
-              </BasicPanel>
+              </BasicPanel> */}
             </div>
           </div>
         </div>

@@ -1052,7 +1052,7 @@ export const GET_VERSEEXKURS_ATTACHMENT = gql`
       rangefinder
       description
     }
-    
+
     barrel(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
       name
       storeImage {
@@ -1078,8 +1078,10 @@ export const GET_VERSEEXKURS_ATTACHMENT = gql`
       stats
       description
     }
-    
-    underbarrel(filter: { status: { _eq: "published" }, name: { _eq: $name } }) {
+
+    underbarrel(
+      filter: { status: { _eq: "published" }, name: { _eq: $name } }
+    ) {
       name
       storeImage {
         id
@@ -1441,8 +1443,40 @@ export const GET_SHIPEXKURS_SHIP = gql`
       }
       description
       history
+      introduction
       ratings
       s_w
+      loaners
+      varianten {
+        ship2 {
+          id
+          slug
+          name
+          storeImage {
+            id
+            width
+            height
+          }
+        }
+      }
+    }
+  }
+`
+
+export const GET_SHIPEXKURS_SHIPLOANERS = gql`
+  query GetShipExkursShipLoaners {
+    ships(
+      filter: { status: { _eq: "published" } }
+      limit: -1
+    ) {
+      slug
+      name
+      manufacturer {
+        firmen_name
+      }
+      storeImage {
+        id
+      }
     }
   }
 `
