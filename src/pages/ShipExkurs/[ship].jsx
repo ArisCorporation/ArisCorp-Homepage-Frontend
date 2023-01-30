@@ -31,6 +31,7 @@ import { Catalog, Presentation, ShareSquare, ThreeDots } from 'components/icons'
 import { HiOutlinePresentationChartLine } from 'react-icons/hi'
 import { MdOutlineScreenShare } from 'react-icons/md'
 import { GrCatalog, GrCatalogOption } from 'react-icons/gr'
+import ShipCard from 'components/ShipExkurs/ShipCard'
 
 function Separator (props) {
   return (
@@ -62,7 +63,7 @@ export async function getServerSideProps (context) {
     variables: { slug: ship },
   })
 
-  if (!data) {
+  if (!data.ships[0]) {
     return {
       notFound: true,
     }
@@ -489,7 +490,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               </Menu.Button>
               <Menu.Items as="div" className={"right-2 left-auto block absolute top-full mt-[10px] z-50 min-w-[200px] p-[2px] bg-[#111] border-2 border-primary rounded-[10px] cursor-pointer box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border"}>
 
-                <Menu.Item as="a" className={"group mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border"}>
+                <Menu.Item as="a" target="_blank" href={data.salesPageUrl} className={"group mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border"}>
                   <div className="group-hover:bg-white/10 group-hover:text-primary flex items-center justify-between text-left py-[6px] px-[14px] overflow-hidden whitespace-nowrap text-ellipsis rounded-[6px] transition-all duration-500 box-border">
                     <div className="mr-[6px] w-1/4"> <Presentation height={18} className="stroke-white" /> </div>
                     <span className="box-border flex-1">
@@ -533,7 +534,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg 2xl:text-xl 2xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Austattung
               </h1>
             </Tab>
@@ -543,7 +544,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg 2xl:text-xl 2xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Geschichte
               </h1>
             </Tab>
@@ -553,7 +554,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg 2xl:text-xl 2xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Gallerie
               </h1>
             </Tab>
@@ -563,13 +564,14 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg 2xl:text-xl 2xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Wertung
               </h1>
             </Tab>
           </Tab.List>
           <Tab.Panels className={'px-4 2xl:px-0 pt-5'}>
             <Tab.Panel>
+              <p className='text-primary'>Coming Soon</p>
               {/* <div className="flex space-x-2 uppercase">
                 <BasicPanel className={'h-fit w-1/3'}>
                   <div className="relative w-1/3 mx-3 mt-4 mb-4 space-y-1 h-fit">
@@ -1134,42 +1136,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <h3 className="mt-0 text-secondary">Varianten</h3>
             <div className='space-y-2'>
               {data.varianten.map((obj) => (
-                <BasicPanel key={obj.ship2.id}>
-                  <Link href={'/ShipExkurs/' + obj.ship2.slug}>
-                    <a className='group'>
-                      <div className="overflow-hidden rounded-2xl">
-                        <div className="relative w-full aspect-[18/10]">
-                          <Image
-                            src={
-                              'https://cms.ariscorp.de/assets/' + obj.ship2.storeImage?.id
-                            }
-                            alt={'Bild von ' + obj.ship2.name}
-                            fill
-                            className="object-cover"
-                            placeholder="blur"
-                            blurDataURL={
-                              'https://cms.ariscorp.de/assets/' +
-                              obj.ship2.storeImage?.id +
-                              '?width=16&quality=1'
-                            }
-                          />
-                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                            <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
-                              {obj.ship2.name}
-                            </p>
-                            <Link href={"/VerseExkurs/firmen/" + data.manufacturer.firmen_name}>
-                              <a className='decoration-transparent'>
-                                <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
-                                  {data.manufacturer.firmen_name}
-                                </p>
-                              </a>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </BasicPanel>
+                <ShipCard key={obj.ship2.id} data={obj.ship2} manufacturer={data.manufacturer} />
               ))}
             </div>
           </div>
@@ -1177,42 +1144,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <h3 className="mt-0 text-secondary">Loaners</h3>
             <div className='space-y-2'>
               {loaners.map((obj) => (
-                <BasicPanel key={obj.id}>
-                  <Link href={'/ShipExkurs/' + obj.slug}>
-                    <a className='group'>
-                      <div className="overflow-hidden rounded-2xl">
-                        <div className="relative w-full aspect-[18/10]">
-                          <Image
-                            src={
-                              'https://cms.ariscorp.de/assets/' + obj.storeImage?.id
-                            }
-                            alt={'Bild von ' + obj.name}
-                            fill
-                            className="object-cover"
-                            placeholder="blur"
-                            blurDataURL={
-                              'https://cms.ariscorp.de/assets/' +
-                              obj.storeImage?.id +
-                              '?width=16&quality=1'
-                            }
-                          />
-                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                            <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
-                              {obj.name}
-                            </p>
-                            <Link href={"/VerseExkurs/firmen/" + obj.manufacturer.firmen_name}>
-                              <a className='decoration-transparent'>
-                                <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
-                                  {obj.manufacturer.firmen_name}
-                                </p>
-                              </a>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  </Link>
-                </BasicPanel>
+                <ShipCard key={obj.id} data={obj} />
               ))}
             </div>
           </div>
