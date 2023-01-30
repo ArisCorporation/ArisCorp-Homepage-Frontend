@@ -11,7 +11,7 @@
   "dependencies": {
     "@apollo/client": "^3.5.9",
     "@directus/sdk": "^9.4.3",
-    "@headlessui/react": "^1.4.3",
+    "@headlessui/react": "^1.7.8",
     "apollo-link-rest": "^0.9.0-rc.1",
     "autoprefixer": "^10.4.1",
     "axios": "^0.26.0",
