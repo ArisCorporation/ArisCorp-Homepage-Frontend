@@ -1,10 +1,10 @@
 import Layout from './layout'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/future/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_SHIPEXKURS_SHIP, GET_SHIPEXKURS_SHIPLOANERS } from 'graphql/queries'
 import { BasicPanel, BasicPanelButton } from 'components/panels'
@@ -21,7 +21,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import './progressbar.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import React from 'react'
 
 import _ from 'lodash'
 
@@ -111,6 +110,15 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
     });
   }
 
+  // const Model = () => {
+  //   const gltf = useLoader(GLTFLoader, "https://cms.ariscorp.de/assets/" + data.holo.id);
+  //   return (
+  //     <>
+  //       <primitive object={gltf.scene} scale={0.4} />
+  //     </>
+  //   );
+  // };
+
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
       setActiveTab(urlquery)
@@ -136,35 +144,36 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
     return sum
   }
   const fightScore = parseInt(
-    data.ratings.filter((e) => e.kategorie == 'fight_potential')[0].grad
+    data.ratings?.filter((e) => e.kategorie == 'fight_potential')[0].grad
   )
-  const fightReason = data.ratings.filter(
+  const fightReason = data.ratings?.filter(
     (e) => e.kategorie == 'fight_potential'
   )[0].begrundung
   const ecoScore = parseInt(
-    data.ratings.filter((e) => e.kategorie == 'eco_potential')[0].grad
+    data.ratings?.filter((e) => e.kategorie == 'eco_potential')[0].grad
   )
-  const ecoReason = data.ratings.filter(
+  const ecoReason = data.ratings?.filter(
     (e) => e.kategorie == 'eco_potential'
   )[0].begrundung
   const useScore = parseInt(
-    data.ratings.filter((e) => e.kategorie == 'use_potential')[0].grad
+    data.ratings?.filter((e) => e.kategorie == 'use_potential')[0].grad
   )
-  const useReason = data.ratings.filter(
+  const useReason = data.ratings?.filter(
     (e) => e.kategorie == 'use_potential'
   )[0].begrundung
   const ppScore = parseInt(
-    data.ratings.filter((e) => e.kategorie == 'p-p_ratio')[0].grad
+    data.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0].grad
   )
-  const ppReason = data.ratings.filter((e) => e.kategorie == 'p-p_ratio')[0]
+  const ppReason = data.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0]
     .begrundung
   const conclusionScore = parseInt(
-    data.ratings.filter((e) => e.kategorie == 'conclusion')[0].grad
+    data.ratings?.filter((e) => e.kategorie == 'conclusion')[0].grad
   )
-  const conclusionReason = data.ratings.filter(
+  const conclusionReason = data.ratings?.filter(
     (e) => e.kategorie == 'fight_potential'
   )[0].begrundung
-  const overallScore = getScore(data.ratings)
+  const overallScore = (data.ratings ? getScore(data.ratings) : null)
+
 
   const galleryImages = data.gallery.map((i) => {
     const original = ("https://cms.ariscorp.de/assets/" + i.directus_files_id.id)
@@ -941,166 +950,174 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               </BasicPanel>
             </Tab.Panel>
             <Tab.Panel>
-              <BasicPanel>
-                <div>
+              {data.ratings ? (
+                <BasicPanel>
                   <div>
                     <div>
-                      <h1 className='pl-4'>
-                        <span className="text-primary">ArisCorp</span>
-                        <span> Wertung</span>
-                      </h1>
-                    </div>
-                    <div className="grid grid-cols-2 px-8 mt-4 space-x-8">
                       <div>
-                        <div className="mb-8 border border-secondary">
-                          <ReactMarkdown
-                            rehypePlugins={[rehypeRaw]}
-                          >
-                            {data.description}
-                          </ReactMarkdown>
-                        </div>
-
-                        <ul className="pl-1">
-                          {data.s_w
-                            .filter((e) => e.kategorie == 'positive')
-                            .map((object, index) => (
-                              <li
-                                key={index}
-                                className='list-none before:content-["+"] before:text-green-500 before:mr-2'
-                              >
-                                {object.name}
-                              </li>
-                            ))}
-                          {data.s_w
-                            .filter((e) => e.kategorie == 'negative')
-                            .map((object, index) => (
-                              <li
-                                key={index}
-                                className='list-none before:content-["-"] before:text-red-500 before:mr-2'
-                              >
-                                {object.name}
-                              </li>
-                            ))}
-                        </ul>
-
-                        <div className="flex flex-wrap items-center py-6 pl-12 mx-auto whitespace-normal">
-                          <div>
-                            <h2 className="w-full">Die {data.name}</h2>
-                            <p>Erreichte eine Wertung von:</p>
-                          </div>
-                          <div className="w-3/12 pl-2">
-                            <CircularProgressbarWithChildren
-                              value={overallScore}
-                              text={`${overallScore}%`}
-                              strokeWidth={10}
-                              styles={buildStyles({
-                                strokeLinecap: 'butt',
-                              })}
-                            >
-                              <RadialSeparators
-                                count={12}
-                                style={{
-                                  background: '#666',
-                                  width: '2px',
-                                  // This needs to be equal to props.strokeWidth
-                                  height: `${10}%`,
-                                }}
-                              />
-                            </CircularProgressbarWithChildren>
-                          </div>
-                        </div>
+                        <h1 className='pl-4'>
+                          <span className="text-primary">ArisCorp</span>
+                          <span> Wertung</span>
+                        </h1>
                       </div>
-                      <div>
-                        <div>
-                          <p className="text-secondary">
-                            <span>Kampfpontenzial - </span>
-                            <span>
-                              {fightScore == 10
-                                ? 'Gering'
-                                : fightScore == 15
-                                  ? 'Mittel'
-                                  : fightScore == 20
-                                    ? 'Gut'
-                                    : fightScore == 25
-                                      ? 'Sehr Gut'
-                                      : 'nicht vorhanden'}
-                            </span>
-                          </p>
-                          <p className="-mt-3">{fightReason}</p>
+                      <div className="grid grid-cols-2 px-8 mt-4 space-x-8">
+                        <div className=''>
+                          <div className="px-2 mb-8 border border-secondary">
+                            <ReactMarkdown
+                              rehypePlugins={[rehypeRaw]}
+                            >
+                              {data.description}
+                            </ReactMarkdown>
+                          </div>
+
+                          <ul className="pl-1">
+                            {data.s_w ? (
+                              data.s_w
+                                .filter((e) => e.kategorie == 'positive')
+                                .map((object, index) => (
+                                  <li
+                                    key={index}
+                                    className='list-none before:content-["+"] before:text-green-500 before:mr-2'
+                                  >
+                                    {object.name}
+                                  </li>
+                                ))
+                            ) : null}
+                            {data.s_w ? (
+                              data.s_w
+                                .filter((e) => e.kategorie == 'negative')
+                                .map((object, index) => (
+                                  <li
+                                    key={index}
+                                    className='list-none before:content-["-"] before:text-red-500 before:mr-2'
+                                  >
+                                    {object.name}
+                                  </li>
+                                ))
+                            ) : null}
+                          </ul>
+
+
+                          <div className="flex flex-wrap items-center justify-center py-6 mx-auto whitespace-normal">
+                            <div>
+                              <h2 className="w-full">Die {data.name}</h2>
+                              <p>Erreichte eine Wertung von:</p>
+                            </div>
+                            <div className="w-3/12 pl-2">
+                              <CircularProgressbarWithChildren
+                                value={overallScore}
+                                text={`${overallScore}%`}
+                                strokeWidth={10}
+                                styles={buildStyles({
+                                  strokeLinecap: 'butt',
+                                })}
+                              >
+                                <RadialSeparators
+                                  count={12}
+                                  style={{
+                                    background: '#666',
+                                    width: '2px',
+                                    // This needs to be equal to props.strokeWidth
+                                    height: `${10}%`,
+                                  }}
+                                />
+                              </CircularProgressbarWithChildren>
+                            </div>
+                          </div>
+
                         </div>
-                        <div>
-                          <p className="text-secondary">
-                            <span>Wirtschaftliches Potenzial - </span>
-                            <span>
-                              {ecoScore == 10
-                                ? 'Gering'
-                                : ecoScore == 15
-                                  ? 'Mittel'
-                                  : ecoScore == 20
-                                    ? 'Gut'
-                                    : ecoScore == 25
-                                      ? 'Sehr Gut'
-                                      : 'nicht vorhanden'}
-                            </span>
-                          </p>
-                          <p className="-mt-3">{ecoReason}</p>
-                        </div>
-                        <div>
-                          <p className="text-secondary">
-                            <span>Benutzungspotenzial - </span>
-                            <span>
-                              {useScore == 10
-                                ? 'Gering'
-                                : useScore == 15
-                                  ? 'Mittel'
-                                  : useScore == 20
-                                    ? 'Gut'
-                                    : useScore == 25
-                                      ? 'Sehr Gut'
-                                      : 'nicht vorhanden'}
-                            </span>
-                          </p>
-                          <p className="-mt-3">{useReason}</p>
-                        </div>
-                        <div>
-                          <p className="text-secondary">
-                            <span>Preis-Leistungsverhältnis - </span>
-                            <span>
-                              {ppScore == 10
-                                ? 'Gering'
-                                : ppScore == 15
-                                  ? 'Mittel'
-                                  : ppScore == 20
-                                    ? 'Gut'
-                                    : ppScore == 25
-                                      ? 'Sehr Gut'
-                                      : 'nicht vorhanden'}
-                            </span>
-                          </p>
-                          <p className="-mt-3">{ppReason}</p>
-                        </div>
-                        <div>
-                          <p className="text-secondary">
-                            <span>Schlussfolgerung - </span>
-                            <span>
-                              {conclusionScore == 10
-                                ? 'Gering'
-                                : conclusionScore == 15
-                                  ? 'Mittel'
-                                  : conclusionScore == 20
-                                    ? 'Gut'
-                                    : conclusionScore == 25
-                                      ? 'Sehr Gut'
-                                      : 'nicht vorhanden'}
-                            </span>
-                          </p>
-                          <p className="-mt-3">{conclusionReason}</p>
+                        <div className='mb-6'>
+                          <div>
+                            <p className="text-secondary">
+                              <span>Kampfpontenzial - </span>
+                              <span>
+                                {fightScore == 10
+                                  ? 'Gering'
+                                  : fightScore == 15
+                                    ? 'Mittel'
+                                    : fightScore == 20
+                                      ? 'Gut'
+                                      : fightScore == 25
+                                        ? 'Sehr Gut'
+                                        : 'nicht vorhanden'}
+                              </span>
+                            </p>
+                            <p className="-mt-3">{fightReason}</p>
+                          </div>
+                          <div>
+                            <p className="text-secondary">
+                              <span>Wirtschaftliches Potenzial - </span>
+                              <span>
+                                {ecoScore == 10
+                                  ? 'Gering'
+                                  : ecoScore == 15
+                                    ? 'Mittel'
+                                    : ecoScore == 20
+                                      ? 'Gut'
+                                      : ecoScore == 25
+                                        ? 'Sehr Gut'
+                                        : 'nicht vorhanden'}
+                              </span>
+                            </p>
+                            <p className="-mt-3">{ecoReason}</p>
+                          </div>
+                          <div>
+                            <p className="text-secondary">
+                              <span>Benutzungspotenzial - </span>
+                              <span>
+                                {useScore == 10
+                                  ? 'Gering'
+                                  : useScore == 15
+                                    ? 'Mittel'
+                                    : useScore == 20
+                                      ? 'Gut'
+                                      : useScore == 25
+                                        ? 'Sehr Gut'
+                                        : 'nicht vorhanden'}
+                              </span>
+                            </p>
+                            <p className="-mt-3">{useReason}</p>
+                          </div>
+                          <div>
+                            <p className="text-secondary">
+                              <span>Preis-Leistungsverhältnis - </span>
+                              <span>
+                                {ppScore == 10
+                                  ? 'Gering'
+                                  : ppScore == 15
+                                    ? 'Mittel'
+                                    : ppScore == 20
+                                      ? 'Gut'
+                                      : ppScore == 25
+                                        ? 'Sehr Gut'
+                                        : 'nicht vorhanden'}
+                              </span>
+                            </p>
+                            <p className="-mt-3">{ppReason}</p>
+                          </div>
+                          <div>
+                            <p className="text-secondary">
+                              <span>Schlussfolgerung - </span>
+                              <span>
+                                {conclusionScore == 10
+                                  ? 'Gering'
+                                  : conclusionScore == 15
+                                    ? 'Mittel'
+                                    : conclusionScore == 20
+                                      ? 'Gut'
+                                      : conclusionScore == 25
+                                        ? 'Sehr Gut'
+                                        : 'nicht vorhanden'}
+                              </span>
+                            </p>
+                            <p className="-mt-3">{conclusionReason}</p>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </BasicPanel>
+                </BasicPanel>
+              ) : null}
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>
