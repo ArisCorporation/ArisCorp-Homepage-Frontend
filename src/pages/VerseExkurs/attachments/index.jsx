@@ -52,7 +52,6 @@ export default function Attachments ({ utils, manufacturers }) {
   let { loading, error, data: Data, refetch } = useQuery(GET_VERSEEXKURS_ATTACHMENTS, {
     variables: { squery, sizequery, manuquery },
   })
-  console.log(Data);
 
   function arrayToString (array) { array.map((e) => toString(e)) }
   function toString (e) { return e.toString() }
@@ -143,8 +142,6 @@ export default function Attachments ({ utils, manufacturers }) {
       console.log(data);
     }
   }, [Data, categoryquery])
-
-  console.log(data);
 
 
 
