@@ -520,24 +520,44 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       founder
       famous_goods
       ships {
+        id
         name
         slug
+        storeImage {
+          id
+        }
       }
       weapons {
-        name
+        id
+        waffen_name
         slug
+        waffen_bild {
+          id
+        }
       }
       optics {
+        id
         name
         slug
+        storeImage {
+          id
+        }
       }
       barrels {
+        id
         name
         slug
+        storeImage {
+          id
+        }
       }
       underbarrels {
+        id
         name
         slug
+        storeImage {
+          id
+        }
       }
     }
   }
