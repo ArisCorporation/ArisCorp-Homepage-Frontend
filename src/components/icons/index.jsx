@@ -28,6 +28,11 @@ import RecruitmentIcon from './RecruitmentIcon'
 import ShipExkursBanner from './ShipExkursBanner'
 import VerseExkursBanner from './VerseExkursBanner'
 
+import ThreeDots from './ThreeDots'
+import ShareSquare from './ShareSquare'
+import Catalog from './Catalog'
+import Presentation from './Presentation'
+
 export {
   MainLogo,
   SCLogo,
@@ -53,4 +58,8 @@ export {
   RecruitmentIcon,
   ShipExkursBanner,
   VerseExkursBanner,
+  ThreeDots,
+  ShareSquare,
+  Catalog,
+  Presentation,
 }

@@ -1,4 +1,4 @@
-import Layout from './layout'
+import Layout from '../layout'
 import { useEffect, useState, Suspense } from 'react'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/future/image'
@@ -7,8 +7,8 @@ import rehypeRaw from 'rehype-raw'
 import { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_SHIPEXKURS_SHIP, GET_SHIPEXKURS_SHIPLOANERS } from 'graphql/queries'
-import { BasicPanel, BasicPanelButton } from 'components/panels'
-import { Menu, Tab } from '@headlessui/react'
+import { BasicPanelOld as BasicPanel, BasicPanelButton } from 'components/panels'
+import { Tab } from '@headlessui/react'
 import client from 'apollo/clients'
 import {
   CircularProgressbar,
@@ -20,17 +20,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
 import './progressbar.css'
 import "react-image-gallery/styles/css/image-gallery.css";
-import { FaShareSquare } from 'react-icons/fa'
+
+
 import _ from 'lodash'
 
 // Animation
 import { easeQuadInOut } from 'd3-ease'
 import Head from 'next/head'
 import Link from 'next/link'
-import { Catalog, Presentation, ShareSquare, ThreeDots } from 'components/icons'
-import { HiOutlinePresentationChartLine } from 'react-icons/hi'
-import { MdOutlineScreenShare } from 'react-icons/md'
-import { GrCatalog, GrCatalogOption } from 'react-icons/gr'
 
 function Separator (props) {
   return (
@@ -180,7 +177,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
   })
 
   return (
-    <div className="items-center mx-auto print:pt-5">
+    <div className="items-center max-w-6xl mx-auto print:pt-5">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -211,301 +208,290 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           content={siteTitle}
         />
       </Head>
-      <div className="relative flex items-center align-center">
-        <div className="absolute bottom-0">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            <span className="text-secondary">{data.name}</span>{' '}
-          </h1>
-          <h3 className="mb-0 uppercase">
-            <span className="text-white/25">Status: </span>
-            <span>{data.productionStatus}</span>
-          </h3>
+      <div>
+        <div className="relative flex items-center align-center">
+          <div className="absolute bottom-0">
+            <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+              <span className="text-secondary">{data.name}</span>{' '}
+            </h1>
+            <h3 className="mb-0 uppercase">
+              <span className="text-white/25">Status: </span>
+              <span>{data.productionStatus}</span>
+            </h3>
+          </div>
+          <div
+            className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square"
+            onClick={() =>
+              router.push(
+                '/VerseExkurs/firmen/' + data.manufacturer.firmen_name
+              )
+            }
+          >
+            <Image
+              src={
+                'https://cms.ariscorp.de/assets/' +
+                data.manufacturer.firmen_trans_logo.id
+              }
+              alt={'Logo von ' + data.manufacturer.firmen_name}
+              fill
+              placeholder="blur"
+              blurDataURL={
+                'https://cms.ariscorp.de/assets/' +
+                data.manufacturer.firmen_trans_logo.id +
+                '?width=16&quality=1'
+              }
+            />
+          </div>
         </div>
-        <div
-          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square"
-          onClick={() =>
-            router.push(
-              '/VerseExkurs/firmen/' + data.manufacturer.firmen_name
-            )
-          }
-        >
-          <Image
-            src={
-              'https://cms.ariscorp.de/assets/' +
-              data.manufacturer.firmen_trans_logo.id
-            }
-            alt={'Logo von ' + data.manufacturer.firmen_name}
-            fill
-            placeholder="blur"
-            blurDataURL={
-              'https://cms.ariscorp.de/assets/' +
-              data.manufacturer.firmen_trans_logo.id +
-              '?width=16&quality=1'
-            }
-          />
+        <hr className="mt-2" />
+      </div>
+      <div className="w-full space-y-2 xl:space-y-0 xl:space-x-2 lg:flex lg:flex-wrap xl:flex-nowrap">
+        <div className="w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
+          <BasicPanel
+            className={'h-full'}
+            childClassName={'h-full'}
+          >
+            <Image
+              src={'https://cms.ariscorp.de/assets/' + data.storeImage.id}
+              alt={'Bild von ' + data.name}
+              fill
+              className="object-cover"
+              placeholder="blur"
+              blurDataURL={
+                'https://cms.ariscorp.de/assets/' +
+                data.storeImage.id +
+                '?width=16&quality=1'
+              }
+            />
+          </BasicPanel>
+        </div>
+        <div className="w-full space-y-2 xl:w-2/5">
+          <BasicPanel>
+            <div className='overflow-hidden rounded-2xl'>
+              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
+                <table className="w-full table-fixed">
+                  <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                    Spezifikationen
+                  </caption>
+                  <tbody>
+                    <tr className="">
+                      <th className="pr-2 text-left">Länge:</th>
+                      <td className="text-left text-primary">
+                        {data.length != null ? data.length + 'M' : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Breite:</th>
+                      <td className="text-left text-primary">
+                        {data.beam != null ? data.beam + 'M' : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Höhe:</th>
+                      <td className="text-left text-primary">
+                        {data.height != null ? data.height + 'M' : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-auto">
+                  <tbody>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Typ Klassifizierung:</th>
+                      <td className="text-left text-primary">
+                        {data.classification != null
+                          ? data.classification
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Größen Klassifizierung:</th>
+                      <td className="text-left text-primary">
+                        {data.classification != null
+                          ? data.size == 'small'
+                            ? 'Klein'
+                            : data.size == 'medium'
+                              ? 'Medium'
+                              : data.size == 'large'
+                                ? 'Groß'
+                                : data.size == 'capital'
+                                  ? data.size
+                                  : 'N/A'
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-fixed">
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left">Min Crew:</th>
+                      <td className="text-left text-primary">
+                        {data.minCrew != null
+                          ? data.minCrew +
+                          (data.minCrew > 1 ? ' Personen' : ' Person')
+                          : 'N/A'}
+                      </td>
+                      <th className="pr-2 text-left">Max Crew:</th>
+                      <td className="text-left text-primary">
+                        {data.minCrew != null
+                          ? data.maxCrew +
+                          (data.maxCrew > 1 ? ' Personen' : ' Person')
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-auto">
+                  <tbody>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-full mt-3 mb-2 -ml-1 sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Kaufpreis:</th>
+                      <td className="text-left text-primary">
+                        {data.price != null ? (
+                          <div className="flex items-center">
+                            <p>
+                              {data.price
+                                .toString()
+                                .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')}
+                              <span className="lowercase"> a</span>UEC
+                            </p>
+                          </div>
+                        ) : (
+                          'N/A'
+                        )}
+                      </td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Kaufbar Bei:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Pledgewert:</th>
+                      <td className="text-left text-primary">
+                        {data.pledgePrice != null
+                          ? data.pledgePrice
+                            .toString()
+                            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + '$'
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </BasicPanel>
+          <BasicPanel>
+            <div className='overflow-hidden rounded-2xl'>
+              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
+                <table className="w-full table-fixed">
+                  <caption className="pt-2 m-0 -ml-2 text-sm text-left xs:text-base text-secondary">
+                    Geschwindigkeit
+                  </caption>
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left scale-60">
+                        SCM Geschwindigkeit:
+                      </th>
+
+                      <th className="pr-2 text-xs text-left">
+                        Afterburner Geschwindigkeit:
+                      </th>
+                    </tr>
+                    <tr>
+                      <td className="text-left text-primary">
+                        {data.ScmSpeed != null ? data.ScmSpeed + ' M/S' : 'N/A'}
+                      </td>
+                      <td className="text-left text-primary">
+                        {data.afterburnerSpeed != null
+                          ? data.afterburnerSpeed + 'M/S'
+                          : 'N/A'}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colSpan="2">
+                        <hr className="relative w-[85%] mt-3 sm:mt-3 sm:mb-2 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <table className="w-full table-fixed">
+                  <tbody>
+                    <tr>
+                      <th className="pr-2 text-left">Pitch Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">X-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Yaw Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">Y-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                    <tr>
+                      <th className="pr-2 text-left">Roll Max:</th>
+                      <td className="text-left text-primary">N/A</td>
+                      <th className="pr-2 text-left">Z-Achse:</th>
+                      <td className="text-left text-primary">N/A</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </BasicPanel>
         </div>
       </div>
-      <hr className="mt-2" />
-      <div className='grid grid-cols-3 gap-4'>
-        <div className='col-span-3 gap-8 xl:col-span-2'>
-          <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
-            <BasicPanel>
-              <div className='min-h-[600px] w-full relative flex'>
-                <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id})` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
-              </div>
-            </BasicPanel>
-          </div>
-          <div className='mt-4'>
-            <BasicPanel>
+      <div className='grid grid-cols-5 gap-2 mt-4'>
+        <div className='col-span-3'>
+          <BasicPanel>
+            <div>
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
                 className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[95%] md:text-"
               >
-                {data.description}
+                {data.introduction}
               </ReactMarkdown>
-            </BasicPanel>
-          </div>
+            </div>
+          </BasicPanel>
         </div>
-        <div className='col-span-3 space-y-4 xl:col-span-1'>
-          <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase xl:grid-cols-4">
-              <div className='col-span-1'>
-                <div className='text-lg text-secondary'>
-                  Basis
-                </div>
-              </div>
-              <div className='col-span-1 xl:col-span-3'>
-                <div className='grid grid-cols-3 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Länge:</p>
-                    <p className='p-0 text-primary'>{data.length ? data.length + ' M' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Breite:</p>
-                    <p className='p-0 text-primary'>{data.beam ? data.beam + ' M' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Höhe:</p>
-                    <p className='p-0 text-primary'>{data.height ? data.height + ' M' : 'N/A'}</p>
-                  </div>
-                </div>
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Gewicht:</p>
-                    <p className='p-0 text-primary'>{data.mass ? (data.mass / 1000).toFixed(2) + ' t' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Frachtkapazität:</p>
-                    <p className='p-0 text-primary'>{data.cargo ? data.cargo + ' SCU' : 'N/A'}</p>
-                  </div>
-                </div>
-                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Klassifizierung:</p>
-                    <p className='p-0 text-primary'>{data.classification != null ? data.classification : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Größe:</p>
-                    <p className='p-0 text-primary'>{
-                      data.classification != null
-                        ? data.size == 'small'
-                          ? 'Klein'
-                          : data.size == 'medium'
-                            ? 'Medium'
-                            : data.size == 'large'
-                              ? 'Groß'
-                              : data.size == 'capital'
-                                ? data.size
-                                : 'N/A'
-                        : 'N/A'
-                    }</p>
-                  </div>
-                </div>
-                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Min Crew:</p>
-                    <p className='p-0 text-primary'>{
-                      data.minCrew != null
-                        ? data.minCrew +
-                        (data.minCrew > 1 ? ' Personen' : ' Person')
-                        : 'N/A'
-                    }</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Max Crew:</p>
-                    <p className='p-0 text-primary'>{
-                      data.minCrew != null
-                        ? data.maxCrew +
-                        (data.maxCrew > 1 ? ' Personen' : ' Person')
-                        : 'N/A'
-                    }</p>
-                  </div>
-                </div>
-                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Treibstoff:</p>
-                    <p className='p-0 text-primary'>{
-                      data.hydrogenFuelTankSize != null
-                        ? data.hydrogenFuelTankSize
-                          .toString()
-                          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + ' L'
-                        : 'N/A'
-                    }</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Quantum Treibstoff:</p>
-                    <p className='p-0 text-primary'>{
-                      data.quantumFuelTankSize != null
-                        ? data.quantumFuelTankSize
-                          .toString()
-                          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + ' L'
-                        : 'N/A'
-                    }</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </BasicPanel>
-          <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase xl:grid-cols-4">
-              <div className='col-span-1'>
-                <div className='text-lg text-secondary'>
-                  Kaufen
-                </div>
-              </div>
-              <div className='col-span-1 xl:col-span-3'>
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Pledgewert:</p>
-                    <p className='p-0 text-primary'>{
-                      data.pledgePrice != null
-                        ? '$' + data.pledgePrice
-                          .toString()
-                          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.')
-                        : 'N/A'
-                    }</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Kaufpreis:</p>
-                    <p className='p-0 normal-case text text-primary'>{
-                      data.price != null
-                        ? data.price
-                          .toString()
-                          .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + ' aUEC'
-                        : 'N/A'
-                    }</p>
-                  </div>
-                </div>
-                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Kaufbar bei:</p>
-                    <p className='p-0 text-primary'>Coming Soon</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </BasicPanel>
-          <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase xl:grid-cols-4">
-              <div className='col-span-1'>
-                <div className='text-lg text-secondary'>
-                  Speed
-                </div>
-              </div>
-              <div className='col-span-1 xl:col-span-3'>
-                <div className='grid grid-cols-2 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>SCM Geschwindigkeit:</p>
-                    <p className='p-0 normal-case text-primary'>{data.length ? data.length + ' m/s' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Afterburner Geschwindigkeit:</p>
-                    <p className='p-0 normal-case text-primary'>{data.beam ? data.beam + ' m/s' : 'N/A'}</p>
-                  </div>
-                </div>
-                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
-                <div className='grid grid-cols-3 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Pitch Max:</p>
-                    <p className='p-0 normal-case text-primary'>{data.pitchMax ? data.pitchMax + ' m/s' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Yaw Max:</p>
-                    <p className='p-0 normal-case text-primary'>{data.yawMax ? data.yawMax + ' m/s' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Roll Max:</p>
-                    <p className='p-0 normal-case text-primary'>{data.rollMax ? data.rollMax + ' m/s' : 'N/A'}</p>
-                  </div>
-                </div>
-                <div className='grid grid-cols-3 uppercase'>
-                  <div className="col-span-1">
-                    <p className='pb-0'>X-Achse:</p>
-                    <p className='p-0 normal-case text-primary'>{data.xaxisAcceleration ? data.xaxisAcceleration + ' m/s' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Y-Achse:</p>
-                    <p className='p-0 normal-case text-primary'>{data.yaxisAcceleration ? data.yaxisAcceleration + ' m/s' : 'N/A'}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0'>Z-Achse:</p>
-                    <p className='p-0 normal-case text-primary'>{data.zaxisAcceleration ? data.zaxisAcceleration + ' m/s' : 'N/A'}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </BasicPanel>
-          <div className='flex space-x-4'>
-            <div className="flex-grow-[2]">
-              <BasicPanelButton className="w-full" a external href={data.onSale ? data.storeUrl + "#buying-options" : data.storeUrl}>
-                {
-                  data.onSale ? (
-                    <p className='p-0 text-sm'>On Sale: ${data.pledgePrice} excl. VAT</p>
-                  ) :
-                    (
-                      <p className='p-0'>RSI Page</p>
-                    )
-                }
-              </BasicPanelButton>
-            </div>
-            <div onClick={() => handleShare()} className="flex-grow-0">
-              <div className={"relative w-[44px] h-[44px] text-inherit decoration-transparent aspect-square inline-block p-[2px] bg-transparent group border-2 border-primary rounded-[10px] cursor-pointer transition-all hover:duration-200 duration-500 ease-out box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border "}>
-                <div className="group-hover:bg-white/5 group-hover:text-primary p-[10px] box-border overflow-hidden whitespace-nowrap text-center text-ellipsis rounded-[6px] transition-all hover:duration-200 duration-500 ease-out">
-                  <ShareSquare className="fill-white" />
-                </div>
-              </div>
-            </div>
-            <Menu as="div" className="flex-grow-0">
-              <Menu.Button>
-                <div className={"relative w-[44px] h-[44px] text-inherit decoration-transparent aspect-square inline-block p-[2px] bg-transparent group border-2 border-primary rounded-[10px] cursor-pointer transition-all hover:duration-200 duration-500 ease-out box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border "}>
-                  <div className="group-hover:bg-white/5 group-hover:text-primary p-[10px] box-border overflow-hidden whitespace-nowrap text-center text-ellipsis rounded-[6px] transition-all hover:duration-200 duration-500 ease-out">
-                    <ThreeDots className="fill-white" />
-                  </div>
-                </div>
-              </Menu.Button>
-              <Menu.Items as="div" className={"right-4 left-auto block absolute top-full mt-[10px] z-50 min-w-[200px] p-[2px] bg-[#111] border-2 border-primary rounded-[10px] cursor-pointer box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border"}>
-                <Menu.Item as="a" className={"group mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border"}>
-                  <div className="group-hover:bg-white/10 group-hover:text-primary flex items-center justify-between text-left py-[6px] px-[14px] overflow-hidden whitespace-nowrap text-ellipsis rounded-[6px] transition-all duration-500 box-border">
-                    <div className="mr-[6px] w-1/4"> <Presentation height={18} className="stroke-white" /> </div>
-                    <span className="box-border flex-1">
-                      RSI Promoseite
-                    </span>
-                  </div>
-                </Menu.Item>
-                <Menu.Item as="a" target="_blank" href={data.brochure ? ('https://cms.ariscorp.de/assets/' + data.brochure.id) : null} className={"mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border " + (data.brochure ? "" : "hidden")}>
-                  <div className="group-hover:bg-white/10 group-hover:text-primary flex items-center justify-between text-left py-[6px] px-[14px] overflow-hidden whitespace-nowrap text-ellipsis rounded-[6px] transition-all duration-500 box-border ">
-                    <div className="mr-[6px] w-1/4"> <Catalog height={18} className="stroke-white" /> </div>
-                    <span className="box-border flex-1">
-                      Broschüre
-                    </span>
-                  </div>
-                </Menu.Item>
-              </Menu.Items>
-            </Menu>
+        <div className='flex col-span-2 max-h-24'>
+          <div className='grid w-full grid-cols-2 grid-rows-2 gap-2'>
+            <BasicPanelButton a external href={data.onSale ? data.storeUrl + "#buying-options" : data.storeUrl} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                data.onSale ? (
+                  <p className='p-0 text-sm'>On Sale: ${data.pledgePrice} excl. VAT</p>
+                ) :
+                  (
+                    <p className='p-0'>RSI Page</p>
+                  )
+              }
+            </BasicPanelButton>
+            <BasicPanelButton a external href={data.salesPageUrl} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='p-0'>Zur RSI Promoseite</p>
+              }
+            </BasicPanelButton>
+            <BasicPanelButton childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='p-0'>Broschüre</p>
+              }
+            </BasicPanelButton>
+            <BasicPanelButton onClick={() => handleShare()} childClassName={"px-[12px]"} className={"text-secondary/60 hover:text-primary hover:bg-white/5 hover:cursor-pointer"}>
+              {
+                <p className='w-full p-0'>Teilen</p>
+              }
+            </BasicPanelButton>
           </div>
         </div>
       </div>
@@ -568,9 +554,9 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           </Tab.List>
           <Tab.Panels className={'px-4 xl:px-0 pt-5'}>
             <Tab.Panel>
-              {/* <div className="flex space-x-2 uppercase">
+              <div className="flex space-x-2 uppercase">
                 <BasicPanel className={'h-fit w-1/3'}>
-                  <div className="relative w-1/3 mx-3 mt-4 mb-4 space-y-1 h-fit">
+                  <div className="relative mx-3 mt-4 mb-4 space-y-1">
                     <div className="flex items-center">
                       <div className="flex items-center">
                         <div className="w-8 aspect-square">
@@ -933,7 +919,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                     </div>
                   </div>
                 </BasicPanel>
-              </div> */}
+              </div>
             </Tab.Panel>
             <Tab.Panel>
               <BasicPanel>
@@ -971,7 +957,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                             <ReactMarkdown
                               rehypePlugins={[rehypeRaw]}
                             >
-                              {data.introduction}
+                              {data.description}
                             </ReactMarkdown>
                           </div>
 

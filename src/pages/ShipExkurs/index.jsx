@@ -9,6 +9,7 @@ import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Link from 'next/link'
 import Head from 'next/head'
+import ShipCard from 'components/ShipExkurs/ShipCard'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
@@ -138,7 +139,7 @@ export default function Ships ({ manufacturers, utils }) {
   const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
 
   return (
-    <div className="items-center max-w-6xl pt-8 mx-auto">
+    <div className="items-center pt-8 mx-auto">
       <Head>
         <title>
           {siteTitle}
@@ -170,58 +171,21 @@ export default function Ships ({ manufacturers, utils }) {
             </div>
           </div>
           <hr />
-          <div className="flex flex-wrap px-2">
-            {loading ? (
-              <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
-                <SquareLoader
-                  color="#00ffe8"
-                  speedMultiplier="0.8"
-                  loading={loading}
-                />
-              </div>
-            ) : (
-              data?.ships.map((object, index) => (
-                <div key={object.id} className="w-1/3 px-2 pb-8">
-                  <BasicPanel>
-                    <Link href={'/ShipExkurs/' + object.slug}>
-                      <a className='group'>
-                        <div className="overflow-hidden rounded-2xl">
-                          <div className="relative w-full aspect-[18/10]">
-                            <Image
-                              src={
-                                'https://cms.ariscorp.de/assets/' + object.storeImage?.id
-                              }
-                              alt={'Bild von ' + object.name}
-                              layout="fill"
-                              className="object-cover"
-                              placeholder="blur"
-                              blurDataURL={
-                                'https://cms.ariscorp.de/assets/' +
-                                object.storeImage?.id +
-                                '?width=16&quality=1'
-                              }
-                            />
-                            <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                              <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
-                                {object.name}
-                              </p>
-                              <Link href={"/VerseExkurs/firmen/" + object.manufacturer.firmen_name}>
-                                <a className='decoration-transparent'>
-                                  <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
-                                    {object.manufacturer.firmen_name}
-                                  </p>
-                                </a>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </a>
-                    </Link>
-                  </BasicPanel>
-                </div>
-              ))
-            )}
-          </div>
+          {loading ? (
+            <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
+              <SquareLoader
+                color="#00ffe8"
+                speedMultiplier="0.8"
+                loading={loading}
+              />
+            </div>
+          ) : (
+            <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+              {data?.ships.map((object, index) => (
+                <ShipCard key={object.id} data={object} />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
