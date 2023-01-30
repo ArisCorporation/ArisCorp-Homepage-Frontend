@@ -1446,6 +1446,12 @@ export const GET_SHIPEXKURS_SHIP = gql`
       maxCrew
       scmSpeed
       afterburnerSpeed
+      pitchMax
+      yawMax
+      rollMax
+      xaxisAcceleration
+      yaxisAcceleration
+      zaxisAcceleration
       size
       holoColored
       storeUrl

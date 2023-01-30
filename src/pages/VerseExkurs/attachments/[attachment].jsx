@@ -7,7 +7,7 @@ import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_ATTACHMENT } from 'graphql/queries'
-import { BasicPanel } from 'components/panels'
+import { BasicPanelOld as BasicPanel } from 'components/panels'
 import { Tab } from '@headlessui/react'
 import Head from 'next/head'
 import client from 'apollo/clients'
@@ -52,7 +52,7 @@ export async function getServerSideProps (context) {
 export default function SpectrumArticlePage ({ attachment, classification, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
-  const [currentGalleryImage, setCurrentGalleryImage] = useState(attachment.gallery[0].directus_files_id.id)
+  const [currentGalleryImage, setCurrentGalleryImage] = useState(attachment.gallery[0] ? attachment.gallery[0].directus_files_id.id : attachment.storeImage.id)
   const { replace, query } = useRouter()
   const urlquery = query.tab
 
@@ -65,7 +65,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
   }, [urlquery])
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}
@@ -119,7 +119,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
         <hr />
       </div>
       <div className="w-full space-y-2 xl:space-y-0 xl:space-x-2 lg:flex lg:flex-wrap xl:flex-nowrap">
-        <div className="w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
+        <div className="max-h-full w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
           <BasicPanel
             className={'h-full'}
             childClassName={'h-full overflow-hidden'}
@@ -195,24 +195,63 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
                       Statistiken
                     </p>
                   </div>
-                  <tr>
-                    <th className="pr-2 text-left">Zoomstufe:</th>
-                    <td className="text-left text-primary">
-                      {attachment.zoomLevel ? attachment.zoomLevel + "x fach" : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Integrierte Nullung:</th>
-                    <td className="text-left text-primary">
-                      {attachment.autoZeroing ? "Ja" : 'Nein'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left"><p className='p-0'>Integrierter-</p><p className='p-0'>Entfernungsmesser:</p></th>
-                    <td className="text-left text-primary">
-                      {attachment.rangefinder ? "Ja" : 'Nein'}
-                    </td>
-                  </tr>
+                  {classification === 'Optik' ? (
+                    <>
+                      <tr>
+                        <th className="pr-2 text-left">Zoomstufe:</th>
+                        <td className="text-left text-primary">
+                          {attachment.zoomLevel ? attachment.zoomLevel + "x fach" : 'N/A'}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="pr-2 text-left">Integrierte Nullung:</th>
+                        <td className="text-left text-primary">
+                          {attachment.autoZeroing ? "Ja" : 'Nein'}
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="pr-2 text-left"><p className='p-0'>Integrierter-</p><p className='p-0'>Entfernungsmesser:</p></th>
+                        <td className="text-left text-primary">
+                          {attachment.rangefinder ? "Ja" : 'Nein'}
+                        </td>
+                      </tr>
+                    </>
+                  ) : (
+                    <>
+                      <tr>
+                        {attachment.stats.find((e) => e.category === "noiseLevel") ?
+                          (
+                            <th className="pr-2 text-left">Lärmpegel:</th>
+                          ) : null
+                        }
+                        {attachment.stats.find((e) => e.category === "recoil") ?
+                          (
+                            <th className="pr-2 text-left">Rückstoß:</th>
+                          ) : null
+                        }
+                        {attachment.stats.find((e) => e.category === "damage") ?
+                          (
+                            <th className="pr-2 text-left">Schaden:</th>
+                          ) : null
+                        }
+                      </tr>
+                      <tr>
+                        <td className={"text-left " + (attachment.stats.find((e) => e.category === "noiseLevel")?.level < 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "noiseLevel")?.level > 0 ? "text-red-600" : ""))}>
+                          {attachment.stats.find((e) => e.category === "noiseLevel") ? attachment.stats.find((e) => e.category === "noiseLevel").level + '%' : 'N/A'}
+                        </td>
+                        {attachment.stats.find((e) => e.category === "recoil") ?
+                          (
+                            <td className={"text-left " + (attachment.stats.find((e) => e.category === "recoil")?.level < 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "recoil")?.level > 0 ? "text-red-600" : ""))}>
+                              {attachment.stats.find((e) => e.category === "recoil") ? attachment.stats.find((e) => e.category === "recoil").level + '%' : 'N/A'}
+                            </td>
+                          ) : null
+                        }
+                        <td className={"text-left " + (attachment.stats.find((e) => e.category === "damage")?.level > 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "damage")?.level < 0 ? "text-red-600" : ""))}>
+                          {attachment.stats.find((e) => e.category === "damage") ? attachment.stats.find((e) => e.category === "damage").level + '%' : 'N/A'}
+                        </td>
+                      </tr>
+                    </>
+                  )}
                 </table>
               </div>
             </div>
@@ -224,22 +263,39 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
                   Gallerie
                 </p>
                 <div className='flex justify-between w-full xl:grid xl:grid-cols-3 xl:gap-4'>
-                  {attachment.gallery.map((obj) => (
-                    <div onClick={() => setCurrentGalleryImage(obj.directus_files_id.id)} key={obj.directus_files_id.id} className={"relative w-28 h-28" + (currentGalleryImage == obj.directus_files_id.id ? " border border-primary" : null)}>
+                {attachment.gallery[0] ? (
+                    attachment.gallery.map((obj) => (
+                      <div onClick={() => setCurrentGalleryImage(obj.directus_files_id.id)} key={obj.directus_files_id.id} className={"relative w-28 h-28" + (currentGalleryImage == obj.directus_files_id.id ? " border border-primary" : null)}>
+                        <Image
+                          src={'https://cms.ariscorp.de/assets/' + obj.directus_files_id.id}
+                          alt={'Bild von ' + attachment.name}
+                          fill
+                          className="object-cover"
+                          placeholder="blur"
+                          blurDataURL={
+                            'https://cms.ariscorp.de/assets/' +
+                            obj.directus_files_id.id +
+                            '?width=16&quality=1'
+                          }
+                        />
+                      </div>
+                    ))
+                  ) : (
+                    <div onClick={() => setCurrentGalleryImage(attachment.storeImage.id)} key={attachment.storeImage.id} className={"relative w-28 h-28" + (currentGalleryImage == attachment.storeImage.id ? " border border-primary" : null)}>
                       <Image
-                        src={'https://cms.ariscorp.de/assets/' + obj.directus_files_id.id}
+                        src={'https://cms.ariscorp.de/assets/' + attachment.storeImage.id}
                         alt={'Bild von ' + attachment.name}
                         fill
                         className="object-cover"
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/' +
-                          obj.directus_files_id.id +
+                          attachment.storeImage.id +
                           '?width=16&quality=1'
                         }
                       />
                     </div>
-                  ))}
+                  )}
                 </div>
               </div>
             </div>
