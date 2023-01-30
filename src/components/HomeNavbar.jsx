@@ -218,6 +218,15 @@ function Navbar() {
                     </a>
                   </Link>
                 </li>
+                <li className="block w-full">
+                  <Link legacyBehavior href="/ShipExkurs">
+                    <a>
+                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
+                        ShipExkurs
+                      </span>
+                    </a>
+                  </Link>
+                </li>
                 <li className="block w-full mb-5">
                   <Link legacyBehavior href="/VerseExkurs">
                     <a>
