@@ -8,6 +8,9 @@ module.exports = {
       xxs: '360px',
       xs: '475px',
       ...defaultTheme.screens,
+      '3xl': '2100px',
+      '4xl': '2800px',
+      '5xl': '3200px'
     },
     extend: {
       zIndex: {

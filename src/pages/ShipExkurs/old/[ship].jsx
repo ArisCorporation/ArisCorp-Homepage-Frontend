@@ -18,7 +18,7 @@ import {
 import ImageGallery from 'react-image-gallery';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer, toast } from 'react-toastify';
-import './progressbar.css'
+import '../progressbar.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 
 
