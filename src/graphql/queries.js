@@ -519,6 +519,26 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       founding
       founder
       famous_goods
+      ships {
+        name
+        slug
+      }
+      weapons {
+        name
+        slug
+      }
+      optics {
+        name
+        slug
+      }
+      barrels {
+        name
+        slug
+      }
+      underbarrels {
+        name
+        slug
+      }
     }
   }
 `
@@ -1032,7 +1052,9 @@ export const GET_VERSEEXKURS_ATTACHMENT = gql`
         height
       }
       gallery {
-        id
+        directus_files_id {
+          id
+        }
       }
       classification
       size
@@ -1465,10 +1487,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
 
 export const GET_SHIPEXKURS_SHIPLOANERS = gql`
   query GetShipExkursShipLoaners {
-    ships(
-      filter: { status: { _eq: "published" } }
-      limit: -1
-    ) {
+    ships(filter: { status: { _eq: "published" } }, limit: -1) {
       slug
       name
       manufacturer {

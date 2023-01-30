@@ -52,9 +52,9 @@ export async function getServerSideProps (context) {
 export default function SpectrumArticlePage ({ attachment, classification, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
+  const [currentGalleryImage, setCurrentGalleryImage] = useState(attachment.gallery[0].directus_files_id.id)
   const { replace, query } = useRouter()
   const urlquery = query.tab
-  console.log(attachment);
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -125,14 +125,14 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
             childClassName={'h-full overflow-hidden'}
           >
             <Image
-              src={'https://cms.ariscorp.de/assets/' + attachment.storeImage?.id}
+              src={'https://cms.ariscorp.de/assets/' + currentGalleryImage}
               alt={'Bild von ' + attachment.name}
               fill
               className="object-cover"
               placeholder="blur"
               blurDataURL={
                 'https://cms.ariscorp.de/assets/' +
-                attachment.storeImage?.id +
+                currentGalleryImage +
                 '?width=16&quality=1'
               }
             />
@@ -219,8 +219,28 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
           </BasicPanel>
           <BasicPanel>
             <div className='overflow-hidden rounded-2xl'>
-              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
-                <p>gallery</p>
+              <div className="flex flex-wrap w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
+                <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                  Gallerie
+                </p>
+                <div className='flex justify-between w-full xl:grid xl:grid-cols-3 xl:gap-4'>
+                  {attachment.gallery.map((obj) => (
+                    <div onClick={() => setCurrentGalleryImage(obj.directus_files_id.id)} key={obj.directus_files_id.id} className={"relative w-28 h-28" + (currentGalleryImage == obj.directus_files_id.id ? " border border-primary" : null)}>
+                      <Image
+                        src={'https://cms.ariscorp.de/assets/' + obj.directus_files_id.id}
+                        alt={'Bild von ' + attachment.name}
+                        fill
+                        className="object-cover"
+                        placeholder="blur"
+                        blurDataURL={
+                          'https://cms.ariscorp.de/assets/' +
+                          obj.directus_files_id.id +
+                          '?width=16&quality=1'
+                        }
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </BasicPanel>
