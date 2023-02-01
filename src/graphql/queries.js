@@ -1020,6 +1020,9 @@ export const GET_VERSEEXKURS_ATTACHMENTS = gql`
         width
         height
       }
+      manufacturer {
+        firmen_name
+      }
     }
 
     barrel(
@@ -1039,6 +1042,9 @@ export const GET_VERSEEXKURS_ATTACHMENTS = gql`
         width
         height
       }
+      manufacturer {
+        firmen_name
+      }
     }
 
     underbarrel(
@@ -1057,6 +1063,9 @@ export const GET_VERSEEXKURS_ATTACHMENTS = gql`
         id
         width
         height
+      }
+      manufacturer {
+        firmen_name
       }
     }
   }

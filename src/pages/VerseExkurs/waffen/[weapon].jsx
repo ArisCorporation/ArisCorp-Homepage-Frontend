@@ -7,10 +7,13 @@ import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_WEAPON } from 'graphql/queries'
-import { BasicPanel } from 'components/panels'
 import { Tab } from '@headlessui/react'
 import Head from 'next/head'
 import client from 'apollo/clients'
+import { BasicPanel, BasicPanelButton } from 'components/panels'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { ShareSquare } from 'components/icons'
 
 export async function getServerSideProps (context) {
   const { params } = context
@@ -78,6 +81,21 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
   const [activeTab, setActiveTab] = useState()
   const { replace, query } = useRouter()
   const urlquery = query.tab
+  const shareUrl = "https://ariscorp.de/VerseExkurs/waffen/" + weapon.waffen_name + (urlquery ? "?tab=" + urlquery : "")
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(shareUrl)
+    toast.info('URL in Zwischenablage kopiert!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -88,7 +106,19 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
   }, [urlquery])
 
   return (
-    <div className="items-center pt-10 mx-auto print:pt-5">
+    <div className="items-center mx-auto print:pt-5">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Head>
         <title>
           {siteTitle}
@@ -107,203 +137,203 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
           content={siteTitle}
         />
       </Head>
-      <div>
-        <div className="flex items-center justify-center align-center">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            {' '}
+      <div className="relative flex items-center align-center">
+        <div className="absolute bottom-0">
+          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl 2xl:text-5xl 2xl:text-6xl">
             <span>{weapon.waffen_name}</span>{' '}
             <span className="text-secondary">
               {weapon.waffen_klasse.waffenklasse}
-            </span>{' '}
+            </span>
           </h1>
-          <div
-            className="relative ml-auto -my-10 hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square"
-            onClick={() =>
-              router.push(
-                '/VerseExkurs/firmen/' + weapon.waffenhersteller.firmen_name
-              )
+        </div>
+        <div
+          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 2xl:h-48 aspect-square"
+          onClick={() =>
+            router.push(
+              '/VerseExkurs/firmen/' + weapon.waffenhersteller.firmen_name
+            )
+          }
+        >
+          <Image
+            src={
+              'https://cms.ariscorp.de/assets/' +
+              weapon.waffenhersteller.firmen_trans_logo.id
             }
-          >
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                weapon.waffenhersteller.firmen_trans_logo.id
-              }
-              alt={'Logo von ' + weapon.waffenhersteller.firmen_name}
-              fill
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                weapon.waffenhersteller.firmen_trans_logo.id +
-                '?width=16&quality=1'
-              }
-            />
+            alt={'Logo von ' + weapon.waffenhersteller.firmen_name}
+            fill
+            placeholder="blur"
+            blurDataURL={
+              'https://cms.ariscorp.de/assets/' +
+              weapon.waffenhersteller.firmen_trans_logo.id +
+              '?width=16&quality=1'
+            }
+          />
+        </div>
+      </div>
+      <hr className="mt-2" />
+      <div className='grid grid-cols-3 gap-4'>
+        <div className='col-span-3 gap-8 2xl:col-span-2'>
+          <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
+            <BasicPanel>
+              <div className='min-h-[600px] w-full relative flex'>
+                <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${weapon.waffen_bild.id})` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
+              </div>
+            </BasicPanel>
           </div>
         </div>
-        <hr />
-      </div>
-      <div className="w-full space-y-2 xl:space-y-0 xl:space-x-2 lg:flex lg:flex-wrap xl:flex-nowrap">
-        <div className="w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
-          <BasicPanel
-            className={'h-full'}
-            childClassName={'h-full overflow-hidden'}
-          >
-            <Image
-              src={'https://cms.ariscorp.de/assets/' + weapon.waffen_bild.id}
-              alt={'Bild von ' + weapon.waffen_name}
-              fill
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                weapon.waffen_bild.id +
-                '?width=16&quality=1'
-              }
-            />
-          </BasicPanel>
-        </div>
-        <div className="w-full xl:w-2/5">
-          <BasicPanel
-            className={'h-full'}
-            childClassName={'h-full overflow-hidden'}
-          >
-            <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
-              <table className="w-full space-y-10 table-auto">
-                <div>
-                  <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Spezifikationen
-                  </p>
+        <div className='col-span-3 space-y-4 2xl:col-span-1'>
+          <BasicPanel>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+              <div className='col-span-4'>
+                <div className='text-lg text-secondary'>
+                  Spezifikationen
                 </div>
-                <tr>
-                  <th className="pr-2 text-left">Klassifizierung:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_klasse.waffenklasse != null
+              </div>
+              <div className='hidden col-span-1 2xl:block' />
+              <div className='col-span-1 2xl:col-span-3'>
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Klassifizierung:</p>
+                  <p className='p-0 text-primary'>{
+                    weapon.waffen_klasse.waffenklasse != null
                       ? weapon.waffen_klasse.waffenklasse +
                       ' (S' +
                       weapon.waffen_klasse.waffenklassensize.waffensize +
                       ')'
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Hersteller:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffenhersteller.firmen_name != null
-                      ? weapon.waffenhersteller.firmen_name
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Gewicht:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffengewicht != null
-                      ? weapon.waffengewicht + ' KG'
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-[85%] mt-3 sm:mt-5 sm:mb-4 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Schadenstyp:</th>
-                  <td className="text-left text-primary">
-                    {weapon.wafffen_schadenstyp.schadenstyp != null
-                      ? weapon.wafffen_schadenstyp.schadenstyp
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Feuermodi:</th>
-                  <td className="text-left break-words text-primary">
-                    {feuermodi[0] != null ? feuermodi.join(", ") : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Feuerrate:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_feuerrate_einzel ||
-                      weapon.waffen_feuerrate_salve ||
-                      weapon.waffen_feuerrate_vollauto ||
-                      weapon.waffen_feuerrate_aufgeladen != null
-                      ? (weapon.waffen_feuerrate_einzel != null
-                        ? weapon.waffen_feuerrate_einzel + '/Einzel  '
-                        : '') +
-                      (weapon.waffen_feuerrate_salve != null
-                        ? weapon.waffen_feuerrate_salve + '/Salve  '
-                        : '') +
-                      (weapon.waffen_feuerrate_vollauto != null
-                        ? weapon.waffen_feuerrate_vollauto + '/Gebündelt  '
-                        : '') +
-                      (weapon.waffen_feuerrate_aufgeladen != null
-                        ? weapon.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
-                        : '')
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Mündungs Geschwindigkeit:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_muendungs_geschwindigkeit != null
-                      ? weapon.waffen_muendungs_geschwindigkeit
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-[85%] mt-3 -ml-1 mb-0 sm:mt-5 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
-                <div>
-                  <p className="pt-0 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Attachments
-                  </p>
+                      : 'N/A'
+                  }</p>
                 </div>
-                <tr>
-                  <th className="pr-2 text-left">Magazine:</th>
-                  <td className="text-left break-words text-primary">
-                    {weapon.waffen_magazin != null
-                      ? weapon.waffen_magazin
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Visierung:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_visier != null
-                      ? weapon.waffen_visier.visiername
-                      : 'Leer' +
-                      ' (S' +
-                      weapon.waffen_klasse.waffenklassensize.waffensize +
-                      ')'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Lauf:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_lauf != null
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Hersteller:</p>
+                  <p className='p-0 text-primary'>{
+                    weapon.waffenhersteller.firmen_name != null
+                      ? weapon.waffenhersteller.firmen_name
+                      : 'N/A'
+                  }</p>
+                </div>
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Gewicht:</p>
+                  <p className='p-0 text-primary'>{
+                    weapon.waffengewicht != null
                       ? weapon.waffengewicht + ' KG'
-                      : 'Leer' +
-                      ' (S' +
-                      weapon.waffen_klasse.waffenklassensize.waffensize +
-                      ')'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Unterlauf:</th>
-                  <td className="text-left text-primary">
-                    {weapon.waffen_unterlauf != null
-                      ? weapon.waffengewicht + ' KG'
-                      : 'Leer' +
-                      ' (S' +
-                      weapon.waffen_klasse.waffenklassensize.waffensize +
-                      ')'}
-                  </td>
-                </tr>
-              </table>
+                      : 'N/A'
+                  }</p>
+                </div>
+                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
+                <div className='grid grid-cols-2 uppercase'>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Schadenstyp:</p>
+                    <p className='p-0 text-primary'>{
+                      weapon.wafffen_schadenstyp.schadenstyp != null
+                        ? weapon.wafffen_schadenstyp.schadenstyp
+                        : 'N/A'
+                    }</p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Feuermodi:</p>
+                    <p className='p-0 text-primary'>{
+                      weapon.wafffen_schadenstyp.schadenstyp != null
+                        ? weapon.wafffen_schadenstyp.schadenstyp
+                        : 'N/A'
+                    }</p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Feuerrate:</p>
+                    <p className='p-0 text-primary'>{
+                      weapon.waffen_feuerrate_einzel ||
+                        weapon.waffen_feuerrate_salve ||
+                        weapon.waffen_feuerrate_vollauto ||
+                        weapon.waffen_feuerrate_aufgeladen != null
+                        ? (weapon.waffen_feuerrate_einzel != null
+                          ? weapon.waffen_feuerrate_einzel + '/Einzel  '
+                          : '') +
+                        (weapon.waffen_feuerrate_salve != null
+                          ? weapon.waffen_feuerrate_salve + '/Salve  '
+                          : '') +
+                        (weapon.waffen_feuerrate_vollauto != null
+                          ? weapon.waffen_feuerrate_vollauto + '/Gebündelt  '
+                          : '') +
+                        (weapon.waffen_feuerrate_aufgeladen != null
+                          ? weapon.waffen_feuerrate_aufgeladen + '/Aufgeladen  '
+                          : '')
+                        : 'N/A'
+                    }</p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Mündungs Geschwindigkeit:</p>
+                    <p className='p-0 text-primary'>{
+                      weapon.waffen_muendungs_geschwindigkeit != null
+                        ? weapon.waffen_muendungs_geschwindigkeit
+                        : 'N/A'
+                    }</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </BasicPanel>
+          <BasicPanel>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+              <div className='col-span-4'>
+                <div className='text-lg text-secondary'>
+                  Attachments
+                </div>
+              </div>
+              <div className="hidden col-span-1 2xl:block" />
+              <div className='col-span-1 2xl:col-span-3'>
+                <div className='grid grid-cols-3 uppercase'>
+                    <div className="col-span-3">
+                      <p className='pb-0 text-sm'>Magazine:</p>
+                      <p className='p-0 text-primary'>{
+                        weapon.waffen_magazin != null
+                          ? weapon.waffen_magazin
+                          : 'N/A'
+                      }</p>
+                    </div>
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Visierung:</p>
+                      <p className='p-0 normal-case text text-primary'>{
+                        weapon.waffen_visier != null
+                          ? weapon.waffen_visier.visiername
+                          : 'Leer' +
+                          ' (S' +
+                          weapon.waffen_klasse.waffenklassensize.waffensize +
+                          ')'
+                      }</p>
+                    </div>
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Lauf:</p>
+                      <p className='p-0 normal-case text text-primary'>{
+                        weapon.waffen_lauf != null
+                          ? weapon.waffengewicht + ' KG'
+                          : 'Leer' +
+                          ' (S' +
+                          weapon.waffen_klasse.waffenklassensize.waffensize +
+                          ')'
+                      }</p>
+                    </div>
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Unterlauf:</p>
+                      <p className='p-0 normal-case text text-primary'>{
+                        weapon.waffen_unterlauf != null
+                          ? weapon.waffengewicht + ' KG'
+                          : 'Leer' +
+                          ' (S' +
+                          weapon.waffen_klasse.waffenklassensize.waffensize +
+                          ')'
+                      }</p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </BasicPanel>
+          <div className='flex space-x-4'>
+            <div onClick={() => handleShare()} className="flex-grow">
+              <div className={"relative w-full h-[44px] text-inherit decoration-transparent aspect-square inline-block p-[2px] bg-transparent group border-2 border-primary rounded-[10px] cursor-pointer transition-all hover:duration-200 duration-500 ease-out box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border "}>
+                <div className="group-hover:bg-white/5 group-hover:text-primary p-[10px] box-border overflow-hidden whitespace-nowrap text-center text-ellipsis rounded-[6px] transition-all hover:duration-200 duration-500 ease-out">
+                  <ShareSquare className="w-4 h-4 mx-auto fill-white" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <hr />
@@ -313,8 +343,7 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
           onChange={(event) =>
             replace(
               {
-                pathname: `${Weapon}`,
-                query: { tab: event },
+                query: { weapon: weapon.waffen_name, tab: event },
               },
               undefined,
               { shallow: true }
@@ -325,7 +354,7 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -335,7 +364,7 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -424,7 +453,7 @@ export default function SpectrumArticlePage ({ weapon, feuermodi, table, siteTit
                   rehypePlugins={[rehypeRaw]}
                   className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-[90%] md:text-"
                 >
-                  c
+                  coming soon
                 </ReactMarkdown>
               </Tab.Panel>
             </BasicPanel>

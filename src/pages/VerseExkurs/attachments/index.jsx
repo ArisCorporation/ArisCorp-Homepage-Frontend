@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Head from 'next/head'
+import AttachmentCard from 'components/AttachmentCard'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_ATTACHMENTUTILS })
@@ -198,63 +199,64 @@ export default function Attachments ({ utils, manufacturers }) {
               />
             </div>
           </div>
-          <div className="flex">
-            <div
-              className="w-24 hover:cursor-pointer group"
-              onClick={() => {
-                setAttachmentCategory(), setAttachmentSize(), setManufacturer()
-              }}
-            >
-              <div className="relative w-24 mx-auto aspect-square">
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/' +
-                    '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
-                  }
-                  alt="Alle-Icon"
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
-                  }
-                />
-              </div>
-              <p
-                className={
-                  'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                  ((Array.isArray(categoryquery)
-                    ? categoryquery.every(
-                      (val, index) =>
-                        val ===
-                        [
-                          'optics',
-                          'barrels',
-                          'underbarrels',
-                        ][index]
-                    )
-                    : null) &&
-                    (Array.isArray(sizequery)
-                      ? sizequery.every(
+          <div className='flex'>
+            <div className="flex mx-auto">
+              <div
+                className="w-24 hover:cursor-pointer group"
+                onClick={() => {
+                  setAttachmentCategory(), setAttachmentSize(), setManufacturer()
+                }}
+              >
+                <div className="relative w-24 mx-auto aspect-square">
+                  <Image
+                    src={
+                      'https://cms.ariscorp.de/assets/' +
+                      '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
+                    }
+                    alt="Alle-Icon"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                    }
+                  />
+                </div>
+                <p
+                  className={
+                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                    ((Array.isArray(categoryquery)
+                      ? categoryquery.every(
                         (val, index) =>
                           val ===
                           [
-                            "1",
-                            "2",
-                            "3"
+                            'optics',
+                            'barrels',
+                            'underbarrels',
                           ][index]
                       )
                       : null) &&
-                    manuquery == ' '
-                    ? ' text-secondary'
-                    : ' group-hover:text-white')
-                }
-              >
-                Alle Anzeigen
-              </p>
-            </div>
-            <div className="flex mx-auto">
-              <div className="flex mx-auto space-x-2">
+                      (Array.isArray(sizequery)
+                        ? sizequery.every(
+                          (val, index) =>
+                            val ===
+                            [
+                              "1",
+                              "2",
+                              "3"
+                            ][index]
+                        )
+                        : null) &&
+                      manuquery == ' '
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
+                  }
+                >
+                  Alle Anzeigen
+                </p>
+              </div>
+
+              <div className="flex ml-8 space-x-2">
                 <div
                   className="w-24 hover:cursor-pointer group"
                   onClick={() => setAttachmentCategory(['optics'])}
@@ -346,7 +348,8 @@ export default function Attachments ({ utils, manufacturers }) {
                   </p>
                 </div>
               </div>
-              <div className="flex mx-auto ml-8 space-x-6">
+
+              <div className="flex ml-4 space-x-2">
                 <div
                   className="w-24 hover:cursor-pointer group"
                   onClick={() => setAttachmentSize(['1'])}
@@ -438,97 +441,100 @@ export default function Attachments ({ utils, manufacturers }) {
                   </p>
                 </div>
               </div>
-            </div>
-            <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-4 hover:cursor-pointer">
-              <div className="relative w-24 mx-auto aspect-square">
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/' +
-                    '314cc998-245d-4487-97cd-fb86342eaf8d'
-                  }
-                  alt="Alle-Icon"
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
-                  }
-                />
-              </div>
-              <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
-                Hersteller
-              </p>
-            </div>
-          </div>
-          <hr />
-          {!manufacturerMenu ? '' : (
-            <div className="flex">
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => {
-                  setManufacturer()
-                }}
-              >
+
+              <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-8 hover:cursor-pointer">
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
                     src={
                       'https://cms.ariscorp.de/assets/' +
-                      '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
+                      '314cc998-245d-4487-97cd-fb86342eaf8d'
                     }
                     alt="Alle-Icon"
                     layout="fill"
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
-                      'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                      'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
                     }
                   />
                 </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
-                  }
-                >
-                  Alle Hersteller
+                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                  Hersteller
                 </p>
               </div>
-              <div className="flex mx-auto space-x-2">
-                {manufacturers.map((obj) => (
-                  <div
-                    key={obj.firmen_name}
-                    className="w-24 hover:cursor-pointer group"
-                    onClick={() => setManufacturer([obj.firmen_name])}
-                  >
-                    <div className="relative w-24 mx-auto aspect-square">
-                      <Image
-                        src={
-                          'https://cms.ariscorp.de/assets/' +
-                          obj.firmen_trans_logo?.id
-                        }
-                        alt="Energie-Icon"
-                        layout="fill"
-                        objectFit="cover"
-                        placeholder="blur"
-                        blurDataURL={
-                          'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
-                        }
-                      />
-                    </div>
-                    <p
-                      className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                        (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+            </div>
+          </div>
+          <hr />
+          {!manufacturerMenu ? '' : (
+            <div className="flex">
+              <div className="flex mx-auto">
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => {
+                    setManufacturer()
+                  }}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                       }
-                    >
-                      {obj.firmen_name}
-                    </p>
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                      }
+                    />
                   </div>
-                ))}
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                    }
+                  >
+                    Alle Hersteller
+                  </p>
+                </div>
+                <div className="flex ml-8 space-x-2">
+                  {manufacturers.map((obj) => (
+                    <div
+                      key={obj.firmen_name}
+                      className="w-24 hover:cursor-pointer group"
+                      onClick={() => setManufacturer([obj.firmen_name])}
+                    >
+                      <div className="relative w-24 mx-auto aspect-square">
+                        <Image
+                          src={
+                            'https://cms.ariscorp.de/assets/' +
+                            obj.firmen_trans_logo?.id
+                          }
+                          alt="Energie-Icon"
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={
+                            'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
+                          }
+                        />
+                      </div>
+                      <p
+                        className={
+                          'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                          (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+                        }
+                      >
+                        {obj.firmen_name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}
           {!manufacturerMenu ? '' : <hr />}
-          <div className="flex flex-wrap px-2">
+          <div>
             {loading ? (
               <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
                 <SquareLoader
@@ -538,37 +544,11 @@ export default function Attachments ({ utils, manufacturers }) {
                 />
               </div>
             ) : (
-              data.map((object, index) => (
-                <div key={object.id} className="w-1/3 px-2 pb-8">
-                  <BasicPanel className={'hover:cursor-pointer'}>
-                    <div
-                      className="overflow-hidden h-44 rounded-3xl"
-                      onClick={() => handleClick(object.name)}
-                    >
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={
-                            'https://cms.ariscorp.de/assets/' +
-                            object.storeImage?.id
-                          }
-                          alt="Alle-Icon"
-                          layout="fill"
-                          objectFit="fill"
-                          placeholder="blur"
-                          blurDataURL={
-                            'https://cms.ariscorp.de/assets/' +
-                            object.storeImage?.id +
-                            '?width=16&quality=1'
-                          }
-                        />
-                      </div>
-                      <p className="absolute left-0 right-0 text-lg text-center -bottom-1 text-secondary">
-                        {object.name}
-                      </p>
-                    </div>
-                  </BasicPanel>
-                </div>
-              ))
+              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+                {data.map((object, index) => (
+                  <AttachmentCard key={object.id} data={object} />
+                ))}
+              </div>
             )}
           </div>
         </div>

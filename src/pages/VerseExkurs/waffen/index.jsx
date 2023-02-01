@@ -11,6 +11,7 @@ import Image from 'next/image'
 import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Head from 'next/head'
+import WeaponCard from 'components/WeaponCard'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_WEAPONUTILS })
@@ -173,408 +174,12 @@ export default function Weapons ({ utils, manufacturers }) {
               />
             </div>
           </div>
-          <div className="flex">
-            <div
-              className="w-24 hover:cursor-pointer group"
-              onClick={() => {
-                setWeaponClass(), setDamageType(), setManufacturer()
-              }}
-            >
-              <div className="relative w-24 mx-auto aspect-square">
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/' +
-                    '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
-                  }
-                  alt="Alle-Icon"
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
-                  }
-                />
-              </div>
-              <p
-                className={
-                  'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                  ((Array.isArray(classquery)
-                    ? classquery.every(
-                      (val, index) =>
-                        val ===
-                        [
-                          'Taser',
-                          'Pistole',
-                          'SMG',
-                          'Sturmgewehr',
-                          'Schrotgewehr',
-                          'LMG',
-                          'Scharfschützen Gewehr',
-                          'HMG',
-                          'Armbrust',
-                          'Granatwerfer',
-                          'Raketenwerfer',
-                          'Railgun',
-                        ][index]
-                    )
-                    : null) &&
-                    (Array.isArray(dmgquery)
-                      ? dmgquery.every(
-                        (val, index) =>
-                          val ===
-                          [
-                            'Elektronen',
-                            'Ballistisch',
-                            'Laser',
-                            'Plasma',
-                            'Explosiv',
-                          ][index]
-                      )
-                      : null) &&
-                    manuquery == ' '
-                    ? ' text-secondary'
-                    : ' group-hover:text-white')
-                }
-              >
-                Alle Anzeigen
-              </p>
-            </div>
-            <div className="flex ml-4 space-x-2">
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setDamageType(['Elektronen', 'Laser', 'Plasma'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      '47d884d9-e7ce-4a2e-ab52-9670668a0349'
-                    }
-                    alt="Energie-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/47d884d9-e7ce-4a2e-ab52-9670668a0349?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    ((
-                      Array.isArray(dmgquery)
-                        ? dmgquery.every(
-                          (val, index) =>
-                            val === ['Elektronen', 'Laser', 'Plasma'][index]
-                        )
-                        : null
-                    )
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Energie
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setDamageType(['Ballistisch', 'Explosiv'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      '7cc59886-ff69-412a-8e72-e5e73a6511f6'
-                    }
-                    alt="Ballistisch-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/7cc59886-ff69-412a-8e72-e5e73a6511f6?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    ((
-                      Array.isArray(dmgquery)
-                        ? dmgquery.every(
-                          (val, index) =>
-                            val === ['Ballistisch', 'Explosiv'][index]
-                        )
-                        : null
-                    )
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Ballistisch
-                </p>
-              </div>
-            </div>
-            <div className="flex ml-5 space-x-2">
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['Pistole'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      'dece2f20-e9c5-4932-89ca-664d3c5487e1'
-                    }
-                    alt="Pistolen-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/dece2f20-e9c5-4932-89ca-664d3c5487e1?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Pistole'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Pistolen
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['SMG'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      '7dd32e63-2919-45ec-bc22-d54fdaba861a'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/7dd32e63-2919-45ec-bc22-d54fdaba861a?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'SMG'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Maschinen Pistolen
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['Sturmgewehr'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      '22a23dba-8eea-42c4-9a29-fccb6c035b26'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/22a23dba-8eea-42c4-9a29-fccb6c035b26?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Sturmgewehr'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Sturmgewehre
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['Schrotgewehr'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      'c8e91660-072a-446c-9832-a35c0d107287'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/c8e91660-072a-446c-9832-a35c0d107287?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Schrotgewehr'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Schrotgewehre
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['LMG'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      'b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'LMG'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Leichtmaschienen Gewehre
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() => setWeaponClass(['Scharfschützen Gewehr'])}
-              >
-                <div className="relative w-24 mx-auto aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      '56c1a446-85c7-4400-84b4-9a02a54d395a'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/56c1a446-85c7-4400-84b4-9a02a54d395a?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    (classquery == 'Scharfschützen Gewehr'
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Scharfschützen Gewehre
-                </p>
-              </div>
-              <div
-                className="w-24 hover:cursor-pointer group"
-                onClick={() =>
-                  setWeaponClass([
-                    'HMG',
-                    'Granatwerfer',
-                    'Raketenwerfer',
-                    'Railgun',
-                  ])
-                }
-              >
-                <div className="relative w-24 mx-auto group aspect-square">
-                  <Image
-                    src={
-                      'https://cms.ariscorp.de/assets/' +
-                      'f32ea524-6423-4a0b-a3d0-92e78acfd516'
-                    }
-                    alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
-                    placeholder="blur"
-                    blurDataURL={
-                      'https://cms.ariscorp.de/assets/f32ea524-6423-4a0b-a3d0-92e78acfd516?width=16&quality=1'
-                    }
-                  />
-                </div>
-                <p
-                  className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                    ((
-                      Array.isArray(classquery)
-                        ? classquery.every(
-                          (val, index) =>
-                            val ===
-                            [
-                              'HMG',
-                              'Granatwerfer',
-                              'Raketenwerfer',
-                              'Railgun',
-                            ][index]
-                        )
-                        : null
-                    )
-                      ? ' text-secondary'
-                      : ' group-hover:text-white')
-                  }
-                >
-                  Schwere Waffen
-                </p>
-              </div>
-            </div>
-            <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-4 hover:cursor-pointer">
-              <div className="relative w-24 mx-auto aspect-square">
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/' +
-                    '314cc998-245d-4487-97cd-fb86342eaf8d'
-                  }
-                  alt="Alle-Icon"
-                  layout="fill"
-                  objectFit="cover"
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
-                  }
-                />
-              </div>
-              <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
-                Hersteller
-              </p>
-            </div>
-          </div>
-          <hr />
-          {!manufacturerMenu ? '' : (
-            <div className="flex">
+          <div className='flex'>
+            <div className="flex mx-auto">
               <div
                 className="w-24 hover:cursor-pointer group"
                 onClick={() => {
-                  setManufacturer()
+                  setWeaponClass(), setDamageType(), setManufacturer()
                 }}
               >
                 <div className="relative w-24 mx-auto aspect-square">
@@ -594,49 +199,449 @@ export default function Weapons ({ utils, manufacturers }) {
                 </div>
                 <p
                   className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                    ((Array.isArray(classquery)
+                      ? classquery.every(
+                        (val, index) =>
+                          val ===
+                          [
+                            'Taser',
+                            'Pistole',
+                            'SMG',
+                            'Sturmgewehr',
+                            'Schrotgewehr',
+                            'LMG',
+                            'Scharfschützen Gewehr',
+                            'HMG',
+                            'Armbrust',
+                            'Granatwerfer',
+                            'Raketenwerfer',
+                            'Railgun',
+                          ][index]
+                      )
+                      : null) &&
+                      (Array.isArray(dmgquery)
+                        ? dmgquery.every(
+                          (val, index) =>
+                            val ===
+                            [
+                              'Elektronen',
+                              'Ballistisch',
+                              'Laser',
+                              'Plasma',
+                              'Explosiv',
+                            ][index]
+                        )
+                        : null) &&
+                      manuquery == ' '
+                      ? ' text-secondary'
+                      : ' group-hover:text-white')
                   }
                 >
-                  Alle Hersteller
+                  Alle Anzeigen
                 </p>
               </div>
-              <div className="flex mx-auto space-x-2">
-                {manufacturers.map((obj) => (
-                  <div
-                    key={obj.firmen_name}
-                    className="w-24 hover:cursor-pointer group"
-                    onClick={() => setManufacturer([obj.firmen_name])}
-                  >
-                    <div className="relative w-24 mx-auto aspect-square">
-                      <Image
-                        src={
-                          'https://cms.ariscorp.de/assets/' +
-                          obj.firmen_trans_logo?.id
-                        }
-                        alt="Energie-Icon"
-                        layout="fill"
-                        objectFit="cover"
-                        placeholder="blur"
-                        blurDataURL={
-                          'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
-                        }
-                      />
-                    </div>
-                    <p
-                      className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                        (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+              <div className="flex ml-8 space-x-2">
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setDamageType(['Elektronen', 'Laser', 'Plasma'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '47d884d9-e7ce-4a2e-ab52-9670668a0349'
                       }
-                    >
-                      {obj.firmen_name}
-                    </p>
+                      alt="Energie-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/47d884d9-e7ce-4a2e-ab52-9670668a0349?width=16&quality=1'
+                      }
+                    />
                   </div>
-                ))}
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      ((
+                        Array.isArray(dmgquery)
+                          ? dmgquery.every(
+                            (val, index) =>
+                              val === ['Elektronen', 'Laser', 'Plasma'][index]
+                          )
+                          : null
+                      )
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Energie
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setDamageType(['Ballistisch', 'Explosiv'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '7cc59886-ff69-412a-8e72-e5e73a6511f6'
+                      }
+                      alt="Ballistisch-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/7cc59886-ff69-412a-8e72-e5e73a6511f6?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      ((
+                        Array.isArray(dmgquery)
+                          ? dmgquery.every(
+                            (val, index) =>
+                              val === ['Ballistisch', 'Explosiv'][index]
+                          )
+                          : null
+                      )
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Ballistisch
+                  </p>
+                </div>
+              </div>
+              <div className="flex ml-4 space-x-2">
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['Pistole'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        'dece2f20-e9c5-4932-89ca-664d3c5487e1'
+                      }
+                      alt="Pistolen-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/dece2f20-e9c5-4932-89ca-664d3c5487e1?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'Pistole'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Pistolen
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['SMG'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '7dd32e63-2919-45ec-bc22-d54fdaba861a'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/7dd32e63-2919-45ec-bc22-d54fdaba861a?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'SMG'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Maschinen Pistolen
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['Sturmgewehr'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '22a23dba-8eea-42c4-9a29-fccb6c035b26'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/22a23dba-8eea-42c4-9a29-fccb6c035b26?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'Sturmgewehr'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Sturmgewehre
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['Schrotgewehr'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        'c8e91660-072a-446c-9832-a35c0d107287'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/c8e91660-072a-446c-9832-a35c0d107287?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'Schrotgewehr'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Schrotgewehre
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['LMG'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        'b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'LMG'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Leichtmaschienen Gewehre
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => setWeaponClass(['Scharfschützen Gewehr'])}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '56c1a446-85c7-4400-84b4-9a02a54d395a'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/56c1a446-85c7-4400-84b4-9a02a54d395a?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      (classquery == 'Scharfschützen Gewehr'
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Scharfschützen Gewehre
+                  </p>
+                </div>
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() =>
+                    setWeaponClass([
+                      'HMG',
+                      'Granatwerfer',
+                      'Raketenwerfer',
+                      'Railgun',
+                    ])
+                  }
+                >
+                  <div className="relative w-24 mx-auto group aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        'f32ea524-6423-4a0b-a3d0-92e78acfd516'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/f32ea524-6423-4a0b-a3d0-92e78acfd516?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
+                      ((
+                        Array.isArray(classquery)
+                          ? classquery.every(
+                            (val, index) =>
+                              val ===
+                              [
+                                'HMG',
+                                'Granatwerfer',
+                                'Raketenwerfer',
+                                'Railgun',
+                              ][index]
+                          )
+                          : null
+                      )
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
+                    }
+                  >
+                    Schwere Waffen
+                  </p>
+                </div>
+              </div>
+              <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-8 hover:cursor-pointer">
+                <div className="relative w-24 mx-auto aspect-square">
+                  <Image
+                    src={
+                      'https://cms.ariscorp.de/assets/' +
+                      '314cc998-245d-4487-97cd-fb86342eaf8d'
+                    }
+                    alt="Alle-Icon"
+                    layout="fill"
+                    objectFit="cover"
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
+                    }
+                  />
+                </div>
+                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                  Hersteller
+                </p>
+              </div>
+            </div>
+          </div>
+          <hr />
+          {!manufacturerMenu ? '' : (
+            <div className="flex">
+              <div className="flex mx-auto">
+                <div
+                  className="w-24 hover:cursor-pointer group"
+                  onClick={() => {
+                    setManufacturer()
+                  }}
+                >
+                  <div className="relative w-24 mx-auto aspect-square">
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
+                      }
+                      alt="Alle-Icon"
+                      layout="fill"
+                      objectFit="cover"
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                      }
+                    />
+                  </div>
+                  <p
+                    className={
+                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                    }
+                  >
+                    Alle Hersteller
+                  </p>
+                </div>
+                <div className="flex ml-4 space-x-2">
+                  {manufacturers.map((obj) => (
+                    <div
+                      key={obj.firmen_name}
+                      className="w-24 hover:cursor-pointer group"
+                      onClick={() => setManufacturer([obj.firmen_name])}
+                    >
+                      <div className="relative w-24 mx-auto aspect-square">
+                        <Image
+                          src={
+                            'https://cms.ariscorp.de/assets/' +
+                            obj.firmen_trans_logo?.id
+                          }
+                          alt="Energie-Icon"
+                          layout="fill"
+                          objectFit="cover"
+                          placeholder="blur"
+                          blurDataURL={
+                            'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
+                          }
+                        />
+                      </div>
+                      <p
+                        className={
+                          'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                          (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+                        }
+                      >
+                        {obj.firmen_name}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           )}
-          {!manufacturerMenu ? '' : <hr />}
-          <div className="flex flex-wrap px-2">
+          {!manufacturerMenu ? null : <hr />}
+          <div>
             {loading ? (
               <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
                 <SquareLoader
@@ -646,37 +651,11 @@ export default function Weapons ({ utils, manufacturers }) {
                 />
               </div>
             ) : (
-              data?.technologien.map((object, index) => (
-                <div key={object.id} className="w-1/3 px-2 pb-8">
-                  <BasicPanel className={'hover:cursor-pointer'}>
-                    <div
-                      className="overflow-hidden h-44 rounded-3xl"
-                      onClick={() => handleClick(object.waffen_name)}
-                    >
-                      <div className="relative w-full h-full">
-                        <Image
-                          src={
-                            'https://cms.ariscorp.de/assets/' +
-                            object.waffen_bild.id
-                          }
-                          alt="Alle-Icon"
-                          layout="fill"
-                          objectFit="fill"
-                          placeholder="blur"
-                          blurDataURL={
-                            'https://cms.ariscorp.de/assets/' +
-                            object.waffen_bild.id +
-                            '?width=16&quality=1'
-                          }
-                        />
-                      </div>
-                      <p className="absolute left-0 right-0 text-lg text-center -bottom-1 text-secondary">
-                        {object.waffen_name}
-                      </p>
-                    </div>
-                  </BasicPanel>
-                </div>
-              ))
+              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+                {data?.technologien.map((object, index) => (
+                  <WeaponCard key={object.id} data={object} />
+                ))}
+              </div>
             )}
           </div>
         </div>

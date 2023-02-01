@@ -7,10 +7,13 @@ import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'
 import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_ATTACHMENT } from 'graphql/queries'
-import { BasicPanelOld as BasicPanel } from 'components/panels'
 import { Tab } from '@headlessui/react'
 import Head from 'next/head'
 import client from 'apollo/clients'
+import { BasicPanel, BasicPanelButton } from 'components/panels'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+import { ShareSquare } from 'components/icons'
 
 export async function getServerSideProps (context) {
   const { params } = context
@@ -55,6 +58,21 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
   const [currentGalleryImage, setCurrentGalleryImage] = useState(attachment.gallery[0] ? attachment.gallery[0].directus_files_id.id : attachment.storeImage.id)
   const { replace, query } = useRouter()
   const urlquery = query.tab
+  const shareUrl = "https://ariscorp.de/VerseExkurs/attachments/" + attachment.name
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(shareUrl)
+    toast.info('URL in Zwischenablage kopiert!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
+  }
 
   useEffect(() => {
     if (urlquery != null && urlquery != '') {
@@ -65,7 +83,19 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
   }, [urlquery])
 
   return (
-    <div className="items-center pt-10 mx-auto print:pt-5">
+    <div className="items-center mx-auto print:pt-5">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <Head>
         <title>
           {siteTitle}
@@ -84,176 +114,156 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
           content={siteTitle}
         />
       </Head>
-      <div>
-        <div className="flex items-center justify-center align-center">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            <span className="text-secondary">
-              {attachment.manufacturer.firmen_name}
-            </span>{' '}
+      <div className="relative flex items-center align-center">
+        <div className="absolute bottom-0">
+          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl 2xl:text-5xl 2xl:text-6xl"><span className="text-secondary">
+            {attachment.manufacturer.firmen_name}
+          </span>{' '}
             <span>{attachment.name}</span>
           </h1>
-          <div
-            className="relative ml-auto -my-10 hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 md:h-48 aspect-square"
-            onClick={() =>
-              router.push(
-                '/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name
-              )
+        </div>
+        <div
+          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 2xl:h-48 aspect-square"
+          onClick={() =>
+            router.push(
+              '/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name
+            )
+          }
+        >
+          <Image
+            src={
+              'https://cms.ariscorp.de/assets/' +
+              attachment.manufacturer.firmen_trans_logo.id
             }
-          >
-            <Image
-              src={
-                'https://cms.ariscorp.de/assets/' +
-                attachment.manufacturer.firmen_trans_logo.id
-              }
-              alt={'Logo von ' + attachment.manufacturer.firmen_name}
-              fill
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                attachment.manufacturer.firmen_trans_logo.id +
-                '?width=16&quality=1'
-              }
-            />
+            alt={'Logo von ' + attachment.manufacturer.firmen_name}
+            fill
+            placeholder="blur"
+            blurDataURL={
+              'https://cms.ariscorp.de/assets/' +
+              attachment.manufacturer.firmen_trans_logo.id +
+              '?width=16&quality=1'
+            }
+          />
+        </div>
+      </div>
+      <hr className="mt-2" />
+      <div className='grid grid-cols-3 gap-4'>
+        <div className='col-span-3 gap-8 2xl:col-span-2'>
+          <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
+            <BasicPanel>
+              <div className='min-h-[600px] w-full relative flex'>
+                <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${currentGalleryImage})` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
+              </div>
+            </BasicPanel>
           </div>
         </div>
-        <hr />
-      </div>
-      <div className="w-full space-y-2 xl:space-y-0 xl:space-x-2 lg:flex lg:flex-wrap xl:flex-nowrap">
-        <div className="max-h-full w-full aspect-[21/9] xl:aspect-auto xl:w-3/5">
-          <BasicPanel
-            className={'h-full'}
-            childClassName={'h-full overflow-hidden'}
-          >
-            <Image
-              src={'https://cms.ariscorp.de/assets/' + currentGalleryImage}
-              alt={'Bild von ' + attachment.name}
-              fill
-              className="object-cover"
-              placeholder="blur"
-              blurDataURL={
-                'https://cms.ariscorp.de/assets/' +
-                currentGalleryImage +
-                '?width=16&quality=1'
-              }
-            />
-          </BasicPanel>
-        </div>
-        <div className="w-full xl:w-2/5">
+        <div className='col-span-3 space-y-4 2xl:col-span-1'>
           <BasicPanel>
-            <div className='overflow-hidden rounded-2xl'>
-              <div className="w-full h-full px-5 pb-2 text-xs italic uppercase xs:text-sm">
-                <table className="w-full space-y-10 table-auto">
-                  <div>
-                    <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                      Spezifikationen
-                    </p>
-                  </div>
-                  <tr>
-                    <th className="pr-2 text-left">Hersteller:</th>
-                    <td className="text-left text-primary">
-                      {attachment.manufacturer.firmen_name ? attachment.manufacturer.firmen_name : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Klassifizierung:</th>
-                    <td className="text-left text-primary">
-                      {classification}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Typ:</th>
-                    <td className="text-left text-primary">
-                      {attachment.classification ? attachment.classification : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Gewicht:</th>
-                    <td className="text-left text-primary">
-                      {attachment.weight ? attachment.weight + ' KG' : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-[85%] mt-3 sm:mt-5 sm:mb-4 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Basispreis:</th>
-                    <td className="text-left text-primary">
-                      {attachment.price ? attachment.price + ' aUEC' : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colSpan="2">
-                      <hr className="relative w-[85%] mt-3 sm:mt-5 sm:mb-4 mb-2 -ml-1 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                    </td>
-                  </tr>
-                </table>
-                <table className="w-full space-y-10 table-auto">
-                  <div>
-                    <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                      Statistiken
-                    </p>
-                  </div>
-                  {classification === 'Optik' ? (
-                    <>
-                      <tr>
-                        <th className="pr-2 text-left">Zoomstufe:</th>
-                        <td className="text-left text-primary">
-                          {attachment.zoomLevel ? attachment.zoomLevel + "x fach" : 'N/A'}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="pr-2 text-left">Integrierte Nullung:</th>
-                        <td className="text-left text-primary">
-                          {attachment.autoZeroing ? "Ja" : 'Nein'}
-                        </td>
-                      </tr>
-                      <tr>
-                        <th className="pr-2 text-left"><p className='p-0'>Integrierter-</p><p className='p-0'>Entfernungsmesser:</p></th>
-                        <td className="text-left text-primary">
-                          {attachment.rangefinder ? "Ja" : 'Nein'}
-                        </td>
-                      </tr>
-                    </>
-                  ) : (
-                    <>
-                      <tr>
-                        {attachment.stats.find((e) => e.category === "noiseLevel") ?
-                          (
-                            <th className="pr-2 text-left">Lärmpegel:</th>
-                          ) : null
-                        }
-                        {attachment.stats.find((e) => e.category === "recoil") ?
-                          (
-                            <th className="pr-2 text-left">Rückstoß:</th>
-                          ) : null
-                        }
-                        {attachment.stats.find((e) => e.category === "damage") ?
-                          (
-                            <th className="pr-2 text-left">Schaden:</th>
-                          ) : null
-                        }
-                      </tr>
-                      <tr>
-                        <td className={"text-left " + (attachment.stats.find((e) => e.category === "noiseLevel")?.level < 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "noiseLevel")?.level > 0 ? "text-red-600" : ""))}>
-                          {attachment.stats.find((e) => e.category === "noiseLevel") ? attachment.stats.find((e) => e.category === "noiseLevel").level + '%' : 'N/A'}
-                        </td>
-                        {attachment.stats.find((e) => e.category === "recoil") ?
-                          (
-                            <td className={"text-left " + (attachment.stats.find((e) => e.category === "recoil")?.level < 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "recoil")?.level > 0 ? "text-red-600" : ""))}>
-                              {attachment.stats.find((e) => e.category === "recoil") ? attachment.stats.find((e) => e.category === "recoil").level + '%' : 'N/A'}
-                            </td>
-                          ) : null
-                        }
-                        <td className={"text-left " + (attachment.stats.find((e) => e.category === "damage")?.level > 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "damage")?.level < 0 ? "text-red-600" : ""))}>
-                          {attachment.stats.find((e) => e.category === "damage") ? attachment.stats.find((e) => e.category === "damage").level + '%' : 'N/A'}
-                        </td>
-                      </tr>
-                    </>
-                  )}
-                </table>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+              <div className='col-span-4'>
+                <div className='text-lg text-secondary'>
+                  Spezifikationen
+                </div>
               </div>
+              <div className='hidden col-span-1 2xl:block' />
+              <div className='col-span-1 2xl:col-span-3'>
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Hersteller:</p>
+                  <p className='p-0 text-primary'>
+                    {attachment.manufacturer.firmen_name ? attachment.manufacturer.firmen_name : 'N/A'}
+                  </p>
+                </div>
+                <div className="grid grid-cols-2">
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Klassifizierung:</p>
+                    <p className='p-0 text-primary'>
+                      {classification}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Typ:</p>
+                    <p className='p-0 text-primary'>
+                      {attachment.classification ? attachment.classification : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Gewicht:</p>
+                  <p className='p-0 text-primary'>
+                    {attachment.classification ? attachment.classification : 'N/A'}
+                  </p>
+                </div>
+                <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
+                <div className="col-span-1">
+                  <p className='pb-0 text-sm'>Basispreis:</p>
+                  <p className='p-0 text-primary'>
+                    {attachment.price ? attachment.price + ' aUEC' : 'N/A'}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </BasicPanel>
+          <BasicPanel>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+              <div className='col-span-4'>
+                <div className='text-lg text-secondary'>
+                  Statistiken
+                </div>
+              </div>
+              <div className="hidden col-span-1 2xl:block" />
+              {classification === 'Optik' ? (
+                <div className='col-span-1 2xl:col-span-3'>
+                  <div className='grid grid-cols-3 uppercase'>
+                    <div className="col-span-3">
+                      <p className='pb-0 text-sm'>Zoomstufe:</p>
+                      <p className='p-0 text-primary'>
+                        {attachment.zoomLevel ? attachment.zoomLevel + "x fach" : 'N/A'}
+                      </p>
+                    </div>
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Integrierte Nullung:</p>
+                      <p className='p-0 normal-case text text-primary'>
+                        {attachment.autoZeroing ? "Ja" : 'Nein'}
+                      </p>
+                    </div>
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Integrierter Entfernungsmesser:</p>
+                      <p className='p-0 normal-case text text-primary'>
+                        {attachment.rangefinder ? "Ja" : 'Nein'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className='col-span-1 2xl:col-span-3'>
+                  <div className='grid grid-cols-3 uppercase'>
+                    {attachment.stats.find((e) => e.category === "noiseLevel") ? (
+                      <div className="col-span-3">
+                        <p className='pb-0 text-sm'>Lärmpegel:</p>
+                        <p className={'p-0' + (attachment.stats.find((e) => e.category === "noiseLevel")?.level > 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "noiseLevel")?.level < 0 ? "text-red-600" : ""))}>
+                          {attachment.stats.find((e) => e.category === "noiseLevel").level}
+                        </p>
+                      </div>
+                    ) : null}
+                    {attachment.stats.find((e) => e.category === "recoil") ? (
+                      <div className="col-span-3">
+                        <p className='pb-0 text-sm'>Rückstoß:</p>
+                        <p className={'p-0' + (attachment.stats.find((e) => e.category === "recoil")?.level > 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "recoil")?.level < 0 ? "text-red-600" : ""))}>
+                          {attachment.stats.find((e) => e.category === "recoil").level}
+                        </p>
+                      </div>
+                    ) : null}
+                    {attachment.stats.find((e) => e.category === "damage") ? (
+                      <div className="col-span-3">
+                        <p className='pb-0 text-sm'>Schaden:</p>
+                        <p className={'p-0' + (attachment.stats.find((e) => e.category === "damage")?.level > 0 ? "text-green-500" : (attachment.stats.find((e) => e.category === "damage")?.level < 0 ? "text-red-600" : ""))}>
+                          {attachment.stats.find((e) => e.category === "damage").level}
+                        </p>
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+              )}
             </div>
           </BasicPanel>
           <BasicPanel>
@@ -263,7 +273,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
                   Gallerie
                 </p>
                 <div className='flex justify-between w-full xl:grid xl:grid-cols-3 xl:gap-4'>
-                {attachment.gallery[0] ? (
+                  {attachment.gallery[0] ? (
                     attachment.gallery.map((obj) => (
                       <div onClick={() => setCurrentGalleryImage(obj.directus_files_id.id)} key={obj.directus_files_id.id} className={"relative w-28 h-28" + (currentGalleryImage == obj.directus_files_id.id ? " border border-primary" : null)}>
                         <Image
@@ -300,6 +310,15 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
               </div>
             </div>
           </BasicPanel>
+          <div className='flex space-x-4'>
+            <div onClick={() => handleShare()} className="flex-grow">
+              <div className={"relative w-full h-[44px] text-inherit decoration-transparent aspect-square inline-block p-[2px] bg-transparent group border-2 border-primary rounded-[10px] cursor-pointer transition-all hover:duration-200 duration-500 ease-out box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border "}>
+                <div className="group-hover:bg-white/5 group-hover:text-primary p-[10px] box-border overflow-hidden whitespace-nowrap text-center text-ellipsis rounded-[6px] transition-all hover:duration-200 duration-500 ease-out">
+                  <ShareSquare className="w-4 h-4 mx-auto fill-white" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <hr />
