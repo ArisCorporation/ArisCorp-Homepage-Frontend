@@ -19,7 +19,7 @@ export default function Layout ({ children }) {
               style={{ transition: 'left .5s ease,right .5s ease' }}
             >
               <main
-                className="block w-full min-h-screen px-[15px] mx-auto 2xl:max-w-6xl relative"
+                className="block w-full min-h-screen px-[15px] mx-auto 2xl:max-w-[1536px] relative"
                 style={{ transition: 'left .5s ease,right .5s ease' }}
               >
 
@@ -64,7 +64,7 @@ export default function Layout ({ children }) {
           style={{ transition: 'left .5s ease,right .5s ease' }}
         >
           <main
-            className="block w-full min-h-screen px-[15px] mx-auto container 2xl:max-w-6xl relative"
+            className="block w-full min-h-screen px-[15px] mx-auto container 2xl:max-w-[1536px] relative"
             style={{ transition: 'left .5s ease,right .5s ease' }}
           >
             {children}

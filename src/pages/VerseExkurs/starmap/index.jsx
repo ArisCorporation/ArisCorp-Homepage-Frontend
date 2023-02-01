@@ -16,6 +16,7 @@ import { GET_VERSEEXKURS_SYSTEME } from 'graphql/queries'
 import Head from 'next/head'
 import ImageGallery from 'react-image-gallery';
 import "react-image-gallery/styles/css/image-gallery.css";
+import { BasicPanel } from 'components/panels'
 
 export async function getServerSideProps () {
   const { data } = await client.query({
@@ -183,27 +184,31 @@ export default function StarmapPage ({ data }) {
         </Tab.List>
         <Tab.Panels className={'px-4'}>
           <Tab.Panel>
-            <div className="">
+            <div>
               <h2 className='mt-0 text-center'>
                 Für die Systembeschreibung klicken sie auf das jeweilige System
               </h2>
-              <div className="w-8/12 max-w-[630px] aspect-[637/160]">
-                <div className="relative w-full h-full">
-                  <Image
-                    src="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b"
-                    layout="fill"
-                    alt="Starmap Legende"
-                    objectFit="contain"
-                    placeholder="blur"
-                    blurDataURL="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b?width=16&quality=1"
-                  />
+              <BasicPanel>
+                <div className="w-8/12 max-w-[630px] aspect-[637/160]">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b"
+                      layout="fill"
+                      alt="Starmap Legende"
+                      objectFit="contain"
+                      placeholder="blur"
+                      blurDataURL="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b?width=16&quality=1"
+                    />
+                  </div>
                 </div>
-              </div>
-              <Starmap data={data} />
+                <div className="flex justify-center">
+                  <Starmap data={data} />
+                </div>
+              </BasicPanel>
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="max-w-2xl mx-auto text-center xl:max-w-4xl 2xl:lg:max-w-2xl">
+            <div className="mx-auto text-center">
               <p>
                 Star Citizens Lore umfasst 800 Jahre in der Zukunft. Die
                 Redaktion bietet Ihnen eine schnelle Chronologie der großen
