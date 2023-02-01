@@ -29,7 +29,7 @@ export default function BiestariumPage (data) {
   const siteTitle = "Biestarium - Astro Research and Industrial Service Corporation"
   
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto">
+    <div className="items-center pt-10 mx-auto">
     <Head>
       <title>
         {siteTitle}

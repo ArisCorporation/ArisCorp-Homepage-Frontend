@@ -53,7 +53,7 @@ export async function getServerSideProps (context) {
 
 export default function AlienrassenDetailPage ({ data, siteTitle }) {
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <div>
         <div key={data.title}>
           <Head>

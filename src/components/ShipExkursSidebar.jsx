@@ -468,7 +468,7 @@ export default function Sidebar() {
                           (!mobileView && sidebarCollapsed ? ' hidden' : '')
                         }
                       >
-                        ArisCorp VerseExkurs
+                        ArisCorp Homepage
                       </span>
                     </span>
                   </a>

@@ -563,7 +563,7 @@ const TechCarrack = () => {
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push(
-            '/VerseExkurs/technologie/Komponenten#energiegeneratoren',
+            '/VerseExkurs/technologie/Energiegeneratoren',
             undefined,
             { scroll: false }
           )
@@ -583,7 +583,7 @@ const TechCarrack = () => {
         onMouseLeave={() => setSelectedTech(undefined)}
         onClick={() =>
           router.push(
-            '/VerseExkurs/technologie/Komponenten#gravitationsgeneratoren',
+            '/VerseExkurs/technologie/Gravitationsgenerator',
             undefined,
             { scroll: false }
           )

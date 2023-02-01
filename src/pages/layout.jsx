@@ -15,7 +15,7 @@ export default function Layout ({ children, ourIndex, onOurIndexChange }) {
 
       {router.pathname == '/' ? <HeroSection /> : ''}
 
-      <div className="min-h-screen px-4 md:container md:mx-auto">
+      <div className="min-h-screen px-4 container mx-auto 2xl:max-w-[1536px]">
         {children}
       </div>
 

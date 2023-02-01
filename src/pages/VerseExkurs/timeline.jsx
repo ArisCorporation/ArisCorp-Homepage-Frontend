@@ -1,4 +1,4 @@
-import Layout from 'pages/VerseExkurs/layout'
+import Layout from './layout'
 import { GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'

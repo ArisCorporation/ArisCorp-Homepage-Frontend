@@ -62,7 +62,7 @@ export async function getServerSideProps (context) {
 export default function SystemDetailPage ({ data, attachments, siteTitle }) {
   const { replace, query, isReady, push } = useRouter()
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}
@@ -107,55 +107,57 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <BasicPanel className="w-full mb-2 mr-12 lg:ml-8 lg:float-right lg:w-2/5">
-            <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
-              <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
-              <table className="w-full ml-5">
-                <tr className={'border-b-0 border-transparent' + (data.headquarter == null && data.headquarter_system == null ? ' hidden' : null)}>
-                  <th className="pr-2 text-left">Hauptsitz:</th>
-                  <td className="text-left text-primary">
-                    {data.headquarter && data.headquarter_system != null
-                      ? data.headquarter + '(' + data.headquarter_system + ')'
-                      : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
-                  </td>
-                </tr>
-                <tr className={'border-b-0 border-transparent' + (data.current_ceo == null ? ' hidden' : null)}>
-                  <th className="pr-2 text-left">Aktueller C.E.O.:</th>
-                  <td className="text-left text-primary">
-                    {data.current_ceo != null ? data.current_ceo : 'N/A'}
-                  </td>
-                </tr>
-                <tr className={'border-b-0 border-transparent' + (data.founding == null ? ' hidden' : null)}>
-                  <th className="pr-2 text-left">Gründungsdatum:</th>
-                  <td className="text-left text-primary">
-                    {data.founding != null ? data.founding : 'N/A'}
-                  </td>
-                </tr>
-                <tr className={'border-b-0 border-transparent' + (data.founder == null ? ' hidden' : null)}>
-                  <th className="pr-2 text-left">Gründer:</th>
-                  <td className="text-left break-words text-primary">
-                    {data.founder != null ? data.founder : 'N/A'}
-                  </td>
-                </tr>
-                <tr className={'border-b-0 border-transparent' + (data.firmenkategorie == null ? ' hidden' : null)}>
-                  <th className="pr-2 text-left">Kategorie:</th>
-                  <td className="text-left break-words text-primary">
-                    {data.firmenkategorie != null
-                      ? data.firmenkategorie == 'hersteller'
-                        ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
-                        : data.firmenkategorie
-                      : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Bekannteste Waren:</th>
-                  <td className="text-left text-primary">
-                    {data.famous_goods != null ? data.famous_goods : 'N/A'}
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </BasicPanel>
+          <div className='w-full mb-2 xl:mr-12 2xl:ml-8 lg:float-right xl:w-1/2 2xl:w-5/12'>
+            <BasicPanel className="">
+              <div className="w-full h-full pb-2 pr-2 text-xs italic uppercase xs:text-sm">
+                <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
+                <table className="w-full ml-5">
+                  <tr className={'border-b-0 border-transparent' + (data.headquarter == null && data.headquarter_system == null ? ' hidden' : null)}>
+                    <th className="pr-2 text-left">Hauptsitz:</th>
+                    <td className="text-left text-primary">
+                      {data.headquarter && data.headquarter_system != null
+                        ? data.headquarter + '(' + data.headquarter_system + ')'
+                        : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
+                    </td>
+                  </tr>
+                  <tr className={'border-b-0 border-transparent' + (data.current_ceo == null ? ' hidden' : null)}>
+                    <th className="pr-2 text-left">Aktueller C.E.O.:</th>
+                    <td className="text-left text-primary">
+                      {data.current_ceo != null ? data.current_ceo : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr className={'border-b-0 border-transparent' + (data.founding == null ? ' hidden' : null)}>
+                    <th className="pr-2 text-left">Gründungsdatum:</th>
+                    <td className="text-left text-primary">
+                      {data.founding != null ? data.founding : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr className={'border-b-0 border-transparent' + (data.founder == null ? ' hidden' : null)}>
+                    <th className="pr-2 text-left">Gründer:</th>
+                    <td className="text-left break-words text-primary">
+                      {data.founder != null ? data.founder : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr className={'border-b-0 border-transparent' + (data.firmenkategorie == null ? ' hidden' : null)}>
+                    <th className="pr-2 text-left">Kategorie:</th>
+                    <td className="text-left break-words text-primary">
+                      {data.firmenkategorie != null
+                        ? data.firmenkategorie == 'hersteller'
+                          ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
+                          : data.firmenkategorie
+                        : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Bekannteste Waren:</th>
+                    <td className="text-left text-primary">
+                      {data.famous_goods != null ? data.famous_goods : 'N/A'}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </BasicPanel>
+          </div>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"

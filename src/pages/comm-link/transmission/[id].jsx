@@ -39,7 +39,7 @@ export async function getServerSideProps (context) {
 
 export default function CommLinkDetailPage ({data, siteTitle}) {
   return (
-    <div className="items-center max-w-6xl pt-32 mx-auto print:pt-5">
+    <div className="items-center pt-32 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}

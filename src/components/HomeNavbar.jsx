@@ -15,7 +15,7 @@ import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
 import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 
-function Navbar() {
+function Navbar () {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const { pathname, replace, query } = useRouter()
@@ -29,7 +29,7 @@ function Navbar() {
   return (
     <nav className="fixed z-20 flex flex-wrap w-full bg-black lg:h-24 bg-opacity-30 print:hidden">
       {/* Desktop menu */}
-      <div className="container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
+      <div className="2xl:max-w-[1536px] container flex-wrap items-center justify-between hidden w-full mx-auto lg:flex">
         <div>
           <Link legacyBehavior
             href={
@@ -245,7 +245,7 @@ function Navbar() {
   )
 }
 
-function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
+function NavbarItem ({ content, link, tooltip, ourTab, AnkerLink }) {
   const { pathname, push, replace, query } = useRouter()
 
   if (!ourTab) {
@@ -272,19 +272,19 @@ function NavbarItem({ content, link, tooltip, ourTab, AnkerLink }) {
         onClick={() =>
           query.about != null && query.about != ''
             ? replace(
-                {
-                  pathname: '/',
-                  hash: AnkerLink,
-                  query: { about: query.about, our: ourTab },
-                },
-                undefined,
-                { shallow: true }
-              )
+              {
+                pathname: '/',
+                hash: AnkerLink,
+                query: { about: query.about, our: ourTab },
+              },
+              undefined,
+              { shallow: true }
+            )
             : replace(
-                { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
-                undefined,
-                { shallow: true }
-              )
+              { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
+              undefined,
+              { shallow: true }
+            )
         }
         className="flex justify-center group"
       >

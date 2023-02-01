@@ -70,7 +70,7 @@ export default function SystemDetailPage ({ data, siteTitle }) {
                 : null
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}
@@ -118,150 +118,152 @@ export default function SystemDetailPage ({ data, siteTitle }) {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <BasicPanel className="w-full mb-2 mr-12 lg:ml-8 lg:float-right lg:w-2/5">
-            <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
-              <h3 className="pt-2 pl-3 m-0 text-secondary">System Infobox</h3>
-              <table className="w-full ml-5 table-auto">
-                <div>
-                  <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Astronomisch
-                  </p>
-                </div>
-                <tr>
-                  <th className="pr-2 text-left">Sternen Typ:</th>
-                  <td className="text-left text-primary">
-                    {data.star_type != null ? data.star_type : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Sternenklasse:</th>
-                  <td className="text-left text-primary">
-                    {data.star_class != null ? data.star_class : 'N/A'}
-                  </td>
-                </tr>
-                <tr className='hover:cursor-pointer' onClick={() => setSystemSizeAE(!systemSizeAE)}>
-                  <th className="pr-2 text-left">Systemgröße:</th>
-                  <td className="text-left text-primary">
-                    {data.size != null ? (
-                      systemSizeAE ? (data.size + ' AE') : ((data.size * '149597870.7').toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' KM')
-                    ) : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Planeten:</th>
-                  <td className="text-left text-primary">
-                    {data.planets != null ? data.planets : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Monde:</th>
-                  <td className="text-left break-words text-primary">
-                    {data.moons != null ? data.moons : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Asteroidengürtel:</th>
-                  <td className="text-left text-primary">
-                    {data.asteroid_belt != null ? data.asteroid_belt : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Jumppoints:</th>
-                  <td className="text-left text-primary">
-                    {data.jumppoints != null ? data.jumppoints : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <td colSpan="2">
-                    <hr className="relative w-[85%] my-3 -ml-1 sm:mt-5 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
-                  </td>
-                </tr>
-                <div>
-                  <p className="pt-0 m-0 -ml-2 text-sm xs:text-base text-secondary">
-                    Politik & Wirtschaft
-                  </p>
-                </div>
-                <tr>
-                  <th className="pr-0 text-left">Zugehörigkeit:</th>
-                  <td className="flex text-left text-primary">
-                    <div className="relative w-6 h-6">
-                      {data.affiliation != null ? (
-                        <Image
-                          src={
-                            data.affiliation == 'uee'
-                              ? ueeIcon
-                              : data.affiliation == 'indevelopment'
-                                ? devIcon
-                                : data.affiliation == 'unclaimed'
-                                  ? unclIcon
-                                  : data.affiliation == 'banu'
-                                    ? banuIcon
-                                    : data.affiliation == 'xian'
-                                      ? xianIcon
-                                      : data.affiliation == 'vanduul'
-                                        ? vnclIcon
-                                        : null
-                          }
-                          layout="fill"
-                          placeholder="blur"
-                          blurDataURL={unclIcon + '?width=16&quality=1'}
-                          draggable="false"
-                          alt="Affiliation"
-                        />
-                      ) : (
-                        'N/A'
-                      )}
-                    </div>
-                    <div className="ml-2">
-                      {data.affiliation == 'uee'
-                        ? 'UEE'
-                        : data.affiliation == 'indevelopment'
-                          ? 'In Entwicklung'
-                          : data.affiliation == 'unclaimed'
-                            ? 'Nicht Beansprucht'
-                            : data.affiliation == 'banu'
-                              ? 'Banu'
-                              : data.affiliation == 'xian'
-                                ? "Xi'An"
-                                : data.affiliation == 'vanduul'
-                                  ? 'Vanduul'
-                                  : null}
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Entdeckungsdatum:</th>
-                  <td className="text-left text-primary">
-                    {data.discovery_year != null ? data.discovery_year : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Hauptplanet:</th>
-                  <td className="text-left text-primary">
-                    {data.main_planet != null ? data.main_planet : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Bevölkerung:</th>
-                  <td className="text-left text-primary">
-                    {data.population != null ? data.population : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Wirtschaft:</th>
-                  <td className="text-left text-primary">
-                    {data.economy != null ? data.economy : 'N/A'}
-                  </td>
-                </tr>
-                <tr>
-                  <th className="pr-2 text-left">Gefahrenstufe:</th>
-                  <td className="text-left text-primary">
-                    {data.danger_level != null ? data.danger_level : 'N/A'}
-                  </td>
-                </tr>
-              </table>
-            </div>
-          </BasicPanel>
+          <div className='w-full mb-2 xl:mr-12 2xl:ml-8 lg:float-right xl:w-1/2 2xl:w-5/12'>
+            <BasicPanel className="w-full mb-2 mr-12 lg:ml-8 lg:float-right lg:w-2/5">
+              <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
+                <h3 className="pt-2 pl-3 m-0 text-secondary">System Infobox</h3>
+                <table className="w-full ml-5 table-auto">
+                  <div>
+                    <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                      Astronomisch
+                    </p>
+                  </div>
+                  <tr>
+                    <th className="pr-2 text-left">Sternen Typ:</th>
+                    <td className="text-left text-primary">
+                      {data.star_type != null ? data.star_type : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Sternenklasse:</th>
+                    <td className="text-left text-primary">
+                      {data.star_class != null ? data.star_class : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr className='hover:cursor-pointer' onClick={() => setSystemSizeAE(!systemSizeAE)}>
+                    <th className="pr-2 text-left">Systemgröße:</th>
+                    <td className="text-left text-primary">
+                      {data.size != null ? (
+                        systemSizeAE ? (data.size + ' AE') : ((data.size * '149597870.7').toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1.") + ' KM')
+                      ) : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Planeten:</th>
+                    <td className="text-left text-primary">
+                      {data.planets != null ? data.planets : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Monde:</th>
+                    <td className="text-left break-words text-primary">
+                      {data.moons != null ? data.moons : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Asteroidengürtel:</th>
+                    <td className="text-left text-primary">
+                      {data.asteroid_belt != null ? data.asteroid_belt : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Jumppoints:</th>
+                    <td className="text-left text-primary">
+                      {data.jumppoints != null ? data.jumppoints : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colSpan="2">
+                      <hr className="relative w-[85%] my-3 -ml-1 sm:mt-5 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                    </td>
+                  </tr>
+                  <div>
+                    <p className="pt-0 m-0 -ml-2 text-sm xs:text-base text-secondary">
+                      Politik & Wirtschaft
+                    </p>
+                  </div>
+                  <tr>
+                    <th className="pr-0 text-left">Zugehörigkeit:</th>
+                    <td className="flex text-left text-primary">
+                      <div className="relative w-6 h-6">
+                        {data.affiliation != null ? (
+                          <Image
+                            src={
+                              data.affiliation == 'uee'
+                                ? ueeIcon
+                                : data.affiliation == 'indevelopment'
+                                  ? devIcon
+                                  : data.affiliation == 'unclaimed'
+                                    ? unclIcon
+                                    : data.affiliation == 'banu'
+                                      ? banuIcon
+                                      : data.affiliation == 'xian'
+                                        ? xianIcon
+                                        : data.affiliation == 'vanduul'
+                                          ? vnclIcon
+                                          : null
+                            }
+                            layout="fill"
+                            placeholder="blur"
+                            blurDataURL={unclIcon + '?width=16&quality=1'}
+                            draggable="false"
+                            alt="Affiliation"
+                          />
+                        ) : (
+                          'N/A'
+                        )}
+                      </div>
+                      <div className="ml-2">
+                        {data.affiliation == 'uee'
+                          ? 'UEE'
+                          : data.affiliation == 'indevelopment'
+                            ? 'In Entwicklung'
+                            : data.affiliation == 'unclaimed'
+                              ? 'Nicht Beansprucht'
+                              : data.affiliation == 'banu'
+                                ? 'Banu'
+                                : data.affiliation == 'xian'
+                                  ? "Xi'An"
+                                  : data.affiliation == 'vanduul'
+                                    ? 'Vanduul'
+                                    : null}
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Entdeckungsdatum:</th>
+                    <td className="text-left text-primary">
+                      {data.discovery_year != null ? data.discovery_year : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Hauptplanet:</th>
+                    <td className="text-left text-primary">
+                      {data.main_planet != null ? data.main_planet : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Bevölkerung:</th>
+                    <td className="text-left text-primary">
+                      {data.population != null ? data.population : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Wirtschaft:</th>
+                    <td className="text-left text-primary">
+                      {data.economy != null ? data.economy : 'N/A'}
+                    </td>
+                  </tr>
+                  <tr>
+                    <th className="pr-2 text-left">Gefahrenstufe:</th>
+                    <td className="text-left text-primary">
+                      {data.danger_level != null ? data.danger_level : 'N/A'}
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </BasicPanel>
+          </div>
           <ReactMarkdown
             rehypePlugins={[rehypeRaw]}
             className="mx-auto prose prose-td:align-middle prose-invert xl:max-w-full"

@@ -29,7 +29,7 @@ export default function Alienrassen ({ data }) {
   const siteTitle = "Alienrassen - Astro Research and Industrial Service Corporation"
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}

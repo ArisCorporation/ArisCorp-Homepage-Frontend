@@ -203,7 +203,7 @@ export default function StarmapPage ({ data }) {
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="max-w-2xl mx-auto text-center xl:max-w-4xl 2xl:max-w-6xl lg:max-w-2xl">
+            <div className="max-w-2xl mx-auto text-center xl:max-w-4xl 2xl:lg:max-w-2xl">
               <p>
                 Star Citizens Lore umfasst 800 Jahre in der Zukunft. Die
                 Redaktion bietet Ihnen eine schnelle Chronologie der großen

@@ -55,7 +55,7 @@ export default function SpectrumArticlePage ({ data, siteTitle }) {
   }, [])
 
   return (
-    <div className="items-center max-w-6xl pt-10 mx-auto print:pt-5">
+    <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
           {siteTitle}
