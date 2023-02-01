@@ -15,6 +15,9 @@ import { BasicPanel } from 'components/panels'
 import Head from 'next/head'
 import client from 'apollo/clients'
 import Link from 'next/link'
+import ShipCard from 'components/ShipExkurs/ShipCard'
+import WeaponCard from 'components/WeaponCard'
+import AttachmentCard from 'components/AttachmentCard'
 
 export async function getServerSideProps (context) {
   const { params } = context
@@ -184,46 +187,9 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-3'>
+                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
                             {data.ships.map((object, index) => (
-                              <div key={object.id} className="px-2 pb-8">
-                                <BasicPanel>
-                                  <Link href={'/ShipExkurs/' + object.slug}>
-                                    <a className='group'>
-                                      <div className="overflow-hidden rounded-2xl">
-                                        <div className="relative w-full aspect-[18/10]">
-                                          <Image
-                                            src={
-                                              'https://cms.ariscorp.de/assets/' + object.storeImage?.id
-                                            }
-                                            alt={'Bild von ' + object.name}
-                                            layout="fill"
-                                            className="object-cover"
-                                            placeholder="blur"
-                                            blurDataURL={
-                                              'https://cms.ariscorp.de/assets/' +
-                                              object.storeImage?.id +
-                                              '?width=16&quality=1'
-                                            }
-                                          />
-                                          <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
-                                            <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
-                                              {object.name}
-                                            </p>
-                                            <Link href={"/VerseExkurs/firmen/" + data.firmen_name}>
-                                              <a className='decoration-transparent'>
-                                                <p className="mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
-                                                  {data.firmen_name}
-                                                </p>
-                                              </a>
-                                            </Link>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </a>
-                                  </Link>
-                                </BasicPanel>
-                              </div>
+                              <ShipCard key={object.id} data={object} manufacturer={data} />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -248,37 +214,9 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-3 px-2 gap-x-4 gap-y-8'>
+                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
                             {data.weapons.map((object, index) => (
-                              <div key={object.id}>
-                                <BasicPanel className={'hover:cursor-pointer'}>
-                                  <div
-                                    className="overflow-hidden h-44 rounded-3xl"
-                                    onClick={() => push('/VerseExkurs/waffen/' + object.waffen_name)}
-                                  >
-                                    <div className="relative w-full h-full">
-                                      <Image
-                                        src={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          object.waffen_bild.id
-                                        }
-                                        alt="Alle-Icon"
-                                        layout="fill"
-                                        objectFit="fill"
-                                        placeholder="blur"
-                                        blurDataURL={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          object.waffen_bild.id +
-                                          '?width=16&quality=1'
-                                        }
-                                      />
-                                    </div>
-                                    <p className="absolute left-0 right-0 text-lg text-center -bottom-1 text-secondary">
-                                      {object.waffen_name}
-                                    </p>
-                                  </div>
-                                </BasicPanel>
-                              </div>
+                              <WeaponCard key={object.id} data={object} manufacturer={data} />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -303,37 +241,9 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-3 px-2 gap-x-4 gap-y-8'>
+                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
                             {attachments.map((object, index) => (
-                              <div key={object.id}>
-                                <BasicPanel className={'hover:cursor-pointer'}>
-                                  <div
-                                    className="overflow-hidden h-44 rounded-3xl"
-                                    onClick={() => push('/VerseExkurs/attachments/' + object.name)}
-                                  >
-                                    <div className="relative w-full h-full">
-                                      <Image
-                                        src={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          object.storeImage?.id
-                                        }
-                                        alt="Alle-Icon"
-                                        layout="fill"
-                                        objectFit="fill"
-                                        placeholder="blur"
-                                        blurDataURL={
-                                          'https://cms.ariscorp.de/assets/' +
-                                          object.storeImage?.id +
-                                          '?width=16&quality=1'
-                                        }
-                                      />
-                                    </div>
-                                    <p className="absolute left-0 right-0 text-lg text-center -bottom-1 text-secondary">
-                                      {object.name}
-                                    </p>
-                                  </div>
-                                </BasicPanel>
-                              </div>
+                              <AttachmentCard key={object.id} data={object} manufacturer={data} />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -341,6 +251,9 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                     </>
                   )}
                 </Disclosure>
+              ) : null}
+              {!data.ships[0] && !data.weapons[0] && !attachments ? (
+                <h2 className='text-center'>Wir führen aktuell keine Produkte dieses Herstellers</h2>
               ) : null}
             </div>
           </div>
