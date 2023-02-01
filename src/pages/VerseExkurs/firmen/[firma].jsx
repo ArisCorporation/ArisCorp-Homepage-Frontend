@@ -253,7 +253,7 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                 </Disclosure>
               ) : null}
               {!data.ships[0] && !data.weapons[0] && !attachments ? (
-                <h2 className='text-center'>Wir führen aktuell keine Produkte dieses Herstellers</h2>
+                <h2 className='text-center'>Wir führen aktuell keine Produkte dieser Firma</h2>
               ) : null}
             </div>
           </div>
