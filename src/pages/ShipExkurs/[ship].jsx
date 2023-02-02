@@ -531,7 +531,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -541,7 +541,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -551,7 +551,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -561,7 +561,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             <Tab
               className={({ selected }) =>
                 (selected ? 'text-primary' : 'opacity-50') +
-                ' p-3 m-1 transition-all duration-300 ease-in-out'
+                ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
               <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
@@ -969,24 +969,25 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                           <span> Wertung</span>
                         </h1>
                       </div>
-                      <div className="grid grid-cols-2 px-8 mt-4 space-x-8">
-                        <div className=''>
+                      <div className="grid grid-cols-2 gap-8 px-8 mt-4">
+                        <div className='relative'>
                           <div className="px-2 mb-8 border border-secondary">
                             <ReactMarkdown
                               rehypePlugins={[rehypeRaw]}
+                              className="text-lg"
                             >
                               {data.introduction}
                             </ReactMarkdown>
                           </div>
 
-                          <ul className="pl-1">
+                          <ul className="pl-2 text-xl">
                             {data.s_w ? (
                               data.s_w
                                 .filter((e) => e.kategorie == 'positive')
                                 .map((object, index) => (
                                   <li
                                     key={index}
-                                    className='list-none before:content-["+"] before:text-green-500 before:mr-2'
+                                    className='list-none my-2 before:content-["+"] before:text-green-500 before:mr-2'
                                   >
                                     {object.name}
                                   </li>
@@ -998,7 +999,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                 .map((object, index) => (
                                   <li
                                     key={index}
-                                    className='list-none before:content-["-"] before:text-red-500 before:mr-2'
+                                    className='list-none my-2 before:content-["-"] before:text-red-500 before:mr-2'
                                   >
                                     {object.name}
                                   </li>
@@ -1007,7 +1008,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                           </ul>
 
 
-                          <div className="flex flex-wrap items-center justify-center py-6 mx-auto whitespace-normal">
+                          <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-center justify-center py-6 whitespace-normal">
                             <div>
                               <h2 className="w-full">Die {data.name}</h2>
                               <p>Erreichte eine Wertung von:</p>
@@ -1035,9 +1036,10 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                           </div>
 
                         </div>
-                        <div className='mb-6'>
+                        <div className='pl-4 mb-6'>
+                          <h2 className='-ml-4 text-primary'>Unsere Einschätzung:</h2>
                           <div>
-                            <p className="text-secondary">
+                            <p className="text-lg text-secondary">
                               <span>Kampfpontenzial - </span>
                               <span>
                                 {fightScore == 10
@@ -1051,10 +1053,10 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                         : 'nicht vorhanden'}
                               </span>
                             </p>
-                            <p className="-mt-3">{fightReason}</p>
+                            <p className="ml-4 -mt-3">{fightReason}</p>
                           </div>
                           <div>
-                            <p className="text-secondary">
+                            <p className="text-lg text-secondary">
                               <span>Wirtschaftliches Potenzial - </span>
                               <span>
                                 {ecoScore == 10
@@ -1068,10 +1070,10 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                         : 'nicht vorhanden'}
                               </span>
                             </p>
-                            <p className="-mt-3">{ecoReason}</p>
+                            <p className="ml-4 -mt-3">{ecoReason}</p>
                           </div>
                           <div>
-                            <p className="text-secondary">
+                            <p className="text-lg text-secondary">
                               <span>Benutzungspotenzial - </span>
                               <span>
                                 {useScore == 10
@@ -1085,10 +1087,10 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                         : 'nicht vorhanden'}
                               </span>
                             </p>
-                            <p className="-mt-3">{useReason}</p>
+                            <p className="ml-4 -mt-3">{useReason}</p>
                           </div>
                           <div>
-                            <p className="text-secondary">
+                            <p className="text-lg text-secondary">
                               <span>Preis-Leistungsverhältnis - </span>
                               <span>
                                 {ppScore == 10
@@ -1102,10 +1104,10 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                         : 'nicht vorhanden'}
                               </span>
                             </p>
-                            <p className="-mt-3">{ppReason}</p>
+                            <p className="ml-4 -mt-3">{ppReason}</p>
                           </div>
                           <div>
-                            <p className="text-secondary">
+                            <p className="text-lg text-secondary">
                               <span>Schlussfolgerung - </span>
                               <span>
                                 {conclusionScore == 10
@@ -1119,7 +1121,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                                         : 'nicht vorhanden'}
                               </span>
                             </p>
-                            <p className="-mt-3">{conclusionReason}</p>
+                            <p className="ml-4 -mt-3">{conclusionReason}</p>
                           </div>
                         </div>
                       </div>
