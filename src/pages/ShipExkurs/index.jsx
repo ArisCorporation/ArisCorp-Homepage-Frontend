@@ -110,7 +110,7 @@ export default function Ships ({ manufacturers, utils }) {
     {
       name: "Transport",
       value: "transport",
-      icon: null,
+      icon: "da3caa51-c087-479b-8bd8-4ac6f4328450",
     },
     {
       name: "Multi",
@@ -120,22 +120,22 @@ export default function Ships ({ manufacturers, utils }) {
     {
       name: "Industriel",
       value: "industrial",
-      icon: null,
+      icon: "4b21e214-0e73-4d7c-89de-86316c4bf5de",
     },
     {
       name: "Kampf",
       value: "combat",
-      icon: null,
+      icon: "57c4e53b-579f-485c-b3b6-405ff04f11b3",
     },
     {
       name: "competition",
       value: "Wettkampf",
-      icon: null,
+      icon: "fe647dce-f1bf-4d5c-9d4e-c0d1b2307658",
     },
     {
       name: "Unterstützung",
       value: "support",
-      icon: null,
+      icon: "b2eef6f0-36f4-4379-9548-b11e7cedfa4c",
     },
     {
       name: "Erkundung",
