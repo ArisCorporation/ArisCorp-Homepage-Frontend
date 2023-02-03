@@ -1318,9 +1318,23 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 
 // SHIPEXKURS QUERYS
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
-  query GetShipExkursShipsIndex($squery: String) {
+  query GetShipExkursShipsIndex(
+    $squery: String
+    $prodStatus: [String]
+    $manufacturers: [String]
+    $sizes: [String]
+    $classes: [String]
+    $focuses: [String]
+  ) {
     ships(
-      filter: { status: { _eq: "published" } }
+      filter: {
+        status: { _eq: "published" }
+        productionStatus: { _in: $prodStatus }
+        manufacturer: { firmen_name: { _in: $manufacturers } }
+        size: { _in: $sizes }
+        classification: { _in: $classes }
+        focus: { _in: $focuses }
+      }
       sort: ["sort", "name"]
       search: $squery
       limit: -1
@@ -1340,6 +1354,8 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
         width
         height
       }
+      size
+      groundVehicle
     }
   }
 `
@@ -1424,7 +1440,10 @@ export const GET_SHIPEXKURS_SHIPUTILS = gql`
       }
     }
 
-    ships {
+    ships(
+      limit: -1
+    ) {
+      productionStatus
       size
       sizeLabel
       classification

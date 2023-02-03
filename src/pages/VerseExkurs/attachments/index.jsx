@@ -49,9 +49,10 @@ export default function Attachments ({ utils, manufacturers }) {
   const squery = query.q
   const categoryquery = query.category
   const sizequery = query.size
-  const manuquery = query.manuf
+  const manuquery = query.manufactr
+  const salequery = query.sale
   let { loading, error, data: Data, refetch } = useQuery(GET_VERSEEXKURS_ATTACHMENTS, {
-    variables: { squery, sizequery, manuquery },
+    variables: { squery, sizequery: sizequery ? sizequery : utils.sizes, manuquery: manuquery ? manuquery : utils.manufacturers },
   })
 
   function arrayToString (array) { array.map((e) => toString(e)) }
@@ -67,33 +68,48 @@ export default function Attachments ({ utils, manufacturers }) {
       let size
       let manufactr
 
-      if (!attachmentCategory) {
-        category = utils.categorys
-      } else {
+      if (attachmentCategory) {
         category = attachmentCategory
       }
 
-      if (!attachmentSize) {
-        size = utils.sizes
-      } else {
+      if (attachmentSize) {
         size = attachmentSize
       }
 
-      if (!manufacturer) {
-        manufactr = utils.manufacturers
-      } else {
+      if (manufacturer) {
         manufactr = manufacturer
       }
 
       let timer = setTimeout(() => {
+        let queries = {}
+        if(search){
+          queries = {
+            ...queries,
+            q: search
+          }
+        }
+        if(category){
+          queries = {
+            ...queries,
+            category: category
+          }
+        }
+        if(size){
+          queries = {
+            ...queries,
+            size: size
+          }
+        }
+        if(manufactr){
+          queries = {
+            ...queries,
+            manufactr: manufactr
+          }
+        }
+        
         replace(
           {
-            query: {
-              q: search,
-              category,
-              size,
-              manuf: manufactr,
-            },
+            query: queries
           },
           undefined,
           {
@@ -139,8 +155,13 @@ export default function Attachments ({ utils, manufacturers }) {
       }
 
       setData(array)
-      console.log(array);
-      console.log(data);
+    } else if (Data && !categoryquery){
+      let array = [
+        ...Data.optics,
+        ...Data.barrel,
+        ...Data.underbarrel,
+      ]
+      setData(array)
     }
   }, [Data, categoryquery])
 

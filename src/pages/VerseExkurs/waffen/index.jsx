@@ -54,11 +54,11 @@ export default function Weapons ({ utils, manufacturers }) {
   const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [manufacturer, setManufacturer] = useState([])
   const squery = query.q
-  const classquery = query.class
+  const classquery = query.classes
   const dmgquery = query.dmg
-  const manuquery = query.manuf
+  const manuquery = query.manufactr
   const { loading, error, data } = useQuery(GET_VERSEEXKURS_WEAPONS, {
-    variables: { squery, classquery, dmgquery, manuquery },
+    variables: { squery, classquery: classquery ? classquery : utils.classes, dmgquery: dmgquery ? dmgquery : utils.dmgtype, manuquery: manuquery ? manuquery : utils.manufacturers },
   })
 
   function handleClick (name) {
@@ -71,33 +71,48 @@ export default function Weapons ({ utils, manufacturers }) {
       let dmgType
       let manufactr
 
-      if (weaponClass == null || weaponClass == '' || weaponClass == []) {
-        clsName = utils.classes
-      } else {
+      if (weaponClass) {
         clsName = weaponClass
       }
 
-      if (damageType == null || damageType == '' || weaponClass == []) {
-        dmgType = utils.dmgtype
-      } else {
+      if (damageType) {
         dmgType = damageType
       }
 
-      if (manufacturer == null || manufacturer == '' || weaponClass == []) {
-        manufactr = utils.manufacturers
-      } else {
+      if (manufacturer) {
         manufactr = manufacturer
       }
 
       let timer = setTimeout(() => {
+        let queries = {}
+        if(search){
+          queries = {
+            ...queries,
+            q: search
+          }
+        }
+        if(clsName){
+          queries = {
+            ...queries,
+            classes: clsName
+          }
+        }
+        if(dmgType){
+          queries = {
+            ...queries,
+            dmg: dmgType
+          }
+        }
+        if(manufactr){
+          queries = {
+            ...queries,
+            manufactr: manufactr
+          }
+        }
+
         replace(
           {
-            query: {
-              q: search,
-              class: clsName,
-              dmg: dmgType,
-              manuf: manufactr,
-            },
+            query: queries,
           },
           undefined,
           {

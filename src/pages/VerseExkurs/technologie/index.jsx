@@ -362,7 +362,7 @@ export default function Technologie ({ data }) {
             </div>
           </Tab.Panel>
           <Tab.Panel>
-            <div className="flex w-full mt-12">
+            <div className="flex max-w-6xl mx-auto mt-12">
               <div className="flex flex-wrap w-4/12 mb-12">
                 <BasicPanel bgo="0">
                   <div className="flex items-center justify-center p-10 text-center">

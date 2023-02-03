@@ -6,7 +6,7 @@ const ShipCard = ({ data, manufacturer }) => (
   <BasicPanel>
     <div className="h-[200px] relative transition-all duration-500 ease">
       <Link href={'/ShipExkurs/' + data.slug}>
-        <a className='relative block w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover group bg-white/5 rounded-2xl' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id})` }}>
+        <a className='relative block w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5 rounded-2xl' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id}?height=400)` }}>
           <div className="absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary">
             <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
               {data.name}

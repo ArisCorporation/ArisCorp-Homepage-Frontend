@@ -252,7 +252,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
             <BasicPanel>
               <div className='min-h-[600px] w-full relative flex'>
-                <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id})` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
+                <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id}?height=2000)` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
               </div>
             </BasicPanel>
           </div>

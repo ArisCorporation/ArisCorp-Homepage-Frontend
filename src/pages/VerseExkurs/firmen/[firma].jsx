@@ -169,7 +169,7 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
           </ReactMarkdown>
           <hr />
           <div>
-            <h1>Produkte von <span className='text-primary'>{data.firmen_name}</span></h1>
+            <h1 id="products">Produkte von <span className='text-primary'>{data.firmen_name}</span></h1>
             <div>
               {data.ships[0] ? (
                 <Disclosure>
