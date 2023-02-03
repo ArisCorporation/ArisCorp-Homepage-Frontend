@@ -613,14 +613,14 @@ export default function Ships ({ manufacturers, utils }) {
                   <Image
                     src={
                       'https://cms.ariscorp.de/assets/' +
-                      '9bf3dcd8-be29-4aea-8a27-44340b607d49'
+                      'd20622cf-dff9-4188-81b1-4029b8862ece'
                     }
                     alt="Alle-Icon"
                     layout="fill"
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
-                      'https://cms.ariscorp.de/assets/9bf3dcd8-be29-4aea-8a27-44340b607d49?width=16&quality=1'
+                      'https://cms.ariscorp.de/assets/d20622cf-dff9-4188-81b1-4029b8862ece?width=16&quality=1'
                     }
                   />
                 </div>
