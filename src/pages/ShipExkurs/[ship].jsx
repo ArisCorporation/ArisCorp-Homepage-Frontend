@@ -214,7 +214,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
       </Head>
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl 2xl:text-5xl 2xl:text-6xl">
+          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl">
             <span className="text-secondary">{data.name}</span>{' '}
           </h1>
           <h3 className="mb-0 uppercase">
@@ -251,16 +251,16 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
         <div className='col-span-3 gap-8 2xl:col-span-2'>
           <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
             <BasicPanel>
-              <div className='min-h-[600px] w-full relative flex'>
+              <div className='h-[300px] lg:h-[600px] 2xl:h-[700px] w-full relative flex'>
                 <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id}?height=2000)` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
               </div>
             </BasicPanel>
           </div>
-          <div className='mt-4'>
+          <div className='mt-4 mb-0 2xl:mb-4'>
             <BasicPanel>
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
-                className="mx-auto prose prose-td:align-middle prose-invert 2xl:max-w-[95%] 2xl:text-"
+                className="mx-auto prose prose-td:align-middle xl:text-base text-xs prose-invert max-w-[95%]"
               >
                 {data.description}
               </ReactMarkdown>
@@ -534,7 +534,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Austattung
               </h1>
             </Tab>
@@ -544,7 +544,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Geschichte
               </h1>
             </Tab>
@@ -554,7 +554,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Gallerie
               </h1>
             </Tab>
@@ -564,7 +564,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base md:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
                 Wertung
               </h1>
             </Tab>
@@ -944,7 +944,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 <div>
                   <ReactMarkdown
                     rehypePlugins={[rehypeRaw]}
-                    className="mx-auto prose prose-td:align-middle prose-invert 2xl:max-w-[90%] 2xl:text-"
+                    className="mx-auto prose prose-td:align-middle prose-invert max-w-[90%] 2xl:text-"
                   >
                     {data.history}
                   </ReactMarkdown>
@@ -969,46 +969,47 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                           <span> Wertung</span>
                         </h1>
                       </div>
-                      <div className="grid grid-cols-2 gap-8 px-8 mt-4">
-                        <div className='relative'>
-                          <div className="px-2 mb-8 border border-secondary">
-                            <ReactMarkdown
-                              rehypePlugins={[rehypeRaw]}
-                              className="text-lg"
-                            >
-                              {data.introduction}
-                            </ReactMarkdown>
+                      <div className="grid gap-8 px-4 mt-4 2xl:px-8 2xl:grid-cols-2">
+                        <div className='flex flex-wrap'>
+                          <div className="h-fit">
+                            <div className="px-2 mb-8 border border-secondary">
+                              <ReactMarkdown
+                                rehypePlugins={[rehypeRaw]}
+                                className="text-lg"
+                              >
+                                {data.introduction}
+                              </ReactMarkdown>
+                            </div>
+
+                            <ul className="pl-2 text-xl">
+                              {data.s_w ? (
+                                data.s_w
+                                  .filter((e) => e.kategorie == 'positive')
+                                  .map((object, index) => (
+                                    <li
+                                      key={index}
+                                      className='list-none my-2 before:content-["+"] before:text-green-500 before:mr-2'
+                                    >
+                                      {object.name}
+                                    </li>
+                                  ))
+                              ) : null}
+                              {data.s_w ? (
+                                data.s_w
+                                  .filter((e) => e.kategorie == 'negative')
+                                  .map((object, index) => (
+                                    <li
+                                      key={index}
+                                      className='list-none my-2 before:content-["-"] before:text-red-500 before:mr-2'
+                                    >
+                                      {object.name}
+                                    </li>
+                                  ))
+                              ) : null}
+                            </ul>
                           </div>
 
-                          <ul className="pl-2 text-xl">
-                            {data.s_w ? (
-                              data.s_w
-                                .filter((e) => e.kategorie == 'positive')
-                                .map((object, index) => (
-                                  <li
-                                    key={index}
-                                    className='list-none my-2 before:content-["+"] before:text-green-500 before:mr-2'
-                                  >
-                                    {object.name}
-                                  </li>
-                                ))
-                            ) : null}
-                            {data.s_w ? (
-                              data.s_w
-                                .filter((e) => e.kategorie == 'negative')
-                                .map((object, index) => (
-                                  <li
-                                    key={index}
-                                    className='list-none my-2 before:content-["-"] before:text-red-500 before:mr-2'
-                                  >
-                                    {object.name}
-                                  </li>
-                                ))
-                            ) : null}
-                          </ul>
-
-
-                          <div className="absolute bottom-0 left-0 right-0 flex flex-wrap items-center justify-center py-6 whitespace-normal">
+                          <div className="flex-wrap items-center justify-center hidden py-6 mt-auto whitespace-normal 2xl:flex">
                             <div>
                               <h2 className="w-full">Die {data.name}</h2>
                               <p>Erreichte eine Wertung von:</p>
@@ -1034,10 +1035,9 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                               </CircularProgressbarWithChildren>
                             </div>
                           </div>
-
                         </div>
-                        <div className='pl-4 mb-6'>
-                          <h2 className='-ml-4 text-primary'>Unsere Einschätzung:</h2>
+                        <div className='mb-6 2xl:pl-4'>
+                          <h2 className='-ml-2 2xl:-ml-4 text-primary'>Unsere Einschätzung:</h2>
                           <div>
                             <p className="text-lg text-secondary">
                               <span>Kampfpontenzial - </span>
@@ -1123,6 +1123,32 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                             </p>
                             <p className="ml-4 -mt-3">{conclusionReason}</p>
                           </div>
+                          <div className="flex flex-wrap items-center justify-center py-6 mt-auto whitespace-normal 2xl:hidden">
+                            <div>
+                              <h2 className="w-full">Die {data.name}</h2>
+                              <p>Erreichte eine Wertung von:</p>
+                            </div>
+                            <div className="w-32 pl-2 aspect-square">
+                              <CircularProgressbarWithChildren
+                                value={overallScore}
+                                text={`${overallScore}%`}
+                                strokeWidth={10}
+                                styles={buildStyles({
+                                  strokeLinecap: 'butt',
+                                })}
+                              >
+                                <RadialSeparators
+                                  count={12}
+                                  style={{
+                                    background: '#666',
+                                    width: '2px',
+                                    // This needs to be equal to props.strokeWidth
+                                    height: `${10}%`,
+                                  }}
+                                />
+                              </CircularProgressbarWithChildren>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -1133,8 +1159,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           </Tab.Panels>
         </Tab.Group>
         <hr />
-        <div className="flex w-full space-x-4 italic uppercase text-secondary">
-          <div className="w-1/3">
+        <div className="flex flex-wrap w-full space-x-4 italic uppercase 2xl:flex-nowrap text-secondary">
+          <div className="w-full 2xl:w-1/3">
             <h3 className="mt-0 text-secondary">Varianten</h3>
             <div className='space-y-2'>
               {data.varianten.map((obj) => (
@@ -1142,7 +1168,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               ))}
             </div>
           </div>
-          <div className="w-1/3">
+          <hr className='2xl:hidden' />
+          <div className="w-full 2xl:w-1/3">
             <h3 className="mt-0 text-secondary">Loaners</h3>
             <div className='space-y-2'>
               {loaners.map((obj) => (
@@ -1150,7 +1177,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               ))}
             </div>
           </div>
-          <div className="w-1/3">
+          <hr className='2xl:hidden' />
+          <div className="w-full 2xl:w-1/3">
             <h3 className="mt-0 text-secondary">Paints</h3>
             <div>
               {/* <BasicPanel>
