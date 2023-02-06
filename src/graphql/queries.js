@@ -1522,7 +1522,6 @@ export const GET_SHIPEXKURS_SHIP = gql`
       introduction
       ratings
       s_w
-      loaners
       varianten {
         ship2 {
           id

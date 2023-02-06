@@ -71,15 +71,15 @@ export async function getServerSideProps (context) {
 
   data = data.ships[0]
   const loaners = []
-  if (data.loaners) {
-    let { data: shipList } = await client.query({ query: GET_SHIPEXKURS_SHIPLOANERS })
-    data.loaners.map((obj) => {
-      const search = shipList.ships.find((e) => e.slug === obj.slug)
-      if (search) {
-        loaners.push(search)
-      }
-    })
-  }
+  // if (data.loaners) {
+  //   let { data: shipList } = await client.query({ query: GET_SHIPEXKURS_SHIPLOANERS })
+  //   data.loaners.map((obj) => {
+  //     const search = shipList.ships.find((e) => e.slug === obj.slug)
+  //     if (search) {
+  //       loaners.push(search)
+  //     }
+  //   })
+  // }
 
   const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
 
@@ -1172,9 +1172,9 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           <div className="w-full 2xl:w-1/3">
             <h3 className="mt-0 text-secondary">Loaners</h3>
             <div className='space-y-2'>
-              {loaners.map((obj) => (
+              {/* {loaners.map((obj) => (
                 <ShipCard key={obj.id} data={obj} />
-              ))}
+              ))} */}
             </div>
           </div>
           <hr className='2xl:hidden' />
