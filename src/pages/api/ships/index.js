@@ -123,7 +123,7 @@ async function uploadFile(url, title, fileType) {
 
   let res = await axios.post(
     BackendURL +
-      '/files/import?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr',
+      '/files/import?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg',
     payload
   )
 
@@ -138,7 +138,7 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
   const boughtAt = []
   const listedAt = []
   const rentalAt = []
-  const loaners = []
+  // const loaners = []
 
   object.soldAt.forEach((object2, index2) => {
     soldAt.push({
@@ -248,12 +248,12 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     })
   })
 
-  object.loaners.forEach((object2, index2) => {
-    loaners.push({
-      name: object2.name,
-      slug: object2.slug,
-    })
-  })
+  // object.loaners.forEach((object2, index2) => {
+  //   loaners.push({
+  //     name: object2.name,
+  //     slug: object2.slug,
+  //   })
+  // })
 
   Dataobject = {
     id: object.id,
@@ -310,7 +310,7 @@ async function pushToDatastore(FileIds, manufacturer, object, index) {
     listedAt: listedAt,
     rentalAt: rentalAt,
     manufacturer: manufacturer,
-    loaners: loaners,
+
   }
 
   return Dataobject
@@ -343,7 +343,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr&limit=-1'
+        'https://cms.ariscorp.de/items/ships?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
@@ -354,7 +354,7 @@ export default async function handler(req, res) {
           if (search != null) {
             axios
               .patch(
-                `https://cms.ariscorp.de/items/ships/${search.id}?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
+                `https://cms.ariscorp.de/items/ships/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
                 object
               )
               .catch(function (error) {
@@ -362,7 +362,7 @@ export default async function handler(req, res) {
           } else {
             axios
               .post(
-                `https://cms.ariscorp.de/items/ships?access_token=ihGAYzxCs1LWxIGBSTWbx8w3cd7oTNCobhZdmr`,
+                `https://cms.ariscorp.de/items/ships?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
                 object
               )
               .catch(function (error) {
