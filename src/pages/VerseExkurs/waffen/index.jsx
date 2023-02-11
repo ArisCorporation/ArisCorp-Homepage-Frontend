@@ -85,25 +85,25 @@ export default function Weapons ({ utils, manufacturers }) {
 
       let timer = setTimeout(() => {
         let queries = {}
-        if(search){
+        if (search) {
           queries = {
             ...queries,
             q: search
           }
         }
-        if(clsName){
+        if (clsName) {
           queries = {
             ...queries,
             classes: clsName
           }
         }
-        if(dmgType){
+        if (dmgType) {
           queries = {
             ...queries,
             dmg: dmgType
           }
         }
-        if(manufactr){
+        if (manufactr) {
           queries = {
             ...queries,
             manufactr: manufactr
@@ -580,7 +580,11 @@ export default function Weapons ({ utils, manufacturers }) {
                     }
                   />
                 </div>
-                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
+                  (manuquery
+                    ? ' text-secondary'
+                    : ' group-hover:text-white')
+                }>
                   Hersteller
                 </p>
               </div>
@@ -666,7 +670,7 @@ export default function Weapons ({ utils, manufacturers }) {
                 />
               </div>
             ) : (
-              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 1.5xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
                 {data?.technologien.map((object, index) => (
                   <WeaponCard key={object.id} data={object} />
                 ))}

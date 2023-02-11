@@ -165,7 +165,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
     data.ratings?.filter((e) => e.kategorie == 'conclusion')[0].grad
   )
   const conclusionReason = data.ratings?.filter(
-    (e) => e.kategorie == 'fight_potential'
+    (e) => e.kategorie == 'conclusion'
   )[0].begrundung
   const overallScore = (data.ratings ? getScore(data.ratings) : null)
 
@@ -214,7 +214,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
       </Head>
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl">
+          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
             <span className="text-secondary">{data.name}</span>{' '}
           </h1>
           <h3 className="mb-0 uppercase">
@@ -223,7 +223,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           </h3>
         </div>
         <div
-          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 2xl:h-48 aspect-square"
+          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square"
           onClick={() =>
             router.push(
               '/VerseExkurs/firmen/' + data.manufacturer.firmen_name
@@ -248,15 +248,15 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
       </div>
       <hr className="mt-2" />
       <div className='grid grid-cols-3 gap-4'>
-        <div className='col-span-3 gap-8 2xl:col-span-2'>
+        <div className='col-span-3 gap-8 1.5xl:col-span-2'>
           <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
             <BasicPanel>
-              <div className='h-[300px] lg:h-[600px] 2xl:h-[700px] w-full relative flex'>
+              <div className='h-[300px] lg:h-[600px] 1.5xl:h-[700px] w-full relative flex'>
                 <div style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.storeImage?.id}?height=2000)` }} className='w-full h-auto max-h-full overflow-hidden transition-all duration-500 bg-black bg-center bg-no-repeat bg-cover rounded-2xl ease' />
               </div>
             </BasicPanel>
           </div>
-          <div className='mt-4 mb-0 2xl:mb-4'>
+          <div className='mt-4 mb-0 1.5xl:mb-4'>
             <BasicPanel>
               <ReactMarkdown
                 rehypePlugins={[rehypeRaw]}
@@ -267,15 +267,15 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             </BasicPanel>
           </div>
         </div>
-        <div className='col-span-3 space-y-4 2xl:col-span-1'>
+        <div className='col-span-3 space-y-4 1.5xl:col-span-1'>
           <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
               <div className='col-span-1'>
                 <div className='text-lg text-secondary'>
                   Basis
                 </div>
               </div>
-              <div className='col-span-1 2xl:col-span-3'>
+              <div className='col-span-1 1.5xl:col-span-3'>
                 <div className='grid grid-cols-3 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Länge:</p>
@@ -371,13 +371,13 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             </div>
           </BasicPanel>
           <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
               <div className='col-span-1'>
                 <div className='text-lg text-secondary'>
                   Kaufen
                 </div>
               </div>
-              <div className='col-span-1 2xl:col-span-3'>
+              <div className='col-span-1 1.5xl:col-span-3'>
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Pledgewert:</p>
@@ -411,13 +411,13 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
             </div>
           </BasicPanel>
           <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
               <div className='col-span-1'>
                 <div className='text-lg text-secondary'>
                   Speed
                 </div>
               </div>
-              <div className='col-span-1 2xl:col-span-3'>
+              <div className='col-span-1 1.5xl:col-span-3'>
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>SCM Geschwindigkeit:</p>
@@ -534,7 +534,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
                 Austattung
               </h1>
             </Tab>
@@ -544,7 +544,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
                 Geschichte
               </h1>
             </Tab>
@@ -554,7 +554,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
                 Gallerie
               </h1>
             </Tab>
@@ -564,12 +564,12 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
               }
             >
-              <h1 className="text-base font-normal uppercase font-base 2xl:text-lg lg:text-xl xl:text-2xl text-inherit">
+              <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
                 Wertung
               </h1>
             </Tab>
           </Tab.List>
-          <Tab.Panels className={'px-4 2xl:px-0 pt-5'}>
+          <Tab.Panels className={'px-4 1.5xl:px-0 pt-5'}>
             <Tab.Panel>
               <p className='text-primary'>Coming Soon</p>
               {/* <div className="flex space-x-2 uppercase">
@@ -944,7 +944,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                 <div>
                   <ReactMarkdown
                     rehypePlugins={[rehypeRaw]}
-                    className="mx-auto prose prose-td:align-middle prose-invert max-w-[90%] 2xl:text-"
+                    className="mx-auto prose prose-td:align-middle prose-invert max-w-[90%] 1.5xl:text-"
                   >
                     {data.history}
                   </ReactMarkdown>
@@ -969,7 +969,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                           <span> Wertung</span>
                         </h1>
                       </div>
-                      <div className="grid gap-8 px-4 mt-4 2xl:px-8 2xl:grid-cols-2">
+                      <div className="grid gap-8 px-4 mt-4 1.5xl:px-8 1.5xl:grid-cols-2">
                         <div className='flex flex-wrap'>
                           <div className="h-fit">
                             <div className="px-2 mb-8 border border-secondary">
@@ -1009,7 +1009,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                             </ul>
                           </div>
 
-                          <div className="flex-wrap items-center justify-center hidden py-6 mt-auto whitespace-normal 2xl:flex">
+                          <div className="flex-wrap items-center justify-center hidden py-6 mt-auto whitespace-normal 1.5xl:flex">
                             <div>
                               <h2 className="w-full">Die {data.name}</h2>
                               <p>Erreichte eine Wertung von:</p>
@@ -1036,8 +1036,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                             </div>
                           </div>
                         </div>
-                        <div className='mb-6 2xl:pl-4'>
-                          <h2 className='-ml-2 2xl:-ml-4 text-primary'>Unsere Einschätzung:</h2>
+                        <div className='mb-6 1.5xl:pl-4'>
+                          <h2 className='-ml-2 1.5xl:-ml-4 text-primary'>Unsere Einschätzung:</h2>
                           <div>
                             <p className="text-lg text-secondary">
                               <span>Kampfpontenzial - </span>
@@ -1123,7 +1123,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                             </p>
                             <p className="ml-4 -mt-3">{conclusionReason}</p>
                           </div>
-                          <div className="flex flex-wrap items-center justify-center py-6 mt-auto whitespace-normal 2xl:hidden">
+                          <div className="flex flex-wrap items-center justify-center py-6 mt-auto whitespace-normal 1.5xl:hidden">
                             <div>
                               <h2 className="w-full">Die {data.name}</h2>
                               <p>Erreichte eine Wertung von:</p>
@@ -1159,8 +1159,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
           </Tab.Panels>
         </Tab.Group>
         <hr />
-        <div className="flex flex-wrap w-full space-x-4 italic uppercase 2xl:flex-nowrap text-secondary">
-          <div className="w-full 2xl:w-1/3">
+        <div className="flex flex-wrap w-full space-x-4 italic uppercase 1.5xl:flex-nowrap text-secondary">
+          <div className="w-full 1.5xl:w-1/3">
             <h3 className="mt-0 text-secondary">Varianten</h3>
             <div className='space-y-2'>
               {data.varianten.map((obj) => (
@@ -1168,8 +1168,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               ))}
             </div>
           </div>
-          <hr className='2xl:hidden' />
-          <div className="w-full 2xl:w-1/3">
+          <hr className='1.5xl:hidden' />
+          <div className="w-full 1.5xl:w-1/3">
             <h3 className="mt-0 text-secondary">Loaners</h3>
             <div className='space-y-2'>
               {/* {loaners.map((obj) => (
@@ -1177,8 +1177,8 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
               ))} */}
             </div>
           </div>
-          <hr className='2xl:hidden' />
-          <div className="w-full 2xl:w-1/3">
+          <hr className='1.5xl:hidden' />
+          <div className="w-full 1.5xl:w-1/3">
             <h3 className="mt-0 text-secondary">Paints</h3>
             <div>
               {/* <BasicPanel>

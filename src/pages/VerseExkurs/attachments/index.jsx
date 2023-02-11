@@ -82,31 +82,31 @@ export default function Attachments ({ utils, manufacturers }) {
 
       let timer = setTimeout(() => {
         let queries = {}
-        if(search){
+        if (search) {
           queries = {
             ...queries,
             q: search
           }
         }
-        if(category){
+        if (category) {
           queries = {
             ...queries,
             category: category
           }
         }
-        if(size){
+        if (size) {
           queries = {
             ...queries,
             size: size
           }
         }
-        if(manufactr){
+        if (manufactr) {
           queries = {
             ...queries,
             manufactr: manufactr
           }
         }
-        
+
         replace(
           {
             query: queries
@@ -155,7 +155,7 @@ export default function Attachments ({ utils, manufacturers }) {
       }
 
       setData(array)
-    } else if (Data && !categoryquery){
+    } else if (Data && !categoryquery) {
       let array = [
         ...Data.optics,
         ...Data.barrel,
@@ -479,7 +479,11 @@ export default function Attachments ({ utils, manufacturers }) {
                     }
                   />
                 </div>
-                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
+                  (manuquery
+                    ? ' text-secondary'
+                    : ' group-hover:text-white')
+                }>
                   Hersteller
                 </p>
               </div>
@@ -565,7 +569,7 @@ export default function Attachments ({ utils, manufacturers }) {
                 />
               </div>
             ) : (
-              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 1.5xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
                 {data.map((object, index) => (
                   <AttachmentCard key={object.id} data={object} />
                 ))}

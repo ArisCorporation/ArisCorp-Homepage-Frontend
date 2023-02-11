@@ -128,8 +128,8 @@ export default function Ships ({ manufacturers, utils }) {
       icon: "57c4e53b-579f-485c-b3b6-405ff04f11b3",
     },
     {
-      name: "competition",
-      value: "Wettkampf",
+      name: "Wettkampf",
+      value: "competition",
       icon: "fe647dce-f1bf-4d5c-9d4e-c0d1b2307658",
     },
     {
@@ -624,7 +624,11 @@ export default function Ships ({ manufacturers, utils }) {
                     }
                   />
                 </div>
-                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
+                  (classquery
+                    ? ' text-secondary'
+                    : ' group-hover:text-white')
+                }>
                   Klassifizierungen
                 </p>
               </div>
@@ -644,7 +648,10 @@ export default function Ships ({ manufacturers, utils }) {
                     }
                   />
                 </div>
-                <p className="p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200">
+                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
+                  (manuquery
+                    ? ' text-secondary'
+                    : ' group-hover:text-white')}>
                   Hersteller
                 </p>
               </div>
@@ -798,7 +805,7 @@ export default function Ships ({ manufacturers, utils }) {
               />
             </div>
           ) : (
-            <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+            <div className='grid grid-cols-1 px-2 lg:grid-cols-2 1.5xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
               {data.map((object, index) => (
                 <ShipCard key={object.id} data={object} />
               ))}

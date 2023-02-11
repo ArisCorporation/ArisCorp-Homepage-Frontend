@@ -116,14 +116,14 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
       </Head>
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
-          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl 2xl:text-5xl 2xl:text-6xl"><span className="text-secondary">
+          <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl"><span className="text-secondary">
             {attachment.manufacturer.firmen_name}
           </span>{' '}
             <span>{attachment.name}</span>
           </h1>
         </div>
         <div
-          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 2xl:h-48 aspect-square"
+          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square"
           onClick={() =>
             router.push(
               '/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name
@@ -148,7 +148,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
       </div>
       <hr className="mt-2" />
       <div className='grid grid-cols-3 gap-4'>
-        <div className='col-span-3 gap-8 2xl:col-span-2'>
+        <div className='col-span-3 gap-8 1.5xl:col-span-2'>
           <div className="overflow-hidden shadow-md shadow-black rounded-3xl">
             <BasicPanel>
               <div className='min-h-[600px] w-full relative flex'>
@@ -157,16 +157,16 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
             </BasicPanel>
           </div>
         </div>
-        <div className='col-span-3 space-y-4 2xl:col-span-1'>
+        <div className='col-span-3 space-y-4 1.5xl:col-span-1'>
           <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
               <div className='col-span-4'>
                 <div className='text-lg text-secondary'>
                   Spezifikationen
                 </div>
               </div>
-              <div className='hidden col-span-1 2xl:block' />
-              <div className='col-span-1 2xl:col-span-3'>
+              <div className='hidden col-span-1 1.5xl:block' />
+              <div className='col-span-1 1.5xl:col-span-3'>
                 <div className="col-span-1">
                   <p className='pb-0 text-sm'>Hersteller:</p>
                   <p className='p-0 text-primary'>
@@ -204,15 +204,15 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
             </div>
           </BasicPanel>
           <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 2xl:grid-cols-4">
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
               <div className='col-span-4'>
                 <div className='text-lg text-secondary'>
                   Statistiken
                 </div>
               </div>
-              <div className="hidden col-span-1 2xl:block" />
+              <div className="hidden col-span-1 1.5xl:block" />
               {classification === 'Optik' ? (
-                <div className='col-span-1 2xl:col-span-3'>
+                <div className='col-span-1 1.5xl:col-span-3'>
                   <div className='grid grid-cols-3 uppercase'>
                     <div className="col-span-3">
                       <p className='pb-0 text-sm'>Zoomstufe:</p>
@@ -235,7 +235,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
                   </div>
                 </div>
               ) : (
-                <div className='col-span-1 2xl:col-span-3'>
+                <div className='col-span-1 1.5xl:col-span-3'>
                   <div className='grid grid-cols-3 uppercase'>
                     {attachment.stats.find((e) => e.category === "noiseLevel") ? (
                       <div className="col-span-3">
