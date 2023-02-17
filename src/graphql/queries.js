@@ -149,11 +149,74 @@ export const GET_MEMBER = gql`
       status
       member_name
       member_titel
+      slug
       member_potrait {
         id
       }
+      sex
+      member_rollen
+      head_of_department
+      department {
+        gameplay_name
+      }
+      birthdate
+      birthPlace
+      birthSystem {
+        name
+      }
+      ueeState
+      citizenReason
+      dutyPeriod
+      dutyReason
+      study
+      educations
+      hairColor
+      eyeColor
+      height
+      weight
+      currentResidence
+      currentResidenceSystem {
+        name
+      }
+      hobbys
+      habits
+      talents
+      tics
+      activities
+      mysteriousThings
+      characterTrait
+      books
+      music
+      movies
+      colors
+      clothing
+      food
+      drink
+      alcohol
+      loves
+      hates
+      text
+      biography
+
       member_biografie
       member_steckbrief
+    }
+    member_gameplays(filter: { member_id: { member_name: { _eq: $name } } }) {
+      gameplays_id {
+        gameplay_name
+      }
+    }
+    member_technologien {
+      technologien_id {
+        waffen_name
+        waffenhersteller {
+          firmen_name
+          slug
+        }
+        waffen_bild {
+          id
+        }
+      }
     }
   }
 `
@@ -495,9 +558,7 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
 
 export const GET_VERSEEXKURS_FIRMA = gql`
   query GetVerseExkursFirma($firma: String!) {
-    firmen(
-      filter: { status: { _eq: "published" }, firmen_name: { _eq: $firma } }
-    ) {
+    firmen(filter: { firmen_name: { _eq: $firma } }) {
       id
       status
       firmen_trans_logo {
@@ -1440,9 +1501,7 @@ export const GET_SHIPEXKURS_SHIPUTILS = gql`
       }
     }
 
-    ships(
-      limit: -1
-    ) {
+    ships(limit: -1) {
       productionStatus
       size
       sizeLabel

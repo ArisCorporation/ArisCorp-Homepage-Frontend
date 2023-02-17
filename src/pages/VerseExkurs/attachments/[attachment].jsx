@@ -14,6 +14,7 @@ import { BasicPanel, BasicPanelButton } from 'components/panels'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import { ShareSquare } from 'components/icons'
+import Link from 'next/link'
 
 export async function getServerSideProps (context) {
   const { params } = context
@@ -122,29 +123,12 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
             <span>{attachment.name}</span>
           </h1>
         </div>
-        <div
-          className="relative mt-0 ml-auto hover:cursor-pointer xs:h-32 h-28 xmlnsXlink xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square"
-          onClick={() =>
-            router.push(
-              '/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name
-            )
-          }
-        >
-          <Image
-            src={
-              'https://cms.ariscorp.de/assets/' +
-              attachment.manufacturer.firmen_trans_logo.id
-            }
-            alt={'Logo von ' + attachment.manufacturer.firmen_name}
-            fill
-            placeholder="blur"
-            blurDataURL={
-              'https://cms.ariscorp.de/assets/' +
-              attachment.manufacturer.firmen_trans_logo.id +
-              '?width=16&quality=1'
-            }
+        <Link href={'/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name}>
+          <a
+            style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${attachment.manufacturer.firmen_trans_logo.id})` }}
+            className='relative mt-0 ml-auto xs:h-32 h-28 hover:cursor-pointer xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square bg-center bg-no-repeat bg-cover'
           />
-        </div>
+        </Link>
       </div>
       <hr className="mt-2" />
       <div className='grid grid-cols-3 gap-4'>
