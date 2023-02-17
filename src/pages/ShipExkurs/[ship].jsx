@@ -483,7 +483,7 @@ export default function SpectrumArticlePage ({ data, loaners, siteTitle }) {
                   </div>
                 </Menu.Item>
 
-                <Menu.Item as="a" target="_blank" href={data.brochure ? ('https://cms.ariscorp.de/assets/' + data.brochure.id) : null} className={"mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border " + (data.brochure ? "" : "hidden")}>
+                <Menu.Item as="a" target="_blank" href={data.brochure ? ('https://cms.ariscorp.de/assets/' + data.brochure.id) : null} className={"group mb-0 text-inherit decoration-transparent bg-transparent border-none block w-full m-0 text-left relative min-w-[50px] p-[2px] rounded-[10px] cursor-pointer transition-all duration-500 box-border " + (data.brochure ? "" : "hidden")}>
                   <div className="group-hover:bg-white/10 group-hover:text-primary flex items-center justify-between text-left py-[6px] px-[14px] overflow-hidden whitespace-nowrap text-ellipsis rounded-[6px] transition-all duration-500 box-border ">
                     <div className="mr-[6px] w-1/4"> <Catalog height={18} className="stroke-white" /> </div>
                     <span className="box-border flex-1">
