@@ -72,12 +72,13 @@ export async function getServerSideProps () {
   return {
     props: {
       manufacturers,
-      utils
+      utils,
+      test: data.ships
     },
   }
 }
 
-export default function Ships ({ manufacturers, utils }) {
+export default function Ships ({ manufacturers, utils, test }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
@@ -102,7 +103,6 @@ export default function Ships ({ manufacturers, utils }) {
   let { loading, error, data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
     variables: {
       squery,
-      prodStatus: prodquery ? prodquery : utils.prodStatus,
       manufacturers: manuquery ? manuquery : utils.manufacturers,
       sizes: sizequery ? sizequery : utils.sizes,
       careers: classquery ? classquery : utils.careers,
@@ -111,7 +111,8 @@ export default function Ships ({ manufacturers, utils }) {
 
   data = data?.ships
 
-  console.log(utils.careers)
+  console.log(test.find((e) => e.name == 'G12'))
+  console.log(utils.sizes.find((e) => e == 0))
   console.warn(error)
 
   const classMenuItems = [

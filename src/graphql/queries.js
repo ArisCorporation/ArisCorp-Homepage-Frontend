@@ -1381,7 +1381,6 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
   query GetShipExkursShipsIndex(
     $squery: String
-    $prodStatus: [String]
     $manufacturers: [String]
     $sizes: [GraphQLStringOrFloat]
     $careers: [String]
@@ -1389,7 +1388,6 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
     ships(
       filter: {
         status: { _eq: "published" }
-        productionStatus: { _in: $prodStatus }
         manufacturer: { firmen_name: { _in: $manufacturers } }
         size: { _in: $sizes }
         career: { _in: $careers }
@@ -1500,11 +1498,10 @@ export const GET_SHIPEXKURS_SHIPUTILS = gql`
     }
 
     ships(limit: -1) {
+      name
       productionStatus
       size
-      sizeLabel
       classification
-      classificationLabel
       focus
       career
     }
