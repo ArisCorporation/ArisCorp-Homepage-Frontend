@@ -1383,9 +1383,8 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
     $squery: String
     $prodStatus: [String]
     $manufacturers: [String]
-    $sizes: [String]
-    $classes: [String]
-    $focuses: [String]
+    $sizes: [GraphQLStringOrFloat]
+    $careers: [String]
   ) {
     ships(
       filter: {
@@ -1393,8 +1392,7 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
         productionStatus: { _in: $prodStatus }
         manufacturer: { firmen_name: { _in: $manufacturers } }
         size: { _in: $sizes }
-        classification: { _in: $classes }
-        focus: { _in: $focuses }
+        career: { _in: $careers }
       }
       sort: ["sort", "name"]
       search: $squery
@@ -1508,6 +1506,7 @@ export const GET_SHIPEXKURS_SHIPUTILS = gql`
       classification
       classificationLabel
       focus
+      career
     }
   }
 `

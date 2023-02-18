@@ -11,6 +11,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import ShipCard from 'components/ShipExkurs/ShipCard'
 import { Combobox } from '@headlessui/react'
+import { util } from 'prettier'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
@@ -18,34 +19,37 @@ export async function getServerSideProps () {
   const manufacturers = data.firmen
   let utils = {
     prodStatus: [],
-    classes: [],
-    focuses: [],
+    careers: [],
+    roles: [],
     sizes: [],
     manufacturers: []
   }
 
-  data.ships.forEach((object, index) => {
-    var classification = object.classification
-    var focus = object.focus
-    var size = object.size
-    var prodStatus = object.productionStatus
+  data.ships.forEach((i) => {
+    // if (i.role) {
+    //   i.role.forEach((obj) => {
+    //     if (!utils.roles.includes(obj)) {
+    //       utils.roles.push(obj)
+    //     }
+    //   })
+    // }
 
-    var aclassification = utils.classes.find((i) => i === classification)
-    var afocus = utils.focuses.find((i) => i === classification)
-    var asize = utils.sizes.find((i) => i === size)
-    var aprodStatus = utils.prodStatus.find((i) => i === prodStatus)
+    if (i.career) {
+      if (!utils.careers.includes(i.career.toLowerCase())) {
+        utils.careers.push(i.career.toLowerCase())
+      }
+    }
 
-    if (!aclassification && classification) {
-      utils.classes.push(classification)
+    if (i.productionStatus) {
+      if (!utils.prodStatus.includes(i.productionStatus)) {
+        utils.prodStatus.push(i.productionStatus)
+      }
     }
-    if (!afocus && focus) {
-      utils.focuses.push(focus)
-    }
-    if (!asize && size) {
-      utils.sizes.push(size)
-    }
-    if (!aprodStatus && prodStatus) {
-      utils.prodStatus.push(prodStatus)
+
+    if (i.size) {
+      if (!utils.sizes.includes(i.size)) {
+        utils.sizes.push(i.size)
+      }
     }
   })
 
@@ -84,7 +88,7 @@ export default function Ships ({ manufacturers, utils }) {
   const [manufacturer, setManufacturer] = useState([])
   const [shipSale, setShipSale] = useState(null)
   const [vehicleType, setVehicleType] = useState([])
-  const [data, setData] = useState([])
+  // const [data, setData] = useState([])
   const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [classesMenu, setClassesMenu] = useState(false)
   const squery = query.q
@@ -95,16 +99,20 @@ export default function Ships ({ manufacturers, utils }) {
   const prodquery = query.prodStatus
   const salequery = query.sale
   const typequery = query.type
-  const { loading, error, data: Data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
+  let { loading, error, data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
     variables: {
       squery,
       prodStatus: prodquery ? prodquery : utils.prodStatus,
       manufacturers: manuquery ? manuquery : utils.manufacturers,
       sizes: sizequery ? sizequery : utils.sizes,
-      classes: classquery ? classquery : utils.classes,
-      focuses: focusquery ? focusquery : utils.focuses,
+      careers: classquery ? classquery : utils.careers,
     },
   })
+
+  data = data?.ships
+
+  console.log(utils.careers)
+  console.warn(error)
 
   const classMenuItems = [
     {
@@ -273,56 +281,56 @@ export default function Ships ({ manufacturers, utils }) {
     if (isReady) setSearch(squery)
   }, [isReady])
 
-  useEffect(() => {
-    if (Data) {
-      if (salequery || typequery) {
-        let array = []
-        if (salequery) {
-          if (salequery.includes(true)) {
-            const ships = Data.ships.filter((e) => e.onSale == true)
-            array = [
-              ...ships
-            ]
-          } else if (salequery.includes(false)) {
-            const ships = Data.ships.filter((e) => e.onSale == false)
-            array = [
-              ...array,
-              ...ships
-            ]
-          }
-        }
+  // useEffect(() => {
+  //   if (Data) {
+  //     if (salequery || typequery) {
+  //       let array = []
+  //       if (salequery) {
+  //         if (salequery.includes(true)) {
+  //           const ships = Data.ships.filter((e) => e.onSale == true)
+  //           array = [
+  //             ...ships
+  //           ]
+  //         } else if (salequery.includes(false)) {
+  //           const ships = Data.ships.filter((e) => e.onSale == false)
+  //           array = [
+  //             ...array,
+  //             ...ships
+  //           ]
+  //         }
+  //       }
 
-        if (typequery) {
-          if (typequery.includes("ground")) {
-            let vehicles = []
-            if (array[0]) {
-              vehicles = array.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
-            } else {
-              vehicles = Data.ships.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
-            }
+  //       if (typequery) {
+  //         if (typequery.includes("ground")) {
+  //           let vehicles = []
+  //           if (array[0]) {
+  //             vehicles = array.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
+  //           } else {
+  //             vehicles = Data.ships.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
+  //           }
 
-            array = vehicles
-          } else if (typequery.includes("ship")) {
-            let vehicles = []
-            if (array[0]) {
-              vehicles = array.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
-            } else {
-              vehicles = Data.ships.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
-            }
+  //           array = vehicles
+  //         } else if (typequery.includes("ship")) {
+  //           let vehicles = []
+  //           if (array[0]) {
+  //             vehicles = array.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
+  //           } else {
+  //             vehicles = Data.ships.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
+  //           }
 
-            array = vehicles
-          }
-        }
+  //           array = vehicles
+  //         }
+  //       }
 
-        setData(array)
-      } else {
-        let array = [
-          ...Data.ships
-        ]
-        setData(array)
-      }
-    }
-  }, [Data, salequery, typequery])
+  //       setData(array)
+  //     } else {
+  //       let array = [
+  //         ...Data.ships
+  //       ]
+  //       setData(array)
+  //     }
+  //   }
+  // }, [Data, salequery, typequery])
 
   const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
 
@@ -459,7 +467,7 @@ export default function Ships ({ manufacturers, utils }) {
               <div className="flex ml-6 space-x-2">
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize(['snub'])}
+                  onClick={() => setShipSize([1])}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -489,7 +497,7 @@ export default function Ships ({ manufacturers, utils }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize(['small'])}
+                  onClick={() => setShipSize([2])}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -519,7 +527,7 @@ export default function Ships ({ manufacturers, utils }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize(['medium'])}
+                  onClick={() => setShipSize([3])}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -549,7 +557,7 @@ export default function Ships ({ manufacturers, utils }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize(['large'])}
+                  onClick={() => setShipSize([4])}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -579,7 +587,7 @@ export default function Ships ({ manufacturers, utils }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize(['capital'])}
+                  onClick={() => setShipSize([5])}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
