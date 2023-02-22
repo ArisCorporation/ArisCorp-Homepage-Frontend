@@ -263,48 +263,44 @@ function MobileNavbarItem ({ content, link, ourTab, AnkerLink }) {
 
   if (!ourTab) {
     return (
-      <li className="pb-0 list-none">
-        <a
-          onClick={() =>
-            link
-              ? push({ pathname: link })
-              : replace({ pathname: '/', hash: AnkerLink })
-          }
-        >
-          <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-            {content}
-          </span>
-        </a>
-      </li>
-    )
-  }
-
-  return (
-    <li className="pb-0 list-none">
       <a
         onClick={() =>
-          query.about != null && query.about != ''
-            ? replace(
-              {
-                pathname: '/',
-                hash: AnkerLink,
-                query: { about: query.about, our: ourTab },
-              },
-              undefined,
-              { shallow: true }
-            )
-            : replace(
-              { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
-              undefined,
-              { shallow: true }
-            )
+          link
+            ? push({ pathname: link })
+            : replace({ pathname: '/', hash: AnkerLink })
         }
       >
         <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
           {content}
         </span>
       </a>
-    </li>
+    )
+  }
+
+  return (
+    <a
+      onClick={() =>
+        query.about != null && query.about != ''
+          ? replace(
+            {
+              pathname: '/',
+              hash: AnkerLink,
+              query: { about: query.about, our: ourTab },
+            },
+            undefined,
+            { shallow: true }
+          )
+          : replace(
+            { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
+            undefined,
+            { shallow: true }
+          )
+      }
+    >
+      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
+        {content}
+      </span>
+    </a>
   )
 }
 
