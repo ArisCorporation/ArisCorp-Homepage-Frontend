@@ -193,9 +193,9 @@ export default function StarmapPage ({ data }) {
                   <div className="relative w-full h-full">
                     <Image
                       src="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b"
-                      layout="fill"
+                      fill
                       alt="Starmap Legende"
-                      objectFit="contain"
+                      contain
                       placeholder="blur"
                       blurDataURL="https://cms.ariscorp.de/assets/e3b8e2b3-5657-4112-ab8f-c0f1311e9a6b?width=16&quality=1"
                     />
@@ -652,9 +652,9 @@ export default function StarmapPage ({ data }) {
               <div className="w-full aspect-[3529/1245] relative">
                 <Image
                   src="https://cms.ariscorp.de/assets/a769ad76-31e5-4979-84f5-ba49788561ce"
-                  layout="fill"
+                  fill
                   alt="Starmap Legende"
-                  objectFit="contain"
+                  contain
                   placeholder="blur"
                   blurDataURL="https://cms.ariscorp.de/assets/a769ad76-31e5-4979-84f5-ba49788561ce?width=16&quality=1"
                 />
@@ -733,9 +733,9 @@ export default function StarmapPage ({ data }) {
               <div className="w-full aspect-[1200/841] relative">
                 <Image
                   src="https://cms.ariscorp.de/assets/c5318dd2-7bb6-4f1e-bb86-092652a9e055"
-                  layout="fill"
+                  fill
                   alt="Starmap Legende"
-                  objectFit="contain"
+                  contain
                   placeholder="blur"
                   blurDataURL="https://cms.ariscorp.de/assets/c5318dd2-7bb6-4f1e-bb86-092652a9e055?width=16&quality=1"
                 />
@@ -749,9 +749,9 @@ export default function StarmapPage ({ data }) {
               <div className="w-full aspect-[3680/1236] relative">
                 <Image
                   src="https://cms.ariscorp.de/assets/a3e75409-9f24-452e-a1f2-d2b6aa45e36e"
-                  layout="fill"
+                  fill
                   alt="Starmap Legende"
-                  objectFit="contain"
+                  contain
                   placeholder="blur"
                   blurDataURL="https://cms.ariscorp.de/assets/a3e75409-9f24-452e-a1f2-d2b6aa45e36e?width=16&quality=1"
                 />
@@ -805,9 +805,9 @@ export default function StarmapPage ({ data }) {
               <div className="w-full aspect-[1200/841] relative">
                 <Image
                   src="https://cms.ariscorp.de/assets/041bf58e-f736-4384-a265-1ef9a21330d6"
-                  layout="fill"
+                  fill
                   alt="Starmap Legende"
-                  objectFit="contain"
+                  contain
                   placeholder="blur"
                   blurDataURL="https://cms.ariscorp.de/assets/041bf58e-f736-4384-a265-1ef9a21330d6?width=16&quality=1"
                 />

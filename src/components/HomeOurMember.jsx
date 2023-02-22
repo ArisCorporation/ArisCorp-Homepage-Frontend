@@ -32,8 +32,8 @@ export default function OurMember () {
                   <Image
                     src={'https://cms.ariscorp.de/assets/' + Potrait}
                     alt={member.member_name + 'Potrait'}
-                    layout="fill"
-                    objectFit="contain"
+                    fill
+                    contain
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/' +

@@ -204,7 +204,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
@@ -268,7 +268,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '47d884d9-e7ce-4a2e-ab52-9670668a0349'
                       }
                       alt="Energie-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -305,7 +305,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '7cc59886-ff69-412a-8e72-e5e73a6511f6'
                       }
                       alt="Ballistisch-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -344,7 +344,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         'dece2f20-e9c5-4932-89ca-664d3c5487e1'
                       }
                       alt="Pistolen-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -374,7 +374,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '7dd32e63-2919-45ec-bc22-d54fdaba861a'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -404,7 +404,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '22a23dba-8eea-42c4-9a29-fccb6c035b26'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -434,7 +434,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         'c8e91660-072a-446c-9832-a35c0d107287'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -464,7 +464,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         'b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -494,7 +494,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '56c1a446-85c7-4400-84b4-9a02a54d395a'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -531,7 +531,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         'f32ea524-6423-4a0b-a3d0-92e78acfd516'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -572,7 +572,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       '314cc998-245d-4487-97cd-fb86342eaf8d'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
@@ -607,7 +607,7 @@ export default function Weapons ({ utils, manufacturers }) {
                         '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -637,7 +637,7 @@ export default function Weapons ({ utils, manufacturers }) {
                             obj.firmen_trans_logo?.id
                           }
                           alt="Energie-Icon"
-                          layout="fill"
+                          fill
                           objectFit="cover"
                           placeholder="blur"
                           blurDataURL={

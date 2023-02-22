@@ -62,7 +62,7 @@ export default function SpectrumCategoryPage ({ data, category, siteTitle }) {
         <div className="relative w-full">
           <Image
             src={'https://cms.ariscorp.de/assets/' + category.image?.id}
-            layout="fill"
+            fill
             alt={
               'Banner von der Kategorie: ' + category.spectrum_beitrag_kateogrie
             }

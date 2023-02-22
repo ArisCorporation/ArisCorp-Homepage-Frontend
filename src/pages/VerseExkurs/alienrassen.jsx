@@ -63,7 +63,7 @@ export default function Alienrassen ({ data }) {
                 alt="Banu Potrait"
                 className=""
                 blurDataURL={''}
-                layout="fill"
+                fill
                 placeholder={''}
               />
             </div>
@@ -80,7 +80,7 @@ export default function Alienrassen ({ data }) {
                 }
                 alt="Tevarin Potrait"
                 blurDataURL={''}
-                layout="fill"
+                fill
                 placeholder={''}
               />
             </div>
@@ -97,7 +97,7 @@ export default function Alienrassen ({ data }) {
                 }
                 alt="Vanduul Potrait"
                 blurDataURL={''}
-                layout="fill"
+                fill
                 placeholder={''}
               />
             </div>
@@ -114,7 +114,7 @@ export default function Alienrassen ({ data }) {
                 }
                 alt="Xi'An Potrait"
                 blurDataURL={''}
-                layout="fill"
+                fill
                 placeholder={''}
               />
             </div>
@@ -131,7 +131,7 @@ export default function Alienrassen ({ data }) {
                 }
                 alt="Biestarium Potrait"
                 blurDataURL={''}
-                layout="fill"
+                fill
                 objectFit="cover"
                 placeholder={''}
               />
@@ -149,7 +149,7 @@ export default function Alienrassen ({ data }) {
                 }
                 alt="Pflanzen Potrait"
                 blurDataURL={''}
-                layout="fill"
+                fill
                 objectFit="cover"
                 placeholder={''}
               />

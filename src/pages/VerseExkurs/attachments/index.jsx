@@ -235,7 +235,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
@@ -289,7 +289,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         'df440c84-f2d7-4c16-9f4e-352dcf4b1170'
                       }
                       alt="Optics-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -319,7 +319,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         '61233634-b820-4805-8213-304b524c5c3f'
                       }
                       alt="Barrels-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -349,7 +349,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         'e3c26a21-2e95-49ff-80ba-0ecf814b34ba'
                       }
                       alt="Underbarrels-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -382,7 +382,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         '5c1bf1df-956f-45dd-af99-2163d1018153'
                       }
                       alt="S1-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -412,7 +412,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         '7027368d-f856-4c47-afb6-300b63fb32d2'
                       }
                       alt="S2-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -442,7 +442,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         '6d01f3b8-3b03-4e39-832b-b52d4a59933f'
                       }
                       alt="S3-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -471,7 +471,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       '314cc998-245d-4487-97cd-fb86342eaf8d'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
+                    fill
                     objectFit="cover"
                     placeholder="blur"
                     blurDataURL={
@@ -506,7 +506,7 @@ export default function Attachments ({ utils, manufacturers }) {
                         '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
+                      fill
                       objectFit="cover"
                       placeholder="blur"
                       blurDataURL={
@@ -536,7 +536,7 @@ export default function Attachments ({ utils, manufacturers }) {
                             obj.firmen_trans_logo?.id
                           }
                           alt="Energie-Icon"
-                          layout="fill"
+                          fill
                           objectFit="cover"
                           placeholder="blur"
                           blurDataURL={

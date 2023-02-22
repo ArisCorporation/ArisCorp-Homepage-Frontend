@@ -96,8 +96,8 @@ export default function CommLinkDetailPage ({data, siteTitle}) {
                   }
                   alt={'Author Potrait'}
                   placeholder="blur"
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  cover
                   blurDataURL={
                     'https://cms.ariscorp.de/assets/' +
                     data.comm_link_author.member_potrait?.id +

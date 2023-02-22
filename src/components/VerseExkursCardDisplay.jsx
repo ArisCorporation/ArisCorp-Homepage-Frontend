@@ -11,8 +11,8 @@ const CardDisplay = ({link, image, alt}) => {
               src={
                 'https://cms.ariscorp.de/assets/' + image
               }
-              layout="fill"
-              objectFit="cover"
+              fill
+              cover
               alt={alt}
             />
           </div>

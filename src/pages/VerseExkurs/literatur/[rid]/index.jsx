@@ -65,7 +65,7 @@ export default function LiteraturReihenPage ({ data, reihe, reihen, siteTitle })
         <div className="relative w-full">
           <Image
             src={'https://cms.ariscorp.de/assets/' + reihe.reihen_cover?.id}
-            layout="fill"
+            fill
             alt={'Banner von der Kategorie: ' + reihe.reihen_titel}
             placeholder="blur"
             blurDataURL={

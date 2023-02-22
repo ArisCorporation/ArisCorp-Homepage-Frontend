@@ -203,7 +203,7 @@ export default function SystemDetailPage ({ data, siteTitle }) {
                                           ? vnclIcon
                                           : null
                             }
-                            layout="fill"
+                            fill
                             placeholder="blur"
                             blurDataURL={unclIcon + '?width=16&quality=1'}
                             draggable="false"

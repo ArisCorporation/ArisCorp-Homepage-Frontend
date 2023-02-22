@@ -61,8 +61,8 @@ export default function OurGameplays() {
                           'https://cms.ariscorp.de/assets/' +
                           data.gameplay_bild_links.id
                         }
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        cover
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/' +
@@ -78,8 +78,8 @@ export default function OurGameplays() {
                           'https://cms.ariscorp.de/assets/' +
                           data.gameplay_bild_rechts.id
                         }
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        cover
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/' +

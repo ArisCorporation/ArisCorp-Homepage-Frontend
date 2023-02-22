@@ -48,7 +48,7 @@ export default function LiteraturReihenPage ({ data }) {
         <div className="relative w-full">
           <Image
             src="https://cms.ariscorp.de/assets/93f3722e-943d-491e-85d5-2b15ef82107d"
-            layout="fill"
+            fill
             alt="Literatur Banner"
             placeholder="blur"
             blurDataURL="https://cms.ariscorp.de/assets/93f3722e-943d-491e-85d5-2b15ef82107d"

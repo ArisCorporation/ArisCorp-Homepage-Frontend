@@ -500,8 +500,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                       '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -527,8 +527,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         '0cb20cc7-593e-480f-80ce-fc43296bda39'
                       }
                       alt="Ship-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/0cb20cc7-593e-480f-80ce-fc43296bda39?width=16&quality=1'
@@ -557,8 +557,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'fc3c9400-e9b7-426b-abf2-80e0db326c3a'
                       }
                       alt="Ground-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/fc3c9400-e9b7-426b-abf2-80e0db326c3a?width=16&quality=1'
@@ -589,8 +589,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'fcb5c0b1-de39-4d84-acde-5368b725ed70'
                       }
                       alt="XS-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/fcb5c0b1-de39-4d84-acde-5368b725ed70?width=16&quality=1'
@@ -619,8 +619,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'ed637355-d7b9-4ac3-bd07-ee039028215c'
                       }
                       alt="S-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/ed637355-d7b9-4ac3-bd07-ee039028215c?width=16&quality=1'
@@ -649,8 +649,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'b40ef483-f55f-4a74-8bac-6495f3c5f55d'
                       }
                       alt="M-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/b40ef483-f55f-4a74-8bac-6495f3c5f55d?width=16&quality=1'
@@ -679,8 +679,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'e8f72a80-8ce0-4ad9-85da-ca961a8d3367'
                       }
                       alt="L-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/e8f72a80-8ce0-4ad9-85da-ca961a8d3367?width=16&quality=1'
@@ -709,8 +709,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         'a9cf9685-e972-42ad-91c5-762002975eb0'
                       }
                       alt="C-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/a9cf9685-e972-42ad-91c5-762002975eb0?width=16&quality=1'
@@ -737,8 +737,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                       'd20622cf-dff9-4188-81b1-4029b8862ece'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/d20622cf-dff9-4188-81b1-4029b8862ece?width=16&quality=1'
@@ -761,8 +761,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                       '314cc998-245d-4487-97cd-fb86342eaf8d'
                     }
                     alt="Alle-Icon"
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
@@ -796,8 +796,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                           '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                         }
                         alt="Alle-Icon"
-                        layout="fill"
-                        objectFit="cover"
+                        fill
+                        cover
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -827,8 +827,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                                 (obj.icon ? obj.icon : '9bf3dcd8-be29-4aea-8a27-44340b607d49')
                               }
                               alt={obj.name + "-Icon"}
-                              layout="fill"
-                              objectFit="cover"
+                              fill
+                              cover
                               placeholder="blur"
                               blurDataURL={
                                 'https://cms.ariscorp.de/assets/' + '9bf3dcd8-be29-4aea-8a27-44340b607d49' + '?width=16&quality=1'
@@ -881,8 +881,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                       }
                       alt="Alle-Icon"
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -911,8 +911,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                             obj.firmen_trans_logo?.id
                           }
                           alt="Energie-Icon"
-                          layout="fill"
-                          objectFit="cover"
+                          fill
+                          cover
                           placeholder="blur"
                           blurDataURL={
                             'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'

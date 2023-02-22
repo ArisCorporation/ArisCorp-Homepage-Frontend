@@ -12,7 +12,7 @@ const ArticleCard = ({ link, title, desc, image, seperator, alt }) => {
             <div className={'relative h-3/4 w-1/3'}>
               <Image
                 src={'https://cms.ariscorp.de/assets/' + image}
-                layout="fill"
+                fill
                 alt={'Banner von ' + alt}
                 placeholder="blur"
                 blurDataURL={
@@ -20,7 +20,7 @@ const ArticleCard = ({ link, title, desc, image, seperator, alt }) => {
                   image +
                   '?width=16&quality=1'
                 }
-                objectFit="cover"
+                cover
               />
             </div>
             <div className="w-2/3 px-10 text-[0.6rem] md:text-xs xl:text-base">

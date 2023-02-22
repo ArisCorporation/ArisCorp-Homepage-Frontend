@@ -278,7 +278,7 @@ export default function Technologie ({ data }) {
                                     'https://cms.ariscorp.de/assets/' +
                                     object.icon
                                   }
-                                  layout="fill"
+                                  fill
                                   objectFit="cover"
                                   alt={'icon von: ' + object.name}
                                   placeholder="blur"
@@ -307,7 +307,7 @@ export default function Technologie ({ data }) {
                         <Image
                           src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
                           alt="Kompletter Tech Index"
-                          layout="fill"
+                          fill
                           objectFit="cover"
                           placeholder="blur"
                           blurDataURL={
@@ -416,8 +416,8 @@ export default function Technologie ({ data }) {
                       <Image
                         src="https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae"
                         alt="Waffenindex"
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        contain
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/ecc40f84-3743-4e12-a6b2-2f697bfd99ae' +
@@ -434,8 +434,8 @@ export default function Technologie ({ data }) {
                       <Image
                         src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
                         alt="Armorindex"
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        contain
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca' +
@@ -452,8 +452,8 @@ export default function Technologie ({ data }) {
                       <Image
                         src="https://cms.ariscorp.de/assets/72e4d24c-0469-4873-8034-f785af65619f"
                         alt="Attachmentindex"
-                        layout="fill"
-                        objectFit="contain"
+                        fill
+                        contain
                         placeholder="blur"
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/72e4d24c-0469-4873-8034-f785af65619f' +
@@ -482,7 +482,7 @@ const PersonalInfo = ({ name, desc, image }) => (
             <div className="relative sm:w-64 w-56 h-[5.5rem]">
               <Image
                 src={'https://cms.ariscorp.de/assets/' + image}
-                layout="fill"
+                fill
                 objectFit="cover"
                 placeholder="blur"
                 blurDataURL={
@@ -513,7 +513,7 @@ const ShipInfo = ({ name, desc, image }) => (
               <div className="relative w-56 h-[5.5rem]">
                 <Image
                   src={'https://cms.ariscorp.de/assets/' + image}
-                  layout="fill"
+                  fill
                   objectFit="cover"
                   placeholder="blur"
                   blurDataURL={

@@ -59,7 +59,7 @@ export default function SpectrumPage ({ data }) {
         <div className="relative w-full">
           <Image 
             src="https://cms.ariscorp.de/assets/c0a200fa-83d3-48f1-b6e4-905960cab504"
-            layout="fill"
+            fill
             alt="Spectrum Banner"
             placeholder="blur"
             blurDataURL="https://cms.ariscorp.de/assets/c0a200fa-83d3-48f1-b6e4-905960cab504?width=16&quality=1"
