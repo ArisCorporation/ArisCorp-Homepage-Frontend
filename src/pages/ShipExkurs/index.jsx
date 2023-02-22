@@ -145,6 +145,11 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
       value: "exploration",
       icon: "6ff37caa-e47e-4c69-a81c-26b0b3d0a7a8",
     },
+    {
+      name: "Forschung",
+      value: "science",
+      icon: "20bee075-394a-46a8-af24-c8f2087c9643",
+    },
   ]
 
   const roleMenuItems = [
