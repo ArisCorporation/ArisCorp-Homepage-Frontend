@@ -73,6 +73,7 @@ async function getLiveShipData() {
 async function formData() {
   const liveShipData = await getLiveShipData()
   const ships = []
+  const skippedPaints = ['Carrack Expedition']
 
   await Promise.all(
     liveShipData.map(async (obj) => {
@@ -83,6 +84,10 @@ async function formData() {
       if (flPaints[0]) {
         await Promise.all(
           await flPaints?.map(async (i) => {
+            if(skippedPaints.includes(i.name)){
+              return
+            }
+
             const fileName = obj.slug + '-' + i.slug
             const link = i.storeImage
             let storeImage
