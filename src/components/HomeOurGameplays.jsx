@@ -31,10 +31,8 @@ export default function OurGameplays() {
                   src={
                     'https://cms.ariscorp.de/assets/' + data.gameplay_logo.id
                   }
-                  width={144}
-                  height={144}
-                  layout="fill"
-                  objectFit="cover"
+                  fill
+                  cover
                   placeholder="blur"
                   blurDataURL={
                     'https://cms.ariscorp.de/assets/' +
