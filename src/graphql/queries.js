@@ -1578,6 +1578,15 @@ export const GET_SHIPEXKURS_SHIP = gql`
       s_w
       paints
       variants
+      hardpoints
+    }
+    components(limit: -1) {
+      id
+      name
+      manufacturer{
+        firmen_name
+        status
+      }
     }
   }
 `

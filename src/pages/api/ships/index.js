@@ -245,7 +245,6 @@ async function formData() {
     'Nautilus Solstice Edition',
     'Valkyrie Liberator Edition',
   ]
-  const skippedPaints = ['Carrack Expedition']
   const slugOverwrites = [
     {
       ship: 'santokyi',
@@ -1806,7 +1805,7 @@ async function formData() {
 
           const hardpoint = {
             type: 'powerplant',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             component: component?.id,
           }
 
@@ -1818,7 +1817,7 @@ async function formData() {
 
           const hardpoint = {
             type: 'cooler',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             component: component?.id,
           }
 
@@ -1830,7 +1829,7 @@ async function formData() {
 
           const hardpoint = {
             type: 'shield',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             component: component?.id,
           }
 
@@ -1842,7 +1841,7 @@ async function formData() {
 
           const hardpoint = {
             type: 'quantumdrive',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             component: component?.id,
           }
 
@@ -1851,7 +1850,7 @@ async function formData() {
 
         obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
           const hardpoint = {
-            type: 'shieldgenerator',
+            type: 'jumpmodule',
             size: setSize(i.size.toLowerCase()),
             componentSize: setSize(i.component_size.toLowerCase()),
           }
@@ -1866,7 +1865,7 @@ async function formData() {
         p4kHardpoints.QuantumFuelTanks.forEach((i) => {
           const hardpoint = {
             type: 'quantumfueltank',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1876,7 +1875,7 @@ async function formData() {
         p4kHardpoints.HydrogenFuelTanks.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfueltank',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1886,7 +1885,7 @@ async function formData() {
         p4kHardpoints.HydogenFuelIntakes.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfuelintake',
-            size: i.size,
+            size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1925,7 +1924,7 @@ async function formData() {
           const hardpoint = {
             type: 'mainthruster',
             category: 'M',
-            size: i.size,
+            size: i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1936,7 +1935,7 @@ async function formData() {
           const hardpoint = {
             type: 'retrothruster',
             category: 'R',
-            size: i.size,
+            size: i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1947,7 +1946,7 @@ async function formData() {
           const hardpoint = {
             type: 'vtolthruster',
             category: 'V',
-            size: i.size,
+            size: i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -1960,20 +1959,18 @@ async function formData() {
           const hardpoint = {
             type: 'fixedmaneuveringthruster',
             category: 'F',
-            size: i.size,
+            size: i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.ManeuveringThrusters.filter(
-          (e) => e.InstalledItem?.Type === 'ManneuverThruster.JointThruster'
-        ).forEach((i) => {
+        p4kHardpoints.ManeuveringThrusters.filter((e) => e.InstalledItem?.Type === 'ManneuverThruster.JointThruster').forEach((i) => {
           const hardpoint = {
             type: 'gimbaledmaneuveringthruster',
             category: 'G',
-            size: i.size,
+            size: i.Size,
             componentSize: i?.InstalledItem?.Size,
           }
 
@@ -2202,7 +2199,7 @@ async function formData() {
                 size: setSize(i.size.toLowerCase()),
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
-              
+
               Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
