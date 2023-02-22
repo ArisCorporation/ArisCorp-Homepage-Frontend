@@ -83,6 +83,7 @@ export async function getServerSideProps (context) {
   //     }
   //   })
   // }
+  
   const variants = []
   if (data?.variants[0]) {
     data.variants.forEach((obj) => {
@@ -109,8 +110,6 @@ export default function ShipPage ({ data, loaners, variants, siteTitle }) {
   const urlquery = query.tab
   const { ship: Ship } = router.query
   const shareUrl = "https://ariscorp.de/ShipExkurs/" + data.slug + (urlquery ? "?tab=" + urlquery : "")
-
-  console.log(variants);
 
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)

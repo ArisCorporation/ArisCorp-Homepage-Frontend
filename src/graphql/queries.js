@@ -132,6 +132,7 @@ export const GET_MEMBERS = gql`
       member_name
       member_titel
       member_rollen
+      head_of_department
       member_potrait {
         id
       }
@@ -1575,19 +1576,8 @@ export const GET_SHIPEXKURS_SHIP = gql`
       introduction
       ratings
       s_w
-      varianten {
-        ship2 {
-          id
-          slug
-          name
-          storeImage {
-            id
-            width
-            height
-          }
-        }
-      }
       paints
+      variants
     }
   }
 `
@@ -1595,6 +1585,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
 export const GET_SHIPEXKURS_SHIPLOANERS = gql`
   query GetShipExkursShipLoaners {
     ships(filter: { status: { _eq: "published" } }, limit: -1) {
+      id
       slug
       name
       manufacturer {

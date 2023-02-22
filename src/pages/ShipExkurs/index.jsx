@@ -108,7 +108,6 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
       careers: classquery ? classquery : utils.careers,
     },
   })
-  console.log(utils.sizes)
 
   const classMenuItems = [
     {
