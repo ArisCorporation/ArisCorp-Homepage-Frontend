@@ -1380,7 +1380,6 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 // SHIPEXKURS QUERYS
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
   query GetShipExkursShipsIndex(
-    $squery: String
     $manufacturers: [String]
     $sizes: [GraphQLStringOrFloat]
     $careers: [String]
@@ -1393,7 +1392,6 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
         career: { _in: $careers }
       }
       sort: ["sort", "name"]
-      search: $squery
       limit: -1
     ) {
       id
@@ -1589,6 +1587,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
           }
         }
       }
+      paints
     }
   }
 `

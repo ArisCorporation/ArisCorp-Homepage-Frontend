@@ -1,7 +1,7 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'
@@ -123,7 +123,7 @@ export default function SpectrumArticlePage ({ attachment, classification, siteT
             <span>{attachment.name}</span>
           </h1>
         </div>
-        <Link href={'/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name}>
+        <Link legacyBehavior href={'/VerseExkurs/firmen/' + attachment.manufacturer.firmen_name}>
           <a
             style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${attachment.manufacturer.firmen_trans_logo.id})` }}
             className='relative mt-0 ml-auto xs:h-32 h-28 hover:cursor-pointer xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square bg-center bg-no-repeat bg-cover'

@@ -10,18 +10,22 @@ import client from 'apollo/clients'
 import Link from 'next/link'
 import Head from 'next/head'
 import ShipCard from 'components/ShipExkurs/ShipCard'
-import { Combobox } from '@headlessui/react'
-import { util } from 'prettier'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
+
+  if (!data?.ships) {
+    return {
+      notFound: true,
+    }
+  }
 
   const manufacturers = data.firmen
   let utils = {
     prodStatus: [],
     careers: [],
     roles: [],
-    sizes: [],
+    sizes: [0],
     manufacturers: []
   }
 
@@ -63,22 +67,18 @@ export async function getServerSideProps () {
     }
   })
 
-  if (!data) {
-    return {
-      notFound: true,
-    }
-  }
+  const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
       manufacturers,
       utils,
-      test: data.ships
+      siteTitle
     },
   }
 }
 
-export default function Ships ({ manufacturers, utils, test }) {
+export default function Ships ({ manufacturers, utils, siteTitle }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
@@ -89,9 +89,10 @@ export default function Ships ({ manufacturers, utils, test }) {
   const [manufacturer, setManufacturer] = useState([])
   const [shipSale, setShipSale] = useState(null)
   const [vehicleType, setVehicleType] = useState([])
-  // const [data, setData] = useState([])
+  const [data, setData] = useState([])
   const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [classesMenu, setClassesMenu] = useState(false)
+  const [roleMenu, setRoleMenu] = useState()
   const squery = query.q
   const classquery = query.cls
   const focusquery = query.focus
@@ -100,20 +101,14 @@ export default function Ships ({ manufacturers, utils, test }) {
   const prodquery = query.prodStatus
   const salequery = query.sale
   const typequery = query.type
-  let { loading, error, data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
+  const { loading, error, data: Data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
     variables: {
-      squery,
       manufacturers: manuquery ? manuquery : utils.manufacturers,
       sizes: sizequery ? sizequery : utils.sizes,
       careers: classquery ? classquery : utils.careers,
     },
   })
-
-  data = data?.ships
-
-  console.log(test.find((e) => e.name == 'G12'))
-  console.log(utils.sizes.find((e) => e == 0))
-  console.warn(error)
+  console.log(utils.sizes)
 
   const classMenuItems = [
     {
@@ -150,6 +145,114 @@ export default function Ships ({ manufacturers, utils, test }) {
       name: "Erkundung",
       value: "exploration",
       icon: "6ff37caa-e47e-4c69-a81c-26b0b3d0a7a8",
+    },
+  ]
+
+  const roleMenuItems = [
+    {
+      career: "transport",
+      name: "Fracht",
+      value: "freight",
+    },
+    {
+      career: "transport",
+      name: "Daten",
+      value: "data",
+    },
+    {
+      career: "transport",
+      name: "Personen",
+      value: "persons",
+    },
+    {
+      career: "industrial",
+      name: "Bergbau",
+      value: "mining",
+    },
+    {
+      career: "industrial",
+      name: "Bergung",
+      value: "salvage",
+    },
+    {
+      career: "industrial",
+      name: "Raffinerie",
+      value: "refinery",
+    },
+    {
+      career: "industrial",
+      name: "Konstruktion",
+      value: "construction",
+    },
+    {
+      career: "combat",
+      name: "Fighter",
+      value: "fighter",
+    },
+    {
+      career: "combat",
+      name: "Bomber",
+      value: "bomber",
+    },
+    {
+      career: "combat",
+      name: "Kannonenboot",
+      value: "gunboat",
+    },
+    {
+      career: "combat",
+      name: "Korvette",
+      value: "corvette",
+    },
+    {
+      career: "combat",
+      name: "Fregatte",
+      value: "frigate",
+    },
+    {
+      career: "combat",
+      name: "Zerstörer",
+      value: "destroyer",
+    },
+    {
+      career: "support",
+      name: "Reparatur",
+      value: "repair",
+    },
+    {
+      career: "support",
+      name: "Betankung",
+      value: "refueling",
+    },
+    {
+      career: "support",
+      name: "Schlepper",
+      value: "tug",
+    },
+    {
+      career: "support",
+      name: "Medizin",
+      value: "medical",
+    },
+    {
+      career: "support",
+      name: "Report",
+      value: "report",
+    },
+    {
+      career: "exploration",
+      name: "Aufklärung",
+      value: "scout",
+    },
+    {
+      career: "exploration",
+      name: "Pfadfindung",
+      value: "pathfinding",
+    },
+    {
+      career: "exploration",
+      name: "Expedition",
+      value: "expedition",
     },
   ]
 
@@ -282,58 +385,67 @@ export default function Ships ({ manufacturers, utils, test }) {
     if (isReady) setSearch(squery)
   }, [isReady])
 
-  // useEffect(() => {
-  //   if (Data) {
-  //     if (salequery || typequery) {
-  //       let array = []
-  //       if (salequery) {
-  //         if (salequery.includes(true)) {
-  //           const ships = Data.ships.filter((e) => e.onSale == true)
-  //           array = [
-  //             ...ships
-  //           ]
-  //         } else if (salequery.includes(false)) {
-  //           const ships = Data.ships.filter((e) => e.onSale == false)
-  //           array = [
-  //             ...array,
-  //             ...ships
-  //           ]
-  //         }
-  //       }
+  useEffect(() => {
+    if (Data) {
+      if (salequery || typequery || squery || focusquery) {
+        let array = []
+        if (salequery) {
+          if (salequery.includes(true)) {
+            const ships = Data.ships.filter((e) => e.onSale == true)
+            array = ships
+          } else if (salequery.includes(false)) {
+            const ships = Data.ships.filter((e) => e.onSale == false)
+            array = ships
+          }
+        }
 
-  //       if (typequery) {
-  //         if (typequery.includes("ground")) {
-  //           let vehicles = []
-  //           if (array[0]) {
-  //             vehicles = array.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
-  //           } else {
-  //             vehicles = Data.ships.filter((e) => e.size === "vehicle" || e.groundVehicle == true || e.focus === "ground")
-  //           }
+        if (typequery) {
+          if (typequery.includes("ground")) {
+            let vehicles = []
+            if (array[0]) {
+              vehicles = array.filter((e) => e.size === 0 || e.groundVehicle == true || e.focus === "ground")
+            } else {
+              vehicles = Data.ships.filter((e) => e.size === 0 || e.groundVehicle == true || e.focus === "ground")
+            }
 
-  //           array = vehicles
-  //         } else if (typequery.includes("ship")) {
-  //           let vehicles = []
-  //           if (array[0]) {
-  //             vehicles = array.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
-  //           } else {
-  //             vehicles = Data.ships.filter((e) => e.size !== "vehicle" && e.groundVehicle != true && e.focus !== "ground")
-  //           }
+            array = vehicles
+          } else if (typequery.includes("ship")) {
+            let vehicles = []
+            if (array[0]) {
+              vehicles = array.filter((e) => e.size !== 0 && e.groundVehicle != true && e.focus !== "ground")
+            } else {
+              vehicles = Data.ships.filter((e) => e.size !== 0 && e.groundVehicle != true && e.focus !== "ground")
+            }
 
-  //           array = vehicles
-  //         }
-  //       }
+            array = vehicles
+          }
+        }
 
-  //       setData(array)
-  //     } else {
-  //       let array = [
-  //         ...Data.ships
-  //       ]
-  //       setData(array)
-  //     }
-  //   }
-  // }, [Data, salequery, typequery])
+        if (squery) {
+          let ships = []
+          if (array[0]) {
+            ships = array.filter((e) => e.name.toLowerCase().includes(squery.toLowerCase()) || e.manufacturer.firmen_name.toLowerCase().includes(squery.toLowerCase()))
+          } else {
+            ships = Data.ships.filter((e) => e.name.toLowerCase().includes(squery.toLowerCase()) || e.manufacturer.firmen_name.toLowerCase().includes(squery.toLowerCase()))
+          }
 
-  const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
+          array = ships
+        }
+
+        setData(array)
+      } else {
+        let array = [
+          ...Data.ships
+        ]
+        setData(array)
+      }
+    }
+  }, [Data, salequery, typequery, squery, focusquery])
+
+  const handleRemoveItem = name => {
+    setShipFocus(shipFocus.filter(item => item !== name))
+  }
+
 
   return (
     <div className="items-center pt-8 mx-auto">
@@ -488,7 +600,7 @@ export default function Ships ({ manufacturers, utils, test }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == ["snub"]
+                      (sizequery == [1]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -518,7 +630,7 @@ export default function Ships ({ manufacturers, utils, test }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == ["small"]
+                      (sizequery == [2]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -548,7 +660,7 @@ export default function Ships ({ manufacturers, utils, test }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == ["medium"]
+                      (sizequery == [3]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -578,7 +690,7 @@ export default function Ships ({ manufacturers, utils, test }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == ["large"]
+                      (sizequery == [4]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -608,7 +720,7 @@ export default function Ships ({ manufacturers, utils, test }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == ["capital"]
+                      (sizequery == [6]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -668,72 +780,89 @@ export default function Ships ({ manufacturers, utils, test }) {
           </div>
           <hr />
           {!classesMenu ? '' : (
-            <div className="flex">
-              <div className="flex mx-auto">
-                <div
-                  className="w-24 hover:cursor-pointer group"
-                  onClick={() => {
-                    setShipClass()
-                  }}
-                >
-                  <div className="relative w-24 mx-auto aspect-square">
-                    <Image
-                      src={
-                        'https://cms.ariscorp.de/assets/' +
-                        '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
-                      }
-                      alt="Alle-Icon"
-                      layout="fill"
-                      objectFit="cover"
-                      placeholder="blur"
-                      blurDataURL={
-                        'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
-                      }
-                    />
-                  </div>
-                  <p
-                    className={
-                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
-                    }
+            <>
+              <div className="flex pb-8">
+                <div className="flex m-auto">
+                  <div
+                    className="w-24 hover:cursor-pointer group"
+                    onClick={() => {
+                      setShipClass()
+                    }}
                   >
-                    Alle Klassifizierungen
-                  </p>
-                </div>
-                <div className="flex flex-wrap justify-center px-24 ml-4 space-x-2">
-                  {classMenuItems.map((obj) => (
-                    <div
-                      key={obj.value}
-                      className="w-24 hover:cursor-pointer group"
-                      onClick={() => setShipClass([obj.value])}
-                    >
-                      <div className="relative w-24 mx-auto aspect-square">
-                        <Image
-                          src={
-                            'https://cms.ariscorp.de/assets/' +
-                            (obj.icon ? obj.icon : '9bf3dcd8-be29-4aea-8a27-44340b607d49')
-                          }
-                          alt={obj.name + "-Icon"}
-                          layout="fill"
-                          objectFit="cover"
-                          placeholder="blur"
-                          blurDataURL={
-                            'https://cms.ariscorp.de/assets/' + '9bf3dcd8-be29-4aea-8a27-44340b607d49' + '?width=16&quality=1'
-                          }
-                        />
-                      </div>
-                      <p
-                        className={
-                          'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                          (classquery == [obj.value] ? 'text-secondary' : 'group-hover:text-white')
+                    <div className="relative w-24 mx-auto aspect-square">
+                      <Image
+                        src={
+                          'https://cms.ariscorp.de/assets/' +
+                          '1638095c-c0f3-49bf-b8c9-6e1a52a44333'
                         }
-                      >
-                        {obj.name}
-                      </p>
+                        alt="Alle-Icon"
+                        layout="fill"
+                        objectFit="cover"
+                        placeholder="blur"
+                        blurDataURL={
+                          'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
+                        }
+                      />
                     </div>
-                  ))}
+                    <p
+                      className={
+                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                      }
+                    >
+                      Alle Klassifizierungen
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap justify-center px-24 ml-4">
+                    {classMenuItems.map((obj) => (
+                      <>
+                        <div
+                          key={obj.value}
+                          className="relative w-24 overflow-visible hover:cursor-pointer group"
+                          onClick={() => (setShipClass([obj.value]) && setShipFocus([]))}
+                        >
+                          <div className="relative w-24 mx-auto aspect-square">
+                            <Image
+                              src={
+                                'https://cms.ariscorp.de/assets/' +
+                                (obj.icon ? obj.icon : '9bf3dcd8-be29-4aea-8a27-44340b607d49')
+                              }
+                              alt={obj.name + "-Icon"}
+                              layout="fill"
+                              objectFit="cover"
+                              placeholder="blur"
+                              blurDataURL={
+                                'https://cms.ariscorp.de/assets/' + '9bf3dcd8-be29-4aea-8a27-44340b607d49' + '?width=16&quality=1'
+                              }
+                            />
+                          </div>
+                          <p
+                            className={
+                              'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                              (classquery == [obj.value] ? 'text-secondary' : 'group-hover:text-white')
+                            }
+                          >
+                            {obj.name}
+                          </p>
+                          <div className={'grid gap-x-2 absolute z-10 mt-2 justify-between overflow-visible grid-cols-2 ' + (classquery == obj.value ? '' : 'hidden')}>
+                            {roleMenuItems.filter((e) => e.career.includes(classquery)).map((i) => (
+                              <p
+                                key={i.value}
+                                className={
+                                  'p-0 w-fit active:scale-75 even:justify-self-start odd:justify-self-end text-xs col-span-1 duration-150 hover:duration-200 ease-out transition-colors ' +
+                                  (focusquery == [i.value] ? 'text-secondary' : 'hover:text-white')
+                                }
+                              >
+                                {i.name}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      </>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            </>
           )}
           {!classesMenu ? null : <hr />}
           {!manufacturerMenu ? '' : (

@@ -26,6 +26,7 @@ module.exports = {
       fontFamily: {
         anurati: ['anurati', 'sans-serif'],
         nasa: ['nasalization', 'sans-serif'],
+        // nasa: ['var(--font-nasalization)', 'sans-serif'],
       },
       backgroundImage: {
         'type-bg':

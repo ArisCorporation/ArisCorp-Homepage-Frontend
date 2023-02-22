@@ -2,7 +2,7 @@ import Link from "next/link"
 const BasicPanel = ({ a, href, external, onClick, children, className }) => {
   // border-[rgba(200,200,200,.9)]
   return a ? (
-    <Link href={href}>
+    <Link legacyBehavior href={href}>
       <a target={external ? "_blank" : null} className={"relative text-inherit decoration-transparent inline-block min-w-[50px] p-[2px] bg-transparent group border-2 border-primary rounded-[10px] cursor-pointer transition-all hover:duration-200 duration-500 ease-out box-border before:absolute before:-top-[2px] before:right-[14px] before:left-[14px] before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] after:box-border " + className}>
         <div className="group-hover:bg-white/5 group-hover:text-primary px-[14px] py-[6px] box-border overflow-hidden whitespace-nowrap text-center text-ellipsis rounded-[6px] transition-all hover:duration-200 duration-500 ease-out">
           {children}

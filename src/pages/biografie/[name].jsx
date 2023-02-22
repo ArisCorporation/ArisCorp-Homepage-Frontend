@@ -136,7 +136,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
             <span>{roles.join(', ')}</span>
           </h3>
         </div>
-        <Link href={'/VerseExkurs/firmen/ariscorp'}>
+        <Link legacyBehavior href={'/VerseExkurs/firmen/ariscorp'}>
           <a
             style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/0cb3baf2-94a6-4557-895a-0ae5fe027a88)` }}
             className='relative mt-0 ml-auto xs:h-32 h-28 hover:cursor-pointer xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square bg-center bg-no-repeat bg-cover'
@@ -196,7 +196,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Geburtssystem:</p>
-                    <p className='p-0 text-primary'>{data.birthSystem.name ? (<Link href={'/VerseExkurs/starmap/' + data.birthSystem.name}><a>{data.birthSystem.name}</a></Link>) : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.birthSystem.name ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.birthSystem.name}><a>{data.birthSystem.name}</a></Link>) : 'N/A'}</p>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Aktueller Wohnort:</p>
@@ -204,7 +204,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Aktuelles Wohnort - System:</p>
-                    <p className='p-0 text-primary'>{data.currentResidenceSystem.name ? (<Link href={'/VerseExkurs/starmap/' + data.currentResidenceSystem.name}><a>{data.currentResidenceSystem.name}</a></Link>) : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.currentResidenceSystem.name ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.currentResidenceSystem.name}><a>{data.currentResidenceSystem.name}</a></Link>) : 'N/A'}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />

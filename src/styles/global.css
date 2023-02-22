@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'nasalization';
+  src: url('../assets/fonts/nasalization-rg.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Apply Classes */
 
 @layer base {
@@ -89,6 +96,74 @@
   }
   .bw p {
     @apply text-[#d1d5dd];
+  }
+
+  .hardpointGroup {
+    @apply px-2 mb-5
+  }
+  .hardpointGroupLabel {
+    @apply uppercase mb-2 text-xl
+  }
+  .hardpointGroupInner {
+    @apply px-3 py-4
+  }
+  .hardpointType {
+    @apply relative flex flex-wrap justify-between mb-[10px]
+  }
+  .hardpointTypeLabel {
+    @apply flex items-center w-72 my-[5px] pr-5 text-[#959595]
+  }
+  .hardpointTypeIcon {
+    @apply w-[30px] h-[30px] mr-[10px] align-middle
+  }
+  .hardpointItems {
+    @apply flex-grow lg:min-w-[300px] max-w-full
+  }
+  .hardpointItem {
+    @apply mb-[15px] flex items-center justify-between
+  }
+  .hardpointItem:last-child {
+    @apply mb-0
+  }
+  .hardpointItemQuantity {
+    @apply min-w-[45px] pr-[10px] whitespace-nowrap text-right
+  }
+  .hardpointItemSlots {
+    @apply flex flex-col flex-grow justify-between
+  }
+  .hardpointItemSlot {
+    @apply flex flex-col items-center justify-between
+  }
+  .hardpointItemInner {
+    @apply mb-[10px] relative flex flex-wrap-reverse items-center justify-between w-full py-[6px] px-[10px] border-0 border-primary rounded-[10px]
+    /* before:absolute before:-top-[2px] before:left-[14px] before:right-[14px] before:h-[2px] before:bg-[#444] after:absolute after:-bottom-[2px] after:right-[14px] after:left-[14px] after:h-[2px] after:bg-[#444] */
+  }
+  .hardpointItemInner:last-child{
+    @apply mb-0
+  }
+  /* .hardpointItemInner {
+    @apply relative flex flex-wrap-reverse items-center justify-between w-full mb-[10px] py-[6px] px-[10px] border-2 border-primary rounded-[10px]
+  } */
+  .hardpointItemLoadout{
+    @apply flex items-center justify-between w-full
+  }
+  .hardpointItemLoadoutQuantity{
+    @apply pr-[10px] whitespace-nowrap
+  }
+  .hardpointItemLoadoutQuantityIcon{
+    @apply w-[20px] align-middle
+  }
+  .hardpointItemComponent{
+    @apply flex-grow mr-[5px]
+  }
+  .hardpointItemSize {
+    @apply pr-[10px] text-[#7a8288] whitespace-nowrap
+  }
+  .hardpointItemComponent {
+    @apply flex-grow mr-[5px] text-secondary
+  }
+  .hardpointItemComponentManufacturer {
+    @apply text-xs
   }
 }
 @layer utilities{

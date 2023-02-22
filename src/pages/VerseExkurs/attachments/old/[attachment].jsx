@@ -1,7 +1,7 @@
 import Layout from 'pages/VerseExkurs/layout'
 import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import Router, { useRouter } from 'next/router'

@@ -209,7 +209,7 @@ class MyDocument extends Document {
             content="https://cms.ariscorp.de/assets/61f8ed26-978a-4d66-a59d-92e8db4fdcb5"
           />
 
-          <link rel="stylesheet" href="https://use.typekit.net/ihj0lxn.css" />
+          {/* <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nasalization-2" /> */}
         </Head>
         <body className="font-nasa bg-[#111] min-h-screen selection:bg-primary selection:text-bg-secondary">
           <Main />
