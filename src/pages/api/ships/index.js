@@ -1649,7 +1649,6 @@ async function formData() {
         const newSlug = slugOverwrites.find((e) => e.ship === slug).slug
         slug = newSlug
       }
-      const liveData = liveShipData.find((e) => e.slug == slug)
 
       let flSlug = slug
       if (flSlugOverwrites.find((e) => e.ship === slug)) {
@@ -1658,7 +1657,6 @@ async function formData() {
       }
 
       const flData = await getFlShip(flSlug)
-      const flPaints = await getFlPaints(flSlug)
       const flModules = await getFlModules(flSlug)
       const scwData = await getScwShip(flSlug)
 
@@ -1801,7 +1799,7 @@ async function formData() {
         return component
       }
 
-      const hardpoints = []
+      let hardpoints = []
       if (p4kHardpoints) {
         p4kHardpoints.PowerPlants.forEach((i) => {
           const component = findComponendId(i.InstalledItem?.Name)[0]
@@ -1852,15 +1850,17 @@ async function formData() {
         })
 
         obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'shieldgenerator',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'shieldgenerator',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         p4kHardpoints.QuantumFuelTanks.forEach((i) => {
@@ -1894,27 +1894,31 @@ async function formData() {
         })
 
         obj.compiled?.RSIAvionic.radar.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'radar',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'radar',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIAvionic.computers.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'computer',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'computer',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         p4kHardpoints.MainThrusters.forEach((i) => {
@@ -1979,7 +1983,7 @@ async function formData() {
         obj.compiled?.RSIModular.power_plants.forEach((i) => {
           const component = findComponendId(i.name)[0]
 
-          Array.from(Array(i.mounts)).forEach(() => {
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             const hardpoint = {
               type: 'powerplant',
               size: setSize(i.size.toLowerCase()),
@@ -1994,14 +1998,14 @@ async function formData() {
         obj.compiled?.RSIModular.coolers.forEach((i) => {
           const component = findComponendId(i.name)[0]
 
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'cooler',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-              component: component?.id,
-            }
+          const hardpoint = {
+            type: 'cooler',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+            component: component?.id,
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
@@ -2009,14 +2013,14 @@ async function formData() {
         obj.compiled?.RSIModular.shield_generators.forEach((i) => {
           const component = findComponendId(i.name)[0]
 
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'shieldgenerator',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-              component: component?.id,
-            }
+          const hardpoint = {
+            type: 'shieldgenerator',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+            component: component?.id,
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
@@ -2024,98 +2028,98 @@ async function formData() {
         obj.compiled?.RSIPropulsion.quantum_drives.forEach((i) => {
           const component = findComponendId(i.name)[0]
 
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'shieldgenerator',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-              component: component?.id,
-            }
+          const hardpoint = {
+            type: 'shieldgenerator',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+            component: component?.id,
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'shieldgenerator',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'shieldgenerator',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIPropulsion.quantum_fuel_tanks.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'quantumfueltanks',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'quantumfueltanks',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIPropulsion.fuel_tanks.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'fueltanks',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'fueltanks',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'hydrogenfuelintakes',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'hydrogenfuelintakes',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'hydrogenfuelintakes',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'hydrogenfuelintakes',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIAvionic.radar.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'radars',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'radars',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
 
         obj.compiled?.RSIAvionic.computers.forEach((i) => {
-          Array.from(Array(i.mounts)).forEach(() => {
-            const hardpoint = {
-              type: 'computers',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-            }
+          const hardpoint = {
+            type: 'computers',
+            size: setSize(i.size.toLowerCase()),
+            componentSize: setSize(i.component_size.toLowerCase()),
+          }
 
+          Array(parseInt(i.mounts)).fill(0).forEach(() => {
             hardpoints.push(hardpoint)
           })
         })
@@ -2124,14 +2128,14 @@ async function formData() {
           obj.compiled?.RSIThruster.main_thruster
             .filter((e) => e.category === 'M')
             .forEach((i) => {
-              Array.from(Array(i.mounts)).forEach(() => {
-                const hardpoint = {
-                  type: 'mainthruster',
-                  category: 'M',
-                  size: setSize(i.size.toLowerCase()),
-                  componentSize: setSize(i.component_size.toLowerCase()),
-                }
+              const hardpoint = {
+                type: 'mainthruster',
+                category: 'M',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+              }
 
+              Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
             })
@@ -2141,14 +2145,14 @@ async function formData() {
           obj.compiled?.RSIThruster.main_thruster
             .filter((e) => e.category === 'R')
             .forEach((i) => {
-              Array.from(Array(i.mounts)).forEach(() => {
-                const hardpoint = {
-                  type: 'retrohruster',
-                  category: 'R',
-                  size: setSize(i.size.toLowerCase()),
-                  componentSize: setSize(i.component_size.toLowerCase()),
-                }
+              const hardpoint = {
+                type: 'retrohruster',
+                category: 'R',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+              }
 
+              Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
             })
@@ -2158,14 +2162,14 @@ async function formData() {
           obj.compiled?.RSIThruster.maneuvering_thrusters
             .filter((e) => e.category === 'G')
             .forEach((i) => {
-              Array.from(Array(i.mounts)).forEach(() => {
-                const hardpoint = {
-                  type: 'gimbaledmaneuveringthruster',
-                  category: 'G',
-                  size: setSize(i.size.toLowerCase()),
-                  componentSize: setSize(i.component_size.toLowerCase()),
-                }
+              const hardpoint = {
+                type: 'gimbaledmaneuveringthruster',
+                category: 'G',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+              }
 
+              Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
             })
@@ -2175,14 +2179,14 @@ async function formData() {
           obj.compiled?.RSIThruster.maneuvering_thrusters
             .filter((e) => e.category === 'F')
             .forEach((i) => {
-              Array.from(Array(i.mounts)).forEach(() => {
-                const hardpoint = {
-                  type: 'fixedmaneuveringthruster',
-                  category: 'F',
-                  size: setSize(i.size.toLowerCase()),
-                  componentSize: setSize(i.component_size.toLowerCase()),
-                }
+              const hardpoint = {
+                type: 'fixedmaneuveringthruster',
+                category: 'F',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+              }
 
+              Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
             })
@@ -2192,14 +2196,14 @@ async function formData() {
           obj.compiled?.RSIThruster.maneuvering_thrusters
             .filter((e) => e.category === 'V')
             .forEach((i) => {
-              Array.from(Array(i.mounts)).forEach(() => {
-                const hardpoint = {
-                  type: 'vtolthruster',
-                  category: 'V',
-                  size: setSize(i.size.toLowerCase()),
-                  componentSize: setSize(i.component_size.toLowerCase()),
-                }
-
+              const hardpoint = {
+                type: 'vtolthruster',
+                category: 'V',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+              }
+              
+              Array(parseInt(i.mounts)).fill(0).forEach(() => {
                 hardpoints.push(hardpoint)
               })
             })
