@@ -4,7 +4,7 @@ import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
 import { GET_MEMBERS } from 'graphql/queries'
 
-export default function OurMember() {
+export default function OurMember () {
   const { data, loading, error } = useQuery(GET_MEMBERS)
 
   if (error) return <p>Error :(</p>
@@ -52,12 +52,15 @@ export default function OurMember() {
                           (role === 'member'
                             ? 'Member'
                             : role === 'marketing'
-                            ? 'Marketing & Presse'
-                            : role === 'recruitment'
-                            ? 'Rekrutierung'
-                            : role)}
+                              ? 'Marketing & Presse'
+                              : role === 'recruitment'
+                                ? 'Rekrutierung'
+                                : role === 'administration'
+                                  ? 'Verwaltung'
+                                  : role)}
                       </span>
                     ))}
+                    {member.head_of_department && <span>, Abteilungsleiter</span>}
                     “
                   </p>
                   <hr className="w-[100px] h-[2px] m-auto" />
