@@ -49,43 +49,39 @@ export default function IndexPage ({
   partner,
   siteTitle
 }) {
-  const [ourIndex, setOurIndex] = useState(0)
-
   return (
-    <OurTabSelectionProvider>
-      <Layout ourIndex={ourIndex} onOurIndexChange={setOurIndex}>
-        <Head>
-          <title>
-            {siteTitle}
-          </title>
+    <Layout>
+      <Head>
+        <title>
+          {siteTitle}
+        </title>
 
-          <meta
-            property="twitter:title"
-            content={siteTitle}
-          />
-          <meta
-            property="og:title"
-            content={siteTitle}
-          />
-          <meta
-            name="title"
-            content={siteTitle}
-          />
-        </Head>
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
+      </Head>
 
-        <div className="no-marker">
-          <AboutSection
-            aboutData={about}
-            historyData={history}
-            manifestData={manifest}
-            chartaData={charta}
-          />
-          <OrgaSection />
-          <CommLinksSection data={comm_links} />
-          <RectruitmentSection />
-          <PartnerSection data={partner} />
-        </div>
-      </Layout>
-    </OurTabSelectionProvider>
+      <div className="no-marker">
+        <AboutSection
+          aboutData={about}
+          historyData={history}
+          manifestData={manifest}
+          chartaData={charta}
+        />
+        <OrgaSection />
+        <CommLinksSection data={comm_links} />
+        <RectruitmentSection />
+        <PartnerSection data={partner} />
+      </div>
+    </Layout>
   )
 }

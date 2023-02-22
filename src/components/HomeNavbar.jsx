@@ -13,16 +13,12 @@ import {
 import { useState, useContext } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
-import { OurTabSelectionContext } from 'context/OurTabSelectionContext'
 
 function Navbar () {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const { pathname, replace, query } = useRouter()
 
-  const [selectedOurIndex, setSelectedOurIndex] = useContext(
-    OurTabSelectionContext
-  )
 
   const toggleMobile = () => setMobileOpen((current) => !current)
 
@@ -153,88 +149,55 @@ function Navbar () {
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
                 <li className="block w-full pb-0">
-                  <Link legacyBehavior href="/#our">
-                    <a
-                      onClick={() =>
-                        selectedOurIndex != 0 ? setSelectedOurIndex(0) : null
-                      }
-                    >
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Unsere Member
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="our"
+                    ourTab={'0'}
+                    content="Unsere Member"
+                  />
                 </li>
                 <li className="block w-full">
-                  <Link legacyBehavior href="/#our">
-                    <a
-                      onClick={() =>
-                        selectedOurIndex != 1 ? setSelectedOurIndex(1) : null
-                      }
-                    >
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Unsere Flotte
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="our"
+                    ourTab={'1'}
+                    content="Unsere Flotte"
+                  />
                 </li>
                 <li className="block w-full">
-                  <Link legacyBehavior href="/#our">
-                    <a
-                      onClick={() =>
-                        selectedOurIndex != 2 ? setSelectedOurIndex(2) : null
-                      }
-                    >
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Unsere Arbeitsfelder
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="our"
+                    ourTab={'2'}
+                    content="Unsere Aufgabenfelder"
+                  />
                 </li>
                 <li className="block w-full">
-                  <Link legacyBehavior href="/#comm-links">
-                    <a>
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Comm-Links
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="comm-links"
+                    content="Comm-Link"
+                  />
                 </li>
                 <li className="block w-full">
-                  <Link legacyBehavior href="/#recruitment">
-                    <a>
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Rekrutierung
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="recruitment"
+                    content="Rekrutierung"
+                  />
                 </li>
                 <li className="block w-full mb-5">
-                  <Link legacyBehavior href="/#partners">
-                    <a>
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        Partner
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    AnkerLink="partners"
+                    content="Partner"
+                  />
                 </li>
                 <li className="block w-full">
-                  <Link legacyBehavior href="/ShipExkurs">
-                    <a>
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        ShipExkurs
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    link="/ShipExkurs"
+                    content="ShipExkurs"
+                  />
                 </li>
                 <li className="block w-full mb-5">
-                  <Link legacyBehavior href="/VerseExkurs">
-                    <a>
-                      <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
-                        VerseExkurs
-                      </span>
-                    </a>
-                  </Link>
+                  <MobileNavbarItem
+                    link="/VerseExkurs"
+                    content="VerseExkurs"
+                  />
                 </li>
               </ul>
             </div>
@@ -290,6 +253,56 @@ function NavbarItem ({ content, link, tooltip, ourTab, AnkerLink }) {
       >
         {content}
         <NavbarTooltip tooltip={tooltip} />
+      </a>
+    </li>
+  )
+}
+
+function MobileNavbarItem ({ content, link, ourTab, AnkerLink }) {
+  const { pathname, push, replace, query } = useRouter()
+
+  if (!ourTab) {
+    return (
+      <li className="pb-0 list-none">
+        <a
+          onClick={() =>
+            link
+              ? push({ pathname: link })
+              : replace({ pathname: '/', hash: AnkerLink })
+          }
+        >
+          <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
+            {content}
+          </span>
+        </a>
+      </li>
+    )
+  }
+
+  return (
+    <li className="pb-0 list-none">
+      <a
+        onClick={() =>
+          query.about != null && query.about != ''
+            ? replace(
+              {
+                pathname: '/',
+                hash: AnkerLink,
+                query: { about: query.about, our: ourTab },
+              },
+              undefined,
+              { shallow: true }
+            )
+            : replace(
+              { pathname: '/', hash: AnkerLink, query: { our: ourTab } },
+              undefined,
+              { shallow: true }
+            )
+        }
+      >
+        <span className="block px-3 pt-3 pb-1 text-white border-b-2 border-white hover:border-primary">
+          {content}
+        </span>
       </a>
     </li>
   )

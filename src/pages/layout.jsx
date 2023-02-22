@@ -7,13 +7,13 @@ import { ApolloProvider } from '@apollo/client'
 import { useState } from 'react'
 import Head from 'next/head'
 
-export default function Layout ({ children, ourIndex, onOurIndexChange }) {
+export default function Layout ({ children }) {
   const router = useRouter()
   return (
     <ApolloProvider client={client}>
-      <Navbar ourIndexChange={onOurIndexChange} />
+      <Navbar />
 
-      {router.pathname == '/' ? <HeroSection /> : ''}
+      {router.pathname == '/' && <HeroSection />}
 
       <div className="min-h-screen px-4 container mx-auto 2xl:max-w-[1536px]">
         {children}
