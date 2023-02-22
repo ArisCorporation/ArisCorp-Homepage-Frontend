@@ -132,7 +132,7 @@ export default function Alienrassen ({ data }) {
                 alt="Biestarium Potrait"
                 blurDataURL={''}
                 fill
-                objectFit="cover"
+                cover
                 placeholder={''}
               />
             </div>
@@ -150,7 +150,7 @@ export default function Alienrassen ({ data }) {
                 alt="Pflanzen Potrait"
                 blurDataURL={''}
                 fill
-                objectFit="cover"
+                cover
                 placeholder={''}
               />
             </div>

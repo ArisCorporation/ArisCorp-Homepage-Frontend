@@ -52,7 +52,7 @@ export default function LiteraturReihenPage ({ data }) {
             alt="Literatur Banner"
             placeholder="blur"
             blurDataURL="https://cms.ariscorp.de/assets/93f3722e-943d-491e-85d5-2b15ef82107d"
-            objectFit="cover"
+            cover
           />
         </div>
       </div>

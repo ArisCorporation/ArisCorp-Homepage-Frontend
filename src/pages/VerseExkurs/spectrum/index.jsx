@@ -57,7 +57,7 @@ export default function SpectrumPage ({ data }) {
             alt="Spectrum Banner"
             placeholder="blur"
             blurDataURL="https://cms.ariscorp.de/assets/6e633dd2-1512-405d-92e0-fb3907de86a1"
-            objectFit="cover"
+            cover
           />
         </div>
       </div>

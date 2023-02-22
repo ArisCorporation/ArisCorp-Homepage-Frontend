@@ -236,7 +236,7 @@ export default function Attachments ({ utils, manufacturers }) {
                     }
                     alt="Alle-Icon"
                     fill
-                    objectFit="cover"
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -290,7 +290,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="Optics-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/df440c84-f2d7-4c16-9f4e-352dcf4b1170?width=16&quality=1'
@@ -320,7 +320,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="Barrels-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/61233634-b820-4805-8213-304b524c5c3f?width=16&quality=1'
@@ -350,7 +350,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="Underbarrels-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/e3c26a21-2e95-49ff-80ba-0ecf814b34ba?width=16&quality=1'
@@ -383,7 +383,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="S1-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/5c1bf1df-956f-45dd-af99-2163d1018153?width=16&quality=1'
@@ -413,7 +413,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="S2-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/7027368d-f856-4c47-afb6-300b63fb32d2?width=16&quality=1'
@@ -443,7 +443,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="S3-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/6d01f3b8-3b03-4e39-832b-b52d4a59933f?width=16&quality=1'
@@ -472,7 +472,7 @@ export default function Attachments ({ utils, manufacturers }) {
                     }
                     alt="Alle-Icon"
                     fill
-                    objectFit="cover"
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
@@ -507,7 +507,7 @@ export default function Attachments ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -537,7 +537,7 @@ export default function Attachments ({ utils, manufacturers }) {
                           }
                           alt="Energie-Icon"
                           fill
-                          objectFit="cover"
+                          cover
                           placeholder="blur"
                           blurDataURL={
                             'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'

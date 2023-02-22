@@ -279,7 +279,7 @@ export default function Technologie ({ data }) {
                                     object.icon
                                   }
                                   fill
-                                  objectFit="cover"
+                                  cover
                                   alt={'icon von: ' + object.name}
                                   placeholder="blur"
                                   blurDataURL={
@@ -308,7 +308,7 @@ export default function Technologie ({ data }) {
                           src="https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827"
                           alt="Kompletter Tech Index"
                           fill
-                          objectFit="cover"
+                          cover
                           placeholder="blur"
                           blurDataURL={
                             'https://cms.ariscorp.de/assets/7851a135-3e01-499d-8f5b-149f7b15b827' +
@@ -483,7 +483,7 @@ const PersonalInfo = ({ name, desc, image }) => (
               <Image
                 src={'https://cms.ariscorp.de/assets/' + image}
                 fill
-                objectFit="cover"
+                cover
                 placeholder="blur"
                 blurDataURL={
                   'https://cms.ariscorp.de/assets/' +
@@ -514,7 +514,7 @@ const ShipInfo = ({ name, desc, image }) => (
                 <Image
                   src={'https://cms.ariscorp.de/assets/' + image}
                   fill
-                  objectFit="cover"
+                  cover
                   placeholder="blur"
                   blurDataURL={
                     'https://cms.ariscorp.de/assets/' +

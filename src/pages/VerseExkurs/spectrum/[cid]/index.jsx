@@ -72,7 +72,7 @@ export default function SpectrumCategoryPage ({ data, category, siteTitle }) {
               category.image?.id +
               '?width=16&quality=1'
             }
-            objectFit="cover"
+            cover
           />
         </div>
       </div>

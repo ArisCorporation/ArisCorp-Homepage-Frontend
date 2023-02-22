@@ -205,7 +205,7 @@ export default function Weapons ({ utils, manufacturers }) {
                     }
                     alt="Alle-Icon"
                     fill
-                    objectFit="cover"
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -269,7 +269,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Energie-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/47d884d9-e7ce-4a2e-ab52-9670668a0349?width=16&quality=1'
@@ -306,7 +306,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Ballistisch-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/7cc59886-ff69-412a-8e72-e5e73a6511f6?width=16&quality=1'
@@ -345,7 +345,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Pistolen-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/dece2f20-e9c5-4932-89ca-664d3c5487e1?width=16&quality=1'
@@ -375,7 +375,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/7dd32e63-2919-45ec-bc22-d54fdaba861a?width=16&quality=1'
@@ -405,7 +405,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/22a23dba-8eea-42c4-9a29-fccb6c035b26?width=16&quality=1'
@@ -435,7 +435,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/c8e91660-072a-446c-9832-a35c0d107287?width=16&quality=1'
@@ -465,7 +465,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/b78454ac-fbfe-4b4b-bf91-cab69f1f2a6a?width=16&quality=1'
@@ -495,7 +495,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/56c1a446-85c7-4400-84b4-9a02a54d395a?width=16&quality=1'
@@ -532,7 +532,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/f32ea524-6423-4a0b-a3d0-92e78acfd516?width=16&quality=1'
@@ -573,7 +573,7 @@ export default function Weapons ({ utils, manufacturers }) {
                     }
                     alt="Alle-Icon"
                     fill
-                    objectFit="cover"
+                    cover
                     placeholder="blur"
                     blurDataURL={
                       'https://cms.ariscorp.de/assets/314cc998-245d-4487-97cd-fb86342eaf8d?width=16&quality=1'
@@ -608,7 +608,7 @@ export default function Weapons ({ utils, manufacturers }) {
                       }
                       alt="Alle-Icon"
                       fill
-                      objectFit="cover"
+                      cover
                       placeholder="blur"
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/1638095c-c0f3-49bf-b8c9-6e1a52a44333?width=16&quality=1'
@@ -638,7 +638,7 @@ export default function Weapons ({ utils, manufacturers }) {
                           }
                           alt="Energie-Icon"
                           fill
-                          objectFit="cover"
+                          cover
                           placeholder="blur"
                           blurDataURL={
                             'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'

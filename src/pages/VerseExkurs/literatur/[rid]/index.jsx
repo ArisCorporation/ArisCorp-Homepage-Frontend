@@ -73,7 +73,7 @@ export default function LiteraturReihenPage ({ data, reihe, reihen, siteTitle })
               reihe.reihen_cover?.id +
               '?width=16&quality=1'
             }
-            objectFit="cover"
+            cover
           />
         </div>
       </div>
