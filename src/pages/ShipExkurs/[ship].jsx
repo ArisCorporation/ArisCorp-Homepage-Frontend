@@ -64,6 +64,8 @@ export async function getServerSideProps (context) {
     variables: { slug: ship },
   })
 
+  let { data: shipList } = await client.query({ query: GET_SHIPEXKURS_SHIPLOANERS })
+
   if (!data.ships[0]) {
     return {
       notFound: true,
@@ -81,6 +83,12 @@ export async function getServerSideProps (context) {
   //     }
   //   })
   // }
+  const variants = []
+  if (data?.variants[0]) {
+    data.variants.forEach((obj) => {
+      variants.push(shipList.ships.find((e) => e.id === obj?.id || e.slug === obj.slug))
+    })
+  }
 
   const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
 
@@ -88,18 +96,21 @@ export async function getServerSideProps (context) {
     props: {
       data,
       loaners,
+      variants,
       siteTitle
     },
   }
 }
 
-export default function ShipPage ({ data, loaners, siteTitle }) {
+export default function ShipPage ({ data, loaners, variants, siteTitle }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
   const { replace, query, push } = useRouter()
   const urlquery = query.tab
   const { ship: Ship } = router.query
   const shareUrl = "https://ariscorp.de/ShipExkurs/" + data.slug + (urlquery ? "?tab=" + urlquery : "")
+
+  console.log(variants);
 
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
@@ -288,7 +299,7 @@ export default function ShipPage ({ data, loaners, siteTitle }) {
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
-                    <p className='pb-0 text-sm'>Klassifizierung:</p>
+                    <p className='pb-0 text-sm truncate'>Klassifizierung:</p>
                     <p className='p-0 text-primary'>{data.classification != null ? data.classification : 'N/A'}</p>
                   </div>
                   <div className="col-span-1">
@@ -1609,8 +1620,8 @@ export default function ShipPage ({ data, loaners, siteTitle }) {
           <div className="w-full 1.5xl:w-1/3">
             <h3 className="mt-0 text-secondary">Varianten</h3>
             <div className='space-y-2'>
-              {data.varianten.map((obj) => (
-                <ShipCard key={obj.ship2.id} data={obj.ship2} manufacturer={data.manufacturer} />
+              {variants.map((obj) => (
+                <ShipCard key={obj.id} data={obj} />
               ))}
             </div>
           </div>
