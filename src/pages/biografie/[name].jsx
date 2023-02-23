@@ -269,7 +269,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Hobbys:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.hobbys ?
                         (
                           <ul>
@@ -278,11 +278,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Angewohnheiten:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.habits ?
                         (
                           <ul>
@@ -291,11 +291,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Talente:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.talents ?
                         (
                           <ul>
@@ -304,11 +304,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Tics & Marotten:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.tics ?
                         (
                           <ul>
@@ -317,11 +317,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Freizeitgestaltung:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.activities ?
                         (
                           <ul>
@@ -330,11 +330,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Rätselhafte Züge:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.mysteriousThings ?
                         (
                           <ul>
@@ -343,11 +343,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Hervorstechender Charakterzug:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.characterTrait ?
                         (
                           <ul>
@@ -356,7 +356,20 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
+                  </div>
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Ängste:</p>
+                    <div className='p-0 text-primary marker:text-secondary'>
+                      {data.fears ?
+                        (
+                          <ul>
+                            {data.fears.split(', ').map((i) => (
+                              <li key={i}>{i}</li>
+                            ))}
+                          </ul>
+                        ) : 'N/A'}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -373,7 +386,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                 <div className='grid grid-cols-2 uppercase sm:grid-cols-3'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Bücher:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.books ?
                         (
                           <ul>
@@ -382,11 +395,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Musik:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.music ?
                         (
                           <ul>
@@ -395,11 +408,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Filme:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.movies ?
                         (
                           <ul>
@@ -408,14 +421,14 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Typische Kleidung:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.clothing ?
                         (
                           <ul>
@@ -424,20 +437,27 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Lieblingsfarben:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
-                      {data.colors ? data.colors : 'N/A'}
-                    </p>
+                    <div className='p-0 text-primary marker:text-secondary'>
+                      {data.colors ?
+                        (
+                          <ul>
+                            {data.colors.split(', ').map((i) => (
+                              <li key={i}>{i}</li>
+                            ))}
+                          </ul>
+                        ) : 'N/A'}
+                    </div>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
                 <div className='grid grid-cols-2 uppercase sm:grid-cols-3'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Lieblings Gericht:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.food ?
                         (
                           <ul>
@@ -446,11 +466,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Lieblings Getränk:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.drink ?
                         (
                           <ul>
@@ -459,11 +479,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Lieblings Alkohol:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.alcohol ?
                         (
                           <ul>
@@ -472,13 +492,13 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                 </div><hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Er liebt...:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.loves ?
                         (
                           <ul>
@@ -487,11 +507,11 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>{data.sex === 'male' ? 'Er' : 'Sie'} hasst...:</p>
-                    <p className='p-0 text-primary marker:text-secondary'>
+                    <div className='p-0 text-primary marker:text-secondary'>
                       {data.hates ?
                         (
                           <ul>
@@ -500,7 +520,7 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
                             ))}
                           </ul>
                         ) : 'N/A'}
-                    </p>
+                    </div>
                   </div>
                 </div>
               </div>
