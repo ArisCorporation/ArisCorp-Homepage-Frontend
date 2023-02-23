@@ -265,31 +265,14 @@ export default function Technologie ({ data }) {
                         <Link legacyBehavior href={'/VerseExkurs/technologie/' + object.name}>
                           <a>
                             <div
+                              style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${object.icon})` }}
                               className={
-                                'transition-opacity duration-150 hover:duration-300 hover:cursor-pointer aspect-square ' +
+                                'transition-opacity duration-150 bg-center bg-no-repeat bg-cover hover:duration-300 hover:cursor-pointer aspect-square ' +
                                 (selectedTech == object.id
                                   ? 'opacity-100'
                                   : 'opacity-80')
                               }
-                            >
-                              <div className="relative w-full h-full">
-                                <Image
-                                  src={
-                                    'https://cms.ariscorp.de/assets/' +
-                                    object.icon
-                                  }
-                                  fill
-                                  cover
-                                  alt={'icon von: ' + object.name}
-                                  placeholder="blur"
-                                  blurDataURL={
-                                    'https://cms.ariscorp.de/assets/' +
-                                    object.icon +
-                                    '?width=16&quality=1'
-                                  }
-                                />
-                              </div>
-                            </div>
+                            />
                           </a>
                         </Link>
                       </div>
