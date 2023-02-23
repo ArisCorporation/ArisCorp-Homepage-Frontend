@@ -55,26 +55,68 @@ export default function Firmen ({ data }) {
   }, [urlquery, urlqueryhersteller, urlqueryother])
 
   const siteTitle = "Firmen - Astro Research and Industrial Service Corporation"
+
+  const personelmanufacturerCategories = [
+    {
+      label: 'Rüstungen',
+      value: 'armor'
+    },
+    {
+      label: 'Kleidung',
+      value: 'clothing'
+    },
+    {
+      label: 'Waffen Mods',
+      value: 'weapon_mods'
+    },
+    {
+      label: 'Werkzeuge',
+      value: 'tools'
+    },
+    {
+      label: 'Gadgets',
+      value: 'gadgets'
+    }
+  ]
+  const medicAndScienceCategories = [
+    {
+      label: 'Krankenhäuser',
+      value: 'hospitals'
+    },
+    {
+      label: 'Medizinische Technologien',
+      value: 'medicine_technologie'
+    },
+    {
+      label: 'Farmer',
+      value: 'farmer'
+    },
+    {
+      label: 'Wissenschaftliche Forschung',
+      value: 'scientific_research'
+    }
+  ]
+
   return (
     <div className="items-center pt-10 mx-auto">
-    <Head>
-      <title>
-        {siteTitle}
-      </title>
+      <Head>
+        <title>
+          {siteTitle}
+        </title>
 
-      <meta
-        property="twitter:title"
-        content={siteTitle}
-      />
-      <meta
-        property="og:title"
-        content={siteTitle}
-      />
-      <meta
-        name="title"
-        content={siteTitle}
-      />
-    </Head>
+        <meta
+          property="twitter:title"
+          content={siteTitle}
+        />
+        <meta
+          property="og:title"
+          content={siteTitle}
+        />
+        <meta
+          name="title"
+          content={siteTitle}
+        />
+      </Head>
       <Tab.Group
         selectedIndex={activeTab}
         onChange={(event) =>
@@ -265,114 +307,36 @@ export default function Firmen ({ data }) {
                 </Tab.Panel>
                 <Tab.Panel>
                   <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'hersteller' &&
-                            data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
-                            data.firmenpersonenasrustungsherstellerkategorie ===
-                            'armor'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">Rüstungen:</h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'hersteller' &&
-                          data.firmenherstellerkategorie ===
-                          'Personenausruestungshersteller' &&
-                          data.firmenpersonenasrustungsherstellerkategorie ===
-                          'armor'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'hersteller' &&
-                            data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
-                            data.firmenpersonenasrustungsherstellerkategorie ===
-                            'clothing'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">Kleidung:</h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'hersteller' &&
-                          data.firmenherstellerkategorie ===
-                          'Personenausruestungshersteller' &&
-                          data.firmenpersonenasrustungsherstellerkategorie ===
-                          'clothing'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'hersteller' &&
-                            data.firmenherstellerkategorie ===
-                            'Personenausruestungshersteller' &&
-                            data.firmenpersonenasrustungsherstellerkategorie ===
-                            'weapon_mods'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">Waffen Mods:</h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'hersteller' &&
-                          data.firmenherstellerkategorie ===
-                          'Personenausruestungshersteller' &&
-                          data.firmenpersonenasrustungsherstellerkategorie ===
-                          'weapon_mods'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
+                    {personelmanufacturerCategories.map((obj) => data.filter((e) => e.firmenkategorie === 'hersteller' && e.firmenherstellerkategorie === 'Personenausruestungshersteller' && e.firmenpersonenasrustungsherstellerkategorie === obj.value)[0] && (
+                      <>
+                        <div
+                          className='col-span-2 xs:col-span-4'
+                        >
+                          <h2 className="pb-0 mb-0 text-primary">{obj.label}:</h2>
+                          <hr />
+                        </div>
+                        {
+                          data
+                            .filter(
+                              (e) =>
+                                e.firmenkategorie === 'hersteller' &&
+                                e.firmenherstellerkategorie ===
+                                'Personenausruestungshersteller' &&
+                                e.firmenpersonenasrustungsherstellerkategorie ===
+                                obj.value
+                            )
+                            .map((i) => (
+                              <>
+                                <CardDisplay
+                                  image={i.firmen_trans_logo.id}
+                                  link={'/VerseExkurs/firmen/' + i.firmen_name}
+                                  alt={i.firmen_name}
+                                />
+                              </>
+                            ))
+                        }
+                      </>
+                    ))}
                   </div>
                 </Tab.Panel>
               </Tab.Panels>
@@ -497,139 +461,35 @@ export default function Firmen ({ data }) {
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
-                  <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'verschiedenes' &&
-                            data.othercategory === 'medicine' &&
-                            data.medicinecategory === 'hospitals'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">Krankenhäuser:</h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'verschiedenes' &&
-                          data.othercategory === 'medicine' &&
-                          data.medicinecategory === 'hospitals'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'verschiedenes' &&
-                            data.othercategory === 'medicine' &&
-                            data.medicinecategory === 'medicine_technologie'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">
-                        Medizinische Technologien:
-                      </h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'verschiedenes' &&
-                          data.othercategory === 'medicine' &&
-                          data.medicinecategory === 'medicine_technologie'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'verschiedenes' &&
-                            data.othercategory === 'medicine' &&
-                            data.medicinecategory === 'farmer'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">Farmer:</h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'verschiedenes' &&
-                          data.othercategory === 'medicine' &&
-                          data.medicinecategory === 'farmer'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
-                    <div
-                      className={
-                        'col-span-2 xs:col-span-4' +
-                        (data.filter(
-                          (data) =>
-                            data.firmenkategorie === 'verschiedenes' &&
-                            data.othercategory === 'medicine' &&
-                            data.medicinecategory === 'scientific_research'
-                        )[0] == null
-                          ? ' hidden'
-                          : '')
-                      }
-                    >
-                      <h2 className="pb-0 mb-0 text-primary">
-                        Wissenschaftliche Forschung:
-                      </h2>
-                      <hr />
-                    </div>
-                    {data
-                      .filter(
-                        (data) =>
-                          data.firmenkategorie === 'verschiedenes' &&
-                          data.othercategory === 'medicine' &&
-                          data.medicinecategory === 'scientific_research'
-                      )
-                      .map((data) => (
-                        <>
-                          <CardDisplay
-                            image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
-                            alt={data.firmen_name}
-                          />
-                        </>
-                      ))}
+                <div className="grid justify-between grid-cols-2 xs:grid-cols-4 gap-x-10 gap-y-8">
+                    {medicAndScienceCategories.map((obj) => data.filter((e) => e.firmenkategorie === 'verschiedenes' && e.othercategory === 'medicine' && e.medicinecategory === obj.value)[0] && (
+                      <>
+                        <div
+                          className='col-span-2 xs:col-span-4'
+                        >
+                          <h2 className="pb-0 mb-0 text-primary">{obj.label}:</h2>
+                          <hr />
+                        </div>
+                        {
+                          data
+                            .filter(
+                              (e) =>
+                              e.firmenkategorie === 'verschiedenes' &&
+                              e.othercategory === 'medicine' &&
+                              e.medicinecategory === obj.value
+                            )
+                            .map((i) => (
+                              <>
+                                <CardDisplay
+                                  image={i.firmen_trans_logo.id}
+                                  link={'/VerseExkurs/firmen/' + i.firmen_name}
+                                  alt={i.firmen_name}
+                                />
+                              </>
+                            ))
+                        }
+                      </>
+                    ))}
                   </div>
                 </Tab.Panel>
                 <Tab.Panel>
