@@ -115,48 +115,62 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
               <div className="w-full h-full pb-2 pr-2 text-xs italic uppercase xs:text-sm">
                 <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
                 <table className="w-full ml-5">
-                  <tr className={'border-b-0 border-transparent' + (data.headquarter == null && data.headquarter_system == null ? ' hidden' : null)}>
-                    <th className="pr-2 text-left">Hauptsitz:</th>
-                    <td className="text-left text-primary">
-                      {data.headquarter && data.headquarter_system != null
-                        ? data.headquarter + '(' + data.headquarter_system + ')'
-                        : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
-                    </td>
-                  </tr>
-                  <tr className={'border-b-0 border-transparent' + (data.current_ceo == null ? ' hidden' : null)}>
-                    <th className="pr-2 text-left">Aktueller C.E.O.:</th>
-                    <td className="text-left text-primary">
-                      {data.current_ceo != null ? data.current_ceo : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr className={'border-b-0 border-transparent' + (data.founding == null ? ' hidden' : null)}>
-                    <th className="pr-2 text-left">Gründungsdatum:</th>
-                    <td className="text-left text-primary">
-                      {data.founding != null ? data.founding : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr className={'border-b-0 border-transparent' + (data.founder == null ? ' hidden' : null)}>
-                    <th className="pr-2 text-left">Gründer:</th>
-                    <td className="text-left break-words text-primary">
-                      {data.founder != null ? data.founder : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr className={'border-b-0 border-transparent' + (data.firmenkategorie == null ? ' hidden' : null)}>
-                    <th className="pr-2 text-left">Kategorie:</th>
-                    <td className="text-left break-words text-primary">
-                      {data.firmenkategorie != null
-                        ? data.firmenkategorie == 'hersteller'
-                          ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
-                          : data.firmenkategorie
-                        : 'N/A'}
-                    </td>
-                  </tr>
-                  <tr>
-                    <th className="pr-2 text-left">Bekannteste Waren:</th>
-                    <td className="text-left text-primary">
-                      {data.famous_goods != null ? data.famous_goods : 'N/A'}
-                    </td>
-                  </tr>
+                  <tbody>
+                    {(data.headquarter && data.headquarter_system) && (
+                      <tr className='border-b-0 border-transparent'>
+                        <td className="pr-2 text-left">Hauptsitz:</td>
+                        <td className="text-left text-primary">
+                          {data.headquarter && data.headquarter_system != null
+                            ? data.headquarter + '(' + data.headquarter_system + ')'
+                            : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
+                        </td>
+                      </tr>
+                    )}
+                    {data.current_ceo && (
+                      <tr className='border-b-0 border-transparent'>
+                        <th className="pr-2 text-left">Aktueller C.E.O.:</th>
+                        <td className="text-left text-primary">
+                          {data.current_ceo}
+                        </td>
+                      </tr>
+                    )}
+                    {data.founding && (
+                      <tr className='border-b-0 border-transparent'>
+                        <th className="pr-2 text-left">Gründungsdatum:</th>
+                        <td className="text-left text-primary">
+                          {data.founding}
+                        </td>
+                      </tr>
+                    )}
+                    {data.founder && (
+                      <tr className='border-b-0 border-transparent'>
+                        <th className="pr-2 text-left">Gründer:</th>
+                        <td className="text-left break-words text-primary">
+                          {data.founder != null ? data.founder : 'N/A'}
+                        </td>
+                      </tr>
+                    )}
+                    {data.firmenkategorie && (
+                      <tr className='border-b-0 border-transparent'>
+                        <th className="pr-2 text-left">Kategorie:</th>
+                        <td className="text-left break-words text-primary">
+                          {data.firmenkategorie != null
+                            ? data.firmenkategorie == 'hersteller'
+                              ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
+                              : data.firmenkategorie
+                            : 'N/A'}
+                        </td>
+                      </tr>
+                    )}
+                    {data.famous_goods && (
+                      <tr>
+                        <th className="pr-2 text-left">Bekannteste Waren:</th>
+                        <td className="text-left text-primary">
+                          {data.famous_goods}
+                        </td>
+                      </tr>
+                    )}
+                  </tbody>
                 </table>
               </div>
             </BasicPanel>
