@@ -201,7 +201,7 @@ export default function StarmapPage ({ data }) {
                     />
                   </div>
                 </div>
-                <div className="flex justify-center">
+                <div className="flex justify-center mt-8">
                   <Starmap data={data} />
                 </div>
               </BasicPanel>

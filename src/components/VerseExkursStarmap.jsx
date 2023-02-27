@@ -1,7 +1,7 @@
 import ReactTooltip from 'react-tooltip'
 import ReactDOMServer from 'react-dom/server'
 import Link from 'next/link'
-import Image from 'next/image'
+import Image from 'next/legacy/image'
 import { useRouter } from 'next/router'
 
 const ueeIcon =
@@ -22,13 +22,13 @@ export default function Starmap({ data }) {
   return (
     <div className="lg:w-full max-w-[1200px] aspect-[1200/841]">
       <div className="z-50">
-        <ReactTooltip
+        {/* <ReactTooltip
           place="right"
           effect="solid"
           arrowColor="transparent"
           type="dark"
           padding="8px"
-        />
+        /> */}
       </div>
 
       <div className="relative w-full h-full mx-auto">
@@ -107,7 +107,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -190,7 +190,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -274,7 +274,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -357,7 +357,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -440,7 +440,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -521,7 +521,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -604,7 +604,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -687,7 +687,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -770,7 +770,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -851,7 +851,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -934,7 +934,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1015,7 +1015,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1096,7 +1096,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1179,7 +1179,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1260,7 +1260,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1341,7 +1341,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1422,7 +1422,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1505,7 +1505,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={vnclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={vnclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1589,7 +1589,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1672,7 +1672,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1755,7 +1755,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1836,7 +1836,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1917,7 +1917,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -1998,7 +1998,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2079,7 +2079,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2160,7 +2160,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2241,7 +2241,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2322,7 +2322,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2405,7 +2405,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2486,7 +2486,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={xianIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={xianIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2570,7 +2570,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2651,7 +2651,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2734,7 +2734,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2815,7 +2815,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2896,7 +2896,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -2980,7 +2980,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3061,7 +3061,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3142,7 +3142,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3223,7 +3223,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3304,7 +3304,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3385,7 +3385,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3466,7 +3466,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3547,7 +3547,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3628,7 +3628,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3711,7 +3711,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3792,7 +3792,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3873,7 +3873,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -3956,7 +3956,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4037,7 +4037,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4118,7 +4118,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4201,7 +4201,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4282,7 +4282,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4363,7 +4363,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4444,7 +4444,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4525,7 +4525,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4608,7 +4608,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4689,7 +4689,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4770,7 +4770,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4853,7 +4853,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -4934,7 +4934,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5015,7 +5015,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5096,7 +5096,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5179,7 +5179,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5260,7 +5260,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5343,7 +5343,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5424,7 +5424,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5505,7 +5505,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5586,7 +5586,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5667,7 +5667,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5748,7 +5748,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5829,7 +5829,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5910,7 +5910,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={ueeIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={ueeIcon + '?width=16&quality=1'}
               draggable="false"
@@ -5994,7 +5994,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6075,7 +6075,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6156,7 +6156,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6237,7 +6237,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6318,7 +6318,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6401,7 +6401,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={devIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={devIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6485,7 +6485,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6566,7 +6566,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6647,7 +6647,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6728,7 +6728,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6809,7 +6809,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6892,7 +6892,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -6975,7 +6975,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7056,7 +7056,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7137,7 +7137,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7219,7 +7219,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7300,7 +7300,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={unclIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={unclIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7384,7 +7384,7 @@ export default function Starmap({ data }) {
           <div className="relative items-center w-full h-full leading-none divide-x divide-gray-600 rounded-full">
             <Image
               src={banuIcon}
-              fill
+              layout="fill"
               placeholder="blur"
               blurDataURL={banuIcon + '?width=16&quality=1'}
               draggable="false"
@@ -7396,7 +7396,7 @@ export default function Starmap({ data }) {
           src={
             'https://cms.ariscorp.de/assets/59e8771b-d5a2-468e-971d-7594da3c113e'
           }
-          fill
+          layout="fill"
           placeholder="blur"
           blurDataURL="https://cms.ariscorp.de/assets/167ca435-c126-41da-b9b2-884f40444c0c?width=16&quality=1"
           draggable="false"
