@@ -616,13 +616,13 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                           <div className={"hardpointItems"}>
                             <div className={"hardpointItem"}>
                               <div className={"hardpointItemQuantity"}>
-                                <span> {data.hardpoints.filter((e) => e.type == 'computer').length} </span>
+                                <span> {data.hardpoints.filter((e) => e.type == 'computer' || e.type == 'computers').length} </span>
                                 <span className='text-[#7c7c7c] lowercase'>x</span>
                               </div>
                               <div className={"hardpointItemSlots"}>
                                 <div className={"hardpointItemSlot"}>
                                   <div className={"hardpointItemInner"}>
-                                    <div className={"hardpointItemSize"}> Size {setSize(data.hardpoints.filter((e) => e.type == 'computer')[0].size)} ({(data.hardpoints.filter((e) => e.type == 'computer')[0].size)}) </div>
+                                    <div className={"hardpointItemSize"}> Size {setSize(data.hardpoints.filter((e) => e.type == 'computer' || e.type == 'computers')[0].size)} ({(data.hardpoints.filter((e) => e.type == 'computer' || e.type == 'computers')[0].size)}) </div>
                                   </div>
                                 </div>
                               </div>
@@ -643,13 +643,13 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                           <div className={"hardpointItems"}>
                             <div className={"hardpointItem"}>
                               <div className={"hardpointItemQuantity"}>
-                                <span> {data.hardpoints.filter((e) => e.type == 'radar').length} </span>
+                                <span> {data.hardpoints.filter((e) => e.type == 'radar' || e.type == 'radars').length} </span>
                                 <span className='text-[#7c7c7c] lowercase'>x</span>
                               </div>
                               <div className={"hardpointItemSlots"}>
                                 <div className={"hardpointItemSlot"}>
                                   <div className={"hardpointItemInner"}>
-                                    <div className={"hardpointItemSize"}> Size {setSize(data.hardpoints.filter((e) => e.type == 'radar')[0].size)} ({(data.hardpoints.filter((e) => e.type == 'radar')[0].size)}) </div>
+                                    <div className={"hardpointItemSize"}> Size {setSize(data.hardpoints.filter((e) => e.type == 'radar' || e.type == 'radars')[0].size)} ({(data.hardpoints.filter((e) => e.type == 'radar' || e.type == 'radars')[0].size)}) </div>
                                   </div>
                                 </div>
                               </div>
@@ -725,15 +725,15 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                           <div className={"hardpointItems"}>
                             <div className={"hardpointItem"}>
                               <div className={"hardpointItemQuantity"}>
-                                  <span> {data.hardpoints.filter((e) => e.type == 'shield').length} </span>
+                                  <span> {data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator').length} </span>
                                 <span className='text-[#7c7c7c] lowercase'>x</span>
                               </div>
                               <div className={"hardpointItemSlots"}>
                                 <div className={"hardpointItemSlot"}>
                                   <div className={"hardpointItemInner"}>
-                                    <div className={"hardpointItemSize"}> Size {(data.hardpoints.filter((e) => e.type == 'shield')[0].size)} </div>
-                                    {data.hardpoints.filter((e) => e.type == 'shield')[0].component && <div className={"hardpointItemComponent"}> {components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield')[0].component).name} </div>}
-                                    {data.hardpoints.filter((e) => e.type == 'shield')[0].component && <Link href={'/VerseExkurs/firmen/' + components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield')[0].component).manufacturer.firmen_name} className={'hardpointItemComponentManufacturer text-inherit decoration-transparent hover:text-white transition-all duration-300 hover:duration-150 ' + (components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield')[0].component).manufacturer.status != 'published' && 'pointer-events-none')}>{components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield')[0].component).manufacturer.firmen_name}</Link>}
+                                    <div className={"hardpointItemSize"}> Size {(data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].size)} </div>
+                                    {data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component && <div className={"hardpointItemComponent"}> {components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component).name} </div>}
+                                    {data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component && <Link href={'/VerseExkurs/firmen/' + components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component).manufacturer.firmen_name} className={'hardpointItemComponentManufacturer text-inherit decoration-transparent hover:text-white transition-all duration-300 hover:duration-150 ' + (components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component).manufacturer.status != 'published' && 'pointer-events-none')}>{components.find((e) => e.id == data.hardpoints.filter((e) => e.type == 'shield' || e.type == 'shieldgenerator')[0].component).manufacturer.firmen_name}</Link>}
                                   </div>
                                 </div>
                               </div>
