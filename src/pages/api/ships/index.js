@@ -224,6 +224,7 @@ async function formData() {
   const liveShipData = await getLiveShipData()
   const manufacturers = await getManufacturers()
   const components = await getComponents()
+  const backendFiles = await getDirectusFiles()
   const ships = []
 
   const skippedShips = [
@@ -1657,6 +1658,8 @@ async function formData() {
 
       const flData = await getFlShip(flSlug)
       const flModules = await getFlModules(flSlug)
+      const flPaints = await getFlPaints(flSlug)
+      const liveData = liveShipData.find((e) => e.slug == slug)
       const scwData = await getScwShip(flSlug)
 
       const company = manufacturers.filter(
@@ -2207,32 +2210,30 @@ async function formData() {
         }
       }
 
-      const backendFiles = await getDirectusFiles()
+      const paints = []
+      if (flPaints[0]) {
+        flPaints.forEach(async (i) => {
+          const fileName = slug + '-' + i.slug
+          const link = i.storeImage
+          let fileId
 
-      // const paints = []
-      // if (flPaints[0]) {
-      //   flPaints.forEach(async (i) => {
-      //     const fileName = slug + '-' + i.slug
-      //     const link = i.storeImage
-      //     let fileId
+          if (liveData?.paints?.find((e) => e.slug == i.slug).storeImage || backendFiles.find((e) => e.title == 'paint-' + fileName)) {
+            fileId = backendFiles.find((e) => e.title == 'paint-' + fileName).id
+          } else {
+            const fileUpload = await uploadFile(link, fileName, 'paint')
+            fileId = fileUpload.id
+          }
 
-      //     if (liveData?.paints?.find((e) => e.slug == i.slug).storeImage || backendFiles.find((e) => e.title == 'paint-' + fileName)) {
-      //       fileId = backendFiles.find((e) => e.title == 'paint-' + fileName).id
-      //     } else {
-      //       const fileUpload = await uploadFile(link, fileName, 'paint')
-      //       fileId = fileUpload.id
-      //     }
+          const paint = {
+            name: i.name,
+            slug: i.slug,
+            nameWithModel: i.nameWithModel,
+            storeImage: fileId,
+          }
 
-      //     const paint = {
-      //       name: i.name,
-      //       slug: i.slug,
-      //       nameWithModel: i.nameWithModel,
-      //       storeImage: fileId,
-      //     }
-
-      //     paints.push(paint)
-      //   })
-      // }
+          paints.push(paint)
+        })
+      }
 
       const modules = []
       if (flModules > 0) {
@@ -2271,6 +2272,7 @@ async function formData() {
         mass: p4kData ? p4kData.Mass : parseFloat(obj.mass),
         cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
         size: p4kData ? p4kData.Size : size,
+        sortSize: size,
         price: flData.price,
         pledgePrice: flData.pledgePrice,
         onSale: flData.onSale,
@@ -2306,6 +2308,7 @@ async function formData() {
 
         hardpoints,
         variants,
+        paints,
         modules,
       }
       // storeImage: obj.media[0].source_url,
