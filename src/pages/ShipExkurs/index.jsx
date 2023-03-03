@@ -724,7 +724,7 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [6]
+                      (sizequery == [5]
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }

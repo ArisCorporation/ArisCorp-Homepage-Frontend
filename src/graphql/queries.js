@@ -186,6 +186,7 @@ export const GET_MEMBER = gql`
       activities
       mysteriousThings
       characterTrait
+      fears
       books
       music
       movies
@@ -209,6 +210,7 @@ export const GET_MEMBER = gql`
     }
     member_technologien {
       technologien_id {
+        id
         waffen_name
         waffenhersteller {
           firmen_name
@@ -1389,7 +1391,7 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
       filter: {
         status: { _eq: "published" }
         manufacturer: { firmen_name: { _in: $manufacturers } }
-        size: { _in: $sizes }
+        sortSize: { _in: $sizes }
         career: { _in: $careers }
       }
       sort: ["sort", "name"]
@@ -1573,9 +1575,11 @@ export const GET_SHIPEXKURS_SHIP = gql`
       }
       description
       history
-      introduction
-      ratings
-      s_w
+      rating {
+        introduction
+        ratings
+        s_w
+      }
       paints
       variants
       hardpoints
@@ -1583,7 +1587,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
     components(limit: -1) {
       id
       name
-      manufacturer{
+      manufacturer {
         firmen_name
         status
       }
