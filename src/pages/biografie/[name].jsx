@@ -42,6 +42,10 @@ export async function getServerSideProps (context) {
   data.member_technologien.forEach((obj) => {
     weapons.push(obj.technologien_id)
   })
+  const ships = []
+  data.member_ships.forEach((obj) => {
+    ships.push(obj.ships_id)
+  })
 
   data = data.member[0]
   const roles = []
@@ -73,12 +77,13 @@ export async function getServerSideProps (context) {
       roles,
       departments,
       weapons,
+      ships,
       siteTitle
     }
   }
 }
 
-export default function Biografie ({ data, departments, roles, weapons, siteTitle }) {
+export default function Biografie ({ data, departments, roles, weapons, ships, siteTitle }) {
   const shareUrl = "https://ariscorp.de/biografie/" + data.slug
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
@@ -93,6 +98,8 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
       theme: "dark",
     });
   }
+
+  console.log(ships);
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -573,33 +580,33 @@ export default function Biografie ({ data, departments, roles, weapons, siteTitl
       <hr />
       <div>
         <div>
-          {/* {data.ships[0] ? (
-                <Disclosure>
-                  {({ open }) => (
-                    <>
-                      <Disclosure.Button className="block py-2">
-                        <h2>Schiffe von <span className="text-primary">{data.firmen_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h2>
-                      </Disclosure.Button>
-                      <Transition
-                        enter="transition ease duration-500 transform"
-                        enterFrom="opacity-0 -translate-y-2"
-                        enterTo="opacity-100 translate-y-0"
-                        leave="transition ease duration-300 transform"
-                        leaveFrom="opacity-100 translate-y-0"
-                        leaveTo="opacity-0 -translate-y-2"
-                      >
-                        <Disclosure.Panel>
-                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
-                            {data.ships.map((object, index) => (
-                              <ShipCard key={object.id} data={object} manufacturer={data} />
-                            ))}
-                          </div>
-                        </Disclosure.Panel>
-                      </Transition>
-                    </>
-                  )}
-                </Disclosure>
-              ) : null} */}
+          {ships[0] ? (
+            <Disclosure>
+              {({ open }) => (
+                <>
+                  <Disclosure.Button className="block py-2">
+                    <h1>Schiffe von <span className="text-primary">{data.member_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
+                  </Disclosure.Button>
+                  <Transition
+                    enter="transition ease duration-500 transform"
+                    enterFrom="opacity-0 -translate-y-2"
+                    enterTo="opacity-100 translate-y-0"
+                    leave="transition ease duration-300 transform"
+                    leaveFrom="opacity-100 translate-y-0"
+                    leaveTo="opacity-0 -translate-y-2"
+                  >
+                    <Disclosure.Panel>
+                      <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
+                        {ships.map((object, index) => (
+                          <ShipCard key={object.id} data={object} manufacturer={data} />
+                        ))}
+                      </div>
+                    </Disclosure.Panel>
+                  </Transition>
+                </>
+              )}
+            </Disclosure>
+          ) : null}
           {weapons ? (
             <Disclosure>
               {({ open }) => (

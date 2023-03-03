@@ -208,6 +208,21 @@ export const GET_MEMBER = gql`
         gameplay_name
       }
     }
+    member_ships {
+      ships_id {
+        name
+        slug
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          firmen_trans_logo {
+            id
+          }
+        }
+      }
+    }
     member_technologien {
       technologien_id {
         id
