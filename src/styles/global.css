@@ -114,7 +114,7 @@ vm-icon {
     @apply px-3 py-4
   }
   .hardpointType {
-    @apply relative flex flex-wrap justify-between mb-[10px]
+    @apply relative flex flex-wrap justify-between mb-[10px] last:mb-0
   }
   .hardpointTypeLabel {
     @apply flex items-center w-72 my-[5px] pr-5 text-[#959595]
