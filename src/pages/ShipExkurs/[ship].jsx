@@ -590,7 +590,7 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                 </h1>
               </Tab>
             )}
-            {data.commercial && (
+            {data.commercialVideoId && (
               <Tab
                 className={({ selected }) =>
                   (selected ? 'text-primary' : 'opacity-50') +
@@ -644,10 +644,10 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                 </BasicPanel>
               </Tab.Panel>
             )}
-            {data.commercial && (
+            {data.commercialVideoId && (
               <Tab.Panel>
                 <BasicPanel>
-                  <VideoPlayer video={data.commercial} thumbnail={data.commercialThumbnail} />
+                  <VideoPlayer videoId={data.commercialVideoId} />
                 </BasicPanel>
               </Tab.Panel>
             )}

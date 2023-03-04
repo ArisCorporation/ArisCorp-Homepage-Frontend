@@ -18,15 +18,16 @@ import '@vime/core/themes/default.css';
 //   };
 // };
 
-const VideoPlayer = ({ video, thumbnail }) => (
+const VideoPlayer = ({ video, thumbnail, videoId }) => (
   <div className="overflow-hidden rounded-2xl">
-    <Player aspectRatio="100%">
-      <Video crossOrigin="" poster={'https://cms.ariscorp.de/assets/' + thumbnail.id}>
+    <Player>
+      <Youtube videoId={videoId} />
+      {/* <Video crossOrigin="" poster={'https://cms.ariscorp.de/assets/' + thumbnail.id}>
         <source
           data-src={'https://cms.ariscorp.de/assets/' + video.id}
           type="video/mp4"
         />
-      </Video>
+      </Video> */}
 
       <Ui>
         <ClickToPlay useOnMobile />
