@@ -1588,6 +1588,12 @@ export const GET_SHIPEXKURS_SHIP = gql`
           height
         }
       }
+      commercial {
+        id
+      }
+      commercialThumbnail {
+        id
+      }
       description
       history
       rating {

@@ -8,7 +8,13 @@
   font-weight: 400;
   font-style: normal;
 }
-
+vm-player {
+  --vm-slider-value-color: #00ffe8 !important;
+}
+vm-icon {
+  --vm-icon-color: #00ffe8 !important;
+  --vm-icon-stroke: #00ffe8 !important;
+}
 /* Apply Classes */
 
 @layer base {

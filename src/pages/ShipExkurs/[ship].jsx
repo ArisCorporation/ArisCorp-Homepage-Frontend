@@ -21,6 +21,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import './progressbar.css'
 import "react-image-gallery/styles/css/image-gallery.css";
 import { FaShareSquare } from 'react-icons/fa'
+import { TfiControlBackward, TfiControlForward, TfiControlPlay } from 'react-icons/ti'
 import _ from 'lodash'
 
 // Animation
@@ -33,6 +34,11 @@ import { MdOutlineScreenShare } from 'react-icons/md'
 import { GrCatalog, GrCatalogOption } from 'react-icons/gr'
 import ShipCard from 'components/ShipExkurs/ShipCard'
 import ShipPaintCard from 'components/ShipExkurs/ShipPaintCard'
+import VideoPlayer from 'components/VideoPlayer'
+
+// const VideoPlayer = dynamic(() => import('components/VideoPlayer'), {
+//   ssr: false,
+// })
 
 function Separator (props) {
   return (
@@ -581,6 +587,18 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                 </h1>
               </Tab>
             )}
+            {data.commercial && (
+              <Tab
+                className={({ selected }) =>
+                  (selected ? 'text-primary' : 'opacity-50') +
+                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                }
+              >
+                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                  Commercial
+                </h1>
+              </Tab>
+            )}
             {data.rating && (
               <Tab
                 className={({ selected }) =>
@@ -1113,6 +1131,13 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                   <div className="overflow-hidden rounded-2xl">
                     <ImageGallery items={galleryImages} />
                   </div>
+                </BasicPanel>
+              </Tab.Panel>
+            )}
+            {data.commercial && (
+              <Tab.Panel>
+                <BasicPanel>
+                  <VideoPlayer video={data.commercial} thumbnail={data.commercialThumbnail} />
                 </BasicPanel>
               </Tab.Panel>
             )}
