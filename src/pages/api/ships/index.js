@@ -189,7 +189,7 @@ async function getP4kShipHardpoints(ship) {
 }
 
 async function getLiveShipData() {
-  const actualUrl = BackendURL + '/items/ships?fields=id,name,slug'
+  const actualUrl = BackendURL + '/items/ships?fields=id,name,slug&limit=-1'
   var apiResults = await fetch(actualUrl).then((resp) => {
     return resp.json()
   })
@@ -2311,7 +2311,6 @@ async function formData() {
         paints,
         modules,
       }
-      // storeImage: obj.media[0].source_url,
 
       ships.push(ship)
     })
