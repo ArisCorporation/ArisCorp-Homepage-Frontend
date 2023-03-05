@@ -246,6 +246,7 @@ async function formData() {
     'Nautilus Solstice Edition',
     'Valkyrie Liberator Edition',
   ]
+  const skippedPaints = ['Carrack Expedition']
   const slugOverwrites = [
     {
       ship: 'santokyi',
@@ -1969,7 +1970,9 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.ManeuveringThrusters.filter((e) => e.InstalledItem?.Type === 'ManneuverThruster.JointThruster').forEach((i) => {
+        p4kHardpoints.ManeuveringThrusters.filter(
+          (e) => e.InstalledItem?.Type === 'ManneuverThruster.JointThruster'
+        ).forEach((i) => {
           const hardpoint = {
             type: 'gimbaledmaneuveringthruster',
             category: 'G',
@@ -1983,16 +1986,18 @@ async function formData() {
         obj.compiled?.RSIModular.power_plants.forEach((i) => {
           const component = findComponendId(i.name)[0]
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            const hardpoint = {
-              type: 'powerplant',
-              size: setSize(i.size.toLowerCase()),
-              componentSize: setSize(i.component_size.toLowerCase()),
-              component: component?.id,
-            }
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              const hardpoint = {
+                type: 'powerplant',
+                size: setSize(i.size.toLowerCase()),
+                componentSize: setSize(i.component_size.toLowerCase()),
+                component: component?.id,
+              }
 
-            hardpoints.push(hardpoint)
-          })
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIModular.coolers.forEach((i) => {
@@ -2005,9 +2010,11 @@ async function formData() {
             component: component?.id,
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIModular.shield_generators.forEach((i) => {
@@ -2020,9 +2027,11 @@ async function formData() {
             component: component?.id,
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.quantum_drives.forEach((i) => {
@@ -2035,9 +2044,11 @@ async function formData() {
             component: component?.id,
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
@@ -2047,9 +2058,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.quantum_fuel_tanks.forEach((i) => {
@@ -2059,9 +2072,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.fuel_tanks.forEach((i) => {
@@ -2071,9 +2086,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
@@ -2083,9 +2100,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
@@ -2095,9 +2114,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIAvionic.radar.forEach((i) => {
@@ -2107,9 +2128,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         obj.compiled?.RSIAvionic.computers.forEach((i) => {
@@ -2119,9 +2142,11 @@ async function formData() {
             componentSize: setSize(i.component_size.toLowerCase()),
           }
 
-          Array(parseInt(i.mounts)).fill(0).forEach(() => {
-            hardpoints.push(hardpoint)
-          })
+          Array(parseInt(i.mounts))
+            .fill(0)
+            .forEach(() => {
+              hardpoints.push(hardpoint)
+            })
         })
 
         if (obj.compiled?.RSIThruster.main_thruster) {
@@ -2135,9 +2160,11 @@ async function formData() {
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
 
-              Array(parseInt(i.mounts)).fill(0).forEach(() => {
-                hardpoints.push(hardpoint)
-              })
+              Array(parseInt(i.mounts))
+                .fill(0)
+                .forEach(() => {
+                  hardpoints.push(hardpoint)
+                })
             })
         }
 
@@ -2152,9 +2179,11 @@ async function formData() {
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
 
-              Array(parseInt(i.mounts)).fill(0).forEach(() => {
-                hardpoints.push(hardpoint)
-              })
+              Array(parseInt(i.mounts))
+                .fill(0)
+                .forEach(() => {
+                  hardpoints.push(hardpoint)
+                })
             })
         }
 
@@ -2169,9 +2198,11 @@ async function formData() {
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
 
-              Array(parseInt(i.mounts)).fill(0).forEach(() => {
-                hardpoints.push(hardpoint)
-              })
+              Array(parseInt(i.mounts))
+                .fill(0)
+                .forEach(() => {
+                  hardpoints.push(hardpoint)
+                })
             })
         }
 
@@ -2186,9 +2217,11 @@ async function formData() {
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
 
-              Array(parseInt(i.mounts)).fill(0).forEach(() => {
-                hardpoints.push(hardpoint)
-              })
+              Array(parseInt(i.mounts))
+                .fill(0)
+                .forEach(() => {
+                  hardpoints.push(hardpoint)
+                })
             })
         }
 
@@ -2203,9 +2236,11 @@ async function formData() {
                 componentSize: setSize(i.component_size.toLowerCase()),
               }
 
-              Array(parseInt(i.mounts)).fill(0).forEach(() => {
-                hardpoints.push(hardpoint)
-              })
+              Array(parseInt(i.mounts))
+                .fill(0)
+                .forEach(() => {
+                  hardpoints.push(hardpoint)
+                })
             })
         }
       }
@@ -2213,25 +2248,32 @@ async function formData() {
       const paints = []
       if (flPaints[0]) {
         flPaints.forEach(async (i) => {
-          const fileName = slug + '-' + i.slug
-          const link = i.storeImage
-          let fileId
+          if (!skippedPaints.includes(i.name)) {
+            const fileName = slug + '-' + i.slug
+            const link = i.storeImage
+            let fileId
 
-          if (liveData?.paints?.find((e) => e.slug == i.slug).storeImage || backendFiles.find((e) => e.title == 'paint-' + fileName)) {
-            fileId = backendFiles.find((e) => e.title == 'paint-' + fileName).id
-          } else {
-            const fileUpload = await uploadFile(link, fileName, 'paint')
-            fileId = fileUpload.id
+            if (
+              liveData?.paints?.find((e) => e.slug == i.slug).storeImage ||
+              backendFiles.find((e) => e.title == 'paint-' + fileName)
+            ) {
+              fileId = backendFiles.find(
+                (e) => e.title == 'paint-' + fileName
+              ).id
+            } else {
+              const fileUpload = await uploadFile(link, fileName, 'paint')
+              fileId = fileUpload.id
+            }
+
+            const paint = {
+              name: i.name,
+              slug: i.slug,
+              nameWithModel: i.nameWithModel,
+              storeImage: fileId,
+            }
+
+            paints.push(paint)
           }
-
-          const paint = {
-            name: i.name,
-            slug: i.slug,
-            nameWithModel: i.nameWithModel,
-            storeImage: fileId,
-          }
-
-          paints.push(paint)
         })
       }
 
