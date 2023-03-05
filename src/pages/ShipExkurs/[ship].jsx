@@ -26,7 +26,6 @@ import _ from 'lodash'
 import ShipHardpoints from 'components/ShipExkurs/ShipHardpoints'
 
 // Animation
-import { easeQuadInOut } from 'd3-ease'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Catalog, Presentation, ShareSquare, ThreeDots } from 'components/icons'
@@ -36,10 +35,6 @@ import { GrCatalog, GrCatalogOption } from 'react-icons/gr'
 import ShipCard from 'components/ShipExkurs/ShipCard'
 import ShipPaintCard from 'components/ShipExkurs/ShipPaintCard'
 import VideoPlayer from 'components/VideoPlayer'
-
-// const VideoPlayer = dynamic(() => import('components/VideoPlayer'), {
-//   ssr: false,
-// })
 
 function slugify(str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
