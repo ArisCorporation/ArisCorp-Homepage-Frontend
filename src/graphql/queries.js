@@ -1588,6 +1588,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
           height
         }
       }
+      commercialVideoId
       commercial {
         id
       }
