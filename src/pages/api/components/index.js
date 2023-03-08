@@ -77,7 +77,7 @@ async function formData() {
         return
       }
       const slug = string_to_slug(obj.stdItem.Name.toLowerCase())
-      const company = manufacturers.filter((e) => e.code == obj.manufacturer || e.firmen_name == obj?.stdItem?.Manufacturer.Name)[0]
+      const company = manufacturers.filter((e) => e.code?.toLowerCase() == obj.manufacturer?.toLowerCase() || e.firmen_name.toLowerCase() == obj?.stdItem?.Manufacturer?.Name.toLowerCase())[0]
 
       const component = {
         status: 'published',
