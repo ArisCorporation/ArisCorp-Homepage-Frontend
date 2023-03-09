@@ -110,6 +110,7 @@ async function formData() {
 
       const ship = {
         slug: obj.slug,
+        name: obj.name,
         storeImage: fileId,
       }
 
@@ -128,13 +129,13 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/ships?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg&limit=-1'
+        'https://cms.ariscorp.de/items/ships?fields=slug,name,storeImage&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
           const directusData = resp.data.data
           const search = directusData.find(
-            (element) => element.slug == object.slug
+            (element) => element.slug == object.slug || element.name == object.name
           )
           if (search != null) {
             axios
