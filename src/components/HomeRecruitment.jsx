@@ -133,7 +133,7 @@ const RectruitmentSection = () => {
                   </button>
                 </div>
                 <a
-                  href="https://discord.gg/3y2Jm33qeZ"
+                  href="https://discord.gg/g38pavPwzU"
                   className="px-4 py-1 mx-1 transition-all duration-200 ease-linear rounded hover:bg-white"
                 >
                   <Image
