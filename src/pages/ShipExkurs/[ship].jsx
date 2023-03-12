@@ -29,14 +29,11 @@ import ShipHardpoints from 'components/ShipExkurs/ShipHardpoints'
 import Head from 'next/head'
 import Link from 'next/link'
 import { Catalog, Presentation, ShareSquare, ThreeDots } from 'components/icons'
-import { HiOutlinePresentationChartLine } from 'react-icons/hi'
-import { MdOutlineScreenShare } from 'react-icons/md'
-import { GrCatalog, GrCatalogOption } from 'react-icons/gr'
 import ShipCard from 'components/ShipExkurs/ShipCard'
 import ShipPaintCard from 'components/ShipExkurs/ShipPaintCard'
 import VideoPlayer from 'components/VideoPlayer'
 
-function slugify(str) {
+function slugify (str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
   str = str.toLowerCase()
 
@@ -135,6 +132,8 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
   const { ship: Ship } = router.query
   const shareUrl = "https://ariscorp.de/ShipExkurs/" + data.slug + (urlquery ? "?tab=" + urlquery : "")
 
+  console.log((!data.history && !data.gallery[0] && !data.commercialVideoId && !data.rating ? 'ja' : 'nein'));
+
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
     toast.info('URL in Zwischenablage kopiert!', {
@@ -174,35 +173,35 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
     return sum
   }
   const fightScore = parseInt(
-    data.rating.ratings?.filter((e) => e.kategorie == 'fight_potential')[0].grad
+    data.rating?.ratings?.filter((e) => e.kategorie == 'fight_potential')[0].grad
   )
-  const fightReason = data.rating.ratings?.filter(
+  const fightReason = data.rating?.ratings?.filter(
     (e) => e.kategorie == 'fight_potential'
   )[0].begrundung
   const ecoScore = parseInt(
-    data.rating.ratings?.filter((e) => e.kategorie == 'eco_potential')[0].grad
+    data.rating?.ratings?.filter((e) => e.kategorie == 'eco_potential')[0].grad
   )
-  const ecoReason = data.rating.ratings?.filter(
+  const ecoReason = data.rating?.ratings?.filter(
     (e) => e.kategorie == 'eco_potential'
   )[0].begrundung
   const useScore = parseInt(
-    data.rating.ratings?.filter((e) => e.kategorie == 'use_potential')[0].grad
+    data.rating?.ratings?.filter((e) => e.kategorie == 'use_potential')[0].grad
   )
-  const useReason = data.rating.ratings?.filter(
+  const useReason = data.rating?.ratings?.filter(
     (e) => e.kategorie == 'use_potential'
   )[0].begrundung
   const ppScore = parseInt(
-    data.rating.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0].grad
+    data.rating?.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0].grad
   )
-  const ppReason = data.rating.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0]
+  const ppReason = data.rating?.ratings?.filter((e) => e.kategorie == 'p-p_ratio')[0]
     .begrundung
   const conclusionScore = parseInt(
-    data.rating.ratings?.filter((e) => e.kategorie == 'conclusion')[0].grad
+    data.rating?.ratings?.filter((e) => e.kategorie == 'conclusion')[0].grad
   )
-  const conclusionReason = data.rating.ratings?.filter(
+  const conclusionReason = data.rating?.ratings?.filter(
     (e) => e.kategorie == 'conclusion'
   )[0].begrundung
-  const overallScore = (data.rating.ratings ? getScore(data.rating.ratings) : null)
+  const overallScore = (data.rating?.ratings ? getScore(data.rating?.ratings) : null)
 
 
   const galleryImages = data.gallery.map((i) => {
@@ -535,319 +534,323 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
       </div>
       <hr />
       <div>
-        <Tab.Group
-          selectedIndex={activeTab}
-          onChange={(event) =>
-            replace(
-              {
-                pathname: `${Ship}`,
-                query: { tab: event },
-              },
-              undefined,
-              { shallow: true }
-            ) + setActiveTab(event)
-          }
-        >
-          <Tab.List className="flex flex-wrap justify-between">
-            {data.hardpoints && (
-              <Tab
-                className={({ selected }) =>
-                  (selected ? 'text-primary' : 'opacity-50') +
-                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
-                }
-              >
-                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
-                  Austattung
-                </h1>
-              </Tab>
-            )}
-            {data.history && (
-              <Tab
-                className={({ selected }) =>
-                  (selected ? 'text-primary' : 'opacity-50') +
-                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
-                }
-              >
-                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
-                  Geschichte
-                </h1>
-              </Tab>
-            )}
-            {data.gallery && (
-              <Tab
-                className={({ selected }) =>
-                  (selected ? 'text-primary' : 'opacity-50') +
-                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
-                }
-              >
-                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
-                  Gallerie
-                </h1>
-              </Tab>
-            )}
-            {data.commercialVideoId && (
-              <Tab
-                className={({ selected }) =>
-                  (selected ? 'text-primary' : 'opacity-50') +
-                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
-                }
-              >
-                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
-                  Commercial
-                </h1>
-              </Tab>
-            )}
-            {data.rating && (
-              <Tab
-                className={({ selected }) =>
-                  (selected ? 'text-primary' : 'opacity-50') +
-                  ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
-                }
-              >
-                <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
-                  Wertung
-                </h1>
-              </Tab>
-            )}
-          </Tab.List>
-          <Tab.Panels className={'px-4 1.5xl:px-0 pt-5'}>
-            {data.hardpoints && (
-              <Tab.Panel>
-                <ShipHardpoints data={data} components={components} />
-              </Tab.Panel>
-            )}
-            {data.history && (
-              <Tab.Panel>
-                <BasicPanel>
-                  <div>
-                    <ReactMarkdown
-                      rehypePlugins={[rehypeRaw]}
-                      className="mx-auto prose prose-td:align-middle prose-invert max-w-[90%] 1.5xl:text-"
-                    >
-                      {data.history}
-                    </ReactMarkdown>
-                  </div>
-                </BasicPanel>
-              </Tab.Panel>
-            )}
-            {data.gallery && (
-              <Tab.Panel>
-                <BasicPanel>
-                  <div className="overflow-hidden rounded-2xl">
-                    <ImageGallery items={galleryImages} />
-                  </div>
-                </BasicPanel>
-              </Tab.Panel>
-            )}
-            {data.commercialVideoId && (
-              <Tab.Panel>
-                <BasicPanel>
-                  <VideoPlayer videoId={data.commercialVideoId} />
-                </BasicPanel>
-              </Tab.Panel>
-            )}
-            {data.rating && (
-              <Tab.Panel>
-                {data.rating.ratings ? (
+        {data.history && data.gallery[0] && data.commercialVideoId && data.rating ? (
+          <Tab.Group
+            selectedIndex={activeTab}
+            onChange={(event) =>
+              replace(
+                {
+                  pathname: `${Ship}`,
+                  query: { tab: event },
+                },
+                undefined,
+                { shallow: true }
+              ) + setActiveTab(event)
+            }
+          >
+            <Tab.List className="flex flex-wrap justify-between">
+              {data.hardpoints && (
+                <Tab
+                  className={({ selected }) =>
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                  }
+                >
+                  <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                    Austattung
+                  </h1>
+                </Tab>
+              )}
+              {data.history && (
+                <Tab
+                  className={({ selected }) =>
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                  }
+                >
+                  <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                    Geschichte
+                  </h1>
+                </Tab>
+              )}
+              {data.gallery[0] && (
+                <Tab
+                  className={({ selected }) =>
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                  }
+                >
+                  <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                    Gallerie
+                  </h1>
+                </Tab>
+              )}
+              {data.commercialVideoId && (
+                <Tab
+                  className={({ selected }) =>
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                  }
+                >
+                  <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                    Commercial
+                  </h1>
+                </Tab>
+              )}
+              {data.rating && (
+                <Tab
+                  className={({ selected }) =>
+                    (selected ? 'text-primary' : 'opacity-50') +
+                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                  }
+                >
+                  <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
+                    Wertung
+                  </h1>
+                </Tab>
+              )}
+            </Tab.List>
+            <Tab.Panels className={'px-4 1.5xl:px-0 pt-5'}>
+              {data.hardpoints && (
+                <Tab.Panel>
+                  <ShipHardpoints data={data} components={components} />
+                </Tab.Panel>
+              )}
+              {data.history && (
+                <Tab.Panel>
                   <BasicPanel>
                     <div>
+                      <ReactMarkdown
+                        rehypePlugins={[rehypeRaw]}
+                        className="mx-auto prose prose-td:align-middle prose-invert max-w-[90%] 1.5xl:text-"
+                      >
+                        {data.history}
+                      </ReactMarkdown>
+                    </div>
+                  </BasicPanel>
+                </Tab.Panel>
+              )}
+              {data.gallery[0] && (
+                <Tab.Panel>
+                  <BasicPanel>
+                    <div className="overflow-hidden rounded-2xl">
+                      <ImageGallery items={galleryImages} />
+                    </div>
+                  </BasicPanel>
+                </Tab.Panel>
+              )}
+              {data.commercialVideoId && (
+                <Tab.Panel>
+                  <BasicPanel>
+                    <VideoPlayer videoId={data.commercialVideoId} />
+                  </BasicPanel>
+                </Tab.Panel>
+              )}
+              {data.rating && (
+                <Tab.Panel>
+                  {data.rating?.ratings ? (
+                    <BasicPanel>
                       <div>
                         <div>
-                          <h1 className='pl-4'>
-                            <span className="text-primary">ArisCorp</span>
-                            <span> Wertung</span>
-                          </h1>
-                        </div>
-                        <div className="grid gap-8 px-4 mt-4 1.5xl:px-8 1.5xl:grid-cols-2">
-                          <div className='flex flex-wrap'>
-                            <div className="h-fit">
-                              <div className="px-2 mb-8 border border-secondary">
-                                <ReactMarkdown
-                                  rehypePlugins={[rehypeRaw]}
-                                  className="text-lg"
-                                >
-                                  {data.rating.introduction}
-                                </ReactMarkdown>
-                              </div>
-
-                              <ul className="pl-2 text-xl">
-                                {data.rating.s_w ? (
-                                  data.rating.s_w
-                                    .filter((e) => e.kategorie == 'positive')
-                                    .map((object, index) => (
-                                      <li
-                                        key={index}
-                                        className='list-none my-2 before:content-["+"] before:text-green-500 before:mr-2'
-                                      >
-                                        {object.name}
-                                      </li>
-                                    ))
-                                ) : null}
-                                {data.rating.s_w ? (
-                                  data.rating.s_w
-                                    .filter((e) => e.kategorie == 'negative')
-                                    .map((object, index) => (
-                                      <li
-                                        key={index}
-                                        className='list-none my-2 before:content-["-"] before:text-red-500 before:mr-2'
-                                      >
-                                        {object.name}
-                                      </li>
-                                    ))
-                                ) : null}
-                              </ul>
-                            </div>
-
-                            <div className="flex-wrap items-center justify-center hidden py-6 mt-auto whitespace-normal 1.5xl:flex">
-                              <div>
-                                <h2 className="w-full">Die {data.name}</h2>
-                                <p>Erreichte eine Wertung von:</p>
-                              </div>
-                              <div className="w-3/12 pl-2">
-                                <CircularProgressbarWithChildren
-                                  value={overallScore}
-                                  text={`${overallScore}%`}
-                                  strokeWidth={10}
-                                  styles={buildStyles({
-                                    strokeLinecap: 'butt',
-                                  })}
-                                >
-                                  <RadialSeparators
-                                    count={12}
-                                    style={{
-                                      background: '#666',
-                                      width: '2px',
-                                      // This needs to be equal to props.strokeWidth
-                                      height: `${10}%`,
-                                    }}
-                                  />
-                                </CircularProgressbarWithChildren>
-                              </div>
-                            </div>
+                          <div>
+                            <h1 className='pl-4'>
+                              <span className="text-primary">ArisCorp</span>
+                              <span> Wertung</span>
+                            </h1>
                           </div>
-                          <div className='mb-6 1.5xl:pl-4'>
-                            <h2 className='-ml-2 1.5xl:-ml-4 text-primary'>Unsere Einschätzung:</h2>
-                            <div>
-                              <p className="text-lg text-secondary">
-                                <span>Kampfpontenzial - </span>
-                                <span>
-                                  {fightScore == 10
-                                    ? 'Gering'
-                                    : fightScore == 15
-                                      ? 'Mittel'
-                                      : fightScore == 20
-                                        ? 'Gut'
-                                        : fightScore == 25
-                                          ? 'Sehr Gut'
-                                          : 'nicht vorhanden'}
-                                </span>
-                              </p>
-                              <p className="ml-4 -mt-3">{fightReason}</p>
-                            </div>
-                            <div>
-                              <p className="text-lg text-secondary">
-                                <span>Wirtschaftliches Potenzial - </span>
-                                <span>
-                                  {ecoScore == 10
-                                    ? 'Gering'
-                                    : ecoScore == 15
-                                      ? 'Mittel'
-                                      : ecoScore == 20
-                                        ? 'Gut'
-                                        : ecoScore == 25
-                                          ? 'Sehr Gut'
-                                          : 'nicht vorhanden'}
-                                </span>
-                              </p>
-                              <p className="ml-4 -mt-3">{ecoReason}</p>
-                            </div>
-                            <div>
-                              <p className="text-lg text-secondary">
-                                <span>Benutzungspotenzial - </span>
-                                <span>
-                                  {useScore == 10
-                                    ? 'Gering'
-                                    : useScore == 15
-                                      ? 'Mittel'
-                                      : useScore == 20
-                                        ? 'Gut'
-                                        : useScore == 25
-                                          ? 'Sehr Gut'
-                                          : 'nicht vorhanden'}
-                                </span>
-                              </p>
-                              <p className="ml-4 -mt-3">{useReason}</p>
-                            </div>
-                            <div>
-                              <p className="text-lg text-secondary">
-                                <span>Preis-Leistungsverhältnis - </span>
-                                <span>
-                                  {ppScore == 10
-                                    ? 'Gering'
-                                    : ppScore == 15
-                                      ? 'Mittel'
-                                      : ppScore == 20
-                                        ? 'Gut'
-                                        : ppScore == 25
-                                          ? 'Sehr Gut'
-                                          : 'nicht vorhanden'}
-                                </span>
-                              </p>
-                              <p className="ml-4 -mt-3">{ppReason}</p>
-                            </div>
-                            <div>
-                              <p className="text-lg text-secondary">
-                                <span>Schlussfolgerung - </span>
-                                <span>
-                                  {conclusionScore == 10
-                                    ? 'Gering'
-                                    : conclusionScore == 15
-                                      ? 'Mittel'
-                                      : conclusionScore == 20
-                                        ? 'Gut'
-                                        : conclusionScore == 25
-                                          ? 'Sehr Gut'
-                                          : 'nicht vorhanden'}
-                                </span>
-                              </p>
-                              <p className="ml-4 -mt-3">{conclusionReason}</p>
-                            </div>
-                            <div className="flex flex-wrap items-center justify-center py-6 mt-auto whitespace-normal 1.5xl:hidden">
-                              <div>
-                                <h2 className="w-full">Die {data.name}</h2>
-                                <p>Erreichte eine Wertung von:</p>
+                          <div className="grid gap-8 px-4 mt-4 1.5xl:px-8 1.5xl:grid-cols-2">
+                            <div className='flex flex-wrap'>
+                              <div className="h-fit">
+                                <div className="px-2 mb-8 border border-secondary">
+                                  <ReactMarkdown
+                                    rehypePlugins={[rehypeRaw]}
+                                    className="text-lg"
+                                  >
+                                    {data.rating.introduction}
+                                  </ReactMarkdown>
+                                </div>
+
+                                <ul className="pl-2 text-xl">
+                                  {data.rating.s_w ? (
+                                    data.rating.s_w
+                                      .filter((e) => e.kategorie == 'positive')
+                                      .map((object, index) => (
+                                        <li
+                                          key={index}
+                                          className='list-none my-2 before:content-["+"] before:text-green-500 before:mr-2'
+                                        >
+                                          {object.name}
+                                        </li>
+                                      ))
+                                  ) : null}
+                                  {data.rating.s_w ? (
+                                    data.rating.s_w
+                                      .filter((e) => e.kategorie == 'negative')
+                                      .map((object, index) => (
+                                        <li
+                                          key={index}
+                                          className='list-none my-2 before:content-["-"] before:text-red-500 before:mr-2'
+                                        >
+                                          {object.name}
+                                        </li>
+                                      ))
+                                  ) : null}
+                                </ul>
                               </div>
-                              <div className="w-32 pl-2 aspect-square">
-                                <CircularProgressbarWithChildren
-                                  value={overallScore}
-                                  text={`${overallScore}%`}
-                                  strokeWidth={10}
-                                  styles={buildStyles({
-                                    strokeLinecap: 'butt',
-                                  })}
-                                >
-                                  <RadialSeparators
-                                    count={12}
-                                    style={{
-                                      background: '#666',
-                                      width: '2px',
-                                      // This needs to be equal to props.strokeWidth
-                                      height: `${10}%`,
-                                    }}
-                                  />
-                                </CircularProgressbarWithChildren>
+
+                              <div className="flex-wrap items-center justify-center hidden py-6 mt-auto whitespace-normal 1.5xl:flex">
+                                <div>
+                                  <h2 className="w-full">Die {data.name}</h2>
+                                  <p>Erreichte eine Wertung von:</p>
+                                </div>
+                                <div className="w-3/12 pl-2">
+                                  <CircularProgressbarWithChildren
+                                    value={overallScore}
+                                    text={`${overallScore}%`}
+                                    strokeWidth={10}
+                                    styles={buildStyles({
+                                      strokeLinecap: 'butt',
+                                    })}
+                                  >
+                                    <RadialSeparators
+                                      count={12}
+                                      style={{
+                                        background: '#666',
+                                        width: '2px',
+                                        // This needs to be equal to props.strokeWidth
+                                        height: `${10}%`,
+                                      }}
+                                    />
+                                  </CircularProgressbarWithChildren>
+                                </div>
+                              </div>
+                            </div>
+                            <div className='mb-6 1.5xl:pl-4'>
+                              <h2 className='-ml-2 1.5xl:-ml-4 text-primary'>Unsere Einschätzung:</h2>
+                              <div>
+                                <p className="text-lg text-secondary">
+                                  <span>Kampfpontenzial - </span>
+                                  <span>
+                                    {fightScore == 10
+                                      ? 'Gering'
+                                      : fightScore == 15
+                                        ? 'Mittel'
+                                        : fightScore == 20
+                                          ? 'Gut'
+                                          : fightScore == 25
+                                            ? 'Sehr Gut'
+                                            : 'nicht vorhanden'}
+                                  </span>
+                                </p>
+                                <p className="ml-4 -mt-3">{fightReason}</p>
+                              </div>
+                              <div>
+                                <p className="text-lg text-secondary">
+                                  <span>Wirtschaftliches Potenzial - </span>
+                                  <span>
+                                    {ecoScore == 10
+                                      ? 'Gering'
+                                      : ecoScore == 15
+                                        ? 'Mittel'
+                                        : ecoScore == 20
+                                          ? 'Gut'
+                                          : ecoScore == 25
+                                            ? 'Sehr Gut'
+                                            : 'nicht vorhanden'}
+                                  </span>
+                                </p>
+                                <p className="ml-4 -mt-3">{ecoReason}</p>
+                              </div>
+                              <div>
+                                <p className="text-lg text-secondary">
+                                  <span>Benutzungspotenzial - </span>
+                                  <span>
+                                    {useScore == 10
+                                      ? 'Gering'
+                                      : useScore == 15
+                                        ? 'Mittel'
+                                        : useScore == 20
+                                          ? 'Gut'
+                                          : useScore == 25
+                                            ? 'Sehr Gut'
+                                            : 'nicht vorhanden'}
+                                  </span>
+                                </p>
+                                <p className="ml-4 -mt-3">{useReason}</p>
+                              </div>
+                              <div>
+                                <p className="text-lg text-secondary">
+                                  <span>Preis-Leistungsverhältnis - </span>
+                                  <span>
+                                    {ppScore == 10
+                                      ? 'Gering'
+                                      : ppScore == 15
+                                        ? 'Mittel'
+                                        : ppScore == 20
+                                          ? 'Gut'
+                                          : ppScore == 25
+                                            ? 'Sehr Gut'
+                                            : 'nicht vorhanden'}
+                                  </span>
+                                </p>
+                                <p className="ml-4 -mt-3">{ppReason}</p>
+                              </div>
+                              <div>
+                                <p className="text-lg text-secondary">
+                                  <span>Schlussfolgerung - </span>
+                                  <span>
+                                    {conclusionScore == 10
+                                      ? 'Gering'
+                                      : conclusionScore == 15
+                                        ? 'Mittel'
+                                        : conclusionScore == 20
+                                          ? 'Gut'
+                                          : conclusionScore == 25
+                                            ? 'Sehr Gut'
+                                            : 'nicht vorhanden'}
+                                  </span>
+                                </p>
+                                <p className="ml-4 -mt-3">{conclusionReason}</p>
+                              </div>
+                              <div className="flex flex-wrap items-center justify-center py-6 mt-auto whitespace-normal 1.5xl:hidden">
+                                <div>
+                                  <h2 className="w-full">Die {data.name}</h2>
+                                  <p>Erreichte eine Wertung von:</p>
+                                </div>
+                                <div className="w-32 pl-2 aspect-square">
+                                  <CircularProgressbarWithChildren
+                                    value={overallScore}
+                                    text={`${overallScore}%`}
+                                    strokeWidth={10}
+                                    styles={buildStyles({
+                                      strokeLinecap: 'butt',
+                                    })}
+                                  >
+                                    <RadialSeparators
+                                      count={12}
+                                      style={{
+                                        background: '#666',
+                                        width: '2px',
+                                        // This needs to be equal to props.strokeWidth
+                                        height: `${10}%`,
+                                      }}
+                                    />
+                                  </CircularProgressbarWithChildren>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </BasicPanel>
-                ) : null}
-              </Tab.Panel>
-            )}
-          </Tab.Panels>
-        </Tab.Group>
+                    </BasicPanel>
+                  ) : null}
+                </Tab.Panel>
+              )}
+            </Tab.Panels>
+          </Tab.Group>
+        ) : (
+          <ShipHardpoints data={data} components={components} />
+        )}
         <hr />
         <div className="flex flex-wrap w-full space-x-4 italic uppercase 1.5xl:flex-nowrap text-secondary">
           <div className="w-full 1.5xl:w-1/3">

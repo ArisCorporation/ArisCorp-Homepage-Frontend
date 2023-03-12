@@ -159,9 +159,13 @@ async function getFlModules(ship) {
 
 async function getScwShip(ship) {
   const actualUrl = SCWURL + 'vehicles/' + ship
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
-  })
+  var apiResults = await fetch(actualUrl)
+    .then((resp) => {
+      return resp.json()
+    })
+    .catch(function (error) {
+      return 'ERROR'
+    })
 
   return apiResults.data
 }
