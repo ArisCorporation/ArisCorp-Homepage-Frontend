@@ -1,11 +1,8 @@
 import axios from 'axios'
 
 const SMURL = 'https://robertsspaceindustries.com/ship-matrix/index'
-const FLURL = 'https://api.fleetyards.net/v1/models/'
-const SCWURL = 'https://api.star-citizen.wiki/api/'
 const BackendURL = 'https://cms.ariscorp.de'
-const P4kURL =
-  'https://raw.githubusercontent.com/ArisCorporation/p4k/main/latest/json/'
+
 import { Directus } from '@directus/sdk'
 
 const directus = new Directus(BackendURL)
@@ -55,7 +52,7 @@ async function uploadFile(url, title) {
     data: payload.data,
   })
 
-  return data
+  return await data
 }
 
 async function getSMData() {
@@ -68,12 +65,30 @@ async function getSMData() {
 }
 
 async function getLiveShipData() {
-  const actualUrl = BackendURL + '/items/ships?fields=slug,name,storeImage&limit=-1'
+  const actualUrl =
+    BackendURL + '/items/ships?fields=id,slug,name,storeImage&limit=-1'
   var apiResults = await fetch(actualUrl).then((resp) => {
     return resp.json()
   })
 
   return apiResults.data
+}
+
+async function getFileId(obj, backendFiles, SMData) {
+  const link = !SMData.media[0].source_url.includes('https')
+    ? 'https://robertsspaceindustries.com' +
+      SMData.media[0].source_url.replace('/', '/')
+    : SMData.media[0].source_url.replace('/', '/')
+
+  if (backendFiles.find((e) => e.title == 'storeimage-' + obj.slug)) {
+    const file = await backendFiles.find(
+      (e) => e.title == 'storeimage-' + obj.slug
+    )
+    return file.id
+  } else {
+    const file = await uploadFile(link, obj.slug)
+    return file.id
+  }
 }
 
 async function formData() {
@@ -84,33 +99,20 @@ async function formData() {
 
   await Promise.all(
     liveShipData.map(async (obj) => {
-      const SMData = rawShipMatrixData.find((e) => e.name == obj.name)
+      let name = obj.name
+      if(obj.name == 'Mercury Star Runner') {
+        name = 'Mercury'
+      }
+      const SMData = rawShipMatrixData.find((e) => e.name == name)
       if (obj.storeImage || !SMData) {
         return
       }
-      let link
-      if (!SMData.media[0].source_url.includes('https')) {
-        link =
-          'https://robertsspaceindustries.com' +
-          SMData.media[0].source_url.replace('/', '/')
-      } else {
-        link = SMData.media[0].source_url.replace('/', '/')
-      }
 
-      let fileId
-
-      if (backendFiles.find((e) => e.title == 'storeimage-' + obj.slug)) {
-        fileId = backendFiles.find(
-          (e) => e.title == 'storeimage-' + obj.slug
-        ).id
-      } else {
-        const fileUpload = await uploadFile(link, obj.slug)
-        fileId = fileUpload.id
-      }
+      const fileId = await getFileId(obj, backendFiles, SMData)
 
       const ship = {
+        id: obj.id,
         slug: obj.slug,
-        name: obj.name,
         storeImage: fileId,
       }
 
@@ -129,14 +131,12 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/ships?fields=slug,name,storeImage&limit=-1'
+        'https://cms.ariscorp.de/items/ships?fields=id,slug,name,storeImage&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
           const directusData = resp.data.data
-          const search = directusData.find(
-            (element) => element.slug == object.slug || element.name == object.name
-          )
+          const search = directusData.find((element) => element.id == object.id)
           if (search != null) {
             axios
               .patch(
