@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     await axios.get(
       'https://ptu.ariscorp.de/api/ships/storeImages'
     )
+    res.status(200).send({status: "ok"})
   } else if (req.method === 'POST') {
     await axios.post(
       'https://ptu.ariscorp.de/api/ships/storeImages'
@@ -15,5 +16,6 @@ export default async function handler(req, res) {
     await axios.post(
       'https://ptu.ariscorp.de/api/ships/storeImages'
     )
+    res.status(200).send({status: "ok"})
   }
 }
