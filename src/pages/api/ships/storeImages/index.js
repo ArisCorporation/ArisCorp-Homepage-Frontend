@@ -64,9 +64,11 @@ async function getSMData() {
   return apiResults.data
 }
 
-async function getLiveShipData() {
+async function getLiveShipData(page) {
   const actualUrl =
-    BackendURL + '/items/ships?fields=id,slug,name,storeImage&limit=-1'
+    BackendURL +
+    '/items/ships?fields=id,slug,name,storeImage&sort=name&limit=25&page=' +
+    page
   var apiResults = await fetch(actualUrl).then((resp) => {
     return resp.json()
   })
@@ -91,16 +93,16 @@ async function getFileId(obj, backendFiles, SMData) {
   }
 }
 
-async function formData() {
+async function formData(page) {
   const rawShipMatrixData = await getSMData()
-  const liveShipData = await getLiveShipData()
+  const liveShipData = await getLiveShipData(page)
   const backendFiles = await getDirectusFiles()
   const ships = []
 
   await Promise.all(
     liveShipData.map(async (obj) => {
       let name = obj.name
-      if(obj.name == 'Mercury Star Runner') {
+      if (obj.name == 'Mercury Star Runner') {
         name = 'Mercury'
       }
       const SMData = rawShipMatrixData.find((e) => e.name == name)
@@ -124,7 +126,7 @@ async function formData() {
 }
 
 export default async function handler(req, res) {
-  const Datastore = await formData()
+  const Datastore = await formData(req.body.page)
 
   if (req.method === 'GET') {
     res.status(200).send(Datastore)
