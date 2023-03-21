@@ -37,6 +37,17 @@ function string_to_slug(str) {
   return str
 }
 
+function removeDuplicates(arr) {
+  let uniqueChars = []
+  arr.forEach((c) => {
+    if (!uniqueChars.includes(c)) {
+      uniqueChars.push(c)
+    }
+  })
+
+  return uniqueChars
+}
+
 async function getDirectusFiles() {
   let res = await axios.get(
     BackendURL +
@@ -1800,6 +1811,28 @@ async function formData() {
         }
       })
 
+      const loaners = []
+      const flLoaners = flData.loaners
+      if (flLoaners) {
+        const rawLoaners = []
+        flLoaners.forEach((obj) => rawLoaners.push(obj.name))
+
+        removeDuplicates(rawLoaners).forEach((obj) => {
+          const loanerSlug = string_to_slug(obj)
+          const loanerModell = liveShipData.find(
+            (e) => e.slug === loanerSlug || e.name === obj
+          )
+
+          const loaner = {
+            id: loanerModell?.id,
+            name: obj,
+            slug: loanerSlug,
+          }
+
+          loaners.push(loaner)
+        })
+      }
+
       function findComponendId(name) {
         const component = components.filter((e) => e.name === name)
 
@@ -2354,6 +2387,7 @@ async function formData() {
 
         hardpoints,
         variants,
+        loaners,
         paints,
         modules,
       }
