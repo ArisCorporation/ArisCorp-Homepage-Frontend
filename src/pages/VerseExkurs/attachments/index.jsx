@@ -12,6 +12,7 @@ import { BasicPanel } from 'components/panels'
 import client from 'apollo/clients'
 import Head from 'next/head'
 import AttachmentCard from 'components/AttachmentCard'
+import SelectionGridWrapper from 'components/SelectionGridWrapper'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_VERSEEXKURS_ATTACHMENTUTILS })
@@ -135,19 +136,19 @@ export default function Attachments ({ utils, manufacturers }) {
   useEffect(() => {
     if (Data && categoryquery) {
       let array = []
-      if (categoryquery.includes("optics")) {
+      if ((Array.isArray(categoryquery) ? categoryquery.includes("optics") : categoryquery == "optics")) {
         array = [
           ...array,
           ...Data.optics
         ]
       }
-      if (categoryquery.includes("barrels")) {
+      if ((Array.isArray(categoryquery) ? categoryquery.includes("barrels") : categoryquery == "barrels")) {
         array = [
           ...array,
           ...Data.barrel
         ]
       }
-      if (categoryquery.includes("underbarrels")) {
+      if ((Array.isArray(categoryquery) ? categoryquery.includes("underbarrels") : categoryquery == "underbarrels")) {
         array = [
           ...array,
           ...Data.underbarrel
@@ -569,11 +570,11 @@ export default function Attachments ({ utils, manufacturers }) {
                 />
               </div>
             ) : (
-              <div className='grid grid-cols-1 px-2 lg:grid-cols-2 1.5xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+              <SelectionGridWrapper>
                 {data.map((object, index) => (
                   <AttachmentCard key={object.id} data={object} />
                 ))}
-              </div>
+              </SelectionGridWrapper>
             )}
           </div>
         </div>
