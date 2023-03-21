@@ -2317,7 +2317,7 @@ async function formData() {
         height: obj.height,
         mass: p4kData ? p4kData.Mass : parseFloat(obj.mass),
         cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
-        size: p4kData ? p4kData.Size : size,
+        size: p4kData ? --p4kData.Size : size,
         sortSize: size,
         price: flData.price,
         pledgePrice: flData.pledgePrice,
