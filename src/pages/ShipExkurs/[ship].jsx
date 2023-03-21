@@ -327,19 +327,16 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                     <p className='p-0 text-primary'>{data.classification != null ? data.classification : 'N/A'}</p>
                   </div>
                   <div className="col-span-1">
-                    <p className='pb-0 text-sm'>Größe:</p>
+                    <p className='pb-0 text-sm'>Grösse:</p>
                     <p className='p-0 text-primary'>{
-                      data.classification != null
-                        ? data.size == 'small'
-                          ? 'Klein'
-                          : data.size == 'medium'
-                            ? 'Medium'
-                            : data.size == 'large'
-                              ? 'Groß'
-                              : data.size == 'capital'
-                                ? data.size
-                                : 'N/A'
-                        : 'N/A'
+                      data.size ? (
+                        data.size == 0 ? `Bodenfahrzeug - XS (${data.size})`
+                        : data.size == 1 ? `Klein - S (${data.size})`
+                        : data.size == 2 ? `Medium - M (${data.size})`
+                        : data.size == 3 ? `Gross - L (${data.size})`
+                        : data.size == 4 ? `X-Gross - XL (${data.size})`
+                        : data.size == 5 && `Capital - C (${data.size})`
+                      ) : 'N/A'
                     }</p>
                   </div>
                 </div>
@@ -441,11 +438,11 @@ export default function ShipPage ({ data, loaners, variants, components, siteTit
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>SCM Geschwindigkeit:</p>
-                    <p className='p-0 normal-case text-primary'>{data.length ? data.length + ' m/s' : 'N/A'}</p>
+                    <p className='p-0 normal-case text-primary'>{data.scmSpeed ? data.scmSpeed + ' m/s' : 'N/A'}</p>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Afterburner Geschwindigkeit:</p>
-                    <p className='p-0 normal-case text-primary'>{data.beam ? data.beam + ' m/s' : 'N/A'}</p>
+                    <p className='p-0 normal-case text-primary'>{data.afterburnerSpeed ? data.afterburnerSpeed + ' m/s' : 'N/A'}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
