@@ -1,4 +1,5 @@
 import { Listbox, Transition } from '@headlessui/react'
+import Head from 'next/head'
 import { useState } from 'react'
 import { AiOutlineCheck } from 'react-icons/ai'
 import { HiSelector } from 'react-icons/hi'
@@ -38,6 +39,8 @@ export default function NewMemberPage() {
     id: null,
     message: null,
   })
+  const siteTitle =
+    'Member Creating Tool - Astro Research and Industrial Service Corporation'
 
   async function handleSubmit() {
     if (!firstname) {
@@ -91,6 +94,13 @@ export default function NewMemberPage() {
 
   return (
     <div className="px-24 pt-32">
+      <Head>
+        <title>{siteTitle}</title>
+
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
+      </Head>
       <h1>Neuer Member:</h1>
       <div className="min-h-screen mt-12 rounded-lg drop-shadow-xl bg-bg-secondary/70">
         <div
