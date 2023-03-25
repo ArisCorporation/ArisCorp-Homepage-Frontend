@@ -2,6 +2,14 @@ import axios from 'axios'
 
 const BackendURL = 'https://cms.ariscorp.de'
 
+const generatePassword = (
+  length = 12,
+  wishlist = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@-#'
+) =>
+  Array.from(crypto.getRandomValues(new Uint32Array(length)))
+    .map((x) => wishlist[x % wishlist.length])
+    .join('')
+
 async function getUsers() {
   const { data } = await axios.get(BackendURL + '/users?limit=-1')
 
@@ -37,7 +45,7 @@ async function userValidation(email) {
 
 async function createUser(name, role, customEmail) {
   const { firstname, lastname } = name
-  const password = 'P@ssw0rd'
+  const password = generatePassword()
   const email = customEmail
     ? customEmail
     : `${firstname.toLowerCase()}.${lastname.toLowerCase()}@ariscorp.de`
@@ -102,7 +110,11 @@ export default async function handler(req, res) {
     res.status(200).send({ status: 'ok' })
   } else if (req.method === 'POST') {
     const body = req.body
-    const name = {firstname: body.firstname, lastname: body.lastname, title: body.title}
+    const name = {
+      firstname: body.firstname,
+      lastname: body.lastname,
+      title: body.title,
+    }
     const customEmail = body?.email
     const role = body.role
     const data = await createUser(name, role, customEmail)
