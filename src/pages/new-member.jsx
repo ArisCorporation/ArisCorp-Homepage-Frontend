@@ -62,11 +62,9 @@ export default function NewMemberPage() {
       title,
       role: permissionLevel.value,
     }
+    
+    const { data } = await axios.post('/api/auth/newMember', payload)
 
-    const { data } = await axios.post(
-      `http://localhost:3000/api/auth/newMember`,
-      payload
-    )
     if (data?.status == 'ERROR') {
       if (data.code == 1) {
         setSubmitError({
@@ -112,7 +110,7 @@ export default function NewMemberPage() {
         >
           <div className="flex w-full px-6 space-x-4">
             <div className={'w-1/3 mb-3 transition-opacity duration-300'}>
-              <p>Vorname</p>
+              <p className='after:content-["*"] after:ml-0.5'>Vorname</p>
               <input
                 value={firstname}
                 onChange={(e) => setFirstname(e.target.value)}
@@ -129,7 +127,7 @@ export default function NewMemberPage() {
               </p>
             </div>
             <div className={'w-1/3 mb-3 transition-opacity duration-300'}>
-              <p>Nachname</p>
+              <p className='after:content-["*"] after:ml-0.5'>Nachname</p>
               <input
                 value={lastname}
                 onChange={(e) => setLastname(e.target.value)}

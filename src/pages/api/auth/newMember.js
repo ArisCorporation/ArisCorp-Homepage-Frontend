@@ -1,3 +1,4 @@
+const crypto = require('crypto').webcrypto;
 import axios from 'axios'
 
 const BackendURL = 'https://cms.ariscorp.de'
