@@ -46,12 +46,15 @@ async function uploadFile(url, title) {
     },
   }
 
+  // const {data} = await axios.post(BackendURL + '/files/import?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg', payload)
+
   await directus.auth.static('te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg')
   const data = await directus.files.import({
     url: payload.url,
     data: payload.data,
   })
 
+  // return await data.data
   return await data
 }
 

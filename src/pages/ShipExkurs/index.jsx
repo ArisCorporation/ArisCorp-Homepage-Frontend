@@ -10,6 +10,7 @@ import client from 'apollo/clients'
 import Link from 'next/link'
 import Head from 'next/head'
 import ShipCard from 'components/ShipExkurs/ShipCard'
+import SelectionGridWrapper from 'components/SelectionGridWrapper'
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
@@ -947,11 +948,11 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
               />
             </div>
           ) : (
-            <div className='grid grid-cols-1 px-2 lg:grid-cols-2 1.5xl:grid-cols-3 3xl:grid-cols-4 4xl:grid-cols-5 5xl:grid-cols-6 gap-x-6 gap-y-4'>
+            <SelectionGridWrapper>
               {data.map((object, index) => (
                 <ShipCard key={object.id} data={object} />
               ))}
-            </div>
+            </SelectionGridWrapper>
           )}
         </div>
       </div >
