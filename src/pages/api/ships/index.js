@@ -203,6 +203,15 @@ async function getP4kShipHardpoints(ship) {
   return apiResults
 }
 
+async function getP4kShops() {
+  const actualUrl = P4kURL + 'shops.json'
+  var apiResults = await fetch(actualUrl).then((resp) => {
+    return resp.json()
+  })
+
+  return apiResults
+}
+
 async function getLiveShipData() {
   const actualUrl = BackendURL + '/items/ships?fields=id,name,slug&limit=-1'
   var apiResults = await fetch(actualUrl).then((resp) => {
@@ -236,6 +245,7 @@ async function getComponents() {
 async function formData() {
   const rawShipMatrixData = await getSMData()
   const rawP4kShips = await getP4kShipsData()
+  const shops = await getP4kShops()
   const liveShipData = await getLiveShipData()
   const manufacturers = await getManufacturers()
   const components = await getComponents()
@@ -1784,6 +1794,19 @@ async function formData() {
         p4kRoles.push({ role: p4kData?.Role.trim().toLowerCase() })
       }
 
+      let price
+      if (p4kData) {
+        shops.map((obj) => {
+          const found = obj.inventory.find(
+            (item) => item.name == p4kData?.ClassName.toLowerCase()
+          )?.basePrice
+
+          if (found) {
+            price = found
+          }
+        })
+      }
+
       let smRoles = []
       if (obj.focus?.includes('/')) {
         obj.focus.split('/').map((i) => {
@@ -1820,7 +1843,7 @@ async function formData() {
         removeDuplicates(rawLoaners).forEach((obj) => {
           const loanerSlug = string_to_slug(obj)
           const loanerModell = liveShipData.find(
-            (e) => e.slug === loanerSlug || e.name === obj
+            (e) => e.slug === loanerSlug || e.name === obj
           )
 
           const loaner = {
@@ -2352,7 +2375,7 @@ async function formData() {
         cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
         size: p4kData ? --p4kData.Size : size,
         sortSize: size,
-        price: flData.price,
+        price: price ? price : null,
         pledgePrice: flData.pledgePrice,
         onSale: flData.onSale,
         productionStatus: obj.production_status,
