@@ -35,14 +35,13 @@ async function userValidation(email) {
   return true
 }
 
-async function createUser(name, customEmail) {
+async function createUser(name, role, customEmail) {
   const { firstname, lastname } = name
   const password = 'P@ssw0rd'
   const email = customEmail
     ? customEmail
     : `${firstname.toLowerCase()}.${lastname.toLowerCase()}@ariscorp.de`
   const lang = 'de-DE'
-  const role = 'a74700bc-7e32-4597-a1e1-34c6d7674dad'
   const avatar = '0b7eafde-0933-4d1a-a32f-b4f8dd5bb492'
 
   let validation = await userValidation(email)
@@ -105,7 +104,8 @@ export default async function handler(req, res) {
     const body = req.body
     const name = {firstname: body.firstname, lastname: body.lastname, title: body.title}
     const customEmail = body?.email
-    const data = await createUser(name, customEmail)
+    const role = body.role
+    const data = await createUser(name, role, customEmail)
 
     if (data.status == 'ERROR') {
       res.status(500).send(data)
