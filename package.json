@@ -1,5 +1,5 @@
 {
-  "name": "next-tailwind",
+  "name": "ariscorp-homepage",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -26,7 +26,7 @@
     "graphql": "^16.3.0",
     "graphql-anywhere": "^4.2.7",
     "moment": "^2.29.3",
-    "next": "^13.1.6",
+    "next": "^13.2.4",
     "next-global-css": "^1.3.1",
     "next-pwa": "^5.4.4",
     "next-transpile-modules": "^10.0.0",

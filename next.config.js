@@ -5,54 +5,53 @@ const withTM = require('next-transpile-modules')(['@vime/core', '@vime/react'])
 
 const withConfig = withGlobalCss()
 
-module.exports = withPWA(
-  withTM(
-    withConfig({
-      reactStrictMode: true,
-      pwa: {
-        dest: 'public',
-        runtimeCaching,
-      },
-      images: {
-        formats: ['image/webp'],
-        domains: ['cms.ariscorp.de', 'i.pinimg.com'],
-      },
+module.exports = withTM(
+  withConfig({
+    reactStrictMode: true,
+    output: 'standalone',
+    // pwa: {
+    //   dest: 'public',
+    //   runtimeCaching,
+    // },
+    images: {
+      formats: ['image/webp'],
+      domains: ['cms.ariscorp.de', 'i.pinimg.com'],
+    },
 
-      i18n: {
-        locales: ['de'],
-        defaultLocale: 'de',
-      },
+    i18n: {
+      locales: ['de'],
+      defaultLocale: 'de',
+    },
 
-      // target: 'serverless',
+    // target: 'serverless',
 
-      webpack: (config, options) => {
-        patchWebpackConfig(config, options)
+    webpack: (config, options) => {
+      patchWebpackConfig(config, options)
 
-        if (options.isServer) {
-          config.externals = webpackNodeExternals({
-            // Uses list to add this modules for server bundle and process.
-            allowlist: [/design-system/],
-          })
-        }
+      if (options.isServer) {
+        config.externals = webpackNodeExternals({
+          // Uses list to add this modules for server bundle and process.
+          allowlist: [/design-system/],
+        })
+      }
 
-        return config
-      },
+      return config
+    },
 
-      async headers() {
-        const headers = []
-        if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
-          headers.push({
-            headers: [
-              {
-                key: 'X-Robots-Tag',
-                value: 'noindex',
-              },
-            ],
-            source: '/:path*',
-          })
-        }
-        return headers
-      },
-    })
-  )
+    async headers() {
+      const headers = []
+      if (process.env.NEXT_PUBLIC_VERCEL_ENV === 'preview') {
+        headers.push({
+          headers: [
+            {
+              key: 'X-Robots-Tag',
+              value: 'noindex',
+            },
+          ],
+          source: '/:path*',
+        })
+      }
+      return headers
+    },
+  })
 )
