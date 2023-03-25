@@ -153,12 +153,6 @@ export default function ShipPage({
     data.slug +
     (urlquery ? '?tab=' + urlquery : '')
 
-  console.log(
-    !data.history && !data.gallery[0] && !data.commercialVideoId && !data.rating
-      ? 'ja'
-      : 'nein'
-  )
-
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
     toast.info('URL in Zwischenablage kopiert!', {
@@ -639,9 +633,9 @@ export default function ShipPage({
       </div>
       <hr />
       <div>
-        {data.history &&
-        data.gallery[0] &&
-        data.commercialVideoId &&
+        {data.history ||
+        data.gallery[0] ||
+        data.commercialVideoId ||
         data.rating ? (
           <Tab.Group
             selectedIndex={activeTab}
