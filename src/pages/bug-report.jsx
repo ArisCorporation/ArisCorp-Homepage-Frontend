@@ -291,7 +291,7 @@ export default function BugReportPage({ data }) {
     } else if (project.value == 'shipexkurs') {
       tags.push({
         name: 'ShipExkurs',
-        color: 'azure',
+        color: 'blue',
       })
     }
 

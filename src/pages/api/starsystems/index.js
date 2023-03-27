@@ -103,7 +103,9 @@ async function sendBug(title, desc) {
     bug,
   }
 
-  await axios.post('/api/awork/bugs/create', content)
+  await axios.post('/api/awork/bugs/create', content).catch(function (error) {
+    console.log(error.toJSON())
+  })
   return
 }
 
@@ -365,7 +367,11 @@ async function getMoons(planets, system) {
 
     if (romanNumeral == null) {
       console.log(planet.astronomicalDesignation)
-      sendBug(planet.astronomicalDesignation + ' - monde können nicht automatisch erstellt werden', `Die Monde von ${planet.astronomicalDesignation} können nicht automatisch erstellt werden, da es ein Problem mit der API gibt.`)
+      await sendBug(
+        planet.astronomicalDesignation +
+          ' - monde können nicht automatisch erstellt werden',
+        `Die Monde von ${planet.astronomicalDesignation} können nicht automatisch erstellt werden, da es ein Problem mit der API gibt.`
+      )
       return
     }
     const numeral = await romanToInt(romanNumeral)
