@@ -269,7 +269,7 @@ export default function ShipPage({
           </h3>
         </div>
 
-        <Link
+        {/* <Link
           legacyBehavior
           href={'/VerseExkurs/firmen/' + data.manufacturer.firmen_name}
         >
@@ -279,7 +279,7 @@ export default function ShipPage({
             }}
             className="relative mt-0 ml-auto xs:h-32 h-28 hover:cursor-pointer xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square bg-center bg-no-repeat bg-cover"
           />
-        </Link>
+        </Link> */}
       </div>
       <hr className="mt-2" />
       <div className="grid grid-cols-3 gap-4">
@@ -540,24 +540,30 @@ export default function ShipPage({
           </BasicPanel>
           <div className="flex space-x-4">
             <div className="flex-grow-[2]">
-              <BasicPanelButton
-                className="w-full"
-                a
-                external
-                href={
-                  data.onSale
-                    ? data.storeUrl + '#buying-options'
-                    : data.storeUrl
-                }
-              >
-                {data.onSale ? (
-                  <p className="p-0 text-sm">
-                    On Sale: ${data.pledgePrice} excl. VAT
-                  </p>
-                ) : (
-                  <p className="p-0">RSI Page</p>
-                )}
-              </BasicPanelButton>
+              {data.storeUrl ? (
+                <BasicPanelButton
+                  className="w-full"
+                  a
+                  external
+                  href={
+                    data.onSale
+                      ? data.storeUrl + '#buying-options'
+                      : data.storeUrl
+                  }
+                >
+                  {data.onSale ? (
+                    <p className="p-0 text-sm">
+                      On Sale: ${data.pledgePrice} excl. VAT
+                    </p>
+                  ) : (
+                    <p className="p-0">RSI Page</p>
+                  )}
+                </BasicPanelButton>
+              ) : (
+                <BasicPanelButton disabled className="w-full">
+                  <p className="p-0">Keine RSI Page vorhanden</p>
+                </BasicPanelButton>
+              )}
             </div>
             <div onClick={() => handleShare()} className="flex-grow-0">
               <div
