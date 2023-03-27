@@ -223,8 +223,7 @@ async function getLiveShipData() {
 
 async function getManufacturers() {
   const actualUrl =
-    BackendURL +
-    '/items/firmen?filter[firmenherstellerkategorie]=schiffshersteller&fields=id,firmen_name,slug,code&limit=-1'
+    BackendURL + '/items/firmen?fields=id,firmen_name,slug,code&limit=-1'
   var apiResults = await fetch(actualUrl).then((resp) => {
     return resp.json()
   })
@@ -1718,7 +1717,7 @@ async function formData() {
         if (obj.name.includes('Spirit')) {
           const orgShip = rawShipMatrixData.find((e) => e.name == 'C1 Spirit')
           size = setSize(orgShip.size)
-        } else if (obj.name.includes('F8C')) {
+        } else if (obj.name.includes('F8')) {
           size = 2
         } else if (obj.name == 'G12') {
           size = 0
@@ -1793,6 +1792,11 @@ async function formData() {
       } else {
         p4kRoles.push({ role: p4kData?.Role.trim().toLowerCase() })
       }
+      const p4kVersion = await axios
+        .get(
+          'https://raw.githubusercontent.com/ArisCorporation/p4k/main/latest/version.txt'
+        )
+        .then((resp) => resp.data.split(' ')[0].toString())
 
       let price
       if (p4kData) {
@@ -2305,6 +2309,261 @@ async function formData() {
         }
       }
 
+      const getCompany = (companyData) =>
+        manufacturers.find(
+          (e) =>
+            e.code?.toLowerCase().includes(companyData.Code.toLowerCase()) ||
+            e.firmen_name.toLowerCase() == companyData.Name.toLowerCase() ||
+            e.firmen_name.toLowerCase().includes(companyData.Name.toLowerCase())
+        )
+
+      let weaponHardpoints = []
+      if (p4kHardpoints) {
+        // PILOT WEAPONS
+        p4kHardpoints.PilotHardpoints.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+          let manufacturer
+
+          if (!i.InstalledItem.Ports) {
+            if (i.InstalledItem?.Manufacturer) {
+              manufacturer = getCompany(i.InstalledItem.Manufacturer)
+            }
+
+            const hardpoint = {
+              category: 'pilotWeapon',
+              name: i.InstalledItem.Name,
+              size: i.InstalledItem.Size,
+              manufacturer: manufacturer && manufacturer.id,
+            }
+
+            weaponHardpoints.push(hardpoint)
+          } else {
+            if (i.InstalledItem?.Manufacturer) {
+              manufacturer = getCompany(i.InstalledItem.Manufacturer)
+            }
+
+            const ports = []
+            if (i.InstalledItem.Ports) {
+              i.InstalledItem.Ports.forEach((port) => {
+                if (
+                  port.Loadout == null ||
+                  port.Loadout.includes('HUD') ||
+                  port.Loadout.includes('RADR') ||
+                  port.Loadout.includes('Controller')
+                ) {
+                  return
+                }
+                if (port.InstalledItem) {
+                  let portManufacturer
+                  if (port.InstalledItem.Manufacturer) {
+                    portManufacturer = getCompany(
+                      port.InstalledItem.Manufacturer
+                    )
+                  }
+                  const portObject = {
+                    name: port.InstalledItem.Name,
+                    size: port.InstalledItem.Size,
+                    manufacturer: portManufacturer && portManufacturer.id,
+                  }
+
+                  ports.push(portObject)
+                } else {
+                  const portObject = {
+                    name: port.Loadout,
+                    size: port.Size,
+                  }
+
+                  ports.push(portObject)
+                }
+              })
+            }
+
+            const hardpoint = {
+              category: 'pilotWeapon',
+              name: i.InstalledItem.Name,
+              size: i.InstalledItem.Size,
+              manufacturer: manufacturer && manufacturer.id,
+              ports,
+            }
+
+            weaponHardpoints.push(hardpoint)
+          }
+        })
+
+        // MANNED TURRETS
+        p4kHardpoints.MannedTurrets.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          let turretManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            turretManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (
+                port.Loadout == null ||
+                port.Loadout.includes('HUD') ||
+                port.Loadout.includes('RADR') ||
+                port.Loadout.includes('Controller')
+              ) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                ports.push(portObject)
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+
+                ports.push(portObject)
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'turret',
+            turretName: i.InstalledItem.Name,
+            turretSize: i.InstalledItem.Size,
+            turretManufacturer: turretManufacturer && turretManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+
+        // REMOTE TURRETS
+        p4kHardpoints.RemoteTurrets.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          let turretManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            turretManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (port.Loadout == null) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                ports.push(portObject)
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+
+                ports.push(portObject)
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'turret',
+            turretName: i.InstalledItem.Name,
+            turretSize: i.InstalledItem.Size,
+            turretManufacturer: turretManufacturer && turretManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+
+        // MISSILE RACKS
+        p4kHardpoints.MissileRacks.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          let missileRackManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            missileRackManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (port.Loadout == null) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                ports.push(portObject)
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+
+                ports.push(portObject)
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'missileRack',
+            missileRackName: i.InstalledItem.Name,
+            missileRackSize: i.InstalledItem.Size,
+            missileRackManufacturer:
+              missileRackManufacturer && missileRackManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+      }
+
       const paints = []
       if (flPaints[0]) {
         flPaints.forEach(async (i) => {
@@ -2345,7 +2604,6 @@ async function formData() {
             description: i.description,
             pledgePrice: i.pledgePrice,
             price: i.price,
-            storeImage: '',
             productionStatus: i.productionStatus,
             manufacturer: i.manufacturer.code,
           }
@@ -2364,6 +2622,7 @@ async function formData() {
         storeUrl: flData.storeUrl,
         salesPageUrl: flData.salesPageUrl,
         p4kName: p4kData?.Name,
+        p4kVersion: p4kData && p4kVersion,
         erkulIdentifier: p4kData?.ClassName.toLowerCase(),
         smIdentifier: obj.id,
         flIdentifier: flData.id,
@@ -2374,7 +2633,7 @@ async function formData() {
         mass: p4kData ? p4kData.Mass : parseFloat(obj.mass),
         cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
         size: p4kData ? --p4kData.Size : size,
-        sortSize: size ? size : --p4kData.Size,
+        sortSize: size ? size : p4kData ? --p4kData.Size : null,
         price: price ? price : null,
         pledgePrice: flData.pledgePrice,
         onSale: flData.onSale,
@@ -2409,6 +2668,7 @@ async function formData() {
         holoColored: flData.holoColored,
 
         hardpoints,
+        weaponHardpoints,
         variants,
         loaners,
         paints,
