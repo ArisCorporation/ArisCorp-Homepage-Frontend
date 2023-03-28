@@ -2445,9 +2445,9 @@ async function formData() {
 
           const hardpoint = {
             category: 'turret',
-            turretName: i.InstalledItem.Name,
-            turretSize: i.InstalledItem.Size,
-            turretManufacturer: turretManufacturer && turretManufacturer.id,
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer: turretManufacturer && turretManufacturer.id,
             ports,
           }
 
@@ -2499,9 +2499,9 @@ async function formData() {
 
           const hardpoint = {
             category: 'turret',
-            turretName: i.InstalledItem.Name,
-            turretSize: i.InstalledItem.Size,
-            turretManufacturer: turretManufacturer && turretManufacturer.id,
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer: turretManufacturer && turretManufacturer.id,
             ports,
           }
 
@@ -2553,9 +2553,9 @@ async function formData() {
 
           const hardpoint = {
             category: 'missileRack',
-            missileRackName: i.InstalledItem.Name,
-            missileRackSize: i.InstalledItem.Size,
-            missileRackManufacturer:
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer:
               missileRackManufacturer && missileRackManufacturer.id,
             ports,
           }
