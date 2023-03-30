@@ -8,7 +8,7 @@ import Thruster from './Thruster'
 import Weapons from './Weapons'
 import { useState } from "react"
 
-const ShipCard = ({ data, components }) => {
+const ShipCard = ({ data, components, companies }) => {
   const [avionicsValid, setAvionicsValid] = useState(true)
   const [systemsValid, setSystemsValid] = useState(true)
   const [propulsionValid, setPropulsionValid] = useState(true)
@@ -72,7 +72,7 @@ const ShipCard = ({ data, components }) => {
               <h2 className={"hardpointGroupLabel"}>
                 Waffen
               </h2>
-              <Weapons data={data} components={components} valid={setWeaponsValid} />
+              <Weapons data={data} components={components} valid={setWeaponsValid} companies={companies} />
             </div>
           )}
         </div>

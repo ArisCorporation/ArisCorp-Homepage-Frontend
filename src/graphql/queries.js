@@ -1605,6 +1605,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
       paints
       variants
       hardpoints
+      weaponHardpoints
     }
     components(limit: -1) {
       id
