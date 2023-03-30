@@ -2327,6 +2327,7 @@ async function formData() {
           ) {
             return
           }
+
           let manufacturer
 
           if (!i.InstalledItem.Ports) {
@@ -2371,14 +2372,28 @@ async function formData() {
                     manufacturer: portManufacturer && portManufacturer.id,
                   }
 
-                  ports.push(portObject)
+                  if (
+                    !(
+                      port.PortName == 'hardpoint_interior' ||
+                      port.PortName == 'hardpoint_OC'
+                    )
+                  ) {
+                    ports.push(portObject)
+                  }
                 } else {
                   const portObject = {
                     name: port.Loadout,
                     size: port.Size,
                   }
 
-                  ports.push(portObject)
+                  if (
+                    !(
+                      port.PortName == 'hardpoint_interior' ||
+                      port.PortName == 'hardpoint_OC'
+                    )
+                  ) {
+                    ports.push(portObject)
+                  }
                 }
               })
             }
@@ -2401,6 +2416,10 @@ async function formData() {
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
           ) {
+            return
+          }
+
+          if(i.InstalledItem?.Type != 'Turret.GunTurret'){
             return
           }
 
@@ -2431,14 +2450,28 @@ async function formData() {
                   manufacturer: portManufacturer && portManufacturer.id,
                 }
 
-                ports.push(portObject)
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
               } else {
                 const portObject = {
                   name: port.Loadout,
                   size: port.Size,
                 }
 
-                ports.push(portObject)
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
               }
             })
           }
@@ -2460,6 +2493,10 @@ async function formData() {
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
           ) {
+            return
+          }
+
+          if(i.InstalledItem?.Type != 'Turret.GunTurret'){
             return
           }
 
@@ -2485,14 +2522,27 @@ async function formData() {
                   manufacturer: portManufacturer && portManufacturer.id,
                 }
 
-                ports.push(portObject)
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
               } else {
                 const portObject = {
                   name: port.Loadout,
                   size: port.Size,
                 }
-
-                ports.push(portObject)
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
               }
             })
           }
@@ -2555,8 +2605,215 @@ async function formData() {
             category: 'missileRack',
             name: i.InstalledItem.Name,
             size: i.InstalledItem.Size,
-            manufacturer:
-              missileRackManufacturer && missileRackManufacturer.id,
+            manufacturer: missileRackManufacturer && missileRackManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+
+        // UTILITY ITEMS
+        // MINING HARDPOINTS
+        p4kHardpoints.MiningHardpoints.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          let turretManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            turretManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (port.Loadout == null) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'utility',
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer: turretManufacturer && turretManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+        // UTILITY MANNED TURRETS
+        p4kHardpoints.MannedTurrets.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          if(i.InstalledItem?.Type != 'Turret.Utility'){
+            return
+          }
+
+          let turretManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            turretManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (port.Loadout == null) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'utility',
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer: turretManufacturer && turretManufacturer.id,
+            ports,
+          }
+
+          weaponHardpoints.push(hardpoint)
+        })
+        // UTILITY REMOTE TURRETS
+        p4kHardpoints.RemoteTurrets.forEach((i) => {
+          if (
+            (i.Loadout == null || i.Loadout.includes('HUD')) &&
+            i.InstalledItem == null
+          ) {
+            return
+          }
+
+          if(i.InstalledItem?.Type != 'Turret.Utility'){
+            return
+          }
+
+          let turretManufacturer
+          if (i.InstalledItem?.Manufacturer) {
+            turretManufacturer = getCompany(i.InstalledItem.Manufacturer)
+          }
+
+          const ports = []
+          if (i.InstalledItem.Ports) {
+            i.InstalledItem.Ports.forEach((port) => {
+              if (port.Loadout == null) {
+                return
+              }
+              if (port.InstalledItem) {
+                let portManufacturer
+                if (port.InstalledItem.Manufacturer) {
+                  portManufacturer = getCompany(port.InstalledItem.Manufacturer)
+                }
+                const portObject = {
+                  name: port.InstalledItem.Name,
+                  size: port.InstalledItem.Size,
+                  manufacturer: portManufacturer && portManufacturer.id,
+                }
+
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              } else {
+                const portObject = {
+                  name: port.Loadout,
+                  size: port.Size,
+                }
+                if (
+                  !(
+                    port.PortName == 'hardpoint_interior' ||
+                    port.PortName == 'hardpoint_OC'
+                  )
+                ) {
+                  ports.push(portObject)
+                }
+              }
+            })
+          }
+
+          const hardpoint = {
+            category: 'utility',
+            name: i.InstalledItem.Name,
+            size: i.InstalledItem.Size,
+            manufacturer: turretManufacturer && turretManufacturer.id,
             ports,
           }
 
