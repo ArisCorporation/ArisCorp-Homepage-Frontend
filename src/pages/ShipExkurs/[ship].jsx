@@ -9,6 +9,7 @@ import { useQuery } from '@apollo/client'
 import {
   GET_SHIPEXKURS_SHIP,
   GET_SHIPEXKURS_SHIPLOANERS,
+  GET_VERSEEXKURS_FIRMEN,
 } from 'graphql/queries'
 import { BasicPanel, BasicPanelButton } from 'components/panels'
 import { Menu, Tab } from '@headlessui/react'
@@ -93,6 +94,10 @@ export async function getServerSideProps(context) {
     query: GET_SHIPEXKURS_SHIPLOANERS,
   })
 
+  let { data: companies } = await client.query({
+    query: GET_VERSEEXKURS_FIRMEN,
+  })
+
   if (!data.ships[0]) {
     return {
       notFound: true,
@@ -132,6 +137,7 @@ export async function getServerSideProps(context) {
       variants,
       components,
       siteTitle,
+      companies: companies.firmen,
     },
   }
 }
@@ -142,6 +148,7 @@ export default function ShipPage({
   variants,
   components,
   siteTitle,
+  companies,
 }) {
   const router = useRouter()
   const [activeTab, setActiveTab] = useState()
@@ -236,6 +243,8 @@ export default function ShipPage({
       thumbnail,
     }
   })
+  const columns =
+    (variants[0] ? 1 : 0) + (loaners[0] ? 1 : 0) + (data.paints[0] ? 1 : 0)
 
   return (
     <div className="items-center mx-auto print:pt-5">
@@ -721,7 +730,11 @@ export default function ShipPage({
             <Tab.Panels className={'px-4 1.5xl:px-0 pt-5'}>
               {data.hardpoints && (
                 <Tab.Panel>
-                  <ShipHardpoints data={data} components={components} />
+                  <ShipHardpoints
+                    data={data}
+                    components={components}
+                    companies={companies}
+                  />
                 </Tab.Panel>
               )}
               {data.history && (
@@ -963,15 +976,23 @@ export default function ShipPage({
             </Tab.Panels>
           </Tab.Group>
         ) : (
-          <ShipHardpoints data={data} components={components} />
+          <ShipHardpoints
+            data={data}
+            components={components}
+            companies={companies}
+          />
         )}
         <hr />
         <div className="flex flex-wrap w-full space-x-4 italic uppercase 1.5xl:flex-nowrap text-secondary">
           {variants[0] && (
             <>
-              <div className="w-full 1.5xl:w-1/3">
+              <div className="w-full">
                 <h3 className="mt-0 text-secondary">Varianten</h3>
-                <div className="space-y-2">
+                <div
+                  className={`gap-x-3 gap-y-2 grid grid-cols-${
+                    columns == 1 ? 2 : 1
+                  }`}
+                >
                   {variants.map((obj) => (
                     <ShipCard key={obj.id} data={obj} />
                   ))}
@@ -980,23 +1001,37 @@ export default function ShipPage({
               <hr className="1.5xl:hidden" />
             </>
           )}
-          <div className="w-full 1.5xl:w-1/3">
-            <h3 className="mt-0 text-secondary">Loaners</h3>
-            <div className="space-y-2">
-              {loaners.map((obj) => (
-                <ShipCard key={obj.id} data={obj} />
-              ))}
+          {loaners[0] && (
+            <>
+              <div className="w-full">
+                <h3 className="mt-0 text-secondary">Loaners</h3>
+                <div
+                  className={`gap-x-3 grid gap-y-2 grid-cols-${
+                    columns == 1 ? 2 : 1
+                  }`}
+                >
+                  {loaners.map((obj) => (
+                    <ShipCard key={obj.id} data={obj} />
+                  ))}
+                </div>
+              </div>
+              <hr className="1.5xl:hidden" />
+            </>
+          )}
+          {data.paints[0] && (
+            <div className="w-full">
+              <h3 className="mt-0 text-secondary">Paints</h3>
+              <div
+                className={`gap-x-3 gap-y-2 grid 1.5xl:grid-cols-${
+                  columns == 1 ? 2 : 1
+                }`}
+              >
+                {data.paints?.map((obj) => (
+                  <ShipPaintCard key={obj.name} data={obj} />
+                ))}
+              </div>
             </div>
-          </div>
-          <hr className="1.5xl:hidden" />
-          <div className="w-full 1.5xl:w-1/3">
-            <h3 className="mt-0 text-secondary">Paints</h3>
-            <div className="space-y-2">
-              {data.paints?.map((obj) => (
-                <ShipPaintCard key={obj.name} data={obj} />
-              ))}
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
