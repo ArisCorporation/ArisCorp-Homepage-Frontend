@@ -1604,6 +1604,8 @@ export const GET_SHIPEXKURS_SHIP = gql`
       }
       paints
       variants
+      loaners
+      modules
       hardpoints
       weaponHardpoints
     }

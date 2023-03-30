@@ -2854,7 +2854,7 @@ async function formData() {
       }
 
       const modules = []
-      if (flModules > 0) {
+      if (flModules[0]) {
         flModules.forEach((i) => {
           const module = {
             name: i.name,
@@ -2930,6 +2930,7 @@ async function formData() {
         loaners,
         paints,
         modules,
+        hasModules: modules[0] ? true : false
       }
 
       ships.push(ship)

@@ -108,15 +108,14 @@ export async function getServerSideProps(context) {
 
   data = data.ships[0]
   const loaners = []
-  // if (data.loaners) {
-  //   let { data: shipList } = await client.query({ query: GET_SHIPEXKURS_SHIPLOANERS })
-  //   data.loaners.map((obj) => {
-  //     const search = shipList.ships.find((e) => e.slug === obj.slug)
-  //     if (search) {
-  //       loaners.push(search)
-  //     }
-  //   })
-  // }
+  if (data.loaners[0]) {
+    data.loaners.map((obj) => {
+      const search = shipList.ships.find((e) => e.slug === obj.slug)
+      if (search) {
+        loaners.push(search)
+      }
+    })
+  }
 
   const variants = []
   if (data?.variants[0]) {
@@ -244,7 +243,10 @@ export default function ShipPage({
     }
   })
   const columns =
-    (variants[0] ? 1 : 0) + (loaners[0] ? 1 : 0) + (data.paints[0] ? 1 : 0)
+    (variants[0] ? 1 : 0) +
+    (loaners[0] ? 1 : 0) +
+    (data.paints[0] ? 1 : 0) +
+    (data.modules[0] ? 1 : 0)
 
   return (
     <div className="items-center mx-auto print:pt-5">
@@ -1027,6 +1029,20 @@ export default function ShipPage({
                 }`}
               >
                 {data.paints?.map((obj) => (
+                  <ShipPaintCard key={obj.name} data={obj} />
+                ))}
+              </div>
+            </div>
+          )}
+          {data.modules[0] && (
+            <div className="w-full">
+              <h3 className="mt-0 text-secondary">Module</h3>
+              <div
+                className={`gap-x-3 gap-y-2 grid 1.5xl:grid-cols-${
+                  columns == 1 ? 2 : 1
+                }`}
+              >
+                {data.modules?.map((obj) => (
                   <ShipPaintCard key={obj.name} data={obj} />
                 ))}
               </div>
