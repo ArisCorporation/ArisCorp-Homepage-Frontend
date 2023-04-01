@@ -8,7 +8,7 @@ const COMM_LINKS = gql`
   query GetComm_Links {
     comm_links(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
     ) {
       id
       status

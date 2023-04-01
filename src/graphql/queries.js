@@ -86,7 +86,7 @@ export const GET_INDEX_DATA = gql`
     }
     comm_links(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
       limit: 4
     ) {
       id
@@ -268,20 +268,11 @@ export const GET_GAMEPLAYS = gql`
 export const GET_COMM_LINKS = gql`
   query GetCommLinks($queryChannel: String!, $squery: String = "") {
     comm_links(
-      #filter: { comm_link_channel: { channel: { _contains: $queryChannel} } }
       filter: {
         comm_link_channel: { channel: { _contains: $queryChannel } }
-        #_or: [
-        #  { comm_link_author: { member_name: { _contains: $searchQuery } } }
-        #  { comm_link_author: { member_titel: { _contains: $searchQuery } } }
-        #  { comm_link_beschreibung: { _contains: $searchQuery } }
-        #  { comm_link_titel: { _contains: $searchQuery } }
-        #  { comm_link_channel: { channel: { _contains: $searchQuery } } }
-        #  { comm_link: { _contains: $searchQuery } }
-        #]
       }
       search: $squery
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
       limit: -1
     ) {
       id
@@ -1632,6 +1623,41 @@ export const GET_SHIPEXKURS_SHIPLOANERS = gql`
       storeImage {
         id
       }
+    }
+  }
+`
+
+export const GET_SHIPEXKURS_SHIPLIST = gql`
+  query GetShipExkursShipList {
+    ships(filter: { status: { _eq: "published" } }, limit: -1) {
+      id
+      name
+      slug
+    }
+  }
+`
+
+export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
+  query GetShipExkursShipsComparisonData {
+    ships(filter: { status: { _eq: "published" } }, limit: -1) {
+      id
+      name
+      slug
+      storeImage {
+        id
+      }
+      manufacturer {
+        firmen_name
+      }
+      productionStatus
+      size
+      length
+      beam
+      height
+      mass
+      cargo
+      price
+      pledgePrice
     }
   }
 `
