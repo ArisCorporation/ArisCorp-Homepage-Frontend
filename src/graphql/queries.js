@@ -38,7 +38,7 @@ export const GET_INDEX_ARISCORP_COMM_LINKS = gql`
   query GetIndexCommLinks {
     comm_links(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
       limit: 4
     ) {
       id
@@ -86,7 +86,7 @@ export const GET_INDEX_DATA = gql`
     }
     comm_links(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
       limit: 4
     ) {
       id
@@ -200,7 +200,7 @@ export const GET_COMM_LINKS = gql`
         #]
       }
       search: $squery
-      sort: ["sort", "-date_created"]
+      sort: ["-date_created"]
       limit: -1
     ) {
       id
