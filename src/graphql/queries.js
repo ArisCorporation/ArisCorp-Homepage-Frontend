@@ -585,6 +585,9 @@ export const GET_VERSEEXKURS_FIRMA = gql`
       firmenherstellerkategorie
       text
       headquarter
+      headquarter_system {
+        name
+      }
       current_ceo
       founding
       founder

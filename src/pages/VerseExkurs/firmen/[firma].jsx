@@ -5,9 +5,11 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { Disclosure, Transition } from '@headlessui/react'
-import { MdKeyboardArrowRight, MdOutlineKeyboardArrowRight } from 'react-icons/md'
+import {
+  MdKeyboardArrowRight,
+  MdOutlineKeyboardArrowRight,
+} from 'react-icons/md'
 import { SlArrowRight } from 'react-icons/si'
-
 
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_FIRMA } from 'graphql/queries'
@@ -19,7 +21,7 @@ import ShipCard from 'components/ShipExkurs/ShipCard'
 import WeaponCard from 'components/WeaponCard'
 import AttachmentCard from 'components/AttachmentCard'
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const { params } = context
   const { firma } = params
 
@@ -40,49 +42,39 @@ export async function getServerSideProps (context) {
     data.ships = data.ships.sort((a, b) => a.name.localeCompare(b.name))
   }
   if (data.weapons[0]) {
-    data.weapons = data.weapons.sort((a, b) => a.waffen_name.localeCompare(b.waffen_name))
+    data.weapons = data.weapons.sort((a, b) =>
+      a.waffen_name.localeCompare(b.waffen_name)
+    )
   }
   if (data.optics[0] || data.barrels[0] || data.underbarrels[0]) {
-    attachments = [
-      ...data.optics,
-      ...data.barrels,
-      ...data.underbarrels
-    ]
+    attachments = [...data.optics, ...data.barrels, ...data.underbarrels]
     attachments = attachments.sort((a, b) => a.name.localeCompare(b.name))
   }
 
-  const siteTitle = data.firmen_name + " - Astro Research and Industrial Service Corporation"
+  const siteTitle =
+    data.firmen_name + ' - Astro Research and Industrial Service Corporation'
 
   return {
     props: {
       data,
       attachments,
-      siteTitle
+      siteTitle,
     },
   }
 }
 
-export default function SystemDetailPage ({ data, attachments, siteTitle }) {
+// console.log(data);
+
+export default function SystemDetailPage({ data, attachments, siteTitle }) {
   const { replace, query, isReady, push } = useRouter()
   return (
     <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
-        <title>
-          {siteTitle}
-        </title>
+        <title>{siteTitle}</title>
 
-        <meta
-          property="twitter:title"
-          content={siteTitle}
-        />
-        <meta
-          property="og:title"
-          content={siteTitle}
-        />
-        <meta
-          name="title"
-          content={siteTitle}
-        />
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
       </Head>
       <div>
         <div className="items-center text-center">
@@ -110,24 +102,30 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
           <hr className="max-w-[80px]" />
         </div>
         <div className="font-nasa article-font">
-          <div className='w-full mb-2 xl:mr-12 2xl:ml-8 lg:float-right xl:w-1/2 2xl:w-5/12'>
+          <div className="w-full mb-2 xl:mr-12 2xl:ml-8 lg:float-right xl:w-1/2 2xl:w-5/12">
             <BasicPanel className="">
               <div className="w-full h-full pb-2 pr-2 text-xs italic uppercase xs:text-sm">
                 <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
                 <table className="w-full ml-5">
                   <tbody>
-                    {(data.headquarter && data.headquarter_system) && (
-                      <tr className='border-b-0 border-transparent'>
+                    {data.headquarter && data.headquarter_system && (
+                      <tr className="border-b-0 border-transparent">
                         <td className="pr-2 text-left">Hauptsitz:</td>
                         <td className="text-left text-primary">
-                          {data.headquarter && data.headquarter_system != null
-                            ? data.headquarter + '(' + data.headquarter_system + ')'
-                            : (data.headquarter != null ? data.headquarter : (data.headquarter_system != null ? data.headquarter_system : 'N/A'))}
+                          <span>{data.headquarter + ' '}</span>
+                          <Link
+                            href={
+                              '/VerseExkurs/starmap/' +
+                              data.headquarter_system.name
+                            }
+                          >
+                            {data.headquarter_system.name}
+                          </Link>
                         </td>
                       </tr>
                     )}
                     {data.current_ceo && (
-                      <tr className='border-b-0 border-transparent'>
+                      <tr className="border-b-0 border-transparent">
                         <th className="pr-2 text-left">Aktueller C.E.O.:</th>
                         <td className="text-left text-primary">
                           {data.current_ceo}
@@ -135,7 +133,7 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                       </tr>
                     )}
                     {data.founding && (
-                      <tr className='border-b-0 border-transparent'>
+                      <tr className="border-b-0 border-transparent">
                         <th className="pr-2 text-left">Gründungsdatum:</th>
                         <td className="text-left text-primary">
                           {data.founding}
@@ -143,7 +141,7 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                       </tr>
                     )}
                     {data.founder && (
-                      <tr className='border-b-0 border-transparent'>
+                      <tr className="border-b-0 border-transparent">
                         <th className="pr-2 text-left">Gründer:</th>
                         <td className="text-left break-words text-primary">
                           {data.founder != null ? data.founder : 'N/A'}
@@ -151,12 +149,15 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                       </tr>
                     )}
                     {data.firmenkategorie && (
-                      <tr className='border-b-0 border-transparent'>
+                      <tr className="border-b-0 border-transparent">
                         <th className="pr-2 text-left">Kategorie:</th>
                         <td className="text-left break-words text-primary">
                           {data.firmenkategorie != null
                             ? data.firmenkategorie == 'hersteller'
-                              ? (data.firmenherstellerkategorie == 'Personenausruestungshersteller' ? 'Personenausrüstungs- Hersteller' : data.firmenherstellerkategorie)
+                              ? data.firmenherstellerkategorie ==
+                                'Personenausruestungshersteller'
+                                ? 'Personenausrüstungs- Hersteller'
+                                : data.firmenherstellerkategorie
                               : data.firmenkategorie
                             : 'N/A'}
                         </td>
@@ -183,14 +184,28 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
           </ReactMarkdown>
           <hr />
           <div>
-            <h1 id="products">Produkte von <span className='text-primary'>{data.firmen_name}</span></h1>
+            <h1 id="products">
+              Produkte von{' '}
+              <span className="text-primary">{data.firmen_name}</span>
+            </h1>
             <div>
               {data.ships[0] ? (
                 <Disclosure>
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="block py-2">
-                        <h2>Schiffe von <span className="text-primary">{data.firmen_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h2>
+                        <h2>
+                          Schiffe von{' '}
+                          <span className="text-primary">
+                            {data.firmen_name}
+                          </span>{' '}
+                          <MdKeyboardArrowRight
+                            className={
+                              'inline-block ease transition-all duration-300' +
+                              (open ? ' rotate-90' : '')
+                            }
+                          />
+                        </h2>
                       </Disclosure.Button>
                       <Transition
                         enter="transition ease duration-500 transform"
@@ -201,9 +216,13 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
+                          <div className="grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4">
                             {data.ships.map((object, index) => (
-                              <ShipCard key={object.id} data={object} manufacturer={data} />
+                              <ShipCard
+                                key={object.id}
+                                data={object}
+                                manufacturer={data}
+                              />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -217,7 +236,18 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="block py-2">
-                        <h2 className=''>Waffen von <span className="text-primary">{data.firmen_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h2>
+                        <h2 className="">
+                          Waffen von{' '}
+                          <span className="text-primary">
+                            {data.firmen_name}
+                          </span>{' '}
+                          <MdKeyboardArrowRight
+                            className={
+                              'inline-block ease transition-all duration-300' +
+                              (open ? ' rotate-90' : '')
+                            }
+                          />
+                        </h2>
                       </Disclosure.Button>
                       <Transition
                         enter="transition ease duration-500 transform"
@@ -228,9 +258,13 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
+                          <div className="grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4">
                             {data.weapons.map((object, index) => (
-                              <WeaponCard key={object.id} data={object} manufacturer={data} />
+                              <WeaponCard
+                                key={object.id}
+                                data={object}
+                                manufacturer={data}
+                              />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -244,7 +278,18 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                   {({ open }) => (
                     <>
                       <Disclosure.Button className="block py-2">
-                        <h2>Waffenaufsätze von <span className="text-primary">{data.firmen_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h2>
+                        <h2>
+                          Waffenaufsätze von{' '}
+                          <span className="text-primary">
+                            {data.firmen_name}
+                          </span>{' '}
+                          <MdKeyboardArrowRight
+                            className={
+                              'inline-block ease transition-all duration-300' +
+                              (open ? ' rotate-90' : '')
+                            }
+                          />
+                        </h2>
                       </Disclosure.Button>
                       <Transition
                         enter="transition ease duration-500 transform"
@@ -255,9 +300,13 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                         leaveTo="opacity-0 -translate-y-2"
                       >
                         <Disclosure.Panel>
-                          <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
+                          <div className="grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4">
                             {attachments.map((object, index) => (
-                              <AttachmentCard key={object.id} data={object} manufacturer={data} />
+                              <AttachmentCard
+                                key={object.id}
+                                data={object}
+                                manufacturer={data}
+                              />
                             ))}
                           </div>
                         </Disclosure.Panel>
@@ -267,7 +316,9 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
                 </Disclosure>
               ) : null}
               {!data.ships[0] && !data.weapons[0] && !attachments ? (
-                <h2 className='mt-4 text-center'>Wir führen aktuell noch keine Produkte dieser Firma</h2>
+                <h2 className="mt-4 text-center">
+                  Wir führen aktuell noch keine Produkte dieser Firma
+                </h2>
               ) : null}
             </div>
           </div>
@@ -277,6 +328,6 @@ export default function SystemDetailPage ({ data, attachments, siteTitle }) {
   )
 }
 
-SystemDetailPage.getLayout = function getLayout (page) {
+SystemDetailPage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
