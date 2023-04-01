@@ -108,19 +108,21 @@ export default function SystemDetailPage({ data, attachments, siteTitle }) {
                 <h3 className="pt-2 pl-3 m-0 text-secondary">Firmen Infobox</h3>
                 <table className="w-full ml-5">
                   <tbody>
-                    {data.headquarter && data.headquarter_system && (
+                    {data.headquarter && (
                       <tr className="border-b-0 border-transparent">
                         <td className="pr-2 text-left">Hauptsitz:</td>
                         <td className="text-left text-primary">
                           <span>{data.headquarter + ' '}</span>
-                          <Link
-                            href={
-                              '/VerseExkurs/starmap/' +
-                              data.headquarter_system.name
-                            }
-                          >
-                            {data.headquarter_system.name}
-                          </Link>
+                          {data.headquarter_system && (
+                            <Link
+                              href={
+                                '/VerseExkurs/starmap/' +
+                                data.headquarter_system.name
+                              }
+                            >
+                              {data.headquarter_system.name}
+                            </Link>
+                          )}
                         </td>
                       </tr>
                     )}
