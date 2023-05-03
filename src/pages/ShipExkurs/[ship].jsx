@@ -280,7 +280,7 @@ export default function ShipPage({
           </h3>
         </div>
 
-        {/* <Link
+        <Link
           legacyBehavior
           href={'/VerseExkurs/firmen/' + data.manufacturer.firmen_name}
         >
@@ -290,7 +290,7 @@ export default function ShipPage({
             }}
             className="relative mt-0 ml-auto xs:h-32 h-28 hover:cursor-pointer xxs:h-24 sm:h-40 1.5xl:h-48 aspect-square bg-center bg-no-repeat bg-cover"
           />
-        </Link> */}
+        </Link>
       </div>
       <hr className="mt-2" />
       <div className="grid grid-cols-3 gap-4">
