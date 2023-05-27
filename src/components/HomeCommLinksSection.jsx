@@ -14,12 +14,12 @@ const CommLinksSection = ({ data }) => {
           <ThreeThirds
             typeicon="type-post"
             typename="post"
-            title={data[i].comm_link_titel}
-            channel={data[i].comm_link_channel?.channel}
-            posted={data[i].date_created}
+            title={data[i]?.comm_link_titel}
+            channel={data[i]?.comm_link_channel?.channel}
+            posted={data[i]?.date_created}
             description={data[i].comm_link_channel?.beschreibung}
-            image={data[i].comm_link_banner.id}
-            id={data[i].id}
+            image={data[i].comm_link_banner?.id}
+            id={data[i]?.id}
           />
         </div>
       )
@@ -35,36 +35,36 @@ const CommLinksSection = ({ data }) => {
           <OneThird
             typeicon="type-post"
             typename="post"
-            image={data[i + 1].comm_link_banner.id}
-            title={data[i + 1].comm_link_titel}
-            channel={data[i + 1].comm_link_channel.channel}
-            posted={data[i + 1].date_created}
+            image={data[i + 1].comm_link_banner?.id}
+            title={data[i + 1]?.comm_link_titel}
+            channel={data[i + 1].comm_link_channel?.channel}
+            posted={data[i + 1]?.date_created}
             description={data[i + 1].comm_link_channel?.beschreibung}
-            id={data[i + 1].id}
+            id={data[i + 1]?.id}
           />
           {/* The boolean expression helps to avoid creating empty cells if the end of data is reached mid-row */}
           {data[i + 2] && (
             <OneThird
               typeicon="type-post"
               typename="post"
-              image={data[i + 2].comm_link_banner.id}
-              title={data[i + 2].comm_link_titel}
-              channel={data[i + 2].comm_link_channel.channel}
-              posted={data[i + 2].date_created}
+              image={data[i + 2].comm_link_banner?.id}
+              title={data[i + 2]?.comm_link_titel}
+              channel={data[i + 2].comm_link_channel?.channel}
+              posted={data[i + 2]?.date_created}
               description={data[i + 2].comm_link_channel?.beschreibung}
-              id={data[i + 2].id}
+              id={data[i + 2]?.id}
             />
           )}
           {data[i + 3] && (
             <OneThird
               typeicon="type-post"
               typename="post"
-              image={data[i + 3].comm_link_banner.id}
-              title={data[i + 3].comm_link_titel}
-              channel={data[i + 3].comm_link_channel.channel}
-              posted={data[i + 3].date_created}
+              image={data[i + 3].comm_link_banner?.id}
+              title={data[i + 3]?.comm_link_titel}
+              channel={data[i + 3].comm_link_channel?.channel}
+              posted={data[i + 3]?.date_created}
               description={data[i + 3].comm_link_channel?.beschreibung}
-              id={data[i + 3].id}
+              id={data[i + 3]?.id}
             />
           )}
         </div>
