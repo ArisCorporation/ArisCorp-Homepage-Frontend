@@ -403,23 +403,24 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
             array = ships
           }
         }
-
+        const test = Data.ships.find(e => e.name.includes('Ursa'))
+        console.log(test.size == 0)
         if (typequery) {
           if (typequery.includes("ground")) {
             let vehicles = []
             if (array[0]) {
-              vehicles = array.filter((e) => e.size === 0 || e.groundVehicle == true || e.focus === "ground")
+              vehicles = array.filter((e) => e.sortSize == 0 || e.groundVehicle == true || e.classification === "ground" || e.focus === "ground")
             } else {
-              vehicles = Data.ships.filter((e) => e.size === 0 || e.groundVehicle == true || e.focus === "ground")
+              vehicles = Data.ships.filter((e) => e.sortSize == 0 || e.groundVehicle == true || e.classification === "ground" || e.focus === "ground")
             }
 
             array = vehicles
           } else if (typequery.includes("ship")) {
             let vehicles = []
             if (array[0]) {
-              vehicles = array.filter((e) => e.size !== 0 && e.groundVehicle != true && e.focus !== "ground")
+              vehicles = array.filter((e) => e.size !== '0' && e.groundVehicle != true && e.classification !== "ground" && e.focus !== "ground")
             } else {
-              vehicles = Data.ships.filter((e) => e.size !== 0 && e.groundVehicle != true && e.focus !== "ground")
+              vehicles = Data.ships.filter((e) => e.size !== '0' && e.groundVehicle != true && e.classification !== "ground" && e.focus !== "ground")
             }
 
             array = vehicles

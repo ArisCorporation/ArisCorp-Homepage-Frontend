@@ -270,6 +270,7 @@ export const GET_COMM_LINKS = gql`
     comm_links(
       filter: {
         comm_link_channel: { channel: { _contains: $queryChannel } }
+        status: { _eq: "published" }
       }
       search: $squery
       sort: ["-date_created"]
