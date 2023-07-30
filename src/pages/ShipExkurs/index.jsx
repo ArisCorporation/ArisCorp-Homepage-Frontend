@@ -404,7 +404,6 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
           }
         }
         const test = Data.ships.find(e => e.name.includes('Ursa'))
-        console.log(test.size == 0)
         if (typequery) {
           if (typequery.includes("ground")) {
             let vehicles = []
