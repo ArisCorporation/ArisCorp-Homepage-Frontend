@@ -6,6 +6,7 @@ import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
 import { signIn } from "next-auth/react"
+import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/router';
 
 
@@ -40,6 +41,11 @@ export default function InternalLogin({ backgrounds }) {
   const [password, setPassword] = useState("")
   const router = useRouter();
   const {callbackUrl} = router.query
+  const { status: sessionStatus } = useSession();
+  const authorized = sessionStatus === 'authenticated';
+
+  authorized ? router.push('/internal') : null
+
   // const test = "width: '2643px' height: '1080px' left: '-101px' top: '0px'"
 
   // useEffect(() => {
