@@ -5,10 +5,9 @@ import client from 'apollo/clients'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
-import { signIn } from "next-auth/react"
+import { signIn } from 'next-auth/react'
 import { useSession } from 'next-auth/react'
-import { useRouter } from 'next/router';
-
+import { useRouter } from 'next/router'
 
 function getRandomBg(array) {
   return array[Math.floor(Math.random() * array.length)]
@@ -37,14 +36,15 @@ export async function getServerSideProps() {
 
 export default function InternalLogin({ backgrounds }) {
   const [currentBg, setCurrentBg] = useState(getRandomBg(backgrounds))
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const router = useRouter();
-  const {callbackUrl} = router.query
-  const { status: sessionStatus } = useSession();
-  const authorized = sessionStatus === 'authenticated';
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const router = useRouter()
+  const { callbackUrl } = router.query
+  const { status: sessionStatus } = useSession()
+  const authorized = sessionStatus === 'authenticated'
 
   authorized ? router.push('/internal') : null
+  console.log(callbackUrl)
 
   // const test = "width: '2643px' height: '1080px' left: '-101px' top: '0px'"
 
@@ -56,12 +56,18 @@ export default function InternalLogin({ backgrounds }) {
   // }, []);
 
   const onSubmit = async () => {
-    const result = await signIn("credentials", {
+    const result = await signIn('credentials', {
       email: email,
       password: password,
       redirect: true,
-      callbackUrl: callbackUrl || '/'
+      callbackUrl: callbackUrl || '/',
     })
+  }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      onSubmit()
+    }
   }
 
   return (
@@ -102,7 +108,7 @@ export default function InternalLogin({ backgrounds }) {
             </div>
           </div>
 
-          <div className="relative top-14">
+          <div onKeyDown={handleKeyDown} className="relative top-14">
             <div className="relative rounded-2xl bg-[#323644] w-[540px] h-[70px] px-8 pt-3">
               <svg
                 viewBox="0 0 17 22"
@@ -129,7 +135,7 @@ export default function InternalLogin({ backgrounds }) {
                 id="email-input"
                 className="w-full focus:outline-none pt-1 pr-4 inline-block bg-[#323644]"
                 value={email}
-                onChange={e => setEmail(e.target.value)} 
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="relative rounded-2xl bg-[#323644] w-[540px] h-[70px] px-8 pt-3 mt-5">
@@ -158,14 +164,17 @@ export default function InternalLogin({ backgrounds }) {
                 id="password-input"
                 className="w-full focus:outline-none pt-1 pr-4 inline-block bg-[#323644]"
                 value={password}
-                onChange={e => setPassword(e.target.value)} 
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="pt-14">
               {/* <button className="py-6 text-black rounded-full px-60 h-[68px] from-primary from-30% to-[#00A3FF] bg-[#00A3FF] transition-all duration-100 hover:duration-300 hover:bg-gradient-to-tr">
           Log In
         </button> */}
-              <button onClick={onSubmit} className="py-6 text-black rounded-full px-60 h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
+              <button
+                onClick={onSubmit}
+                className="py-6 text-black rounded-full px-60 h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr"
+              >
                 Log In
               </button>
             </div>
@@ -203,7 +212,10 @@ export default function InternalLogin({ backgrounds }) {
             backgroundImage: `linear-gradient(180deg, rgba(39, 42, 55, 0.52) 0%, rgba(39, 42, 55, 0.62) 100%)`,
           }}
         >
-          <div className="w-full max-w-[540px] px-4 pb-6 mx-auto">
+          <div
+            className="w-full max-w-[540px] px-4 pb-6 mx-auto"
+            onKeyDown={handleKeyDown}
+          >
             <div className="w-full relative rounded-2xl bg-[#323644] h-[70px] px-8 pt-3">
               <svg
                 viewBox="0 0 17 22"
@@ -230,7 +242,7 @@ export default function InternalLogin({ backgrounds }) {
                 id="email-input-mobile"
                 className="focus:outline-none w-full pt-1 pr-4 inline-block bg-[#323644]"
                 value={email}
-                onChange={e => setEmail(e.target.value)} 
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="relative w-full rounded-2xl bg-[#323644] h-[70px] px-8 pt-3 mt-5">
@@ -259,11 +271,14 @@ export default function InternalLogin({ backgrounds }) {
                 id="password-input-mobile"
                 className="focus:outline-none w-full pt-1 pr-4 inline-block bg-[#323644]"
                 value={password}
-                onChange={e => setPassword(e.target.value)} 
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="pt-14">
-              <button onClick={onSubmit} className="py-6 text-black rounded-full w-full text-center h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
+              <button
+                onClick={onSubmit}
+                className="py-6 text-black rounded-full w-full text-center h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr"
+              >
                 Log In
               </button>
             </div>
