@@ -1,9 +1,13 @@
-import Auth from "./Auth"
+import Layout from "./layout"
 
 export default function InternalIndex() {
   return (
-    <div>
+    <Layout>
       <div>logged in!</div>
-    </div>
+    </Layout>
   )
 }
+
+// InternalIndex.getLayout = function getLayout(page) {
+//   return <Layout>{page}</Layout>
+// }
