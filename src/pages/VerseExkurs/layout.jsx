@@ -6,7 +6,7 @@ import { ShipTechnologieModalProvider } from 'context/ShipTechnologieModalContex
 import { useRouter } from 'next/router'
 
 export default function Layout ({ children }) {
-  const router = useRouter()
+  const router = useRouter();
 
   if (router.pathname == '/VerseExkurs/technologie') {
     return (

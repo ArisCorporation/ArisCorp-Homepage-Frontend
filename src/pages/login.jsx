@@ -5,6 +5,9 @@ import client from 'apollo/clients'
 import axios from 'axios'
 import Image from 'next/image'
 import Link from 'next/link'
+import { signIn } from "next-auth/react"
+import { useRouter } from 'next/router';
+
 
 function getRandomBg(array) {
   return array[Math.floor(Math.random() * array.length)]
@@ -33,8 +36,11 @@ export async function getServerSideProps() {
 
 export default function InternalLogin({ backgrounds }) {
   const [currentBg, setCurrentBg] = useState(getRandomBg(backgrounds))
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const router = useRouter();
+  const {callbackUrl} = router.query
   // const test = "width: '2643px' height: '1080px' left: '-101px' top: '0px'"
-  console.log(currentBg)
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
@@ -42,6 +48,15 @@ export default function InternalLogin({ backgrounds }) {
   //   }, 120000);
   //   return () => clearInterval(interval);
   // }, []);
+
+  const onSubmit = async () => {
+    const result = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: true,
+      callbackUrl: callbackUrl || '/'
+    })
+  }
 
   return (
     <>
@@ -107,6 +122,8 @@ export default function InternalLogin({ backgrounds }) {
                 type="text"
                 id="email-input"
                 className="w-full focus:outline-none pt-1 pr-4 inline-block bg-[#323644]"
+                value={email}
+                onChange={e => setEmail(e.target.value)} 
               />
             </div>
             <div className="relative rounded-2xl bg-[#323644] w-[540px] h-[70px] px-8 pt-3 mt-5">
@@ -134,13 +151,15 @@ export default function InternalLogin({ backgrounds }) {
                 type="password"
                 id="password-input"
                 className="w-full focus:outline-none pt-1 pr-4 inline-block bg-[#323644]"
+                value={password}
+                onChange={e => setPassword(e.target.value)} 
               />
             </div>
             <div className="pt-14">
               {/* <button className="py-6 text-black rounded-full px-60 h-[68px] from-primary from-30% to-[#00A3FF] bg-[#00A3FF] transition-all duration-100 hover:duration-300 hover:bg-gradient-to-tr">
           Log In
         </button> */}
-              <button className="py-6 text-black rounded-full px-60 h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
+              <button onClick={onSubmit} className="py-6 text-black rounded-full px-60 h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
                 Log In
               </button>
             </div>
@@ -204,6 +223,8 @@ export default function InternalLogin({ backgrounds }) {
                 type="text"
                 id="email-input-mobile"
                 className="focus:outline-none w-full pt-1 pr-4 inline-block bg-[#323644]"
+                value={email}
+                onChange={e => setEmail(e.target.value)} 
               />
             </div>
             <div className="relative w-full rounded-2xl bg-[#323644] h-[70px] px-8 pt-3 mt-5">
@@ -231,10 +252,12 @@ export default function InternalLogin({ backgrounds }) {
                 type="password"
                 id="password-input-mobile"
                 className="focus:outline-none w-full pt-1 pr-4 inline-block bg-[#323644]"
+                value={password}
+                onChange={e => setPassword(e.target.value)} 
               />
             </div>
             <div className="pt-14">
-              <button className="py-6 text-black rounded-full w-full text-center h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
+              <button onClick={onSubmit} className="py-6 text-black rounded-full w-full text-center h-[68px] bg-primary bg-opacity-25 hover:primary-bg hover:bg-opacity-100 transition-all duration-200 hover:duration-300 hover:bg-gradient-to-tr">
                 Log In
               </button>
             </div>
