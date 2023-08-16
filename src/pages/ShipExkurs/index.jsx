@@ -1,7 +1,10 @@
 import Layout from './layout'
 import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/router'
-import { GET_SHIPEXKURS_SHIPS_INDEX, GET_SHIPEXKURS_SHIPUTILS } from 'graphql/queries'
+import {
+  GET_SHIPEXKURS_SHIPS_INDEX,
+  GET_SHIPEXKURS_SHIPUTILS,
+} from 'graphql/queries'
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
 import Image from 'next/image'
@@ -12,8 +15,8 @@ import Head from 'next/head'
 import ShipCard from 'components/ShipExkurs/ShipCard'
 import SelectionGridWrapper from 'components/SelectionGridWrapper'
 
-export async function getServerSideProps () {
-  const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPUTILS })
+export async function getServerSideProps() {
+  const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPS_INDEX })
 
   if (!data?.ships) {
     return {
@@ -22,64 +25,20 @@ export async function getServerSideProps () {
   }
 
   const manufacturers = data.firmen
-  let utils = {
-    prodStatus: [],
-    careers: [],
-    roles: [],
-    sizes: [0],
-    manufacturers: []
-  }
 
-  data.ships.forEach((i) => {
-    // if (i.role) {
-    //   i.role.forEach((obj) => {
-    //     if (!utils.roles.includes(obj)) {
-    //       utils.roles.push(obj)
-    //     }
-    //   })
-    // }
-
-    if (i.career) {
-      if (!utils.careers.includes(i.career.toLowerCase())) {
-        utils.careers.push(i.career.toLowerCase())
-      }
-    }
-
-    if (i.productionStatus) {
-      if (!utils.prodStatus.includes(i.productionStatus)) {
-        utils.prodStatus.push(i.productionStatus)
-      }
-    }
-
-    if (i.size) {
-      if (!utils.sizes.includes(i.size)) {
-        utils.sizes.push(i.size)
-      }
-    }
-  })
-
-  manufacturers.forEach((object, index) => {
-    var name = object.firmen_name
-
-    var aname = utils.manufacturers.find((i) => i === name)
-
-    if (!aname && name) {
-      utils.manufacturers.push(name)
-    }
-  })
-
-  const siteTitle = "ShipExurs - Astro Research and Industrial Service Corporation"
+  const siteTitle =
+    'ShipExurs - Astro Research and Industrial Service Corporation'
 
   return {
     props: {
+      siteTitle,
       manufacturers,
-      utils,
-      siteTitle
+      Data: data.ships,
     },
   }
 }
 
-export default function Ships ({ manufacturers, utils, siteTitle }) {
+export default function Ships({ siteTitle, manufacturers, Data }) {
   const { replace, query, isReady, push } = useRouter()
   const isMounted = useRef(false)
   const [search, setSearch] = useState()
@@ -90,7 +49,7 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
   const [manufacturer, setManufacturer] = useState([])
   const [shipSale, setShipSale] = useState(null)
   const [vehicleType, setVehicleType] = useState([])
-  const [data, setData] = useState([])
+  const [data, setData] = useState(Data)
   const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [classesMenu, setClassesMenu] = useState(false)
   const [roleMenu, setRoleMenu] = useState()
@@ -102,166 +61,181 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
   const prodquery = query.prodStatus
   const salequery = query.sale
   const typequery = query.type
-  const { loading, error, data: Data } = useQuery(GET_SHIPEXKURS_SHIPS_INDEX, {
-    variables: {
-      manufacturers: manuquery ? manuquery : utils.manufacturers,
-      sizes: sizequery ? sizequery : utils.sizes,
-      careers: classquery ? classquery : utils.careers,
-    },
-  })
+  // let data = Data
+
+  console.log(sizequery)
+
+  function slugify(str) {
+    str = str.replace(/^\s+|\s+$/g, '') // trim
+    str = str.toLowerCase()
+
+    // remove accents, swap ñ for n, etc
+    var from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;'
+    var to = 'aaaaeeeeiiiioooouuuunc------'
+    for (var i = 0, l = from.length; i < l; i++) {
+      str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i))
+    }
+
+    str = str
+      .replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+      .replace(/\s+/g, '-') // collapse whitespace and replace by -
+      .replace(/-+/g, '-') // collapse dashes
+
+    return str
+  }
 
   const classMenuItems = [
     {
-      name: "Transport",
-      value: "transport",
-      icon: "da3caa51-c087-479b-8bd8-4ac6f4328450",
+      name: 'Transport',
+      value: 'transport',
+      icon: 'da3caa51-c087-479b-8bd8-4ac6f4328450',
     },
     {
-      name: "Multi",
-      value: "multi",
-      icon: "3a4dc057-a29e-49df-a846-f8dfa4fd770c",
+      name: 'Multi',
+      value: 'multi',
+      icon: '3a4dc057-a29e-49df-a846-f8dfa4fd770c',
     },
     {
-      name: "Industriel",
-      value: "industrial",
-      icon: "4b21e214-0e73-4d7c-89de-86316c4bf5de",
+      name: 'Industriel',
+      value: 'industrial',
+      icon: '4b21e214-0e73-4d7c-89de-86316c4bf5de',
     },
     {
-      name: "Kampf",
-      value: "combat",
-      icon: "57c4e53b-579f-485c-b3b6-405ff04f11b3",
+      name: 'Kampf',
+      value: 'combat',
+      icon: '57c4e53b-579f-485c-b3b6-405ff04f11b3',
     },
     {
-      name: "Wettkampf",
-      value: "competition",
-      icon: "fe647dce-f1bf-4d5c-9d4e-c0d1b2307658",
+      name: 'Wettkampf',
+      value: 'competition',
+      icon: 'fe647dce-f1bf-4d5c-9d4e-c0d1b2307658',
     },
     {
-      name: "Unterstützung",
-      value: "support",
-      icon: "b2eef6f0-36f4-4379-9548-b11e7cedfa4c",
+      name: 'Unterstützung',
+      value: 'support',
+      icon: 'b2eef6f0-36f4-4379-9548-b11e7cedfa4c',
     },
     {
-      name: "Erkundung",
-      value: "exploration",
-      icon: "6ff37caa-e47e-4c69-a81c-26b0b3d0a7a8",
+      name: 'Erkundung',
+      value: 'exploration',
+      icon: '6ff37caa-e47e-4c69-a81c-26b0b3d0a7a8',
     },
     {
-      name: "Forschung",
-      value: "science",
-      icon: "20bee075-394a-46a8-af24-c8f2087c9643",
+      name: 'Forschung',
+      value: 'science',
+      icon: '20bee075-394a-46a8-af24-c8f2087c9643',
     },
   ]
 
   const roleMenuItems = [
     {
-      career: "transport",
-      name: "Fracht",
-      value: "freight",
+      career: 'transport',
+      name: 'Fracht',
+      value: 'freight',
     },
     {
-      career: "transport",
-      name: "Daten",
-      value: "data",
+      career: 'transport',
+      name: 'Daten',
+      value: 'data',
     },
     {
-      career: "transport",
-      name: "Personen",
-      value: "persons",
+      career: 'transport',
+      name: 'Personen',
+      value: 'persons',
     },
     {
-      career: "industrial",
-      name: "Bergbau",
-      value: "mining",
+      career: 'industrial',
+      name: 'Bergbau',
+      value: 'mining',
     },
     {
-      career: "industrial",
-      name: "Bergung",
-      value: "salvage",
+      career: 'industrial',
+      name: 'Bergung',
+      value: 'salvage',
     },
     {
-      career: "industrial",
-      name: "Raffinerie",
-      value: "refinery",
+      career: 'industrial',
+      name: 'Raffinerie',
+      value: 'refinery',
     },
     {
-      career: "industrial",
-      name: "Konstruktion",
-      value: "construction",
+      career: 'industrial',
+      name: 'Konstruktion',
+      value: 'construction',
     },
     {
-      career: "combat",
-      name: "Fighter",
-      value: "fighter",
+      career: 'combat',
+      name: 'Fighter',
+      value: 'fighter',
     },
     {
-      career: "combat",
-      name: "Bomber",
-      value: "bomber",
+      career: 'combat',
+      name: 'Bomber',
+      value: 'bomber',
     },
     {
-      career: "combat",
-      name: "Kannonenboot",
-      value: "gunboat",
+      career: 'combat',
+      name: 'Kannonenboot',
+      value: 'gunboat',
     },
     {
-      career: "combat",
-      name: "Korvette",
-      value: "corvette",
+      career: 'combat',
+      name: 'Korvette',
+      value: 'corvette',
     },
     {
-      career: "combat",
-      name: "Fregatte",
-      value: "frigate",
+      career: 'combat',
+      name: 'Fregatte',
+      value: 'frigate',
     },
     {
-      career: "combat",
-      name: "Zerstörer",
-      value: "destroyer",
+      career: 'combat',
+      name: 'Zerstörer',
+      value: 'destroyer',
     },
     {
-      career: "support",
-      name: "Reparatur",
-      value: "repair",
+      career: 'support',
+      name: 'Reparatur',
+      value: 'repair',
     },
     {
-      career: "support",
-      name: "Betankung",
-      value: "refueling",
+      career: 'support',
+      name: 'Betankung',
+      value: 'refueling',
     },
     {
-      career: "support",
-      name: "Schlepper",
-      value: "tug",
+      career: 'support',
+      name: 'Schlepper',
+      value: 'tug',
     },
     {
-      career: "support",
-      name: "Medizin",
-      value: "medical",
+      career: 'support',
+      name: 'Medizin',
+      value: 'medical',
     },
     {
-      career: "support",
-      name: "Report",
-      value: "report",
+      career: 'support',
+      name: 'Report',
+      value: 'report',
     },
     {
-      career: "exploration",
-      name: "Aufklärung",
-      value: "scout",
+      career: 'exploration',
+      name: 'Aufklärung',
+      value: 'scout',
     },
     {
-      career: "exploration",
-      name: "Pfadfindung",
-      value: "pathfinding",
+      career: 'exploration',
+      name: 'Pfadfindung',
+      value: 'pathfinding',
     },
     {
-      career: "exploration",
-      name: "Expedition",
-      value: "expedition",
+      career: 'exploration',
+      name: 'Expedition',
+      value: 'expedition',
     },
   ]
 
-  function handleClick (name) {
+  function handleClick(name) {
     push('/ShipExkurs/' + name)
   }
 
@@ -308,56 +282,56 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
         if (search) {
           queries = {
             ...queries,
-            q: search
+            q: search,
           }
         }
 
         if (prodStatus) {
           queries = {
             ...queries,
-            prodStatus: prodStatus
+            prodStatus: prodStatus,
           }
         }
 
         if (sale) {
           queries = {
             ...queries,
-            sale: sale
+            sale: sale,
           }
         }
 
         if (manufactr) {
           queries = {
             ...queries,
-            manufacturer: manufactr
+            manufacturer: manufactr,
           }
         }
 
         if (size) {
           queries = {
             ...queries,
-            size: size
+            size: size,
           }
         }
 
         if (cls) {
           queries = {
             ...queries,
-            cls: cls
+            cls: cls,
           }
         }
 
         if (focus) {
           queries = {
             ...queries,
-            focus: focus
+            focus: focus,
           }
         }
 
         if (type) {
           queries = {
             ...queries,
-            type: type
+            type: type,
           }
         }
 
@@ -384,92 +358,147 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
       setShipFocus(focusquery)
       setVehicleType(typequery)
     }
-  }, [search, shipClass, shipFocus, shipSize, manufacturer, shipProdStatus, shipSale, vehicleType])
+  }, [
+    search,
+    shipClass,
+    shipFocus,
+    shipSize,
+    manufacturer,
+    shipProdStatus,
+    shipSale,
+    vehicleType,
+  ])
 
   useEffect(() => {
     if (isReady) setSearch(squery)
   }, [isReady])
 
   useEffect(() => {
-    if (Data) {
-      if (salequery || typequery || squery || focusquery) {
-        let array = []
-        if (salequery) {
-          if (salequery.includes(true)) {
-            const ships = Data.ships.filter((e) => e.onSale == true)
-            array = ships
-          } else if (salequery.includes(false)) {
-            const ships = Data.ships.filter((e) => e.onSale == false)
-            array = ships
-          }
-        }
-        if (typequery) {
-          if (typequery.includes("ground")) {
-            let vehicles = []
-            if (array[0]) {
-              vehicles = array.filter((e) => e.sortSize == 0 || e.groundVehicle == true || e.classification === "ground" || e.focus === "ground")
-            } else {
-              vehicles = Data.ships.filter((e) => e.sortSize == 0 || e.groundVehicle == true || e.classification === "ground" || e.focus === "ground")
-            }
+    let filteredData = Data
 
-            array = vehicles
-          } else if (typequery.includes("ship")) {
-            let vehicles = []
-            if (array[0]) {
-              vehicles = array.filter((e) => e.size != 0 && e.groundVehicle != true && e.classification !== "ground" && e.focus !== "ground")
-            } else {
-              vehicles = Data.ships.filter((e) => e.size !== 0 && e.groundVehicle != true && e.classification !== "ground" && e.focus !== "ground")
-            }
+    if (squery) {
+      // let filterTemp = []
+      // filteredTemp = filteredData.filter((e) => e.name.toLowerCase().includes(squery.toLowerCase()) || e.manufacturer.firmen_name.toLowerCase().includes(squery.toLowerCase()))
+      filteredData = filteredData.filter(
+        (e) =>
+          e.name.toLowerCase().includes(squery.toLowerCase()) ||
+          e.manufacturer.firmen_name
+            .toLowerCase()
+            .includes(squery.toLowerCase())
+      )
+    }
 
-            array = vehicles
-          }
-        }
+    if (classquery) {
+      let classes = Array.isArray(classquery) ? [...classquery] : [classquery]
 
-        if (squery) {
-          let ships = []
-          if (array[0]) {
-            ships = array.filter((e) => e.name.toLowerCase().includes(squery.toLowerCase()) || e.manufacturer.firmen_name.toLowerCase().includes(squery.toLowerCase()))
-          } else {
-            ships = Data.ships.filter((e) => e.name.toLowerCase().includes(squery.toLowerCase()) || e.manufacturer.firmen_name.toLowerCase().includes(squery.toLowerCase()))
-          }
+      classes.forEach((o, i) => {
+        classes[i] = slugify(classes[i])
+      })
 
-          array = ships
-        }
+      filteredData = filteredData.filter((e) =>
+        classes.includes(slugify(e.career))
+      )
+    }
 
-        setData(array)
-      } else {
-        let array = [
-          ...Data.ships
-        ]
-        setData(array)
+    if (focusquery) {
+      let foci = Array.isArray(focusquery) ? [...focusquery] : [focusquery]
+
+      foci.forEach((o, i) => {
+        foci[i] = slugify(foci[i])
+      })
+
+      filteredData = filteredData.filter((e) => foci.includes(slugify(e.focus)))
+    }
+
+    if (sizequery) {
+      let sizes = Array.isArray(sizequery) ? [...sizequery] : [sizequery]
+
+      sizes.forEach((o, i) => {
+        sizes[i] = parseInt(sizes[i])
+      })
+
+      filteredData = filteredData.filter((e) => sizes.includes(e.sortSize))
+    }
+
+    if (manuquery) {
+      let manufacturer = Array.isArray(manuquery) ? [...manuquery] : [manuquery]
+
+      manufacturer.forEach((o, i) => {
+        manufacturer[i] = slugify(manufacturer[i])
+      })
+
+      filteredData = filteredData.filter((e) =>
+        manufacturer.includes(slugify(e.manufacturer.firmen_name))
+      )
+    }
+
+    if (prodquery) {
+      let prodstatuses = Array.isArray(prodquery) ? [...prodquery] : [prodquery]
+
+      prodstatuses.forEach((o, i) => {
+        prodstatuses[i] = slugify(prodstatuses[i])
+      })
+
+      filteredData = filteredData.filter((e) =>
+        prodstatuses.includes(slugify(e.productionStatus))
+      )
+    }
+
+    if (salequery) {
+      const sale = (salequery == 'true' ? true : false)
+      filteredData = filteredData.filter((e) => e.onSale == sale)
+    }
+
+    if (typequery) {
+      if (typequery == 'ground') {
+        filteredData = filteredData.filter(
+          (e) =>
+            e.sortSize == 0 ||
+            e.groundVehicle == true ||
+            e.classification == 'ground' ||
+            e.career == 'ground' ||
+            e.focus == 'ground'
+        )
+      }
+      if (typequery == 'ship') {
+        filteredData = filteredData.filter(
+          (e) =>
+            e.size != 0 &&
+            e.groundVehicle != true &&
+            e.classification !== 'ground' &&
+            e.career !== 'ground' &&
+            e.focus !== 'ground'
+        )
       }
     }
-  }, [Data, salequery, typequery, squery, focusquery])
 
-  const handleRemoveItem = name => {
-    setShipFocus(shipFocus.filter(item => item !== name))
+    setData(filteredData)
+  }, [
+    squery,
+    classquery,
+    sizequery,
+    manuquery,
+    prodquery,
+    salequery,
+    typequery,
+  ])
+
+  useEffect(() => {})
+
+  const handleRemoveItem = (name) => {
+    setShipFocus(shipFocus.filter((item) => item !== name))
   }
 
+  console.log(data)
 
   return (
     <div className="items-center pt-8 mx-auto">
       <Head>
-        <title>
-          {siteTitle}
-        </title>
+        <title>{siteTitle}</title>
 
-        <meta
-          property="twitter:title"
-          content={siteTitle}
-        />
-        <meta
-          property="og:title"
-          content={siteTitle}
-        />
-        <meta
-          name="title"
-          content={siteTitle}
-        />
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
       </Head>
       <div>
         <div>
@@ -483,7 +512,7 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
               />
             </div>
           </div>
-          <div className='flex'>
+          <div className="flex">
             <div className="flex mx-auto">
               <div
                 className="w-24 hover:cursor-pointer group"
@@ -514,7 +543,8 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                 </div>
                 <p
                   className={
-                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'}
+                    'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                  }
                 >
                   Alle Anzeigen
                 </p>
@@ -542,7 +572,7 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (typequery?.includes("ship")
+                      (typequery?.includes('ship')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -572,7 +602,7 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (typequery?.includes("ground")
+                      (typequery?.includes('ground')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -733,7 +763,10 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                   </p>
                 </div>
               </div>
-              <div onClick={() => setClassesMenu(!classesMenu)} className="w-24 ml-6 hover:cursor-pointer">
+              <div
+                onClick={() => setClassesMenu(!classesMenu)}
+                className="w-24 ml-6 hover:cursor-pointer"
+              >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
                     src={
@@ -749,15 +782,19 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                     }
                   />
                 </div>
-                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
-                  (classquery
-                    ? ' text-secondary'
-                    : ' group-hover:text-white')
-                }>
+                <p
+                  className={
+                    'p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200' +
+                    (classquery ? ' text-secondary' : ' group-hover:text-white')
+                  }
+                >
                   Klassifizierungen
                 </p>
               </div>
-              <div onClick={() => setManufacturerMenu(!manufacturerMenu)} className="w-24 ml-10 hover:cursor-pointer">
+              <div
+                onClick={() => setManufacturerMenu(!manufacturerMenu)}
+                className="w-24 ml-10 hover:cursor-pointer"
+              >
                 <div className="relative w-24 mx-auto aspect-square">
                   <Image
                     src={
@@ -773,17 +810,21 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                     }
                   />
                 </div>
-                <p className={"p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200" +
-                  (manuquery
-                    ? ' text-secondary'
-                    : ' group-hover:text-white')}>
+                <p
+                  className={
+                    'p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200' +
+                    (manuquery ? ' text-secondary' : ' group-hover:text-white')
+                  }
+                >
                   Hersteller
                 </p>
               </div>
             </div>
           </div>
           <hr />
-          {!classesMenu ? '' : (
+          {!classesMenu ? (
+            ''
+          ) : (
             <>
               <div className="flex pb-8">
                 <div className="flex m-auto">
@@ -822,43 +863,60 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                         <div
                           key={obj.value}
                           className="relative w-24 overflow-visible hover:cursor-pointer group"
-                          onClick={() => (setShipClass([obj.value]) && setShipFocus([]))}
+                          onClick={() =>
+                            setShipClass([obj.value]) && setShipFocus([])
+                          }
                         >
                           <div className="relative w-24 mx-auto aspect-square">
                             <Image
                               src={
                                 'https://cms.ariscorp.de/assets/' +
-                                (obj.icon ? obj.icon : '9bf3dcd8-be29-4aea-8a27-44340b607d49')
+                                (obj.icon
+                                  ? obj.icon
+                                  : '9bf3dcd8-be29-4aea-8a27-44340b607d49')
                               }
-                              alt={obj.name + "-Icon"}
+                              alt={obj.name + '-Icon'}
                               fill
                               cover
                               placeholder="blur"
                               blurDataURL={
-                                'https://cms.ariscorp.de/assets/' + '9bf3dcd8-be29-4aea-8a27-44340b607d49' + '?width=16&quality=1'
+                                'https://cms.ariscorp.de/assets/' +
+                                '9bf3dcd8-be29-4aea-8a27-44340b607d49' +
+                                '?width=16&quality=1'
                               }
                             />
                           </div>
                           <p
                             className={
                               'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                              (classquery == [obj.value] ? 'text-secondary' : 'group-hover:text-white')
+                              (classquery == [obj.value]
+                                ? 'text-secondary'
+                                : 'group-hover:text-white')
                             }
                           >
                             {obj.name}
                           </p>
-                          <div className={'grid gap-x-2 absolute z-10 mt-2 justify-between overflow-visible grid-cols-2 ' + (classquery == obj.value ? '' : 'hidden')}>
-                            {roleMenuItems.filter((e) => e.career.includes(classquery)).map((i) => (
-                              <p
-                                key={i.value}
-                                className={
-                                  'p-0 w-fit active:scale-75 even:justify-self-start odd:justify-self-end text-xs col-span-1 duration-150 hover:duration-200 ease-out transition-colors ' +
-                                  (focusquery == [i.value] ? 'text-secondary' : 'hover:text-white')
-                                }
-                              >
-                                {i.name}
-                              </p>
-                            ))}
+                          <div
+                            className={
+                              'grid gap-x-2 absolute z-10 mt-2 justify-between overflow-visible grid-cols-2 ' +
+                              (classquery == obj.value ? '' : 'hidden')
+                            }
+                          >
+                            {roleMenuItems
+                              .filter((e) => e.career.includes(classquery))
+                              .map((i) => (
+                                <p
+                                  key={i.value}
+                                  className={
+                                    'p-0 w-fit active:scale-75 even:justify-self-start odd:justify-self-end text-xs col-span-1 duration-150 hover:duration-200 ease-out transition-colors ' +
+                                    (focusquery == [i.value]
+                                      ? 'text-secondary'
+                                      : 'hover:text-white')
+                                  }
+                                >
+                                  {i.name}
+                                </p>
+                              ))}
                           </div>
                         </div>
                       </>
@@ -869,7 +927,9 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
             </>
           )}
           {!classesMenu ? null : <hr />}
-          {!manufacturerMenu ? '' : (
+          {!manufacturerMenu ? (
+            ''
+          ) : (
             <div className="flex">
               <div className="flex mx-auto">
                 <div
@@ -919,14 +979,18 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
                           cover
                           placeholder="blur"
                           blurDataURL={
-                            'https://cms.ariscorp.de/assets/' + obj.firmen_trans_logo?.id + '?width=16&quality=1'
+                            'https://cms.ariscorp.de/assets/' +
+                            obj.firmen_trans_logo?.id +
+                            '?width=16&quality=1'
                           }
                         />
                       </div>
                       <p
                         className={
                           'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                          (manuquery == [obj.firmen_name] ? 'text-secondary' : 'group-hover:text-white')
+                          (manuquery == [obj.firmen_name]
+                            ? 'text-secondary'
+                            : 'group-hover:text-white')
                         }
                       >
                         {obj.firmen_name}
@@ -938,27 +1002,13 @@ export default function Ships ({ manufacturers, utils, siteTitle }) {
             </div>
           )}
           {!manufacturerMenu ? null : <hr />}
-          {loading ? (
-            <div className="flex items-center justify-center pt-32 mx-auto my-auto text-center">
-              <SquareLoader
-                color="#00ffe8"
-                speedMultiplier="0.8"
-                loading={loading}
-              />
-            </div>
-          ) : (
-            <SelectionGridWrapper>
-              {data.map((object, index) => (
-                <ShipCard key={object.id} data={object} />
-              ))}
-            </SelectionGridWrapper>
-          )}
+          {/* <SelectionGridWrapper>
+            {data.map((object, index) => (
+              <ShipCard key={object.id} data={object} />
+            ))}
+          </SelectionGridWrapper> */}
         </div>
-      </div >
-    </div >
+      </div>
+    </div>
   )
-}
-
-Ships.getLayout = function getLayout (page) {
-  return <Layout>{page}</Layout>
 }
