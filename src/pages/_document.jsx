@@ -3,7 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document'
 class MyDocument extends Document {
   render() {
     return (
-      <Html lang="de" className="scroll-smooth">
+      <Html lang="de" className="overflow-auto scroll-smooth">
         <Head>
           <link rel="manifest" href="/manifest.json" />
 

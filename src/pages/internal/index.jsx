@@ -7,7 +7,3 @@ export default function InternalIndex() {
     </Layout>
   )
 }
-
-// InternalIndex.getLayout = function getLayout(page) {
-//   return <Layout>{page}</Layout>
-// }
