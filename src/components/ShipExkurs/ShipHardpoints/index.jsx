@@ -16,10 +16,6 @@ const ShipCard = ({ data, components, companies }) => {
   const [weaponsValid, setWeaponsValid] = useState(true)
   console.log(avionicsValid);
 
-  // const changeAvionicState = () => {
-  //   setAvionicsValid(false)
-  // }
-
   return (
     <>
       <div className="flex w-full mb-4">
@@ -33,7 +29,7 @@ const ShipCard = ({ data, components, companies }) => {
       </div>
       <div className='flex flex-row flex-wrap'>
         <div className='basis-full max-w-[100%] lg:basis-1/2 lg:max-w-[50%] 1.5xl:basis-1/3 1.5xl:max-w-[33.333333%]'>
-          {avionicsValid && (
+          {data.hardpoints.filter((e) => e.type == 'computer' || e.type == 'computers' || e.type == 'radar' || e.type == 'radars')[0] && (
             <div className={"hardpointGroup"}>
               <h2 className={"hardpointGroupLabel"}>
                 Avionik
@@ -41,7 +37,7 @@ const ShipCard = ({ data, components, companies }) => {
               <Avionics data={data} components={components} valid={setAvionicsValid} />
             </div>
           )}
-          {systemsValid && (
+          {data.hardpoints.filter((e) => e.type == 'cooler' || e.type == 'powerplant' || e.type == 'shield' || e.type == 'shieldgenerator')[0] && (
             <div className={"hardpointGroup"}>
               <h2 className={"hardpointGroupLabel"}>
                 Systeme
@@ -51,13 +47,14 @@ const ShipCard = ({ data, components, companies }) => {
           )}
         </div>
         <div className='basis-full max-w-[100%] lg:basis-1/2 lg:max-w-[50%] 1.5xl:basis-1/3 1.5xl:max-w-[33.333333%]'>
-          {propulsionValid && (<div className={"hardpointGroup"}>
+          {data.hardpoints.filter((e) => e.type == 'hydrogenfuelintake' || e.type == 'jumpmodule' || e.type == 'quantumdrive' || e.type == 'quantumfueltank')[0] && (
+          <div className={"hardpointGroup"}>
             <h2 className={"hardpointGroupLabel"}>
               Antrieb
             </h2>
             <Propulsion data={data} components={components} valid={setPropulsionValid} />
           </div>)}
-          {thrusterValid && (
+          {data.hardpoints.filter((e) => e.type == 'mainthruster' || e.type == 'retrothruster' || e.type == 'vtolthruster' || e.type == 'fixedmaneuveringthruster' || e.type == 'gimbaledmaneuveringthruster')[0] && (
             <div className={"hardpointGroup"}>
               <h2 className={"hardpointGroupLabel"}>
                 Triebwerke
@@ -67,7 +64,7 @@ const ShipCard = ({ data, components, companies }) => {
           )}
         </div>
         <div className='basis-full max-w-[100%] lg:basis-1/2 lg:max-w-[50%] 1.5xl:basis-1/3 1.5xl:max-w-[33.333333%]'>
-          {weaponsValid && (
+          {data.weaponHardpoints[0] && (
             <div className={"hardpointGroup"}>
               <h2 className={"hardpointGroupLabel"}>
                 Waffen
