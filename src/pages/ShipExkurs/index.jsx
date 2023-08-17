@@ -445,7 +445,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
     }
 
     if (salequery) {
-      const sale = (salequery == 'true' ? true : false)
+      const sale = salequery == 'true' ? true : false
       filteredData = filteredData.filter((e) => e.onSale == sale)
     }
 
@@ -487,6 +487,28 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
 
   const handleRemoveItem = (name) => {
     setShipFocus(shipFocus.filter((item) => item !== name))
+  }
+
+  const toggleType = (type) => {
+    if(typequery == type){
+      setVehicleType(null)
+    } else {
+      setVehicleType(type)
+    }
+  }
+
+  const toggleSize = (size) => {
+    const sizes = Array.isArray(sizequery)
+      ? [...sizequery]
+      : sizequery
+      ? [sizequery]
+      : []
+
+    if (sizes.includes(size)) {
+      setShipSize([...sizes.filter((e) => e != size)])
+    } else {
+      setShipSize([...sizes, size])
+    }
   }
 
   console.log(data)
@@ -552,7 +574,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
               <div className="flex ml-10 space-x-2">
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setVehicleType(['ship'])}
+                  onClick={() => toggleType('ship')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -582,7 +604,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setVehicleType(['ground'])}
+                  onClick={() => toggleType('ground')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -614,7 +636,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
               <div className="flex ml-6 space-x-2">
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize([1])}
+                  onClick={() => toggleSize('1')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -634,7 +656,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [1]
+                      (sizequery?.includes('1')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -644,7 +666,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize([2])}
+                  onClick={() => toggleSize('2')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -664,7 +686,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [2]
+                      (sizequery?.includes('2')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -674,7 +696,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize([3])}
+                  onClick={() => toggleSize('3')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -694,7 +716,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [3]
+                      (sizequery?.includes('3')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -704,7 +726,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize([4])}
+                  onClick={() => toggleSize('4')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -724,7 +746,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [4]
+                      (sizequery?.includes('4')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
@@ -734,7 +756,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   className="w-24 hover:cursor-pointer group"
-                  onClick={() => setShipSize([5])}
+                  onClick={() => toggleSize('5')}
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -754,7 +776,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   <p
                     className={
                       'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                      (sizequery == [5]
+                      (sizequery?.includes('5')
                         ? ' text-secondary'
                         : ' group-hover:text-white')
                     }
