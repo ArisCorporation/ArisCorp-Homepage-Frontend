@@ -1108,7 +1108,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
           <div className="w-full px-2 xl:hidden">
             <div className="flex px-2 space-x-6">
               <div className="w-1/3">
-                <h3 className="mb-0 text-base md:text-lg">Größe</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Größe</h3>
                 <Listbox
                   value={sizesS.filter((e) => sizequery?.includes(e.value))}
                   onChange={setShipSize}
@@ -1198,7 +1198,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </Listbox>
               </div>
               <div className="w-1/3">
-                <h3 className="mb-0 text-base md:text-lg">Fahrzeug Typ</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Fahrzeug Typ</h3>
                 <Listbox
                   value={typequery}
                   onChange={(event) => setVehicleType(event.value)}
@@ -1266,7 +1266,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </Listbox>
               </div>
               <div className="w-1/3">
-                <h3 className="mb-0 text-base md:text-lg">Hersteller</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Hersteller</h3>
                 <Listbox
                   value={manuquery}
                   onChange={(event) =>
