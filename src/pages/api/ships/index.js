@@ -269,6 +269,8 @@ async function formData() {
     'Mustang Alpha Vindicator',
     'Nautilus Solstice Edition',
     'Valkyrie Liberator Edition',
+    'Ursa Rover',
+    'Ursa Rover Fortuna'
   ]
   const skippedPaints = ['Carrack Expedition']
   const slugOverwrites = [
@@ -1696,7 +1698,7 @@ async function formData() {
       function setSize(size) {
         let label
         size == 'vehicle' || size == 'xs'
-          ? (label = 0)
+          ? (label = '0')
           : size == 'snub' || size == 's'
           ? (label = 1)
           : size == 'small' || size == 'm'
@@ -2869,6 +2871,15 @@ async function formData() {
         })
       }
 
+      let sortSize
+      if(size && size >= 0){
+        sortSize = size
+      } else if(p4kData && p4kData >= 1){
+        sortSize = --p4kData.Size
+      } else if(p4kData && p4kData == 0){
+        sortSize = p4kData.Size
+      }
+
       const ship = {
         status: 'published',
         name: obj.name,
@@ -2889,8 +2900,8 @@ async function formData() {
         height: obj.height,
         mass: p4kData ? p4kData.Mass : parseFloat(obj.mass),
         cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
-        size: p4kData ? --p4kData.Size : size,
-        sortSize: size ? size : p4kData ? --p4kData.Size : null,
+        size: size ? size : p4kData ? --p4kData.Size : null,
+        sortSize: sortSize,
         price: price ? price : null,
         pledgePrice: flData.pledgePrice,
         onSale: flData.onSale,
