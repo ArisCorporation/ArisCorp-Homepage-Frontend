@@ -1090,7 +1090,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                         <p
                           className={
                             'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
-                            (manuquery == [obj.firmen_name]
+                            (manuquery == [slugify(obj.firmen_name)]
                               ? 'text-secondary'
                               : 'group-hover:text-white')
                           }
@@ -1207,7 +1207,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     <Listbox.Button className="relative w-full py-2 pl-3 pr-10 text-left border-2 rounded-lg shadow-md cursor-pointer border-bg-secondary bg-bg-primary focus-visible:outline-none sm:text-sm">
                       <span className="block truncate">
                         {typequery != '' && typequery != null
-                          ? typesS.filter((e) => e.value == typequery)[0].name
+                          ? typesS.filter((e) => e.value == typequery)[0]?.name
                           : 'Alle'}
                       </span>
                       <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
