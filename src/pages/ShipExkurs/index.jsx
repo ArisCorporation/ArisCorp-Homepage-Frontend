@@ -1352,3 +1352,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
     </div>
   )
 }
+
+Ships.getLayout = function getLayout (page) {
+  return <Layout>{page}</Layout>
+}
