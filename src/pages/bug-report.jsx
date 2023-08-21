@@ -112,7 +112,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function BugReportPage({ data }) {
+export default function BugReportPage({ data, siteTitle }) {
   const [title, setTitle] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [selectedTask, setSelectedTask] = useState()
