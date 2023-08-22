@@ -1392,17 +1392,10 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 
 // SHIPEXKURS QUERYS
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
-  query GetShipExkursShipsIndex(
-    $manufacturers: [String]
-    $sizes: [GraphQLStringOrFloat]
-    $careers: [String]
-  ) {
+  query GetShipExkursShipsIndex {
     ships(
       filter: {
         status: { _eq: "published" }
-        manufacturer: { firmen_name: { _in: $manufacturers } }
-        sortSize: { _in: $sizes }
-        career: { _in: $careers }
       }
       sort: ["sort", "name"]
       limit: -1
@@ -1422,8 +1415,28 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
         width
         height
       }
-      size
+      career
+      focus
+      sortSize
+      productionStatus
+      onSale
+      classification
       groundVehicle
+    }
+
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenherstellerkategorie: { _eq: "schiffshersteller" }
+      }
+    ) {
+      id
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
     }
   }
 `
@@ -1662,6 +1675,32 @@ export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
       cargo
       price
       pledgePrice
+      maxCrew
+      minCrew
+      scmSpeed
+      afterburnerSpeed
+      afterburnerGroundSpeed
+      pitchMax
+      yawMax
+      rollMax
+      # zeroToScm
+      # scmToZero
+      # zeroToMax
+      # maxToZero
+      
+
+      modules
+      hardpoints
+      weaponHardpoints
     }
+
+    components(limit: -1) {
+        id
+        name
+        manufacturer {
+          firmen_name
+          status
+        }
+      }
   }
 `
