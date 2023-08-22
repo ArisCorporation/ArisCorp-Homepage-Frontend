@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa'
 import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
 import { FiCpu } from 'react-icons/fi'
-import { MdGroups, MdHistoryEdu } from 'react-icons/md'
+import { MdCompareArrows, MdGroups, MdHistoryEdu } from 'react-icons/md'
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import { ImBook } from 'react-icons/im'
 import { useState, useEffect, useRef } from 'react'
@@ -217,7 +217,7 @@ export default function Sidebar() {
               <li
                 className="p-0 m-0 list-none group"
                 data-tip
-                data-for="HomeTip"
+                data-for="ShipTip"
               >
                 <Link legacyBehavior href="/ShipExkurs">
                   <a
@@ -245,11 +245,11 @@ export default function Sidebar() {
                         }
                       >
                         {' '}
-                        Ships{' '}
+                        Schiffe{' '}
                       </span>
                       {!mobileView && sidebarCollapsed ? (
                         <ReactTooltip
-                          id="HomeTip"
+                          id="ShipTip"
                           place="right"
                           effect="solid"
                           arrowColor="transparent"
@@ -257,6 +257,57 @@ export default function Sidebar() {
                           padding="8px"
                         >
                           Home
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip
+                data-for="CompareTip"
+              >
+                <Link legacyBehavior href="/ShipExkurs/comparison">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.pathname == '/ShipExkurs/comparison'
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
+                      }
+                    >
+                      <MdCompareArrows className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
+                        }
+                      >
+                        {' '}
+                        Schiffsvergleich{' '}
+                      </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="CompareTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Schiffsvergleich
                         </ReactTooltip>
                       ) : (
                         ''

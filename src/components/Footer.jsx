@@ -7,7 +7,7 @@ const Footer = () => {
 
   return (
     <footer
-      className="py-5 mt-5 bg-black border-t-2 border-solid border-secondary print:hidden"
+      className="w-full py-5 mt-5 bg-black border-t-2 border-solid border-secondary print:hidden"
       style={{ transition: 'left .5s ease,right .5s ease' }}
     >
       <div className="container px-4 mx-auto">
