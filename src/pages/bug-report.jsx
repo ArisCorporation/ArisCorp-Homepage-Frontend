@@ -375,8 +375,6 @@ export default function BugReportPage({ data, siteTitle }) {
       .catch(function (error) {})
   }
 
-  // const siteTitle = ""
-
   return (
     <div className="px-24 pt-32">
       <Head>
