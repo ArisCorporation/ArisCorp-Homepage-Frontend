@@ -584,7 +584,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
     },
   ]
 
-  console.log(data)
+  console.log(shipSize)
 
   return (
     <div className="items-center pt-8 mx-auto">
@@ -611,7 +611,18 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
             <div className="flex">
               <div className="flex mx-auto">
                 <div
-                  className="w-24 hover:cursor-pointer group"
+                  className={
+                    'w-24 duration-300 hover:cursor-pointer group transition-opacity' +
+                    ((!shipClass || shipClass?.length == 0) &&
+                    (!shipFocus || shipFocus?.length == 0) &&
+                    (!shipSize || shipSize?.length == 0) &&
+                    (!shipProdStatus || shipProdStatus?.length == 0) &&
+                    (!manufacturer || manufacturer?.length == 0) &&
+                    (!shipSale || shipSale?.length == 0) &&
+                    (!vehicleType || vehicleType?.length == 0)
+                      ? ' opacity-100'
+                      : ' opacity-50 hover:opacity-100')
+                  }
                   onClick={() => {
                     setShipClass(),
                       setShipFocus(),
@@ -639,7 +650,16 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   </div>
                   <p
                     className={
-                      'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                      'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                      ((!shipClass || shipClass?.length == 0) &&
+                      (!shipFocus || shipFocus?.length == 0) &&
+                      (!shipSize || shipSize?.length == 0) &&
+                      (!shipProdStatus || shipProdStatus?.length == 0) &&
+                      (!manufacturer || manufacturer?.length == 0) &&
+                      (!shipSale || shipSale?.length == 0) &&
+                      (!vehicleType || vehicleType?.length == 0)
+                        ? ' text-secondary'
+                        : ' group-hover:text-white')
                     }
                   >
                     Alle Anzeigen
@@ -647,7 +667,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div className="flex ml-10 space-x-2">
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (vehicleType?.includes('ship') ? ' opacity-100' : '') +
+                      (vehicleType?.length == 0 ||
+                      !vehicleType ||
+                      vehicleType?.includes('ship')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleType('ship')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -667,8 +695,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (typequery?.includes('ship')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (vehicleType?.includes('ship')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -677,7 +705,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </p>
                   </div>
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (vehicleType?.includes('ground') ? ' opacity-100' : '') +
+                      (vehicleType?.length == 0 ||
+                      !vehicleType ||
+                      vehicleType?.includes('ground')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleType('ground')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -697,8 +733,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (typequery?.includes('ground')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (vehicleType?.includes('ground')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -709,7 +745,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div className="flex ml-6 space-x-2">
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (shipSize?.includes('1') ? ' opacity-100' : '') +
+                      (shipSize?.length == 0 ||
+                      !shipSize ||
+                      shipSize?.includes('1')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleSize('1')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -729,8 +773,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (sizequery?.includes('1')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (shipSize?.includes('1')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -739,7 +783,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </p>
                   </div>
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (shipSize?.includes('2') ? ' opacity-100' : '') +
+                      (shipSize?.length == 0 ||
+                      !shipSize ||
+                      shipSize?.includes('2')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleSize('2')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -759,8 +811,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (sizequery?.includes('2')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (shipSize?.includes('2')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -769,7 +821,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </p>
                   </div>
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (shipSize?.includes('3') ? ' opacity-100' : '') +
+                      (shipSize?.length == 0 ||
+                      !shipSize ||
+                      shipSize?.includes('3')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleSize('3')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -789,8 +849,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (sizequery?.includes('3')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (shipSize?.includes('3')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -799,7 +859,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </p>
                   </div>
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (shipSize?.includes('4') ? ' opacity-100' : '') +
+                      (shipSize?.length == 0 ||
+                      !shipSize ||
+                      shipSize?.includes('4')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleSize('4')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -819,8 +887,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (sizequery?.includes('4')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (shipSize?.includes('4')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -829,7 +897,15 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </p>
                   </div>
                   <div
-                    className="w-24 hover:cursor-pointer group"
+                    className={
+                      'w-24 transition-opacity duration-300 hover:cursor-pointer group' +
+                      (shipSize?.includes('5') ? ' opacity-100' : '') +
+                      (shipSize?.length == 0 ||
+                      !shipSize ||
+                      shipSize?.includes('5')
+                        ? ' opacity-100'
+                        : ' opacity-50 hover:opacity-100')
+                    }
                     onClick={() => toggleSize('5')}
                   >
                     <div className="relative w-24 mx-auto aspect-square">
@@ -849,8 +925,8 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors' +
-                        (sizequery?.includes('5')
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                        (shipSize?.includes('5')
                           ? ' text-secondary'
                           : ' group-hover:text-white')
                       }
@@ -861,7 +937,12 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   onClick={() => setClassesMenu(!classesMenu)}
-                  className="w-24 ml-6 hover:cursor-pointer"
+                  className={
+                    'w-24 ml-6 transition-opacity duration-300 hover:cursor-pointer group' +
+                    (classesMenu == true
+                      ? ' opacity-100'
+                      : ' opacity-50 hover:opacity-100')
+                  }
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -880,10 +961,13 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   </div>
                   <p
                     className={
-                      'p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200' +
-                      (classquery
-                        ? ' text-secondary'
-                        : ' group-hover:text-white')
+                      'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                      ((classesMenu == true && !classquery
+                        ? ' text-white'
+                        : '') +
+                        (classquery
+                          ? ' text-secondary'
+                          : ' group-hover:text-white'))
                     }
                   >
                     Klassifizierungen
@@ -891,7 +975,12 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </div>
                 <div
                   onClick={() => setManufacturerMenu(!manufacturerMenu)}
-                  className="w-24 ml-10 hover:cursor-pointer"
+                  className={
+                    'w-24 ml-10 transition-opacity duration-300 hover:cursor-pointer group' +
+                    (manufacturerMenu == true || manuquery
+                      ? ' opacity-100'
+                      : ' opacity-50 hover:opacity-100')
+                  }
                 >
                   <div className="relative w-24 mx-auto aspect-square">
                     <Image
@@ -910,10 +999,13 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                   </div>
                   <p
                     className={
-                      'p-0 mx-auto text-xs text-center transition-colors duration-150 ease-out group-hover:duration-200' +
-                      (manuquery
-                        ? ' text-secondary'
-                        : ' group-hover:text-white')
+                      'p-0 mx-auto text-xs text-center duration-300 transition-opacity' +
+                      ((manufacturerMenu == true && !manuquery
+                        ? ' text-white'
+                        : '') +
+                        (manuquery
+                          ? ' text-secondary'
+                          : ' group-hover:text-white'))
                     }
                   >
                     Hersteller
@@ -951,7 +1043,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                       </div>
                       <p
                         className={
-                          'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                          'p-0 mx-auto text-xs text-center duration-300 transition-opacity'
                         }
                       >
                         Alle Klassifizierungen
@@ -988,7 +1080,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                             </div>
                             <p
                               className={
-                                'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                                'p-0 mx-auto text-xs text-center duration-300 transition-opacity ' +
                                 (classquery == [obj.value]
                                   ? 'text-secondary'
                                   : 'group-hover:text-white')
@@ -1033,7 +1125,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
               <div className="flex">
                 <div className="flex mx-auto">
                   <div
-                    className="w-24 pl-12 hover:cursor-pointer group"
+                    className="w-24 ml-12 -mr-12 hover:cursor-pointer group"
                     onClick={() => {
                       setManufacturer()
                     }}
@@ -1055,7 +1147,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                     </div>
                     <p
                       className={
-                        'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors'
+                        'p-0 mx-auto text-xs text-center duration-300 transition-opacity'
                       }
                     >
                       Alle Hersteller
@@ -1089,7 +1181,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                         </div>
                         <p
                           className={
-                            'p-0 mx-auto text-xs text-center duration-150 group-hover:duration-200 ease-out transition-colors ' +
+                            'p-0 mx-auto text-xs text-center duration-300 transition-opacity ' +
                             (manuquery == [slugify(obj.firmen_name)]
                               ? 'text-secondary'
                               : 'group-hover:text-white')
@@ -1108,7 +1200,9 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
           <div className="w-full px-2 xl:hidden">
             <div className="flex px-2 space-x-6">
               <div className="w-1/3">
-                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Größe</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">
+                  Größe
+                </h3>
                 <Listbox
                   value={sizesS.filter((e) => sizequery?.includes(e.value))}
                   onChange={setShipSize}
@@ -1198,7 +1292,9 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </Listbox>
               </div>
               <div className="w-1/3">
-                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Fahrzeug Typ</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">
+                  Fahrzeug Typ
+                </h3>
                 <Listbox
                   value={typequery}
                   onChange={(event) => setVehicleType(event.value)}
@@ -1266,7 +1362,9 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
                 </Listbox>
               </div>
               <div className="w-1/3">
-                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">Hersteller</h3>
+                <h3 className="mb-0 text-xs xs:text-sm sm:text-base md:text-lg">
+                  Hersteller
+                </h3>
                 <Listbox
                   value={manuquery}
                   onChange={(event) =>
@@ -1353,6 +1451,6 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
   )
 }
 
-Ships.getLayout = function getLayout (page) {
+Ships.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
