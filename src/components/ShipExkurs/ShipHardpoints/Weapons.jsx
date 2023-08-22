@@ -68,22 +68,23 @@ const Weapons = ({ data, components, valid, companies }) => {
       }
     })
 
-    data.weaponHardpoints
-      .filter((e) => e.category == 'utility')
-      .map((obj) => {
-        const index = utilities.findIndex(
-          (e) => JSON.stringify(e.weapon) == JSON.stringify(obj)
-        )
-  
-        if (index > -1) {
-          utilities[index].count++
-        } else {
-          utilities.push({ count: 1, weapon: obj })
-        }
-      })
-  
+  data.weaponHardpoints
+    .filter((e) => e.category == 'utility')
+    .map((obj) => {
+      const index = utilities.findIndex(
+        (e) => JSON.stringify(e.weapon) == JSON.stringify(obj)
+      )
 
-  if (!data.weaponHardpoints[0]) {
+      if (index > -1) {
+        utilities[index].count++
+      } else {
+        utilities.push({ count: 1, weapon: obj })
+      }
+    })
+
+  if (!data.weaponHardpoints[0] && valid) {
+    return valid(false)
+  } else if (!data.weaponHardpoints[0] && !valid) {
     return
   }
 
