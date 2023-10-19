@@ -21,6 +21,13 @@ import {
 import MainLogo from './icons/MainLogo'
 import { useRouter } from 'next/router'
 import ReactTooltip from 'react-tooltip'
+import ODIHIcon from './icons/ODIHIcon'
+import UEEIcon from './icons/UEEIcon'
+import ARKStarmapIcon from './icons/ARKStarmapIcon'
+import AliensIcon from './icons/AliensIcon'
+import CompaniesIcon from './icons/CompaniesIcon'
+import TechIcon from './icons/TechIcon'
+import SpectrumIcon from './icons/SpectrumIcon'
 
 export default function Sidebar() {
   const router = useRouter()
@@ -275,7 +282,7 @@ export default function Sidebar() {
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
                       (router.pathname.startsWith('/VerseExkurs/timeline') ||
-                        router.pathname.startsWith('/VerseExkurs/onedayinhistory')
+                      router.pathname.startsWith('/VerseExkurs/onedayinhistory')
                         ? 'after:block text-white '
                         : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
@@ -289,7 +296,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <MdHistoryEdu className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <ODIHIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -340,7 +347,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <BsShieldShaded className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <UEEIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -391,7 +398,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <GiSolarSystem className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <ARKStarmapIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -428,13 +435,13 @@ export default function Sidebar() {
                   <a
                     className={
                       'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                      (router.pathname.startsWith('/VerseExkurs/alienrassen') || 
-                        router.pathname.startsWith('/VerseExkurs/banu') ||
-                        router.pathname.startsWith('/VerseExkurs/tevarin') ||
-                        router.pathname.startsWith('/VerseExkurs/vanduul') ||
-                        router.pathname.startsWith('/VerseExkurs/xian') ||
-                        router.pathname.startsWith('/VerseExkurs/biestarium') ||
-                        router.pathname.startsWith('/VerseExkurs/pflanzen')
+                      (router.pathname.startsWith('/VerseExkurs/alienrassen') ||
+                      router.pathname.startsWith('/VerseExkurs/banu') ||
+                      router.pathname.startsWith('/VerseExkurs/tevarin') ||
+                      router.pathname.startsWith('/VerseExkurs/vanduul') ||
+                      router.pathname.startsWith('/VerseExkurs/xian') ||
+                      router.pathname.startsWith('/VerseExkurs/biestarium') ||
+                      router.pathname.startsWith('/VerseExkurs/pflanzen')
                         ? 'after:block text-white '
                         : 'after:hidden text-[#afafaf] ') +
                       (!mobileView && sidebarCollapsed
@@ -448,7 +455,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <GiAlienSkull className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <AliensIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -499,7 +506,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <FaPlaceOfWorship className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <CompaniesIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -602,7 +609,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <FiCpu className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <TechIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
@@ -653,7 +660,7 @@ export default function Sidebar() {
                         (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                       }
                     >
-                      <BsTriangleFill className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <SpectrumIcon width="25px" classNames="mx-[2.5px]" />
                       <span
                         className={
                           'ml-[5px] ' +
