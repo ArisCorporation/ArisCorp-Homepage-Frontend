@@ -1383,6 +1383,7 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
           height
         }
         reihen_titel
+        reihen_kapitel_anzahl
       }
       literatur_kapitel
       text
