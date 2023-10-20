@@ -148,7 +148,7 @@ export default function Sidebar() {
                 />
               </div>
             </a>
-          </Link>
+          </Link> */}
           <Link legacyBehavior href="/ShipExkurs/comparison">
             <a
               className={
