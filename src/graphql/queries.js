@@ -1659,7 +1659,7 @@ export const GET_SHIPEXKURS_SHIPLIST = gql`
 
 export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
   query GetShipExkursShipsComparisonData {
-    ships(filter: { status: { _eq: "published" } }, limit: -1) {
+    ships(filter: { status: { _eq: "published" } }, limit: -1, sort: ["name"]) {
       id
       name
       slug
