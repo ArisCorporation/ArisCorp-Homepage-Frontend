@@ -378,11 +378,11 @@ export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
 `
 
 export const GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE = gql`
-  query GetVerseExkursOneDayInHistoryArticle($title: String!) {
+  query GetVerseExkursOneDayInHistoryArticle($id: String!) {
     geschichte(
       filter: {
         status: { _eq: "published" }
-        geschichte_titel: { _eq: $title }
+        id: { _eq: $id }
       }
     ) {
       id
@@ -633,6 +633,15 @@ export const GET_VERSEEXKURS_FIRMA = gql`
           id
         }
       }
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_TIMELINE = gql`
+  query GetVerseExkursFirmenTimeline {
+    firmen(limit: -1) {
+      id
+      firmen_name
     }
   }
 `
