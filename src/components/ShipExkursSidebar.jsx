@@ -129,7 +129,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link legacyBehavior href="/ShipExkurs/">
+          {/* <Link legacyBehavior href="/ShipExkurs/">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
