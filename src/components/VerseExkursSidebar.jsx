@@ -129,10 +129,7 @@ export default function Sidebar() {
                 className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
-                <FaPlaceOfWorship
-                  className="relative text-center whitespace-normal"
-                  style={{ fontSize: '130%' }}
-                />
+                <CompaniesIcon width="25px" classNames="mx-[2.5px]" />
               </div>
             </a>
           </Link>
@@ -169,10 +166,7 @@ export default function Sidebar() {
                 className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
-                <GiAlienSkull
-                  className="relative text-center whitespace-normal"
-                  style={{ fontSize: '130%' }}
-                />
+                <AliensIcon width="25px" classNames="mx-[2.5px]" />
               </div>
             </a>
           </Link>
