@@ -61,6 +61,14 @@ export default function ShipComparison({
   const isMounted = useRef(false)
   const [avionicsValid, setAvionicsValid] = useState(true)
   const [shipSearch, setShipSearch] = useState(null)
+  const [base, setBase] = useState(true)
+  const [crew, setCrew] = useState(true)
+  const [speed, setSpeed] = useState(true)
+  const [avionics, setAvionics] = useState(true)
+  const [systems, setSystems] = useState(true)
+  const [propulsion, setPropulsion] = useState(true)
+  const [thrusters, setThrusters] = useState(true)
+  const [weapons, setWeapons] = useState(true)
 
   console.log(shipSearch)
 
@@ -343,18 +351,18 @@ export default function ShipComparison({
           <> */}
         <div className={selectedShips[0] ? '' : 'mt-[189px]'}>
           <div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setBase(!base)} className="flex mt-7 flex-nowrap hover:cursor-pointer">
               <div className="left-0 lg:left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[300px] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Base{' '}
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (base ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={base == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)] rounded-tr lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4">
                   Hersteller
@@ -488,18 +496,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setCrew(!crew)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Crew
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (crew ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={crew == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-tr lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4">
                   Min. Crew
@@ -521,18 +529,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setSpeed(!speed)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Geschwindigkeit
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (speed ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={speed == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-tr lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4">
                   SCM Geschwindigkeit
@@ -664,18 +672,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setAvionics(!avionics)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Avionik
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (avionics ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={avionics == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-r lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4"></div>
                 {selectedShips.map((obj) => (
@@ -686,18 +694,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setSystems(!systems)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Systeme
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (systems ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={systems == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-r lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4"></div>
                 {selectedShips.map((obj) => (
@@ -708,18 +716,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setPropulsion(!propulsion)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Antrieb
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (propulsion ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={propulsion == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-r lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4"></div>
                 {selectedShips.map((obj) => (
@@ -730,18 +738,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setThrusters(!thrusters)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Triebwerke
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (thrusters ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={thrusters == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-r lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4"></div>
                 {selectedShips.map((obj) => (
@@ -754,18 +762,18 @@ export default function ShipComparison({
                 ))}
               </div>
             </div>
-            <div className="flex mt-7 flex-nowrap">
+            <div onClick={() => setWeapons(!weapons)} className="flex mt-7 flex-nowrap">
               <div className="left-[300px] pt-2 rounded-tr w-[300px] min-w-[300px] max-w-[20%] mt-0 pb-2 sticky z-50 px-2">
                 <div className="relative pr-6 uppercase cursor-pointer">
                   Waffen
-                  <FaChevronRight className="absolute right-0 inline-block transition-all duration-500 ease-linear rotate-90 top-2" />
+                  <FaChevronRight className={"absolute right-0 inline-block transition-all duration-300 ease-linear top-2" + (weapons ? ' rotate-90' : '')} />
                 </div>
               </div>
               {selectedShips.map((obj) => (
                 <div key={obj.id} className={class1}></div>
               ))}
             </div>
-            <div>
+            <div className={weapons == true ? '' : 'hidden'}>
               <div className="flex flex-nowrap">
                 <div className="bg-gradient-to-l from-[rgba(39,43,48,.75)]  rounded-r lg:text-right left-0 lg:left-[300px] w-[300px] min-w-[300px] max-w-[20%] pb-2 sticky z-50 px-4"></div>
                 {selectedShips.map((obj) => (

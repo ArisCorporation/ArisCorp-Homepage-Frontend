@@ -241,7 +241,7 @@ html::-webkit-scrollbar-track {
 }
 
 html::-webkit-scrollbar {
-  @apply w-[7px] bg-bg-secondary;
+  @apply w-[7px] h-[7px] bg-bg-secondary;
 }
 
 html::-webkit-scrollbar-thumb {

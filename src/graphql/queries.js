@@ -1626,6 +1626,9 @@ export const GET_SHIPEXKURS_SHIP = gql`
       modules
       hardpoints
       weaponHardpoints
+      insuranceClaimTime
+      insuranceExpeditedClaimTime
+      insuranceExpeditedCost
     }
     components(limit: -1) {
       id

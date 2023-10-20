@@ -2932,6 +2932,9 @@ async function formData() {
         xaxisAcceleration: obj.xaxis_acceleration,
         yaxisAcceleration: obj.yaxis_acceleration,
         zaxisAcceleration: obj.zaxis_acceleration,
+        insuranceClaimTime: p4kData?.Insurance.StandardClaimTime,
+        insuranceExpeditedClaimTime: p4kData?.Insurance.ExpeditedClaimTime,
+        insuranceExpeditedCost: p4kData?.Insurance.ExpeditedCost,
 
         holoColored: flData.holoColored,
 
