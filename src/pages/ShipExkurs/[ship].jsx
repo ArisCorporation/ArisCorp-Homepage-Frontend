@@ -560,7 +560,11 @@ export default function ShipPage({
                     <p className="pb-0 text-sm">Zeit:</p>
                     <p className="p-0 normal-case text-primary">
                       {data.insuranceClaimTime
-                        ? (Math.round((data.insuranceClaimTime + Number.EPSILON) * 100) / 100) + ' Min.'
+                        ? Math.round(
+                            (data.insuranceClaimTime + Number.EPSILON) * 100
+                          ) /
+                            100 +
+                          ' Min.'
                         : 'N/A'}
                     </p>
                   </div>
@@ -568,7 +572,13 @@ export default function ShipPage({
                     <p className="pb-0 text-sm">Besch. Zeit:</p>
                     <p className="p-0 normal-case text-primary">
                       {data.insuranceExpeditedClaimTime
-                        ? (Math.round((data.insuranceExpeditedClaimTime + Number.EPSILON) * 100) / 100) + ' Min.'
+                        ? Math.round(
+                            (data.insuranceExpeditedClaimTime +
+                              Number.EPSILON) *
+                              100
+                          ) /
+                            100 +
+                          ' Min.'
                         : 'N/A'}
                     </p>
                   </div>
@@ -601,9 +611,13 @@ export default function ShipPage({
                   }
                 >
                   {data.onSale ? (
-                    <p className="p-0 text-sm">
-                      On Sale: ${data.pledgePrice} excl. VAT
-                    </p>
+                    data.pledgePrice ? (
+                      <p className="p-0 text-sm">
+                        On Sale: ${data.pledgePrice} excl. VAT
+                      </p>
+                    ) : (
+                      <p className="p-0 text-sm">On Sale!</p>
+                    )
                   ) : (
                     <p className="p-0">RSI Page</p>
                   )}

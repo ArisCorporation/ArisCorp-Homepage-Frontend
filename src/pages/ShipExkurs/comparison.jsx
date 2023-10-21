@@ -320,7 +320,7 @@ export default function ShipComparison({
           {selectedShips.map((obj) => (
             <div
               key={obj.id}
-              className="w-[450px] pb-2 relative px-4"
+              className="min-w-[400px] max-w-[33%] pb-2 relative px-4"
             >
               <div className="relative h-[180px] overflow-hidden">
                 <Link
@@ -339,7 +339,7 @@ export default function ShipComparison({
           {selectedShips.map((obj) => (
             <div
               key={obj.id}
-              className="left-0 w-[400px] pb-2 relative px-4"
+              className="left-0 min-w-[400px] max-w-[33%] pb-2 relative px-4"
             >
               <div className="py-2 text-xl text-center bg-opacity-75 rounded-b bg-bg-secondary">
                 <strong className="align-middle">{obj.name}</strong>

@@ -83,13 +83,13 @@ export default function Sidebar() {
     <>
       <div
         className={
-          'fixed bottom-0 z-50 w-full lg:hidden print:hidden ' +
+          'fixed bottom-0 z-[99] w-full lg:hidden print:hidden ' +
           (mobileOpen ? 'right-[300px]' : 'right-0')
         }
         style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
       >
         <div className="flex items-stretch justify-between min-h-[60px] pb-5 bg-[rgba(23,25,28,.95)] border-t-[1px] border-solid border-t-[rgba(30,34,38,.5)]">
-          <Link legacyBehavior href="/VerseExkurs">
+          <Link legacyBehavior href="/ShipExkurs">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -109,11 +109,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link legacyBehavior href="/ShipExkurs/ships">
+          <Link legacyBehavior href="/ShipExkurs">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/ShipExkurs/ships')
+                (router.pathname == '/ShipExkurs'
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -129,11 +129,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link legacyBehavior href="/VerseExkurs/search">
+          {/* <Link legacyBehavior href="/ShipExkurs/">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/VerseExkurs/search')
+                (router.pathname == '/ShipExkurs'
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -148,12 +148,12 @@ export default function Sidebar() {
                 />
               </div>
             </a>
-          </Link>
-          <Link legacyBehavior href="/ShipExkurs/firmen">
+          </Link> */}
+          <Link legacyBehavior href="/ShipExkurs/comparison">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/ShipExkurs/firmen')
+                (router.pathname.startsWith('/ShipExkurs/comparison')
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -162,7 +162,7 @@ export default function Sidebar() {
                 className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
-                <GiAlienSkull
+                <MdCompareArrows
                   className="relative text-center whitespace-normal"
                   style={{ fontSize: '130%' }}
                 />
@@ -200,7 +200,7 @@ export default function Sidebar() {
 
       <nav
         className={
-          'absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden ' +
+          'absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-[99] lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden ' +
           (!mobileView && sidebarCollapsed ? 'lg:w-[80px] lg:min-w-[80px]' : '')
         }
       >
