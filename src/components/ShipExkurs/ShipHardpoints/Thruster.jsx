@@ -1,7 +1,7 @@
 import { BasicPanel } from 'components/panels'
 import Link from 'next/link'
 
-const Thruster = ({ data, components }) => {
+const Thruster = ({ data, components, valid }) => {
   function setSize(size) {
     let label
     size == 0
