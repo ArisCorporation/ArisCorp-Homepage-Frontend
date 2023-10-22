@@ -141,14 +141,24 @@ async function getSMData() {
   return apiResults.data
 }
 
-async function getFlShip(ship) {
-  const actualUrl = FLURL + ship
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
-  })
+// async function getFlShip(ship) {
+//   await new Promise(res => setTimeout(res, 1000));
+//   const actualUrl = FLURL + 'c1-spirit'
 
-  return apiResults
-}
+//   var apiResults = await fetch(actualUrl).then(async (resp) => {
+//     const contentType = await resp.headers.get('content-type')
+//     if (contentType && contentType.indexOf('application/json') !== -1) {
+//       // console.log(await resp.json())
+//       console.log("OK")
+//     } else {
+//       console.log("NOT OK")
+//       // console.log(resp)
+//     }
+//     return null
+//   })
+
+//   return apiResults
+// }
 
 async function getFlPaints(ship) {
   const actualUrl = FLURL + ship + '/paints'
@@ -203,14 +213,14 @@ async function getP4kShipHardpoints(ship) {
   return apiResults
 }
 
-async function getP4kShops() {
-  const actualUrl = P4kURL + 'shops.json'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
-  })
+// async function getP4kShops() {
+//   const actualUrl = P4kURL + 'shops.json'
+//   var apiResults = await fetch(actualUrl).then((resp) => {
+//     return resp.json()
+//   })
 
-  return apiResults
-}
+//   return apiResults
+// }
 
 async function getLiveShipData() {
   const actualUrl = BackendURL + '/items/ships?fields=id,name,slug&limit=-1'
@@ -241,10 +251,21 @@ async function getComponents() {
   return apiResults.data
 }
 
+async function getFLlist() {
+  const actualUrl = 'https://api.fleetyards.net/v1/models?perPage=230'
+
+  var apiResults = await fetch(actualUrl).then(async (resp) => {
+    return await resp.json()
+  })
+
+  return apiResults
+}
+
 async function formData() {
   const rawShipMatrixData = await getSMData()
+  const FLlist = await getFLlist()
   const rawP4kShips = await getP4kShipsData()
-  const shops = await getP4kShops()
+  // const shops = await getP4kShops()
   const liveShipData = await getLiveShipData()
   const manufacturers = await getManufacturers()
   const components = await getComponents()
@@ -270,7 +291,7 @@ async function formData() {
     'Nautilus Solstice Edition',
     'Valkyrie Liberator Edition',
     'Ursa Rover',
-    'Ursa Rover Fortuna'
+    'Ursa Rover Fortuna',
   ]
   const skippedPaints = ['Carrack Expedition']
   const slugOverwrites = [
@@ -285,8 +306,8 @@ async function formData() {
       slug: 'carrack',
     },
     {
-      ship: '600i-executive-edition',
-      slug: '600i',
+      ship: 'f8a-lightning',
+      slug: 'f8c-lightning',
     },
   ]
 
@@ -1681,9 +1702,14 @@ async function formData() {
       if (flSlugOverwrites.find((e) => e.ship === slug)) {
         const newSlug = flSlugOverwrites.find((e) => e.ship === slug).slug
         flSlug = newSlug
+
+        if(!flSlug){
+          flSlug = string_to_slug(obj.name)
+        }
       }
 
-      const flData = await getFlShip(flSlug)
+      // const flData = await getFlShip(flSlug)
+      const flData = FLlist.find(e => e.slug.toLowerCase() == flSlug.toLowerCase())
       const flModules = await getFlModules(flSlug)
       const flPaints = await getFlPaints(flSlug)
       const liveData = liveShipData.find((e) => e.slug == slug)
@@ -1779,9 +1805,9 @@ async function formData() {
         p4kId = p4kCompany + ' ' + obj.name.trim()
       }
 
-      const p4kData = rawP4kShips.filter((e) =>
+      const p4kData = rawP4kShips.find((e) =>
         e.Name.toLowerCase().startsWith(p4kId.toLowerCase())
-      )[0]
+      )
       const p4kHardpoints = await getP4kShipHardpoints(
         p4kData?.ClassName.toLowerCase()
       )
@@ -1801,17 +1827,18 @@ async function formData() {
         .then((resp) => resp.data.split(' ')[0].toString())
 
       let price
-      if (p4kData) {
-        shops.map((obj) => {
-          const found = obj.inventory.find(
-            (item) => item.name == p4kData?.ClassName.toLowerCase()
-          )?.basePrice
+      price = flData?.price
+      // if (p4kData) {
+      //   shops.map((obj) => {
+      //     const found = obj.inventory.find(
+      //       (item) => item.name == p4kData?.ClassName.toLowerCase()
+      //     )?.basePrice
 
-          if (found) {
-            price = found
-          }
-        })
-      }
+      //     if (found) {
+      //       price = found
+      //     }
+      //   })
+      // }
 
       let smRoles = []
       if (obj.focus?.includes('/')) {
@@ -1841,7 +1868,7 @@ async function formData() {
       })
 
       const loaners = []
-      const flLoaners = flData.loaners
+      const flLoaners = flData?.loaners
       if (flLoaners) {
         const rawLoaners = []
         flLoaners.forEach((obj) => rawLoaners.push(obj.name))
@@ -2312,12 +2339,15 @@ async function formData() {
       }
 
       const getCompany = (companyData) =>
-        manufacturers.find(
-          (e) =>
-            e.code?.toLowerCase().includes(companyData.Code.toLowerCase()) ||
-            e.firmen_name.toLowerCase() == companyData.Name.toLowerCase() ||
-            e.firmen_name.toLowerCase().includes(companyData.Name.toLowerCase())
-        )
+        {
+          // console.log(companyData)
+          manufacturers.find(
+            (e) =>
+              e.code?.toLowerCase().includes(companyData.Code.toLowerCase()) ||
+              e.firmen_name.toLowerCase() == companyData.Name?.toLowerCase() ||
+              e.firmen_name.toLowerCase().includes(companyData.Name?.toLowerCase())
+          )
+        }
 
       let weaponHardpoints = []
       if (p4kHardpoints) {
@@ -2575,7 +2605,7 @@ async function formData() {
           }
 
           const ports = []
-          if (i.InstalledItem.Ports) {
+          if (i.InstalledItem?.Ports) {
             i.InstalledItem.Ports.forEach((port) => {
               if (port.Loadout == null) {
                 return
@@ -2605,8 +2635,8 @@ async function formData() {
 
           const hardpoint = {
             category: 'missileRack',
-            name: i.InstalledItem.Name,
-            size: i.InstalledItem.Size,
+            name: i.InstalledItem?.Name,
+            size: i.InstalledItem?.Size,
             manufacturer: missileRackManufacturer && missileRackManufacturer.id,
             ports,
           }
@@ -2879,6 +2909,11 @@ async function formData() {
       } else if(p4kData && p4kData == 0){
         sortSize = p4kData.Size
       }
+      if(!flData){
+        console.log("ERROR")
+        console.log(obj.name)
+        console.log(flSlug)
+      }
 
       const ship = {
         status: 'published',
@@ -2898,8 +2933,8 @@ async function formData() {
         length: obj.length,
         beam: obj.beam,
         height: obj.height,
-        mass: p4kData ? p4kData.Mass : parseFloat(obj.mass),
-        cargo: p4kData ? p4kData.Cargo : parseInt(obj.cargocapacity),
+        mass: p4kData?.Mass ? p4kData.Mass : parseFloat(obj.mass),
+        cargo: p4kData?.Cargo ? p4kData.Cargo : parseInt(obj.cargocapacity),
         size: size ? size : p4kData ? --p4kData.Size : null,
         sortSize: sortSize,
         price: price ? price : null,
@@ -2914,27 +2949,27 @@ async function formData() {
         quantumFuelTankSize: p4kData?.QuantumTravel.FuelCapacity,
         minCrew: obj.min_crew,
         maxCrew: obj.max_crew,
-        scmSpeed: p4kData
+        scmSpeed: p4kData?.FlightCharacteristics?.ScmSpeed
           ? p4kData.FlightCharacteristics.ScmSpeed
           : obj.scm_speed,
-        afterburnerSpeed: p4kData
+        afterburnerSpeed: p4kData?.FlightCharacteristics?.MaxSpeed
           ? p4kData.FlightCharacteristics.MaxSpeed
           : obj.afterburner_speed,
         groundSpeed: obj.scm_speed,
         afterburnerGroundSpeed: obj.afterburner_speed,
-        zeroToScm: p4kData?.FlightCharacteristics.ZeroToScm,
-        zeroToMax: p4kData?.FlightCharacteristics.ZeroToMax,
-        scmToZero: p4kData?.FlightCharacteristics.ScmToZero,
-        maxToZero: p4kData?.FlightCharacteristics.MaxToZero,
+        zeroToScm: p4kData?.FlightCharacteristics?.ZeroToScm,
+        zeroToMax: p4kData?.FlightCharacteristics?.ZeroToMax,
+        scmToZero: p4kData?.FlightCharacteristics?.ScmToZero,
+        maxToZero: p4kData?.FlightCharacteristics?.MaxToZero,
         pitchMax: obj.pitch_max,
         yawMax: obj.yaw_max,
         rollMax: obj.roll_max,
         xaxisAcceleration: obj.xaxis_acceleration,
         yaxisAcceleration: obj.yaxis_acceleration,
         zaxisAcceleration: obj.zaxis_acceleration,
-        insuranceClaimTime: p4kData?.Insurance.StandardClaimTime,
-        insuranceExpeditedClaimTime: p4kData?.Insurance.ExpeditedClaimTime,
-        insuranceExpeditedCost: p4kData?.Insurance.ExpeditedCost,
+        insuranceClaimTime: p4kData?.Insurance?.StandardClaimTime,
+        insuranceExpeditedClaimTime: p4kData?.Insurance?.ExpeditedClaimTime,
+        insuranceExpeditedCost: p4kData?.Insurance?.ExpeditedCost,
 
         holoColored: flData.holoColored,
 
