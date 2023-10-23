@@ -123,11 +123,9 @@ export default function SystemDetailPage ({ data, siteTitle }) {
               <div className="w-full h-full pb-2 text-xs italic uppercase xs:text-sm">
                 <h3 className="pt-2 pl-3 m-0 text-secondary">System Infobox</h3>
                 <table className="w-full ml-5 table-auto">
-                  <div>
                     <p className="pt-2 m-0 -ml-2 text-sm xs:text-base text-secondary">
                       Astronomisch
                     </p>
-                  </div>
                   <tr>
                     <th className="pr-2 text-left">Sternen Typ:</th>
                     <td className="text-left text-primary">
