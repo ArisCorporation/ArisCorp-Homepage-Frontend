@@ -1,5 +1,5 @@
 import Layout from './layout'
-import { GET_VERSEEXKURS_FIRMEN_TIMELINE, GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
+import { GET_MEMBERS, GET_VERSEEXKURS_FIRMEN_TIMELINE, GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useState, useEffect } from 'react'
@@ -13,6 +13,7 @@ import Head from 'next/head'
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
   const { data: firmenList } = await client.query({ query: GET_VERSEEXKURS_FIRMEN_TIMELINE })
+  const { data: memberList } = await client.query({ query: GET_MEMBERS })
   const timelineEvents = []
   const urlRegex =
     /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
@@ -58,6 +59,10 @@ export async function getServerSideProps() {
       link ? link = link + '/fraktionen/' + object.link : ''
     } else if (object.beitrags_typ == 'spectrum') {
       link ? link = link + '/spectrum/' + object.link : ''
+    } else if (object.beitrags_typ == 'member') {
+      var member_link
+      memberList.member.find(e => e.id == object?.link) ? member_link = memberList.member.find(e => e.id == object.link).slug : null
+      link ? link = '/biografie/' + member_link : ''
     } else {
       link ? link = link + '/' + object.link : ''
     }
