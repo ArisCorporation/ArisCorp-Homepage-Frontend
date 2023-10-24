@@ -26,11 +26,10 @@ export async function getServerSideProps (context) {
     variables: { name },
   })
 
-  if (!data) {
+  if (!data.member[0]) {
     return {
       notFound: true,
     }
-
   }
 
   const departments = []
@@ -98,8 +97,6 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
       theme: "dark",
     });
   }
-
-  console.log(ships);
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -568,7 +565,7 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
         <BasicPanel>
           <div>
             <h1 className='pt-2 pb-4 pl-4 text-primary'>Biografie:</h1>
-            {data.biografie ? (
+            {data.biography ? (
               <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               className="mx-auto py-2 prose prose-td:align-middle xl:text-base text-xs prose-invert max-w-[95%]"
@@ -577,8 +574,6 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
             </ReactMarkdown>
             ) : (
               <div className='flex justify-center mb-6'>
-                {/* <h1 className='mx-auto'>[ REDACTED ]</h1> */}
-                {/* <RedactedGlitch /> */}
                 <h1 className='text-base xxs:text-xl xs:text-4xl redacted' data-text="[ REDACTED ]">[ REDACTED ]</h1>
               </div>
             )}
