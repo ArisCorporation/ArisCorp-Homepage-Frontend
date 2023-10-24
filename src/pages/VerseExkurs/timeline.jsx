@@ -1,5 +1,9 @@
 import Layout from './layout'
-import { GET_MEMBERS, GET_VERSEEXKURS_FIRMEN_TIMELINE, GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
+import {
+  GET_MEMBERS,
+  GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  GET_VERSEEXKURS_TIMELINE,
+} from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useState, useEffect } from 'react'
@@ -9,10 +13,13 @@ import client from 'apollo/clients'
 import TLComponent from 'components/VerseExkursTimeline'
 import Image from 'next/image'
 import Head from 'next/head'
+import Script from 'next/script'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
-  const { data: firmenList } = await client.query({ query: GET_VERSEEXKURS_FIRMEN_TIMELINE })
+  const { data: firmenList } = await client.query({
+    query: GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  })
   const { data: memberList } = await client.query({ query: GET_MEMBERS })
   const timelineEvents = []
   const urlRegex =
@@ -43,33 +50,41 @@ export async function getServerSideProps() {
       group = 'undefined'
     }
 
-    if(object.beitrags_typ == 'uee'){
-      link ? link = link + '/uee/' + object.link : ''
+    if (object.beitrags_typ == 'uee') {
+      link ? (link = link + '/uee/' + object.link) : ''
     } else if (object.beitrags_typ == 'starsystem') {
-      link ? link = link + '/starmap/' + object.link : ''
+      link ? (link = link + '/starmap/' + object.link) : ''
     } else if (object.beitrags_typ == 'one_day_in_history') {
-      link ? link = link + '/onedayinhistory/' + object.link : ''
+      link ? (link = link + '/onedayinhistory/' + object.link) : ''
     } else if (object.beitrags_typ == 'firma') {
       var firmen_link
-      firmenList.firmen.find(e => e.id == object?.link) ? firmen_link = firmenList.firmen.find(e => e.id == object.link).firmen_name : null
-      object.link ? link = link + '/firmen/' + firmen_link : ''
+      firmenList.firmen.find((e) => e.id == object?.link)
+        ? (firmen_link = firmenList.firmen.find(
+            (e) => e.id == object.link
+          ).firmen_name)
+        : null
+      object.link ? (link = link + '/firmen/' + firmen_link) : ''
     } else if (object.beitrags_typ == 'literatur') {
-      link ? link = link + '/literatur/' + object.link : '/'
+      link ? (link = link + '/literatur/' + object.link) : '/'
     } else if (object.beitrags_typ == 'fraktion') {
-      link ? link = link + '/fraktionen/' + object.link : ''
+      link ? (link = link + '/fraktionen/' + object.link) : ''
     } else if (object.beitrags_typ == 'spectrum') {
-      link ? link = link + '/spectrum/' + object.link : ''
+      link ? (link = link + '/spectrum/' + object.link) : ''
     } else if (object.beitrags_typ == 'member') {
       var member_link
-      memberList.member.find(e => e.id == object?.link) ? member_link = memberList.member.find(e => e.id == object.link).slug : null
-      link ? link = '/biografie/' + member_link : ''
+      memberList.member.find((e) => e.id == object?.link)
+        ? (member_link = memberList.member.find(
+            (e) => e.id == object.link
+          ).slug)
+        : null
+      link ? (link = '/biografie/' + member_link) : ''
     } else {
-      link ? link = link + '/' + object.link : ''
+      link ? (link = link + '/' + object.link) : ''
     }
-    
+
     timelineEvents.push({
       start_date: {
-        year: start_date.year
+        year: start_date.year,
       },
       end_date: {},
       media: {
@@ -81,11 +96,14 @@ export async function getServerSideProps() {
         headline: object.title,
       },
       group: group,
-      autolink: true
+      autolink: true,
+      display_date: start_date.year
     })
 
     if (object.short_caption != null) {
-      timelineEvents[index].text.text = object.short_caption + (object.link ? `<hr/><a href="${link}" target="">Mehr Lesen</a>` : '')
+      timelineEvents[index].text.text =
+        object.short_caption +
+        (object.link ? `<hr/><a href="${link}" target="">Mehr Lesen</a>` : '')
     }
 
     // if (start_date.month) {
@@ -170,6 +188,11 @@ export async function getServerSideProps() {
 
 export default function TimelinePage({ data, events }) {
   const { push } = useRouter()
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
   // {
   //   start_date: {
   //     year: 2021,
@@ -189,6 +212,9 @@ export default function TimelinePage({ data, events }) {
   //   },
   //   group: 'Catégorie1',
   // }
+
+  // const test = document.querySelector(`.tl-headline-date`)
+  // console.log(test)
 
   const siteTitle =
     'Timeline - Astro Research and Industrial Service Corporation'
@@ -226,10 +252,29 @@ export default function TimelinePage({ data, events }) {
         </div>
       </div>
       <TLComponent data={data} events={events} />
+      {/* {isClient ? (
+        <Script>
+          {`
+            const elements = document.getElementsByClassName("tl-headline-date");
+            console.log(elements.length);
+            console.log(Array.from(elements));
+            // for (let i of elements) {
+            //   console.log(elements[i]);
+            // }
+            
+            // const content = element.textContent.slice(0, 2);
+            // for (e of elementList){
+            //   console.log(e)
+            // }
+        `}
+        </Script>
+      ) : (
+        ''
+      )} */}
     </div>
   )
 }
 
-TimelinePage.getLayout = function getLayout (page) {
+TimelinePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
