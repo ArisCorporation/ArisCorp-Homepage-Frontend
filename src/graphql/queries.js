@@ -130,6 +130,7 @@ export const GET_MEMBERS = gql`
       id
       status
       member_name
+      slug
       member_titel
       member_rollen
       head_of_department
@@ -143,7 +144,7 @@ export const GET_MEMBERS = gql`
 export const GET_MEMBER = gql`
   query GetMember($name: String!) {
     member(
-      filter: { member_name: { _eq: $name } }
+      filter: { slug: { _eq: $name } }
       sort: ["sort", "member_name"]
     ) {
       id

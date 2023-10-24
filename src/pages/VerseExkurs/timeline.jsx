@@ -1,5 +1,9 @@
 import Layout from './layout'
-import { GET_VERSEEXKURS_FIRMEN_TIMELINE, GET_VERSEEXKURS_TIMELINE } from 'graphql/queries'
+import {
+  GET_MEMBERS,
+  GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  GET_VERSEEXKURS_TIMELINE,
+} from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useState, useEffect } from 'react'
@@ -9,10 +13,14 @@ import client from 'apollo/clients'
 import TLComponent from 'components/VerseExkursTimeline'
 import Image from 'next/image'
 import Head from 'next/head'
+import Script from 'next/script'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
-  const { data: firmenList } = await client.query({ query: GET_VERSEEXKURS_FIRMEN_TIMELINE })
+  const { data: firmenList } = await client.query({
+    query: GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  })
+  const { data: memberList } = await client.query({ query: GET_MEMBERS })
   const timelineEvents = []
   const urlRegex =
     /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi
@@ -42,29 +50,41 @@ export async function getServerSideProps() {
       group = 'undefined'
     }
 
-    if(object.beitrags_typ == 'uee'){
-      link ? link = link + '/uee/' + object.link : ''
+    if (object.beitrags_typ == 'uee') {
+      link ? (link = link + '/uee/' + object.link) : ''
     } else if (object.beitrags_typ == 'starsystem') {
-      link ? link = link + '/starmap/' + object.link : ''
+      link ? (link = link + '/starmap/' + object.link) : ''
     } else if (object.beitrags_typ == 'one_day_in_history') {
-      link ? link = link + '/onedayinhistory/' + object.link : ''
+      link ? (link = link + '/onedayinhistory/' + object.link) : ''
     } else if (object.beitrags_typ == 'firma') {
       var firmen_link
-      firmenList.firmen.find(e => e.id == object?.link) ? firmen_link = firmenList.firmen.find(e => e.id == object.link).firmen_name : null
-      object.link ? link = link + '/firmen/' + firmen_link : ''
+      firmenList.firmen.find((e) => e.id == object?.link)
+        ? (firmen_link = firmenList.firmen.find(
+            (e) => e.id == object.link
+          ).firmen_name)
+        : null
+      object.link ? (link = link + '/firmen/' + firmen_link) : ''
     } else if (object.beitrags_typ == 'literatur') {
-      link ? link = link + '/literatur/' + object.link : '/'
+      link ? (link = link + '/literatur/' + object.link) : '/'
     } else if (object.beitrags_typ == 'fraktion') {
-      link ? link = link + '/fraktionen/' + object.link : ''
+      link ? (link = link + '/fraktionen/' + object.link) : ''
     } else if (object.beitrags_typ == 'spectrum') {
-      link ? link = link + '/spectrum/' + object.link : ''
+      link ? (link = link + '/spectrum/' + object.link) : ''
+    } else if (object.beitrags_typ == 'member') {
+      var member_link
+      memberList.member.find((e) => e.id == object?.link)
+        ? (member_link = memberList.member.find(
+            (e) => e.id == object.link
+          ).slug)
+        : null
+      link ? (link = '/biografie/' + member_link) : ''
     } else {
-      link ? link = link + '/' + object.link : ''
+      link ? (link = link + '/' + object.link) : ''
     }
-    
+
     timelineEvents.push({
       start_date: {
-        year: start_date.year
+        year: start_date.year,
       },
       end_date: {},
       media: {
@@ -76,78 +96,20 @@ export async function getServerSideProps() {
         headline: object.title,
       },
       group: group,
-      autolink: true
+      autolink: true,
+      display_date: start_date.year
     })
 
     if (object.short_caption != null) {
-      timelineEvents[index].text.text = object.short_caption + (object.link ? `<hr/><a href="${link}" target="">Mehr Lesen</a>` : '')
+      timelineEvents[index].text.text =
+        object.short_caption +
+        (object.link ? `<hr/><a href="${link}" target="">Mehr Lesen</a>` : '')
     }
-
-    // if (start_date.month) {
-    //   timelineEvents[index].start_date.month = start_date.month
-    // }
-
-    // if (start_date?.day != null) {
-    //   timelineEvents[index].start_date.day = start_date.day
-    // }
 
     if (end_date?.year != null) {
       timelineEvents[index].end_date.year = end_date.year
     }
-
-    // if (end_date?.month != null) {
-    //   timelineEvents[index].end_date.month = end_date.month
-    // }
-
-    // if (end_date?.day != null) {
-    //   timelineEvents[index].end_date.day = end_date.day
-    // }
   })
-
-  // data.timeline.event.forEach((object, index) => {
-  //   // if (end_date != null) {
-  //   //   timelineEvents.push({
-  //   //     start_date: {
-  //   //       year: start_date.year,
-  //   //       month: start_date.month,
-  //   //       day: start_date.day,
-  //   //     },
-  //   //     end_date: {
-  //   //       year: end_date.year,
-  //   //       month: end_date.month,
-  //   //       day: end_date.day,
-  //   //     },
-  //   //     media: {
-  //   //       url: banner,
-  //   //       thumbnail: banner,
-  //   //     },
-  //   //     unique_id: index,
-  //   //     text: {
-  //   //       headline: object.title,
-  //   //       text: object.short_caption,
-  //   //     },
-  //   //     group: group,
-  //   //   })
-  //   // } else {
-  //   //   timelineEvents.push({
-  //   //     start_date: {
-  //   //       year: start_date.year,
-  //   //       month: start_date.month,
-  //   //       day: start_date.day,
-  //   //     },
-  //   //     media: {
-  //   //       url: banner,
-  //   //       thumbnail: banner,
-  //   //     },
-  //   //     unique_id: index,
-  //   //     text: {
-  //   //       headline: object.title,
-  //   //       text: object.short_caption,
-  //   //     },
-  //   //     group: group,
-  //   //   })
-  //   // }
-  // })
 
   if (!data) {
     return {
@@ -165,26 +127,7 @@ export async function getServerSideProps() {
 
 export default function TimelinePage({ data, events }) {
   const { push } = useRouter()
-  // {
-  //   start_date: {
-  //     year: 2021,
-  //     month: 6,
-  //     day: 5,
-  //   },
-  //   media: {
-  //     url: 'https://picsum.photos/200/300',
-  //     thumbnail: 'https://picsum.photos/200/300',
-  //     caption: 'google',
-  //     link: 'https://google.de',
-  //   },
-  //   unique_id: '1',
-  //   text: {
-  //     headline: 'Event1',
-  //     text: '',
-  //   },
-  //   group: 'Catégorie1',
-  // }
-
+  
   const siteTitle =
     'Timeline - Astro Research and Industrial Service Corporation'
   return (
@@ -225,6 +168,6 @@ export default function TimelinePage({ data, events }) {
   )
 }
 
-TimelinePage.getLayout = function getLayout (page) {
+TimelinePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
