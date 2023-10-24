@@ -106,71 +106,10 @@ export async function getServerSideProps() {
         (object.link ? `<hr/><a href="${link}" target="">Mehr Lesen</a>` : '')
     }
 
-    // if (start_date.month) {
-    //   timelineEvents[index].start_date.month = start_date.month
-    // }
-
-    // if (start_date?.day != null) {
-    //   timelineEvents[index].start_date.day = start_date.day
-    // }
-
     if (end_date?.year != null) {
       timelineEvents[index].end_date.year = end_date.year
     }
-
-    // if (end_date?.month != null) {
-    //   timelineEvents[index].end_date.month = end_date.month
-    // }
-
-    // if (end_date?.day != null) {
-    //   timelineEvents[index].end_date.day = end_date.day
-    // }
   })
-
-  // data.timeline.event.forEach((object, index) => {
-  //   // if (end_date != null) {
-  //   //   timelineEvents.push({
-  //   //     start_date: {
-  //   //       year: start_date.year,
-  //   //       month: start_date.month,
-  //   //       day: start_date.day,
-  //   //     },
-  //   //     end_date: {
-  //   //       year: end_date.year,
-  //   //       month: end_date.month,
-  //   //       day: end_date.day,
-  //   //     },
-  //   //     media: {
-  //   //       url: banner,
-  //   //       thumbnail: banner,
-  //   //     },
-  //   //     unique_id: index,
-  //   //     text: {
-  //   //       headline: object.title,
-  //   //       text: object.short_caption,
-  //   //     },
-  //   //     group: group,
-  //   //   })
-  //   // } else {
-  //   //   timelineEvents.push({
-  //   //     start_date: {
-  //   //       year: start_date.year,
-  //   //       month: start_date.month,
-  //   //       day: start_date.day,
-  //   //     },
-  //   //     media: {
-  //   //       url: banner,
-  //   //       thumbnail: banner,
-  //   //     },
-  //   //     unique_id: index,
-  //   //     text: {
-  //   //       headline: object.title,
-  //   //       text: object.short_caption,
-  //   //     },
-  //   //     group: group,
-  //   //   })
-  //   // }
-  // })
 
   if (!data) {
     return {
@@ -188,34 +127,7 @@ export async function getServerSideProps() {
 
 export default function TimelinePage({ data, events }) {
   const { push } = useRouter()
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-  // {
-  //   start_date: {
-  //     year: 2021,
-  //     month: 6,
-  //     day: 5,
-  //   },
-  //   media: {
-  //     url: 'https://picsum.photos/200/300',
-  //     thumbnail: 'https://picsum.photos/200/300',
-  //     caption: 'google',
-  //     link: 'https://google.de',
-  //   },
-  //   unique_id: '1',
-  //   text: {
-  //     headline: 'Event1',
-  //     text: '',
-  //   },
-  //   group: 'Catégorie1',
-  // }
-
-  // const test = document.querySelector(`.tl-headline-date`)
-  // console.log(test)
-
+  
   const siteTitle =
     'Timeline - Astro Research and Industrial Service Corporation'
   return (
@@ -252,25 +164,6 @@ export default function TimelinePage({ data, events }) {
         </div>
       </div>
       <TLComponent data={data} events={events} />
-      {/* {isClient ? (
-        <Script>
-          {`
-            const elements = document.getElementsByClassName("tl-headline-date");
-            console.log(elements.length);
-            console.log(Array.from(elements));
-            // for (let i of elements) {
-            //   console.log(elements[i]);
-            // }
-            
-            // const content = element.textContent.slice(0, 2);
-            // for (e of elementList){
-            //   console.log(e)
-            // }
-        `}
-        </Script>
-      ) : (
-        ''
-      )} */}
     </div>
   )
 }
