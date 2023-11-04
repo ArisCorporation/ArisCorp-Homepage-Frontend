@@ -130,6 +130,7 @@ export const GET_MEMBERS = gql`
       id
       status
       member_name
+      slug
       member_titel
       member_rollen
       head_of_department
@@ -142,10 +143,7 @@ export const GET_MEMBERS = gql`
 
 export const GET_MEMBER = gql`
   query GetMember($name: String!) {
-    member(
-      filter: { member_name: { _eq: $name } }
-      sort: ["sort", "member_name"]
-    ) {
+    member(filter: { slug: { _eq: $name } }, sort: ["sort", "member_name"]) {
       id
       status
       member_name
@@ -234,6 +232,58 @@ export const GET_MEMBER = gql`
         waffen_bild {
           id
         }
+      }
+    }
+  }
+`
+
+// My Hangar
+export const GET_MY_HANGAR = gql`
+  query GetMyHangar {
+    member_ships(
+      limit: -1
+    ) {
+      ships_id(
+        filter: { status: { _eq: "published" } }
+        sort: ["sort", "name"]
+        limit: -1
+      ) {
+        id
+        name
+        slug
+        price
+        pledgePrice
+        onSale
+        productionStatus
+        manufacturer {
+          firmen_name
+        }
+        storeImage {
+          id
+          width
+          height
+        }
+        career
+        focus
+        sortSize
+        productionStatus
+        onSale
+        classification
+        groundVehicle
+      }
+    }
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenherstellerkategorie: { _eq: "schiffshersteller" }
+      }
+    ) {
+      id
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
       }
     }
   }
@@ -378,13 +428,8 @@ export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
 `
 
 export const GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE = gql`
-  query GetVerseExkursOneDayInHistoryArticle($title: String!) {
-    geschichte(
-      filter: {
-        status: { _eq: "published" }
-        geschichte_titel: { _eq: $title }
-      }
-    ) {
+  query GetVerseExkursOneDayInHistoryArticle($id: String!) {
+    geschichte(filter: { status: { _eq: "published" }, id: { _eq: $id } }) {
       id
       geschichte_titel
       geschichte_auswahlbild {
@@ -633,6 +678,15 @@ export const GET_VERSEEXKURS_FIRMA = gql`
           id
         }
       }
+    }
+  }
+`
+
+export const GET_VERSEEXKURS_FIRMEN_TIMELINE = gql`
+  query GetVerseExkursFirmenTimeline {
+    firmen(limit: -1) {
+      id
+      firmen_name
     }
   }
 `
@@ -1383,6 +1437,7 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
           height
         }
         reihen_titel
+        reihen_kapitel_anzahl
       }
       literatur_kapitel
       text
@@ -1392,18 +1447,9 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 
 // SHIPEXKURS QUERYS
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
-  query GetShipExkursShipsIndex(
-    $manufacturers: [String]
-    $sizes: [GraphQLStringOrFloat]
-    $careers: [String]
-  ) {
+  query GetShipExkursShipsIndex {
     ships(
-      filter: {
-        status: { _eq: "published" }
-        manufacturer: { firmen_name: { _in: $manufacturers } }
-        sortSize: { _in: $sizes }
-        career: { _in: $careers }
-      }
+      filter: { status: { _eq: "published" } }
       sort: ["sort", "name"]
       limit: -1
     ) {
@@ -1422,8 +1468,28 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
         width
         height
       }
-      size
+      career
+      focus
+      sortSize
+      productionStatus
+      onSale
+      classification
       groundVehicle
+    }
+
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenherstellerkategorie: { _eq: "schiffshersteller" }
+      }
+    ) {
+      id
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
     }
   }
 `
@@ -1603,6 +1669,9 @@ export const GET_SHIPEXKURS_SHIP = gql`
       modules
       hardpoints
       weaponHardpoints
+      insuranceClaimTime
+      insuranceExpeditedClaimTime
+      insuranceExpeditedCost
     }
     components(limit: -1) {
       id
@@ -1643,7 +1712,7 @@ export const GET_SHIPEXKURS_SHIPLIST = gql`
 
 export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
   query GetShipExkursShipsComparisonData {
-    ships(filter: { status: { _eq: "published" } }, limit: -1) {
+    ships(filter: { status: { _eq: "published" } }, limit: -1, sort: ["name"]) {
       id
       name
       slug
@@ -1662,6 +1731,51 @@ export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
       cargo
       price
       pledgePrice
+      maxCrew
+      minCrew
+      scmSpeed
+      afterburnerSpeed
+      afterburnerGroundSpeed
+      pitchMax
+      yawMax
+      rollMax
+      # zeroToScm
+      # scmToZero
+      # zeroToMax
+      # maxToZero
+
+      modules
+      hardpoints
+      weaponHardpoints
+    }
+
+    components(limit: -1) {
+      id
+      name
+      manufacturer {
+        firmen_name
+        status
+      }
+    }
+  }
+`
+
+
+
+export const INTERNAL_GET_Ships_MY_HANGAR = gql`
+  query InternalGetShipsMyHangar {
+    ships(limit: -1) {
+      id
+      name
+      slug
+      productionStatus
+      storeImage {
+        id
+      }
+      manufacturer {
+        firmen_name
+        code
+      }
     }
   }
 `
