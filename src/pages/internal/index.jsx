@@ -1,9 +1,12 @@
-import Layout from "./layout"
+import ArisCorpGlowLogo from 'components/icons/ArisCorpGlowLogo'
+import ProtectedLayout from "./layout"
 
-export default function InternalIndex() {
+export default function InternalIndex () {
   return (
-    <Layout>
-      <div>logged in!</div>
-    </Layout>
+    <ProtectedLayout>
+      <div>
+        <h1>Servus im AMS</h1>
+      </div>
+    </ProtectedLayout>
   )
 }
