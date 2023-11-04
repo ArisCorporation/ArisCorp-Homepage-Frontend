@@ -10,7 +10,7 @@ export default function Layout ({ children }) {
 
   if (router.pathname == '/VerseExkurs/technologie') {
     return (
-      <ApolloProvider client={client}>
+      <>
         <ShipTechnologieModalProvider>
           <div className="flex">
             <Sidebar />
@@ -29,13 +29,13 @@ export default function Layout ({ children }) {
             </div>
           </div>
         </ShipTechnologieModalProvider>
-      </ApolloProvider>
+      </>
     )
   }
 
   if (router.pathname.startsWith('/VerseExkurs/waffen') || router.pathname.startsWith('/VerseExkurs/attachments')) {
     return (
-      <ApolloProvider client={client}>
+      <>
         <div className="flex">
           <Sidebar />
           <div
@@ -51,12 +51,12 @@ export default function Layout ({ children }) {
             <Footer />
           </div>
         </div>
-      </ApolloProvider>
+      </>
     )
   }
 
   return (
-    <ApolloProvider client={client}>
+    <>
       <div className="flex">
         <Sidebar />
         <div
@@ -72,6 +72,6 @@ export default function Layout ({ children }) {
           <Footer />
         </div>
       </div>
-    </ApolloProvider>
+    </>
   )
 }

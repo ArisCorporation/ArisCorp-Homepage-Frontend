@@ -211,7 +211,7 @@ class MyDocument extends Document {
 
           {/* <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nasalization-2" /> */}
         </Head>
-        <body className="font-nasa bg-[#111] min-h-screen selection:bg-primary selection:text-bg-secondary">
+        <body className="font-nasa min-h-screen bg-[#111] selection:bg-primary selection:text-bg-secondary">
           <Main />
           <NextScript />
         </body>

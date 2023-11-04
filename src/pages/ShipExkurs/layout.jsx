@@ -5,7 +5,7 @@ import { ApolloProvider } from '@apollo/client'
 
 export default function Layout({ children }) {
   return (
-    <ApolloProvider client={client}>
+    <>
       <div className="flex">
         <Sidebar />
         <div
@@ -21,6 +21,6 @@ export default function Layout({ children }) {
           <Footer />
         </div>
       </div>
-    </ApolloProvider>
+    </>
   )
 }
