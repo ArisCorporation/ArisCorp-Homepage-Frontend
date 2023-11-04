@@ -221,7 +221,7 @@ export default function Technologie ({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
             }
           >
             <h1 className="text-base uppercase sm:text-lg md:text-xl lg:text-3xl text-inherit">
@@ -231,7 +231,7 @@ export default function Technologie ({ data }) {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
             }
           >
             <h1 className="text-base uppercase sm:text-lg md:text-xl lg:text-3xl text-inherit">
