@@ -11,7 +11,7 @@ module.exports = {
       '1.5xl': '1500px',
       '3xl': '2100px',
       '4xl': '2800px',
-      '5xl': '3200px'
+      '5xl': '3200px',
     },
     extend: {
       zIndex: {
@@ -50,6 +50,29 @@ module.exports = {
       animation: {
         'pulse-slow': 'pulse 3s linear infinite',
         'ping-slow': 'ping 1.15s cubic-bezier(0, 0, 0.2, 1) infinite',
+        'glow': 'glow 3s infinite',
+        'loading': 'loadingDots 1s steps(4) infinite',
+      },
+      keyframes: {
+        glow: {
+          '0%': {
+            opacity:
+              '0',
+          },
+          '50%': {
+            opacity:
+              '1',
+          },
+          '100%': {
+            opacity:
+              '0',
+          },
+        },
+        loadingDots: {
+          to: {
+            clipPath: 'inset(0 -1ch 0 0)'
+          }
+        }
       },
     },
   },
