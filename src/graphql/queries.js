@@ -664,6 +664,9 @@ export const GET_VERSEEXKURS_FRAKTIONEN = gql`
       }
       name
       category
+      politicalCategory
+      hostileCategory
+      otherCategory
       text
     }
   }
