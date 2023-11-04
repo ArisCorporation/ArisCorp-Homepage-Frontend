@@ -57,7 +57,7 @@ export default function InternalLogin({ backgrounds }) {
 
   const onSubmit = async () => {
     const result = await signIn('credentials', {
-      email: email,
+      email: (email.includes('@') ? email : email + '@ariscorp.de'),
       password: password,
       redirect: true,
       callbackUrl: callbackUrl || '/',
@@ -128,7 +128,7 @@ export default function InternalLogin({ backgrounds }) {
                 htmlFor="email-input"
                 className="block text-sm text-[#A7A7A7]"
               >
-                Email:
+                Benutzername:
               </label>
               <input
                 type="text"
