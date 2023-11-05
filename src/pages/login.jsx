@@ -73,7 +73,7 @@ export default function InternalLogin({ backgrounds }) {
   return (
     <>
       <div
-        className="relative hidden h-screen min-w-full transition-all duration-1000 bg-center bg-cover 2xl:block"
+        className="relative hidden h-screen min-w-full transition-all duration-1000 bg-center bg-cover" // 2xl:block to activate second login-screen
         style={{
           backgroundImage: `linear-gradient(80.79deg, #272A37 2.74%, #272A37 41.69%, rgba(39, 42, 55, 0.67) 70.53%, rgba(39, 42, 55, 0.63) 99.87%), linear-gradient(2.63deg, #272A37 -57.38%, rgba(39, 42, 55, 0.67) 0.96%, rgba(39, 42, 55, 0) 11.66%), linear-gradient(133.1deg, rgba(39, 42, 55, 0) 84.46%, #272A37 100.05%), url(//cms.ariscorp.de/assets/${currentBg.id})`,
         }}
@@ -157,7 +157,7 @@ export default function InternalLogin({ backgrounds }) {
                 htmlFor="password-input"
                 className="block text-sm text-[#A7A7A7]"
               >
-                Password:
+                Passwort:
               </label>
               <input
                 type="password"
@@ -235,7 +235,7 @@ export default function InternalLogin({ backgrounds }) {
                 htmlFor="email-input-mobile"
                 className="block text-sm text-[#A7A7A7]"
               >
-                Email:
+                Benutzername:
               </label>
               <input
                 type="text"
@@ -264,7 +264,7 @@ export default function InternalLogin({ backgrounds }) {
                 htmlFor="password-input-mobile"
                 className="block text-sm text-[#A7A7A7]"
               >
-                Password:
+                Passwort:
               </label>
               <input
                 type="password"
