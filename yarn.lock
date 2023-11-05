@@ -1345,11 +1345,12 @@
   dependencies:
     "@hapi/hoek" "^8.3.0"
 
-"@headlessui/react@^1.7.8":
-  version "1.7.13"
-  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-1.7.13.tgz#fd150b394954e9f1d86ed2340cffd1217d6e7628"
-  integrity sha512-9n+EQKRtD9266xIHXdY5MfiXPDfYwl7zBM7KOx2Ae3Gdgxy8QML1FkCMjq6AsOf0l6N9uvI4HcFtuFlenaldKg==
+"@headlessui/react@^0.0.0-insiders.bfacb64":
+  version "0.0.0-insiders.bfacb64"
+  resolved "https://registry.yarnpkg.com/@headlessui/react/-/react-0.0.0-insiders.bfacb64.tgz#9e14d10491367391913b82aff4263a6bba060e80"
+  integrity sha512-6rOgqedMbd8yogWFdEeL0VrvnkaFdjXWNwgF3TOF4JGScMzyE8d4I5JDgo3BNpvtqEVcUbIfG7/HTKwX4YjYAQ==
   dependencies:
+    "@tanstack/react-virtual" "^3.0.0-beta.60"
     client-only "^0.0.1"
 
 "@heroicons/react@^2.0.17":
@@ -2066,6 +2067,18 @@
     lodash.isplainobject "^4.0.6"
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
+
+"@tanstack/react-virtual@^3.0.0-beta.60":
+  version "3.0.0-beta.68"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-virtual/-/react-virtual-3.0.0-beta.68.tgz#225532329d74d7c0f82564d36ad8bf461e320ab5"
+  integrity sha512-YEFNCf+N3ZlNou2r4qnh+GscMe24foYEjTL05RS0ZHvah2RoUDPGuhnuedTv0z66dO2vIq6+Bl4TXatht5T7GQ==
+  dependencies:
+    "@tanstack/virtual-core" "3.0.0-beta.68"
+
+"@tanstack/virtual-core@3.0.0-beta.68":
+  version "3.0.0-beta.68"
+  resolved "https://registry.yarnpkg.com/@tanstack/virtual-core/-/virtual-core-3.0.0-beta.68.tgz#e6c478b393df57861e0a98fd0fea9982b79b6e7d"
+  integrity sha512-CnvsEJWK7cugigckt13AeY80FMzH+OMdEP0j0bS3/zjs44NiRe49x8FZC6R9suRXGMVMXtUHet0zbTp/Ec9Wfg==
 
 "@testing-library/dom@^7.28.1":
   version "7.31.2"
