@@ -240,9 +240,7 @@ export const GET_MEMBER = gql`
 // My Hangar
 export const GET_MY_HANGAR = gql`
   query GetMyHangar {
-    member_ships(
-      limit: -1
-    ) {
+    member_ships(limit: -1) {
       ships_id(
         filter: { status: { _eq: "published" } }
         sort: ["sort", "name"]
@@ -1760,8 +1758,6 @@ export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
   }
 `
 
-
-
 export const INTERNAL_GET_Ships_MY_HANGAR = gql`
   query InternalGetShipsMyHangar {
     ships(limit: -1) {
@@ -1775,6 +1771,62 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
       manufacturer {
         firmen_name
         code
+      }
+      length
+      beam
+      height
+      classification
+      size
+      cargo
+      price
+      minCrew
+      maxCrew
+    }
+  }
+`
+
+export const INTERNAL_GET_FLEET = gql`
+  query InternalGetFleet {
+    member_ships(limit: -1) {
+      member_id {
+        firstname
+        lastname
+        title
+        member_potrait {
+            id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
       }
     }
   }
