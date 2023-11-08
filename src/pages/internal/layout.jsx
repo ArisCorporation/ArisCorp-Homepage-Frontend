@@ -2,6 +2,7 @@ import { ApolloProvider } from '@apollo/client';
 import client from 'apollo/clients'
 import Footer from 'components/Footer';
 import Sidebar from 'components/internal/InternalSidebar';
+import { AnimatePresence } from 'framer-motion';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
@@ -20,6 +21,7 @@ export const ProtectedLayout = ({ children }) => {
   const authorized = sessionStatus === 'authenticated';
   const unAuthorized = sessionStatus === 'unauthenticated';
   const loading = sessionStatus === 'loading';
+  const pageKey = router.asPath
 
   useEffect(() => {
     // check if the session is loading or the router is not ready
