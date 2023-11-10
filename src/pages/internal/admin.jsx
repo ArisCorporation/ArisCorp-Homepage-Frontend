@@ -923,7 +923,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                         placeholder="Neues Passwort..."
                         disabled={passwordReset}
                         className="disabled:opacity-25 form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
-                      {passwordReset && <p className='text-[0.6rem] opacity-50'>Das Passwort wird auf den Standardwert zurückgesetzt: "vorname(n).nachname"</p>}
+                      {passwordReset && <p className='text-[0.6rem] opacity-50'>Das Passwort wird auf den Standardwert zurückgesetzt: &quot;vorname(n).nachname&quot;</p>}
                     </div>
                   </div>
                 </div>
@@ -1127,7 +1127,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                 )}
                 {(selectedShip && shipForRemoval) && (
                   <div className='w-full mt-8'>
-                    <h3>Bist du sicher, das du dieses Schiff aus dem Hangar von "{(modalStore?.title ? modalStore?.title : '') + " " + modalStore?.firstname + " " + modalStore?.lastname}" entfernen möchtest?</h3>
+                    <h3>Bist du sicher, das du dieses Schiff aus dem Hangar von &quot;{(modalStore?.title ? modalStore?.title : '') + " " + modalStore?.firstname + " " + modalStore?.lastname}&quot; entfernen möchtest?</h3>
                     <div className='w-full mt-8 space-x-12'>
                       <DefaultButton animate danger action={() => setSelectedShip() + setShipForRemoval()}>
                         Nein!
