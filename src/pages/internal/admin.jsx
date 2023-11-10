@@ -13,12 +13,12 @@ import { MdOutlineModeEditOutline } from 'react-icons/md';
 import MultipleCombobox from 'components/multipleCombobox';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
-import { DocumentIcon, GlobeEuropeAfricaIcon, PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
+import { ArrowUpIcon, ArrowUturnLeftIcon, DocumentIcon, GlobeEuropeAfricaIcon, PencilSquareIcon, PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
 import { AiOutlinePlus, AiOutlinePlusCircle } from 'react-icons/ai';
 import { FiPlusCircle } from 'react-icons/fi';
 import RadioButton from 'components/RadioButton';
 import { BsTrash, BsTrash3 } from 'react-icons/bs';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import Head from 'next/head';
 import { SiDiscover } from 'react-icons/si';
 import DefaultButton from 'components/defaultButton';
@@ -65,6 +65,7 @@ function slugify_dot (str) {
 export async function getServerSideProps () {
   const { data: rawData } = await client.query({ query: GET_INTERNAL_ADMIN_DATA })
   const { data: gameplayData } = await client.query({ query: GET_GAMEPLAYS })
+  const { data: rawShipList } = await client.query({ query: INTERNAL_GET_Ships_MY_HANGAR })
 
   const memberData = []
   rawData.member.map((obj) => {
@@ -79,10 +80,12 @@ export async function getServerSideProps () {
     memberData.push(item)
   })
 
+  const ships = rawShipList.ships.sort((a, b) => a.name.localeCompare(b.name))
   const siteTitle = "ADMIN - ArisCorp Management System"
 
   return {
     props: {
+      shipList: ships,
       memberApiList: memberData,
       departments: gameplayData.gameplays,
       siteTitle
@@ -139,6 +142,14 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   const [memberList, setMemberList] = useState(memberApiList)
   const [activeTab, setActiveTab] = useState(0)
   const tabquery = query.tab
+  const [selectedShip, setSelectedShip] = useState()
+  const [selectedShips, setSelectedShips] = useState([])
+  const [shipForRemoval, setShipForRemoval] = useState()
+  const [shipName, setShipName] = useState("")
+  const [shipSerial, setShipSerial] = useState("")
+  const [selectedGroup, setSelectedGroup] = useState("ariscorp")
+  const [selectedVisibility, setSelectedVisibility] = useState("ariscorp")
+  const [addMenu, setAddMenu] = useState()
 
   const tabs = [
     {
@@ -159,7 +170,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                   </tr>
                 </thead>
                 <tbody>
-                  {memberList.map((member) => (
+                  {memberList?.map((member) => (
                     <tr key={member.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
                       <td className={'px-6 py-4 flex justify-center' + (member.status == "draft" ? " text-white" : "") + (member.status == "published" ? " text-green-500" : "")}>
                         {member.status == "draft" && <DocumentIcon className='w-6 h-6 my-auto' />}
@@ -168,11 +179,19 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <td className='px-6 py-2'>
                         <div className='w-12 h-12 bg-top bg-no-repeat bg-cover rounded-full' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${member.member_potrait.id}?height=400)` }}></div>
                       </td>
-                      <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>{member.title} {member.firstname} {member.lastname}</th>
-                      <td className='px-6 py-4'>Exploration</td>
-                      <td className='flex px-6 py-4 space-x-4'>
-                        <div onClick={() => openEditModal(member)} className='font-medium text-center transition-all duration-200 opacity-50 cursor-pointer hover:opacity-100 text-primary hover:duration-300'>Edit</div>
-                        <div onClick={() => openRemoveModal(member)} className='font-medium text-center text-red-500 transition-all duration-200 opacity-50 cursor-pointer hover:opacity-100 hover:duration-300'><BsTrash className='w-5 h-5' /></div>
+                      <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                        <div className='my-auto'>
+                          {member.title} {member.firstname} {member.lastname}
+                        </div>
+                      </th>
+                      <td className='px-6 py-4'>
+                        <span className='my-auto'>{member.head_of_department ? (member.head_department?.gameplay_name ? member.head_department.gameplay_name : "N/A") : (member.department?.gameplay_name ? member.department.gameplay_name : "N/A")}</span>
+                      </td>
+                      <td className='px-6 py-4'>
+                        <div className="flex my-auto space-x-4">
+                          <div onClick={() => openEditModal(member)} className='font-medium text-center transition-all duration-200 opacity-50 cursor-pointer hover:opacity-100 text-primary hover:duration-300'>Edit</div>
+                          <div onClick={() => openRemoveModal(member)} className='font-medium text-center text-red-500 transition-all duration-200 opacity-50 cursor-pointer hover:opacity-100 hover:duration-300'><BsTrash className='w-5 h-5' /></div>
+                        </div>
                       </td>
                       <td className='px-6 py-4'></td>
                     </tr>
@@ -186,7 +205,46 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     },
     {
       name: "Hangarverwaltung",
-      content: (<></>)
+      content: (
+        <>
+          <div className='w-full'>
+            <table className='w-full overflow-hidden text-sm text-left text-gray-500 table-auto dark:text-gray-400 rounded-xl'>
+              <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+                <tr>
+                  <th className='w-12 px-6 py-3'></th>
+                  <th className='px-6 py-3'>Name</th>
+                  <th className='px-6 py-3'>Hangar</th>
+                  <th className='px-6 py-3'><span></span></th>
+                  <th onClick={() => openAddModal()} className='px-6 py-1 text-center text-green-400 transition-all duration-200 opacity-50 cursor-pointer hover:duration-300 hover:opacity-100'><AiOutlinePlus className='w-5 h-5' /></th>
+                </tr>
+              </thead>
+              <tbody>
+                {memberList?.map((member) => (
+                  <tr key={member.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                    <td className='px-6 py-2'>
+                      <div className='w-12 h-12 bg-top bg-no-repeat bg-cover rounded-full' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${member.member_potrait.id}?height=400)` }}></div>
+                    </td>
+                    <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      <div className='my-auto'>
+                        {member.title} {member.firstname} {member.lastname}
+                      </div>
+                    </th>
+                    <td className='px-6 py-4'>
+                      <span className='my-auto'>{member.ships.length} Schiffe/Fahrzeuge</span>
+                    </td>
+                    <td className='px-6 py-4'>
+                      <div className="flex my-auto space-x-4">
+                        <div onClick={() => openHangarEditModal(member)} className='font-medium text-center transition-all duration-200 opacity-50 cursor-pointer hover:opacity-100 text-primary hover:duration-300'>Edit</div>
+                      </div>
+                    </td>
+                    <td className='px-6 py-4'></td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )
     },
   ]
 
@@ -221,7 +279,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   const updateMembers = async () => {
     let rawData = await fetch(
       // "https://cms.ariscorp.de/items/member_ships?fields=*.*&filter[member_id]=" + session.user.id,
-      "https://cms.ariscorp.de/items/member?fields=*,member_potrait.id,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,account.id,account.role&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
+      // "https://cms.ariscorp.de/items/member?fields=*,member_potrait.id,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,account.id,account.role&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
+      "https://cms.ariscorp.de/items/member?fields=id,status,firstname,lastname,slug,title,account.id,account.role,member_potrait.id,member_rollen,head_of_department,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,ships.id,ships.name,ships.serial,ships.group,ships.visibility,ships.department.gameplay_name,ships.department.gameplay_logo.id,ships.ships_id.id,ships.ships_id.name,ships.ships_id.slug,ships.ships_id.storeImage.id,ships.ships_id.manufacturer.firmen_name&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
       {
         method: "GET"
       }
@@ -235,11 +294,11 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
         head_department: obj.head_department[0] ? obj.head_department[0] : null,
         member_rollen: roles
       }
-
       data.push(item)
     })
 
     setMemberList(data)
+    if (modalStore && modalType == "editHangar") setModalStore(data.find(e => e.id == modalStore.id))
     return console.log("MEMBER UPDATED!")
   }
 
@@ -258,8 +317,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       slug: slugify(memberFirstname + " " + memberLastname),
       member_rollen: roles,
       head_of_department: abteilungsLeiter,
-      head_department: (abteilungsLeiter ? [selectedDepartment] : []),
-      department: (!abteilungsLeiter ? [selectedDepartment] : []),
+      head_department: (abteilungsLeiter ? [selectedDepartment] : null),
+      department: (!abteilungsLeiter ? [selectedDepartment] : null),
     }
 
     const accountObject = {
@@ -321,8 +380,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
         },
       }
     )
-    // console.log("accId", accId)
-    // console.log("accountEdits", accountEdits)
+    
     await fetch(
       `https://cms.ariscorp.de/users/${accId}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
       {
@@ -375,19 +433,19 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       edits.head_of_department = abteilungsLeiter
     }
     if ((edits.head_of_department != null ? (edits.head_of_department == true) : (modalStore.head_of_department == true))) {
-      console.log("🏬 ---HDEPARTENT---")
+      console.log("🏬 ---HDEPARTMENT---")
       console.log("OLD DEPARTMENT: " + modalStore.head_department?.gameplay_name)
       console.log("NEW DEPARTMENT: " + selectedDepartment?.gameplay_name)
 
       edits.department = null
-      edits.head_department = [selectedDepartment?.id]
+      edits.head_department = (selectedDepartment?.id ? [selectedDepartment.id] : null)
     } else if ((edits.head_of_department != null ? (edits.head_of_department == false) : (modalStore.head_of_department == false))) {
-      console.log("🏬 ---DEPARTENT---")
+      console.log("🏬 ---DEPARTMENT---")
       console.log("OLD DEPARTMENT: " + modalStore.department?.gameplay_name)
       console.log("NEW DEPARTMENT: " + selectedDepartment?.gameplay_name)
 
       edits.head_department = null
-      edits.department = [selectedDepartment?.id]
+      edits.department = (selectedDepartment?.id ? [selectedDepartment.id] : null)
     }
     if (roles != modalStore.member_rollen) {
       console.log("🧑‍🎨 ---ROLES---")
@@ -483,6 +541,133 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
 
     setModal(true)
   }
+  function openHangarEditModal (obj) {
+    setModalType("editHangar")
+    setModalStore(obj)
+    setModal(true)
+  }
+  function modalEditShip (ship) {
+    setSelectedShip(ship)
+    setShipName(ship.name)
+    setShipSerial(ship.serial)
+    if (ship.group) {
+      setSelectedGroup(ship.group)
+    }
+    if (ship.department) {
+      setSelectedDepartment(ship.department)
+    }
+    if (ship.visibility) {
+      setSelectedVisibility(ship.visibility)
+    }
+  }
+  async function editShip (edits, id) {
+    await fetch(
+      `https://cms.ariscorp.de/items/member_ships/${id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+      {
+        method: "PATCH",
+        body: JSON.stringify(edits),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    return
+  }
+  async function saveMemberShipEdit () {
+    console.log(`📝 ------SHIP EDIT - ${selectedShip.ships_id.manufacturer.firmen_name} ${selectedShip.ships_id.name}------`)
+
+    const edits = {}
+    if (shipName != selectedShip.name) {
+      console.log("✏️ ---NAME---")
+      console.log("OLD NAME: " + selectedShip.name)
+      console.log("NEW NAME: " + shipName)
+
+      edits.name = shipName
+    }
+    if (shipSerial != selectedShip.serial) {
+      console.log("#️⃣ ---SERIAL---")
+      console.log("OLD SERIAL: " + selectedShip.serial)
+      console.log("NEW SERIAL: " + shipSerial)
+
+      edits.serial = shipSerial
+    }
+    if (selectedGroup != selectedShip.group) {
+      console.log("🏘️ ---GROUP---")
+      console.log("OLD GROUP: " + (selectedShip.group == "private" ? "Private" : (selectedShip.group == "ariscorp" && "ArisCorp")))
+      console.log("NEW GROUP: " + (selectedGroup == "private" ? "Private" : (selectedGroup == "ariscorp" && "ArisCorp")))
+
+      edits.group = selectedGroup
+    }
+    if (selectedDepartment?.id != selectedShip.department?.id) {
+      console.log("🏬 ---DEPARTENT---")
+      console.log("OLD DEPARTMENT: " + selectedShip.department?.gameplay_name)
+      console.log("NEW DEPARTMENT: " + selectedDepartment?.gameplay_name)
+
+      edits.department = selectedDepartment?.id || null
+    }
+    if (selectedVisibility != selectedShip.visibility) {
+      console.log("👀 ---VISIBILITY---")
+      console.log("OLD VISIBILITY: " + (selectedShip.visibility == "public" ? "Öffentlich" : (selectedShip.visibility == "internal" ? "Intern" : (selectedShip.visibility == "hidden" && "Versteckt"))))
+      console.log("NEW VISIBILITY: " + (selectedVisibility == "public" ? "Öffentlich" : (selectedVisibility == "internal" ? "Intern" : (selectedVisibility == "hidden" && "Versteckt"))))
+
+      edits.visibility = selectedVisibility
+    }
+
+    console.log("📑 ---EDIT-OBJECT:---")
+    console.log(edits)
+    await editShip(edits, selectedShip.id)
+    setSelectedShip()
+    return updateMembers()
+  }
+  function shipRemoval (ship) {
+    setSelectedShip(ship)
+    setShipForRemoval(true)
+  }
+  async function removeShip () {
+    await fetch(
+      `https://cms.ariscorp.de/items/member_ships/${selectedShip.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    setSelectedShip()
+    setShipForRemoval()
+    return updateMembers()
+  }
+  const addShips = async (ships) => {
+    const IDs = []
+    const body = []
+    ships.forEach((ship) => {
+      const id = shipList.find(e => e == ship).id
+      IDs.push(id)
+    })
+    IDs.forEach((id) => {
+      const item = {
+        member_id: modalStore.id,
+        ships_id: id,
+        group: "ariscorp",
+        visibility: "internal"
+      }
+
+      body.push(item)
+    })
+
+    await fetch(
+      "https://cms.ariscorp.de/items/member_ships?access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
+      {
+        method: "POST",
+        body: JSON.stringify(body),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    setSelectedShips([])
+    return updateMembers()
+  }
   function closeModal () {
     setModal(false)
     setTimeout(() => {
@@ -501,6 +686,14 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       setSelectedRole()
       setPasswordReset()
       setMemberPassword()
+      setSelectedShip()
+      setShipName()
+      setShipSerial()
+      setSelectedGroup()
+      setSelectedVisibility()
+      setShipForRemoval()
+      setAddMenu()
+      setSelectedShips([])
     }, 600);
   }
 
@@ -525,7 +718,12 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
           title={
             modalType == 'addMember' && 'Mitglied hinzufügen' ||
             modalType == 'editMember' && 'Bearbeiten: ' + (`${(modalStore?.title ? modalStore?.title : '')} ${modalStore?.firstname} ${modalStore?.lastname}`) ||
-            modalType == 'removeMember' && 'Entfernen: ' + (`${(modalStore?.title ? modalStore?.title : '')} ${modalStore?.firstname} ${modalStore?.lastname}`)
+            modalType == 'removeMember' && 'Entfernen: ' + (`${(modalStore?.title ? modalStore?.title : '')} ${modalStore?.firstname} ${modalStore?.lastname}`) ||
+            (modalType == 'editHangar' && !selectedShip) && 'Hangar Bearbeiten von:' ||
+            (modalType == "editHangar" && selectedShip) && 'Bearbeiten: ' + (selectedShip?.name ? `"${selectedShip?.name}"` : (selectedShip?.ships_id?.manufacturer.firmen_name.split(" ").length > 2 ? selectedShip?.ships_id?.manufacturer.code : selectedShip?.ships_id?.manufacturer.firmen_name.split(" ")[0]) + " " + selectedShip?.ships_id?.name) + " von:"
+          }
+          subtitle={
+            modalType == 'editHangar' && `${(modalStore?.title ? modalStore?.title : '')} ${modalStore?.firstname} ${modalStore?.lastname}`
           }
           closeFunction={closeModal}
         >
@@ -822,6 +1020,147 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                 </div>
               </div>
             }
+            {modalType == 'editHangar' &&
+              <div className='px-8'>
+                <div className='mt-6'>
+                  <div className='w-full mx-auto'>
+                    <ul className='text-left list-none'>
+                      <AnimatePresence mode='wait'>
+                        <motion.ul className='list-none'>
+                          {modalStore.ships.filter(e => (selectedShip ? e == selectedShip : e != null)).map((ship) => !addMenu && (
+                            <motion.li key={ship.id} initial={{ height: 0 }} animate={{ height: (!ship.name ? '28px' : '52px') }} exit={{ height: 0 }} className='flex w-full mb-2 list-none'>
+                              <div>
+                                <span className='block'>{ship.ships_id.manufacturer.firmen_name} - {ship.ships_id.name}{ship.name ? ":" : ""}</span>
+                                <span>{ship.name ? '"' + ship.name + '"' : ""}</span>
+                              </div>
+                              <div className='right-0 flex ml-auto space-x-2 cursor-pointer'>
+                                {!selectedShip && <PencilSquareIcon onClick={() => modalEditShip(ship)} className='w-4 transition-all duration-200 opacity-50 text-primary hover:opacity-100 hover:duration-300' />}
+                                {selectedShip && <ArrowUturnLeftIcon onClick={() => setSelectedShip()} className='w-4 transition-all duration-200 opacity-50 text-primary hover:opacity-100 hover:duration-300' />}
+                                <BsTrash onClick={() => shipRemoval(ship)} className='w-4 my-auto text-red-500 transition-all duration-200 opacity-50 hover:opacity-100 hover:duration-300' />
+                              </div>
+                            </motion.li>
+                          ))}
+                        </motion.ul>
+                        {(selectedShip && !shipForRemoval) && (
+                          <motion.div initial={{ height: 0 }} animate={{ height: "298px" }} exit={{ height: 0 }}>
+                            <div className='mt-6'>
+                              <p className='w-full -ml-4 text-base text-left'>Basis Daten:</p>
+                              <div className='flex justify-between mb-3 space-x-4'>
+                                <label className='my-auto text-xl'>Name:</label>
+                                <input
+                                  value={shipName}
+                                  onChange={(e) => setShipName(e.target.value)}
+                                  placeholder="Name..."
+                                  className="form-control block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
+                              </div>
+                              <div className='flex justify-between space-x-4'>
+                                <label className='my-auto text-xl'>S/N:</label>
+                                <input
+                                  value={shipSerial}
+                                  onChange={(e) => setShipSerial(e.target.value)}
+                                  placeholder="Seriennummer..."
+                                  className="form-control w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
+                              </div>
+                            </div>
+                            <div className='mt-6'>
+                              <p className='w-full -ml-4 text-base text-left'>Einteilung:</p>
+                              <div className='flex'>
+                                <div className="flex my-auto mr-auto space-x-4">
+                                  <div onClick={() => setSelectedDepartment()}>
+                                    <RadioButton state={selectedGroup} setState={setSelectedGroup} id="c-1" color="secondary" bg="[#111]" name="group" value="private">
+                                      <RadioButton.Label>Privat</RadioButton.Label>
+                                      <RadioButton.Indicator />
+                                    </RadioButton>
+                                  </div>
+                                  <div>
+                                    <RadioButton state={selectedGroup} setState={setSelectedGroup} id="c-2" color="primary" bg="[#111]" name="group" value="ariscorp">
+                                      <RadioButton.Label>ArisCorp</RadioButton.Label>
+                                      <RadioButton.Indicator />
+                                    </RadioButton>
+                                  </div>
+                                </div>
+                                <div className='w-full ml-4'>
+                                  <Dropdown items={departments} state={selectedDepartment} setState={setSelectedDepartment} mode="departments" disabled={selectedGroup == "private" && true} />
+                                </div>
+                              </div>
+                            </div>
+                            <div className='flex flex-wrap w-full mt-6'>
+                              <p className='w-full -ml-4 text-base text-left'>Sichtbarkeit:</p>
+                              <div className='mx-auto'>
+                                <div className="flex my-auto space-x-4">
+                                  <div className='ml-auto'>
+                                    <RadioButton state={selectedVisibility} setState={setSelectedVisibility} id="c-4" color="green-500" bg="[#111]" name="visibility" value="public">
+                                      <RadioButton.Label>Öffentlich</RadioButton.Label>
+                                      <RadioButton.Indicator />
+                                    </RadioButton>
+                                  </div>
+                                  <div className='ml-auto'>
+                                    <RadioButton state={selectedVisibility} setState={setSelectedVisibility} id="c-3" color="primary" bg="[#111]" name="visibility" value="internal">
+                                      <RadioButton.Label>Nur Intern</RadioButton.Label>
+                                      <RadioButton.Indicator />
+                                    </RadioButton>
+                                  </div>
+                                  <div className='ml-auto'>
+                                    <RadioButton state={selectedVisibility} setState={setSelectedVisibility} id="c-5" color="secondary" bg="[#111]" name="visibility" value="hidden">
+                                      <RadioButton.Label>Versteckt</RadioButton.Label>
+                                      <RadioButton.Indicator />
+                                    </RadioButton>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </ul>
+                  </div>
+                </div>
+                {(selectedShip && !shipForRemoval) && (
+                  <div className='w-full mt-8 space-x-12'>
+                    <DefaultButton animate danger action={() => setSelectedShip()}>
+                      Abbruch
+                    </DefaultButton>
+                    <DefaultButton animate agree action={() => saveMemberShipEdit()}>
+                      Speichern!
+                    </DefaultButton>
+                  </div>
+                )}
+                {(selectedShip && shipForRemoval) && (
+                  <div className='w-full mt-8'>
+                    <h3>Bist du sicher, das du dieses Schiff aus dem Hangar von "{(modalStore?.title ? modalStore?.title : '') + " " + modalStore?.firstname + " " + modalStore?.lastname}" entfernen möchtest?</h3>
+                    <div className='w-full mt-8 space-x-12'>
+                      <DefaultButton animate danger action={() => setSelectedShip() + setShipForRemoval()}>
+                        Nein!
+                      </DefaultButton>
+                      <DefaultButton animate agree action={removeShip}>
+                        Ja!
+                      </DefaultButton>
+                    </div>
+                  </div>
+                )}
+                {addMenu && (
+                  <motion.div initial={{ height: 0 }} animate={{ height: (selectedShips.length > 0 ? (`${(selectedShips.length * 28) + 102}px`) : "90px") }} exit={{ height: 0 }} className='flex flex-wrap justify-center mb-8'>
+                    <MultipleCombobox items={shipList} state={selectedShips} setState={setSelectedShips} />
+                    <div className='w-full mt-4 space-x-12'>
+                      <DefaultButton animate danger action={() => setSelectedShips([]) + setAddMenu(false)}>
+                        Abbruch
+                      </DefaultButton>
+                      <DefaultButton animate agree action={() => (addShips(selectedShips))}>
+                        Hinzufügen!
+                      </DefaultButton>
+                    </div>
+                  </motion.div>
+                )}
+                <div className="w-full mt-8 space-x-12">
+                  <DefaultButton animate danger action={closeModal}>
+                    Close
+                  </DefaultButton>
+                  <DefaultButton animate agree action={() => setSelectedShip() + setAddMenu(true)}>
+                    Hinzufügen
+                  </DefaultButton>
+                </div>
+              </div>
+            }
             {modalType == 'removeMember' &&
               <div className='px-8'>
                 <h3>Bist du sicher, das du dieses Mitglied entfernen möchtest?</h3>
@@ -851,7 +1190,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
             }
             as={Fragment}
           >
-            <div className='w-1/4 lg:space-x-6 lg:flex'>
+            <div className='w-full lg:space-x-6 lg:flex'>
               <Tab.List>
                 <ul className="w-full py-2 pl-0 rounded-md lg:mr-12">
                   <BasicPanel>
@@ -880,7 +1219,9 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                     <h3 className="text-secondary">
                       {data.name}
                     </h3>
-                    {data.content}
+                    <div className='w-full'>
+                      {data.content}
+                    </div>
                   </Tab.Panel>
                 ))}
               </Tab.Panels>

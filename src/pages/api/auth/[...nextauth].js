@@ -56,6 +56,7 @@ const options = {
           email: userDetails.data.email,
           firstName: userDetails.data.first_name,
           lastName: userDetails.data.last_name,
+          role: userDetails.data.role,
           accessToken: userTokens.data.access_token,
           refreshToken: userTokens.data.refresh_token,
         }
