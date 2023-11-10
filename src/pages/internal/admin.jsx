@@ -158,8 +158,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
         <>
           <div>
             <div className='w-full'>
-              <table className='w-full overflow-hidden text-sm text-left text-gray-500 table-auto dark:text-gray-400 rounded-xl'>
-                <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+              <table className='w-full overflow-hidden text-sm text-left table-auto rounded-xl'>
+                <thead className='text-xs uppercase bg-[#333]'>
                   <tr>
                     <th className='px-6 py-3'>Status</th>
                     <th className='w-12 px-6 py-3'></th>
@@ -171,7 +171,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                 </thead>
                 <tbody>
                   {memberList?.map((member) => (
-                    <tr key={member.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                    <tr key={member.id} className='border-b bg-[#222] border-[#333] hover:bg-[#444]'>
                       <td className={'px-6 py-4 flex justify-center' + (member.status == "draft" ? " text-white" : "") + (member.status == "published" ? " text-green-500" : "")}>
                         {member.status == "draft" && <DocumentIcon className='w-6 h-6 my-auto' />}
                         {member.status == "published" && <GlobeEuropeAfricaIcon className='w-6 h-6 my-auto' />}
@@ -179,7 +179,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <td className='px-6 py-2'>
                         <div className='w-12 h-12 bg-top bg-no-repeat bg-cover rounded-full' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${member.member_potrait.id}?height=400)` }}></div>
                       </td>
-                      <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                      <th className='px-6 py-4 font-medium text-white whitespace-nowrap'>
                         <div className='my-auto'>
                           {member.title} {member.firstname} {member.lastname}
                         </div>
@@ -208,8 +208,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       content: (
         <>
           <div className='w-full'>
-            <table className='w-full overflow-hidden text-sm text-left text-gray-500 table-auto dark:text-gray-400 rounded-xl'>
-              <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
+            <table className='w-full overflow-hidden text-sm text-left table-auto rounded-xl'>
+              <thead className='text-xs uppercase bg-[#333]'>
                 <tr>
                   <th className='w-12 px-6 py-3'></th>
                   <th className='px-6 py-3'>Name</th>
@@ -220,11 +220,11 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
               </thead>
               <tbody>
                 {memberList?.map((member) => (
-                  <tr key={member.id} className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                  <tr key={member.id} className='border-b bg-[#222] dark:border-[#333] hover:bg-[#444]'>
                     <td className='px-6 py-2'>
                       <div className='w-12 h-12 bg-top bg-no-repeat bg-cover rounded-full' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${member.member_potrait.id}?height=400)` }}></div>
                     </td>
-                    <th className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white'>
+                    <th className='px-6 py-4 font-medium text-white whitespace-nowrap'>
                       <div className='my-auto'>
                         {member.title} {member.firstname} {member.lastname}
                       </div>
@@ -921,6 +921,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
                         placeholder="Neues Passwort..."
+                        type="password"
                         disabled={passwordReset}
                         className="disabled:opacity-25 form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                       {passwordReset && <p className='text-[0.6rem] opacity-50'>Das Passwort wird auf den Standardwert zurückgesetzt: &quot;vorname(n).nachname&quot;</p>}
