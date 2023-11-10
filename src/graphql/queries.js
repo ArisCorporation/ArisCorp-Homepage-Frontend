@@ -1787,13 +1787,18 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
 
 export const INTERNAL_GET_FLEET = gql`
   query InternalGetFleet {
-    member_ships(limit: -1) {
+    member_ships(
+      filter: { group: { _neq: "private" }, visibility: { _neq: "hidden" } }
+      limit: -1
+    ) {
+      id
       member_id {
         firstname
         lastname
+        slug
         title
         member_potrait {
-            id
+          id
         }
       }
       ships_id {
@@ -1826,6 +1831,64 @@ export const INTERNAL_GET_FLEET = gql`
         gameplay_name
         gameplay_logo {
           id
+        }
+      }
+    }
+  }
+`
+
+export const GET_INTERNAL_ADMIN_DATA = gql`
+  query GetInternalAdminData {
+    member(
+      limit: -1
+      filter: { status: { _neq: "archived" } }
+      sort: ["firstname"]
+    ) {
+      id
+      status
+      firstname
+      lastname
+      slug
+      title
+      account {
+        id
+        role
+      }
+      member_potrait {
+        id
+      }
+      member_rollen
+      head_of_department
+      head_department {
+        id
+        gameplay_name
+      }
+      department {
+        id
+        gameplay_name
+      }
+      ships {
+        id
+        name
+        serial
+        group
+        visibility
+        department {
+          gameplay_name
+          gameplay_logo {
+            id
+          }
+        }
+        ships_id {
+          id
+          name
+          slug
+          storeImage {
+            id
+          }
+          manufacturer{
+            firmen_name
+          }
         }
       }
     }
