@@ -10,7 +10,7 @@ import { BasicPanel, BasicPanelButton } from 'components/panels';
 import { Dialog, Transition } from '@headlessui/react';
 import Modal from 'components/modal';
 import { MdOutlineModeEditOutline } from 'react-icons/md';
-import MultipleCombobox from 'components/multipleCombobox';
+import MultipleCombobox from 'components/MultipleCombobox';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
 import { PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
@@ -20,7 +20,7 @@ import RadioButton from 'components/RadioButton';
 import { BsTrash, BsTrash3 } from 'react-icons/bs';
 import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
-import DefaultButton from 'components/defaultButton';
+import DefaultButton from 'components/DefaultButton';
 
 export async function getServerSideProps () {
   const { data } = await client.query({ query: INTERNAL_GET_Ships_MY_HANGAR })
