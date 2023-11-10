@@ -39,7 +39,6 @@ export default function Sidebar () {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { data: sessionData } = useSession()
-  console.log(sessionData)
 
   function useWindowSize () {
     // Initialize state with undefined width/height so server and client renders match
