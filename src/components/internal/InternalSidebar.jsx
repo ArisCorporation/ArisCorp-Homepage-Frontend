@@ -231,7 +231,7 @@ export default function Sidebar ({ changes }) {
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
                     }
-                    onClick={(e) => changes ? openLeaveModal(e) : e}
+                    onClick={(e) => changes ? openLeaveModal(e, "") : e}
                   >
                     <div
                       className={
