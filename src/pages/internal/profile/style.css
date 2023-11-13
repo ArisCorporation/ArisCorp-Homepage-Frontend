@@ -1,0 +1,11 @@
+.tox .tox-edit-area__iframe {
+  background-color: #222 !important;
+}
+
+.tox-edit-area {
+  color: #fff !important;
+}
+
+.tox-statusbar__branding {
+  display: none !important;
+}

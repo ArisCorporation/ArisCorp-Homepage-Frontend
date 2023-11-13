@@ -22,6 +22,7 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 RUN yarn build
+RUN yarn postinstall
 
 # If using npm comment out above and use below instead
 # RUN npm run build

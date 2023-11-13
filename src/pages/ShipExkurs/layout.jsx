@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/client'
 export default function Layout({ children }) {
   return (
     <>
-      <div className="flex">
+      <div className="flex min-h-screen">
         <Sidebar />
         <div
           className="flex flex-col justify-between flex-1 h-full max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"

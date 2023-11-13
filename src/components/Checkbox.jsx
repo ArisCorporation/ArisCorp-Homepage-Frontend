@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const CheckboxContext = createContext({
   id: "",
   isChecked: false,
-  setIsChecked: () => {},
+  setIsChecked: () => { },
 });
 
 const tickVariants = {
@@ -25,7 +25,7 @@ const tickVariants = {
   },
 };
 
-export default function Checkbox({ children, id, state, setState, color, bg }) {
+export default function Checkbox ({ children, id, state, setState, color, bg }) {
   // const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -45,14 +45,13 @@ export default function Checkbox({ children, id, state, setState, color, bg }) {
   );
 }
 
-function CheckboxIndicator() {
+function CheckboxIndicator () {
   const { id, state, setState, color, bg } = useContext(CheckboxContext);
-
   return (
     <button className="relative flex items-center">
       <input
         type="checkbox"
-        className={'relative w-5 h-5 transition-all duration-500 border-2 rounded-md appearance-none cursor-pointer border-[#111]/50 ' + (state && "border-[#111] bg-[#111]")}
+        className={'relative w-5 h-5 transition-all duration-500 border-2 rounded-md appearance-none cursor-pointer ' + (bg ? `border-${bg}/50 ` : "border-[#111]/50 ") + (state && (bg ? `border-${bg} bg-${bg}` : "border-[#111] bg-[#111]"))}
         onChange={() => setState(!state)}
         id={id}
       />
@@ -81,7 +80,7 @@ function CheckboxIndicator() {
 
 Checkbox.Indicator = CheckboxIndicator;
 
-function CheckboxLabel({ children }) {
+function CheckboxLabel ({ children }) {
   const { id, state } = useContext(CheckboxContext);
 
   return (

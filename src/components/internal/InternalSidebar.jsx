@@ -32,13 +32,18 @@ import { useRouter } from 'next/router'
 import ReactTooltip from 'react-tooltip'
 import { AiOutlineMail } from 'react-icons/ai'
 import { signOut, useSession } from 'next-auth/react'
+import Modal from 'components/modal'
+import DefaultButton from 'components/DefaultButton'
 
-export default function Sidebar () {
+export default function Sidebar ({ changes }) {
   const router = useRouter()
   const size = useWindowSize()
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
   const { data: sessionData } = useSession()
+  const [modal, setModal] = useState(false)
+  const [modalType, setModalType] = useState()
+  const [modalStore, setModalStore] = useState()
 
   function useWindowSize () {
     // Initialize state with undefined width/height so server and client renders match
@@ -91,8 +96,52 @@ export default function Sidebar () {
   const mobileView = size.width < 1024
   const homeRef = useRef()
 
+  function openLeaveModal (event, path, action) {
+    if (action == "logout") {
+      setModal(true)
+      setModalType("cancel")
+      setModalStore({action: "logout"})
+      return
+    }
+    event.preventDefault()
+    setModal(true)
+    setModalType("cancel")
+    setModalStore(path)
+  }
+
+  function closeModal () {
+    setModal(false)
+    setTimeout(() => {
+      setModalType("")
+    }, 600);
+  }
+
   return (
     <>
+      <Modal
+        state={modal}
+        setState={setModal}
+        title={
+          modalType == 'cancel' && 'Änderungen löschen?'
+        }
+        closeFunction={closeModal}
+      >
+        <div className='mb-2'>
+          {modalType == 'cancel' &&
+            <div className='px-8'>
+              <h3>Bist du sicher, dass du die Änderungen löschen möchtest?</h3>
+              <div className='w-full mt-8 space-x-12'>
+                <DefaultButton animate agree action={closeModal}>
+                  Nein!
+                </DefaultButton>
+                <DefaultButton animate danger action={() => closeModal() + (typeof modalStore == "string" ? router.push("/internal" + (modalStore ? modalStore : "")) : (modalStore.action == "logout" ? signOut({ callbackUrl: '/' }) : null))}>
+                  Ja!
+                </DefaultButton>
+              </div>
+            </div>
+          }
+        </div>
+      </Modal>
       <div
         className={
           'fixed bottom-0 z-50 w-full lg:hidden print:hidden ' +
@@ -182,6 +231,7 @@ export default function Sidebar () {
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
                     }
+                    onClick={(e) => changes ? openLeaveModal(e) : e}
                   >
                     <div
                       className={
@@ -386,6 +436,7 @@ export default function Sidebar () {
                         ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                         : '')
                     }
+                    onClick={(e) => changes ? openLeaveModal(e, "/fleet") : e}
                   >
                     <div
                       className={
@@ -438,6 +489,7 @@ export default function Sidebar () {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
+                      onClick={(e) => changes ? openLeaveModal(e, "/admin") : e}
                     >
                       <div
                         className={
@@ -596,6 +648,7 @@ export default function Sidebar () {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
+                      onClick={(e) => changes ? openLeaveModal(e, "/hangar") : e}
                     >
                       <div
                         className={
@@ -682,7 +735,7 @@ export default function Sidebar () {
                     </a>
                   </Link>
                 </li> */}
-                {/* <li
+                <li
                   className="p-0 m-0 list-none group"
                   data-tip
                   data-for="ProfileTip"
@@ -698,6 +751,7 @@ export default function Sidebar () {
                           ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
                           : '')
                       }
+                      onClick={(e) => changes ? openLeaveModal(e, "/profile") : e}
                     >
                       <div
                         className={
@@ -713,7 +767,7 @@ export default function Sidebar () {
                           }
                         >
                           {' '}
-                          Meine Daten{' '}
+                          Mein Profil{' '}
                         </span>
                         {!mobileView && sidebarCollapsed ? (
                           <ReactTooltip
@@ -724,7 +778,7 @@ export default function Sidebar () {
                             type="dark"
                             padding="8px"
                           >
-                            Meine Daten
+                            Mein Profil
                           </ReactTooltip>
                         ) : (
                           ''
@@ -732,13 +786,13 @@ export default function Sidebar () {
                       </div>
                     </a>
                   </Link>
-                </li> */}
+                </li>
                 <li
                   className="p-0 m-0 list-none group"
                   data-tip
                   data-for="SignOutTip"
                 >
-                  <button onClick={() => signOut({ callbackUrl: '/' })} className='cursor-pointer'>
+                  <button onClick={() => changes ? (openLeaveModal(null, null, "logout")) : signOut({ callbackUrl: '/' })} className='cursor-pointer'>
                     <div
                       className={
                         'group-hover:text-[#e2e2e2] text-[#afafaf] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] ' +

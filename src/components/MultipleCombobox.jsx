@@ -9,7 +9,7 @@ const useFocus = () => {
   return [ htmlElRef, setFocus ] 
 }
 
-export default function MultipleCombobox ({ items, state, setState }) {
+export default function MultipleCombobox ({ items, state, setState, multiple, bg }) {
   const [query, setQuery] = useState('')
   const buttonRef = useRef(null)
   const [listRef, setListFocus] = useFocus()
@@ -30,19 +30,19 @@ export default function MultipleCombobox ({ items, state, setState }) {
 
   return (
     <div className="w-2/3">
-      {state.length > 0 && (
+      {(state?.length > 0 && multiple) && (
         <ul ref={listRef}>
           {state.map((item, i) => (
             <li className='flex w-full' key={item.id}>{item.name} <div onClick={() => removeItem(item.id)} className='right-0 flex ml-auto cursor-pointer'><TrashIcon className='w-4' /></div></li>
           ))}
         </ul>
       )}
-      <Combobox value={state} onChange={setState} multiple>
+      <Combobox value={state} onChange={setState} multiple={multiple}>
         {({ open }) => (
           <div className="relative mt-1">
-            <div className="relative w-full overflow-hidden text-left bg-[#111] rounded-lg shadow-md cursor-default focus:outline-none outline-none focus-visible:ring-0 sm:text-sm">
+            <div className={`relative w-full overflow-hidden text-left bg-${bg ? bg : "[#111]"} rounded-lg shadow-md cursor-default focus:outline-none outline-none focus-visible:ring-0 sm:text-sm`}>
                 <Combobox.Input
-                  className="w-full py-2 pl-3 pr-10 bg-[#111] text-sm leading-5 border-none focus:ring-0 focus:outline-none outline-none"
+                  className={`w-full py-2 pl-3 pr-10 bg-${bg ? bg : "[#111]"} text-sm leading-5 border-none focus:ring-0 focus:outline-none outline-none`}
                   onChange={(event) => setQuery(event.target.value)}
                   displayValue={(item) => item.name}
                   onClick={() => !open && buttonRef.current.click()}
@@ -63,7 +63,7 @@ export default function MultipleCombobox ({ items, state, setState }) {
                 leaveTo="opacity-0"
                 afterLeave={() => setQuery('')}
               >
-                <Combobox.Options className="z-[60] space-y-2 text-left absolute w-full py-1 pl-0 mt-1 overflow-auto text-base list-none bg-[#111] bg-opacity-75 rounded-md shadow-lg max-h-60 ring-0 focus:outline-none sm:text-sm" static>
+                <Combobox.Options className={`z-[60] space-y-2 text-left absolute w-full py-1 pl-0 mt-1 overflow-auto text-base list-none bg-${bg ? bg : "[#111]"} bg-opacity-75 rounded-md shadow-lg max-h-60 ring-0 focus:outline-none sm:text-sm`} static>
                   {filteredPeople.map((item) => (
                     <Combobox.Option
                       className={({ active }) =>

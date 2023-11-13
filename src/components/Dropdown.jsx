@@ -30,12 +30,12 @@ export default function Dropdown ({ changeAction, items, state, setState, mode, 
               </span>
             </Listbox.Button>
           </motion.div>
-          <Transition
+          {/* <Transition
             as={Fragment}
             leave="transition ease-in duration-100"
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
-          >
+          > */}
             <Listbox.Options className="z-[60] space-y-2 text-left absolute w-full py-1 pl-0 mt-1 overflow-auto text-base list-none bg-[#111] bg-opacity-75 rounded-md shadow-lg max-h-60 ring-0 focus:outline-none sm:text-sm">
               <Listbox.Option
                 className="relative py-2 text-center list-none cursor-pointer select-none placeholder:r-4 hover:bg-primary hover:text-black"
@@ -75,7 +75,7 @@ export default function Dropdown ({ changeAction, items, state, setState, mode, 
                 </Listbox.Option>
               ))}
             </Listbox.Options>
-          </Transition>
+          {/* </Transition> */}
         </div>
       </Listbox>
     </div>

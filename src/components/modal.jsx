@@ -38,15 +38,19 @@ export default function Modal ({ state, setState, closeFunction, title, subtitle
                 <div className='relative min-h-[40px] border-[3px] border-primary border-opacity-90 rounded-[20px] shadow-sm shadow-white box-border bg-[rgba(39,43,48,.9] before:absolute before:-top-[3px] before:right-10 before:left-10 before:box-border after:box-border before:h-1 before:bg-[#444] before:rounded-b after:absolute after:-bottom-[3px] after:right-10 after:left-10 after:h-1 after:bg-[#444] after:rounded-t'>
                   <div className='box-border py-2 rounded-2xl'>
                     <div className='absolute transition-all duration-200 opacity-50 cursor-pointer top-2 left-2 hover:opacity-100 hover:duration-300'><AiOutlineCloseCircle className='w-5 h-5' onClick={closeFunction || closeModal} /></div>
-                    <Dialog.Title
-                      as="h3"
-                      className="text-lg font-medium leading-6 text-white"
-                    >
-                      {title}
-                      <span className='block'>
-                        {subtitle}
-                      </span>
-                    </Dialog.Title>
+                    {title && (
+                      <Dialog.Title
+                        as="h3"
+                        className="text-lg font-medium leading-6 text-white"
+                      >
+                        {title}
+                        {subtitle && (
+                          <span className='block'>
+                            {subtitle}
+                          </span>
+                        )}
+                      </Dialog.Title>
+                    )}
                     {children}
                     {closeButton &&
                       <button

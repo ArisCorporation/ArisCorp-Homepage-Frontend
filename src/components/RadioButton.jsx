@@ -54,7 +54,7 @@ function RadioButtonIndicator () {
     <button className="relative flex items-center">
       <input
         type="radio"
-        className={'relative w-5 h-5 transition-all duration-500 border-2 rounded-md appearance-none cursor-pointer border-[#111]/50 ' + (state && "border-[#111] bg-[#111]")}
+        className={'relative w-5 h-5 transition-all duration-500 border-2 rounded-md appearance-none cursor-pointer border-[#111]/50 ' + (bg ? `border-${bg}/50 ` : "border-[#111]/50 ") + (state == value && (bg ? `border-${bg} bg-${bg} ` : "border-[#111] bg-[#111]"))}
         onChange={(e) => setState(e.target.value)}
         value={value}
         checked={state == value}

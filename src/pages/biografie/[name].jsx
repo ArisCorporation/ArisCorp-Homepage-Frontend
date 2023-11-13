@@ -33,11 +33,6 @@ export async function getServerSideProps (context) {
 
   }
 
-  const departments = []
-  data.member_gameplays.forEach((obj) => {
-    departments.push(obj.gameplays_id.gameplay_name)
-  })
-
   const weapons = []
   data.member_technologien.forEach((obj) => {
     weapons.push(obj.technologien_id)
@@ -48,34 +43,12 @@ export async function getServerSideProps (context) {
   })
 
   data = data.member[0]
-  const roles = []
-
-  data.member_rollen.forEach((obj) => {
-    if (obj === 'member') {
-      roles.push('Mitglied')
-    } else if (obj === 'recruitment') {
-      roles.push('Rekrutierung')
-    } else if (obj === 'marketing') {
-      roles.push('Marketing & Presse')
-    } else if (obj === 'administration') {
-      roles.push('Verwaltung')
-    } else {
-      return
-    }
-  })
-  if (data.head_of_department) {
-    roles.push('Abteilungsleiter')
-  }
-
-
 
   const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
       data,
-      roles,
-      departments,
       weapons,
       ships,
       siteTitle
@@ -83,7 +56,7 @@ export async function getServerSideProps (context) {
   }
 }
 
-export default function Biografie ({ data, departments, roles, weapons, ships, siteTitle }) {
+export default function Biografie ({ data, weapons, ships, siteTitle }) {
   const shareUrl = "https://ariscorp.de/biografie/" + data.slug
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
@@ -99,7 +72,23 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
     });
   }
 
-  console.log(ships);
+  const roles = []
+  data.member_rollen.forEach((obj) => {
+    if (obj == 'member') {
+      roles.push('Mitglied')
+    } else if (obj == 'recruitment') {
+      roles.push('Rekrutierung')
+    } else if (obj == 'marketing') {
+      roles.push('Marketing & Presse')
+    } else if (obj == 'administration') {
+      roles.push('Verwaltung')
+    }
+  })
+  if (data.head_of_department) {
+    roles.push('Abteilungsleiter')
+  }
+
+  console.log(roles);
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -544,18 +533,18 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
                 {data.head_of_department ? (
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
-                    <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.head_department[0].gameplay_name ? data.head_department[0].gameplay_name : 'N/A'}</p>
                   </div>
                 ) : (
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
-                    <p className='p-0 text-primary'>{departments ? departments.join(', ') : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
                   </div>
                 )}
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-2">
                     <p className='pb-0 text-sm'>Rollen innerhalb der ArisCorp:</p>
-                    <p className='p-0 text-primary'>{roles[0] ? roles.join(', ') : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{roles[0] ? roles.sort().join(', ') : 'N/A'}</p>
                   </div>
                 </div>
               </div>

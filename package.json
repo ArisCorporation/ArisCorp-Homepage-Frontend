@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier .  --write"
+    "format": "prettier .  --write",
+    "postinstall": "node ./postinstall.js"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
@@ -14,6 +15,7 @@
     "@headlessui/react": "^0.0.0-insiders.bfacb64",
     "@heroicons/react": "^2.0.17",
     "@next/font": "^13.1.6",
+    "@tinymce/tinymce-react": "^4.3.0",
     "@vime/core": "^5.4.0",
     "@vime/react": "^5.4.0",
     "apollo-link-rest": "^0.9.0-rc.1",
@@ -22,6 +24,7 @@
     "chart.js": "^4.0.1",
     "d3-ease": "^3.0.1",
     "framer-motion": "9.0.7",
+    "fs-extra": "^11.1.1",
     "get-media-dimensions": "^2.0.2",
     "graphql": "^16.3.0",
     "graphql-anywhere": "^4.2.7",
@@ -37,6 +40,7 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.0.1",
     "react-circular-progressbar": "^2.1.0",
+    "react-cropper": "^2.3.3",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-horizontal-timeline": "^1.5.3",
@@ -53,7 +57,8 @@
     "rehype-raw": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "slugify": "^1.6.5",
-    "timelinejs-react": "https://github.com/Thomas-Blakeney/timelinejs"
+    "timelinejs-react": "https://github.com/Thomas-Blakeney/timelinejs",
+    "tinymce": "^6.7.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.1",

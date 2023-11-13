@@ -155,6 +155,9 @@ export const GET_MEMBER = gql`
       sex
       member_rollen
       head_of_department
+      head_department {
+        gameplay_name
+      }
       department {
         gameplay_name
       }
@@ -200,11 +203,6 @@ export const GET_MEMBER = gql`
 
       member_biografie
       member_steckbrief
-    }
-    member_gameplays(filter: { member_id: { member_name: { _eq: $name } } }) {
-      gameplays_id {
-        gameplay_name
-      }
     }
     member_ships {
       ships_id {
@@ -292,7 +290,7 @@ export const GET_GAMEPLAYS = gql`
   query GetGameplays {
     gameplays(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "id"]
+      sort: ["sort", "gameplay_name"]
       limit: -1
     ) {
       id
@@ -1789,6 +1787,7 @@ export const INTERNAL_GET_FLEET = gql`
   query InternalGetFleet {
     member_ships(
       filter: { group: { _neq: "private" }, visibility: { _neq: "hidden" } }
+      sort: ["ships_id.name"]
       limit: -1
     ) {
       id
@@ -1886,7 +1885,7 @@ export const GET_INTERNAL_ADMIN_DATA = gql`
           storeImage {
             id
           }
-          manufacturer{
+          manufacturer {
             firmen_name
           }
         }
