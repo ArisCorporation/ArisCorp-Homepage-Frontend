@@ -182,7 +182,7 @@ export default function InternalLogin({ backgrounds }) {
         </div>
       </div>
       <div
-        className="relative h-screen min-w-full transition-all duration-1000 bg-center bg-cover 2xl:hidden"
+        className="relative h-screen min-w-full transition-all duration-1000 bg-center bg-cover"
         style={{
           backgroundImage: `url(//cms.ariscorp.de/assets/${currentBg.id})`,
         }}
