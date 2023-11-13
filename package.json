@@ -6,8 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier .  --write",
-    "postinstall": "node ./postinstall.js"
+    "format": "prettier .  --write"
   },
   "dependencies": {
     "@apollo/client": "^3.5.9",
