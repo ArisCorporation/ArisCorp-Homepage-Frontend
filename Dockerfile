@@ -50,6 +50,4 @@ EXPOSE 3000
 
 ENV PORT 3000
 
-RUN yarn postinstall
-
 CMD ["node", "server.js"]
