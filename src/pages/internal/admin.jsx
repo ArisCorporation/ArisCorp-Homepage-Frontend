@@ -1141,7 +1141,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                 )}
                 {addMenu && (
                   <motion.div initial={{ height: 0 }} animate={{ height: (selectedShips.length > 0 ? (`${(selectedShips.length * 28) + 102}px`) : "90px") }} exit={{ height: 0 }} className='flex flex-wrap justify-center mb-8'>
-                    <MultipleCombobox items={shipList} state={selectedShips} setState={setSelectedShips} />
+                    <MultipleCombobox multiple items={shipList} state={selectedShips} setState={setSelectedShips} />
                     <div className='w-full mt-4 space-x-12'>
                       <DefaultButton animate danger action={() => setSelectedShips([]) + setAddMenu(false)}>
                         Abbruch
