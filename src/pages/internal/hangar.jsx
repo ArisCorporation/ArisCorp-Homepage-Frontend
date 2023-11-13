@@ -63,7 +63,7 @@ export default function InternalIndex ({ shipList, siteTitle, departments }) {
     if (member) {
       let rawData = await fetch(
         // "https://cms.ariscorp.de/items/member_ships?fields=*.*&filter[member_id]=" + session.user.id,
-        "https://cms.ariscorp.de/items/member_ships?fields=*,department.*&filter[member_id]=" + member,
+        "https://cms.ariscorp.de/items/member_ships?sort=ships_id.name&fields=*,department.*&filter[member_id]=" + member,
         {
           method: "GET"
         }
@@ -183,7 +183,7 @@ export default function InternalIndex ({ shipList, siteTitle, departments }) {
       setSelectedGroup(ship.custom_data.group)
     }
     if (ship.custom_data.department) {
-      setSelectedDepartment(ship.custom_data.department)
+      setSelectedDepartment(departments.find(e => e.id == ship.custom_data.department.id))
     }
     if (ship.custom_data.visibility) {
       setSelectedVisibility(ship.custom_data.visibility)
@@ -286,7 +286,7 @@ export default function InternalIndex ({ shipList, siteTitle, departments }) {
       setSelectedShips([])
     }, 600);
   }
-
+  
   return (
     <Layout>
       <Head>
@@ -309,7 +309,7 @@ export default function InternalIndex ({ shipList, siteTitle, departments }) {
         <div className='mb-2'>
           {modalType == 'addShips' &&
             <div className='flex flex-wrap justify-center'>
-              <MultipleCombobox items={shipList} state={selectedShips} setState={setSelectedShips} />
+              <MultipleCombobox multiple items={shipList} state={selectedShips} setState={setSelectedShips} />
               <div className='w-full mt-4 space-x-12'>
                 <DefaultButton animate danger action={() => closeModal()}>
                   Abbruch

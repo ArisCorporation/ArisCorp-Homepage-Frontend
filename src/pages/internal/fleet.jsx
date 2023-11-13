@@ -90,7 +90,7 @@ export default function InternalIndex ({ apiData, departments, siteTitle }) {
     setTimeout(() => {
       if (selectedDepartment != null && selectedDepartment != "undefined" && selectedDepartment != "") {
         console.log("selectedDepartment", selectedDepartment)
-        const filteredData = apiData.filter(e => e.custom_data.department.gameplay_name == selectedDepartment)
+        const filteredData = apiData.filter(e => e.custom_data.department?.gameplay_name == selectedDepartment)
         setData(filteredData)
       } else {
         setData(apiData)
