@@ -1209,7 +1209,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
             <div className='flex justify-between w-full mb-3 space-x-4'>
               <div className='w-full'>
                 <Editor
-                  tinymceScriptSrc={process.env.NEXT_PUBLIC_URL + '/tinymce/tinymce.min.js'}
+                  tinymceScriptSrc={'/tinymce/tinymce.min.js'}
                   value={biography}
                   onEditorChange={handleBiographyChange}
                   init={{
