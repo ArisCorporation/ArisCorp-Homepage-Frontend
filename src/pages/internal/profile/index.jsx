@@ -22,6 +22,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import Cropper from 'react-cropper';
 import 'cropperjs/dist/cropper.css'
 import "./style.css"
+import { BasicPanel } from 'components/panels';
 
 function slugify (str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -132,20 +133,22 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
   const [medicalInformations, setMedicalInformations] = useState()
   const [avatarFile, setAvatarFile] = useState()
   const [cropper, setCropper] = useState()
-  const [newAvatarUrl, setNewAvatarUrl] = useState("");
+  const [rawAvatarUrl, setRawAvatarUrl] = useState("");
   const [biography, setBiography] = useState()
   const [changesMade, setChangesMade] = useState()
   const handleBiographyChange = (content, editor) => {
     setBiography(content);
   }
 
-  const getNewAvatarUrl = (e) => {
+  const handleAvatarUpload = (e) => {
     if (e.target.files) {
-      setNewAvatarUrl(URL.createObjectURL(e.target.files[0]));
+      setRawAvatarUrl(URL.createObjectURL(e.target.files[0]));
+      setModal(true)
+      setModalType("editAvatar")
     }
   };
 
-  const getCropData = async () => {
+  const handleAvatarSave = async () => {
     if (cropper) {
       const file = await fetch(cropper.getCroppedCanvas().toDataURL())
         .then((res) => res.blob())
@@ -156,7 +159,8 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
         setAvatarFile(file)
       }
     }
-  };
+    closeModal()
+  }
 
   useEffect(() => {
     if (data) {
@@ -333,6 +337,8 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     setHates(data.hates)
     setMedicalInformations(data.text)
     setBiography(data.biography)
+    setRawAvatarUrl()
+    setAvatarFile()
   }
 
   useEffect(() => {
@@ -363,8 +369,10 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     }
 
     if (avatarFile) {
-      const formData = new FormData()
-      formData.append("file", "avatarFile")
+      const formData = new FormData();
+      formData.append("name", `${firstname}-${lastname}-Avatar`);
+      formData.append("folder", "8658f40d-77d9-44c4-8f0d-af820855a3bc");
+      formData.append("file", avatarFile);
 
       let resdata = await fetch(
         "https://cms.ariscorp.de/files?access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
@@ -373,7 +381,9 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
           body: formData
         }
       ).then((res) => res.json());
-      console.log("FILE", formData)
+
+      edits.member_potrait = resdata.data.id
+      accountEdits.avatar = resdata.data.id
     }
 
     delete edits.account
@@ -583,7 +593,8 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
         state={modal}
         setState={setModal}
         title={
-          modalType == 'cancel' && 'Änderungen löschen?'
+          modalType == 'cancel' && 'Änderungen löschen?' ||
+          modalType == 'editAvatar' && 'Avatar anpassen:'
         }
         closeFunction={closeModal}
       >
@@ -597,6 +608,36 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                 </DefaultButton>
                 <DefaultButton animate danger action={() => setStates() + closeModal()}>
                   Ja!
+                </DefaultButton>
+              </div>
+            </div>
+          }
+          {modalType == 'editAvatar' &&
+            <div className='px-8'>
+              <div>
+                <div className='flex justify-center overflow-hidden'>
+                  <BasicPanel classes={"overflow-hidden"}>
+                    <Cropper
+                      src={rawAvatarUrl}
+                      style={{ height: 320, width: 270, overflow: "hidden" }}
+                      minCropBoxHeight={320}
+                      minCropBoxWidth={270}
+                      guides={true}
+                      checkOrientation={false}
+                      dragMode='move'
+                      onInitialized={(instance) => {
+                        setCropper(instance);
+                      }}
+                    />
+                  </BasicPanel>
+                </div>
+              </div>
+              <div className='w-full mt-8 space-x-12'>
+                <DefaultButton animate danger action={() => setStates() + closeModal()}>
+                  Schließen!
+                </DefaultButton>
+                <DefaultButton animate agree action={handleAvatarSave}>
+                  Speichern!
                 </DefaultButton>
               </div>
             </div>
@@ -730,24 +771,11 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                 <label className='my-auto text-xl'>Avatar:</label>
                 <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                   <input
-                    // onChange={getNewAvatarUrl}
-                    disabled
+                    onChange={handleAvatarUpload}
                     type='file'
+                    accept='image/png, image/jpeg, image/webp'
                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                 </div>
-                {/* <Cropper
-                  src={newAvatarUrl}
-                  style={{ height: 400, width: 400 }}
-                  initialAspectRatio={4 / 3}
-                  minCropBoxHeight={100}
-                  minCropBoxWidth={100}
-                  guides={false}
-                  checkOrientation={false}
-                  onInitialized={(instance) => {
-                    setCropper(instance);
-                  }}
-                />
-                <button onClick={getCropData}>Crop Image</button> */}
               </div>
             </div>
           </div>
