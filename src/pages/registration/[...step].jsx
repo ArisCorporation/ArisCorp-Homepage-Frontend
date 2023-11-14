@@ -96,7 +96,7 @@ export default function InternalLogin () {
       <div className='flex justify-center text-center'>
         <h1>
           {showKStep1 && <TypingAnimation titleM="Schritt 1:" textM="Basis Daten" state={currentStep} step={1} ndelay duration={1.5} />}
-          {showKStep2 && <TypingAnimation titleM="Schritt 2:" textM="Koane Ahnung" state={currentStep} step={2} duration={4} duration={1.5} />}
+          {showKStep2 && <TypingAnimation titleM="Schritt 2:" textM="Koane Ahnung" state={currentStep} step={2} dduration={4} duration={1.5} />}
           {/* <motion.span>{welcomeText}</motion.span>
           <motion.span>{secondText}</motion.span>
           <CursorBlinking /> */}
