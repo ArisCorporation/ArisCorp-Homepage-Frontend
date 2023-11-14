@@ -1,7 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 class MyDocument extends Document {
-  render() {
+  render () {
     return (
       <Html lang="de" className="overflow-auto scroll-smooth">
         <Head>
@@ -208,8 +208,11 @@ class MyDocument extends Document {
             property="twitter:image"
             content="https://cms.ariscorp.de/assets/61f8ed26-978a-4d66-a59d-92e8db4fdcb5"
           />
+          
+          <meta name="version" content={`${process.env.BUILD_NUMBER}-${process.env.ENVIRONMENT}`} />
 
-          {/* <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nasalization-2" /> */}
+
+            {/* <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nasalization-2" /> */}
         </Head>
         <body className="font-nasa bg-[#111] selection:bg-primary selection:text-bg-secondary">
           <Main />
