@@ -739,6 +739,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
+                        autoComplete={false}
                         placeholder="Dr. Med."
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
@@ -749,6 +750,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
+                        autoComplete={false}
                         placeholder="Chris"
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
@@ -759,6 +761,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberLastname}
                         onChange={(e) => setMemberLastname(e.target.value)}
+                        autoComplete={false}
                         placeholder="Roberts"
                         className="form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
@@ -772,6 +775,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
+                        autoComplete={false}
                         placeholder="Passwort..."
                         className="disabled:opacity-25 form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                       {memberPassword != null && memberPassword != "" && <p className='text-[0.6rem] opacity-50'>Das Standardpassword wird zu dem oben festgelegten geändert.</p>}
@@ -881,6 +885,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
+                        autoComplete={false}
                         placeholder="Dr. Med."
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
@@ -891,6 +896,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
+                        autoComplete={false}
                         placeholder="Chris"
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
@@ -921,6 +927,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
+                        autoComplete={false}
                         placeholder="Neues Passwort..."
                         type="password"
                         disabled={passwordReset}
@@ -1052,6 +1059,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                                 <input
                                   value={shipName}
                                   onChange={(e) => setShipName(e.target.value)}
+                                  autoComplete={false}
                                   placeholder="Name..."
                                   className="form-control block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                               </div>
@@ -1060,6 +1068,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                                 <input
                                   value={shipSerial}
                                   onChange={(e) => setShipSerial(e.target.value)}
+                                  autoComplete={false}
                                   placeholder="Seriennummer..."
                                   className="form-control w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                               </div>
