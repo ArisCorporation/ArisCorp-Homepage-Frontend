@@ -177,9 +177,9 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
         selectedDepartment?.id != (abteilungsLeiter ? data.head_department[0] : data.department[0]) ||
         sex != data.sex ||
         birthdate != data.birthdate ||
-        birthSystem.id != data.birthSystem.id ||
+        birthSystem?.id != data.birthSystem?.id ||
         birthplace != data.birthPlace ||
-        currentSystem.id != data.currentResidenceSystem?.id ||
+        currentSystem?.id != data.currentResidenceSystem?.id ||
         currentPlace != data.currentResidence ||
         haircolor != data.hairColor ||
         height != data.height ||
@@ -446,7 +446,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     if (password != null) {
       edits.account.password = password
     }
-    if (currentSystem.id != data.currentResidenceSystem.id) {
+    if (currentSystem?.id != data.currentResidenceSystem?.id) {
       edits.currentResidenceSystem = currentSystem.id
     }
     if (currentPlace != data.currentResidence) {
@@ -458,7 +458,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     if (birthdate != data.birthdate) {
       edits.birthdate = birthdate
     }
-    if (birthSystem.id != data.birthSystem.id) {
+    if (birthSystem?.id != data.birthSystem?.id) {
       edits.birthSystem = birthSystem.id
     }
     if (birthplace != data.birthPlace) {

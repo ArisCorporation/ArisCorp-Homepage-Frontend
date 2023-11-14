@@ -44,7 +44,7 @@ export default function MultipleCombobox ({ items, state, setState, multiple, bg
                 <Combobox.Input
                   className={`w-full py-2 pl-3 pr-10 bg-${bg ? bg : "[#111]"} text-sm leading-5 border-none focus:ring-0 focus:outline-none outline-none`}
                   onChange={(event) => setQuery(event.target.value)}
-                  displayValue={(item) => item.name}
+                  displayValue={(item) => item?.name}
                   onClick={() => !open && buttonRef.current.click()}
                 />
               <Combobox.Button ref={buttonRef} className="absolute inset-y-0 right-0 flex items-center pr-2">

@@ -314,19 +314,20 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       firstname: memberFirstname,
       lastname: memberLastname,
       title: memberTitle,
-      slug: slugify(memberFirstname + " " + memberLastname),
+      slug: slugify(memberFirstname + (memberLastname ? (" " + memberLastname) : "")),
       member_rollen: roles,
       head_of_department: abteilungsLeiter,
-      head_department: (abteilungsLeiter ? [selectedDepartment] : null),
-      department: (!abteilungsLeiter ? [selectedDepartment] : null),
+      head_department: (abteilungsLeiter && (selectedDepartment ? [selectedDepartment] : [])),
+      department: (!abteilungsLeiter && (selectedDepartment ? [selectedDepartment] : [])),
+      ueeState: "civilian",
     }
 
     const accountObject = {
       first_name: memberFirstname,
       last_name: memberLastname,
       title: memberTitle,
-      email: (`${slugify_dot(memberFirstname)}.${slugify_dot(memberLastname)}@ariscorp.de`),
-      password: (`${slugify_dot(memberFirstname)}.${slugify_dot(memberLastname)}`),
+      email: (`${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}`: ''}@ariscorp.de`),
+      password: (memberPassword ? memberPassword : `${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}` : ""}`),
       passwordMustChange: (memberPassword ? false : true),
       role: (selectedRole ? selectedRole.id : (abteilungsLeiter ? "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" : "a74700bc-7e32-4597-a1e1-34c6d7674dad")),
     }
@@ -343,7 +344,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     ).then((res) => res.json())
 
     memberObject.account = createdAccount.data.id
-
+      console.log("memberobj", memberObject)
     await fetch(
       "https://cms.ariscorp.de/items/member?access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
       {
