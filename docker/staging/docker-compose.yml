@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ariscorp-website-staging:
+    build:
+      context: ../../
+      dockerfile: docker/staging/Dockerfile
+    image: ariscorp-website-staging
+    ports:
+      - '3002:3000'

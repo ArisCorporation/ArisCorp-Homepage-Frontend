@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ariscorp-website-ptu:
+    build:
+      context: ../../
+      dockerfile: docker/ptu/Dockerfile
+    image: ariscorp-website-ptu
+    ports:
+      - '3001:3000'

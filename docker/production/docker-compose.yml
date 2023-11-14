@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ariscorp-website-production:
+    build:
+      context: ../../
+      dockerfile: docker/production/Dockerfile
+    image: ariscorp-website-production
+    ports:
+      - '3003:3000'
