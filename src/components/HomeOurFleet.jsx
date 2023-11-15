@@ -107,6 +107,7 @@
 //     <>
 //       <h1 className="text-center text-primary">Flotte der ArisCorp</h1>
 //       <p className='text-center'>Die Flotte der ArisCorp stellt sich aus den Schiffen zusammen, die von Mitgliedern der ArisCorp zur verfügung gestellt werden.</p>
+//       <h2 className='mt-4 text-center'>Aktuelle Ansicht: {selectedDepartment ? (<span className='text-secondary'>Abteilung - {selectedDepartment}</span>) : (<span className='text-primary'>Komplette Flotte</span>)}</h2>
 //       <div>
 //         <div className="flex w-full mt-4 mb-2">
 //           <div className='w-1/4'>
