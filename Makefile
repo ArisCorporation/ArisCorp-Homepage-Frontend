@@ -8,12 +8,12 @@ build-ptu: ## Build the ptu docker image.
 	$(info Remove anything from build)
 	rm ./.env.ptu.build
 	$(info Tag docker images)
-	docker tag lucasgruber/ariscorp-website:ptu lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	docker tag ariscorp/ariscorp-website:ptu ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
 	$(info Publish docker images)
-	docker push lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
-	docker push lucasgruber/ariscorp-website:ptu
+	docker push ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	docker push ariscorp/ariscorp-website:ptu
 	$(info Remove docker build-image)
-	docker image rm lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	docker image rm ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
 	make cleanup
 
 .PHONY: start-ptu
@@ -34,12 +34,12 @@ build-staging: ## Build the staging docker image.
 	$(info Remove anything from build)
 	rm ./.env.staging.build
 	$(info Tag docker images)
-	docker tag lucasgruber/ariscorp-website:staging lucasgruber/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
+	docker tag ariscorp/ariscorp-website:staging ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
 	$(info Publish docker images)
-	docker push lucasgruber/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
-	docker push lucasgruber/ariscorp-website:staging
+	docker push ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
+	docker push ariscorp/ariscorp-website:staging
 	$(info Remove docker build-image)
-	docker image rm lucasgruber/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
+	docker image rm ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
 	make cleanup
 
 .PHONY: start-staging
@@ -60,12 +60,12 @@ build-live: ## Build the live docker image.
 	$(info Remove anything from build)
 	rm ./.env.live.build
 	$(info Tag docker images)
-	docker tag lucasgruber/ariscorp-website:live lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
+	docker tag ariscorp/ariscorp-website:live ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	$(info Publish docker images)
-	docker push lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
-	docker push lucasgruber/ariscorp-website:live
+	docker push ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
+	docker push ariscorp/ariscorp-website:live
 	$(info Remove docker build-image)
-	docker image rm lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
+	docker image rm ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	make cleanup
 
 .PHONY: start-live
