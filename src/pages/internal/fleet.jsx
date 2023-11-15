@@ -110,7 +110,7 @@ export default function InternalIndex ({ apiData, departments, siteTitle }) {
       <div className='w-full h-full'>
         <div className='flex px-2 my-4'>
           <div className='w-1/4'>
-            <Dropdown changeAction={changeDepartment} mode="departments" animate items={departments} state={selectedDepartment} bg={"[#222]"} />
+            <Dropdown changeAction={changeDepartment} mode="departments" withImages animate items={departments} state={selectedDepartment} bg={"[#222]"} />
           </div>
           <div className='ml-auto'>
             <BasicPanelButton animate onClick={() => setDetailView(!detailView)}>

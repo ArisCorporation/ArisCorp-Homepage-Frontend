@@ -27,7 +27,7 @@ const OrgaSection = () => {
         onChange={(event) =>
           (query.about != null && query.about != ''
             ? replace(
-                { query: { about: query.about, our: event } },
+                { query: { about: query.about, our: event, department: query.department } },
                 undefined,
                 { shallow: true }
               )

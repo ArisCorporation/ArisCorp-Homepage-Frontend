@@ -24,7 +24,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
       selectedIndex={activeTab}
       onChange={(event) =>
         (query.our != null && query.our != ''
-          ? replace({ query: { about: event, our: query.our } }, undefined, {
+          ? replace({ query: { about: event, our: query.our, department: query.department } }, undefined, {
               shallow: true,
             })
           : replace({ query: { about: event } }, undefined, {
