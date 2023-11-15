@@ -5,6 +5,6 @@ services:
     build:
       context: ../../
       dockerfile: docker/staging/Dockerfile
-    image: ariscorp-website-staging
+    image: lucasgruber/ariscorp-website:staging
     ports:
       - '3002:3000'
