@@ -5,6 +5,6 @@ services:
     build:
       context: ../../
       dockerfile: docker/ptu/Dockerfile
-    image: ariscorp-website-ptu
+    image: lucasgruber/ariscorp-website:ptu
     ports:
       - '3001:3000'

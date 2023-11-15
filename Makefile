@@ -1,6 +1,19 @@
 .PHONY: build-ptu
 build-ptu: ## Build the ptu docker image.
+	$(info Prepare build)
+	cp ./.env.ptu.sample ./.env.ptu.build
+	@echo $(shell git rev-parse --short HEAD) >> ./.env.ptu.build
+	$(info Start build)
 	docker compose -f docker/ptu/docker-compose.yml build
+	$(info Remove anything from build)
+	rm ./.env.ptu.build
+	$(info Tag docker images)
+	docker tag lucasgruber/ariscorp-website:ptu lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	$(info Publish docker images)
+	docker push lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	docker push lucasgruber/ariscorp-website:ptu
+	$(info Remove docker build-image)
+	docker rmi -f lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
 
 .PHONY: start-ptu
 start-ptu: ## Start the ptu docker container.
