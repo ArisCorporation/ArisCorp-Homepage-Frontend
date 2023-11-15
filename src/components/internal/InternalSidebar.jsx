@@ -792,7 +792,7 @@ export default function Sidebar ({ changes }) {
                   data-tip
                   data-for="SignOutTip"
                 >
-                  <button onClick={() => changes ? (openLeaveModal(null, null, "logout")) : signOut({ callbackUrl: process.env.NEXT_PUBLIC_URL + '/' })} className='cursor-pointer'>
+                  <button onClick={() => changes ? (openLeaveModal(null, null, "logout")) : signOut({ callbackUrl: '/' })} className='cursor-pointer'>
                     <div
                       className={
                         'group-hover:text-[#e2e2e2] text-[#afafaf] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] ' +

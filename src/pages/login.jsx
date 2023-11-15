@@ -60,9 +60,10 @@ export default function InternalLogin({ backgrounds }) {
       email: (email.includes('@') ? email : email + '@ariscorp.de'),
       password: password,
       redirect: true,
-      callbackUrl: process.env.NEXT_PUBLIC_URL + callbackUrl || process.env.NEXT_PUBLIC_URL + '/internal',
+      callbackUrl: callbackUrl || '/internal',
     })
   }
+
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
