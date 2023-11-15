@@ -174,7 +174,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
         marketingCheckbox != (data.member_rollen?.includes("marketing") ? true : false) ||
         adminsitrationCheckbox != (data.member_rollen?.includes("administration") ? true : false) ||
         abteilungsLeiter != data.head_of_department ||
-        selectedDepartment?.id != (abteilungsLeiter ? data.head_department[0] : data.department[0]) ||
+        selectedDepartment?.id != (abteilungsLeiter ? data.head_department[0] : data.department) ||
         sex != data.sex ||
         birthdate != data.birthdate ||
         birthSystem?.id != data.birthSystem?.id ||
@@ -297,7 +297,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
       if (data.head_department) setSelectedDepartment(departments.find(e => e.id == data.head_department[0]))
     } else if (!data.head_of_department) {
       setAbteilungsleiter(false)
-      if (data.department) setSelectedDepartment(departments.find(e => e.id == data.department[0]))
+      if (data.department) setSelectedDepartment(departments.find(e => e.id == data.department))
     }
     setCurrentSystem(data.currentResidenceSystem)
     setCurrentPlace(data.currentResidence)
@@ -438,7 +438,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
       edits.head_department = (selectedDepartment?.id ? [selectedDepartment.id] : null)
     } else if ((edits.head_of_department != null ? (edits.head_of_department == false) : (data.head_of_department == false))) {
       edits.head_department = null
-      edits.department = (selectedDepartment?.id ? [selectedDepartment.id] : null)
+      edits.department = (selectedDepartment?.id ? selectedDepartment.id : null)
     }
     if (roles != data.member_rollen) {
       edits.member_rollen = roles

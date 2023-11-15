@@ -72,7 +72,7 @@ export async function getServerSideProps () {
     const roles = [...obj.member_rollen.sort()]
     const item = {
       ...obj,
-      department: obj.department[0] ? obj.department[0] : null,
+      department: obj.department ? obj.department : null,
       head_department: obj.head_department[0] ? obj.head_department[0] : null,
       member_rollen: roles
     }
@@ -290,7 +290,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       const roles = [...obj.member_rollen.sort()]
       const item = {
         ...obj,
-        department: obj.department[0] ? obj.department[0] : null,
+        department: obj.department ? obj.department : null,
         head_department: obj.head_department[0] ? obj.head_department[0] : null,
         member_rollen: roles
       }
@@ -318,7 +318,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       member_rollen: roles,
       head_of_department: abteilungsLeiter,
       head_department: (abteilungsLeiter && (selectedDepartment ? [selectedDepartment] : [])),
-      department: (!abteilungsLeiter && (selectedDepartment ? [selectedDepartment] : [])),
+      department: (!abteilungsLeiter && (selectedDepartment ? selectedDepartment : null)),
       ueeState: "civilian",
     }
 
@@ -446,7 +446,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       console.log("NEW DEPARTMENT: " + selectedDepartment?.gameplay_name)
 
       edits.head_department = null
-      edits.department = (selectedDepartment?.id ? [selectedDepartment.id] : null)
+      edits.department = (selectedDepartment?.id ? selectedDepartment.id : null)
     }
     if (roles != modalStore.member_rollen) {
       console.log("🧑‍🎨 ---ROLES---")
