@@ -44,7 +44,6 @@ export default function InternalLogin({ backgrounds }) {
   const authorized = sessionStatus === 'authenticated'
 
   authorized ? router.push('/internal') : null
-  console.log(callbackUrl)
 
   // const test = "width: '2643px' height: '1080px' left: '-101px' top: '0px'"
 

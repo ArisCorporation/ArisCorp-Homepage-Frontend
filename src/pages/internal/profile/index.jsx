@@ -1259,7 +1259,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
             </div>
           </div>
         </div>
-        <div className='sticky w-full bottom-20'>
+        <div className='sticky w-full bottom-36 lg:bottom-20'>
           <div className='absolute flex space-x-4 right-4'>
             <XCircleIcon onClick={() => changesMade && openCancelModal()} className={'w-12 h-12 transition duration-200 hover:duration-300 text-red-500/50 hover:text-red-500 ' + (changesMade ? "grayscale-0 cursor-pointer" : "grayscale")} />
             <CheckCircleIcon onClick={() => changesMade && saveMemberEdit()} className={'w-12 h-12 transition duration-200 hover:duration-300 text-green-500/50 hover:text-green-500 ' + (changesMade ? "grayscale-0 cursor-pointer" : "grayscale")} />
