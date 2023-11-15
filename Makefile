@@ -48,29 +48,29 @@ start-staging: ## Start the staging docker container.
 stop-staging: ## Stop the staging docker container.
 	docker compose -f docker/staging/docker-compose.yml down
   
-.PHONY: build-production
-build-production: ## Build the production docker image.
+.PHONY: build-live
+build-live: ## Build the live docker image.
 	$(info Prepare build)
-	cp ./.env.production.sample ./.env.production.build
-	@echo $(shell git rev-parse --short HEAD) >> ./.env.production.build
+	cp ./.env.live.sample ./.env.live.build
+	@echo $(shell git rev-parse --short HEAD) >> ./.env.live.build
 	$(info Start build)
-	docker compose -f docker/production/docker-compose.yml build
+	docker compose -f docker/live/docker-compose.yml build
 	$(info Remove anything from build)
-	rm ./.env.production.build
+	rm ./.env.live.build
 	$(info Tag docker images)
-	docker tag lucasgruber/ariscorp-website:production lucasgruber/ariscorp-website:production-$(shell git rev-parse --short HEAD)
+	docker tag lucasgruber/ariscorp-website:live lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	$(info Publish docker images)
-	docker push lucasgruber/ariscorp-website:production-$(shell git rev-parse --short HEAD)
-	docker push lucasgruber/ariscorp-website:production
+	docker push lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
+	docker push lucasgruber/ariscorp-website:live
 	$(info Remove docker build-image)
-	docker image rm lucasgruber/ariscorp-website:production-$(shell git rev-parse --short HEAD)
+	docker image rm lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 
-.PHONY: start-production
-start-production: ## Start the production docker container.
-	docker compose -f docker/production/docker-compose.yml up -d
+.PHONY: start-live
+start-live: ## Start the live docker container.
+	docker compose -f docker/live/docker-compose.yml up -d
 
-.PHONY: stop-production
-stop-production: ## Stop the production docker container.
-	docker compose -f docker/production/docker-compose.yml down
+.PHONY: stop-live
+stop-live: ## Stop the live docker container.
+	docker compose -f docker/live/docker-compose.yml down
 
 all: docker rmi $(docker images --filter dangling=true -q --no-trunc)

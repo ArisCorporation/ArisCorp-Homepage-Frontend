@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ariscorp-website-live:
+    build:
+      context: ../../
+      dockerfile: docker/live/Dockerfile
+    image: lucasgruber/ariscorp-website:live
+    ports:
+      - '3003:3000'
