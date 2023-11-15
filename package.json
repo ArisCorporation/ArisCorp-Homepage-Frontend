@@ -1,5 +1,6 @@
 {
   "name": "ariscorp-homepage",
+  "version": "2.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
