@@ -1,26 +1,20 @@
 import { useSession } from 'next-auth/react'
 import Layout from "./layout"
-import { gql, useQuery } from '@apollo/client'
 import { GET_GAMEPLAYS, GET_INTERNAL_ADMIN_DATA, GET_MEMBERS, INTERNAL_GET_Ships_MY_HANGAR } from 'graphql/queries'
 import client from 'apollo/clients';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import SelectionGridWrapper from 'components/SelectionGridWrapper';
-import HangarShipCard from 'components/internal/HangarShipCard';
-import { BasicPanel, BasicPanelButton } from 'components/panels';
-import { Dialog, Tab, Transition } from '@headlessui/react';
+import { Fragment, useEffect, useState } from 'react';
+import { BasicPanel } from 'components/panels';
+import { Tab } from '@headlessui/react';
 import Modal from 'components/modal';
-import { MdOutlineModeEditOutline } from 'react-icons/md';
 import MultipleCombobox from 'components/MultipleCombobox';
 import Checkbox from 'components/Checkbox';
 import Dropdown from 'components/Dropdown';
-import { ArrowUpIcon, ArrowUturnLeftIcon, DocumentIcon, GlobeEuropeAfricaIcon, PencilSquareIcon, PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid';
-import { AiOutlinePlus, AiOutlinePlusCircle } from 'react-icons/ai';
-import { FiPlusCircle } from 'react-icons/fi';
+import { ArrowUturnLeftIcon, DocumentIcon, GlobeEuropeAfricaIcon, PencilSquareIcon } from '@heroicons/react/20/solid';
+import { AiOutlinePlus } from 'react-icons/ai';
 import RadioButton from 'components/RadioButton';
-import { BsTrash, BsTrash3 } from 'react-icons/bs';
-import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
+import { BsTrash } from 'react-icons/bs';
+import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
-import { SiDiscover } from 'react-icons/si';
 import DefaultButton from 'components/DefaultButton';
 import { useRouter } from 'next/router';
 
@@ -120,9 +114,6 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       }
     }
   }, [session, authorized, userData, sessionStatus])
-  const [Data, setData] = useState()
-  const [member, setMember] = useState("")
-  const [detailView, setDetailView] = useState()
   const [modal, setModal] = useState(false)
   const [modalType, setModalType] = useState("")
   const [modalStore, setModalStore] = useState()
