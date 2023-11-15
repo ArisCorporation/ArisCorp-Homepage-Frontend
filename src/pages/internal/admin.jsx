@@ -326,7 +326,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       first_name: memberFirstname,
       last_name: memberLastname,
       title: memberTitle,
-      email: (`${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}`: ''}@ariscorp.de`),
+      email: (`${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}` : ''}@ariscorp.de`),
       password: (memberPassword ? memberPassword : `${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}` : ""}`),
       passwordMustChange: (memberPassword ? false : true),
       role: (selectedRole ? selectedRole.id : (abteilungsLeiter ? "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" : "a74700bc-7e32-4597-a1e1-34c6d7674dad")),
@@ -344,7 +344,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     ).then((res) => res.json())
 
     memberObject.account = createdAccount.data.id
-      console.log("memberobj", memberObject)
+    console.log("memberobj", memberObject)
     await fetch(
       "https://cms.ariscorp.de/items/member?access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
       {
@@ -381,7 +381,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
         },
       }
     )
-    
+
     await fetch(
       `https://cms.ariscorp.de/users/${accId}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
       {
@@ -1166,9 +1166,11 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                   <DefaultButton animate danger action={closeModal}>
                     Close
                   </DefaultButton>
-                  <DefaultButton animate agree action={() => setSelectedShip() + setAddMenu(true)}>
-                    Hinzufügen
-                  </DefaultButton>
+                  {!addMenu && (
+                    <DefaultButton animate agree action={() => setSelectedShip() + setAddMenu(true)}>
+                      Hinzufügen
+                    </DefaultButton>
+                  )}
                 </div>
               </div>
             }
