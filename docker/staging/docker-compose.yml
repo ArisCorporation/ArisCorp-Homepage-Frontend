@@ -6,5 +6,6 @@ services:
       context: ../../
       dockerfile: docker/staging/Dockerfile
     image: ariscorp/ariscorp-website:staging
+    platform: linux/amd64
     ports:
       - '3002:3000'

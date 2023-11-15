@@ -60,7 +60,7 @@ export default function InternalLogin({ backgrounds }) {
       email: (email.includes('@') ? email : email + '@ariscorp.de'),
       password: password,
       redirect: true,
-      callbackUrl: callbackUrl || '/',
+      callbackUrl: process.env.NEXT_PUBLIC_URL + callbackUrl || process.env.NEXT_PUBLIC_URL + '/internal',
     })
   }
 
