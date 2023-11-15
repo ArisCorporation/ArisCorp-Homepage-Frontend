@@ -14,6 +14,7 @@ build-ptu: ## Build the ptu docker image.
 	docker push lucasgruber/ariscorp-website:ptu
 	$(info Remove docker build-image)
 	docker image rm lucasgruber/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
+	make cleanup
 
 .PHONY: start-ptu
 start-ptu: ## Start the ptu docker container.
@@ -39,6 +40,7 @@ build-staging: ## Build the staging docker image.
 	docker push lucasgruber/ariscorp-website:staging
 	$(info Remove docker build-image)
 	docker image rm lucasgruber/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
+	make cleanup
 
 .PHONY: start-staging
 start-staging: ## Start the staging docker container.
@@ -64,6 +66,7 @@ build-live: ## Build the live docker image.
 	docker push lucasgruber/ariscorp-website:live
 	$(info Remove docker build-image)
 	docker image rm lucasgruber/ariscorp-website:live-$(shell git rev-parse --short HEAD)
+	make cleanup
 
 .PHONY: start-live
 start-live: ## Start the live docker container.
@@ -73,4 +76,8 @@ start-live: ## Start the live docker container.
 stop-live: ## Stop the live docker container.
 	docker compose -f docker/live/docker-compose.yml down
 
-all: docker rmi $(docker images --filter dangling=true -q --no-trunc)
+.PHONY: cleanup
+cleanup:
+	$(info Cleaning everything up)
+	docker rm $(shell docker stop $(shell docker ps -a --filter ancestor=moby/buildkit:buildx-stable-1 --format="{{.ID}}"))
+	docker rmi $(shell docker images --filter dangling=true -q --no-trunc)
