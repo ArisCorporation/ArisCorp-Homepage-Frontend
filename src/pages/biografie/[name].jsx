@@ -20,11 +20,11 @@ import { MdKeyboardArrowRight } from 'react-icons/md'
 import HangarShipDetailCard from 'components/internal/HangarShipCard'
 
 export async function getServerSideProps (context) {
-  const { name } = context.query
+  const { name: slug } = context.query
 
   let { data } = await client.query({
     query: GET_MEMBER,
-    variables: { name },
+    variables: { slug },
   })
 
   if (!data) {
@@ -56,12 +56,15 @@ export async function getServerSideProps (context) {
   })
 
   data = data.member[0]
-
-  const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
+  const name = `${data.firstname} ${data.lastname}`
+  const fullName = `${data.title} ${data.firstname} ${data.lastname}`
+  const siteTitle = data.fullName + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
       data,
+      name,
+      fullName,
       weapons,
       ships,
       siteTitle
@@ -69,7 +72,7 @@ export async function getServerSideProps (context) {
   }
 }
 
-export default function Biografie ({ data, weapons, ships, siteTitle }) {
+export default function Biografie ({ data, name, fullName, weapons, ships, siteTitle }) {
   const shareUrl = "https://ariscorp.de/biografie/" + data.slug
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
@@ -98,7 +101,6 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
   if (data.head_of_department) {
     roles.push('Abteilungsleiter')
   }
-  console.log(data)
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -135,7 +137,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
-            <span className="text-secondary">Member</span>{' '}{data.member_titel}
+            <span className="text-secondary">Member</span>{' '}{fullName}
           </h1>
           <h3 className="mb-0 uppercase">
             <span className="text-white/25">Rollen: </span>
@@ -183,11 +185,11 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Bürgerlicher Name:</p>
-                    <p className='p-0 text-primary'>{data.member_name ? data.member_name : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{name}</p>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Titel:</p>
-                    <p className='p-0 text-primary'>{data.member_titel ? data.member_titel : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.title ? data.title : 'N/A'}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
@@ -595,7 +597,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
               {({ open }) => (
                 <>
                   <Disclosure.Button className="block py-2">
-                    <h1>Schiffe von <span className="text-primary">{data.member_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
+                    <h1>Schiffe von <span className="text-primary">{fullName}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
                   </Disclosure.Button>
                   <Transition
                     enter="transition ease duration-500 transform"
@@ -622,7 +624,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
               {({ open }) => (
                 <>
                   <Disclosure.Button className="block py-2">
-                    <h1 className=''>Lieblingswaffen von <span className="text-primary">{data.member_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
+                    <h1 className=''>Lieblingswaffen von <span className="text-primary">{fullName}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
                   </Disclosure.Button>
                   <Transition
                     enter="transition ease duration-500 transform"

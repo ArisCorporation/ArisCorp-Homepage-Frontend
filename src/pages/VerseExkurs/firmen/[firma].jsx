@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
     variables: { firma },
   })
 
-  if (!data) {
+  if (!data.firmen_name) {
     return {
       notFound: true,
     }
@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
 
   let attachments = null
   data = data.firmen[0]
-  if (data.ships[0]) {
+  if (data?.ships[0]) {
     data.ships = data.ships.sort((a, b) => a.name.localeCompare(b.name))
   }
   if (data.weapons[0]) {

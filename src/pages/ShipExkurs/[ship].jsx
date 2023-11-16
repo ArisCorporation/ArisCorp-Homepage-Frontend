@@ -672,7 +672,7 @@ export default function ShipPage({
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-primary' : 'opacity-50') +
-                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                    ' focus-visible:outline-none p-3 m-1 outline-none transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
@@ -684,7 +684,7 @@ export default function ShipPage({
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-primary' : 'opacity-50') +
-                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                    ' focus-visible:outline-none p-3 m-1 outline-none transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
@@ -696,7 +696,7 @@ export default function ShipPage({
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-primary' : 'opacity-50') +
-                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                    ' focus-visible:outline-none p-3 m-1 outline-none transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
@@ -708,7 +708,7 @@ export default function ShipPage({
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-primary' : 'opacity-50') +
-                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                    ' focus-visible:outline-none p-3 m-1 outline-none transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">
@@ -720,7 +720,7 @@ export default function ShipPage({
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-primary' : 'opacity-50') +
-                    ' p-3 m-1 outline-none transition-all duration-300 ease-in-out'
+                    ' focus-visible:outline-none p-3 m-1 outline-none transition-all duration-300 ease-in-out'
                   }
                 >
                   <h1 className="text-base font-normal uppercase font-base lg:text-xl xl:text-2xl text-inherit">

@@ -143,12 +143,13 @@ export const GET_MEMBERS = gql`
 `
 
 export const GET_MEMBER = gql`
-  query GetMember($name: String!) {
-    member(filter: { slug: { _eq: $name } }, sort: ["sort", "member_name"]) {
+  query GetMember($slug: String!) {
+    member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
       id
       status
-      member_name
-      member_titel
+      firstname
+      lastname
+      title
       slug
       member_potrait {
         id
@@ -206,7 +207,7 @@ export const GET_MEMBER = gql`
       member_biografie
       member_steckbrief
     }
-    member_ships(filter: { member_id: { slug: { _eq: $name } } }) {
+    member_ships(filter: { member_id: { slug: { _eq: $slug } } }) {
       id
       member_id {
         firstname
@@ -250,7 +251,7 @@ export const GET_MEMBER = gql`
         }
       }
     }
-    member_technologien(filter: { member_id: { slug: { _eq: $name } } }) {
+    member_technologien(filter: { member_id: { slug: { _eq: $slug } } }) {
       technologien_id {
         id
         waffen_name
