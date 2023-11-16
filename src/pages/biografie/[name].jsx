@@ -37,7 +37,7 @@ export async function getServerSideProps (context) {
   data.member_technologien.sort((a, b) => a.technologien_id.waffen_name.localeCompare(b.technologien_id.waffen_name)).forEach((obj) => {
     weapons.push(obj.technologien_id)
   })
-  
+
   const ships = []
   data.member_ships.sort((a, b) => a.ships_id.name.localeCompare(b.ships_id.name)).forEach((obj) => {
     const item = {
@@ -86,22 +86,19 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
   }
 
   const roles = []
-  data.member_rollen.forEach((obj) => {
-    if (obj == 'member') {
-      roles.push('Mitglied')
-    } else if (obj == 'recruitment') {
+  data.roles.forEach((obj) => {
+    if (obj == 'recruitment') {
       roles.push('Rekrutierung')
     } else if (obj == 'marketing') {
       roles.push('Marketing & Presse')
-    } else if (obj == 'administration') {
-      roles.push('Verwaltung')
+    } else if (obj == 'content_writer') {
+      roles.push('Inhaltsersteller')
     }
   })
   if (data.head_of_department) {
     roles.push('Abteilungsleiter')
   }
-
-  console.log(ships)
+  console.log(data)
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -554,6 +551,17 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
                     <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
                   </div>
                 )}
+                <div className='grid grid-cols-2 uppercase'>
+                  <div className="col-span-2">
+                    <p className='pb-0 text-sm'>Position:</p>
+                    <p className='p-0 text-primary'>{
+                      data.position_level == "candidate" ? "Anwärter" :
+                        data.position_level == "freelancer" ? "Freier Mitarbeiter" :
+                          data.position_level == "employee" ? "Mitarbeiter" :
+                            data.position_level == "administration" ? "Verwaltung" : "N/A"
+                    }</p>
+                  </div>
+                </div>
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-2">
                     <p className='pb-0 text-sm'>Rollen innerhalb der ArisCorp:</p>

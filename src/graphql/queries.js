@@ -132,7 +132,8 @@ export const GET_MEMBERS = gql`
       member_name
       slug
       member_titel
-      member_rollen
+      roles
+      position_level
       head_of_department
       member_potrait {
         id
@@ -153,7 +154,8 @@ export const GET_MEMBER = gql`
         id
       }
       sex
-      member_rollen
+      roles
+      position_level
       head_of_department
       head_department {
         gameplay_name
