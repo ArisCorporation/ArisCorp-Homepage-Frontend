@@ -544,7 +544,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
               </div>
               <div className='col-span-1 1.5xl:col-span-3'>
                 {data.head_of_department ? (
-                  <div classNamex="col-span-1">
+                  <div className="col-span-1">
                     <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
                     <p className='p-0 text-primary'>{data.head_department[0].gameplay_name ? data.head_department[0].gameplay_name : 'N/A'}</p>
                   </div>
