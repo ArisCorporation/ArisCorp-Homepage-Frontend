@@ -472,7 +472,7 @@ export default function Sidebar ({ changes }) {
                   </a>
                 </Link>
               </li>
-              {sessionData?.user.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || sessionData?.user.role == "6d6f549e-5650-4de9-b12a-06dac9d113a6" ? (
+              {sessionData?.user.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || sessionData?.user.position == "administration" ? (
                 <li
                   className="p-0 m-0 list-none group"
                   data-tip

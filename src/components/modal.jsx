@@ -3,13 +3,13 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-export default function Modal ({ state, setState, closeFunction, title, subtitle, children, closeButton, customButton }) {
+export default function Modal ({ state, setState, closeFunction, title, subtitle, children, closeButton, customButton, z }) {
   function closeModal () {
     setState(false)
   }
   return (
     <Transition appear show={state} as={Fragment}>
-      <Dialog as="div" className="relative z-[99]" onClose={closeFunction || closeModal}>
+      <Dialog as="div" className={`relative z-[${z ? z : '99'}]`} onClose={closeFunction || closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"

@@ -33,7 +33,7 @@ const options = {
           },
         })
         const userTokens = await userTokensRes.json()
-        const userDetailsRes = await fetch('https://cms.ariscorp.de/users/me', {
+        const userDetailsRes = await fetch('https://cms.ariscorp.de/users/me?fields=*,charaktere.position_level', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -56,6 +56,7 @@ const options = {
           email: userDetails.data.email,
           firstName: userDetails.data.first_name,
           lastName: userDetails.data.last_name,
+          position: userDetails.data.charaktere[0].position_level,
           role: userDetails.data.role,
           accessToken: userTokens.data.access_token,
           refreshToken: userTokens.data.refresh_token,

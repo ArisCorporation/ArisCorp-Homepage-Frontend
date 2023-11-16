@@ -17,6 +17,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Head from 'next/head';
 import DefaultButton from 'components/DefaultButton';
 import { useRouter } from 'next/router';
+import { Cropper } from 'react-cropper';
 
 function slugify (str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -105,17 +106,20 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   }
   useEffect(() => {
     if (authorized == true && session.user.id) {
-      if (session.user.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || session.user.role == "6d6f549e-5650-4de9-b12a-06dac9d113a6") {
+      if (session.user.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || session.user.position == "administration") {
         return
-      } else if (session.user.role != "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || session.user.role != "6d6f549e-5650-4de9-b12a-06dac9d113a6") {
+      } else if (session.user.role != "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || session.user.position != "administration") {
         push({
           pathname: '/internal'
         });
       }
     }
   }, [session, authorized, userData, sessionStatus])
+
   const [modal, setModal] = useState(false)
+  const [secondModal, setSecondModal] = useState(false)
   const [modalType, setModalType] = useState("")
+  const [secondModalType, setSecondModalType] = useState("")
   const [modalStore, setModalStore] = useState()
   const [memberFirstname, setMemberFirstname] = useState()
   const [memberLastname, setMemberLastname] = useState()
@@ -140,6 +144,9 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   const [selectedGroup, setSelectedGroup] = useState("ariscorp")
   const [selectedVisibility, setSelectedVisibility] = useState("ariscorp")
   const [addMenu, setAddMenu] = useState()
+  const [avatarFile, setAvatarFile] = useState()
+  const [cropper, setCropper] = useState()
+  const [rawAvatarUrl, setRawAvatarUrl] = useState("")
 
   const tabs = [
     {
@@ -265,6 +272,28 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     }
   }, [tabquery])
 
+  const handleAvatarUpload = (e) => {
+    if (e.target.files) {
+      setRawAvatarUrl(URL.createObjectURL(e.target.files[0]));
+      setSecondModal(true)
+      setSecondModalType("editAvatar")
+    }
+  };
+
+  const handleAvatarSave = async () => {
+    if (cropper) {
+      const file = await fetch(cropper.getCroppedCanvas().toDataURL())
+        .then((res) => res.blob())
+        .then((blob) => {
+          return new File([blob], (memberFirstname + "-" + memberLastname + "-avatar" + ".png"), { type: "image/png" });
+        });
+      if (file) {
+        setAvatarFile(file)
+      }
+    }
+    closeSecondModal()
+  }
+
 
   const updateMembers = async () => {
     let rawData = await fetch(
@@ -355,8 +384,26 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     if (edits.title) accountEdits.title = edits.title
     if (edits.firstname || edits.lastname) accountEdits.email = (`${slugify_dot(edits.firstname || slugify_dot(memberFirstname))}.${edits.lastname || slugify_dot(memberLastname)}@ariscorp.de`)
     if (edits.account?.role || edits.head_of_department) accountEdits.role = (edits.account.role ? edits.account.role : (edits.head_of_department == true || (edits.head_of_department == null && abteilungsLeiter == true) ? "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" : "a74700bc-7e32-4597-a1e1-34c6d7674dad"))
-    if (passwordReset == true || (edits.account.password != null && edits.account.password != "undefined")) {
+    if (passwordReset == true || (edits.account.password != null && edits.account.password != "")) {
       accountEdits.password = (passwordReset ? (`${slugify_dot(memberFirstname)}.${slugify_dot(memberLastname)}`) : edits.account.password ? edits.account.password : "")
+    }
+
+    if (avatarFile) {
+      const formData = new FormData();
+      formData.append("name", `${memberFirstname}-${memberLastname}-Avatar`);
+      formData.append("folder", "8658f40d-77d9-44c4-8f0d-af820855a3bc");
+      formData.append("file", avatarFile);
+
+      let resdata = await fetch(
+        "https://cms.ariscorp.de/files?access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
+        {
+          method: "POST",
+          body: formData
+        }
+      ).then((res) => res.json());
+
+      edits.member_potrait = resdata.data.id
+      accountEdits.avatar = resdata.data.id
     }
 
     delete edits.account
@@ -463,7 +510,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
 
       edits.account.passwordReset = passwordReset
     }
-    if (memberPassword != null && passwordReset != true) {
+    if (memberPassword != null && memberPassword != "" && passwordReset != true) {
       console.log("🔐 ---PASSWORD---")
       console.log("OLD PASSWORD: *********")
       console.log("NEW PASSWORD: *********")
@@ -682,9 +729,14 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       setSelectedShips([])
     }, 600);
   }
+  function closeSecondModal () {
+    setSecondModal(false)
+    setTimeout(() => {
+      setSecondModalType("")
+    }, 600);
+  }
 
-  console.log(modalStore)
-
+  // z-[100] z-[1] z-[99]
   return (
     <Layout>
       <motion.div
@@ -701,6 +753,48 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
           <meta name="title" content={siteTitle} />
         </Head>
         <Modal
+          state={secondModal}
+          setState={setSecondModal}
+          title={
+            secondModalType == 'editAvatar' && 'Avatar anpassen:'
+          }
+          closeFunction={closeModal}
+          z={100}
+        >
+          <div className='mb-2'>
+            {secondModalType == 'editAvatar' &&
+              <div className='px-8'>
+                <div>
+                  <div className='flex justify-center overflow-hidden'>
+                    <BasicPanel classes={"overflow-hidden"}>
+                      <Cropper
+                        src={rawAvatarUrl}
+                        style={{ height: 320, width: 270, overflow: "hidden" }}
+                        minCropBoxHeight={320}
+                        minCropBoxWidth={270}
+                        guides={true}
+                        checkOrientation={false}
+                        dragMode='move'
+                        onInitialized={(instance) => {
+                          setCropper(instance);
+                        }}
+                      />
+                    </BasicPanel>
+                  </div>
+                </div>
+                <div className='w-full mt-8 space-x-12'>
+                  <DefaultButton animate danger action={() => closeSecondModal()}>
+                    Schließen!
+                  </DefaultButton>
+                  <DefaultButton animate agree action={handleAvatarSave}>
+                    Speichern!
+                  </DefaultButton>
+                </div>
+              </div>
+            }
+          </div>
+        </Modal>
+        <Modal
           state={modal}
           setState={setModal}
           title={
@@ -713,7 +807,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
           subtitle={
             modalType == 'editHangar' && `${(modalStore?.title ? modalStore?.title : '')} ${modalStore?.firstname} ${modalStore?.lastname}`
           }
-          closeFunction={closeModal}
+          closeFunction={() => secondModal ? null : closeModal()}
         >
           <div className='mb-2'>
             {modalType == 'addMember' &&
@@ -880,7 +974,7 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
                   </div>
-                  <div className='flex justify-between space-x-4'>
+                  <div className='flex justify-between mb-3 space-x-4'>
                     <label className='my-auto text-xl'>Nachname:</label>
                     <div className='max-w-[230px]'>
                       <input
@@ -888,6 +982,16 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                         onChange={(e) => setMemberLastname(e.target.value)}
                         placeholder="Roberts"
                         className="form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
+                    </div>
+                  </div>
+                  <div className='flex justify-between space-x-4'>
+                    <label className='my-auto text-xl'>Avatar:</label>
+                    <div className='max-w-[230px]'>
+                      <input
+                        onChange={handleAvatarUpload}
+                        type='file'
+                        accept='image/png, image/jpeg, image/webp'
+                        className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
                     </div>
                   </div>
                 </div>

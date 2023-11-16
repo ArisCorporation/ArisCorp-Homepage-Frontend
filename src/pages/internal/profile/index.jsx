@@ -360,7 +360,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     if (edits.title) accountEdits.title = edits.title
     if (edits.firstname || edits.lastname) accountEdits.email = (`${slugify_dot(edits.firstname || slugify_dot(firstname))}.${edits.lastname || slugify_dot(lastname)}@ariscorp.de`)
     if (edits.account?.role || edits.head_of_department) accountEdits.role = (edits.account.role ? edits.account.role : (edits.head_of_department == true || (edits.head_of_department == null && abteilungsLeiter == true) ? "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" : "a74700bc-7e32-4597-a1e1-34c6d7674dad"))
-    if (edits.account.password != null && edits.account.password != "undefined") {
+    if (edits.account.password != null && edits.account.password != "") {
       accountEdits.password = edits.account.password ? edits.account.password : null
     }
 
@@ -438,7 +438,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
     if (roles != data.member_rollen) {
       edits.member_rollen = roles
     }
-    if (password != null) {
+    if (password != null && password != "") {
       edits.account.password = password
     }
     if (currentSystem?.id != data.currentResidenceSystem?.id) {
