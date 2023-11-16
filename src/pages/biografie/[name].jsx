@@ -570,7 +570,6 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                     <p className='p-0 text-primary'>{roles[0] ? roles.sort().join(', ') : 'N/A'}</p>
                   </div>
                 </div>
-                ) : null}
               </div>
             </div>
           </BasicPanel>
