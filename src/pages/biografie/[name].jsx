@@ -17,6 +17,7 @@ import ShipCard from 'components/ShipExkurs/ShipCard'
 import WeaponCard from 'components/WeaponCard'
 import { Disclosure, Transition } from '@headlessui/react'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+import HangarShipDetailCard from 'components/internal/HangarShipCard'
 
 export async function getServerSideProps (context) {
   const { name } = context.query
@@ -30,16 +31,28 @@ export async function getServerSideProps (context) {
     return {
       notFound: true,
     }
-
   }
 
   const weapons = []
-  data.member_technologien.forEach((obj) => {
+  data.member_technologien.sort((a, b) => a.technologien_id.waffen_name.localeCompare(b.technologien_id.waffen_name)).forEach((obj) => {
     weapons.push(obj.technologien_id)
   })
+  
   const ships = []
-  data.member_ships.forEach((obj) => {
-    ships.push(obj.ships_id)
+  data.member_ships.sort((a, b) => a.ships_id.name.localeCompare(b.ships_id.name)).forEach((obj) => {
+    const item = {
+      id: obj.id,
+      ship: obj.ships_id,
+      member: obj.member_id,
+      custom_data: {
+        name: obj.name,
+        serial: obj.serial,
+        group: obj.group,
+        visibility: obj.visibility,
+        department: obj.department
+      }
+    }
+    ships.push(item)
   })
 
   data = data.member[0]
@@ -88,7 +101,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
     roles.push('Abteilungsleiter')
   }
 
-  console.log(roles);
+  console.log(ships)
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -531,7 +544,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
               </div>
               <div className='col-span-1 1.5xl:col-span-3'>
                 {data.head_of_department ? (
-                  <div className="col-span-1">
+                  <div classNamex="col-span-1">
                     <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
                     <p className='p-0 text-primary'>{data.head_department[0].gameplay_name ? data.head_department[0].gameplay_name : 'N/A'}</p>
                   </div>
@@ -587,7 +600,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
                     <Disclosure.Panel>
                       <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
                         {ships.map((object, index) => (
-                          <ShipCard key={object.id} data={object} manufacturer={data} />
+                          <HangarShipDetailCard key={object.id} data={object} />
                         ))}
                       </div>
                     </Disclosure.Panel>
@@ -596,7 +609,7 @@ export default function Biografie ({ data, weapons, ships, siteTitle }) {
               )}
             </Disclosure>
           ) : null}
-          {weapons ? (
+          {weapons[0] ? (
             <Disclosure>
               {({ open }) => (
                 <>

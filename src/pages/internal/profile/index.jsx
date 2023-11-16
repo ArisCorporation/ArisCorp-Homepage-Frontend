@@ -1246,13 +1246,73 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     plugins: [
                       'a11ychecker', 'advlist', 'advcode', 'advtable', 'autolink', 'checklist', 'export',
                       'lists', 'link', 'image', 'charmap', 'preview', 'anchor', 'searchreplace', 'visualblocks',
-                      'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'wordcount'
+                      'powerpaste', 'fullscreen', 'formatpainter', 'insertdatetime', 'media', 'table', 'help', 'ariscorpElements'
                     ],
                     toolbar: 'undo redo | casechange blocks | bold italic backcolor | ' +
                       'alignleft aligncenter alignright alignjustify | ' +
-                      'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help',
+                      'bullist numlist checklist outdent indent | removeformat | a11ycheck code table help | ariscorpElements',
                     content_style: 'body { font-family:nasalization, sans-serif; font-size:14px; color: #f0f6fc; }',
                     skin: "ArisCorp",
+                    block_formats: 'Paragraph=p; Heading 2=h2; Heading 3=h3; Heading 4=h4; Heading 5=h5; Heading 6=h6',
+                    verify_html: false,
+                    extended_valid_elements: "basicpanel",
+                    custom_elements: "basicpanel",
+                    valid_children: "+basicpanel[div]",
+                    setup: (editor) => {
+                      /* Menu items are recreated when the menu is closed and opened, so we need
+                         a variable to store the toggle menu item state. */
+                      let toggleState = false;
+
+                      /* example, adding a toolbar menu button */
+                      editor.ui.registry.addMenuButton('ariscorpElements', {
+                        text: 'ArisCorp-Elemente',
+                        fetch: (callback) => {
+                          const items = [
+                            {
+                              type: 'menuitem',
+                              text: 'Menu item 1',
+                              onAction: () => editor.insertContent('<basicpanel test="test"><div>test</div></basicpanel>')
+                              // onClick: function() {
+                              //   editor.insertContent('<div component="test">EM Start</div>');
+                              // }
+                            },
+                            {
+                              type: 'nestedmenuitem',
+                              text: 'Menu item 2',
+                              icon: 'user',
+                              getSubmenuItems: () => [
+                                {
+                                  type: 'menuitem',
+                                  text: 'Sub menu item 1',
+                                  icon: 'unlock',
+                                  onAction: () => editor.insertContent('&nbsp;<em>You clicked Sub menu item 1!</em>')
+                                },
+                                {
+                                  type: 'menuitem',
+                                  text: 'Sub menu item 2',
+                                  icon: 'lock',
+                                  onAction: () => editor.insertContent('&nbsp;<em>You clicked Sub menu item 2!</em>')
+                                }
+                              ]
+                            },
+                            {
+                              type: 'togglemenuitem',
+                              text: 'Toggle menu item',
+                              onAction: () => {
+                                toggleState = !toggleState;
+                                editor.insertContent('&nbsp;<em>You toggled a menuitem ' + (toggleState ? 'on' : 'off') + '</em>');
+                              },
+                              onSetup: (api) => {
+                                api.setActive(toggleState);
+                                return () => { };
+                              }
+                            }
+                          ];
+                          callback(items);
+                        }
+                      });
+
+                    },
                   }}
                 />
               </div>

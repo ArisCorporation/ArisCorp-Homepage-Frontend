@@ -204,22 +204,51 @@ export const GET_MEMBER = gql`
       member_biografie
       member_steckbrief
     }
-    member_ships {
+    member_ships(filter: { member_id: { slug: { _eq: $name } } }) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
       ships_id {
+        id
         name
         slug
+        productionStatus
         storeImage {
           id
         }
         manufacturer {
           firmen_name
-          firmen_trans_logo {
-            id
-          }
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
         }
       }
     }
-    member_technologien {
+    member_technologien(filter: { member_id: { slug: { _eq: $name } } }) {
       technologien_id {
         id
         waffen_name
