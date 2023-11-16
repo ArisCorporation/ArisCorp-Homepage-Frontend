@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { SquareLoader } from 'react-spinners'
 import SelectionGridWrapper from './SelectionGridWrapper'
 import { motion, AnimatePresence } from 'framer-motion'
-import { GET_GAMEPLAYS, INTERNAL_GET_FLEET } from 'graphql/queries'
+import { GET_GAMEPLAYS, GET_FLEET } from 'graphql/queries'
 import { useQuery } from '@apollo/client'
 import HangarShipDetailCard from './internal/HangarShipCard'
 import { BasicPanelButton } from './panels'
@@ -12,7 +12,7 @@ import { useRouter } from 'next/router'
 export default function OurFleet () {
   const { replace, query } = useRouter()
   const { data: rawGameplayData } = useQuery(GET_GAMEPLAYS)
-  const { data: rawData, loading, error } = useQuery(INTERNAL_GET_FLEET)
+  const { data: rawData, loading, error } = useQuery(GET_FLEET)
   const [detailView, setDetailView] = useState()
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [departments, setDepartments] = useState([])

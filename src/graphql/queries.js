@@ -342,6 +342,59 @@ export const GET_GAMEPLAYS = gql`
   }
 `
 
+export const GET_FLEET = gql`
+  query GetFleet {
+    member_ships(
+      filter: { group: { _neq: "private" }, visibility: { _eq: "public" } }
+      sort: ["ships_id.name"]
+      limit: -1
+    ) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+    }
+  }
+`
+
 // COMM-LINK QUERYS
 export const GET_COMM_LINKS = gql`
   query GetCommLinks($queryChannel: String!, $squery: String = "") {
