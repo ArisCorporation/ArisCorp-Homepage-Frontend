@@ -25,7 +25,7 @@ const tickVariants = {
   },
 };
 
-export default function RadioButton ({ children, id, state, setState, color, bg, value, name }) {
+export default function RadioButton ({ children, id, state, setState, color, bg, value, name, disabled }) {
   // const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -38,7 +38,8 @@ export default function RadioButton ({ children, id, state, setState, color, bg,
           color,
           bg,
           value,
-          name
+          name,
+          disabled
         }}
       >
         {children}
@@ -48,7 +49,7 @@ export default function RadioButton ({ children, id, state, setState, color, bg,
 }
 
 function RadioButtonIndicator () {
-  const { id, state, setState, color, bg, value, name } = useContext(RadioButtonContext);
+  const { id, state, setState, color, bg, value, name, disabled } = useContext(RadioButtonContext);
 
   return (
     <button className="relative flex items-center">
@@ -59,6 +60,7 @@ function RadioButtonIndicator () {
         value={value}
         checked={state == value}
         id={id}
+        disabled={disabled}
       />
       <div className={'absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none left-1/2 top-1/2 ' + (color ? `text-${color}` : 'text-white')}>
         <motion.svg
