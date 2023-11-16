@@ -63,12 +63,12 @@ export async function getServerSideProps () {
 
   const memberData = []
   rawData.member.map((obj) => {
-    const roles = [...obj.member_rollen.sort()]
+    const roles = [...obj.roles.sort()]
     const item = {
       ...obj,
       department: obj.department ? obj.department : null,
       head_department: obj.head_department[0] ? obj.head_department[0] : null,
-      member_rollen: roles
+      roles: roles
     }
 
     memberData.push(item)
@@ -122,12 +122,11 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   const [memberTitle, setMemberTitle] = useState()
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [selectedStatus, setSelectedStatus] = useState()
-  const [selectedRole, setSelectedRole] = useState()
+  const [selectedPosition, setSelectedPosition] = useState()
   const [abteilungsLeiter, setAbteilungsleiter] = useState()
-  const [memberCheckbox, setMemberCheckbox] = useState()
+  const [contentCheckbox, setContentCheckbox] = useState()
   const [recruitingCheckbox, setRecruitingCheckbox] = useState()
   const [marketingCheckbox, setMarketingCheckbox] = useState()
-  const [adminsitrationCheckbox, setAdministrationCheckbox] = useState()
   const [passwordReset, setPasswordReset] = useState()
   const [memberPassword, setMemberPassword] = useState()
   const [memberList, setMemberList] = useState(memberApiList)
@@ -239,22 +238,22 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     },
   ]
 
-  const roles = [
+  const position_levels = [
     {
-      id: "a74700bc-7e32-4597-a1e1-34c6d7674dad",
-      name: "Mitglied"
+      id: 1,
+      name: "Anwärter"
     },
     {
-      id: "4421bd05-d49f-4abe-a92e-9c0fb606e6f0",
-      name: "Content Writer"
+      id: 2,
+      name: "Freier Mitarbeiter"
     },
     {
-      id: "6d6f549e-5650-4de9-b12a-06dac9d113a6",
+      id: 3,
+      name: "Mitarbeiter"
+    },
+    {
+      id: 3,
       name: "Verwaltung"
-    },
-    {
-      id: "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb",
-      name: "Administrator"
     }
   ]
 
@@ -271,19 +270,19 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     let rawData = await fetch(
       // "https://cms.ariscorp.de/items/member_ships?fields=*.*&filter[member_id]=" + session.user.id,
       // "https://cms.ariscorp.de/items/member?fields=*,member_potrait.id,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,account.id,account.role&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
-      "https://cms.ariscorp.de/items/member?fields=id,status,firstname,lastname,slug,title,account.id,account.role,member_potrait.id,member_rollen,head_of_department,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,ships.id,ships.name,ships.serial,ships.group,ships.visibility,ships.department.gameplay_name,ships.department.gameplay_logo.id,ships.ships_id.id,ships.ships_id.name,ships.ships_id.slug,ships.ships_id.storeImage.id,ships.ships_id.manufacturer.firmen_name&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
+      "https://cms.ariscorp.de/items/member?fields=id,status,firstname,lastname,slug,title,account.id,account.role,member_potrait.id,roles,position_level,head_of_department,head_department.id,head_department.gameplay_name,department.id,department.gameplay_name,ships.id,ships.name,ships.serial,ships.group,ships.visibility,ships.department.gameplay_name,ships.department.gameplay_logo.id,ships.ships_id.id,ships.ships_id.name,ships.ships_id.slug,ships.ships_id.storeImage.id,ships.ships_id.manufacturer.firmen_name&filter[status][_neq]=archived&sort=firstname&access_token=" + process.env.NEXT_PUBLIC_CMS_TOKEN,
       {
         method: "GET"
       }
     ).then((res) => res.json());
     const data = []
     rawData.data.map((obj) => {
-      const roles = [...obj.member_rollen.sort()]
+      const roles = [...obj.roles.sort()]
       const item = {
         ...obj,
         department: obj.department ? obj.department : null,
         head_department: obj.head_department[0] ? obj.head_department[0] : null,
-        member_rollen: roles
+        roles
       }
       data.push(item)
     })
@@ -295,9 +294,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
 
   const addMember = async () => {
     const roles = []
-    if (adminsitrationCheckbox) roles.push("administration")
     if (marketingCheckbox) roles.push("marketing")
-    if (memberCheckbox) roles.push("member")
+    if (contentCheckbox) roles.push("content_writer")
     if (recruitingCheckbox) roles.push("recruitment")
 
     const memberObject = {
@@ -306,7 +304,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       lastname: memberLastname,
       title: memberTitle,
       slug: slugify(memberFirstname + (memberLastname ? (" " + memberLastname) : "")),
-      member_rollen: roles,
+      roles: roles,
+      position_level: selectedPosition,
       head_of_department: abteilungsLeiter,
       head_department: (abteilungsLeiter && (selectedDepartment ? [selectedDepartment] : [])),
       department: (!abteilungsLeiter && (selectedDepartment ? selectedDepartment : null)),
@@ -320,7 +319,6 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       email: (`${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}` : ''}@ariscorp.de`),
       password: (memberPassword ? memberPassword : `${slugify_dot(memberFirstname)}${memberLastname ? `.${slugify_dot(memberLastname)}` : ""}`),
       passwordMustChange: (memberPassword ? false : true),
-      role: (selectedRole ? selectedRole.id : (abteilungsLeiter ? "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" : "a74700bc-7e32-4597-a1e1-34c6d7674dad")),
     }
 
     const createdAccount = await fetch(
@@ -388,10 +386,9 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
   async function saveMemberEdit () {
     console.log(`📝 ------MEMBER EDIT - ${modalStore.title ? modalStore.title : ''} ${modalStore.firstname} ${modalStore.lastname}------`)
     const roles = []
-    if (adminsitrationCheckbox) roles.push("administration")
     if (marketingCheckbox) roles.push("marketing")
-    if (memberCheckbox) roles.push("member")
     if (recruitingCheckbox) roles.push("recruitment")
+    if (contentCheckbox) roles.push("content_writer")
 
     const edits = {
       account: {}
@@ -439,20 +436,19 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       edits.head_department = null
       edits.department = (selectedDepartment?.id ? selectedDepartment.id : null)
     }
-    if (roles != modalStore.member_rollen) {
+    if (roles != modalStore.roles) {
       console.log("🧑‍🎨 ---ROLES---")
-      console.log("OLD ROLES: " + modalStore.member_rollen)
+      console.log("OLD ROLES: " + modalStore.roles)
       console.log("NEW ROLES: " + roles)
 
-      edits.member_rollen = roles
+      edits.roles = roles
     }
-    console.log("modalStore.account?.role", modalStore.account?.role)
-    if (selectedRole != modalStore.account?.role) {
+    if (selectedPosition != modalStore.position_level) {
       console.log("🕵️ ---ACCOUNT ROLE---")
-      console.log("OLD ACCOUNT ROLE: " + modalStore.account.role)
-      console.log("NEW ACCOUNT ROLE: " + selectedRole)
+      console.log("OLD POSITION LEVEL: " + modalStore.position_level)
+      console.log("NEW POSITION LEVEL: " + selectedPosition)
 
-      edits.account.role = selectedRole.id
+      edits.position_level = selectedPosition
     }
     if (selectedStatus != modalStore.status) {
       console.log("🔖 ---STATUS---")
@@ -525,11 +521,10 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
     setAbteilungsleiter(obj.head_of_department)
     setSelectedDepartment(obj.head_of_department ? (departments.find(e => e.id == obj.head_department?.id)) : (departments.find(e => e.id == obj.department?.id)))
     setSelectedStatus(obj.status)
-    if (obj.member_rollen.find(e => e == "member")) setMemberCheckbox(true)
-    if (obj.member_rollen.find(e => e == "recruitment")) setRecruitingCheckbox(true)
-    if (obj.member_rollen.find(e => e == "marketing")) setMarketingCheckbox(true)
-    if (obj.member_rollen.find(e => e == "administration")) setAdministrationCheckbox(true)
-    setSelectedRole(roles.find(e => e.id == obj.account.role))
+    if (obj.roles.find(e => e == "recruitment")) setRecruitingCheckbox(true)
+    if (obj.roles.find(e => e == "marketing")) setMarketingCheckbox(true)
+    if (obj.roles.find(e => e == "content_writer")) setContentCheckbox(true)
+    setSelectedPosition(position_levels.find(e => e.id == obj.position_level))
 
     setModal(true)
   }
@@ -669,13 +664,12 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       setMemberLastname()
       setMemberTitle()
       setAbteilungsleiter()
-      setMemberCheckbox()
+      setContentCheckbox()
       setRecruitingCheckbox()
       setMarketingCheckbox()
-      setAdministrationCheckbox()
       setSelectedStatus()
       setSelectedDepartment()
-      setSelectedRole()
+      setSelectedPosition()
       setPasswordReset()
       setMemberPassword()
       setSelectedShip()
@@ -688,6 +682,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
       setSelectedShips([])
     }, 600);
   }
+
+  console.log(modalStore)
 
   return (
     <Layout>
@@ -795,8 +791,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                     <div className="flex flex-wrap my-auto mr-auto space-y-4">
                       <div className='flex w-full'>
                         <div className='ml-auto mr-[50%]'>
-                          <Checkbox state={memberCheckbox} setState={setMemberCheckbox} id="c-2" color="primary" bg="[#111]" name="group" value="private">
-                            <Checkbox.Label>Mitglied</Checkbox.Label>
+                          <Checkbox state={contentCheckbox} setState={setContentCheckbox} id="c-5" color="primary" bg="[#111]" name="group" value="private">
+                            <Checkbox.Label>Inhaltsersteller</Checkbox.Label>
                             <Checkbox.Indicator />
                           </Checkbox>
                         </div>
@@ -817,23 +813,15 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                           </Checkbox>
                         </div>
                       </div>
-                      <div className='flex w-full'>
-                        <div className='ml-auto mr-[50%]'>
-                          <Checkbox state={adminsitrationCheckbox} setState={setAdministrationCheckbox} id="c-5" color="primary" bg="[#111]" name="group" value="private">
-                            <Checkbox.Label>Verwaltung</Checkbox.Label>
-                            <Checkbox.Indicator />
-                          </Checkbox>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
                 <div className='mt-6'>
-                  <p className='w-full -ml-4 text-base text-left'>Berechtigung:</p>
+                  <p className='w-full -ml-4 text-base text-left'>Positionsstufe:</p>
                   <div className='flex justify-between space-x-4'>
-                    <label className='my-auto text-xl'>Rolle:</label>
-                    <div className='max-w-[230px]'>
-                      <Dropdown items={roles} state={selectedRole} setState={setSelectedRole} mode="roles" />
+                    <label className='my-auto text-xl'>Position:</label>
+                    <div className='max-w-[230px] w-full'>
+                      <Dropdown items={position_levels} state={selectedPosition} setState={setSelectedPosition} mode="position_level" />
                     </div>
                   </div>
                 </div>
@@ -949,8 +937,8 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                     <div className="flex flex-wrap my-auto mr-auto space-y-4">
                       <div className='flex w-full'>
                         <div className='ml-auto mr-[50%]'>
-                          <Checkbox state={memberCheckbox} setState={setMemberCheckbox} id="c-2" color="primary" bg="[#111]" name="group" value="private">
-                            <Checkbox.Label>Mitglied</Checkbox.Label>
+                          <Checkbox state={contentCheckbox} setState={setContentCheckbox} id="c-5" color="primary" bg="[#111]" name="group" value="private">
+                            <Checkbox.Label>Inhaltsersteller</Checkbox.Label>
                             <Checkbox.Indicator />
                           </Checkbox>
                         </div>
@@ -971,23 +959,15 @@ export default function InternalIndex ({ shipList, siteTitle, memberApiList, dep
                           </Checkbox>
                         </div>
                       </div>
-                      <div className='flex w-full'>
-                        <div className='ml-auto mr-[50%]'>
-                          <Checkbox state={adminsitrationCheckbox} setState={setAdministrationCheckbox} id="c-5" color="primary" bg="[#111]" name="group" value="private">
-                            <Checkbox.Label>Verwaltung</Checkbox.Label>
-                            <Checkbox.Indicator />
-                          </Checkbox>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
                 <div className='mt-6'>
-                  <p className='w-full -ml-4 text-base text-left'>Berechtigung:</p>
+                  <p className='w-full -ml-4 text-base text-left'>Positionsstufe:</p>
                   <div className='flex justify-between space-x-4'>
-                    <label className='my-auto text-xl'>Rolle:</label>
-                    <div className='w-full max-w-[230px]'>
-                      <Dropdown items={roles} state={selectedRole} setState={setSelectedRole} mode="roles" />
+                    <label className='my-auto text-xl'>Position:</label>
+                    <div className='max-w-[230px] w-full'>
+                      <Dropdown items={position_levels} state={selectedPosition} setState={setSelectedPosition} mode="position_level" />
                     </div>
                   </div>
                 </div>

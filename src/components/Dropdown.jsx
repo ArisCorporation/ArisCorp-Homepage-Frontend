@@ -16,11 +16,11 @@ export default function Dropdown ({ changeAction, items, state, setState, mode, 
   return (
     <div className="w-full">
       <Listbox value={state} onChange={(event) => (changeAction ? changeAction(event) : setState(event))} disabled={disabled}>
-        <div className="relative mt-1">
+        <div className="relative w-full mt-1">
           <motion.div whileTap={(animate && { scale: 0.97 })}>
             <Listbox.Button className={`relative w-full cursor-default rounded-lg bg-${!bg ? "[#111]" : bg} py-2 pl-3 pr-10 text-left focus:outline-none focus-visible:border-none focus-visible:ring-0 sm:text-sm ` + (disabled && 'opacity-25')}>
               {mode == "departments" && <span className="block truncate">{state?.gameplay_name || state || 'Abteilung...'}</span>}
-              {mode == "roles" && <span className="block truncate">{state?.name || 'Berechtigungs Rolle...'}</span>}
+              {mode == "position_level" && <span className="block truncate">{state?.name || 'Positionsstufe...'}</span>}
               {!mode && <span className="block truncate">{state || 'Selection...'}</span>}
               <span className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
                 <ChevronUpDownIcon
@@ -51,7 +51,7 @@ export default function Dropdown ({ changeAction, items, state, setState, mode, 
               <Listbox.Option
                 key={itemIdx}
                 className={({ active }) =>
-                  `relative group py-2 cursor-pointer pr-4 list-none select-none ${state == item.gameplay_name ? 'bg-primary text-black' : ''} ${!withImages ? "pl-10 hover:bg-primary hover:text-black" : ""}`}
+                  `relative group py-2 cursor-pointer pr-4 list-none select-none ${state == (mode == "departments" ? item.gameplay_name : mode == "position_level" ? item.name : item.name) ? 'bg-primary text-black' : ''} ${!withImages ? "pl-10 hover:bg-primary hover:text-black" : ""}`}
                 value={item}
               >
                 <div className={withImages && 'flex space-x-2'}>
@@ -61,9 +61,9 @@ export default function Dropdown ({ changeAction, items, state, setState, mode, 
                       }`}
                   >
                     {mode == "departments" && item.gameplay_name}
-                    {mode == "roles" && item.name}
+                    {mode == "position_level" && item.name}
                   </span>
-                  {state == item.gameplay_name && !withImages ? (
+                  {state?.name == (mode == "departments" ? item.gameplay_name : mode == "position_level" ? item.name : item.name) ? (
                     <span className={`absolute inset-y-0 left-0 flex items-center pl-3 text-primary`}>
                       <CheckIcon className="w-5 h-5" aria-hidden="true" />
                     </span>

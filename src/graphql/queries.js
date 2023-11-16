@@ -1885,7 +1885,8 @@ export const GET_INTERNAL_ADMIN_DATA = gql`
       member_potrait {
         id
       }
-      member_rollen
+      roles
+      position_level
       head_of_department
       head_department {
         id
