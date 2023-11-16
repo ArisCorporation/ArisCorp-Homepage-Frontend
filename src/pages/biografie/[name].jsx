@@ -25,49 +25,56 @@ export async function getServerSideProps (context) {
     query: GET_MEMBER,
     variables: { name },
   })
-
-  if (!data) {
+  
+  if (!data.member[0]) {
     return {
       notFound: true,
     }
-
   }
 
   const departments = []
-  data.member_gameplays.forEach((obj) => {
-    departments.push(obj.gameplays_id.gameplay_name)
-  })
+  if(data.member_gameplays){
+    data.member_gameplays.forEach((obj) => {
+      departments.push(obj.gameplays_id.gameplay_name)
+    })
+  }
 
   const weapons = []
-  data.member_technologien.forEach((obj) => {
-    weapons.push(obj.technologien_id)
-  })
+  if(data.member_technologien){
+    data.member_technologien.forEach((obj) => {
+      weapons.push(obj.technologien_id)
+    })
+  }
+
   const ships = []
-  data.member_ships.forEach((obj) => {
-    ships.push(obj.ships_id)
-  })
+  if(data.member_ships){
+    data.member_ships.forEach((obj) => {
+      ships.push(obj.ships_id)
+    })
+  }
 
   data = data.member[0]
-  const roles = []
 
-  data.member_rollen.forEach((obj) => {
-    if (obj === 'member') {
-      roles.push('Mitglied')
-    } else if (obj === 'recruitment') {
-      roles.push('Rekrutierung')
-    } else if (obj === 'marketing') {
-      roles.push('Marketing & Presse')
-    } else if (obj === 'administration') {
-      roles.push('Verwaltung')
-    } else {
-      return
-    }
-  })
+  let roles = []
+  if(data.member_rollen){
+    data.member_rollen.forEach((obj) => {
+      if (obj === 'member') {
+        roles.push('Mitglied')
+      } else if (obj === 'recruitment') {
+        roles.push('Rekrutierung')
+      } else if (obj === 'marketing') {
+        roles.push('Marketing & Presse')
+      } else if (obj === 'administration') {
+        roles.push('Verwaltung')
+      } else {
+        return
+      }
+    })
+  }
+  
   if (data.head_of_department) {
     roles.push('Abteilungsleiter')
   }
-
-
 
   const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
 
@@ -98,8 +105,8 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
       theme: "dark",
     });
   }
-
-  console.log(ships);
+  departments.sort()
+  roles.sort()
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -541,23 +548,25 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
                 </div>
               </div>
               <div className='col-span-1 1.5xl:col-span-3'>
-                {data.head_of_department ? (
-                  <div className="col-span-1">
-                    <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
-                    <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
-                  </div>
-                ) : (
-                  <div className="col-span-1">
-                    <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
-                    <p className='p-0 text-primary'>{departments ? departments.join(', ') : 'N/A'}</p>
-                  </div>
-                )}
-                <div className='grid grid-cols-2 uppercase'>
+                  {data.head_of_department ? (
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
+                      <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
+                    </div>
+                  ) : (
+                    <div className="col-span-1">
+                      <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
+                      <p className='p-0 text-primary'>{departments[0] ? departments.join(', ') : 'N/A'}</p>
+                    </div>
+                  )}
+                {roles ? (
+                  <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-2">
                     <p className='pb-0 text-sm'>Rollen innerhalb der ArisCorp:</p>
                     <p className='p-0 text-primary'>{roles[0] ? roles.join(', ') : 'N/A'}</p>
                   </div>
                 </div>
+                ) : null}
               </div>
             </div>
           </BasicPanel>
@@ -568,7 +577,7 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
         <BasicPanel>
           <div>
             <h1 className='pt-2 pb-4 pl-4 text-primary'>Biografie:</h1>
-            {data.biografie ? (
+            {data.biography ? (
               <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               className="mx-auto py-2 prose prose-td:align-middle xl:text-base text-xs prose-invert max-w-[95%]"
@@ -577,8 +586,6 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
             </ReactMarkdown>
             ) : (
               <div className='flex justify-center mb-6'>
-                {/* <h1 className='mx-auto'>[ REDACTED ]</h1> */}
-                {/* <RedactedGlitch /> */}
                 <h1 className='text-base xxs:text-xl xs:text-4xl redacted' data-text="[ REDACTED ]">[ REDACTED ]</h1>
               </div>
             )}

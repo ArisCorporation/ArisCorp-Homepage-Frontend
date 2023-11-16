@@ -84,6 +84,10 @@ const Footer = () => {
             }}
           />
           <span> - </span>
+          <Link legacyBehavior href="/impressum">
+            <a className="text-secondary">Impressum</a>
+          </Link>
+          <span> - </span>
           <Link legacyBehavior href="/credits">
             <a className="text-secondary">Credits</a>
           </Link>
