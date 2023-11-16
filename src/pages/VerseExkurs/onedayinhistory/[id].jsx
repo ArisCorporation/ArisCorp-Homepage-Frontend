@@ -11,11 +11,11 @@ import client from 'apollo/clients'
 
 export async function getServerSideProps (context) {
   const { params } = context
-  const { title } = params
+  const { id } = params
 
   let { data } = await client.query({
     query: GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE,
-    variables: { title },
+    variables: { id },
   })
 
   if (!data) {

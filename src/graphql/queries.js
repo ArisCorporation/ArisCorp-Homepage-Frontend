@@ -143,7 +143,7 @@ export const GET_MEMBERS = gql`
 `
 
 export const GET_MEMBER = gql`
-  query GetMember($slug: String!) {
+query GetMember($slug: String!) {
     member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
       id
       status
@@ -736,6 +736,9 @@ export const GET_VERSEEXKURS_FRAKTIONEN = gql`
       }
       name
       category
+      politicalCategory
+      hostileCategory
+      otherCategory
       text
     }
   }
@@ -1771,7 +1774,6 @@ export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
       # scmToZero
       # zeroToMax
       # maxToZero
-
       modules
       hardpoints
       weaponHardpoints
@@ -1924,5 +1926,14 @@ export const GET_INTERNAL_ADMIN_DATA = gql`
         }
       }
     }
+
+    components(limit: -1) {
+        id
+        name
+        manufacturer {
+          firmen_name
+          status
+        }
+      }
   }
 `

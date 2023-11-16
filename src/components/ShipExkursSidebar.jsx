@@ -9,7 +9,7 @@ import {
 } from 'react-icons/fa'
 import { GiAlienSkull, GiSolarSystem } from 'react-icons/gi'
 import { FiCpu } from 'react-icons/fi'
-import { MdGroups, MdHistoryEdu } from 'react-icons/md'
+import { MdCompareArrows, MdGroups, MdHistoryEdu } from 'react-icons/md'
 import { RiArrowGoBackLine } from 'react-icons/ri'
 import { ImBook } from 'react-icons/im'
 import { useState, useEffect, useRef } from 'react'
@@ -83,13 +83,13 @@ export default function Sidebar() {
     <>
       <div
         className={
-          'fixed bottom-0 z-50 w-full lg:hidden print:hidden ' +
+          'fixed bottom-0 z-[99] w-full lg:hidden print:hidden ' +
           (mobileOpen ? 'right-[300px]' : 'right-0')
         }
         style={{ transition: 'left .5s ease,right .5s ease,width .5s ease' }}
       >
         <div className="flex items-stretch justify-between min-h-[60px] pb-5 bg-[rgba(23,25,28,.95)] border-t-[1px] border-solid border-t-[rgba(30,34,38,.5)]">
-          <Link legacyBehavior href="/VerseExkurs">
+          <Link legacyBehavior href="/ShipExkurs">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -109,11 +109,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link legacyBehavior href="/ShipExkurs/ships">
+          <Link legacyBehavior href="/ShipExkurs">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/ShipExkurs/ships')
+                (router.pathname == '/ShipExkurs'
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -129,11 +129,11 @@ export default function Sidebar() {
               </div>
             </a>
           </Link>
-          <Link legacyBehavior href="/VerseExkurs/search">
+          {/* <Link legacyBehavior href="/ShipExkurs/">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/VerseExkurs/search')
+                (router.pathname == '/ShipExkurs'
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -148,12 +148,12 @@ export default function Sidebar() {
                 />
               </div>
             </a>
-          </Link>
-          <Link legacyBehavior href="/ShipExkurs/firmen">
+          </Link> */}
+          <Link legacyBehavior href="/ShipExkurs/comparison">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
-                (router.pathname.startsWith('/ShipExkurs/firmen')
+                (router.pathname.startsWith('/ShipExkurs/comparison')
                   ? ' after:block text-white'
                   : ' after:hidden text-[#c8c8c8]')
               }
@@ -162,7 +162,7 @@ export default function Sidebar() {
                 className="px-4 py-2 overflow-hidden text-center whitespace-normal transition-all duration-500 ease-linear rounded-md text-inherit text-ellipsis"
                 style={{ fontSize: '130%' }}
               >
-                <GiAlienSkull
+                <MdCompareArrows
                   className="relative text-center whitespace-normal"
                   style={{ fontSize: '130%' }}
                 />
@@ -200,7 +200,7 @@ export default function Sidebar() {
 
       <nav
         className={
-          'absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-50 lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden ' +
+          'absolute top-0 right-0 w-full h-auto mt-[env(safe-area-inset-top)] lg:relative z-[99] lg:w-[300px] min-w-[300px] lg:h-screen lg:top-auto lg:right-auto lg:mt-0 block print:hidden ' +
           (!mobileView && sidebarCollapsed ? 'lg:w-[80px] lg:min-w-[80px]' : '')
         }
       >
@@ -217,7 +217,7 @@ export default function Sidebar() {
               <li
                 className="p-0 m-0 list-none group"
                 data-tip
-                data-for="HomeTip"
+                data-for="ShipTip"
               >
                 <Link legacyBehavior href="/ShipExkurs">
                   <a
@@ -249,7 +249,7 @@ export default function Sidebar() {
                       </span>
                       {!mobileView && sidebarCollapsed ? (
                         <ReactTooltip
-                          id="HomeTip"
+                          id="ShipTip"
                           place="right"
                           effect="solid"
                           arrowColor="transparent"
@@ -301,6 +301,57 @@ export default function Sidebar() {
                       {!mobileView && sidebarCollapsed ? (
                         <ReactTooltip
                           id="HomeTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Schiffsvergleich
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip
+                data-for="CompareTip"
+              >
+                <Link legacyBehavior href="/ShipExkurs/comparison">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      (router.pathname == '/ShipExkurs/comparison'
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
+                      }
+                    >
+                      <MdCompareArrows className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
+                        }
+                      >
+                        {' '}
+                        Schiffsvergleich{' '}
+                      </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="CompareTip"
                           place="right"
                           effect="solid"
                           arrowColor="transparent"

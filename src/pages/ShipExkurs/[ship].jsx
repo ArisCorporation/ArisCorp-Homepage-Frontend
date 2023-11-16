@@ -549,6 +549,54 @@ export default function ShipPage({
               </div>
             </div>
           </BasicPanel>
+          <BasicPanel>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
+              <div className="col-span-1">
+                <div className="text-lg text-secondary">Versicherung</div>
+              </div>
+              <div className="col-span-1 1.5xl:col-span-3 mt-6">
+                <div className="grid grid-cols-3 1.5xl:grid-cols-2 uppercase 2.5xl:grid-cols-3">
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Zeit:</p>
+                    <p className="p-0 normal-case text-primary">
+                      {data.insuranceClaimTime
+                        ? Math.round(
+                            (data.insuranceClaimTime + Number.EPSILON) * 100
+                          ) /
+                            100 +
+                          ' Min.'
+                        : 'N/A'}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Besch. Zeit:</p>
+                    <p className="p-0 normal-case text-primary">
+                      {data.insuranceExpeditedClaimTime
+                        ? Math.round(
+                            (data.insuranceExpeditedClaimTime +
+                              Number.EPSILON) *
+                              100
+                          ) /
+                            100 +
+                          ' Min.'
+                        : 'N/A'}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Kosten:</p>
+                    <p className="p-0 normal-case text-primary">
+                      {data.insuranceExpeditedCost
+                        ? data.insuranceExpeditedCost
+                            .toString()
+                            .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') +
+                          ' aUEC'
+                        : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BasicPanel>
           <div className="flex space-x-4">
             <div className="flex-grow-[2]">
               {data.storeUrl ? (
@@ -563,9 +611,13 @@ export default function ShipPage({
                   }
                 >
                   {data.onSale ? (
-                    <p className="p-0 text-sm">
-                      On Sale: ${data.pledgePrice} excl. VAT
-                    </p>
+                    data.pledgePrice ? (
+                      <p className="p-0 text-sm">
+                        On Sale: ${data.pledgePrice} excl. VAT
+                      </p>
+                    ) : (
+                      <p className="p-0 text-sm">On Sale!</p>
+                    )
                   ) : (
                     <p className="p-0">RSI Page</p>
                   )}

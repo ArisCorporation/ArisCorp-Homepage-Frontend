@@ -8,8 +8,9 @@ import { useQuery } from '@apollo/client'
 import { GET_VERSEEXKURS_LITERATUR_ARTICLE } from 'graphql/queries'
 import Head from 'next/head'
 import client from 'apollo/clients'
+import Link from 'next/link'
 
-export async function getServerSideProps (context) {
+export async function getServerSideProps(context) {
   const { params } = context
   const { rid: rid, id: id } = params
   const Id = parseFloat(id)
@@ -26,37 +27,32 @@ export async function getServerSideProps (context) {
     }
   }
 
-  data = data.literatur.filter((data) => data.literatur_reihe.id == rid && data.literatur_kapitel == id)[0]
-  const siteTitle = data.literatur_reihe.reihen_titel + " - Kapitel: " + data.literatur_kapitel + " - Astro Research and Industrial Service Corporation"
+  data = data.literatur.filter(
+    (data) => data.literatur_reihe.id == rid && data.literatur_kapitel == id
+  )[0]
+  const siteTitle =
+    data.literatur_reihe.reihen_titel +
+    ' - Kapitel: ' +
+    data.literatur_kapitel +
+    ' - Astro Research and Industrial Service Corporation'
 
   return {
     props: {
       data,
-      siteTitle
+      siteTitle,
     },
   }
 }
 
-export default function LiteraturArticlePage ({ data, siteTitle }) {
+export default function LiteraturArticlePage({ data, siteTitle }) {
   return (
     <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
-        <title>
-          {siteTitle}
-        </title>
+        <title>{siteTitle}</title>
 
-        <meta
-          property="twitter:title"
-          content={siteTitle}
-        />
-        <meta
-          property="og:title"
-          content={siteTitle}
-        />
-        <meta
-          name="title"
-          content={siteTitle}
-        />
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
       </Head>
       <div key={data.id}>
         <div className="items-center text-center">
@@ -105,11 +101,40 @@ export default function LiteraturArticlePage ({ data, siteTitle }) {
             {data.text}
           </ReactMarkdown>
         </div>
+        <div className="flex justify-between w-full px-10">
+          {data.literatur_kapitel > 1 ? (
+            <Link
+              legacyBehavior
+              href={
+                '/VerseExkurs/literatur/' +
+                data.literatur_reihe.id +
+                '/' +
+                (data.literatur_kapitel - 1)
+              }
+            >
+            <a className='mr-auto'>Vorheriges Kapitel</a>
+            </Link>
+          ) : null}
+          {data.literatur_reihe.reihen_kapitel_anzahl >
+          data.literatur_kapitel ? (
+            <Link
+              legacyBehavior
+              href={
+                '/VerseExkurs/literatur/' +
+                data.literatur_reihe.id +
+                '/' +
+                (data.literatur_kapitel + 1)
+              }
+            >
+              <a className='ml-auto'>Nächstes Kapitel</a>
+            </Link>
+          ) : null}
+        </div>
       </div>
     </div>
   )
 }
 
-LiteraturArticlePage.getLayout = function getLayout (page) {
+LiteraturArticlePage.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }

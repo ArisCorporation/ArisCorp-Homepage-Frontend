@@ -26,13 +26,13 @@ export async function getServerSideProps (context) {
     query: GET_MEMBER,
     variables: { slug },
   })
-
-  if (!data) {
+  
+  if (!data.member[0]) {
     return {
       notFound: true,
     }
   }
-
+  
   const weapons = []
   data.member_technologien.sort((a, b) => a.technologien_id.waffen_name.localeCompare(b.technologien_id.waffen_name)).forEach((obj) => {
     weapons.push(obj.technologien_id)
@@ -87,7 +87,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
       theme: "dark",
     });
   }
-
+  
   const roles = []
   data.roles.forEach((obj) => {
     if (obj == 'recruitment') {
@@ -204,7 +204,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Geburtssystem:</p>
-                    <p className='p-0 text-primary'>{data.birthSystem.name ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.birthSystem.name}><a>{data.birthSystem.name}</a></Link>) : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.birthSystem ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.birthSystem.name}><a>{data.birthSystem.name}</a></Link>) : 'N/A'}</p>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Aktueller Wohnort:</p>
@@ -212,7 +212,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Aktuelles Wohnort - System:</p>
-                    <p className='p-0 text-primary'>{data.currentResidenceSystem.name ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.currentResidenceSystem.name}><a>{data.currentResidenceSystem.name}</a></Link>) : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.currentResidenceSystem ? (<Link legacyBehavior href={'/VerseExkurs/starmap/' + data.currentResidenceSystem.name}><a>{data.currentResidenceSystem.name}</a></Link>) : 'N/A'}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
@@ -570,6 +570,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                     <p className='p-0 text-primary'>{roles[0] ? roles.sort().join(', ') : 'N/A'}</p>
                   </div>
                 </div>
+                ) : null}
               </div>
             </div>
           </BasicPanel>
@@ -580,12 +581,18 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
         <BasicPanel>
           <div>
             <h1 className='pt-2 pb-4 pl-4 text-primary'>Biografie:</h1>
-            <ReactMarkdown
+            {data.biography ? (
+              <ReactMarkdown
               rehypePlugins={[rehypeRaw]}
               className="mx-auto py-2 prose prose-td:align-middle xl:text-base text-xs prose-invert max-w-[95%]"
             >
               {data.biography}
             </ReactMarkdown>
+            ) : (
+              <div className='flex justify-center mb-6'>
+                <h1 className='text-base xxs:text-xl xs:text-4xl redacted' data-text="[ REDACTED ]">[ REDACTED ]</h1>
+              </div>
+            )}
           </div>
         </BasicPanel>
       </div>
