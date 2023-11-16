@@ -17,13 +17,14 @@ import ShipCard from 'components/ShipExkurs/ShipCard'
 import WeaponCard from 'components/WeaponCard'
 import { Disclosure, Transition } from '@headlessui/react'
 import { MdKeyboardArrowRight } from 'react-icons/md'
+import HangarShipDetailCard from 'components/internal/HangarShipCard'
 
 export async function getServerSideProps (context) {
-  const { name } = context.query
+  const { name: slug } = context.query
 
   let { data } = await client.query({
     query: GET_MEMBER,
-    variables: { name },
+    variables: { slug },
   })
   
   if (!data.member[0]) {
@@ -31,58 +32,39 @@ export async function getServerSideProps (context) {
       notFound: true,
     }
   }
-
-  const departments = []
-  if(data.member_gameplays){
-    data.member_gameplays.forEach((obj) => {
-      departments.push(obj.gameplays_id.gameplay_name)
-    })
-  }
-
+  
   const weapons = []
-  if(data.member_technologien){
-    data.member_technologien.forEach((obj) => {
-      weapons.push(obj.technologien_id)
-    })
-  }
+  data.member_technologien.sort((a, b) => a.technologien_id.waffen_name.localeCompare(b.technologien_id.waffen_name)).forEach((obj) => {
+    weapons.push(obj.technologien_id)
+  })
 
   const ships = []
-  if(data.member_ships){
-    data.member_ships.forEach((obj) => {
-      ships.push(obj.ships_id)
-    })
-  }
+  data.member_ships.sort((a, b) => a.ships_id.name.localeCompare(b.ships_id.name)).forEach((obj) => {
+    const item = {
+      id: obj.id,
+      ship: obj.ships_id,
+      member: obj.member_id,
+      custom_data: {
+        name: obj.name,
+        serial: obj.serial,
+        group: obj.group,
+        visibility: obj.visibility,
+        department: obj.department
+      }
+    }
+    ships.push(item)
+  })
 
   data = data.member[0]
-
-  let roles = []
-  if(data.member_rollen){
-    data.member_rollen.forEach((obj) => {
-      if (obj === 'member') {
-        roles.push('Mitglied')
-      } else if (obj === 'recruitment') {
-        roles.push('Rekrutierung')
-      } else if (obj === 'marketing') {
-        roles.push('Marketing & Presse')
-      } else if (obj === 'administration') {
-        roles.push('Verwaltung')
-      } else {
-        return
-      }
-    })
-  }
-  
-  if (data.head_of_department) {
-    roles.push('Abteilungsleiter')
-  }
-
-  const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
+  const name = `${data.firstname} ${data.lastname}`
+  const fullName = `${data.title} ${data.firstname} ${data.lastname}`
+  const siteTitle = data.fullName + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
       data,
-      roles,
-      departments,
+      name,
+      fullName,
       weapons,
       ships,
       siteTitle
@@ -90,7 +72,7 @@ export async function getServerSideProps (context) {
   }
 }
 
-export default function Biografie ({ data, departments, roles, weapons, ships, siteTitle }) {
+export default function Biografie ({ data, name, fullName, weapons, ships, siteTitle }) {
   const shareUrl = "https://ariscorp.de/biografie/" + data.slug
   const handleShare = () => {
     navigator.clipboard.writeText(shareUrl)
@@ -105,8 +87,20 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
       theme: "dark",
     });
   }
-  departments.sort()
-  roles.sort()
+  
+  const roles = []
+  data.roles.forEach((obj) => {
+    if (obj == 'recruitment') {
+      roles.push('Rekrutierung')
+    } else if (obj == 'marketing') {
+      roles.push('Marketing & Presse')
+    } else if (obj == 'content_writer') {
+      roles.push('Inhaltsersteller')
+    }
+  })
+  if (data.head_of_department) {
+    roles.push('Abteilungsleiter')
+  }
 
   return (
     <div className="items-center pt-32 mx-auto print:pt-5">
@@ -143,7 +137,7 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
-            <span className="text-secondary">Member</span>{' '}{data.member_titel}
+            <span className="text-secondary">Member</span>{' '}{fullName}
           </h1>
           <h3 className="mb-0 uppercase">
             <span className="text-white/25">Rollen: </span>
@@ -191,11 +185,11 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Bürgerlicher Name:</p>
-                    <p className='p-0 text-primary'>{data.member_name ? data.member_name : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{name}</p>
                   </div>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Titel:</p>
-                    <p className='p-0 text-primary'>{data.member_titel ? data.member_titel : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.title ? data.title : 'N/A'}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
@@ -548,22 +542,32 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
                 </div>
               </div>
               <div className='col-span-1 1.5xl:col-span-3'>
-                  {data.head_of_department ? (
-                    <div className="col-span-1">
-                      <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
-                      <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
-                    </div>
-                  ) : (
-                    <div className="col-span-1">
-                      <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
-                      <p className='p-0 text-primary'>{departments[0] ? departments.join(', ') : 'N/A'}</p>
-                    </div>
-                  )}
-                {roles ? (
-                  <div className='grid grid-cols-2 uppercase'>
+                {data.head_of_department ? (
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Abteilungsleiter in folgender Abteilung:</p>
+                    <p className='p-0 text-primary'>{data.head_department[0].gameplay_name ? data.head_department[0].gameplay_name : 'N/A'}</p>
+                  </div>
+                ) : (
+                  <div className="col-span-1">
+                    <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
+                    <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
+                  </div>
+                )}
+                <div className='grid grid-cols-2 uppercase'>
+                  <div className="col-span-2">
+                    <p className='pb-0 text-sm'>Position:</p>
+                    <p className='p-0 text-primary'>{
+                      data.position_level == "candidate" ? "Anwärter" :
+                        data.position_level == "freelancer" ? "Freier Mitarbeiter" :
+                          data.position_level == "employee" ? "Mitarbeiter" :
+                            data.position_level == "administration" ? "Verwaltung" : "N/A"
+                    }</p>
+                  </div>
+                </div>
+                <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-2">
                     <p className='pb-0 text-sm'>Rollen innerhalb der ArisCorp:</p>
-                    <p className='p-0 text-primary'>{roles[0] ? roles.join(', ') : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{roles[0] ? roles.sort().join(', ') : 'N/A'}</p>
                   </div>
                 </div>
                 ) : null}
@@ -600,7 +604,7 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
               {({ open }) => (
                 <>
                   <Disclosure.Button className="block py-2">
-                    <h1>Schiffe von <span className="text-primary">{data.member_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
+                    <h1>Schiffe von <span className="text-primary">{fullName}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
                   </Disclosure.Button>
                   <Transition
                     enter="transition ease duration-500 transform"
@@ -613,7 +617,7 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
                     <Disclosure.Panel>
                       <div className='grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4'>
                         {ships.map((object, index) => (
-                          <ShipCard key={object.id} data={object} manufacturer={data} />
+                          <HangarShipDetailCard key={object.id} data={object} />
                         ))}
                       </div>
                     </Disclosure.Panel>
@@ -622,12 +626,12 @@ export default function Biografie ({ data, departments, roles, weapons, ships, s
               )}
             </Disclosure>
           ) : null}
-          {weapons ? (
+          {weapons[0] ? (
             <Disclosure>
               {({ open }) => (
                 <>
                   <Disclosure.Button className="block py-2">
-                    <h1 className=''>Lieblingswaffen von <span className="text-primary">{data.member_name}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
+                    <h1 className=''>Lieblingswaffen von <span className="text-primary">{fullName}</span> <MdKeyboardArrowRight className={'inline-block ease transition-all duration-300' + (open ? ' rotate-90' : '')} /></h1>
                   </Disclosure.Button>
                   <Transition
                     enter="transition ease duration-500 transform"

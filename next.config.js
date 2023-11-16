@@ -2,7 +2,7 @@ const withPWA = require('next-pwa')
 const runtimeCaching = require('next-pwa/cache')
 const { withGlobalCss } = require('next-global-css')
 const withTM = require('next-transpile-modules')(['@vime/core', '@vime/react'])
-
+const { version } = require('./package.json')
 const withConfig = withGlobalCss()
 
 module.exports = withTM(
@@ -52,6 +52,11 @@ module.exports = withTM(
         })
       }
       return headers
+    },
+
+
+    env: {
+      NEXT_PUBLIC_APP_VERSION: version,
     },
   })
 )

@@ -27,7 +27,7 @@ const OrgaSection = () => {
         onChange={(event) =>
           (query.about != null && query.about != ''
             ? replace(
-                { query: { about: query.about, our: event } },
+                { query: { about: query.about, our: event, department: query.department } },
                 undefined,
                 { shallow: true }
               )
@@ -44,7 +44,7 @@ const OrgaSection = () => {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -54,7 +54,7 @@ const OrgaSection = () => {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -64,7 +64,7 @@ const OrgaSection = () => {
           <Tab
             className={({ selected }) =>
               (selected ? 'text-primary' : 'opacity-50') +
-              ' p-3 m-1 transition-all duration-300 ease-in-out'
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">

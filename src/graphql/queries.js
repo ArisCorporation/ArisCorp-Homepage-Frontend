@@ -132,7 +132,8 @@ export const GET_MEMBERS = gql`
       member_name
       slug
       member_titel
-      member_rollen
+      roles
+      position_level
       head_of_department
       member_potrait {
         id
@@ -142,22 +143,24 @@ export const GET_MEMBERS = gql`
 `
 
 export const GET_MEMBER = gql`
-  query GetMember($name: String!) {
-    member(
-      filter: { slug: { _eq: $name } }
-      sort: ["sort", "member_name"]
-    ) {
+query GetMember($slug: String!) {
+    member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
       id
       status
-      member_name
-      member_titel
+      firstname
+      lastname
+      title
       slug
       member_potrait {
         id
       }
       sex
-      member_rollen
+      roles
+      position_level
       head_of_department
+      head_department {
+        gameplay_name
+      }
       department {
         gameplay_name
       }
@@ -204,27 +207,51 @@ export const GET_MEMBER = gql`
       member_biografie
       member_steckbrief
     }
-    member_gameplays(filter: { member_id: { member_name: { _eq: $name } } }) {
-      gameplays_id {
-        gameplay_name
+    member_ships(filter: { member_id: { slug: { _eq: $slug } } }) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
       }
-    }
-    member_ships {
       ships_id {
+        id
         name
         slug
+        productionStatus
         storeImage {
           id
         }
         manufacturer {
           firmen_name
-          firmen_trans_logo {
-            id
-          }
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
         }
       }
     }
-    member_technologien {
+    member_technologien(filter: { member_id: { slug: { _eq: $slug } } }) {
       technologien_id {
         id
         waffen_name
@@ -240,12 +267,62 @@ export const GET_MEMBER = gql`
   }
 `
 
+// My Hangar
+export const GET_MY_HANGAR = gql`
+  query GetMyHangar {
+    member_ships(limit: -1) {
+      ships_id(
+        filter: { status: { _eq: "published" } }
+        sort: ["sort", "name"]
+        limit: -1
+      ) {
+        id
+        name
+        slug
+        price
+        pledgePrice
+        onSale
+        productionStatus
+        manufacturer {
+          firmen_name
+        }
+        storeImage {
+          id
+          width
+          height
+        }
+        career
+        focus
+        sortSize
+        productionStatus
+        onSale
+        classification
+        groundVehicle
+      }
+    }
+    firmen(
+      filter: {
+        status: { _eq: "published" }
+        firmenherstellerkategorie: { _eq: "schiffshersteller" }
+      }
+    ) {
+      id
+      firmen_name
+      firmen_trans_logo {
+        id
+        width
+        height
+      }
+    }
+  }
+`
+
 // GAMEPLAY QUERYS
 export const GET_GAMEPLAYS = gql`
   query GetGameplays {
     gameplays(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "id"]
+      sort: ["sort", "gameplay_name"]
       limit: -1
     ) {
       id
@@ -380,12 +457,7 @@ export const GET_VERSEEXKURS_ONEDAYINHISTORY_KATEGORIES = gql`
 
 export const GET_VERSEEXKURS_ONEDAYINHISTORY_ARTICLE = gql`
   query GetVerseExkursOneDayInHistoryArticle($id: String!) {
-    geschichte(
-      filter: {
-        status: { _eq: "published" }
-        id: { _eq: $id }
-      }
-    ) {
+    geschichte(filter: { status: { _eq: "published" }, id: { _eq: $id } }) {
       id
       geschichte_titel
       geschichte_auswahlbild {
@@ -1408,9 +1480,7 @@ export const GET_VERSEEXKURS_LITERATUR_ARTICLE = gql`
 export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
   query GetShipExkursShipsIndex {
     ships(
-      filter: {
-        status: { _eq: "published" }
-      }
+      filter: { status: { _eq: "published" } }
       sort: ["sort", "name"]
       limit: -1
     ) {
@@ -1704,11 +1774,157 @@ export const GET_SHIPEXKURS_COMPARISON_DATA = gql`
       # scmToZero
       # zeroToMax
       # maxToZero
-      
-
       modules
       hardpoints
       weaponHardpoints
+    }
+
+    components(limit: -1) {
+      id
+      name
+      manufacturer {
+        firmen_name
+        status
+      }
+    }
+  }
+`
+
+export const INTERNAL_GET_Ships_MY_HANGAR = gql`
+  query InternalGetShipsMyHangar {
+    ships(limit: -1) {
+      id
+      name
+      slug
+      productionStatus
+      storeImage {
+        id
+      }
+      manufacturer {
+        firmen_name
+        code
+      }
+      length
+      beam
+      height
+      classification
+      size
+      cargo
+      price
+      minCrew
+      maxCrew
+    }
+  }
+`
+
+export const INTERNAL_GET_FLEET = gql`
+  query InternalGetFleet {
+    member_ships(
+      filter: { group: { _neq: "private" }, visibility: { _neq: "hidden" } }
+      sort: ["ships_id.name"]
+      limit: -1
+    ) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+    }
+  }
+`
+
+export const GET_INTERNAL_ADMIN_DATA = gql`
+  query GetInternalAdminData {
+    member(
+      limit: -1
+      filter: { status: { _neq: "archived" } }
+      sort: ["firstname"]
+    ) {
+      id
+      status
+      firstname
+      lastname
+      slug
+      title
+      account {
+        id
+        role
+      }
+      member_potrait {
+        id
+      }
+      roles
+      position_level
+      head_of_department
+      head_department {
+        id
+        gameplay_name
+      }
+      department {
+        id
+        gameplay_name
+      }
+      ships {
+        id
+        name
+        serial
+        group
+        visibility
+        department {
+          gameplay_name
+          gameplay_logo {
+            id
+          }
+        }
+        ships_id {
+          id
+          name
+          slug
+          storeImage {
+            id
+          }
+          manufacturer {
+            firmen_name
+          }
+        }
+      }
     }
 
     components(limit: -1) {

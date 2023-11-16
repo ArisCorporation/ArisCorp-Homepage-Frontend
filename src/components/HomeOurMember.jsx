@@ -44,20 +44,25 @@ export default function OurMember () {
                 </div>
                 <figcaption className="absolute top-0 left-0 h-full bg-opacity-50 text-center pt-[40%] px-[20px] pb-[20px] z-5 opacity-0 bg-black group-hover:opacity-100 transition-all ease-linear min-w-full min-h-full block">
                   <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
+                  <p className='py-[10px] m-0 text-secondary'><span className='text-white'>Position: </span>{
+                    member.position_level == "candidate" ? "Anwärter" :
+                      member.position_level == "freelancer" ? "Freier Mitarbeiter" :
+                        member.position_level == "employee" ? "Mitarbeiter" :
+                          member.position_level == "administration" ? "Verwaltung" : "N/A"
+                  }</p>
+                  <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
                   <p className="p-[10px] m-0">
                     “
-                    {member.member_rollen.map((role, index) => (
+                    {member.roles.map((role, index) => (
                       <span key={index}>
                         {(index ? ', ' : '') +
-                          (role === 'member'
-                            ? 'Member'
-                            : role === 'marketing'
-                              ? 'Marketing & Presse'
-                              : role === 'recruitment'
-                                ? 'Rekrutierung'
-                                : role === 'administration'
-                                  ? 'Verwaltung'
-                                  : role)}
+                          (role === 'marketing'
+                            ? 'Marketing & Presse'
+                            : role === 'recruitment'
+                              ? 'Rekrutierung'
+                              : role === 'content_writer'
+                                ? 'Inhaltsersteller'
+                                : role)}
                       </span>
                     ))}
                     {member.head_of_department && <span>, Abteilungsleiter</span>}

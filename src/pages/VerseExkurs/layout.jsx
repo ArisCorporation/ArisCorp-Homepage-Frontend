@@ -6,13 +6,13 @@ import { ShipTechnologieModalProvider } from 'context/ShipTechnologieModalContex
 import { useRouter } from 'next/router'
 
 export default function Layout ({ children }) {
-  const router = useRouter()
+  const router = useRouter();
 
   if (router.pathname == '/VerseExkurs/technologie') {
     return (
-      <ApolloProvider client={client}>
+      <>
         <ShipTechnologieModalProvider>
-          <div className="flex">
+          <div className="flex min-h-screen">
             <Sidebar />
             <div
               className="flex flex-col justify-between flex-1 h-full max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"
@@ -29,14 +29,14 @@ export default function Layout ({ children }) {
             </div>
           </div>
         </ShipTechnologieModalProvider>
-      </ApolloProvider>
+      </>
     )
   }
 
   if (router.pathname.startsWith('/VerseExkurs/waffen') || router.pathname.startsWith('/VerseExkurs/attachments')) {
     return (
-      <ApolloProvider client={client}>
-        <div className="flex">
+      <>
+        <div className="flex min-h-screen">
           <Sidebar />
           <div
             className="flex flex-col justify-between flex-1 h-full max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"
@@ -51,13 +51,13 @@ export default function Layout ({ children }) {
             <Footer />
           </div>
         </div>
-      </ApolloProvider>
+      </>
     )
   }
 
   return (
-    <ApolloProvider client={client}>
-      <div className="flex">
+    <>
+      <div className="flex min-h-screen">
         <Sidebar />
         <div
           className="flex flex-col justify-between flex-1 h-full max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"
@@ -72,6 +72,6 @@ export default function Layout ({ children }) {
           <Footer />
         </div>
       </div>
-    </ApolloProvider>
+    </>
   )
 }

@@ -207,7 +207,7 @@ export default function Firmen ({ data }) {
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-secondary' : 'opacity-50') +
-                    ' p-3 m-1 transition-all duration-300 ease-in-out flex w-full'
+                    ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out flex w-full'
                   }
                 >
                   <h1 className="text-base uppercase md:text-lg lg:text-xl text-inherit">
@@ -401,7 +401,7 @@ export default function Firmen ({ data }) {
                 <Tab
                   className={({ selected }) =>
                     (selected ? 'text-secondary' : 'opacity-50') +
-                    ' p-3 m-1 transition-all duration-300 ease-in-out flex w-full'
+                    ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out flex w-full'
                   }
                 >
                   <h1 className="text-base uppercase md:text-lg lg:text-xl text-inherit">

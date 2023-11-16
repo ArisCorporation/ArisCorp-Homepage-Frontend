@@ -95,6 +95,10 @@ const Footer = () => {
           <Link legacyBehavior href="/bug-report">
             <a className="text-secondary">Bug-Report Tool</a>
           </Link>
+          <span> - </span>
+          <Link legacyBehavior href="/internal">
+            <a className="text-secondary">A.M.S</a>
+          </Link>
         </div>
       </div>
     </footer>

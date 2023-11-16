@@ -24,7 +24,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
       selectedIndex={activeTab}
       onChange={(event) =>
         (query.our != null && query.our != ''
-          ? replace({ query: { about: event, our: query.our } }, undefined, {
+          ? replace({ query: { about: event, our: query.our, department: query.department } }, undefined, {
               shallow: true,
             })
           : replace({ query: { about: event } }, undefined, {
@@ -38,7 +38,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
         <Tab
           className={({ selected }) =>
             (selected ? 'text-primary' : 'opacity-50') +
-            ' p-3 m-1 transition-all duration-300 ease-in-out'
+            ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
           }
         >
           <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -48,7 +48,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
         <Tab
           className={({ selected }) =>
             (selected ? 'text-primary' : 'opacity-50') +
-            ' p-3 m-1 transition-all duration-300 ease-in-out'
+            ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
           }
         >
           <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -58,7 +58,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
         <Tab
           className={({ selected }) =>
             (selected ? 'text-primary' : 'opacity-50') +
-            ' p-3 m-1 transition-all duration-300 ease-in-out'
+            ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
           }
         >
           <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
@@ -68,7 +68,7 @@ const AboutSection = ({ aboutData, historyData, manifestData, chartaData }) => {
         <Tab
           className={({ selected }) =>
             (selected ? 'text-primary' : 'opacity-50') +
-            ' p-3 m-1 transition-all duration-300 ease-in-out'
+            ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
           }
         >
           <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
