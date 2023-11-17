@@ -56,8 +56,8 @@ export async function getServerSideProps (context) {
   })
 
   data = data.member[0]
-  const name = `${data.firstname} ${data.lastname}`
-  const fullName = `${data.title} ${data.firstname} ${data.lastname}`
+  const name = `${data.firstname ? data.firstname : ""} ${data.lastname ? data.lastname : ""}`
+  const fullName = `${data.title ? data.title + " " : ""} ${data.firstname ? data.firstname : ""} ${data.lastname ? data.lastname : ""}`
   const siteTitle = data.fullName + " - Astro Research and Industrial Service Corporation"
 
   return {
@@ -550,7 +550,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                 ) : (
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Abteilungen innerhalb der ArisCorp:</p>
-                    <p className='p-0 text-primary'>{data.department[0].gameplay_name ? data.department[0].gameplay_name : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.department[0]?.gameplay_name ? data.department[0]?.gameplay_name : 'N/A'}</p>
                   </div>
                 )}
                 <div className='grid grid-cols-2 uppercase'>
