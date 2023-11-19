@@ -74,7 +74,7 @@ async function createUser(name, role, customEmail) {
   }
 
   const { data: user } = await axios.post(
-    BackendURL + '/users?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg',
+    BackendURL + '/users?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN,
     payload
   )
   const member = await createMember(name, user.data)
@@ -99,7 +99,7 @@ async function createMember(name, user) {
   }
 
   const { data } = await axios.post(
-    BackendURL + '/items/member?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg',
+    BackendURL + '/items/member?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN,
     payload
   )
 

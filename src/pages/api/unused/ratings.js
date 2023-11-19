@@ -10,7 +10,7 @@ import { Directus } from '@directus/sdk'
 const directus = new Directus(BackendURL)
 
 async function getShips() {
-  await directus.auth.static('te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg')
+  await directus.auth.static(process.env.NEXT_PUBLIC_CMS_TOKEN)
 
   const ships = directus.items('ships')
 
@@ -67,7 +67,7 @@ export default async function handler(req, res) {
     Datastore.map((obj) => {
       axios
         .post(
-          `https://cms.ariscorp.de/items/ariscorpRatings?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+          `https://cms.ariscorp.de/items/ariscorpRatings?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
           obj
         )
         .catch(function (error) {
@@ -78,7 +78,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'PATCH') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/ariscorpRatings?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg&limit=-1'
+        'https://cms.ariscorp.de/items/ariscorpRatings?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN + '&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
@@ -90,7 +90,7 @@ export default async function handler(req, res) {
             delete object.ships
             axios
               .patch(
-                `https://cms.ariscorp.de/items/ariscorpRatings/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+                `https://cms.ariscorp.de/items/ariscorpRatings/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
                 object
               )
               .catch(function (error) {

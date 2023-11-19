@@ -238,7 +238,7 @@ async function postPlanets(planets) {
 
   await axios
     .get(
-      'https://cms.ariscorp.de/items/planets?limit=-1&access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg'
+      'https://cms.ariscorp.de/items/planets?limit=-1&access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN
     )
     .then((resp) => {
       planets.forEach((object, index) => {
@@ -249,7 +249,7 @@ async function postPlanets(planets) {
         )
         if (search != null) {
           axios.patch(
-            `https://cms.ariscorp.de/items/planets/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+            `https://cms.ariscorp.de/items/planets/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
             object
           )
           planetIds.push(search.id)
@@ -257,7 +257,7 @@ async function postPlanets(planets) {
         } else {
           axios
             .post(
-              `https://cms.ariscorp.de/items/planets?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+              `https://cms.ariscorp.de/items/planets?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
               object
             )
             .then((resp) => {
@@ -317,7 +317,7 @@ async function postMoons(moons) {
 
   await axios
     .get(
-      'https://cms.ariscorp.de/items/moons?limit=-1&access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg'
+      'https://cms.ariscorp.de/items/moons?limit=-1&access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN
     )
     .then((resp) => {
       moons.forEach((object, index) => {
@@ -328,7 +328,7 @@ async function postMoons(moons) {
         )
         if (search != null) {
           axios.patch(
-            `https://cms.ariscorp.de/items/moons/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+            `https://cms.ariscorp.de/items/moons/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
             object
           )
           moonIds.push(search.id)
@@ -336,7 +336,7 @@ async function postMoons(moons) {
         } else {
           axios
             .post(
-              `https://cms.ariscorp.de/items/moons?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+              `https://cms.ariscorp.de/items/moons?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
               object
             )
             .then((resp) => {
@@ -493,7 +493,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/systeme?limit=-1&access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg'
+        'https://cms.ariscorp.de/items/systeme?limit=-1&access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN
       )
       .then((resp) => {
         Datastore.data.forEach((object, index) => {
@@ -502,7 +502,7 @@ export default async function handler(req, res) {
           if (search) {
             axios
               .patch(
-                `https://cms.ariscorp.de/items/systeme/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+                `https://cms.ariscorp.de/items/systeme/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
                 object
               )
               .catch(function (error) {

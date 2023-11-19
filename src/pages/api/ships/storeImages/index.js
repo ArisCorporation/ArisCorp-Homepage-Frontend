@@ -48,7 +48,7 @@ async function uploadFile(url, title) {
 
   // const {data} = await axios.post(BackendURL + '/files/import?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg', payload)
 
-  await directus.auth.static('te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg')
+  await directus.auth.static(process.env.NEXT_PUBLIC_CMS_TOKEN)
   const data = await directus.files.import({
     url: payload.url,
     data: payload.data,
@@ -144,7 +144,7 @@ export default async function handler(req, res) {
           if (search != null) {
             axios
               .patch(
-                `https://cms.ariscorp.de/items/ships/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+                `https://cms.ariscorp.de/items/ships/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
                 object
               )
               .catch(function (error) {
