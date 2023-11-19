@@ -5,12 +5,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 export default function InternalIndex() {
-  const { data: session } = useSession()
   const gridImages = {
     hover: { scale: 1.1, opacity: 0.4 },
+    hover2: { scale: 1.1, opacity: 0.4 },
   }
   const gridTexts = {
-    hover: { transform: 'translateY(-50%)' },
+    hover: { transform: 'translateY(0%)' },
   }
   return (
     <ProtectedLayout>
@@ -36,8 +36,17 @@ export default function InternalIndex() {
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full h-full overflow-hidden ease-in-out cursor-pointer group rounded-xl aspect-square"
+            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
           >
+            <motion.div
+              initial={{ transform: 'translateY(60%)' }}
+              variants={gridTexts}
+              className="absolute flex justify-center w-full h-full z-5"
+            >
+              <div className="my-auto">
+                <p className="p-0 text-white">Mein Profil</p>
+              </div>
+            </motion.div>
             <motion.div
               variants={gridImages}
               className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
@@ -45,50 +54,41 @@ export default function InternalIndex() {
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
             />
-            <motion.div
-              variants={gridTexts}
-              className="absolute flex justify-center w-full h-full"
-            >
-              <p className="p-0 mx-auto my-0 text-white">Mein Profil</p>
-            </motion.div>
           </motion.div>
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full h-full overflow-hidden ease-in-out cursor-pointer group rounded-xl aspect-square"
+            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
           >
             <motion.div
+              initial={{ transform: 'translateY(60%)' }}
+              variants={gridTexts}
+              className="absolute flex justify-center w-full h-full z-5"
+            >
+              <div className="my-auto">
+                <p className="p-0 text-white/75">Coming Soon...</p>
+              </div>
+            </motion.div>
+            <motion.div
               variants={gridImages}
+              initial={{ opacity: 0.4 }}
               className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
               style={{
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
             />
-            <motion.div
-              variants={gridTexts}
-              className="absolute flex justify-center w-full h-full"
-            >
-              <p className="p-0 mx-auto my-0 opacity-75">Coming Soon...</p>
-            </motion.div>
           </motion.div>
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full h-full overflow-hidden ease-in-out cursor-pointer group rounded-xl aspect-square"
+            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
           >
             <motion.div
-              variants={gridImages}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
-              style={{
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
-              }}
-            />
-            <motion.div
+              initial={{ transform: 'translateY(60%)' }}
               variants={gridTexts}
-              className="absolute flex justify-center w-full h-full"
+              className="absolute flex justify-center w-full h-full z-5"
             >
-              {/* <p className="p-0 mx-auto my-0">Mein Profil</p> */}
-              <div className="flex justify-center mb-6">
+              <div className="my-auto">
                 <p
                   className="p-0 text-xl redacted-small"
                   data-text="[ REDACTED ]"
@@ -97,6 +97,14 @@ export default function InternalIndex() {
                 </p>
               </div>
             </motion.div>
+            <motion.div
+              variants={gridImages}
+              initial={{ opacity: 0.4 }}
+              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
+              style={{
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
+              }}
+            />
           </motion.div>
         </div>
       </div>
