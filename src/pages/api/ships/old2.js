@@ -123,7 +123,7 @@ async function uploadFile(url, title, fileType) {
 
   let res = await axios.post(
     BackendURL +
-      '/files/import?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg',
+      '/files/import?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN,
     payload
   )
 

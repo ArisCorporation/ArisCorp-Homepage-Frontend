@@ -136,7 +136,7 @@ export default async function handler(req, res) {
   } else if (req.method === 'POST') {
     await axios
       .get(
-        'https://cms.ariscorp.de/items/components?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg&limit=-1'
+        'https://cms.ariscorp.de/items/components?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN + '&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
@@ -147,14 +147,14 @@ export default async function handler(req, res) {
           if (search != null) {
             axios
               .patch(
-                `https://cms.ariscorp.de/items/components/${search.id}?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+                `https://cms.ariscorp.de/items/components/${search.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
                 object
               )
               .catch(function (error) {})
           } else {
             axios
               .post(
-                `https://cms.ariscorp.de/items/components?access_token=te_-ngsko7fb0r7FHplpGx2S4wXPy7Tg`,
+                `https://cms.ariscorp.de/items/components?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
                 object
               )
               .catch(function (error) {
