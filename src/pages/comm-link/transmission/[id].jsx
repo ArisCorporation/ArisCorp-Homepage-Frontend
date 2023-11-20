@@ -107,8 +107,8 @@ export default function CommLinkDetailPage ({data, siteTitle}) {
               </div>
               <div className="relative ml-0 uppercase md:ml-4 lg:ml-8">
                 <p className="absolute bottom-0 m-0 text-xs italic leading-[0rem] lg:text-lg xl:text-xl text-bold text-inherit whitespace-nowrap">
-                  <span className="text-secondary">Author:</span>
-                  {' ' + data.comm_link_author.member_titel}
+                  <span className="text-secondary">Author: </span>
+                  {data.comm_link_author.title ? data.comm_link_author.title + " " : ""} {data.comm_link_author.firstname} {data.comm_link_author.lastname}
                 </p>
               </div>
             </div>

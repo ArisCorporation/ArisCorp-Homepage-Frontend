@@ -31,7 +31,7 @@ export default function OurMember () {
                 <div className="relative border-b-2 border-solid rounded-sm border-secondary max-w-full w-[270px] h-[320px]">
                   <Image
                     src={'https://cms.ariscorp.de/assets/' + Potrait}
-                    alt={member.member_name + 'Potrait'}
+                    alt={member.slug + 'Potrait'}
                     fill
                     contain
                     placeholder="blur"
@@ -73,7 +73,7 @@ export default function OurMember () {
                     <Link legacyBehavior href={'/biografie/' + member.slug}>
                       <a
                         className="italic bg-transparent text-secondary hover:underline"
-                        aria-label={'Biografie von' + member.member_name}
+                        aria-label={'Biografie von ' + (member.title ? member.title + " " : "")  + member.firstname + " " + member?.lastname}
                       >
                         BIOGRAFIE
                       </a>
@@ -81,7 +81,7 @@ export default function OurMember () {
                   </ul>
                 </figcaption>
               </figure>
-              <p className="text-2xl">{member.member_titel}</p>
+              <p className="text-2xl">{member.title ? member.title + " " : ""}{member.firstname} {member.lastname}</p>
               <p className="text-[#999]">Mitglied</p>
             </div>
           )
