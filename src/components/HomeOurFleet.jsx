@@ -96,9 +96,16 @@ export default function OurFleet() {
           >
             <Tab
               key={'alle'}
-              className={'p-3 m-1 basis-full flex justify-center focus-visible:outline-none'}
+              className={
+                'p-3 m-1 basis-full flex justify-center focus-visible:outline-none'
+              }
             >
-              <div className={"relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 " + (selectedIndex == 0 ? "scale-125" : "")}>
+              <div
+                className={
+                  'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 ' +
+                  (selectedIndex == 0 ? 'scale-125' : '')
+                }
+              >
                 <Image
                   src={
                     'https://cms.ariscorp.de/assets/a3495a27-dc35-4ba9-a37b-a5752db473ee'
@@ -115,8 +122,16 @@ export default function OurFleet() {
               </div>
             </Tab>
             {departments.map((data, index) => (
-              <Tab key={data.id} className={'p-3 m-1 focus-visible:outline-none'}>
-                <div className={"relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 " + (selectedIndex == index + 1 ? "scale-125" : "")}>
+              <Tab
+                key={data.id}
+                className={'p-3 m-1 focus-visible:outline-none'}
+              >
+                <div
+                  className={
+                    'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 ' +
+                    (selectedIndex == index + 1 ? 'scale-125' : '')
+                  }
+                >
                   <Image
                     src={
                       'https://cms.ariscorp.de/assets/' + data.gameplay_logo.id
@@ -142,7 +157,7 @@ export default function OurFleet() {
                 <div className="max-w-[1100px] mx-auto">
                   <h1 className="pb-4 uppercase text-primary">Alle</h1>
                   {/* <div className="max-w-5xl mx-auto mt-4 text-center"> */}
-                  <SelectionGridWrapper>
+                  <div className="grid grid-cols-1 px-2 lg:grid-cols-2 gap-x-6 gap-y-4">
                     <AnimatePresence>
                       {data.map((object) => (
                         <motion.div
@@ -160,7 +175,7 @@ export default function OurFleet() {
                         </motion.div>
                       ))}
                     </AnimatePresence>
-                  </SelectionGridWrapper>
+                  </div>
                   {/* </div> */}
                 </div>
                 <hr />
@@ -174,7 +189,7 @@ export default function OurFleet() {
                       {dep.gameplay_name}
                     </h1>
                     {/* <div className="max-w-5xl mx-auto mt-4 text-center"> */}
-                    <SelectionGridWrapper>
+                    <div className="grid grid-cols-1 px-2 lg:grid-cols-2 gap-x-6 gap-y-4">
                       <AnimatePresence>
                         {data
                           .filter(
@@ -198,7 +213,7 @@ export default function OurFleet() {
                             </motion.div>
                           ))}
                       </AnimatePresence>
-                    </SelectionGridWrapper>
+                    </div>
                     {/* </div> */}
                   </div>
                   <hr />
