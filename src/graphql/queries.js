@@ -141,6 +141,18 @@ export const GET_MEMBERS = gql`
       member_potrait {
         id
       }
+      head_department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
     }
   }
 `
@@ -1871,6 +1883,60 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
       price
       minCrew
       maxCrew
+    }
+  }
+`
+
+export const INTERNAL_GET_MEMBER_HANGAR = gql`
+  query InternalGetMemberHangar($member: String!) {
+    member(filter: { slug: { _eq: $member } }) {
+      title
+      firstname
+      lastname
+      member_potrait {
+        id
+      }
+      ships(
+        filter: {
+          visibility: { _neq: "hidden" }
+        }
+        sort: ["ships_id.name"]
+        limit: -1
+      ) {
+        id
+        name
+        serial
+        group
+        visibility
+        department {
+          gameplay_logo {
+            id
+          }
+          gameplay_name
+        }
+        ships_id {
+          id
+          name
+          slug
+          productionStatus
+          storeImage {
+            id
+          }
+          manufacturer {
+            firmen_name
+            code
+          }
+          length
+          beam
+          height
+          classification
+          size
+          cargo
+          price
+          minCrew
+          maxCrew
+        }
+      }
     }
   }
 `

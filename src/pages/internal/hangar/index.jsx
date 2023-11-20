@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react'
-import Layout from "./layout"
+import Layout from "../layout"
 import { gql, useQuery } from '@apollo/client'
 import { GET_GAMEPLAYS, INTERNAL_GET_Ships_MY_HANGAR } from 'graphql/queries'
 import client from 'apollo/clients';

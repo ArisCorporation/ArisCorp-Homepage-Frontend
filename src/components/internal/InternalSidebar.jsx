@@ -34,6 +34,7 @@ import { AiOutlineMail } from 'react-icons/ai'
 import { signOut, useSession } from 'next-auth/react'
 import Modal from 'components/modal'
 import DefaultButton from 'components/DefaultButton'
+import HangarIcon from 'components/icons/HangarIcon'
 
 export default function Sidebar ({ changes }) {
   const router = useRouter()
@@ -472,6 +473,58 @@ export default function Sidebar ({ changes }) {
                   </a>
                 </Link>
               </li>
+              <li
+                className="p-0 m-0 list-none group"
+                data-tip
+                data-for="MembersTip"
+              >
+                <Link legacyBehavior href="/internal/members">
+                  <a
+                    className={
+                      'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
+                      ((router.pathname.startsWith('/internal/members') || router.pathname.startsWith('/internal/hangar/') || router.pathname.startsWith('/internal/biografie/'))
+                        ? 'after:block text-white '
+                        : 'after:hidden text-[#afafaf] ') +
+                      (!mobileView && sidebarCollapsed
+                        ? 'py-[10px] pl-[25px] pr-[10px] text-2xl'
+                        : '')
+                    }
+                    onClick={(e) => changes ? openLeaveModal(e, "/members") : e}
+                  >
+                    <div
+                      className={
+                        'relative flex items-center h-6 whitespace-nowrap transition-[height] duration-500 ease-linear ' +
+                        (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
+                      }
+                    >
+                      <MdGroups className="min-w-[30px] text-center relative antialiased inline-block" />
+                      <span
+                        className={
+                          'ml-[5px] ' +
+                          (!mobileView && sidebarCollapsed ? 'hidden' : '')
+                        }
+                      >
+                        {' '}
+                        Mitglieder{' '}
+                      </span>
+                      {!mobileView && sidebarCollapsed ? (
+                        <ReactTooltip
+                          id="MembersTip"
+                          place="right"
+                          effect="solid"
+                          arrowColor="transparent"
+                          type="dark"
+                          padding="8px"
+                        >
+                          Mitglieder
+                        </ReactTooltip>
+                      ) : (
+                        ''
+                      )}
+                    </div>
+                  </a>
+                </Link>
+              </li>
               {sessionData?.user.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb" || sessionData?.user.position == "administration" ? (
                 <li
                   className="p-0 m-0 list-none group"
@@ -641,7 +694,7 @@ export default function Sidebar ({ changes }) {
                     <a
                       className={
                         'group-hover:text-[#e2e2e2] relative block py-[10px] pl-[30px] pr-[15px] text-lg whitespace-nowrap transition-all duration-500 ease-linear outline-0 outline-none decoration-transparent after:absolute after:top-[10%] after:left-0 after:w-[3px] h-[80%] after:bg-[#00ffe8] after:shadow-[2px_0_10px_rgba(36,86,130,.9)] after:transition-all after:rounded-r-sm after:duration-500 after:ease-linear after:h-[80%] after:text-transparent ' +
-                        (router.pathname.startsWith('/internal/hangar')
+                        (router.pathname == '/internal/hangar'
                           ? 'after:block text-white '
                           : 'after:hidden text-[#afafaf] ') +
                         (!mobileView && sidebarCollapsed
@@ -656,7 +709,7 @@ export default function Sidebar ({ changes }) {
                           (!mobileView && sidebarCollapsed ? 'h-[30px]' : '')
                         }
                       >
-                        <MdOutlineConnectingAirports className="min-w-[30px] text-center relative antialiased inline-block" />
+                        <HangarIcon classes="fill-white" classNames="min-w-[30px] max-w-[30px] text-center relative antialiased inline-block" />
                         <span
                           className={
                             'ml-[5px] ' +

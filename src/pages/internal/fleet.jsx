@@ -39,7 +39,7 @@ export async function getServerSideProps() {
     data.push(item)
   })
 
-  const siteTitle = 'My Hangar - ArisCorp Management System'
+  const siteTitle = 'ArisCorp Flotte - ArisCorp Management System'
 
   return {
     props: {
