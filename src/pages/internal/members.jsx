@@ -102,7 +102,7 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
           id="member"
           className="flex items-center justify-center text-center"
         >
-          <div className="grid w-full h-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 3xl:grid-cols-8 4xl:grid-cols-12">
+          <div className="grid w-full h-full grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-6 4xl:grid-cols-12">
             {data.map((member) => {
               const Potrait =
                 member.member_potrait == null
@@ -164,7 +164,10 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                       </p>
                       <hr className="w-[100px] h-[2px] m-auto" />
                       <ul className="pl-0 mt-3 mb-0 space-x-4 list-none">
-                        <Link legacyBehavior href={'/internal/biografie/' + member.slug}>
+                        <Link
+                          legacyBehavior
+                          href={'/internal/biografie/' + member.slug}
+                        >
                           <a
                             className="italic bg-transparent text-secondary hover:underline"
                             aria-label={
@@ -178,7 +181,10 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                             BIOGRAFIE
                           </a>
                         </Link>
-                        <Link legacyBehavior href={'/internal/hangar/' + member.slug}>
+                        <Link
+                          legacyBehavior
+                          href={'/internal/hangar/' + member.slug}
+                        >
                           <a
                             className="italic bg-transparent text-secondary hover:underline"
                             aria-label={
@@ -199,7 +205,17 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                     {member.title ? member.title + ' ' : ''}
                     {member.firstname} {member.lastname}
                   </p>
-                  <p className="text-[#999]">Mitglied</p>
+                  <p className="text-[#999]">
+                    {member.position_level == 'candidate'
+                      ? 'Anwärter'
+                      : member.position_level == 'freelancer'
+                      ? 'Freier Mitarbeiter'
+                      : member.position_level == 'employee'
+                      ? 'Mitarbeiter'
+                      : member.position_level == 'administration'
+                      ? 'Verwaltung'
+                      : 'Mitglied'}
+                  </p>
                 </div>
               )
             })}
