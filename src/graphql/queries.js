@@ -130,6 +130,9 @@ export const GET_MEMBERS = gql`
       id
       status
       member_name
+      firstname
+      lastname
+      title
       slug
       member_titel
       roles
@@ -143,7 +146,7 @@ export const GET_MEMBERS = gql`
 `
 
 export const GET_MEMBER = gql`
-query GetMember($slug: String!) {
+  query GetMember($slug: String!) {
     member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
       id
       status
@@ -441,7 +444,9 @@ export const GET_COMM_LINK = gql`
         width
       }
       comm_link_author {
-        member_titel
+        title
+        firstname
+        lastname
         member_potrait {
           id
         }
@@ -1923,6 +1928,76 @@ export const INTERNAL_GET_FLEET = gql`
   }
 `
 
+export const GET_INTERNAL_MEMBER_HANGAR = gql`
+  query GetInternalMembers($member: String!) {
+    member_ships(
+      filter: {
+        member_id: { _eq: $member }
+        group: { _neq: "private" }
+        visibility: { _neq: "hidden" }
+      }
+      sort: ["ships_id.name"]
+      limit: -1
+    ) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+    }
+    member_technologien(filter: { member_id: { slug: { _eq: $slug } } }) {
+      technologien_id {
+        id
+        waffen_name
+        waffenhersteller {
+          firmen_name
+          slug
+        }
+        waffen_bild {
+          id
+        }
+      }
+    }
+  }
+`
+
 export const GET_INTERNAL_ADMIN_DATA = gql`
   query GetInternalAdminData {
     member(
@@ -1981,12 +2056,12 @@ export const GET_INTERNAL_ADMIN_DATA = gql`
     }
 
     components(limit: -1) {
-        id
-        name
-        manufacturer {
-          firmen_name
-          status
-        }
+      id
+      name
+      manufacturer {
+        firmen_name
+        status
       }
+    }
   }
 `
