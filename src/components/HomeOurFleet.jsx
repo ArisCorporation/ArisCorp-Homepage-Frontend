@@ -157,7 +157,7 @@ export default function OurFleet() {
                 <div className="max-w-[1100px] mx-auto">
                   <h1 className="pb-4 uppercase text-primary">Alle</h1>
                   {/* <div className="max-w-5xl mx-auto mt-4 text-center"> */}
-                  <div className="grid grid-cols-1 px-2 lg:grid-cols-2 gap-x-6 gap-y-4">
+                  <div className="grid grid-cols-1 px-2 text-left lg:grid-cols-2 gap-x-6 gap-y-4">
                     <AnimatePresence>
                       {data.map((object) => (
                         <motion.div
@@ -189,7 +189,7 @@ export default function OurFleet() {
                       {dep.gameplay_name}
                     </h1>
                     {/* <div className="max-w-5xl mx-auto mt-4 text-center"> */}
-                    <div className="grid grid-cols-1 px-2 lg:grid-cols-2 gap-x-6 gap-y-4">
+                    <div className="grid grid-cols-1 px-2 text-left lg:grid-cols-2 gap-x-6 gap-y-4">
                       <AnimatePresence>
                         {data
                           .filter(
