@@ -665,7 +665,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={firstname}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setFirstname(e.target.value)}
                   placeholder="Chris..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -676,7 +676,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={lastname}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setLastname(e.target.value)}
                   placeholder="Roberts..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -689,7 +689,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={title}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Dr. Med...."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -700,7 +700,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={password}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="*********"
@@ -763,7 +763,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                 <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                   <input
                     onChange={handleAvatarUpload}
-                    autoComplete={false}
+                    autoComplete={false} autoCorrect={false}
                     type='file'
                     accept='image/png, image/jpeg, image/webp'
                     className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -787,7 +787,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={currentPlace}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setCurrentPlace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -820,7 +820,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={birthdate}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setBirthdate(e.target.value)}
                   placeholder={moment().add(930, 'years').locale("de").format('DD.MM.YYYY')}
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -839,7 +839,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={birthplace}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setBirthplace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -852,7 +852,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={haircolor}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setHaircolor(e.target.value)}
                   placeholder="Schwarz/Grau"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -863,7 +863,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={height}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setHeight(e.target.value)}
                   placeholder="185"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -876,7 +876,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={eyecolor}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setEyecolor(e.target.value)}
                   placeholder="Braun"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -887,7 +887,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={weight}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setWeight(e.target.value)}
                   placeholder="85"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -955,7 +955,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                       <input
                         value={dutyPeriod}
-                        autoComplete={false}
+                        autoComplete={false} autoCorrect={false}
                         onChange={(e) => setDutyPeriod(e.target.value)}
                         placeholder={`${moment().add(929, 'years').add(11, 'months').locale("de").format('MM/YY')} - ${moment().add(930, 'years').locale("de").format('MM/YY')}`}
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -966,7 +966,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                       <input
                         value={dutyReason}
-                        autoComplete={false}
+                        autoComplete={false} autoCorrect={false}
                         onChange={(e) => setDutyReason(e.target.value)}
                         placeholder="Dienst quittiert"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -987,7 +987,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                       <input
                         value={educationName}
-                        autoComplete={false}
+                        autoComplete={false} autoCorrect={false}
                         onChange={(e) => setEducationName(e.target.value)}
                         placeholder="Medizin Studium"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -999,7 +999,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                       <input
                         value={educationPeriod}
-                        autoComplete={false}
+                        autoComplete={false} autoCorrect={false}
                         onChange={(e) => setEducationPeriod(e.target.value)}
                         placeholder={`${moment().add(929, 'years').add(11, 'months').locale("de").format('MM/YY')} - ${moment().add(930, 'years').locale("de").format('MM/YY')}`}
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1013,7 +1013,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     <div className='w-8/12 lg:w-full'>
                       <input
                         value={educationPlace}
-                        autoComplete={false}
+                        autoComplete={false} autoCorrect={false}
                         onChange={(e) => setEducationPlace(e.target.value)}
                         placeholder="Medizinische Fakultät in Terra"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1031,7 +1031,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={hobbys}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setHobbys(e.target.value)}
                   placeholder="Sport, Fliegen, Schrauben, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1042,7 +1042,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={activities}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setActivities(e.target.value)}
                   placeholder="Pool, Kochen, Sport, Alkohol trinken, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1055,7 +1055,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={talents}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setTalents(e.target.value)}
                   placeholder="Spricht Sprache X, Handwerklich begabt, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1066,7 +1066,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={habits}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setHabits(e.target.value)}
                   placeholder="Geht gern Risiken ein, Ist sehr organisiert, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1079,7 +1079,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={tics}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setTics(e.target.value)}
                   placeholder="Spricht Sprache X, Handwerklich begabt, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1090,7 +1090,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={fears}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setFears(e.target.value)}
                   placeholder="Hat Angst im Dunklem, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1103,7 +1103,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={character}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setCharacter(e.target.value)}
                   placeholder="Ist sehr loyal, manchmal zu ehrlich, manchmal etwas impulsiv, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1127,7 +1127,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={music}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setMusic(e.target.value)}
                   placeholder="Rock Musik, EDM, Metal, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1138,7 +1138,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={movies}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setMovies(e.target.value)}
                   placeholder="Interstellar, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1151,7 +1151,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={books}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setBooks(e.target.value)}
                   placeholder="Brochuren von Hersteller X, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1162,7 +1162,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={clothing}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setClothing(e.target.value)}
                   placeholder="Interstellar, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1175,7 +1175,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={food}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setFood(e.target.value)}
                   placeholder="Big Bennys Nudeln, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1186,7 +1186,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={drink}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setDrink(e.target.value)}
                   placeholder="Vestal Wasser, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1199,7 +1199,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={alcohol}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setAlcohol(e.target.value)}
                   placeholder="Schmolz Bier, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1210,7 +1210,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={color}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setColor(e.target.value)}
                   placeholder="Grün, Rot, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1223,7 +1223,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={loves}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setLoves(e.target.value)}
                   placeholder="Hochwertige Schiffe, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1234,7 +1234,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <input
                   value={hates}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setHates(e.target.value)}
                   placeholder="Drake, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
@@ -1247,7 +1247,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
               <div className='w-full'>
                 <textarea
                   value={medicalInformations}
-                  autoComplete={false}
+                  autoComplete={false} autoCorrect={false}
                   onChange={(e) => setMedicalInformations(e.target.value)}
                   placeholder={"- Rechte Hand große Narbe verursacht durch eine Piratenklinge \n- Linke Ohrmuschel nicht vorhanden durch einen schlimmen Rennsport-Unfall"}
                   className="form-control block resize-none w-full h-52 px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none" />
