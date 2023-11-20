@@ -1715,6 +1715,8 @@ async function formData() {
       const liveData = liveShipData.find((e) => e.slug == slug)
       const scwData = await getScwShip(flSlug)
 
+      console.log("slug")
+
       const company = manufacturers.filter(
         (e) =>
           e.code === obj.manufacturer.code ||
