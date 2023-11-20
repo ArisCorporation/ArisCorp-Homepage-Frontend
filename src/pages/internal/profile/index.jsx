@@ -797,7 +797,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
           <p className='w-full mt-4'>Grundinformationen:</p>
           <div className='flex flex-wrap justify-between px-8 lg:space-x-12 lg:flex-nowrap'>
             <div className='flex justify-between w-full mb-3 space-x-4 lg:w-1/2'>
-              <label className='my-auto text-xl'>Sex:</label>
+              <label className='my-auto text-xl'>Geschlecht:</label>
               <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                 <div className="flex my-auto mr-auto space-x-4">
                   <div>

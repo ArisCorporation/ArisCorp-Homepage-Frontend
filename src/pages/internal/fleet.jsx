@@ -189,23 +189,29 @@ export default function InternalIndex({
         </div>
         <SelectionGridWrapper>
           <AnimatePresence>
-            {data.map((object) => (
-              <motion.div
-                key={object.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                exit={{ opacity: 0 }}
-              >
-                <HangarShipCard
-                  fleetView
-                  detailView={detailView}
-                  data={object}
-                />
-              </motion.div>
-            ))}
+            {data[0] &&
+              data.map((object) => (
+                <motion.div
+                  key={object.id}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  exit={{ opacity: 0 }}
+                >
+                  <HangarShipCard
+                    fleetView
+                    detailView={detailView}
+                    data={object}
+                  />
+                </motion.div>
+              ))}
           </AnimatePresence>
         </SelectionGridWrapper>
+        {!data[0] && (
+          <h2 className="text-center">
+            Keine Schiffe mit den aktuellen Kriterien vorhanden.
+          </h2>
+        )}
       </div>
     </Layout>
   )
