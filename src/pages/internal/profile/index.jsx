@@ -271,7 +271,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
 
   async function getData (id) {
     let data = await fetch(
-      "https://cms.ariscorp.de/items/member?fields=*,account.email,account.id,currentResidenceSystem.name,currentResidenceSystem.id,birthSystem.name,birthSystem.id&filter[account][_eq]=" + id,
+      "https://cms.ariscorp.de/items/member?fields=*,account.email,account.id,account.role,currentResidenceSystem.name,currentResidenceSystem.id,birthSystem.name,birthSystem.id&filter[account][_eq]=" + id,
       {
         method: "GET"
       }
@@ -716,7 +716,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                 <div className="flex flex-wrap my-auto mr-auto space-y-4">
                   <div className='flex w-full'>
                     <div className='ml-auto mr-[50%]'>
-                      <Checkbox disabled state={recruitingCheckbox} setState={setRecruitingCheckbox} id="c-3" color="primary" bg="[#222]" name="group" value="private">
+                      <Checkbox disabled={!(data.position_level == "administration" || data.account?.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb")} state={recruitingCheckbox} setState={setRecruitingCheckbox} id="c-3" color="primary" bg="[#222]" name="group" value="private">
                         <Checkbox.Label>Rekrutierung</Checkbox.Label>
                         <Checkbox.Indicator />
                       </Checkbox>
@@ -724,7 +724,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                   </div>
                   <div className='flex w-full'>
                     <div className='ml-auto mr-[50%]'>
-                      <Checkbox disabled state={marketingCheckbox} setState={setMarketingCheckbox} id="c-4" color="primary" bg="[#222]" name="group" value="private">
+                      <Checkbox disabled={!(data.position_level == "administration" || data.account?.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb")} state={marketingCheckbox} setState={setMarketingCheckbox} id="c-4" color="primary" bg="[#222]" name="group" value="private">
                         <Checkbox.Label>Marketing & Presse</Checkbox.Label>
                         <Checkbox.Indicator />
                       </Checkbox>
@@ -732,7 +732,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                   </div>
                   <div className='flex w-full'>
                     <div className='ml-auto mr-[50%]'>
-                      <Checkbox disabled state={contentCheckbox} setState={setContentCheckbox} id="c-5" color="primary" bg="[#222]" name="group" value="private">
+                      <Checkbox disabled={!(data.position_level == "administration" || data.account?.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb")} state={contentCheckbox} setState={setContentCheckbox} id="c-5" color="primary" bg="[#222]" name="group" value="private">
                         <Checkbox.Label>Inhaltsersteller</Checkbox.Label>
                         <Checkbox.Indicator />
                       </Checkbox>
@@ -747,7 +747,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                 <div className='flex'>
                   <div className="flex my-auto mr-auto space-x-4">
                     <div>
-                      <Checkbox disabled state={abteilungsLeiter} setState={setAbteilungsleiter} id="c-1" color="primary" bg="[#222]" name="group" value="private">
+                      <Checkbox disabled={!(data.position_level == "administration" || data.account?.role == "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb")} state={abteilungsLeiter} setState={setAbteilungsleiter} id="c-1" color="primary" bg="[#222]" name="group" value="private">
                         <Checkbox.Label>Abteilungsleiter</Checkbox.Label>
                         <Checkbox.Indicator />
                       </Checkbox>
