@@ -36,7 +36,7 @@ export default function InternalIndex() {
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
+            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
           >
             <motion.div
               initial={{ transform: 'translateY(60%)' }}
@@ -49,7 +49,7 @@ export default function InternalIndex() {
             </motion.div>
             <motion.div
               variants={gridImages}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
+              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
               style={{
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
@@ -58,7 +58,7 @@ export default function InternalIndex() {
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
+            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
           >
             <motion.div
               initial={{ transform: 'translateY(60%)' }}
@@ -72,7 +72,7 @@ export default function InternalIndex() {
             <motion.div
               variants={gridImages}
               initial={{ opacity: 0.4 }}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
+              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
               style={{
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
@@ -81,7 +81,7 @@ export default function InternalIndex() {
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
-            className="relative w-full overflow-hidden ease-in-out cursor-pointer h-fit group rounded-xl aspect-square"
+            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
           >
             <motion.div
               initial={{ transform: 'translateY(60%)' }}
@@ -100,7 +100,7 @@ export default function InternalIndex() {
             <motion.div
               variants={gridImages}
               initial={{ opacity: 0.4 }}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929]"
+              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
               style={{
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
