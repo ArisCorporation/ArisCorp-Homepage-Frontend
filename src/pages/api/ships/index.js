@@ -2938,7 +2938,7 @@ async function formData() {
         size: size ? size : p4kData ? --p4kData.Size : null,
         sortSize: sortSize,
         price: price ? price : null,
-        pledgePrice: flData.pledgePrice,
+        pledgePrice: flData.pledgePrice || flData.lastPledgePrice,
         onSale: flData.onSale,
         productionStatus: obj.production_status,
         productionNotes: obj.production_note,
