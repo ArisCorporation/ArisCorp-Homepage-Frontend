@@ -64,7 +64,6 @@ export default function InternalIndex({
   const [selectedMember, setSelectedMember] = useState()
   const [detailView, setDetailView] = useState()
   const [data, setData] = useState(apiData)
-  console.log(selectedMember)
 
   function changeDepartment(dep) {
     setSelectedDepartment(dep)

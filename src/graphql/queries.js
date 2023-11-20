@@ -97,7 +97,9 @@ export const GET_INDEX_DATA = gql`
       }
       date_created
       comm_link_author {
-        member_titel
+        title
+        firstname
+        lastname
       }
       comm_link
       comm_link_beschreibung
@@ -124,17 +126,15 @@ export const GET_MEMBERS = gql`
   query GetMembers {
     member(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "member_name"]
+      sort: ["firstname"]
       limit: -1
     ) {
       id
       status
-      member_name
       firstname
       lastname
       title
       slug
-      member_titel
       roles
       position_level
       head_of_department
@@ -147,7 +147,7 @@ export const GET_MEMBERS = gql`
 
 export const GET_MEMBER = gql`
   query GetMember($slug: String!) {
-    member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
+    member(filter: { slug: { _eq: $slug } }) {
       id
       status
       firstname
