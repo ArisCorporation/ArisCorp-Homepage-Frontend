@@ -337,7 +337,7 @@ export const GET_GAMEPLAYS = gql`
   query GetGameplays {
     gameplays(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "gameplay_name"]
+      sort: ["gameplay_name"]
       limit: -1
     ) {
       id
