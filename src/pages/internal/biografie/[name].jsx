@@ -185,11 +185,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
                 <div className='grid grid-cols-2 uppercase'>
                   <div className="col-span-1">
                     <p className='pb-0 text-sm'>Bürgerlicher Name:</p>
-                    <p className='p-0 text-primary'>{name}</p>
-                  </div>
-                  <div className="col-span-1">
-                    <p className='pb-0 text-sm'>Titel:</p>
-                    <p className='p-0 text-primary'>{data.title ? data.title : 'N/A'}</p>
+                    <p className='p-0 text-primary'>{data.title ? data.title + " " : ""}{name}</p>
                   </div>
                 </div>
                 <hr className='relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary' />
