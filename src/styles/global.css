@@ -39,6 +39,9 @@ vm-icon {
   h6 {
     @apply text-white;
   }
+  input {
+    @apply placeholder:opacity-40
+  }
   /* .tl-storyslider {
     @apply [height:69px!important];
   } */
