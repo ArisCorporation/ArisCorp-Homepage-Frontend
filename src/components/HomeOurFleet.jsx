@@ -92,7 +92,7 @@ export default function OurFleet() {
       <div>
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
           <Tab.List
-            className={'flex flex-wrap justify-center max-w-7xl mx-auto'}
+            className={'flex justify-center flex-wrap mx-auto'}
           >
             <Tab
               key={'alle'}
@@ -102,7 +102,7 @@ export default function OurFleet() {
             >
               <div
                 className={
-                  'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 ' +
+                  'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-24 w-24 border-1 hover:scale-150 ' +
                   (selectedIndex == 0 ? 'scale-125' : '')
                 }
               >
@@ -128,7 +128,7 @@ export default function OurFleet() {
               >
                 <div
                   className={
-                    'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-36 w-36 border-1 hover:scale-150 ' +
+                    'relative mx-1 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-20 w-20 border-1 hover:scale-150 ' +
                     (selectedIndex == index + 1 ? 'scale-125' : '')
                   }
                 >
