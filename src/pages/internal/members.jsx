@@ -143,26 +143,30 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                           : 'N/A'}
                       </p>
                       <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
-                      <p className="p-[10px] m-0">
-                        “
-                        {member.roles.map((role, index) => (
-                          <span key={index}>
-                            {(index ? ', ' : '') +
-                              (role === 'marketing'
-                                ? 'Marketing & Presse'
-                                : role === 'recruitment'
-                                ? 'Rekrutierung'
-                                : role === 'content_writer'
-                                ? 'Inhaltsersteller'
-                                : role)}
-                          </span>
-                        ))}
-                        {member.head_of_department && (
-                          <span>, Abteilungsleiter</span>
-                        )}
-                        “
-                      </p>
-                      <hr className="w-[100px] h-[2px] m-auto" />
+                      {member.roles[0] || member.head_of_department ? (
+                        <>
+                          <p className="p-[10px] m-0">
+                            “
+                            {member.roles.map((role, index) => (
+                              <span key={index}>
+                                {(index ? ', ' : '') +
+                                  (role == 'marketing'
+                                    ? 'Marketing & Presse'
+                                    : role == 'recruitment'
+                                    ? 'Rekrutierung'
+                                    : role == 'content_writer'
+                                    ? 'Inhaltsersteller'
+                                    : role)}
+                              </span>
+                            ))}
+                            {member.head_of_department && (
+                              <span>, Abteilungsleiter</span>
+                            )}
+                            “
+                          </p>
+                          <hr className="w-[100px] h-[2px] m-auto" />
+                        </>
+                      ) : null}
                       <ul className="pl-0 mt-3 mb-0 space-x-4 list-none">
                         <Link
                           legacyBehavior
