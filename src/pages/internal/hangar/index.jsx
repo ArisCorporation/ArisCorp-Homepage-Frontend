@@ -424,7 +424,7 @@ export default function InternalIndex ({ shipList, siteTitle, departments }) {
             </div>
             <div>
               <BasicPanelButton animate className="ml-auto w-fit" onClick={() => setDetailView(!detailView)}>
-                <p className="p-0">Detail View: {detailView ? "Ausschalten" : "Anschalten"}</p>
+                <p className="p-0">Detail Ansicht: {detailView ? "Ausschalten" : "Anschalten"}</p>
               </BasicPanelButton>
             </div>
 

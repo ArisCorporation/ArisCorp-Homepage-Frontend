@@ -182,7 +182,7 @@ export default function InternalIndex({
               onClick={() => setDetailView(!detailView)}
             >
               <p className="p-0">
-                Detail View: {detailView ? 'Ausschalten' : 'Anschalten'}
+                Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
               </p>
             </BasicPanelButton>
           </div>

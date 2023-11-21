@@ -157,7 +157,7 @@ export default function InternalIndex({ apiData, raw, departments, siteTitle }) 
         <div className="ml-auto">
           <BasicPanelButton animate onClick={() => setDetailView(!detailView)}>
             <p className="p-0">
-              Detail View: {detailView ? 'Ausschalten' : 'Anschalten'}
+              Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
             </p>
           </BasicPanelButton>
         </div>
