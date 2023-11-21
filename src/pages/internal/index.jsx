@@ -7,10 +7,12 @@ import { motion } from 'framer-motion'
 export default function InternalIndex() {
   const gridImages = {
     hover: { scale: 1.1, opacity: 0.4 },
-    hover2: { scale: 1.1, opacity: 0.4 },
   }
   const gridTexts = {
     hover: { transform: 'translateY(0%)' },
+  }
+  const gridContainer = {
+    hover: { scale: 1.1 },
   }
   return (
     <ProtectedLayout>
@@ -33,6 +35,7 @@ export default function InternalIndex() {
           <hr />
         </div>
         <div className="grid gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
+          {/* <div className="grid"> */}
           <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
@@ -44,7 +47,7 @@ export default function InternalIndex() {
               className="absolute flex justify-center w-full h-full z-5"
             >
               <div className="my-auto">
-                <p className="p-0 text-white">Mein Profil</p>
+                <p className="p-0 text-white/75">Mein Profil</p>
               </div>
             </motion.div>
             <motion.div
@@ -56,6 +59,79 @@ export default function InternalIndex() {
             />
           </motion.div>
           <motion.div
+            whileTap={{ scale: 0.97 }}
+            whileHover="hover"
+            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
+          >
+            <motion.div
+              initial={{ transform: 'translateY(60%)' }}
+              variants={gridTexts}
+              className="absolute flex justify-center w-full h-full z-5"
+            >
+              <div className="my-auto">
+                <p className="p-0 text-white/75">Mein Hangar</p>
+              </div>
+            </motion.div>
+            <motion.div
+              variants={gridImages}
+              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
+              style={{
+                backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
+              }}
+            />
+          </motion.div>
+          {/* <motion.div
+            whileTap={{ scale: 0.97 }}
+            whileHover="hover"
+            variants={gridContainer}
+            className="pb-[25px] overflow-hidden relative"
+          >
+            <motion.div className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square">
+              <motion.div
+                initial={{ transform: 'translateY(60%)' }}
+                variants={gridTexts}
+                className="absolute flex justify-center w-full h-full z-5"
+              >
+                <div className="my-auto">
+                  <p className="p-0 text-white">Mein Profil</p>
+                </div>
+              </motion.div>
+              <motion.div
+                variants={gridImages}
+                className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
+                style={{
+                  backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
+                }}
+              />
+            </motion.div>
+          </motion.div>
+          <motion.div
+            whileTap={{ scale: 0.97 }}
+            whileHover="hover"
+            variants={gridContainer}
+            className="pb-[25px] overflow-hidden relative"
+          >
+            <motion.div className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square">
+              <motion.div
+                initial={{ transform: 'translateY(60%)' }}
+                variants={gridTexts}
+                className="absolute flex justify-center w-full h-full z-5"
+              >
+                <div className="my-auto">
+                  <p className="p-0 text-white">Mein Profil</p>
+                </div>
+              </motion.div>
+              <motion.div
+                variants={gridImages}
+                className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
+                style={{
+                  backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}cb114fb9-3af3-48ba-a435-3d74b0b8b254?format=webp&height=400)`,
+                }}
+              />
+            </motion.div>
+          </motion.div> */}
+
+          {/* <motion.div
             whileTap={{ scale: 0.97 }}
             whileHover="hover"
             className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
@@ -105,7 +181,7 @@ export default function InternalIndex() {
                 backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
               }}
             />
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </ProtectedLayout>
