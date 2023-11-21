@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { MdOutlineLiveHelp } from 'react-icons/md'
 
 export default function InternalIndex() {
   const { data: sessionData } = useSession()
@@ -11,24 +12,29 @@ export default function InternalIndex() {
     <ProtectedLayout>
       <div>
         <div>
-          <div className="w-1/4">
-            <Image
-              style={{
-                width: '100%',
-                height: 'auto',
-              }}
-              width={1112}
-              height={477}
-              src={
-                process.env.NEXT_PUBLIC_FILES_URL +
-                '3090187e-6348-4290-a878-af1b2b48c114?format=webp'
-              }
-            />
+          <div className="flex">
+            <div className="w-1/4">
+              <Image
+                style={{
+                  width: '100%',
+                  height: 'auto',
+                }}
+                width={1112}
+                height={477}
+                src={
+                  process.env.NEXT_PUBLIC_FILES_URL +
+                  '3090187e-6348-4290-a878-af1b2b48c114?format=webp'
+                }
+              />
+            </div>
+            {/* <div className="relative mt-auto ml-auto group">
+              <MdOutlineLiveHelp className="w-16 h-16 transition-all duration-200 cursor-pointer text-white/75 hover:text-white hover:duration-300" />
+              <div className='absolute hidden right-4 group-hover:block'>Hilfe</div>
+            </div> */}
           </div>
           <hr />
         </div>
         <div className="grid max-w-6xl gap-4 mx-auto xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
-          {/* <div className="grid"> */}
           <GridItem
             title="Mein Profil"
             link="profile"
@@ -100,57 +106,6 @@ export default function InternalIndex() {
                 : true
             }
           />
-          {/* <motion.div
-            whileTap={{ scale: 0.97 }}
-            whileHover="hover"
-            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
-          >
-            <motion.div
-              initial={{ transform: 'translateY(60%)' }}
-              variants={gridTexts}
-              className="absolute flex justify-center w-full h-full z-5"
-            >
-              <div className="my-auto">
-                <p className="p-0 text-white/75">Coming Soon...</p>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={gridImages}
-              initial={{ opacity: 0.4 }}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
-              style={{
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
-              }}
-            />
-          </motion.div>
-          <motion.div
-            whileTap={{ scale: 0.97 }}
-            whileHover="hover"
-            className="relative w-full ease-in-out cursor-pointer h-fit group aspect-square"
-          >
-            <motion.div
-              initial={{ transform: 'translateY(60%)' }}
-              variants={gridTexts}
-              className="absolute flex justify-center w-full h-full z-5"
-            >
-              <div className="my-auto">
-                <p
-                  className="p-0 text-md redacted-small"
-                  data-text="[ KEIN ZUGRIFF ]"
-                >
-                  [ KEIN ZUGRIFF ]
-                </p>
-              </div>
-            </motion.div>
-            <motion.div
-              variants={gridImages}
-              initial={{ opacity: 0.4 }}
-              className="h-full w-full bg-center bg-no-repeat bg-cover focus:outline-none bg-[#292929] rounded-xl"
-              style={{
-                backgroundImage: `url(${process.env.NEXT_PUBLIC_FILES_URL}1bc449a2-c0ea-422f-9da5-7d83e5e083b1?format=webp&height=400)`,
-              }}
-            />
-          </motion.div> */}
         </div>
       </div>
     </ProtectedLayout>
