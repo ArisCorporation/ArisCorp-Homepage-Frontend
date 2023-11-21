@@ -962,7 +962,7 @@ export default function InternalIndex ({ departments, systems, siteTitle }) {
                     </div>
                   </div>
                   <div className='flex justify-between w-full mb-3 space-x-4 lg:w-1/2'>
-                    <label className='mt-[5px] text-xl'>Ende?</label>
+                    <label className='mt-[5px] text-xl'>Dienstende?</label>
                     <div className='w-8/12 lg:w-full lg:max-w-[380px]'>
                       <input
                         value={dutyReason}
