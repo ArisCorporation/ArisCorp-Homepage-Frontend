@@ -8,8 +8,16 @@ import { MdOutlineLiveHelp } from 'react-icons/md'
 
 export default function InternalIndex() {
   const { data: sessionData } = useSession()
+  const siteTitle = 'ArisCorp Management System'
   return (
     <ProtectedLayout>
+       <Head>
+        <title>{siteTitle}</title>
+
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
+      </Head>
       <div>
         <div>
           <div className="flex">
@@ -42,53 +50,53 @@ export default function InternalIndex() {
           />
           <GridItem
             title="Mein Hangar"
-            link="profile"
+            link="hangar"
             image="cb114fb9-3af3-48ba-a435-3d74b0b8b254"
           />
           <GridItem
             title="Nachrichten"
-            link="profile"
+            link="messages"
             image="e4398951-ffdf-4fd8-a538-d6f4df38d417"
             notReleased
           />
           <GridItem
             title="Ereignis Planer"
-            link="profile"
+            link="calendar"
             image="bd281169-dbcf-4a8b-ad52-7d1184874ea6"
             notReleased
           />
           <GridItem
             title="Beitrags-Editor"
-            link="profile"
+            link="posts"
             image="01fe30b0-f90f-4cb9-b215-350f3ca8089a"
             notReleased
           />
           <GridItem
             title="ArisCorp Mitarbeiter"
-            link="profile"
+            link="members"
             svg
             image="60a50490-aba3-444e-8244-8fc425c7ceba"
           />
           <GridItem
             title="ArisCorp Flotte"
-            link="profile"
+            link="fleet"
             image="cfa2c2ab-0559-47f3-9067-d25ee8955f5d"
           />
           <GridItem
             title="Abteilungsboards"
-            link="profile"
+            link="boards"
             image="8cf91577-c8ae-438a-9556-fafab8008752"
             notReleased
           />
           <GridItem
             title="Missionsplaner"
-            link="profile"
+            link="planer"
             notReleased
             image="aeded9e1-6c2c-4f78-a4d1-251ac26a7bc3"
           />
           <GridItem
             title="Missionsboard"
-            link="profile"
+            link="board"
             image="1351ed99-17b2-4979-b6bc-af26a7433255"
             notReleased
           />
@@ -96,7 +104,7 @@ export default function InternalIndex() {
           <div />
           <GridItem
             title="Administration"
-            link="profile"
+            link="admin"
             image="096e2ade-9486-4103-8317-e9f463fe84b0"
             locked={
               sessionData &&

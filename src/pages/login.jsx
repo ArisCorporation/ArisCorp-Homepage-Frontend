@@ -27,9 +27,12 @@ export async function getServerSideProps() {
     delete backgrounds[index].description
   })
 
+  const siteTitle = 'Login - ArisCorp Management System'
+
   return {
     props: {
       backgrounds,
+      siteTitle
     },
   }
 }
@@ -71,6 +74,13 @@ export default function InternalLogin({ backgrounds }) {
 
   return (
     <>
+      <Head>
+        <title>{siteTitle}</title>
+
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
+      </Head>
       <div
         className="relative hidden h-screen min-w-full transition-all duration-1000 bg-center bg-cover" // 2xl:block to activate second login-screen
         style={{
@@ -186,7 +196,7 @@ export default function InternalLogin({ backgrounds }) {
           backgroundImage: `url(//cms.ariscorp.de/assets/${currentBg.id})`,
         }}
       >
-        <div className='absolute top-0 flex justify-center w-full md:w-fit md:left-6'>
+        <div className="absolute top-0 flex justify-center w-full md:w-fit md:left-6">
           <div className="w-[250px] relative xs:w-[320px] aspect-[1112/477]">
             <Image
               fill
