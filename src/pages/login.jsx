@@ -37,7 +37,7 @@ export async function getServerSideProps() {
   }
 }
 
-export default function InternalLogin({ backgrounds }) {
+export default function InternalLogin({ backgrounds, siteTitle }) {
   const [currentBg, setCurrentBg] = useState(getRandomBg(backgrounds))
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
