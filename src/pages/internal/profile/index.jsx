@@ -819,7 +819,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={title}
-                  autoComplete="off"
+                  autoComplete="new-off"
                   autoCorrect={false}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Dr. Med...."
