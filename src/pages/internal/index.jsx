@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { MdOutlineLiveHelp } from 'react-icons/md'
+import Head from 'next/head'
 
 export default function InternalIndex() {
   const { data: sessionData } = useSession()
