@@ -6,5 +6,6 @@ services:
       context: ../../
       dockerfile: docker/live/Dockerfile
     image: ariscorp/ariscorp-website:live
+    platform: linux/amd64
     ports:
-      - '3003:3000'
+      - '3002:3000'
