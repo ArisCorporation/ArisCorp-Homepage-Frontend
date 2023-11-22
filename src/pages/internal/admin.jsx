@@ -1050,6 +1050,7 @@ export default function InternalIndex({
             } ${modalStore?.lastname}`
           }
           closeFunction={() => (secondModal ? null : closeModal())}
+          wxl={modalType == 'editHangar' ? true : false}
         >
           <div className="mb-2">
             {modalType == 'addMember' && (
