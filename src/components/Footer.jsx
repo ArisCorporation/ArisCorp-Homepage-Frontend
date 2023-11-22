@@ -83,10 +83,10 @@ const Footer = () => {
               __html: '&copy; ' + new Date().getFullYear() + ' ArisCorp ',
             }}
           />
-          <span> - </span>
+          {/* <span> - </span>
           <Link legacyBehavior href="/impressum">
             <a className="text-secondary">Impressum</a>
-          </Link>
+          </Link> */}
           <span> - </span>
           <Link legacyBehavior href="/credits">
             <a className="text-secondary">Credits</a>

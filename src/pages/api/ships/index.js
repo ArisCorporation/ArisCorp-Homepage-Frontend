@@ -10,6 +10,15 @@ import { Directus } from '@directus/sdk'
 
 const directus = new Directus(BackendURL)
 
+function isJsonString(str) {
+  try {
+    JSON.parse(str)
+  } catch (e) {
+    return false
+  }
+  return true
+}
+
 const toTitleCase = (phrase) => {
   return phrase
     .toLowerCase()
@@ -65,7 +74,7 @@ async function getFileIds(object, Files) {
   }
 
   if (object.brochure != null) {
-    var brochure = await Files.find(
+    var brochure = await Files?.find(
       (element) => element.title == 'brochure-' + object.slug
     )
 
@@ -78,7 +87,7 @@ async function getFileIds(object, Files) {
   }
 
   if (object.holo != null) {
-    var holo = await Files.find(
+    var holo = await Files?.find(
       (element) => element.title == 'holo-' + object.slug
     )
 
@@ -134,11 +143,19 @@ async function uploadFile(url, title, fileType) {
 
 async function getSMData() {
   const actualUrl = SMURL
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
-
-  return apiResults.data
+  // var apiResults = await fetch(actualUrl).then((resp) => {
+  //   return resp.json()
+  // })
+  if(apiResults){
+    return apiResults.data
+  } else {
+    return []
+  }
 }
 
 // async function getFlShip(ship) {
@@ -148,13 +165,13 @@ async function getSMData() {
 //   var apiResults = await fetch(actualUrl).then(async (resp) => {
 //     const contentType = await resp.headers.get('content-type')
 //     if (contentType && contentType.indexOf('application/json') !== -1) {
-//       // console.log(await resp.json())
+//       // console.log(await resp)
 //       console.log("OK")
 //     } else {
 //       console.log("NOT OK")
 //       // console.log(resp)
 //     }
-//     return null
+//     return apiResults
 //   })
 
 //   return apiResults
@@ -162,61 +179,86 @@ async function getSMData() {
 
 async function getFlPaints(ship) {
   const actualUrl = FLURL + ship + '/paints'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
-
-  return apiResults
+  if(!apiResults ){
+    console.log(actualUrl)
+  console.log("paints", apiResults)
+  }
+  if (apiResults) {
+    return apiResults
+  } else {
+    return []
+  }
 }
 
 async function getFlModules(ship) {
   const actualUrl = FLURL + ship + '/modules'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
 
-  return apiResults
+  if (apiResults) {
+    return apiResults
+  } else {
+    return []
+  }
 }
 
 async function getScwShip(ship) {
   const actualUrl = SCWURL + 'vehicles/' + ship
-  var apiResults = await fetch(actualUrl)
-    .then((resp) => {
-      return resp.json()
-    })
-    .catch(function (error) {
-      return 'ERROR'
-    })
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
+  })
 
-  return apiResults.data
+  if (apiResults) {
+    return apiResults.data
+  } else {
+    return []
+  }
 }
 
 async function getP4kShipsData() {
   const actualUrl = P4kURL + 'v2/ships.json'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
 
-  return apiResults
+  if (apiResults) {
+    return apiResults
+  } else {
+    return []
+  }
 }
 
 async function getP4kShipHardpoints(ship) {
   const actualUrl = P4kURL + 'v2/ships/' + ship + '-ports.json'
-  var apiResults = await fetch(actualUrl)
-    .then((resp) => {
-      return resp.json()
-    })
-    .catch((error) => {
-      return
-    })
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
+  })
 
-  return apiResults
+  if (apiResults) {
+    return apiResults
+  } else {
+    return []
+  }
 }
 
 // async function getP4kShops() {
 //   const actualUrl = P4kURL + 'shops.json'
 //   var apiResults = await fetch(actualUrl).then((resp) => {
-//     return resp.json()
+//     return resp
 //   })
 
 //   return apiResults
@@ -224,41 +266,69 @@ async function getP4kShipHardpoints(ship) {
 
 async function getLiveShipData() {
   const actualUrl = BackendURL + '/items/ships?fields=id,name,slug&limit=-1'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
 
-  return apiResults.data
+  if (apiResults) {
+    return apiResults.data
+  } else {
+    return []
+  }
 }
 
 async function getManufacturers() {
   const actualUrl =
     BackendURL + '/items/firmen?fields=id,firmen_name,slug,code&limit=-1'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+    const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
 
-  return apiResults.data
+  if (apiResults) {
+    return apiResults.data
+  } else {
+    return []
+  }
 }
 
 async function getComponents() {
   const actualUrl =
     BackendURL + '/items/components?fields=id,name,slug&limit=-1'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+    const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
+    console.log("components", apiResults[0])
+  // var apiResults = await fetch(actualUrl).then((resp) => {
+  //   return isJsonString(resp) ? resp.json() : null
+  // })
 
-  return apiResults.data
+  if (apiResults) {
+    return apiResults.data
+  } else {
+    return []
+  }
 }
 
 async function getFLlist() {
   const actualUrl = 'https://api.fleetyards.net/v1/models?perPage=230'
 
-  var apiResults = await fetch(actualUrl).then(async (resp) => {
-    return await resp.json()
+  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
+  .catch((reason) => {
+    console.log(reason.message)
+    console.log(actualUrl)
   })
 
-  return apiResults
+  if (apiResults) {
+    return apiResults
+  } else {
+    return []
+  }
 }
 
 async function formData() {
@@ -312,27 +382,27 @@ async function formData() {
   ]
 
   if (
-    !rawShipMatrixData.find((e) => e.name === 'Dragonfly Starkitten Edition')
+    !rawShipMatrixData.find((e) => e.name == 'Dragonfly Starkitten Edition')
   ) {
     const orgShip = rawShipMatrixData.find(
-      (e) => e.name === 'Dragonfly Yellowjacket'
+      (e) => e.name == 'Dragonfly Yellowjacket'
     )
-    rawShipMatrixData.push({
+    rawShipMatrixData?.push({
       ...orgShip,
       name: 'Dragonfly Starkitten Edition',
     })
   }
 
-  if (!rawShipMatrixData.find((e) => e.name === '600i Executive Edition')) {
-    const orgShip = rawShipMatrixData.find((e) => e.name === '600i Explorer')
-    rawShipMatrixData.push({
+  if (!rawShipMatrixData.find((e) => e.name == '600i Executive Edition')) {
+    const orgShip = rawShipMatrixData.find((e) => e.name == '600i Explorer')
+    rawShipMatrixData?.push({
       ...orgShip,
       name: '600i Executive Edition',
     })
   }
 
-  if (!rawShipMatrixData.find((e) => e.name === 'PTV')) {
-    rawShipMatrixData.push({
+  if (!rawShipMatrixData.find((e) => e.name == 'PTV')) {
+    rawShipMatrixData?.push({
       name: 'PTV',
       url: '/pledge/ships/greycat-ptv/ptv',
       manufacturer: {
@@ -717,8 +787,8 @@ async function formData() {
     })
   }
 
-  if (!rawShipMatrixData.find((e) => e.name === 'F8A Lightning')) {
-    rawShipMatrixData.push({
+  if (!rawShipMatrixData.find((e) => e.name == 'F8A Lightning')) {
+    rawShipMatrixData?.push({
       name: 'F8A Lightning',
       url: '/pledge/ships/anvil-f8/F8A-Lightning',
       type: 'Combat',
@@ -1035,647 +1105,9 @@ async function formData() {
     })
   }
 
-  if (!rawShipMatrixData.find((e) => e.name === 'F8C Lightning')) {
-    rawShipMatrixData.push({
-      name: 'F8C Lightning',
-      url: '/pledge/ships/anvil-f8/F8C-Lightning',
-      type: 'Combat',
-      focus: 'Heavy Fighter',
-      manufacturer: {
-        id: '3',
-        code: 'ANVL',
-        description:
-          'Produces dogfighters, but with less of the pirate stigma. These ships are more expensive, less spit-and-glue',
-        known_for: 'the Hornet Fighters',
-        name: 'Anvil Aerospace',
-        media: [
-          {
-            id: '312955',
-            cover_data: null,
-            depot: 'LOCAL_MEDIA',
-            depot_status: 'R',
-            derived_data: {
-              sizes: {
-                heap_note: {
-                  width: 24,
-                  height: 24,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                heap_thumb: {
-                  width: 61,
-                  height: 61,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                heap_infobox: {
-                  width: 165,
-                  height: 165,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                post_section_header: {
-                  width: 1118,
-                  height: 351,
-                  mode: 'resize-crop',
-                },
-                channel_item_full: {
-                  width: 1119,
-                  height: 600,
-                  mode: 'resize-crop',
-                },
-                home_transmissions_item_expanded: {
-                  width: 530,
-                  height: 280,
-                  mode: 'resize-crop',
-                },
-                subscribers_vault_thumbnail: {
-                  width: 216,
-                  height: 133,
-                  mode: 'resize-crop',
-                },
-                slideshow: {
-                  width: 648,
-                  height: 366,
-                  mode: 'resize-crop',
-                },
-                slideshow_pager: {
-                  width: 88,
-                  height: 50,
-                  mode: 'resize-crop',
-                },
-                vault_thumb: {
-                  width: 335,
-                  height: null,
-                  mode: 'resize',
-                },
-                post: {
-                  width: 500,
-                  height: null,
-                  mode: 'resize',
-                },
-                wallpaper_thumb: {
-                  width: 620,
-                  height: 400,
-                  mode: 'resize-crop',
-                },
-                product_thumb_large: {
-                  width: 341,
-                  height: 204,
-                  mode: 'resize-crop',
-                },
-                product_thumb_medium_and_small: {
-                  width: 180,
-                  height: 150,
-                  mode: 'resize-crop',
-                },
-                component_description: {
-                  width: 415,
-                  height: null,
-                  mode: 'resize',
-                },
-                product_thumb_in_description: {
-                  width: 350,
-                  height: 350,
-                  mode: 'resize-crop',
-                },
-                product_thumb_shipmod: {
-                  width: 248,
-                  height: 188,
-                  mode: 'resize-crop',
-                },
-                press_latest_post: {
-                  width: 509,
-                  height: 211,
-                  mode: 'resize-crop',
-                },
-                store_small: {
-                  width: 351,
-                  height: 210,
-                  mode: 'resize-crop',
-                },
-                store_large: {
-                  width: 818,
-                  height: 288,
-                  mode: 'resize-crop',
-                },
-                store_hub_small: {
-                  width: 600,
-                  height: 210,
-                  mode: 'resize-crop',
-                },
-                store_hub_large: {
-                  width: 1200,
-                  height: 420,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_small: {
-                  width: 800,
-                  height: 300,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_large: {
-                  width: 1140,
-                  height: 390,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_small_zoom: {
-                  width: 710,
-                  height: 516,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_large_zoom: {
-                  width: 1420,
-                  height: 1032,
-                  mode: 'resize-crop',
-                },
-                store_thumb_listing_small: {
-                  width: 186,
-                  height: 63,
-                  mode: 'resize-crop',
-                },
-                store_thumb_sku_detail: {
-                  width: 318,
-                  height: 248,
-                  mode: 'resize-crop',
-                },
-                avatar: {
-                  width: 76,
-                  height: 76,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                banner: {
-                  width: 1140,
-                  height: 380,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                cover: {
-                  width: 1140,
-                  height: '',
-                  mode: 'resize',
-                  delete: '1--1',
-                },
-                logo: {
-                  width: 175,
-                  height: 175,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                icon: {
-                  width: 45,
-                  height: 45,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                background_blur: {
-                  width: 1366,
-                  height: 768,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-              },
-            },
-            distant_id: null,
-            distant_source: null,
-            publish_end: null,
-            publish_start: null,
-            purpose: 'full',
-            slug: 'w0o33qmdai9wp',
-            source_duration: null,
-            source_extension: 'png',
-            source_name: 'Anvil',
-            status: 'P',
-            tag_string: '',
-            time_modified: '2014-08-04 13:09:26',
-            type: 'I',
-            source_url: '/media/w0o33qmdai9wpr/source/Anvil.png',
-            source_stream: {
-              progressive: '/media/w0o33qmdai9wpr/source/Anvil.png',
-            },
-            images: {
-              heap_note: '/media/w0o33qmdai9wpr/heap_note/Anvil.png',
-              heap_thumb: '/media/w0o33qmdai9wpr/heap_thumb/Anvil.png',
-              heap_infobox: '/media/w0o33qmdai9wpr/heap_infobox/Anvil.png',
-              tavern_upload_emoji:
-                '/media/w0o33qmdai9wpr/tavern_upload_emoji/Anvil.png',
-              tavern_upload_mini:
-                '/media/w0o33qmdai9wpr/tavern_upload_mini/Anvil.png',
-              tavern_upload_square:
-                '/media/w0o33qmdai9wpr/tavern_upload_square/Anvil.png',
-              tavern_upload_small:
-                '/media/w0o33qmdai9wpr/tavern_upload_small/Anvil.png',
-              tavern_upload_medium:
-                '/media/w0o33qmdai9wpr/tavern_upload_medium/Anvil.png',
-              tavern_upload_large:
-                '/media/w0o33qmdai9wpr/tavern_upload_large/Anvil.png',
-              post_section_header:
-                '/media/w0o33qmdai9wpr/post_section_header/Anvil.png',
-              channel_item_full:
-                '/media/w0o33qmdai9wpr/channel_item_full/Anvil.png',
-              home_transmissions_item_expanded:
-                '/media/w0o33qmdai9wpr/home_transmissions_item_expanded/Anvil.png',
-              subscribers_vault_thumbnail:
-                '/media/w0o33qmdai9wpr/subscribers_vault_thumbnail/Anvil.png',
-              slideshow: '/media/w0o33qmdai9wpr/slideshow/Anvil.png',
-              slideshow_pager:
-                '/media/w0o33qmdai9wpr/slideshow_pager/Anvil.png',
-              slideshow_wide: '/media/w0o33qmdai9wpr/slideshow_wide/Anvil.png',
-              vault_thumb: '/media/w0o33qmdai9wpr/vault_thumb/Anvil.png',
-              post: '/media/w0o33qmdai9wpr/post/Anvil.png',
-              wallpaper_thumb:
-                '/media/w0o33qmdai9wpr/wallpaper_thumb/Anvil.png',
-              product_thumb_large:
-                '/media/w0o33qmdai9wpr/product_thumb_large/Anvil.png',
-              product_thumb_medium_and_small:
-                '/media/w0o33qmdai9wpr/product_thumb_medium_and_small/Anvil.png',
-              component_description:
-                '/media/w0o33qmdai9wpr/component_description/Anvil.png',
-              product_thumb_in_description:
-                '/media/w0o33qmdai9wpr/product_thumb_in_description/Anvil.png',
-              product_thumb_shipmod:
-                '/media/w0o33qmdai9wpr/product_thumb_shipmod/Anvil.png',
-              press_latest_post:
-                '/media/w0o33qmdai9wpr/press_latest_post/Anvil.png',
-              store_small: '/media/w0o33qmdai9wpr/store_small/Anvil.png',
-              store_large: '/media/w0o33qmdai9wpr/store_large/Anvil.png',
-              store_hub_small:
-                '/media/w0o33qmdai9wpr/store_hub_small/Anvil.png',
-              store_hub_large:
-                '/media/w0o33qmdai9wpr/store_hub_large/Anvil.png',
-              store_slideshow_small:
-                '/media/w0o33qmdai9wpr/store_slideshow_small/Anvil.png',
-              store_slideshow_large:
-                '/media/w0o33qmdai9wpr/store_slideshow_large/Anvil.png',
-              store_slideshow_small_zoom:
-                '/media/w0o33qmdai9wpr/store_slideshow_small_zoom/Anvil.png',
-              store_slideshow_large_zoom:
-                '/media/w0o33qmdai9wpr/store_slideshow_large_zoom/Anvil.png',
-              store_thumb_listing_small:
-                '/media/w0o33qmdai9wpr/store_thumb_listing_small/Anvil.png',
-              store_thumb_sku_detail:
-                '/media/w0o33qmdai9wpr/store_thumb_sku_detail/Anvil.png',
-              store_upgrade_half:
-                '/media/w0o33qmdai9wpr/store_upgrade_half/Anvil.png',
-              sku_widget_thumbnail:
-                '/media/w0o33qmdai9wpr/sku_widget_thumbnail/Anvil.png',
-              sku_widget_modal:
-                '/media/w0o33qmdai9wpr/sku_widget_modal/Anvil.png',
-              avatar: '/media/w0o33qmdai9wpr/avatar/Anvil.png',
-              banner: '/media/w0o33qmdai9wpr/banner/Anvil.png',
-              cover: '/media/w0o33qmdai9wpr/cover/Anvil.png',
-              logo: '/media/w0o33qmdai9wpr/logo/Anvil.png',
-              icon: '/media/w0o33qmdai9wpr/icon/Anvil.png',
-              background_blur:
-                '/media/w0o33qmdai9wpr/background_blur/Anvil.png',
-              texture: '/media/w0o33qmdai9wpr/texture/Anvil.png',
-              hub_large: '/media/w0o33qmdai9wpr/hub_large/Anvil.png',
-              hub_medium: '/media/w0o33qmdai9wpr/hub_medium/Anvil.png',
-              hub_small: '/media/w0o33qmdai9wpr/hub_small/Anvil.png',
-              hub_tile: '/media/w0o33qmdai9wpr/hub_tile/Anvil.png',
-              wallpaper_3840x2160:
-                '/media/w0o33qmdai9wpr/wallpaper_3840x2160/Anvil.png',
-              wallpaper_1920x1080:
-                '/media/w0o33qmdai9wpr/wallpaper_1920x1080/Anvil.png',
-              wallpaper_512x384:
-                '/media/w0o33qmdai9wpr/wallpaper_512x384/Anvil.png',
-              wsc_event_thumb:
-                '/media/w0o33qmdai9wpr/wsc_event_thumb/Anvil.png',
-              manufacturer_logo_xs:
-                '/media/w0o33qmdai9wpr/manufacturer_logo_xs/Anvil.png',
-            },
-            'membership.id': '448150',
-            'membership.slot': 'icon',
-          },
-        ],
-      },
-    })
-  }
-
-  if (
-    !rawShipMatrixData.find((e) => e.name === 'F8C Lightning Executive Edition')
-  ) {
-    rawShipMatrixData.push({
-      name: 'F8C Lightning Executive Edition',
-      url: '/pledge/ships/anvil-f8/F8C-Lightning-Executive',
-      type: 'Combat',
-      focus: 'Heavy Fighter',
-      manufacturer: {
-        id: '3',
-        code: 'ANVL',
-        description:
-          'Produces dogfighters, but with less of the pirate stigma. These ships are more expensive, less spit-and-glue',
-        known_for: 'the Hornet Fighters',
-        name: 'Anvil Aerospace',
-        media: [
-          {
-            id: '312955',
-            cover_data: null,
-            depot: 'LOCAL_MEDIA',
-            depot_status: 'R',
-            derived_data: {
-              sizes: {
-                heap_note: {
-                  width: 24,
-                  height: 24,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                heap_thumb: {
-                  width: 61,
-                  height: 61,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                heap_infobox: {
-                  width: 165,
-                  height: 165,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                post_section_header: {
-                  width: 1118,
-                  height: 351,
-                  mode: 'resize-crop',
-                },
-                channel_item_full: {
-                  width: 1119,
-                  height: 600,
-                  mode: 'resize-crop',
-                },
-                home_transmissions_item_expanded: {
-                  width: 530,
-                  height: 280,
-                  mode: 'resize-crop',
-                },
-                subscribers_vault_thumbnail: {
-                  width: 216,
-                  height: 133,
-                  mode: 'resize-crop',
-                },
-                slideshow: {
-                  width: 648,
-                  height: 366,
-                  mode: 'resize-crop',
-                },
-                slideshow_pager: {
-                  width: 88,
-                  height: 50,
-                  mode: 'resize-crop',
-                },
-                vault_thumb: {
-                  width: 335,
-                  height: null,
-                  mode: 'resize',
-                },
-                post: {
-                  width: 500,
-                  height: null,
-                  mode: 'resize',
-                },
-                wallpaper_thumb: {
-                  width: 620,
-                  height: 400,
-                  mode: 'resize-crop',
-                },
-                product_thumb_large: {
-                  width: 341,
-                  height: 204,
-                  mode: 'resize-crop',
-                },
-                product_thumb_medium_and_small: {
-                  width: 180,
-                  height: 150,
-                  mode: 'resize-crop',
-                },
-                component_description: {
-                  width: 415,
-                  height: null,
-                  mode: 'resize',
-                },
-                product_thumb_in_description: {
-                  width: 350,
-                  height: 350,
-                  mode: 'resize-crop',
-                },
-                product_thumb_shipmod: {
-                  width: 248,
-                  height: 188,
-                  mode: 'resize-crop',
-                },
-                press_latest_post: {
-                  width: 509,
-                  height: 211,
-                  mode: 'resize-crop',
-                },
-                store_small: {
-                  width: 351,
-                  height: 210,
-                  mode: 'resize-crop',
-                },
-                store_large: {
-                  width: 818,
-                  height: 288,
-                  mode: 'resize-crop',
-                },
-                store_hub_small: {
-                  width: 600,
-                  height: 210,
-                  mode: 'resize-crop',
-                },
-                store_hub_large: {
-                  width: 1200,
-                  height: 420,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_small: {
-                  width: 800,
-                  height: 300,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_large: {
-                  width: 1140,
-                  height: 390,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_small_zoom: {
-                  width: 710,
-                  height: 516,
-                  mode: 'resize-crop',
-                },
-                store_slideshow_large_zoom: {
-                  width: 1420,
-                  height: 1032,
-                  mode: 'resize-crop',
-                },
-                store_thumb_listing_small: {
-                  width: 186,
-                  height: 63,
-                  mode: 'resize-crop',
-                },
-                store_thumb_sku_detail: {
-                  width: 318,
-                  height: 248,
-                  mode: 'resize-crop',
-                },
-                avatar: {
-                  width: 76,
-                  height: 76,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                banner: {
-                  width: 1140,
-                  height: 380,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                cover: {
-                  width: 1140,
-                  height: '',
-                  mode: 'resize',
-                  delete: '1--1',
-                },
-                logo: {
-                  width: 175,
-                  height: 175,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                icon: {
-                  width: 45,
-                  height: 45,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-                background_blur: {
-                  width: 1366,
-                  height: 768,
-                  mode: 'resize-crop',
-                  delete: '1--1',
-                },
-              },
-            },
-            distant_id: null,
-            distant_source: null,
-            publish_end: null,
-            publish_start: null,
-            purpose: 'full',
-            slug: 'w0o33qmdai9wp',
-            source_duration: null,
-            source_extension: 'png',
-            source_name: 'Anvil',
-            status: 'P',
-            tag_string: '',
-            time_modified: '2014-08-04 13:09:26',
-            type: 'I',
-            source_url: '/media/w0o33qmdai9wpr/source/Anvil.png',
-            source_stream: {
-              progressive: '/media/w0o33qmdai9wpr/source/Anvil.png',
-            },
-            images: {
-              heap_note: '/media/w0o33qmdai9wpr/heap_note/Anvil.png',
-              heap_thumb: '/media/w0o33qmdai9wpr/heap_thumb/Anvil.png',
-              heap_infobox: '/media/w0o33qmdai9wpr/heap_infobox/Anvil.png',
-              tavern_upload_emoji:
-                '/media/w0o33qmdai9wpr/tavern_upload_emoji/Anvil.png',
-              tavern_upload_mini:
-                '/media/w0o33qmdai9wpr/tavern_upload_mini/Anvil.png',
-              tavern_upload_square:
-                '/media/w0o33qmdai9wpr/tavern_upload_square/Anvil.png',
-              tavern_upload_small:
-                '/media/w0o33qmdai9wpr/tavern_upload_small/Anvil.png',
-              tavern_upload_medium:
-                '/media/w0o33qmdai9wpr/tavern_upload_medium/Anvil.png',
-              tavern_upload_large:
-                '/media/w0o33qmdai9wpr/tavern_upload_large/Anvil.png',
-              post_section_header:
-                '/media/w0o33qmdai9wpr/post_section_header/Anvil.png',
-              channel_item_full:
-                '/media/w0o33qmdai9wpr/channel_item_full/Anvil.png',
-              home_transmissions_item_expanded:
-                '/media/w0o33qmdai9wpr/home_transmissions_item_expanded/Anvil.png',
-              subscribers_vault_thumbnail:
-                '/media/w0o33qmdai9wpr/subscribers_vault_thumbnail/Anvil.png',
-              slideshow: '/media/w0o33qmdai9wpr/slideshow/Anvil.png',
-              slideshow_pager:
-                '/media/w0o33qmdai9wpr/slideshow_pager/Anvil.png',
-              slideshow_wide: '/media/w0o33qmdai9wpr/slideshow_wide/Anvil.png',
-              vault_thumb: '/media/w0o33qmdai9wpr/vault_thumb/Anvil.png',
-              post: '/media/w0o33qmdai9wpr/post/Anvil.png',
-              wallpaper_thumb:
-                '/media/w0o33qmdai9wpr/wallpaper_thumb/Anvil.png',
-              product_thumb_large:
-                '/media/w0o33qmdai9wpr/product_thumb_large/Anvil.png',
-              product_thumb_medium_and_small:
-                '/media/w0o33qmdai9wpr/product_thumb_medium_and_small/Anvil.png',
-              component_description:
-                '/media/w0o33qmdai9wpr/component_description/Anvil.png',
-              product_thumb_in_description:
-                '/media/w0o33qmdai9wpr/product_thumb_in_description/Anvil.png',
-              product_thumb_shipmod:
-                '/media/w0o33qmdai9wpr/product_thumb_shipmod/Anvil.png',
-              press_latest_post:
-                '/media/w0o33qmdai9wpr/press_latest_post/Anvil.png',
-              store_small: '/media/w0o33qmdai9wpr/store_small/Anvil.png',
-              store_large: '/media/w0o33qmdai9wpr/store_large/Anvil.png',
-              store_hub_small:
-                '/media/w0o33qmdai9wpr/store_hub_small/Anvil.png',
-              store_hub_large:
-                '/media/w0o33qmdai9wpr/store_hub_large/Anvil.png',
-              store_slideshow_small:
-                '/media/w0o33qmdai9wpr/store_slideshow_small/Anvil.png',
-              store_slideshow_large:
-                '/media/w0o33qmdai9wpr/store_slideshow_large/Anvil.png',
-              store_slideshow_small_zoom:
-                '/media/w0o33qmdai9wpr/store_slideshow_small_zoom/Anvil.png',
-              store_slideshow_large_zoom:
-                '/media/w0o33qmdai9wpr/store_slideshow_large_zoom/Anvil.png',
-              store_thumb_listing_small:
-                '/media/w0o33qmdai9wpr/store_thumb_listing_small/Anvil.png',
-              store_thumb_sku_detail:
-                '/media/w0o33qmdai9wpr/store_thumb_sku_detail/Anvil.png',
-              store_upgrade_half:
-                '/media/w0o33qmdai9wpr/store_upgrade_half/Anvil.png',
-              sku_widget_thumbnail:
-                '/media/w0o33qmdai9wpr/sku_widget_thumbnail/Anvil.png',
-              sku_widget_modal:
-                '/media/w0o33qmdai9wpr/sku_widget_modal/Anvil.png',
-              avatar: '/media/w0o33qmdai9wpr/avatar/Anvil.png',
-              banner: '/media/w0o33qmdai9wpr/banner/Anvil.png',
-              cover: '/media/w0o33qmdai9wpr/cover/Anvil.png',
-              logo: '/media/w0o33qmdai9wpr/logo/Anvil.png',
-              icon: '/media/w0o33qmdai9wpr/icon/Anvil.png',
-              background_blur:
-                '/media/w0o33qmdai9wpr/background_blur/Anvil.png',
-              texture: '/media/w0o33qmdai9wpr/texture/Anvil.png',
-              hub_large: '/media/w0o33qmdai9wpr/hub_large/Anvil.png',
-              hub_medium: '/media/w0o33qmdai9wpr/hub_medium/Anvil.png',
-              hub_small: '/media/w0o33qmdai9wpr/hub_small/Anvil.png',
-              hub_tile: '/media/w0o33qmdai9wpr/hub_tile/Anvil.png',
-              wallpaper_3840x2160:
-                '/media/w0o33qmdai9wpr/wallpaper_3840x2160/Anvil.png',
-              wallpaper_1920x1080:
-                '/media/w0o33qmdai9wpr/wallpaper_1920x1080/Anvil.png',
-              wallpaper_512x384:
-                '/media/w0o33qmdai9wpr/wallpaper_512x384/Anvil.png',
-              wsc_event_thumb:
-                '/media/w0o33qmdai9wpr/wsc_event_thumb/Anvil.png',
-              manufacturer_logo_xs:
-                '/media/w0o33qmdai9wpr/manufacturer_logo_xs/Anvil.png',
-            },
-            'membership.id': '448150',
-            'membership.slot': 'icon',
-          },
-        ],
-      },
-    })
-  }
-
   function filterRawSMShips() {
     skippedShips.forEach((i) => {
-      const item = rawShipMatrixData.find((e) => e.name === i)
+      const item = rawShipMatrixData.find((e) => e.name == i)
       if (item) {
         const index = rawShipMatrixData.indexOf(item)
         if (index > -1) {
@@ -1687,37 +1119,54 @@ async function formData() {
 
   filterRawSMShips()
 
+  // if(!rawShipMatrixData){
+  //   rawShipMatrixData = []
+  // }
+
   await Promise.all(
     rawShipMatrixData.map(async (obj) => {
-      if (obj.name === 'Mercury') {
+      if (obj.name == 'Mercury') {
         obj.name = 'Mercury Star Runner'
       }
       let slug = string_to_slug(obj.name.toLowerCase())
-      if (slugOverwrites.find((e) => e.ship === slug)) {
-        const newSlug = slugOverwrites.find((e) => e.ship === slug).slug
+      if (slugOverwrites?.find((e) => e.ship == slug)) {
+        const newSlug = slugOverwrites?.find((e) => e.ship == slug).slug
         slug = newSlug
       }
 
       let flSlug = slug
-      if (flSlugOverwrites.find((e) => e.ship === slug)) {
-        const newSlug = flSlugOverwrites.find((e) => e.ship === slug).slug
+      if (flSlugOverwrites?.find((e) => e.ship == slug)) {
+        const newSlug = flSlugOverwrites?.find((e) => e.ship == slug).slug
         flSlug = newSlug
 
-        if(!flSlug){
+        if (!flSlug) {
           flSlug = string_to_slug(obj.name)
         }
       }
 
+      let scwSlug = flSlug
+      if(flSlug == "mercury-star-runner"){
+        scwSlug = "mercury"
+      } else if (flSlug == "san-tok-yai"){
+        scwSlug = "San%27tok.y%C4%81i"
+      } else if (flSlug == "600i-executive-edition") {
+        scwSlug = "600i_Explorer"
+      } else if (flSlug == "dragonfly-starkitten-edition"){
+        scwSlug = "dragonfly-black"
+      }
+
       // const flData = await getFlShip(flSlug)
-      const flData = FLlist.find(e => e.slug.toLowerCase() == flSlug.toLowerCase())
+      const flData = FLlist?.find(
+        (e) => e.slug.toLowerCase() == flSlug.toLowerCase()
+      )
       const flModules = await getFlModules(flSlug)
       const flPaints = await getFlPaints(flSlug)
-      const liveData = liveShipData.find((e) => e.slug == slug)
-      const scwData = await getScwShip(flSlug)
+      const liveData = liveShipData?.find((e) => e.slug == slug)
+      const scwData = await getScwShip(scwSlug)
 
       const company = manufacturers.filter(
         (e) =>
-          e.code === obj.manufacturer.code ||
+          e.code == obj.manufacturer.code ||
           e.firmen_name == obj.manufacturer.name
       )[0]
 
@@ -1785,19 +1234,19 @@ async function formData() {
         p4kId = p4kCompany + ' ' + obj.name.replace('F8A', 'F8')
       } else if (obj.name.includes('Dragonfly')) {
         p4kId = p4kCompany + ' ' + 'Dragonfly'
-      } else if (obj.name === '600i Explorer') {
+      } else if (obj.name == '600i Explorer') {
         p4kId = p4kCompany + ' ' + obj.name.replace(' Explorer', '')
-      } else if (obj.name === 'Ares Inferno ') {
+      } else if (obj.name == 'Ares Inferno ') {
         p4kId =
           p4kCompany +
           ' ' +
           obj.name.replace('Ares Inferno ', 'Ares Star Fighter Inferno')
-      } else if (obj.name === 'Ares Ion') {
+      } else if (obj.name == 'Ares Ion') {
         p4kId =
           p4kCompany +
           ' ' +
           obj.name.replace('Ares Ion', 'Ares Star Fighter Ion')
-      } else if (obj.name === 'Retaliator Bomber') {
+      } else if (obj.name == 'Retaliator Bomber') {
         p4kId = p4kCompany + ' ' + obj.name.replace(' Bomber', '')
       } else if (obj.name.includes(' Fortuna')) {
         p4kId = p4kCompany + ' ' + obj.name.replace(' Fortuna', '')
@@ -1808,6 +1257,10 @@ async function formData() {
       const p4kData = rawP4kShips.find((e) =>
         e.Name.toLowerCase().startsWith(p4kId.toLowerCase())
       )
+      if(!p4kData?.ClassName){
+        console.log("P4KERROR", flSlug, p4kId)
+
+      }
       const p4kHardpoints = await getP4kShipHardpoints(
         p4kData?.ClassName.toLowerCase()
       )
@@ -1830,7 +1283,7 @@ async function formData() {
       price = flData?.price
       // if (p4kData) {
       //   shops.map((obj) => {
-      //     const found = obj.inventory.find(
+      //     const found = obj.inventory?.find(
       //       (item) => item.name == p4kData?.ClassName.toLowerCase()
       //     )?.basePrice
 
@@ -1854,8 +1307,8 @@ async function formData() {
         const currentUrl = obj.url.split('/').splice(3, 3)
         const variantUrl = i.url?.split('/').splice(3, 3)
 
-        if (currentUrl[0] === variantUrl[0]) {
-          const variant = liveShipData.find((e) => e.name === i.name)
+        if (currentUrl[0] == variantUrl[0]) {
+          const variant = liveShipData?.find((e) => e.name == i.name)
 
           if (i.name != obj.name) {
             variants.push({
@@ -1875,8 +1328,8 @@ async function formData() {
 
         removeDuplicates(rawLoaners).forEach((obj) => {
           const loanerSlug = string_to_slug(obj)
-          const loanerModell = liveShipData.find(
-            (e) => e.slug === loanerSlug || e.name === obj
+          const loanerModell = liveShipData?.find(
+            (e) => e.slug == loanerSlug || e.name == obj
           )
 
           const loaner = {
@@ -1890,14 +1343,14 @@ async function formData() {
       }
 
       function findComponendId(name) {
-        const component = components.filter((e) => e.name === name)
+        const component = components.filter((e) => e.name == name)
 
         return component
       }
 
       let hardpoints = []
       if (p4kHardpoints) {
-        p4kHardpoints.PowerPlants.forEach((i) => {
+        p4kHardpoints.PowerPlants?.forEach((i) => {
           const component = findComponendId(i.InstalledItem?.Name)[0]
 
           const hardpoint = {
@@ -1909,7 +1362,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.Coolers.forEach((i) => {
+        p4kHardpoints.Coolers?.forEach((i) => {
           const component = findComponendId(i.InstalledItem?.Name)[0]
 
           const hardpoint = {
@@ -1921,7 +1374,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.Shields.forEach((i) => {
+        p4kHardpoints.Shields?.forEach((i) => {
           const component = findComponendId(i.InstalledItem?.Name)[0]
 
           const hardpoint = {
@@ -1933,7 +1386,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.QuantumDrives.forEach((i) => {
+        p4kHardpoints.QuantumDrives?.forEach((i) => {
           const component = findComponendId(i.InstalledItem?.Name)[0]
 
           const hardpoint = {
@@ -1945,7 +1398,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
+        obj.compiled?.RSIPropulsion.jump_modules?.forEach((i) => {
           const hardpoint = {
             type: 'jumpmodule',
             size: setSize(i.size.toLowerCase()),
@@ -1959,7 +1412,7 @@ async function formData() {
             })
         })
 
-        p4kHardpoints.QuantumFuelTanks.forEach((i) => {
+        p4kHardpoints.QuantumFuelTanks?.forEach((i) => {
           const hardpoint = {
             type: 'quantumfueltank',
             size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
@@ -1969,7 +1422,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.HydrogenFuelTanks.forEach((i) => {
+        p4kHardpoints.HydrogenFuelTanks?.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfueltank',
             size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
@@ -1979,7 +1432,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.HydogenFuelIntakes.forEach((i) => {
+        p4kHardpoints.HydogenFuelIntakes?.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfuelintake',
             size: i.InstalledItem?.Size ? i.InstalledItem.Size : i.Size,
@@ -1989,7 +1442,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        obj.compiled?.RSIAvionic.radar.forEach((i) => {
+        obj.compiled?.RSIAvionic.radar?.forEach((i) => {
           const hardpoint = {
             type: 'radar',
             size: setSize(i.size.toLowerCase()),
@@ -2003,7 +1456,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIAvionic.computers.forEach((i) => {
+        obj.compiled?.RSIAvionic.computers?.forEach((i) => {
           const hardpoint = {
             type: 'computer',
             size: setSize(i.size.toLowerCase()),
@@ -2017,7 +1470,7 @@ async function formData() {
             })
         })
 
-        p4kHardpoints.MainThrusters.forEach((i) => {
+        p4kHardpoints.MainThrusters?.forEach((i) => {
           const hardpoint = {
             type: 'mainthruster',
             category: 'M',
@@ -2028,7 +1481,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.RetroThrusters.forEach((i) => {
+        p4kHardpoints.RetroThrusters?.forEach((i) => {
           const hardpoint = {
             type: 'retrothruster',
             category: 'R',
@@ -2039,7 +1492,7 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.VtolThrusters.forEach((i) => {
+        p4kHardpoints.VtolThrusters?.forEach((i) => {
           const hardpoint = {
             type: 'vtolthruster',
             category: 'V',
@@ -2050,9 +1503,9 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.ManeuveringThrusters.filter(
-          (e) => e.InstalledItem?.Type === 'ManneuverThruster.FixedThruster'
-        ).forEach((i) => {
+        p4kHardpoints.ManeuveringThrusters?.filter(
+          (e) => e.InstalledItem?.Type == 'ManneuverThruster.FixedThruster'
+        )?.forEach((i) => {
           const hardpoint = {
             type: 'fixedmaneuveringthruster',
             category: 'F',
@@ -2063,9 +1516,9 @@ async function formData() {
           hardpoints.push(hardpoint)
         })
 
-        p4kHardpoints.ManeuveringThrusters.filter(
-          (e) => e.InstalledItem?.Type === 'ManneuverThruster.JointThruster'
-        ).forEach((i) => {
+        p4kHardpoints.ManeuveringThrusters?.filter(
+          (e) => e.InstalledItem?.Type == 'ManneuverThruster.JointThruster'
+        )?.forEach((i) => {
           const hardpoint = {
             type: 'gimbaledmaneuveringthruster',
             category: 'G',
@@ -2144,7 +1597,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIPropulsion.jump_modules.forEach((i) => {
+        obj.compiled?.RSIPropulsion.jump_modules?.forEach((i) => {
           const hardpoint = {
             type: 'shieldgenerator',
             size: setSize(i.size.toLowerCase()),
@@ -2158,7 +1611,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIPropulsion.quantum_fuel_tanks.forEach((i) => {
+        obj.compiled?.RSIPropulsion.quantum_fuel_tanks?.forEach((i) => {
           const hardpoint = {
             type: 'quantumfueltanks',
             size: setSize(i.size.toLowerCase()),
@@ -2172,7 +1625,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIPropulsion.fuel_tanks.forEach((i) => {
+        obj.compiled?.RSIPropulsion.fuel_tanks?.forEach((i) => {
           const hardpoint = {
             type: 'fueltanks',
             size: setSize(i.size.toLowerCase()),
@@ -2186,7 +1639,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
+        obj.compiled?.RSIPropulsion.fuel_intakes?.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfuelintakes',
             size: setSize(i.size.toLowerCase()),
@@ -2200,7 +1653,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIPropulsion.fuel_intakes.forEach((i) => {
+        obj.compiled?.RSIPropulsion.fuel_intakes?.forEach((i) => {
           const hardpoint = {
             type: 'hydrogenfuelintakes',
             size: setSize(i.size.toLowerCase()),
@@ -2214,7 +1667,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIAvionic.radar.forEach((i) => {
+        obj.compiled?.RSIAvionic.radar?.forEach((i) => {
           const hardpoint = {
             type: 'radars',
             size: setSize(i.size.toLowerCase()),
@@ -2228,7 +1681,7 @@ async function formData() {
             })
         })
 
-        obj.compiled?.RSIAvionic.computers.forEach((i) => {
+        obj.compiled?.RSIAvionic.computers?.forEach((i) => {
           const hardpoint = {
             type: 'computers',
             size: setSize(i.size.toLowerCase()),
@@ -2244,7 +1697,7 @@ async function formData() {
 
         if (obj.compiled?.RSIThruster.main_thruster) {
           obj.compiled?.RSIThruster.main_thruster
-            .filter((e) => e.category === 'M')
+            .filter((e) => e.category == 'M')
             .forEach((i) => {
               const hardpoint = {
                 type: 'mainthruster',
@@ -2263,7 +1716,7 @@ async function formData() {
 
         if (obj.compiled?.RSIThruster.main_thruster) {
           obj.compiled?.RSIThruster.main_thruster
-            .filter((e) => e.category === 'R')
+            .filter((e) => e.category == 'R')
             .forEach((i) => {
               const hardpoint = {
                 type: 'retrohruster',
@@ -2282,7 +1735,7 @@ async function formData() {
 
         if (obj.compiled?.RSIThruster.maneuvering_thrusters) {
           obj.compiled?.RSIThruster.maneuvering_thrusters
-            .filter((e) => e.category === 'G')
+            .filter((e) => e.category == 'G')
             .forEach((i) => {
               const hardpoint = {
                 type: 'gimbaledmaneuveringthruster',
@@ -2301,7 +1754,7 @@ async function formData() {
 
         if (obj.compiled?.RSIThruster.maneuvering_thrusters) {
           obj.compiled?.RSIThruster.maneuvering_thrusters
-            .filter((e) => e.category === 'F')
+            .filter((e) => e.category == 'F')
             .forEach((i) => {
               const hardpoint = {
                 type: 'fixedmaneuveringthruster',
@@ -2320,7 +1773,7 @@ async function formData() {
 
         if (obj.compiled?.RSIThruster.maneuvering_thrusters) {
           obj.compiled?.RSIThruster.maneuvering_thrusters
-            .filter((e) => e.category === 'V')
+            .filter((e) => e.category == 'V')
             .forEach((i) => {
               const hardpoint = {
                 type: 'vtolthruster',
@@ -2338,21 +1791,22 @@ async function formData() {
         }
       }
 
-      const getCompany = (companyData) =>
-        {
-          // console.log(companyData)
-          manufacturers.find(
-            (e) =>
-              e.code?.toLowerCase().includes(companyData.Code.toLowerCase()) ||
-              e.firmen_name.toLowerCase() == companyData.Name?.toLowerCase() ||
-              e.firmen_name.toLowerCase().includes(companyData.Name?.toLowerCase())
-          )
-        }
+      const getCompany = (companyData) => {
+        // console.log(companyData)
+        manufacturers?.find(
+          (e) =>
+            e.code?.toLowerCase().includes(companyData.Code.toLowerCase()) ||
+            e.firmen_name.toLowerCase() == companyData.Name?.toLowerCase() ||
+            e.firmen_name
+              .toLowerCase()
+              .includes(companyData.Name?.toLowerCase())
+        )
+      }
 
       let weaponHardpoints = []
       if (p4kHardpoints) {
         // PILOT WEAPONS
-        p4kHardpoints.PilotHardpoints.forEach((i) => {
+        p4kHardpoints.PilotHardpoints?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2443,7 +1897,7 @@ async function formData() {
         })
 
         // MANNED TURRETS
-        p4kHardpoints.MannedTurrets.forEach((i) => {
+        p4kHardpoints.MannedTurrets?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2451,7 +1905,7 @@ async function formData() {
             return
           }
 
-          if(i.InstalledItem?.Type != 'Turret.GunTurret'){
+          if (i.InstalledItem?.Type != 'Turret.GunTurret') {
             return
           }
 
@@ -2520,7 +1974,7 @@ async function formData() {
         })
 
         // REMOTE TURRETS
-        p4kHardpoints.RemoteTurrets.forEach((i) => {
+        p4kHardpoints.RemoteTurrets?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2528,7 +1982,7 @@ async function formData() {
             return
           }
 
-          if(i.InstalledItem?.Type != 'Turret.GunTurret'){
+          if (i.InstalledItem?.Type != 'Turret.GunTurret') {
             return
           }
 
@@ -2591,7 +2045,7 @@ async function formData() {
         })
 
         // MISSILE RACKS
-        p4kHardpoints.MissileRacks.forEach((i) => {
+        p4kHardpoints.MissileRacks?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2646,7 +2100,7 @@ async function formData() {
 
         // UTILITY ITEMS
         // MINING HARDPOINTS
-        p4kHardpoints.MiningHardpoints.forEach((i) => {
+        p4kHardpoints.MiningHardpoints?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2712,7 +2166,7 @@ async function formData() {
           weaponHardpoints.push(hardpoint)
         })
         // UTILITY MANNED TURRETS
-        p4kHardpoints.MannedTurrets.forEach((i) => {
+        p4kHardpoints.MannedTurrets?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2720,7 +2174,7 @@ async function formData() {
             return
           }
 
-          if(i.InstalledItem?.Type != 'Turret.Utility'){
+          if (i.InstalledItem?.Type != 'Turret.Utility') {
             return
           }
 
@@ -2782,7 +2236,7 @@ async function formData() {
           weaponHardpoints.push(hardpoint)
         })
         // UTILITY REMOTE TURRETS
-        p4kHardpoints.RemoteTurrets.forEach((i) => {
+        p4kHardpoints.RemoteTurrets?.forEach((i) => {
           if (
             (i.Loadout == null || i.Loadout.includes('HUD')) &&
             i.InstalledItem == null
@@ -2790,7 +2244,7 @@ async function formData() {
             return
           }
 
-          if(i.InstalledItem?.Type != 'Turret.Utility'){
+          if (i.InstalledItem?.Type != 'Turret.Utility') {
             return
           }
 
@@ -2863,9 +2317,9 @@ async function formData() {
 
             if (
               liveData?.paints?.find((e) => e.slug == i.slug).storeImage ||
-              backendFiles.find((e) => e.title == 'paint-' + fileName)
+              backendFiles?.find((e) => e.title == 'paint-' + fileName)
             ) {
-              fileId = backendFiles.find(
+              fileId = backendFiles?.find(
                 (e) => e.title == 'paint-' + fileName
               ).id
             } else {
@@ -2902,15 +2356,15 @@ async function formData() {
       }
 
       let sortSize
-      if(size && size >= 0){
+      if (size && size >= 0) {
         sortSize = size
-      } else if(p4kData && p4kData >= 1){
+      } else if (p4kData && p4kData >= 1) {
         sortSize = --p4kData.Size
-      } else if(p4kData && p4kData == 0){
+      } else if (p4kData && p4kData == 0) {
         sortSize = p4kData.Size
       }
-      if(!flData){
-        console.log("ERROR")
+      if (!flData) {
+        console.log('ERROR')
         console.log(obj.name)
         console.log(flSlug)
       }
@@ -2933,12 +2387,14 @@ async function formData() {
         length: obj.length,
         beam: obj.beam,
         height: obj.height,
-        mass: p4kData?.Mass ? p4kData.Mass : parseFloat(obj.mass),
-        cargo: p4kData?.Cargo ? p4kData.Cargo : parseInt(obj.cargocapacity),
+        mass: p4kData?.Mass ? p4kData?.Mass : parseFloat(obj.mass),
+        cargo: p4kData?.Cargo ? p4kData?.Cargo : parseInt(obj.cargocapacity),
         size: size ? size : p4kData ? --p4kData.Size : null,
         sortSize: sortSize,
         price: price ? price : null,
-        pledgePrice: flData.pledgePrice,
+        pledgePrice: flData.pledgePrice
+          ? flData.pledgePrice
+          : flData.lastPledgePrice,
         onSale: flData.onSale,
         productionStatus: obj.production_status,
         productionNotes: obj.production_note,
@@ -2950,10 +2406,10 @@ async function formData() {
         minCrew: obj.min_crew,
         maxCrew: obj.max_crew,
         scmSpeed: p4kData?.FlightCharacteristics?.ScmSpeed
-          ? p4kData.FlightCharacteristics.ScmSpeed
+          ? p4kData?.FlightCharacteristics.ScmSpeed
           : obj.scm_speed,
         afterburnerSpeed: p4kData?.FlightCharacteristics?.MaxSpeed
-          ? p4kData.FlightCharacteristics.MaxSpeed
+          ? p4kData?.FlightCharacteristics.MaxSpeed
           : obj.afterburner_speed,
         groundSpeed: obj.scm_speed,
         afterburnerGroundSpeed: obj.afterburner_speed,
@@ -2979,7 +2435,7 @@ async function formData() {
         loaners,
         paints,
         modules,
-        hasModules: modules[0] ? true : false
+        hasModules: modules[0] ? true : false,
       }
 
       ships.push(ship)
@@ -2993,18 +2449,20 @@ export default async function handler(req, res) {
   const Datastore = await formData()
   // const Datastore = await uploadFile('https://fleetyards.net/uploads/model_paint/store_image/51/02/a624-da47-4c2d-9cac-04fbb54fce37/Star_Citizen_LunarNewYear_2023_Carrack_SKU_auspicious-4ade2b3e-bfb6-450c-93bd-5218a085f8d6.jpg', 'test-carrack', 'paint')
 
-  if (req.method === 'GET') {
+  if (req.method == 'GET') {
     res.status(200).send(Datastore)
-  } else if (req.method === 'POST') {
+  } else if (req.method == 'POST') {
     const matches = []
     await axios
       .get(
-        'https://cms.ariscorp.de/items/ships?access_token=' + process.env.NEXT_PUBLIC_CMS_TOKEN + '&limit=-1'
+        'https://cms.ariscorp.de/items/ships?access_token=' +
+          process.env.NEXT_PUBLIC_CMS_TOKEN +
+          '&limit=-1'
       )
       .then((resp) => {
         Datastore.forEach((object, index) => {
           const directusData = resp.data.data
-          const search = directusData.find(
+          const search = directusData?.find(
             (element) => element.slug == object.slug
           )
           if (search != null) {

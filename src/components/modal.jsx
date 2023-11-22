@@ -3,7 +3,7 @@ import { XMarkIcon } from '@heroicons/react/20/solid'
 import { Fragment } from 'react'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 
-export default function Modal ({ state, setState, closeFunction, title, subtitle, children, closeButton, customButton, z }) {
+export default function Modal ({ state, setState, closeFunction, title, subtitle, children, closeButton, customButton, z, wxl }) {
   function closeModal () {
     setState(false)
   }
@@ -34,7 +34,7 @@ export default function Modal ({ state, setState, closeFunction, title, subtitle
               leaveTo="opacity-0 scale-95"
             >
               {/* <Dialog.Panel className="w-full max-w-md p-6 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl"> */}
-              <Dialog.Panel className="max-w-md w-full bg-[#222] transform relative box-border p-[2px] border-2 border-[#6f6f6f] rounded-3xl transition-all duration-500 ease before:absolute before:-top-[2px] before:right-20 before:left-20 before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-20 after:left-20 after:h-[2px] after:bg-[#444] after:box-border">
+              <Dialog.Panel className={"w-full bg-[#222] transform relative box-border p-[2px] border-2 border-[#6f6f6f] rounded-3xl transition-all duration-500 ease before:absolute before:-top-[2px] before:right-20 before:left-20 before:h-[2px] before:bg-[#444] before:box-border after:absolute after:-bottom-[2px] after:right-20 after:left-20 after:h-[2px] after:bg-[#444] after:box-border " + (wxl ? "max-w-xl" : "max-w-lg")}>
                 <div className='relative min-h-[40px] border-[3px] border-primary border-opacity-90 rounded-[20px] shadow-sm shadow-white box-border bg-[rgba(39,43,48,.9] before:absolute before:-top-[3px] before:right-10 before:left-10 before:box-border after:box-border before:h-1 before:bg-[#444] before:rounded-b after:absolute after:-bottom-[3px] after:right-10 after:left-10 after:h-1 after:bg-[#444] after:rounded-t'>
                   <div className='box-border py-2 rounded-2xl'>
                     <div className='absolute transition-all duration-200 opacity-50 cursor-pointer top-2 left-2 hover:opacity-100 hover:duration-300'><AiOutlineCloseCircle className='w-5 h-5' onClick={closeFunction || closeModal} /></div>

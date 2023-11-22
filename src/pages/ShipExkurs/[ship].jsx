@@ -619,12 +619,12 @@ export default function ShipPage({
                       <p className="p-0 text-sm">On Sale!</p>
                     )
                   ) : (
-                    <p className="p-0">RSI Page</p>
+                    <p className="p-0">RSI Seite</p>
                   )}
                 </BasicPanelButton>
               ) : (
                 <BasicPanelButton disabled className="w-full">
-                  <p className="p-0">Keine RSI Page vorhanden</p>
+                  <p className="p-0">Keine RSI Seite vorhanden</p>
                 </BasicPanelButton>
               )}
             </div>

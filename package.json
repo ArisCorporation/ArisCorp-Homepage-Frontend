@@ -20,7 +20,7 @@
     "@vime/react": "^5.4.0",
     "apollo-link-rest": "^0.9.0-rc.1",
     "autoprefixer": "^10.4.1",
-    "axios": "^0.26.0",
+    "axios": "^1.6.2",
     "chart.js": "^4.0.1",
     "d3-ease": "^3.0.1",
     "framer-motion": "9.0.7",

@@ -1,20 +1,21 @@
 .PHONY: build-ptu
 build-ptu: ## Build the ptu docker image.
-	$(info Prepare build)
+	@echo "\033[1;36mPrepare build\033[0m"
 	cp ./.env.ptu.sample ./.env.ptu.build
 	@echo $(shell git rev-parse --short HEAD) >> ./.env.ptu.build
-	$(info Start build)
+	@echo "\033[1;36mStart build\033[0m"
 	docker compose -f docker/ptu/docker-compose.yml build
-	$(info Remove anything from build)
+	@echo "\033[1;36mRemove anything from build\033[0m"
 	rm ./.env.ptu.build
-	$(info Tag docker images)
+	@echo "\033[1;36mTag docker images\033[0m"
 	docker tag ariscorp/ariscorp-website:ptu ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
-	$(info Publish docker images)
+	@echo "\033[1;36mPublish docker images\033[0m"
 	docker push ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
 	docker push ariscorp/ariscorp-website:ptu
-	$(info Remove docker build-image)
+	@echo "\033[1;36mRemove docker build-image\033[0m"
 	docker image rm ariscorp/ariscorp-website:ptu-$(shell git rev-parse --short HEAD)
 	make cleanup
+	@echo "\033[1;32mBuild-Number: $(shell git rev-parse --short HEAD)\033[0m"
 
 .PHONY: start-ptu
 start-ptu: ## Start the ptu docker container.
@@ -26,21 +27,22 @@ stop-ptu: ## Stop the ptu docker container.
 
 .PHONY: build-staging
 build-staging: ## Build the staging docker image.
-	$(info Prepare build)
+	@echo "\033[1;36mPrepare build\033[0m"
 	cp ./.env.staging.sample ./.env.staging.build
 	@echo $(shell git rev-parse --short HEAD) >> ./.env.staging.build
-	$(info Start build)
+	@echo "\033[1;36mStart build\033[0m"
 	docker compose -f docker/staging/docker-compose.yml build
-	$(info Remove anything from build)
+	@echo "\033[1;36mRemove anything from build\033[0m"
 	rm ./.env.staging.build
-	$(info Tag docker images)
+	@echo "\033[1;36mTag docker images\033[0m"
 	docker tag ariscorp/ariscorp-website:staging ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
-	$(info Publish docker images)
+	@echo "\033[1;36mPublish docker images\033[0m"
 	docker push ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
 	docker push ariscorp/ariscorp-website:staging
-	$(info Remove docker build-image)
+	@echo "\033[1;36mRemove docker build-image\033[0m"
 	docker image rm ariscorp/ariscorp-website:staging-$(shell git rev-parse --short HEAD)
 	make cleanup
+	@echo "\033[1;32mBuild-Number: $(shell git rev-parse --short HEAD)\033[0m"
 
 .PHONY: start-staging
 start-staging: ## Start the staging docker container.
@@ -52,21 +54,24 @@ stop-staging: ## Stop the staging docker container.
   
 .PHONY: build-live
 build-live: ## Build the live docker image.
-	$(info Prepare build)
+	@echo "\033[1;36mPrepare build\033[0m"
 	cp ./.env.live.sample ./.env.live.build
 	@echo $(shell git rev-parse --short HEAD) >> ./.env.live.build
-	$(info Start build)
+	@echo "\033[1;36mStart build\033[0m"
 	docker compose -f docker/live/docker-compose.yml build
-	$(info Remove anything from build)
+	@echo "\033[1;36mRemove anything from build\033[0m"
+	@echo "\033[1;36mRemove anything from build\033[0m"
 	rm ./.env.live.build
-	$(info Tag docker images)
+	@echo "\033[1;36mTag docker images\033[0m"
 	docker tag ariscorp/ariscorp-website:live ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
-	$(info Publish docker images)
+	@echo "\033[1;36mPublish docker images\033[0m"
+	@echo "\033[1;36mPublish docker images\033[0m"
 	docker push ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	docker push ariscorp/ariscorp-website:live
-	$(info Remove docker build-image)
+	@echo "\033[1;36mRemove docker build-image\033[0m"
 	docker image rm ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	make cleanup
+	@echo "\033[1;32mBuild-Number: $(shell git rev-parse --short HEAD)\033[0m"
 
 .PHONY: start-live
 start-live: ## Start the live docker container.

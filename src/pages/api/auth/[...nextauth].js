@@ -58,6 +58,7 @@ const options = {
           lastName: userDetails.data.last_name,
           position: userDetails.data.charaktere[0].position_level,
           role: userDetails.data.role,
+          betaAccess: userDetails.data.betaAccess,
           accessToken: userTokens.data.access_token,
           refreshToken: userTokens.data.refresh_token,
         }

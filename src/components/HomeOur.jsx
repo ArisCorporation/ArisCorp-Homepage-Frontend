@@ -48,7 +48,7 @@ const OrgaSection = () => {
             }
           >
             <h1 className="text-base sm:text-lg md:text-xl lg:text-3xl xl:text-4xl text-inherit">
-              MEMBER
+              MITARBEITER
             </h1>
           </Tab>
           <Tab

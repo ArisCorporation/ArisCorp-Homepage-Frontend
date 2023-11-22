@@ -66,6 +66,8 @@ export async function getServerSideProps() {
       object.link ? (link = link + '/firmen/' + firmen_link) : ''
     } else if (object.beitrags_typ == 'literatur') {
       link ? (link = link + '/literatur/' + object.link) : '/'
+    } else if (object.beitrags_typ == 'ship') {
+      link ? (link = '/ShipExkurs/' + object.link) : '/'
     } else if (object.beitrags_typ == 'fraktion') {
       link ? (link = link + '/fraktionen/' + object.link) : ''
     } else if (object.beitrags_typ == 'spectrum') {

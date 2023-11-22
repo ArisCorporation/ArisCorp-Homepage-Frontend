@@ -1,4 +1,4 @@
-import Layout from 'pages/layout'
+import Layout from '../layout'
 import { useRouter } from 'next/router'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
@@ -103,7 +103,7 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
   }
 
   return (
-    <div className="items-center pt-32 mx-auto print:pt-5">
+    <Layout className="items-center pt-32 mx-auto print:pt-5">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -650,10 +650,6 @@ export default function Biografie ({ data, name, fullName, weapons, ships, siteT
           ) : null}
         </div>
       </div>
-    </div >
+    </Layout>
   )
-}
-
-Biografie.getLayout = function getLayout (page) {
-  return <Layout>{page}</Layout>
 }

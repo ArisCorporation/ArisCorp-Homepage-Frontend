@@ -1,4 +1,4 @@
-const MemberIcon = ({ width, height, classes }) => {
+const MemberIcon = ({ width, height, classes, classNames }) => {
   return (
     <svg
       id="Member_Icon"
@@ -7,6 +7,7 @@ const MemberIcon = ({ width, height, classes }) => {
       viewBox="0 0 3072 3072"
       width={width}
       height={height}
+      className={classNames}
     >
       <path
         className={classes}

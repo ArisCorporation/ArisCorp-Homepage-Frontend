@@ -26,7 +26,7 @@ export async function getServerSideProps (context) {
 
   data = data.member[0]
 
-  const siteTitle = data.member_name + " - Astro Research and Industrial Service Corporation"
+  const siteTitle = data?.title + " " + data.firstname + " " + data?.lastname + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
@@ -60,13 +60,13 @@ export default function Biografie ({ data, siteTitle }) {
       <div>
         <div className="items-center text-center">
           <h1 className="uppercase">
-            Biografie: <span className="text-primary">{data.member_name}</span>
+            Biografie: <span className="text-primary">{data.firstname}</span>
           </h1>
           <hr />
         </div>
         <div className="max-w-[95%] mx-auto">
           <div className={'mx-auto'}>
-            <h2 className="mt-3">Bio von {data.member_titel}</h2>
+            <h2 className="mt-3">Bio von {data.title ? member.title + " " : ""} {data.firstname} {data.lastname}</h2>
             <div className="float-left w-full mt-8 mb-6 sm:mt-0 sm:mb-0 sm:w-auto sm:float-right">
               <Image
                 src={'https://cms.ariscorp.de/assets/' + data.member_potrait.id}

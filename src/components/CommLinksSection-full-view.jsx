@@ -17,7 +17,9 @@ const COMM_LINKS = gql`
         filename_disk
       }
       comm_link_author {
-        member_titel
+        title
+        firstname
+        lastname
       }
       comm_link
       comm_link_beschreibung

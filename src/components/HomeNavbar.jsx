@@ -13,6 +13,7 @@ import {
 import { useState, useContext } from 'react'
 import { FaBars } from 'react-icons/fa'
 import { useRouter } from 'next/router'
+import AMSLogo from './icons/AMSLogo'
 
 function Navbar () {
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -34,12 +35,26 @@ function Navbar () {
                 : '/'
             }
           >
-            <a className="absolute top-0 px-2 mt-[-16px] scale-75 xl:scale-100 group">
+            <a className="absolute top-0 pl-2 mt-[-16px] scale-75 xl:scale-100 group">
               <MainLogo width="128" height="128" />
               <NavbarTooltip
                 tooltip={
                   pathname == '/' ? 'Zur RSI-Homepage' : 'Zurück zur Homepage'
                 }
+              />
+            </a>
+          </Link>
+        </div>
+        <div>
+          <Link legacyBehavior
+            href={
+              '/internal'
+            }
+          >
+            <a className="absolute top-0 flex h-full scale-75 xl:scale-100 group">
+              <AMSLogo classes="navbar-banner" classNames="w-[180px] my-auto" />
+              <NavbarTooltip
+                tooltip="Zum ArisCorp Management System"
               />
             </a>
           </Link>
@@ -148,6 +163,12 @@ function Navbar () {
           <div className={mobileOpen ? 'flex w-full' : 'hidden'}>
             <div className="flex flex-wrap w-full">
               <ul className="flex flex-wrap w-full px-10 mb-0 list-none marker:text-transparent">
+                <li className="block w-full pb-0">
+                  <MobileNavbarItem
+                    link="/internal"
+                    content="ArisCorp Management System"
+                  />
+                </li>
                 <li className="block w-full pb-0">
                   <MobileNavbarItem
                     AnkerLink="our"

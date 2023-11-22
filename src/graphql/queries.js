@@ -97,7 +97,9 @@ export const GET_INDEX_DATA = gql`
       }
       date_created
       comm_link_author {
-        member_titel
+        title
+        firstname
+        lastname
       }
       comm_link
       comm_link_beschreibung
@@ -116,6 +118,9 @@ export const GET_INDEX_DATA = gql`
       partner_website
       date_created
     }
+    homepage{
+      discordLink
+    }
   }
 `
 
@@ -124,27 +129,40 @@ export const GET_MEMBERS = gql`
   query GetMembers {
     member(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "member_name"]
+      sort: ["firstname"]
       limit: -1
     ) {
       id
       status
-      member_name
+      firstname
+      lastname
+      title
       slug
-      member_titel
       roles
       position_level
       head_of_department
       member_potrait {
         id
       }
+      head_department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
     }
   }
 `
 
 export const GET_MEMBER = gql`
-query GetMember($slug: String!) {
-    member(filter: { slug: { _eq: $slug } }, sort: ["sort", "member_name"]) {
+  query GetMember($slug: String!) {
+    member(filter: { slug: { _eq: $slug } }) {
       id
       status
       firstname
@@ -322,7 +340,7 @@ export const GET_GAMEPLAYS = gql`
   query GetGameplays {
     gameplays(
       filter: { status: { _eq: "published" } }
-      sort: ["sort", "gameplay_name"]
+      sort: ["gameplay_name"]
       limit: -1
     ) {
       id
@@ -338,6 +356,72 @@ export const GET_GAMEPLAYS = gql`
         id
       }
       text
+      head_of_department{
+        title
+        firstname
+        lastname
+        member_potrait {
+          id
+        }
+      }
+      members{
+        title
+        firstname
+        lastname
+      }
+    }
+  }
+`
+
+export const GET_FLEET = gql`
+  query GetFleet {
+    member_ships(
+      filter: { group: { _neq: "private" }, visibility: { _eq: "public" } }
+      sort: ["ships_id.name"]
+      limit: -1
+    ) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
     }
   }
 `
@@ -388,7 +472,9 @@ export const GET_COMM_LINK = gql`
         width
       }
       comm_link_author {
-        member_titel
+        title
+        firstname
+        lastname
         member_potrait {
           id
         }
@@ -1817,6 +1903,60 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
   }
 `
 
+export const INTERNAL_GET_MEMBER_HANGAR = gql`
+  query InternalGetMemberHangar($member: String!) {
+    member(filter: { slug: { _eq: $member } }) {
+      title
+      firstname
+      lastname
+      member_potrait {
+        id
+      }
+      ships(
+        filter: {
+          visibility: { _neq: "hidden" }
+        }
+        sort: ["ships_id.name"]
+        limit: -1
+      ) {
+        id
+        name
+        serial
+        group
+        visibility
+        department {
+          gameplay_logo {
+            id
+          }
+          gameplay_name
+        }
+        ships_id {
+          id
+          name
+          slug
+          productionStatus
+          storeImage {
+            id
+          }
+          manufacturer {
+            firmen_name
+            code
+          }
+          length
+          beam
+          height
+          classification
+          size
+          cargo
+          price
+          minCrew
+          maxCrew
+        }
+      }
+    }
+  }
+`
+
 export const INTERNAL_GET_FLEET = gql`
   query InternalGetFleet {
     member_ships(
@@ -1863,6 +2003,76 @@ export const INTERNAL_GET_FLEET = gql`
       department {
         gameplay_name
         gameplay_logo {
+          id
+        }
+      }
+    }
+  }
+`
+
+export const GET_INTERNAL_MEMBER_HANGAR = gql`
+  query GetInternalMembers($member: String!) {
+    member_ships(
+      filter: {
+        member_id: { _eq: $member }
+        group: { _neq: "private" }
+        visibility: { _neq: "hidden" }
+      }
+      sort: ["ships_id.name"]
+      limit: -1
+    ) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+    }
+    member_technologien(filter: { member_id: { slug: { _eq: $slug } } }) {
+      technologien_id {
+        id
+        waffen_name
+        waffenhersteller {
+          firmen_name
+          slug
+        }
+        waffen_bild {
           id
         }
       }
@@ -1928,12 +2138,12 @@ export const GET_INTERNAL_ADMIN_DATA = gql`
     }
 
     components(limit: -1) {
-        id
-        name
-        manufacturer {
-          firmen_name
-          status
-        }
+      id
+      name
+      manufacturer {
+        firmen_name
+        status
       }
+    }
   }
 `

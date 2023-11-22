@@ -8,7 +8,7 @@ import {
 import { SquareLoader } from 'react-spinners'
 import { useQuery } from '@apollo/client'
 import Image from 'next/image'
-import { BasicPanel } from 'components/panels'
+import { BasicPanel, BasicPanelButton } from 'components/panels'
 import client from 'apollo/clients'
 import Link from 'next/link'
 import Head from 'next/head'
@@ -17,6 +17,7 @@ import SelectionGridWrapper from 'components/SelectionGridWrapper'
 import { Listbox, Transition } from '@headlessui/react'
 import { HiSelector } from 'react-icons/hi'
 import { AiOutlineCheck } from 'react-icons/ai'
+import HangarShipDetailCard from 'components/internal/HangarShipCard'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_SHIPEXKURS_SHIPS_INDEX })
@@ -56,6 +57,7 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
   const [manufacturerMenu, setManufacturerMenu] = useState(false)
   const [classesMenu, setClassesMenu] = useState(false)
   const [roleMenu, setRoleMenu] = useState()
+  const [detailView, setDetailView] = useState()
   const squery = query.q
   const classquery = query.cls
   const focusquery = query.focus
@@ -64,6 +66,19 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
   const prodquery = query.prodStatus
   const salequery = query.sale
   const typequery = query.type
+
+  useEffect(() => {
+    // LOCAL STORAGE
+    const viewValue = window.localStorage.getItem('seDetailView')
+    if (viewValue != null && viewValue != 'undefined') {
+      setDetailView(JSON.parse(viewValue))
+    }
+  }, [])
+
+  useEffect(() => {
+    // LOCAL STORAGE
+    window.localStorage.setItem('seDetailView', JSON.stringify(detailView))
+  }, [detailView])
 
   function slugify(str) {
     str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -1440,9 +1455,24 @@ export default function Ships({ siteTitle, manufacturers, Data }) {
             </div>
             <hr />
           </div>
+          <div className="flex px-2 my-4">
+            <div className="flex ml-auto space-x-4">
+              <div>
+                <BasicPanelButton
+                  animate
+                  className="ml-auto w-fit"
+                  onClick={() => setDetailView(!detailView)}
+                >
+                  <p className="p-0">
+                    Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
+                  </p>
+                </BasicPanelButton>
+              </div>
+            </div>
+          </div>
           <SelectionGridWrapper>
             {data.map((object, index) => (
-              <ShipCard key={object.id} data={object} />
+              <HangarShipDetailCard detailView={detailView} key={object.id} data={object} />
             ))}
           </SelectionGridWrapper>
         </div>

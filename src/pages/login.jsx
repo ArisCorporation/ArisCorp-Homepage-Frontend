@@ -56,13 +56,12 @@ export default function InternalLogin({ backgrounds }) {
 
   const onSubmit = async () => {
     const result = await signIn('credentials', {
-      email: (email.includes('@') ? email : email + '@ariscorp.de'),
+      email: email.includes('@') ? email : email + '@ariscorp.de',
       password: password,
       redirect: true,
       callbackUrl: callbackUrl || '/internal',
     })
   }
-
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -187,22 +186,15 @@ export default function InternalLogin({ backgrounds }) {
           backgroundImage: `url(//cms.ariscorp.de/assets/${currentBg.id})`,
         }}
       >
-        <div className="absolute flex left-8 top-4">
-          <img
-            src={
-              'https://cms.ariscorp.de/assets/650aba1c-3182-40a6-8185-a8f3d164ef2b'
-            }
-            width={128}
-          />
-          <div
-            className={
-              'pt-4 my-auto text-2xl' +
-              (currentBg.colorMode == 'bright' ? ' text-[#8b8b8b]' : '')
-            }
-          >
-            A<span className="text-primary"> . </span>M
-            <span className="text-primary"> . </span>S
-            <span className="text-primary"> .</span>
+        <div className='absolute top-0 flex justify-center w-full md:w-fit md:left-6'>
+          <div className="w-[250px] relative xs:w-[320px] aspect-[1112/477]">
+            <Image
+              fill
+              src={
+                process.env.NEXT_PUBLIC_FILES_URL +
+                '3090187e-6348-4290-a878-af1b2b48c114?format=webp'
+              }
+            />
           </div>
         </div>
 
