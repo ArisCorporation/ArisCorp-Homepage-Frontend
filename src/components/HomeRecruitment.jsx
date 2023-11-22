@@ -135,6 +135,7 @@ const RectruitmentSection = ({dcLink}) => {
                 <a
                   href={dcLink}
                   target='_blank'
+                  rel='noreferrer'
                   className="px-4 py-1 mx-1 transition-all duration-200 ease-linear rounded hover:bg-white"
                 >
                   <Image
@@ -149,6 +150,7 @@ const RectruitmentSection = ({dcLink}) => {
                 <a
                   href="https://robertsspaceindustries.com/orgs/ARISCORP"
                   target='_blank'
+                  rel='noreferrer'
                   className="px-4 py-1 mx-1 transition-all duration-200 ease-linear rounded hover:bg-white"
                 >
                   <Image
