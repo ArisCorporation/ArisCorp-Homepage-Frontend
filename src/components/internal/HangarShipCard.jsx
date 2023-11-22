@@ -20,7 +20,7 @@ const HangarShipDetailCard = ({
   editAction,
   removeAction,
   fleetView,
-  color
+  color,
 }) => {
   const ship = data.ship || data
   return (
@@ -43,6 +43,24 @@ const HangarShipDetailCard = ({
           </div>
         )}
       </div>
+      {ship.productionStatus && (
+        <div className="absolute z-50 flex top-2 left-2">
+          <div
+            onClick={removeAction}
+            className="flex items-center justify-center cursor-pointer w-fit h-100"
+          >
+            {ship.productionStatus == 'flight-ready' ? (
+              <span className="text-primary">Flugfertig</span>
+            ) : ship.productionStatus == 'in-concept' ? (
+              <span className="text-white">In Konzept</span>
+            ) : ship.productionStatus == 'in-production' ? (
+              <span className="text-secondary">In Produktion</span>
+            ) : (
+              ''
+            )}
+          </div>
+        </div>
+      )}
       <div className="h-[200px] relative transition-all duration-500 ease ">
         <div
           className="absolute z-[15] right-2 top-2 h-16 w-16 rounded-full bg-center bg-no-repeat bg-cover"
@@ -114,9 +132,7 @@ const HangarShipDetailCard = ({
               <div className="col-span-1">
                 <p className="pb-0 text-sm truncate">Klassifizierung:</p>
                 <p className="p-0 text-primary">
-                  {ship.classification != null
-                    ? ship.classification
-                    : 'N/A'}
+                  {ship.classification != null ? ship.classification : 'N/A'}
                 </p>
               </div>
               <div className="col-span-1">
