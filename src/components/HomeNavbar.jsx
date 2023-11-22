@@ -35,7 +35,7 @@ function Navbar () {
                 : '/'
             }
           >
-            <a className="absolute top-0 pl-2 mt-[-16px] scale-75 xl:scale-100 group">
+            <a className="absolute top-0 pl-2 mt-[-16px] xl:scale-50 2xl:scale-100 group">
               <MainLogo width="128" height="128" />
               <NavbarTooltip
                 tooltip={
@@ -45,23 +45,23 @@ function Navbar () {
             </a>
           </Link>
         </div>
-        <div>
+        {/* <div>
           <Link legacyBehavior
             href={
               '/internal'
             }
           >
-            <a className="absolute top-0 flex h-full scale-75 xl:scale-100 group">
-              <AMSLogo classes="navbar-banner" classNames="w-[180px] my-auto" />
+            <a className="absolute top-0 flex h-full xl:scale-50 2xl:scale-100 group">
+              <AMSLogo classes="navbar-banner" classNames="w-[82px] xl:w-[180px] my-auto" />
               <NavbarTooltip
                 tooltip="Zum ArisCorp Management System"
               />
             </a>
-          </Link>
-        </div>
+          </Link> */}
+        {/* </div> */}
         <div>
           <div className="">
-            <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-75 xl:scale-100 mb-0">
+            <ul className="flex items-center px-10 space-x-10 mt-[-14px] scale-50 xl:scale-75 2xl:scale-100 mb-0">
               <NavbarItem
                 AnkerLink="our"
                 tooltip="Unsere Member"
@@ -127,6 +127,17 @@ function Navbar () {
                 tooltip="VerseExkurs"
                 content={
                   <VerseExkursBanner
+                    width="120"
+                    height="120"
+                    classes="navbar-banner"
+                  />
+                }
+              />
+              <NavbarItem
+                link="/internal"
+                tooltip="Zum ArisCorp Management System"
+                content={
+                  <AMSLogo
                     width="120"
                     height="120"
                     classes="navbar-banner"
