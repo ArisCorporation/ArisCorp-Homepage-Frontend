@@ -186,7 +186,7 @@ export default function InternalLogin({ backgrounds }) {
           backgroundImage: `url(//cms.ariscorp.de/assets/${currentBg.id})`,
         }}
       >
-        <div className='absolute top-0 flex justify-center w-full xs:w-fit xs:left-6'>
+        <div className='absolute top-0 flex justify-center w-full md:w-fit md:left-6'>
           <div className="w-[250px] relative xs:w-[320px] aspect-[1112/477]">
             <Image
               fill
