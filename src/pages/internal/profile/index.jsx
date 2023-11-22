@@ -719,7 +719,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <ul>
                   <li>Ordentliches Auftreten in Ziviler Kleidung (z.B. Keine Helme)</li>
                   <li>Neutraler Hintergrund</li>
-                  <li className='font-bold'>Auf ausreichend Beleuchtung !</li>
+                  <li className='font-bold'>Auf ausreichend Beleuchtung achten !</li>
                   <li className='font-bold'>Bitte in bestmöglicher Qualität !</li>
                 </ul>
                 <p>Falls du noch weitere Fragen hast oder Hilfe brauchst, kannst du dich jederzeit an Decon M. Vorn oder Thomas Blakeney wenden.</p>
