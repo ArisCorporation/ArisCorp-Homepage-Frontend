@@ -353,6 +353,19 @@ export const GET_GAMEPLAYS = gql`
         id
       }
       text
+      head_of_department{
+        title
+        firstname
+        lastname
+        member_potrait {
+          id
+        }
+      }
+      members{
+        title
+        firstname
+        lastname
+      }
     }
   }
 `
