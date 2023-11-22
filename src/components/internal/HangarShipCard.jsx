@@ -22,6 +22,7 @@ const HangarShipDetailCard = ({
   fleetView,
   color
 }) => {
+  const ship = data.ship || data
   return (
     <BasicPanel color={color ? color : false}>
       <div className="absolute z-50 flex bottom-1 right-1">
@@ -67,16 +68,16 @@ const HangarShipDetailCard = ({
         )}
         <Link
           legacyBehavior
-          href={'/VerseExkurs/firmen/' + data.ship.manufacturer?.firmen_name}
+          href={'/VerseExkurs/firmen/' + ship.manufacturer?.firmen_name}
         >
           <a className="absolute bottom-0 h-[22px] z-10 pl-4 decoration-transparent">
             <p className="top-0 bottom-0 py-0 mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
-              {data.ship.manufacturer?.firmen_name}
+              {ship.manufacturer?.firmen_name}
             </p>
           </a>
         </Link>
-        <Link legacyBehavior href={'/ShipExkurs/' + data.ship.slug}>
-          {/* <motion.a  initial={{ borderRadius: "16px 16px 16px 16px" }} animate={{ borderRadius: "16px 16px 0px 0px" }} exit={{ borderRadius: "16px 16px 16px 16px" }} transition={{duration: 1}} className='relative block w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${data.ship.storeImage?.id}?height=400)` }}> */}
+        <Link legacyBehavior href={'/ShipExkurs/' + ship.slug}>
+          {/* <motion.a  initial={{ borderRadius: "16px 16px 16px 16px" }} animate={{ borderRadius: "16px 16px 0px 0px" }} exit={{ borderRadius: "16px 16px 16px 16px" }} transition={{duration: 1}} className='relative block w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5' style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${ship.storeImage?.id}?height=400)` }}> */}
           <a>
             <motion.div
               animate={detailView == true ? 'detail' : 'normal'}
@@ -84,13 +85,13 @@ const HangarShipDetailCard = ({
               transition={{ ease: 'easeInOut', duration: 1 }}
               className="relative block w-full h-full overflow-hidden bg-center bg-no-repeat bg-cover rounded-2xl focus:outline-none group bg-white/5"
               style={{
-                backgroundImage: `url(https://cms.ariscorp.de/assets/${data.ship.storeImage?.id}?height=400)`,
+                backgroundImage: `url(https://cms.ariscorp.de/assets/${ship.storeImage?.id}?height=400)`,
               }}
             >
               <div className="absolute bottom-0 w-full h-[49px] pl-4 bg-opacity-80 bg-bg-secondary">
                 <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
-                  {data.ship.name +
-                    (data.custom_data.name
+                  {ship.name +
+                    (data.custom_data?.name
                       ? ` - "${data.custom_data.name}"`
                       : '')}
                 </p>
@@ -113,16 +114,16 @@ const HangarShipDetailCard = ({
               <div className="col-span-1">
                 <p className="pb-0 text-sm truncate">Klassifizierung:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.classification != null
-                    ? data.ship.classification
+                  {ship.classification != null
+                    ? ship.classification
                     : 'N/A'}
                 </p>
               </div>
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Crew:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.minCrew != null
-                    ? data.ship.minCrew + ' - ' + data.ship.maxCrew
+                  {ship.minCrew != null
+                    ? ship.minCrew + ' - ' + ship.maxCrew
                     : 'N/A'}
                 </p>
               </div>
@@ -131,8 +132,8 @@ const HangarShipDetailCard = ({
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Kaufpreis:</p>
                 <p className="p-0 normal-case text-primary">
-                  {data.ship.price != null
-                    ? data.ship.price
+                  {ship.price != null
+                    ? ship.price
                         .toString()
                         .replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1.') + ' aUEC'
                     : 'N/A'}
@@ -141,7 +142,7 @@ const HangarShipDetailCard = ({
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Fracht:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.cargo ? data.ship.cargo + ' scu' : 'N/A'}
+                  {ship.cargo ? ship.cargo + ' scu' : 'N/A'}
                 </p>
               </div>
             </div>
@@ -150,19 +151,19 @@ const HangarShipDetailCard = ({
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Länge:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.length ? data.ship.length + ' m' : 'N/A'}
+                  {ship.length ? ship.length + ' m' : 'N/A'}
                 </p>
               </div>
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Breite:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.length ? data.ship.beam + ' m' : 'N/A'}
+                  {ship.length ? ship.beam + ' m' : 'N/A'}
                 </p>
               </div>
               <div className="col-span-1">
                 <p className="pb-0 text-sm">Höhe:</p>
                 <p className="p-0 text-primary">
-                  {data.ship.length ? data.ship.height + ' m' : 'N/A'}
+                  {ship.length ? ship.height + ' m' : 'N/A'}
                 </p>
               </div>
             </div>
