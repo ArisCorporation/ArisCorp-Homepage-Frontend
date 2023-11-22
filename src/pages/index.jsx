@@ -34,6 +34,7 @@ export async function getServerSideProps () {
       comm_links: await data?.comm_links,
 
       partner: await data?.partner,
+      homepageData: await data?.homepage,
 
       siteTitle
     },
@@ -47,6 +48,7 @@ export default function IndexPage ({
   charta,
   comm_links,
   partner,
+  homepageData,
   siteTitle
 }) {
   return (
@@ -79,7 +81,7 @@ export default function IndexPage ({
         />
         <OrgaSection />
         <CommLinksSection data={comm_links} />
-        <RectruitmentSection />
+        <RectruitmentSection dcLink={homepageData.discordLink} />
         <PartnerSection data={partner} />
       </div>
     </Layout>

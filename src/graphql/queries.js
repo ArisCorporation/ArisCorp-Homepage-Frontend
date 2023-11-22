@@ -118,6 +118,9 @@ export const GET_INDEX_DATA = gql`
       partner_website
       date_created
     }
+    homepage{
+      discordLink
+    }
   }
 `
 

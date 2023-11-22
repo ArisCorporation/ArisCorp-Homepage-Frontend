@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Dialog } from '@headlessui/react'
 import Image from 'next/image'
 
-const RectruitmentSection = () => {
+const RectruitmentSection = ({dcLink}) => {
   let [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -133,7 +133,7 @@ const RectruitmentSection = () => {
                   </button>
                 </div>
                 <a
-                  href="https://discord.gg/g38pavPwzU"
+                  href={dcLink}
                   className="px-4 py-1 mx-1 transition-all duration-200 ease-linear rounded hover:bg-white"
                 >
                   <Image
