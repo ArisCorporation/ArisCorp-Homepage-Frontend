@@ -35,9 +35,9 @@ export async function getServerSideProps(context) {
     variables: { member },
   })
   const { data: gameplayData } = await client.query({ query: GET_GAMEPLAYS })
-  
+
   const data = {
-    member: {...rawData.member[0]},
+    member: { ...rawData.member[0] },
     ships: [],
   }
   delete data.member.ships
@@ -77,7 +77,12 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default function InternalIndex({ apiData, raw, departments, siteTitle }) {
+export default function InternalIndex({
+  apiData,
+  raw,
+  departments,
+  siteTitle,
+}) {
   const { query, replace } = useRouter()
   const departmentquery = query.department
   const [detailView, setDetailView] = useState()
@@ -87,16 +92,22 @@ export default function InternalIndex({ apiData, raw, departments, siteTitle }) 
 
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
-    replace({ query: { member: query.member, department: dep?.gameplay_name } }, undefined, {
-      scroll: false,
-    })
+    replace(
+      { query: { member: query.member, department: dep?.gameplay_name } },
+      undefined,
+      {
+        scroll: false,
+      }
+    )
   }
 
   function filterData() {
     if (selectedDepartment != null) {
       let filteredData = [...apiData.ships]
       filteredData = filteredData.filter(
-        (e) => e.custom_data.department?.gameplay_name == selectedDepartment.gameplay_name
+        (e) =>
+          e.custom_data.department?.gameplay_name ==
+          selectedDepartment.gameplay_name
       )
       setData({ ...data, ships: [...filteredData] })
     } else {
@@ -165,10 +176,30 @@ export default function InternalIndex({ apiData, raw, departments, siteTitle }) 
       <SelectionGridWrapper>
         <AnimatePresence>
           {data.ships?.map((object) => (
-              <motion.div key={object.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .5 }} exit={{ opacity: 0 }}>
-                <HangarShipCard detailView={detailView} data={object} />
-              </motion.div>
-            ))}
+            <motion.div
+              key={object.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}
+              exit={{ opacity: 0 }}
+            >
+              <HangarShipCard
+                color={
+                  object.custom_data.group == 'private'
+                    ? 'white'
+                    : object.custom_data.group == 'ariscorp' &&
+                      object.custom_data.department
+                    ? 'primary'
+                    : object.custom_data.group == 'ariscorp' &&
+                      !object.custom_data.department
+                    ? 'secondary'
+                    : null
+                }
+                detailView={detailView}
+                data={object}
+              />
+            </motion.div>
+          ))}
         </AnimatePresence>
       </SelectionGridWrapper>
     </Layout>

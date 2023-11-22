@@ -20,10 +20,10 @@ const HangarShipDetailCard = ({
   editAction,
   removeAction,
   fleetView,
+  color
 }) => {
-// border-[#666]
   return (
-    <BasicPanel color="[#121212]">
+    <BasicPanel color={color ? color : false}>
       <div className="absolute z-50 flex bottom-1 right-1">
         {editAction && (
           <div
