@@ -791,7 +791,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={firstname}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setFirstname(e.target.value)}
                   placeholder="Chris..."
@@ -804,7 +804,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={lastname}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setLastname(e.target.value)}
                   placeholder="Roberts..."
@@ -819,7 +819,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={title}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Dr. Med...."
@@ -832,7 +832,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={password}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
@@ -964,7 +964,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                   {ruleValue ? (
                     <input
                       onChange={handleAvatarUpload}
-                      autoComplete={false}
+                      autoComplete="off"
                       autoCorrect={false}
                       type="file"
                       accept="image/png, image/jpeg, image/webp"
@@ -1001,7 +1001,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={currentPlace}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setCurrentPlace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
@@ -1052,7 +1052,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={birthdate}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setBirthdate(e.target.value)}
                   placeholder={moment()
@@ -1081,7 +1081,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={birthplace}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setBirthplace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
@@ -1096,7 +1096,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={haircolor}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setHaircolor(e.target.value)}
                   placeholder="Schwarz/Grau"
@@ -1111,7 +1111,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={height}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setHeight(e.target.value)}
                   placeholder="185"
@@ -1126,7 +1126,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={eyecolor}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setEyecolor(e.target.value)}
                   placeholder="Braun"
@@ -1141,7 +1141,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={weight}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setWeight(e.target.value)}
                   placeholder="85"
@@ -1269,7 +1269,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                       <input
                         value={dutyPeriod}
-                        autoComplete={false}
+                        autoComplete="off"
                         autoCorrect={false}
                         onChange={(e) => setDutyPeriod(e.target.value)}
                         placeholder={`${moment()
@@ -1289,7 +1289,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                       <input
                         value={dutyReason}
-                        autoComplete={false}
+                        autoComplete="off"
                         autoCorrect={false}
                         onChange={(e) => setDutyReason(e.target.value)}
                         placeholder="Dienst quittiert"
@@ -1321,7 +1321,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                       <input
                         value={educationName}
-                        autoComplete={false}
+                        autoComplete="off"
                         autoCorrect={false}
                         onChange={(e) => setEducationName(e.target.value)}
                         placeholder="Medizin Studium"
@@ -1337,7 +1337,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                       <input
                         value={educationPeriod}
-                        autoComplete={false}
+                        autoComplete="off"
                         autoCorrect={false}
                         onChange={(e) => setEducationPeriod(e.target.value)}
                         placeholder={`${moment()
@@ -1363,7 +1363,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div className="w-8/12 lg:w-full">
                       <input
                         value={educationPlace}
-                        autoComplete={false}
+                        autoComplete="off"
                         autoCorrect={false}
                         onChange={(e) => setEducationPlace(e.target.value)}
                         placeholder="Medizinische Fakultät in Terra"
@@ -1385,7 +1385,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={hobbys}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setHobbys(e.target.value)}
                   placeholder="Sport, Fliegen, Schrauben, ..."
@@ -1398,7 +1398,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={activities}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setActivities(e.target.value)}
                   placeholder="Pool, Kochen, Sport, Alkohol trinken, ..."
@@ -1413,7 +1413,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={talents}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setTalents(e.target.value)}
                   placeholder="Spricht Sprache X, Handwerklich begabt, ..."
@@ -1426,7 +1426,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={habits}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setHabits(e.target.value)}
                   placeholder="Geht gern Risiken ein, Ist sehr organisiert, ..."
@@ -1441,7 +1441,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={tics}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setTics(e.target.value)}
                   placeholder="Spricht Sprache X, Handwerklich begabt, ..."
@@ -1454,7 +1454,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={fears}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setFears(e.target.value)}
                   placeholder="Hat Angst im Dunklem, ..."
@@ -1471,7 +1471,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={character}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setCharacter(e.target.value)}
                   placeholder="Ist sehr loyal, manchmal zu ehrlich, manchmal etwas impulsiv, ..."
@@ -1498,7 +1498,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={music}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setMusic(e.target.value)}
                   placeholder="Rock Musik, EDM, Metal, ..."
@@ -1511,7 +1511,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={movies}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setMovies(e.target.value)}
                   placeholder="Interstellar, ..."
@@ -1526,7 +1526,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={books}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setBooks(e.target.value)}
                   placeholder="Brochuren von Hersteller X, ..."
@@ -1539,7 +1539,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={clothing}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setClothing(e.target.value)}
                   placeholder="Interstellar, ..."
@@ -1554,7 +1554,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={food}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setFood(e.target.value)}
                   placeholder="Big Bennys Nudeln, ..."
@@ -1567,7 +1567,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={drink}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setDrink(e.target.value)}
                   placeholder="Vestal Wasser, ..."
@@ -1582,7 +1582,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={alcohol}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setAlcohol(e.target.value)}
                   placeholder="Schmolz Bier, ..."
@@ -1595,7 +1595,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={color}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setColor(e.target.value)}
                   placeholder="Grün, Rot, ..."
@@ -1610,7 +1610,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={loves}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setLoves(e.target.value)}
                   placeholder="Hochwertige Schiffe, ..."
@@ -1623,7 +1623,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-8/12 lg:w-full lg:max-w-[380px]">
                 <input
                   value={hates}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setHates(e.target.value)}
                   placeholder="Drake, ..."
@@ -1638,7 +1638,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div className="w-full">
                 <textarea
                   value={medicalInformations}
-                  autoComplete={false}
+                  autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setMedicalInformations(e.target.value)}
                   placeholder={

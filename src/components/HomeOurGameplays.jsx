@@ -87,7 +87,7 @@ export default function OurGameplays() {
                       <Image
                         src={
                           'https://cms.ariscorp.de/assets/' +
-                          data.gameplay_bild_rechts.id + '?format=webp
+                          data.gameplay_bild_rechts.id + '?format=webp'
                         }
                         fill
                         cover
