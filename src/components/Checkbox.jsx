@@ -25,7 +25,7 @@ const tickVariants = {
   },
 };
 
-export default function Checkbox ({ children, id, state, setState, color, bg, disabled }) {
+export default function Checkbox ({ children, id, state, setState, color, bg, disabled, onClick }) {
   // const [isChecked, setIsChecked] = useState(false);
 
   return (
@@ -37,7 +37,8 @@ export default function Checkbox ({ children, id, state, setState, color, bg, di
           setState,
           color,
           bg,
-          disabled
+          disabled,
+          onClick
         }}
       >
         {children}
@@ -47,14 +48,14 @@ export default function Checkbox ({ children, id, state, setState, color, bg, di
 }
 
 function CheckboxIndicator () {
-  const { id, state, setState, color, bg, disabled } = useContext(CheckboxContext);
+  const { id, state, setState, color, bg, disabled, onClick } = useContext(CheckboxContext);
   return (
     <button className="relative flex items-center">
       <input
         type="checkbox"
         disabled={disabled}
         className={'relative w-5 h-5 transition-all duration-500 border-2 rounded-md appearance-none cursor-pointer ' + (bg ? `border-${bg}/50 ` : "border-[#111]/50 ") + (state && (bg ? `border-${bg} bg-${bg}` : "border-[#111] bg-[#111]"))}
-        onChange={() => setState(!state)}
+        onChange={() => onClick ? (onClick()) : (setState(!state))}
         id={id}
       />
       <div className={'absolute -translate-x-1/2 -translate-y-1/2 pointer-events-none left-1/2 top-1/2 ' + (color ? `text-${color}` : 'text-white')}>

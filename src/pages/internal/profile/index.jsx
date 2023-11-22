@@ -140,8 +140,14 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
   const [biography, setBiography] = useState()
   const [changesMade, setChangesMade] = useState()
   const [ruleValue, setRuleValue] = useState()
+  const [titleCheckbox, setTitleCheckbox] = useState(false)
   const handleBiographyChange = (content, editor) => {
     setBiography(content)
+  }
+
+  const handleTitleCheckbox = () => {
+    setTitleCheckbox(!titleCheckbox)
+    setTitle("")
   }
 
   const handleAvatarUpload = (e) => {
@@ -370,6 +376,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     setBiography(data.biography)
     setRawAvatarUrl()
     setAvatarFile()
+    setTitleCheckbox(data.title ? true : false)
   }
 
   useEffect(() => {
@@ -627,7 +634,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     setModal(true)
     setModalType('cancel')
   }
-  
+
   function openRuleModal() {
     setModal(true)
     setModalType('avatarRules')
@@ -717,12 +724,23 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <div>
                 <h3>Wir haben folgende Richtlinien zu unseren Avataren:</h3>
                 <ul>
-                  <li>Ordentliches Auftreten in Ziviler Kleidung (z.B. Keine Helme)</li>
+                  <li>
+                    Ordentliches Auftreten in Ziviler Kleidung (z.B. Keine
+                    Helme)
+                  </li>
                   <li>Neutraler Hintergrund</li>
-                  <li className='font-bold'>Auf ausreichend Beleuchtung achten !</li>
-                  <li className='font-bold'>Bitte in bestmöglicher Qualität !</li>
+                  <li className="font-bold">
+                    Auf ausreichend Beleuchtung achten !
+                  </li>
+                  <li className="font-bold">
+                    Bitte in bestmöglicher Qualität !
+                  </li>
                 </ul>
-                <p>Falls du noch weitere Fragen hast oder Hilfe brauchst, kannst du dich jederzeit an Decon M. Vorn oder Thomas Blakeney wenden.</p>
+                <p>
+                  Falls du noch weitere Fragen hast oder Hilfe brauchst, kannst
+                  du dich jederzeit an Decon M. Vorn oder Thomas Blakeney
+                  wenden.
+                </p>
               </div>
               <div className="w-full mt-8 space-x-12">
                 <DefaultButton
@@ -816,12 +834,25 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
           <div className="flex flex-wrap justify-between px-8 lg:space-x-12 lg:flex-nowrap">
             <div className="flex justify-between w-full mb-3 space-x-4 lg:w-1/2">
               <label className="my-auto text-xl">Titel:</label>
-              <div className="w-8/12 lg:w-full lg:max-w-[380px]">
+              <div className="w-8/12 lg:w-full lg:max-w-[380px] flex space-x-4">
+                <Checkbox
+                  state={titleCheckbox}
+                  onClick={handleTitleCheckbox}
+                  id="c-0"
+                  color="primary"
+                  bg="[#222]"
+                  name="group"
+                  value="private"
+                >
+                  <Checkbox.Label>Besitzt du einen Titel?</Checkbox.Label>
+                  <Checkbox.Indicator />
+                </Checkbox>
                 <input
                   value={title}
                   autoComplete="new-off"
                   autoCorrect={false}
                   onChange={(e) => setTitle(e.target.value)}
+                  disabled={!titleCheckbox}
                   placeholder="Dr. Med...."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                 />
@@ -971,7 +1002,9 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                     />
                   ) : (
-                    <BasicPanelButton animate onClick={openRuleModal}>Avatar ändern</BasicPanelButton>
+                    <BasicPanelButton animate onClick={openRuleModal}>
+                      Avatar ändern
+                    </BasicPanelButton>
                   )}
                 </div>
               </div>
