@@ -60,11 +60,9 @@ build-live: ## Build the live docker image.
 	@echo "\033[1;36mStart build\033[0m"
 	docker compose -f docker/live/docker-compose.yml build
 	@echo "\033[1;36mRemove anything from build\033[0m"
-	@echo "\033[1;36mRemove anything from build\033[0m"
 	rm ./.env.live.build
 	@echo "\033[1;36mTag docker images\033[0m"
 	docker tag ariscorp/ariscorp-website:live ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
-	@echo "\033[1;36mPublish docker images\033[0m"
 	@echo "\033[1;36mPublish docker images\033[0m"
 	docker push ariscorp/ariscorp-website:live-$(shell git rev-parse --short HEAD)
 	docker push ariscorp/ariscorp-website:live
