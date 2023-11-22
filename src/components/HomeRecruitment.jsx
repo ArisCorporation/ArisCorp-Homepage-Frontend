@@ -134,6 +134,7 @@ const RectruitmentSection = ({dcLink}) => {
                 </div>
                 <a
                   href={dcLink}
+                  target='_blank'
                   className="px-4 py-1 mx-1 transition-all duration-200 ease-linear rounded hover:bg-white"
                 >
                   <Image
