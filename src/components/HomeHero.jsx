@@ -13,7 +13,7 @@ const HeroSection = () => {
             Willkommen
             <span className="ml-2 tracking-widest text-secondary">bei der</span>
           </h1>
-          <div className="flex items-center justify-center scale-[.4] sm:scale-50 md:scale-[.6] lg:scale-75 xl:scale-110">
+          <div className="flex items-center justify-center scale-[.6] sm:scale-75 md:scale-[.8] lg:scale-100 xl:scale-[1.5]">
             <Image
               src="https://cms.ariscorp.de/assets/62eb0e48-6a0e-432f-b90d-fbd6aca6eaac"
               alt="ArisCorp Banner"
