@@ -184,7 +184,7 @@ function Navbar () {
                   <MobileNavbarItem
                     AnkerLink="our"
                     ourTab={'0'}
-                    content="Unsere Member"
+                    content="Unsere Mitarbeiter"
                   />
                 </li>
                 <li className="block w-full">

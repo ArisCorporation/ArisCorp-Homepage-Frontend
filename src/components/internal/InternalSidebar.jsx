@@ -508,7 +508,7 @@ export default function Sidebar ({ changes }) {
                         }
                       >
                         {' '}
-                        Mitglieder{' '}
+                        Mitarbeiter{' '}
                       </span>
                       {!mobileView && sidebarCollapsed ? (
                         <ReactTooltip
@@ -519,7 +519,7 @@ export default function Sidebar ({ changes }) {
                           type="dark"
                           padding="8px"
                         >
-                          Mitglieder
+                          Mitarbeiter
                         </ReactTooltip>
                       ) : (
                         ''

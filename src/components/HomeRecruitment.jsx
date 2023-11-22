@@ -11,7 +11,7 @@ const RectruitmentSection = ({dcLink}) => {
         id="recruitment"
         className="text-lg scroll-mt-28 sm:text-3xl md:text-4xl"
       >
-        WIR SUCHEN NEUE <span className="text-primary">MITGLIEDER</span>
+        WIR SUCHEN NEUE <span className="text-primary">MITARBEITER</span>
       </h1>
       <hr />
       <div className="px-4 mb-12">

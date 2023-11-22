@@ -87,7 +87,7 @@ export default function OurFleet() {
       <h1 className="text-center text-primary">Flotte der ArisCorp</h1>
       <p className="text-center">
         Die Flotte der ArisCorp stellt sich aus den Schiffen zusammen, die von
-        Mitgliedern der ArisCorp zur verfügung gestellt werden.
+        Mitarbeiter der ArisCorp zur verfügung gestellt werden.
       </p>
       <div>
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>

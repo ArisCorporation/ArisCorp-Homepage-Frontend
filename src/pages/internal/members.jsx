@@ -16,7 +16,7 @@ import Link from 'next/link'
 export async function getServerSideProps() {
   const { data: rawMemberData } = await client.query({ query: GET_MEMBERS })
   const { data: gameplayData } = await client.query({ query: GET_GAMEPLAYS })
-  const siteTitle = 'Alle Mitglieder - ArisCorp Management System'
+  const siteTitle = 'Alle Mitarbeiter - ArisCorp Management System'
 
   return {
     props: {

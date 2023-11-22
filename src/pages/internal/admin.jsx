@@ -179,7 +179,7 @@ export default function InternalIndex({
 
   const tabs = [
     {
-      name: 'Mitgliederverwaltung',
+      name: 'Mitarbeiterverwaltung',
       content: (
         <>
           <div>
