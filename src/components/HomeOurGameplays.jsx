@@ -70,7 +70,7 @@ export default function OurGameplays() {
                       <Image
                         src={
                           'https://cms.ariscorp.de/assets/' +
-                          data.gameplay_bild_links.id
+                          data.gameplay_bild_links.id + '?format=webp'
                         }
                         fill
                         cover
@@ -87,7 +87,7 @@ export default function OurGameplays() {
                       <Image
                         src={
                           'https://cms.ariscorp.de/assets/' +
-                          data.gameplay_bild_rechts.id
+                          data.gameplay_bild_rechts.id + '?format=webp
                         }
                         fill
                         cover
