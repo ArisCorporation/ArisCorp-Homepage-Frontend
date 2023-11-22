@@ -58,7 +58,7 @@ export async function getServerSideProps (context) {
   data = data.member[0]
   const name = `${data.firstname ? data.firstname : ""} ${data.lastname ? data.lastname : ""}`
   const fullName = `${data.title ? data.title + " " : ""} ${data.firstname ? data.firstname : ""} ${data.lastname ? data.lastname : ""}`
-  const siteTitle = data.fullName + " - Astro Research and Industrial Service Corporation"
+  const siteTitle = fullName + " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
