@@ -80,7 +80,7 @@ function Navbar () {
               />
               <NavbarItem
                 AnkerLink="our"
-                tooltip="Unsere Aufgabenfelder"
+                tooltip="Unsere Abteilungen"
                 ourTab={'2'}
                 content={
                   <GameplaysIcon width="82" height="82" classes="navbar-icon" />
@@ -198,7 +198,7 @@ function Navbar () {
                   <MobileNavbarItem
                     AnkerLink="our"
                     ourTab={'2'}
-                    content="Unsere Aufgabenfelder"
+                    content="Unsere Abteilungen"
                   />
                 </li>
                 <li className="block w-full">
