@@ -78,7 +78,7 @@ export default function OurGameplays() {
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/' +
                           data.gameplay_bild_links.id +
-                          '?width=16&quality=1'
+                          '?format=webp&width=16&quality=1'
                         }
                         alt={data.gameplay_name + ' linkes Bild'}
                       />
@@ -95,7 +95,7 @@ export default function OurGameplays() {
                         blurDataURL={
                           'https://cms.ariscorp.de/assets/' +
                           data.gameplay_bild_rechts.id +
-                          '?width=16&quality=1'
+                          '?format=webp&width=16&quality=1'
                         }
                         alt={data.gameplay_name + ' rechtes Bild'}
                       />
