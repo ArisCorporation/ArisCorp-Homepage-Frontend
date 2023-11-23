@@ -1260,10 +1260,10 @@ async function formData() {
       const p4kData = rawP4kShips.find((e) =>
         e.Name.toLowerCase().startsWith(p4kId.toLowerCase())
       )
-      if(!p4kData?.ClassName){
-        console.log("P4KERROR", flSlug, p4kId)
+      // if(!p4kData?.ClassName){
+      //   console.log("P4KERROR", flSlug, p4kId)
 
-      }
+      // }
       const p4kHardpoints = await getP4kShipHardpoints(
         p4kData?.ClassName.toLowerCase()
       )
@@ -2344,22 +2344,6 @@ async function formData() {
 
       const modules = []
       if (flModules[0]) {
-        flModules.forEach(async(i) => {
-          if(slug == "galaxy"){
-            console.log(flModules)
-          }
-          // const module = {
-          //   name: i.name,
-          //   description: i.description,
-          //   pledgePrice: i.pledgePrice,
-          //   price: i.price,
-          //   productionStatus: i.productionStatus,
-          //   manufacturer: i.manufacturer.code,
-          // }
-
-          // modules.push(module)
-
-
           const fileName = slug + '-' + string_to_slug(i.name)
             const link = i.storeImage
             let fileId
@@ -2398,11 +2382,11 @@ async function formData() {
       } else if (p4kData && p4kData == 0) {
         sortSize = p4kData.Size
       }
-      if (!flData) {
-        console.log('ERROR')
-        console.log(obj.name)
-        console.log(flSlug)
-      }
+      // if (!flData) {
+      //   console.log('ERROR')
+      //   console.log(obj.name)
+      //   console.log(flSlug)
+      // }
 
       const ship = {
         status: 'published',
