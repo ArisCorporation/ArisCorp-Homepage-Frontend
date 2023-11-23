@@ -1477,7 +1477,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                   autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setTics(e.target.value)}
-                  placeholder="Spricht Sprache X, Handwerklich begabt, ..."
+                  placeholder="Hat einen fragwürdigen Humor, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                 />
               </div>
@@ -1575,7 +1575,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                   autoComplete="off"
                   autoCorrect={false}
                   onChange={(e) => setClothing(e.target.value)}
-                  placeholder="Interstellar, ..."
+                  placeholder="Leder Jacken, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                 />
               </div>
