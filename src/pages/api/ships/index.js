@@ -67,7 +67,6 @@ async function getDirectusFiles() {
   return data
 }
 
-
 async function getFileIds(object, Files) {
   const fileIds = {
     brochure: null,
@@ -114,7 +113,7 @@ async function uploadFile(url, title, fileType) {
     folder = '95c311dc-4ffb-4e48-b41a-bb959399eddc'
   } else if (fileType == 'paint') {
     folder = '7150758a-09d0-465e-aaf8-fb1f2a417715'
-  } else if (fileType == 'module'){
+  } else if (fileType == 'module') {
     folder = 'fec4f425-d085-40fd-9c32-e08e69bfa476'
   }
 
@@ -146,15 +145,19 @@ async function uploadFile(url, title, fileType) {
 
 async function getSMData() {
   const actualUrl = SMURL
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
   // var apiResults = await fetch(actualUrl).then((resp) => {
   //   return resp.json()
   // })
-  if(apiResults){
+  if (apiResults) {
     return apiResults.data
   } else {
     return []
@@ -182,14 +185,18 @@ async function getSMData() {
 
 async function getFlPaints(ship) {
   const actualUrl = FLURL + ship + '/paints'
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
+  if (!apiResults) {
     console.log(actualUrl)
-  })
-  if(!apiResults ){
-    console.log(actualUrl)
-  console.log("paints", apiResults)
+    console.log('paints', apiResults)
   }
   if (apiResults) {
     return apiResults
@@ -200,11 +207,15 @@ async function getFlPaints(ship) {
 
 async function getFlModules(ship) {
   const actualUrl = FLURL + ship + '/modules'
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults
@@ -215,11 +226,15 @@ async function getFlModules(ship) {
 
 async function getScwShip(ship) {
   const actualUrl = SCWURL + 'vehicles/' + ship
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults.data
@@ -230,11 +245,15 @@ async function getScwShip(ship) {
 
 async function getP4kShipsData() {
   const actualUrl = P4kURL + 'v2/ships.json'
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults
@@ -245,11 +264,15 @@ async function getP4kShipsData() {
 
 async function getP4kShipHardpoints(ship) {
   const actualUrl = P4kURL + 'v2/ships/' + ship + '-ports.json'
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults
@@ -269,11 +292,15 @@ async function getP4kShipHardpoints(ship) {
 
 async function getLiveShipData() {
   const actualUrl = BackendURL + '/items/ships?fields=id,name,slug&limit=-1'
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults.data
@@ -285,11 +312,15 @@ async function getLiveShipData() {
 async function getManufacturers() {
   const actualUrl =
     BackendURL + '/items/firmen?fields=id,firmen_name,slug,code&limit=-1'
-    const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults.data
@@ -301,12 +332,16 @@ async function getManufacturers() {
 async function getComponents() {
   const actualUrl =
     BackendURL + '/items/components?fields=id,name,slug&limit=-1'
-    const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
-    console.log("components", apiResults[0])
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
+  console.log('components', apiResults[0])
   // var apiResults = await fetch(actualUrl).then((resp) => {
   //   return isJsonString(resp) ? resp.json() : null
   // })
@@ -321,11 +356,15 @@ async function getComponents() {
 async function getFLlist() {
   const actualUrl = 'https://api.fleetyards.net/v1/models?perPage=230'
 
-  const apiResults = await axios.get(actualUrl).then(function (resp){return resp.data})
-  .catch((reason) => {
-    console.log(reason.message)
-    console.log(actualUrl)
-  })
+  const apiResults = await axios
+    .get(actualUrl)
+    .then(function (resp) {
+      return resp.data
+    })
+    .catch((reason) => {
+      console.log(reason.message)
+      console.log(actualUrl)
+    })
 
   if (apiResults) {
     return apiResults
@@ -1148,14 +1187,14 @@ async function formData() {
       }
 
       let scwSlug = flSlug
-      if(flSlug == "mercury-star-runner"){
-        scwSlug = "mercury"
-      } else if (flSlug == "san-tok-yai"){
-        scwSlug = "San%27tok.y%C4%81i"
-      } else if (flSlug == "600i-executive-edition") {
-        scwSlug = "600i_Explorer"
-      } else if (flSlug == "dragonfly-starkitten-edition"){
-        scwSlug = "dragonfly-black"
+      if (flSlug == 'mercury-star-runner') {
+        scwSlug = 'mercury'
+      } else if (flSlug == 'san-tok-yai') {
+        scwSlug = 'San%27tok.y%C4%81i'
+      } else if (flSlug == '600i-executive-edition') {
+        scwSlug = '600i_Explorer'
+      } else if (flSlug == 'dragonfly-starkitten-edition') {
+        scwSlug = 'dragonfly-black'
       }
 
       // const flData = await getFlShip(flSlug)
@@ -2344,33 +2383,35 @@ async function formData() {
 
       const modules = []
       if (flModules[0]) {
+        flModules.forEach(async (i) => {
           const fileName = slug + '-' + string_to_slug(i.name)
-            const link = i.storeImage
-            let fileId
+          const link = i.storeImage
+          let fileId
 
-            if (
-              liveData?.modules?.find((e) => e.slug == string_to_slug(i.name)).storeImage ||
-              backendFiles?.find((e) => e.title == 'module-' + fileName)
-            ) {
-              fileId = backendFiles?.find(
-                (e) => e.title == 'module-' + fileName
-              ).id
-            } else {
-              const fileUpload = await uploadFile(link, fileName, 'module')
-              fileId = fileUpload.id
-            }
+          if (
+            liveData?.modules?.find((e) => e.slug == string_to_slug(i.name))
+              .storeImage ||
+            backendFiles?.find((e) => e.title == 'module-' + fileName)
+          ) {
+            fileId = backendFiles?.find(
+              (e) => e.title == 'module-' + fileName
+            ).id
+          } else {
+            const fileUpload = await uploadFile(link, fileName, 'module')
+            fileId = fileUpload.id
+          }
 
-            const module = {
-              name: i.name,
-              slug: string_to_slug(i.name),
-              pledgePrice: i.pledgePrice,
-              // nameWithModel: i.nameWithModel,
-              productionStatus: i.productionStatus,
-              manufacturer: i.manufacturer.code,
-              storeImage: fileId,
-            }
+          const module = {
+            name: i.name,
+            slug: string_to_slug(i.name),
+            pledgePrice: i.pledgePrice,
+            // nameWithModel: i.nameWithModel,
+            productionStatus: i.productionStatus,
+            manufacturer: i.manufacturer.code,
+            storeImage: fileId,
+          }
 
-            modules.push(module)
+          modules.push(module)
         })
       }
 
