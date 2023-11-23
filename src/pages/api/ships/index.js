@@ -60,12 +60,13 @@ function removeDuplicates(arr) {
 async function getDirectusFiles() {
   let res = await axios.get(
     BackendURL +
-      '/files?limit=-1&filter[folder]=7150758a-09d0-465e-aaf8-fb1f2a417715'
+      '/files?limit=-1&filter[folder]][_in]=7150758a-09d0-465e-aaf8-fb1f2a417715,fec4f425-d085-40fd-9c32-e08e69bfa476'
   )
   let data = res.data.data
 
   return data
 }
+
 
 async function getFileIds(object, Files) {
   const fileIds = {
@@ -113,6 +114,8 @@ async function uploadFile(url, title, fileType) {
     folder = '95c311dc-4ffb-4e48-b41a-bb959399eddc'
   } else if (fileType == 'paint') {
     folder = '7150758a-09d0-465e-aaf8-fb1f2a417715'
+  } else if (fileType == 'module'){
+    folder = 'fec4f425-d085-40fd-9c32-e08e69bfa476'
   }
 
   const fullTitle = fileType + '-' + title
@@ -2341,17 +2344,49 @@ async function formData() {
 
       const modules = []
       if (flModules[0]) {
-        flModules.forEach((i) => {
-          const module = {
-            name: i.name,
-            description: i.description,
-            pledgePrice: i.pledgePrice,
-            price: i.price,
-            productionStatus: i.productionStatus,
-            manufacturer: i.manufacturer.code,
+        flModules.forEach(async(i) => {
+          if(slug == "galaxy"){
+            console.log(flModules)
           }
+          // const module = {
+          //   name: i.name,
+          //   description: i.description,
+          //   pledgePrice: i.pledgePrice,
+          //   price: i.price,
+          //   productionStatus: i.productionStatus,
+          //   manufacturer: i.manufacturer.code,
+          // }
 
-          modules.push(module)
+          // modules.push(module)
+
+
+          const fileName = slug + '-' + string_to_slug(i.name)
+            const link = i.storeImage
+            let fileId
+
+            if (
+              liveData?.modules?.find((e) => e.slug == string_to_slug(i.name)).storeImage ||
+              backendFiles?.find((e) => e.title == 'module-' + fileName)
+            ) {
+              fileId = backendFiles?.find(
+                (e) => e.title == 'module-' + fileName
+              ).id
+            } else {
+              const fileUpload = await uploadFile(link, fileName, 'module')
+              fileId = fileUpload.id
+            }
+
+            const module = {
+              name: i.name,
+              slug: string_to_slug(i.name),
+              pledgePrice: i.pledgePrice,
+              // nameWithModel: i.nameWithModel,
+              productionStatus: i.productionStatus,
+              manufacturer: i.manufacturer.code,
+              storeImage: fileId,
+            }
+
+            modules.push(module)
         })
       }
 
