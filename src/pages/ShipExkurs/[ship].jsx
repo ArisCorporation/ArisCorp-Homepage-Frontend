@@ -276,7 +276,7 @@ export default function ShipPage({
           </h1>
           <h3 className="mb-0 uppercase">
             <span className="text-white/25">Status: </span>
-            <span>{data.productionStatus}</span>
+            <span>{data.productionStatus == "in-concept" ? "In Konzept" : data.productionStatus == "in-production" ? "In Produktion" : data.productionStatus == "flight-ready" ? "Flugfertig" : data.productionStatus}</span>
           </h3>
         </div>
 
