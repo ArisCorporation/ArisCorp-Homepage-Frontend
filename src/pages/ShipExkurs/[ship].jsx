@@ -282,7 +282,7 @@ export default function ShipPage({
 
         <Link
           legacyBehavior
-          href={'/VerseExkurs/firmen/' + data.manufacturer.firmen_name}
+          href={'/VerseExkurs/firmen/' + data.manufacturer.slug}
         >
           <a
             style={{

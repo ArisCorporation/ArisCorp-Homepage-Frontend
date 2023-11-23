@@ -727,7 +727,7 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
 
 export const GET_VERSEEXKURS_FIRMA = gql`
   query GetVerseExkursFirma($firma: String!) {
-    firmen(filter: { firmen_name: { _eq: $firma } }) {
+    firmen(filter: { slug: { _eq: $firma } }) {
       id
       status
       firmen_trans_logo {
@@ -741,6 +741,7 @@ export const GET_VERSEEXKURS_FIRMA = gql`
         height
       }
       firmen_name
+      slug
       firmenkategorie
       firmenherstellerkategorie
       text
@@ -1752,6 +1753,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
       manufacturer {
         id
         firmen_name
+        slug
         firmen_trans_logo {
           id
         }

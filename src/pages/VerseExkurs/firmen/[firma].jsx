@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
     variables: { firma },
   })
 
-  if (!data.firmen_name) {
+  if (!data.firmen[0]?.firmen_name) {
     return {
       notFound: true,
     }
