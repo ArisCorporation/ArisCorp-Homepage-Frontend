@@ -1677,7 +1677,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                   placeholder={
                     '- Rechte Hand große Narbe verursacht durch eine Piratenklinge \n- Linke Ohrmuschel nicht vorhanden durch einen schlimmen Rennsport-Unfall'
                   }
-                  className="form-control block resize-none w-full h-52 px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
+                  className="form-control block placeholder:opacity-20 resize-none w-full h-52 px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                 />
               </div>
             </div>
