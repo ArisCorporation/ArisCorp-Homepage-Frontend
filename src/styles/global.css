@@ -40,7 +40,7 @@ vm-icon {
     @apply text-white;
   }
   input {
-    @apply placeholder:opacity-40
+    @apply placeholder:opacity-20
   }
   /* .tl-storyslider {
     @apply [height:69px!important];
