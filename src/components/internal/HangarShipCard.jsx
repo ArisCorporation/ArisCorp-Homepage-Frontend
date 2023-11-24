@@ -61,7 +61,7 @@ const HangarShipDetailCard = ({
           </div>
         </div>
       )}
-      <div className="h-[210px] 3.5xl:h-[200px] relative transition-all duration-500 ease ">
+      <div className={"relative transition-all duration-500 ease " + (fleetView ? 'h-[210px] 3.5xl:h-[200px]' : 'h-[200px]')}>
         <div
           className="absolute z-[15] right-2 top-2 h-16 w-16 rounded-full bg-center bg-no-repeat bg-cover"
           style={{
@@ -77,8 +77,8 @@ const HangarShipDetailCard = ({
               <div className="text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
                 <p className="pt-0">
                   Bereitgestellt von:
-                  {data.member.title} {data.member.firstname}{' '}
-                  {data.member.lastname}
+                  {data.member.title ? ' ' + data.member.title + ' ' : ''}{' '}
+                  {data.member.firstname} {data.member.lastname}
                 </p>
               </div>
             </a>
@@ -86,9 +86,9 @@ const HangarShipDetailCard = ({
         )}
         <Link
           legacyBehavior
-          href={'/VerseExkurs/firmen/' + ship.manufacturer?.firmen_name}
+          href={'/VerseExkurs/firmen/' + ship.manufacturer?.slug}
         >
-          <a className="absolute bottom-[11px] 3.5xl:bottom-0 h-[22px] z-10 pl-4 decoration-transparent">
+          <a className={"absolute h-[22px] z-10 pl-4 decoration-transparent " + (fleetView ? 'bottom-[11px] 3.5xl:bottom-0' : 'bottom-0')}>
             <p className="top-0 bottom-0 py-0 mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
               {ship.manufacturer?.firmen_name}
             </p>
@@ -106,7 +106,7 @@ const HangarShipDetailCard = ({
                 backgroundImage: `url(https://cms.ariscorp.de/assets/${ship.storeImage?.id}?height=400)`,
               }}
             >
-              <div className="absolute bottom-0 w-full 3.5xl:h-[49px] h-[59px] pl-4 bg-opacity-80 bg-bg-secondary">
+              <div className={"absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary " + (fleetView ? '3.5xl:h-[49px] h-[59px]' : 'h-[49px]')}>
                 <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
                   {ship.name +
                     (data.custom_data?.name

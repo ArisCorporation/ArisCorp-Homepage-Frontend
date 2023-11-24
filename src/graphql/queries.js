@@ -245,6 +245,7 @@ export const GET_MEMBER = gql`
           id
         }
         manufacturer {
+          slug
           firmen_name
           code
         }
@@ -399,6 +400,7 @@ export const GET_FLEET = gql`
           id
         }
         manufacturer {
+          slug
           firmen_name
           code
         }
@@ -1985,6 +1987,7 @@ export const INTERNAL_GET_FLEET = gql`
           id
         }
         manufacturer {
+          slug
           firmen_name
           code
         }
@@ -2042,6 +2045,7 @@ export const GET_INTERNAL_MEMBER_HANGAR = gql`
           id
         }
         manufacturer {
+          slug
           firmen_name
           code
         }
