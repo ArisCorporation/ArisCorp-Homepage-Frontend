@@ -245,7 +245,7 @@ export default function Biografie({
                     </p>
                   </div>
                   <div className="col-span-1">
-                    <p className="pb-0 text-sm">Aktuelles Wohnort - System:</p>
+                    <p className="pb-0 text-sm">Aktueller Wohnort - System:</p>
                     <p className="p-0 text-primary">
                       {data.currentResidenceSystem ? (
                         <Link
