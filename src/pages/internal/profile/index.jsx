@@ -793,7 +793,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <FaRegAddressBook className="relative inline-block w-[18px] h-[18px] my-auto" />
               <span className="my-auto">
                 <Link
-                  href={'/biografie/' + slugify(firstname + '-' + lastname)}
+                  href={'/internal/biografie/' + slugify(firstname + '-' + lastname)}
                   className="transition-all duration-200 opacity-75 decoration-transparent hover:opacity-100 hover:duration-300 text-primary"
                 >
                   Biografie
