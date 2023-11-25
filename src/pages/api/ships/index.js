@@ -205,25 +205,6 @@ async function getFlPaints(ship) {
   }
 }
 
-async function getFlModules(ship) {
-  const actualUrl = FLURL + ship + '/modules'
-  const apiResults = await axios
-    .get(actualUrl)
-    .then(function (resp) {
-      return resp.data
-    })
-    .catch((reason) => {
-      console.log(reason.message)
-      console.log(actualUrl)
-    })
-
-  if (apiResults) {
-    return apiResults
-  } else {
-    return []
-  }
-}
-
 async function getScwShip(ship) {
   const actualUrl = SCWURL + 'vehicles/' + ship
   const apiResults = await axios
@@ -1201,7 +1182,6 @@ async function formData() {
       const flData = FLlist?.find(
         (e) => e.slug.toLowerCase() == flSlug.toLowerCase()
       )
-      const flModules = await getFlModules(flSlug)
       const flPaints = await getFlPaints(flSlug)
       const liveData = liveShipData?.find((e) => e.slug == slug)
       const scwData = await getScwShip(scwSlug)
@@ -1967,7 +1947,7 @@ async function formData() {
               ) {
                 return
               }
-              if (port.InstalledItem) {
+              if (port.InstalledItem?.Name) {
                 let portManufacturer
                 if (port.InstalledItem.Manufacturer) {
                   portManufacturer = getCompany(port.InstalledItem.Manufacturer)
@@ -2382,38 +2362,6 @@ async function formData() {
       }
 
       const modules = []
-      if (flModules[0]) {
-        flModules.forEach(async (i) => {
-          const fileName = slug + '-' + string_to_slug(i.name)
-          const link = i.storeImage
-          let fileId
-
-          if (
-            liveData?.modules?.find((e) => e.slug == string_to_slug(i.name))
-              .storeImage ||
-            backendFiles?.find((e) => e.title == 'module-' + fileName)
-          ) {
-            fileId = backendFiles?.find(
-              (e) => e.title == 'module-' + fileName
-            ).id
-          } else {
-            const fileUpload = await uploadFile(link, fileName, 'module')
-            fileId = fileUpload.id
-          }
-
-          const module = {
-            name: i.name,
-            slug: string_to_slug(i.name),
-            pledgePrice: i.pledgePrice,
-            // nameWithModel: i.nameWithModel,
-            productionStatus: i.productionStatus,
-            manufacturer: i.manufacturer.code,
-            storeImage: fileId,
-          }
-
-          modules.push(module)
-        })
-      }
 
       let sortSize
       if (size && size >= 0) {
