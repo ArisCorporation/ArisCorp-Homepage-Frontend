@@ -21,7 +21,13 @@ const HangarShipDetailCard = ({
   }
   const detailViewVariants = {
     normal: { height: '0px' },
-    detail: { height: (200 + (fleetView && custom_data.active_module ? 89 : 0)) + 'px' },
+    detail: {
+      height: 200 + (fleetView && custom_data.active_module ? 89 : 0) + 'px',
+    },
+  }
+  const gameplayName = {
+    hidden: { opacity: 0 },
+    hover: { opacity: 1 },
   }
 
   return (
@@ -68,15 +74,27 @@ const HangarShipDetailCard = ({
           (fleetView ? 'h-[210px] 3.5xl:h-[200px]' : 'h-[200px]')
         }
       >
-        <div
-          className="absolute z-[15] right-2 top-2 h-16 w-16 rounded-full bg-center bg-no-repeat bg-cover"
+        <motion.div
+          initial="hidden"
+          whileHover="hover"
+          className="absolute z-[15] w-16 h-16 bg-center bg-no-repeat bg-cover rounded-full right-2 top-2"
           style={{
             backgroundImage: `url(https://cms.ariscorp.de/assets/${
               data.custom_data?.department?.gameplay_logo?.id ||
               data.custom_data?.department?.gameplay_logo
             }?height=400)`,
           }}
-        />
+        >
+          <motion.div
+            whileHover="hidden"
+            variants={gameplayName}
+            className="absolute z-50 flex h-16 transition-all duration-200 right-20"
+          >
+            <div className="bg-[#111] h-fit my-auto rounded-xl px-3">
+              {data.custom_data?.department?.gameplay_name}
+            </div>
+          </motion.div>
+        </motion.div>
         {fleetView && (
           <Link legacyBehavior href={'/biografie/' + data.member.slug}>
             <a className="absolute before:absolute bottom-[0px] h-[22px] right-4 z-10 pl-4 decoration-transparent">
@@ -211,7 +229,9 @@ const HangarShipDetailCard = ({
                   <div className="col-span-1">
                     <p className="pb-0 text-sm">Aktives Modul:</p>
                     <p className="p-0 text-primary">
-                      {custom_data.active_module?.name ? custom_data.active_module?.name : 'N/A'}
+                      {custom_data.active_module?.name
+                        ? custom_data.active_module?.name
+                        : 'N/A'}
                     </p>
                   </div>
                 </div>
