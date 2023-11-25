@@ -86,7 +86,6 @@ const HangarShipDetailCard = ({
           }}
         >
           <motion.div
-            whileHover="hidden"
             variants={gameplayName}
             className="absolute z-50 flex h-16 transition-all duration-200 right-20"
           >
