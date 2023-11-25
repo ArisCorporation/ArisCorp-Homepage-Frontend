@@ -84,7 +84,9 @@ export default function Dropdown({
               onClick={() => (changeAction ? changeAction() : setState())}
             >
               <span className="block font-medium truncate">
-                Keine Abteilung!
+                {mode == 'departments' && 'Keine Abteilung!'}
+                {mode == 'member' && 'Kein Member!'}
+                {!mode && 'Keine Auswahl!'}
               </span>
             </Listbox.Option>
             {items.map((item, itemIdx) => (
