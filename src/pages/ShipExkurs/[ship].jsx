@@ -248,6 +248,8 @@ export default function ShipPage({
     (data.paints[0] ? 1 : 0) +
     (data.modules[0] ? 1 : 0)
 
+    console.log(data)
+
   return (
     <div className="items-center mx-auto print:pt-5">
       <ToastContainer

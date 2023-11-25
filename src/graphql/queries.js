@@ -1913,7 +1913,12 @@ export const GET_SHIPEXKURS_SHIP = gql`
       paints
       variants
       loaners
-      modules
+      modules{
+        name
+        storeImage {
+          id
+        }
+      }
       hardpoints
       weaponHardpoints
       insuranceClaimTime
