@@ -28,33 +28,37 @@ export default function OurGameplays() {
     <>
       <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
         <Tab.List className={'flex justify-center flex-wrap mx-auto'}>
-          {data.gameplays.map((data, index) => (
-            <Tab key={data.id} className={'p-3 m-1 focus-visible:outline-none'}>
-              <div
-                className={
-                  'relative mx-1 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-20 w-20 border-1 hover:scale-150 ' +
-                  (selectedIndex == index ? 'scale-125' : '')
-                }
+          <div className="flex flex-wrap justify-center xl:grid xl:grid-flow-col xl:grid-rows-1">
+            {data.gameplays.map((data, index) => (
+              <Tab
+                key={data.id}
+                className={'p-3 m-1 focus-visible:outline-none'}
               >
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/' +
-                    data.gameplay_logo.id +
-                    '?format=webp'
+                <div
+                  className={
+                    'relative mx-1 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-fit w-fit border-1 hover:scale-150 ' +
+                    (selectedIndex == index ? 'scale-125' : '')
                   }
-                  fill
-                  cover
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/' +
-                    data.gameplay_logo.id +
-                    '?format=webp&width=16&quality=1'
-                  }
-                  alt={data.gameplay_name + ' Logo'}
-                />
-              </div>
-            </Tab>
-          ))}
+                >
+                  <Image
+                    src={
+                      'https://cms.ariscorp.de/assets/' + data.gameplay_logo.id + '?format=webp'
+                    }
+                    width={80}
+                    height={80}
+                    cover
+                    placeholder="blur"
+                    blurDataURL={
+                      'https://cms.ariscorp.de/assets/' +
+                      data.gameplay_logo.id +
+                      '?format=webp&width=16&quality=1'
+                    }
+                    alt={data.gameplay_name + ' Logo'}
+                  />
+                </div>
+              </Tab>
+            ))}
+          </div>
           <hr />
         </Tab.List>
         <Tab.Panels className={'p-4'}>
@@ -70,7 +74,8 @@ export default function OurGameplays() {
                       <Image
                         src={
                           'https://cms.ariscorp.de/assets/' +
-                          data.gameplay_bild_links.id + '?format=webp'
+                          data.gameplay_bild_links.id +
+                          '?format=webp'
                         }
                         fill
                         cover
@@ -87,7 +92,8 @@ export default function OurGameplays() {
                       <Image
                         src={
                           'https://cms.ariscorp.de/assets/' +
-                          data.gameplay_bild_rechts.id + '?format=webp'
+                          data.gameplay_bild_rechts.id +
+                          '?format=webp'
                         }
                         fill
                         cover

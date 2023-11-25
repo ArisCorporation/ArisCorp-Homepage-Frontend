@@ -142,9 +142,8 @@ export default function OurFleet() {
                     <Image
                       src={
                         'https://cms.ariscorp.de/assets/' +
-                        data.gameplay_logo.id
+                        data.gameplay_logo.id + '?format=webp'
                       }
-                      // fill
                       width={80}
                       height={80}
                       cover
@@ -152,7 +151,7 @@ export default function OurFleet() {
                       blurDataURL={
                         'https://cms.ariscorp.de/assets/' +
                         data.gameplay_logo.id +
-                        '?width=16&quality=1'
+                        '?format=webp&width=16&quality=1'
                       }
                       alt={data.gameplay_name + ' Logo'}
                     />
