@@ -3,7 +3,11 @@ import ProtectedLayout from '../layout'
 import { MdKeyboardReturn } from 'react-icons/md'
 import { useEffect, useState, useRef } from 'react'
 import { useSession } from 'next-auth/react'
-import { AtSymbolIcon, MapPinIcon } from '@heroicons/react/20/solid'
+import {
+  AtSymbolIcon,
+  DeviceTabletIcon,
+  MapPinIcon,
+} from '@heroicons/react/20/solid'
 import { CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline'
 import Checkbox from 'components/Checkbox'
 import Dropdown from 'components/Dropdown'
@@ -23,6 +27,8 @@ import Cropper from 'react-cropper'
 import 'cropperjs/dist/cropper.css'
 import './style.css'
 import { BasicPanel, BasicPanelButton } from 'components/panels'
+import { SquareLoader } from 'react-spinners'
+import LoadingSpinner from 'components/LoadingSpinner'
 
 function slugify(str) {
   str = str.replace(/^\s+|\s+$/g, '') // trim
@@ -134,7 +140,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
   const [loves, setLoves] = useState()
   const [hates, setHates] = useState()
   const [medicalInformations, setMedicalInformations] = useState()
-  const [avatarFile, setAvatarFile] = useState()
+  const [avatarPending, setAvatarPending] = useState(false)
   const [cropper, setCropper] = useState()
   const [rawAvatarUrl, setRawAvatarUrl] = useState('')
   const [biography, setBiography] = useState()
@@ -144,10 +150,11 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
   const handleBiographyChange = (content, editor) => {
     setBiography(content)
   }
+  const [avatar, setAvatar] = useState()
 
   const handleTitleCheckbox = () => {
     setTitleCheckbox(!titleCheckbox)
-    setTitle("")
+    setTitle('')
   }
 
   const handleAvatarUpload = (e) => {
@@ -163,6 +170,19 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     closeModal()
   }
 
+  const updateAvatar = async () => {
+    setAvatar('')
+    let apiData = await fetch(
+      'https://cms.ariscorp.de/items/member/' + data.id,
+      {
+        method: 'GET',
+      }
+    ).then((res) => res.json())
+    console.log(apiData)
+
+    return setAvatar(await apiData.data.member_potrait)
+  }
+
   const handleAvatarSave = async () => {
     if (cropper) {
       const file = await fetch(cropper.getCroppedCanvas().toDataURL())
@@ -174,11 +194,49 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
             { type: 'image/png' }
           )
         })
+      closeModal()
       if (file) {
-        setAvatarFile(file)
+        setAvatarPending(true)
+        const formData = new FormData()
+        formData.append('name', `${firstname}-${lastname}-Avatar`)
+        formData.append('folder', '8658f40d-77d9-44c4-8f0d-af820855a3bc')
+        formData.append('file', file)
+
+        let resdata = await fetch(
+          'https://cms.ariscorp.de/files?access_token=' +
+            process.env.NEXT_PUBLIC_CMS_TOKEN,
+          {
+            method: 'POST',
+            body: formData,
+          }
+        ).then((res) => res.json())
+
+        await fetch(
+          `https://cms.ariscorp.de/items/member/${data.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+          {
+            method: 'PATCH',
+            body: JSON.stringify({ member_potrait: await resdata.data?.id }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        await fetch(
+          `https://cms.ariscorp.de/users/${data.account.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+          {
+            method: 'PATCH',
+            body: JSON.stringify({ avatar: resdata.data?.id }),
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        )
+
+        await updateAvatar()
+        setAvatarPending(false)
       }
     }
-    closeModal()
   }
 
   useEffect(() => {
@@ -246,8 +304,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
         loves != data.loves ||
         hates != data.hates ||
         medicalInformations != data.text ||
-        biography != data.biography ||
-        avatarFile != null
+        biography != data.biography
       ) {
         setChangesMade(true)
       } else {
@@ -302,7 +359,6 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     hates,
     medicalInformations,
     biography,
-    avatarFile,
   ])
 
   async function getData(id) {
@@ -321,6 +377,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     setFirstname(data.firstname)
     setLastname(data.lastname)
     setTitle(data.title)
+    setAvatar(data.member_potrait)
     setPassword('')
     if (data.roles?.includes('marketing')) setMarketingCheckbox(true)
     if (data.roles?.includes('recruitment')) setRecruitingCheckbox(true)
@@ -375,7 +432,6 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
     setMedicalInformations(data.text)
     setBiography(data.biography)
     setRawAvatarUrl()
-    setAvatarFile()
     setTitleCheckbox(data.title ? true : false)
   }
 
@@ -415,25 +471,6 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
       accountEdits.password = edits.account.password
         ? edits.account.password
         : null
-    }
-
-    if (avatarFile) {
-      const formData = new FormData()
-      formData.append('name', `${firstname}-${lastname}-Avatar`)
-      formData.append('folder', '8658f40d-77d9-44c4-8f0d-af820855a3bc')
-      formData.append('file', avatarFile)
-
-      let resdata = await fetch(
-        'https://cms.ariscorp.de/files?access_token=' +
-          process.env.NEXT_PUBLIC_CMS_TOKEN,
-        {
-          method: 'POST',
-          body: formData,
-        }
-      ).then((res) => res.json())
-
-      edits.member_potrait = resdata.data.id
-      accountEdits.avatar = resdata.data.id
     }
 
     delete edits.account
@@ -687,37 +724,37 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
           )}
           {modalType == 'editAvatar' && (
             <div className="px-8">
-              <div>
-                <div className="flex justify-center overflow-hidden">
-                  <BasicPanel classes={'overflow-hidden'}>
-                    <Cropper
-                      src={rawAvatarUrl}
-                      style={{ height: 320, width: 270, overflow: 'hidden' }}
-                      minCropBoxHeight={320}
-                      minCropBoxWidth={270}
-                      guides={true}
-                      checkOrientation={false}
-                      dragMode="move"
-                      onInitialized={(instance) => {
-                        setCropper(instance)
-                      }}
-                    />
-                  </BasicPanel>
-                </div>
-              </div>
-              <div className="w-full mt-8 space-x-12">
-                <DefaultButton
-                  animate
-                  danger
-                  action={() => setStates() + closeModal()}
-                >
-                  Schließen!
-                </DefaultButton>
-                <DefaultButton animate agree action={handleAvatarSave}>
-                  Speichern!
-                </DefaultButton>
+            <div>
+              <div className="flex justify-center overflow-hidden">
+                <BasicPanel classes={'overflow-hidden'}>
+                  <Cropper
+                    src={rawAvatarUrl}
+                    style={{ height: 320, width: 270, overflow: 'hidden' }}
+                    minCropBoxHeight={320}
+                    minCropBoxWidth={270}
+                    guides={true}
+                    checkOrientation={false}
+                    dragMode="move"
+                    onInitialized={(instance) => {
+                      setCropper(instance)
+                    }}
+                  />
+                </BasicPanel>
               </div>
             </div>
+            <div className="w-full mt-8 space-x-12">
+              <DefaultButton
+                animate
+                danger
+                action={() => setStates() + closeModal()}
+              >
+                Schließen!
+              </DefaultButton>
+              <DefaultButton animate agree action={handleAvatarSave}>
+                Speichern!
+              </DefaultButton>
+            </div>
+          </div>
           )}
           {modalType == 'avatarRules' && (
             <div className="px-8">
@@ -760,12 +797,20 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
       </Modal>
       <div className="py-8">
         <div className="bg-[#222] flex items-center p-5 rounded-lg mb-5 relative">
-          <div
-            className="flex mr-6 overflow-hidden rounded-full border-white border-[6px] h-36 w-36 bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5"
-            style={{
-              backgroundImage: `url(https://cms.ariscorp.de/assets/${data.member_potrait}?height=400)`,
-            }}
-          />
+          {!avatarPending || !avatar ? (
+            <div
+              className="flex mr-6 overflow-hidden rounded-full border-white border-[6px] h-36 w-36 bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5"
+              style={{
+                backgroundImage: `url(https://cms.ariscorp.de/assets/${avatar}?height=400)`,
+              }}
+            />
+          ) : (
+            <div className="flex justify-center mr-6 overflow-hidden rounded-full border-white border-[6px] h-36 w-36 bg-center bg-no-repeat bg-cover focus:outline-none group bg-white/5">
+              <div className="m-auto">
+                <LoadingSpinner />
+              </div>
+            </div>
+          )}
           <div className="flex-1 overflow-hidden outline-none">
             <div className="text-base font-bold text-white whitespace-nowrap">
               {data.title && data.title} {data.firstname} {data.lastname}
@@ -793,7 +838,9 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               <FaRegAddressBook className="relative inline-block w-[18px] h-[18px] my-auto" />
               <span className="my-auto">
                 <Link
-                  href={'/internal/biografie/' + slugify(firstname + '-' + lastname)}
+                  href={
+                    '/internal/biografie/' + slugify(firstname + '-' + lastname)
+                  }
                   className="transition-all duration-200 opacity-75 decoration-transparent hover:opacity-100 hover:duration-300 text-primary"
                 >
                   Biografie
