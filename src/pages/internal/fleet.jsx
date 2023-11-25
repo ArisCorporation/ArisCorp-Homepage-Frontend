@@ -34,6 +34,7 @@ export async function getServerSideProps() {
         group: obj.group,
         visibility: obj.visibility,
         department: obj.department,
+        active_module: obj.active_module
       },
     }
     data.push(item)
@@ -64,6 +65,7 @@ export default function InternalIndex({
   const [selectedMember, setSelectedMember] = useState()
   const [detailView, setDetailView] = useState()
   const [data, setData] = useState(apiData)
+  console.log(apiData)
 
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
@@ -142,7 +144,6 @@ export default function InternalIndex({
       filterData()
     }, 800)
   }, [selectedDepartment, selectedMember])
-
   return (
     <Layout>
       <Head>

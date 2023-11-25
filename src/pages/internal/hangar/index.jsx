@@ -58,12 +58,13 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
   const [selectedGroup, setSelectedGroup] = useState('ariscorp')
   const [selectedVisibility, setSelectedVisibility] = useState('ariscorp')
   const [selectedDepartment, setSelectedDepartment] = useState()
+  const [activeModule, setActiveModule] = useState()
 
   const updateShips = async () => {
     if (member) {
       let rawData = await fetch(
         // "https://cms.ariscorp.de/items/member_ships?fields=*.*&filter[member_id]=" + session.user.id,
-        'https://cms.ariscorp.de/items/member_ships?sort=ships_id.name&fields=*,department.*&filter[member_id]=' +
+        'https://cms.ariscorp.de/items/member_ships?sort=ships_id.name&fields=*,department.*,active_module.id,active_module.name,active_module.slug,active_module.storeImage.id&filter[member_id]=' +
           member,
         {
           method: 'GET',
@@ -81,6 +82,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
             group: e.group,
             department: e.department,
             visibility: e.visibility,
+            active_module: e.active_module
           },
         }
         data.push(obj)
@@ -192,6 +194,9 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     if (ship.custom_data.visibility) {
       setSelectedVisibility(ship.custom_data.visibility)
     }
+    if(ship.custom_data.active_module){
+      setActiveModule(ship.ship.modules.find((e) => e.id == ship.custom_data.active_module.id))
+    }
     setModal(true)
   }
   async function editShip(edits, id) {
@@ -274,6 +279,18 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
 
       edits.visibility = selectedVisibility
     }
+    if (activeModule != modalStore.custom_data.active_module) {
+      console.log('🧩 ---ACTIVE MODULE---')
+      console.log(
+        'OLD ACTIVE MODULE: ' +
+          modalStore.custom_data.active_module?.name || 'N/A'
+      )
+      console.log(
+        'NEW ACTIVE MODULE: ' +activeModule.name
+      )
+
+      edits.active_module = activeModule.id
+    }
 
     console.log('📑 ---EDIT-OBJECT:---')
     console.log(edits)
@@ -315,9 +332,9 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       setSelectedDepartment()
       setSelectedVisibility()
       setSelectedShips([])
+      setActiveModule()
     }, 600)
   }
-
   // border-[#666] border-secondary border-primary border-white
   return (
     <Layout>
@@ -500,6 +517,24 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                     </div>
                   </div>
                 </div>
+              </div>
+              <div className="mt-6">
+                <p className="w-full -ml-4 text-base text-left">
+                  Spezifische Informationen:
+                </p>
+                {modalStore.ship.modules[0] && (
+                  <div className="flex justify-between mb-3 space-x-4">
+                    <label className="my-auto text-base">Aktives Modul:</label>
+                    <div className="w-full max-w-[286px]">
+                      <Dropdown
+                        items={modalStore.ship.modules}
+                        state={activeModule}
+                        setState={setActiveModule}
+                        mode="module"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="w-full mt-8 space-x-12">
                 <DefaultButton animate danger action={() => closeModal()}>

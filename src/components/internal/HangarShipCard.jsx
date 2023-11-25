@@ -5,15 +5,6 @@ import { AnimatePresence, useInView, motion } from 'framer-motion'
 import { MdOutlineModeEditOutline } from 'react-icons/md'
 import { BsTrash } from 'react-icons/bs'
 
-const imageVariants = {
-  normal: { borderRadius: '16px 16px 16px 16px' },
-  detail: { borderRadius: '16px 16px 0px 0px' },
-}
-const detailViewVariants = {
-  normal: { height: '0px' },
-  detail: { height: '200px' },
-}
-
 const HangarShipDetailCard = ({
   data,
   detailView,
@@ -23,6 +14,16 @@ const HangarShipDetailCard = ({
   color,
 }) => {
   const ship = data.ship || data
+  const custom_data = data.custom_data
+  const imageVariants = {
+    normal: { borderRadius: '16px 16px 16px 16px' },
+    detail: { borderRadius: '16px 16px 0px 0px' },
+  }
+  const detailViewVariants = {
+    normal: { height: '0px' },
+    detail: { height: (200 + (fleetView && custom_data.active_module ? 89 : 0)) + 'px' },
+  }
+
   return (
     <BasicPanel color={color ? color : false}>
       <div className="absolute z-50 flex bottom-1 right-1">
@@ -61,7 +62,12 @@ const HangarShipDetailCard = ({
           </div>
         </div>
       )}
-      <div className={"relative transition-all duration-500 ease " + (fleetView ? 'h-[210px] 3.5xl:h-[200px]' : 'h-[200px]')}>
+      <div
+        className={
+          'relative transition-all duration-500 ease ' +
+          (fleetView ? 'h-[210px] 3.5xl:h-[200px]' : 'h-[200px]')
+        }
+      >
         <div
           className="absolute z-[15] right-2 top-2 h-16 w-16 rounded-full bg-center bg-no-repeat bg-cover"
           style={{
@@ -88,7 +94,12 @@ const HangarShipDetailCard = ({
           legacyBehavior
           href={'/VerseExkurs/firmen/' + ship.manufacturer?.slug}
         >
-          <a className={"absolute h-[22px] z-10 pl-4 decoration-transparent " + (fleetView ? 'bottom-[11px] 3.5xl:bottom-0' : 'bottom-0')}>
+          <a
+            className={
+              'absolute h-[22px] z-10 pl-4 decoration-transparent ' +
+              (fleetView ? 'bottom-[11px] 3.5xl:bottom-0' : 'bottom-0')
+            }
+          >
             <p className="top-0 bottom-0 py-0 mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
               {ship.manufacturer?.firmen_name}
             </p>
@@ -106,7 +117,12 @@ const HangarShipDetailCard = ({
                 backgroundImage: `url(https://cms.ariscorp.de/assets/${ship.storeImage?.id}?height=400)`,
               }}
             >
-              <div className={"absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary " + (fleetView ? '3.5xl:h-[49px] h-[59px]' : 'h-[49px]')}>
+              <div
+                className={
+                  'absolute bottom-0 w-full pl-4 bg-opacity-80 bg-bg-secondary ' +
+                  (fleetView ? '3.5xl:h-[49px] h-[59px]' : 'h-[49px]')
+                }
+              >
                 <p className="pb-0 text-lg leading-none transition-colors duration-200 text-secondary/90 group-hover:text-secondary group-hover:duration-300">
                   {ship.name +
                     (data.custom_data?.name
@@ -183,6 +199,24 @@ const HangarShipDetailCard = ({
                 </p>
               </div>
             </div>
+            {fleetView && custom_data.active_module && (
+              <div>
+                <div className="flex mt-4">
+                  <span className="inline-block mr-4 min-w-fit">
+                    Spezifische Informationen:
+                  </span>
+                  <hr className="relative inline-block mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                </div>
+                <div className="grid grid-cols-2 uppercase">
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Aktives Modul:</p>
+                    <p className="p-0 text-primary">
+                      {custom_data.active_module?.name ? custom_data.active_module?.name : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </motion.div>

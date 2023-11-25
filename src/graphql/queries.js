@@ -2034,6 +2034,14 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
       price
       minCrew
       maxCrew
+      modules {
+        id
+        name
+        slug
+        storeImage {
+          id
+        }
+      }
     }
   }
 `
@@ -2141,6 +2149,10 @@ export const INTERNAL_GET_FLEET = gql`
         gameplay_logo {
           id
         }
+      }
+      active_module {
+        name
+        slug
       }
     }
   }

@@ -59,6 +59,11 @@ export default function Dropdown({
                     : 'Mitglied...'}
                 </span>
               )}
+              {mode == 'module' && (
+                <span className="block truncate">
+                  {state?.name ? state?.name : 'Aktives Modul...'}
+                </span>
+              )}
               {!mode && (
                 <span className="block truncate">
                   {state || 'Selection...'}
@@ -86,6 +91,7 @@ export default function Dropdown({
               <span className="block font-medium truncate">
                 {mode == 'departments' && 'Keine Abteilung!'}
                 {mode == 'member' && 'Kein Member!'}
+                {mode == 'module' && 'Kein Modul!'}
                 {!mode && 'Keine Auswahl!'}
               </span>
             </Listbox.Option>
@@ -141,6 +147,7 @@ export default function Dropdown({
                     {mode == 'departments' && item.gameplay_name}
                     {mode == 'position_level' && item.name}
                     {mode == 'member' && item.firstname + ' ' + item.lastname}
+                    {mode == 'module' && item.name}
                   </span>
                   {state?.name ==
                   (mode == 'departments'
