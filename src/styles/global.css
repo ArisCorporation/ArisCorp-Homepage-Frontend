@@ -569,6 +569,14 @@ button.swiper-pagination-bullet {
   animation: noise-after-small 2s infinite linear alternate-reverse;
 }
 
+.Toastify__progress-bar--info {
+  background-color: #00ffe8 !important;
+}
+
+.Toastify__toast--info svg {
+  fill: #00ffe8 !important;
+}
+
 @keyframes noise-before {
   0% {
     clip: rect(61px, 9999px, 52px, 0);

@@ -93,7 +93,7 @@ export default function Biografie({
 }) {
   const shareUrl = 'https://ariscorp.de/biografie/' + data.slug
   const handleShare = () => {
-    navigator.clipboard.writeText(shareUrl)
+    navigator.clipboard?.writeText(shareUrl)
     toast.info('URL in Zwischenablage kopiert!', {
       position: 'top-right',
       autoClose: 5000,
@@ -144,7 +144,7 @@ export default function Biografie({
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
-              {fullName}
+            {fullName}
           </h1>
           {roles[0] && (
             <h3 className="mb-0 uppercase">
@@ -177,7 +177,7 @@ export default function Biografie({
               </div>
             </BasicPanel>
           </div>
-          <div className="mt-4 mb-0 1.5xl:mb-4">
+          <div className="my-4 1.5xl:mb-4">
             <div className="flex space-x-4">
               <div onClick={() => handleShare()} className="flex-grow">
                 <div
@@ -192,6 +192,65 @@ export default function Biografie({
               </div>
             </div>
           </div>
+
+          <BasicPanel>
+            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
+              <div className="col-span-1">
+                <div className="text-lg text-secondary">ArisCorp</div>
+              </div>
+              <div className="col-span-1 1.5xl:col-span-3">
+                {data.head_of_department ? (
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">
+                      Abteilungsleiter in folgender Abteilung:
+                    </p>
+                    <p className="p-0 text-primary">
+                      {data.head_department[0].gameplay_name
+                        ? data.head_department[0].gameplay_name
+                        : 'N/A'}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">
+                      Abteilungen innerhalb der ArisCorp:
+                    </p>
+                    <p className="p-0 text-primary">
+                      {data.department?.gameplay_name
+                        ? data.department?.gameplay_name
+                        : 'N/A'}
+                    </p>
+                  </div>
+                )}
+                <div className="grid grid-cols-2 uppercase">
+                  <div className="col-span-2">
+                    <p className="pb-0 text-sm">Position:</p>
+                    <p className="p-0 text-primary">
+                      {data.position_level == 'candidate'
+                        ? 'Anwärter'
+                        : data.position_level == 'freelancer'
+                        ? 'Freier Mitarbeiter'
+                        : data.position_level == 'employee'
+                        ? 'Mitarbeiter'
+                        : data.position_level == 'administration'
+                        ? 'Verwaltung'
+                        : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 uppercase">
+                  <div className="col-span-2">
+                    <p className="pb-0 text-sm">
+                      Rollen innerhalb der ArisCorp:
+                    </p>
+                    <p className="p-0 text-primary">
+                      {roles[0] ? roles.sort().join(', ') : 'N/A'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </BasicPanel>
         </div>
         <div className="col-span-3 space-y-4 1.5xl:col-span-2">
           <BasicPanel>
@@ -260,6 +319,33 @@ export default function Biografie({
                       ) : (
                         'N/A'
                       )}
+                    </p>
+                  </div>
+                </div>
+                <hr className="relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
+                <div className="grid grid-cols-2 uppercase">
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Körpergröße:</p>
+                    <p className="p-0 text-primary">
+                      {data.height ? data.height + ' cm' : 'N/A'}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Körpergewicht:</p>
+                    <p className="p-0 text-primary">
+                    {data.weight ? data.weight + ' kg' : 'N/A'}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Haarfarbe:</p>
+                    <p className="p-0 text-primary">
+                      {data.hairColor ? data.hairColor : 'N/A'}
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Augenfarbe:</p>
+                    <p className="p-0 text-primary">
+                    {data.eyeColor ? data.eyeColor : 'N/A'}
                     </p>
                   </div>
                 </div>
@@ -591,7 +677,9 @@ export default function Biografie({
                 <hr className="relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
                 <div className="grid grid-cols-2 uppercase">
                   <div className="col-span-1">
-                    <p className="pb-0 text-sm">{data.sex === 'male' ? 'Er' : 'Sie'} liebt...:</p>
+                    <p className="pb-0 text-sm">
+                      {data.sex === 'male' ? 'Er' : 'Sie'} liebt...:
+                    </p>
                     <div className="p-0 text-primary marker:text-secondary">
                       {data.loves ? (
                         <ul>
@@ -619,64 +707,6 @@ export default function Biografie({
                         'N/A'
                       )}
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </BasicPanel>
-          <BasicPanel>
-            <div className="grid grid-cols-1 px-4 py-3 uppercase 1.5xl:grid-cols-4">
-              <div className="col-span-1">
-                <div className="text-lg text-secondary">ArisCorp</div>
-              </div>
-              <div className="col-span-1 1.5xl:col-span-3">
-                {data.head_of_department ? (
-                  <div className="col-span-1">
-                    <p className="pb-0 text-sm">
-                      Abteilungsleiter in folgender Abteilung:
-                    </p>
-                    <p className="p-0 text-primary">
-                      {data.head_department[0].gameplay_name
-                        ? data.head_department[0].gameplay_name
-                        : 'N/A'}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="col-span-1">
-                    <p className="pb-0 text-sm">
-                      Abteilungen innerhalb der ArisCorp:
-                    </p>
-                    <p className="p-0 text-primary">
-                      {data.department?.gameplay_name
-                        ? data.department?.gameplay_name
-                        : 'N/A'}
-                    </p>
-                  </div>
-                )}
-                <div className="grid grid-cols-2 uppercase">
-                  <div className="col-span-2">
-                    <p className="pb-0 text-sm">Position:</p>
-                    <p className="p-0 text-primary">
-                      {data.position_level == 'candidate'
-                        ? 'Anwärter'
-                        : data.position_level == 'freelancer'
-                        ? 'Freier Mitarbeiter'
-                        : data.position_level == 'employee'
-                        ? 'Mitarbeiter'
-                        : data.position_level == 'administration'
-                        ? 'Verwaltung'
-                        : 'N/A'}
-                    </p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-2 uppercase">
-                  <div className="col-span-2">
-                    <p className="pb-0 text-sm">
-                      Rollen innerhalb der ArisCorp:
-                    </p>
-                    <p className="p-0 text-primary">
-                      {roles[0] ? roles.sort().join(', ') : 'N/A'}
-                    </p>
                   </div>
                 </div>
               </div>
