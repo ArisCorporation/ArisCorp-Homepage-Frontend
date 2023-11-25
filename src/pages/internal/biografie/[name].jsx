@@ -5,7 +5,7 @@ import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { useQuery } from '@apollo/client'
-import { GET_MEMBER } from 'graphql/queries'
+import { GET_MEMBER_INTERNAL } from 'graphql/queries'
 import Head from 'next/head'
 import client from 'apollo/clients'
 import { BasicPanel, BasicPanelButton } from 'components/panels'
@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
   const { name: slug } = context.query
 
   let { data } = await client.query({
-    query: GET_MEMBER,
+    query: GET_MEMBER_INTERNAL,
     variables: { slug },
   })
 
@@ -144,12 +144,12 @@ export default function Biografie({
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
-            <span className="text-secondary">Member</span> {fullName}
+            {fullName}
           </h1>
           {roles[0] && (
             <h3 className="mb-0 uppercase">
               <span className="text-white/25">Rollen: </span>
-              <span>{roles.join(', ')}</span>
+              <span>{roles[0] ? roles.sort().join(', ') : 'N/A'}</span>
             </h3>
           )}
         </div>
@@ -591,7 +591,9 @@ export default function Biografie({
                 <hr className="relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
                 <div className="grid grid-cols-2 uppercase">
                   <div className="col-span-1">
-                    <p className="pb-0 text-sm">{data.sex === 'male' ? 'Er' : 'Sie'} liebt...:</p>
+                    <p className="pb-0 text-sm">
+                      {data.sex === 'male' ? 'Er' : 'Sie'} liebt...:
+                    </p>
                     <div className="p-0 text-primary marker:text-secondary">
                       {data.loves ? (
                         <ul>
@@ -739,7 +741,21 @@ export default function Biografie({
                     <Disclosure.Panel>
                       <div className="grid grid-cols-1 px-2 lg:grid-cols-2 2xl:grid-cols-3 gap-x-6 gap-y-4">
                         {ships.map((object, index) => (
-                          <HangarShipDetailCard key={object.id} data={object} />
+                          <HangarShipDetailCard
+                            color={
+                              object.custom_data.group == 'private'
+                                ? 'white'
+                                : object.custom_data.group == 'ariscorp' &&
+                                  object.custom_data.department
+                                ? 'primary'
+                                : object.custom_data.group == 'ariscorp' &&
+                                  !object.custom_data.department
+                                ? 'secondary'
+                                : null
+                            }
+                            key={object.id}
+                            data={object}
+                          />
                         ))}
                       </div>
                     </Disclosure.Panel>

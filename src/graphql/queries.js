@@ -225,7 +225,133 @@ export const GET_MEMBER = gql`
       member_biografie
       member_steckbrief
     }
-    member_ships(filter: { member_id: { slug: { _eq: $slug } } }) {
+    member_ships(filter: { member_id: { slug: { _eq: $slug } }, visibility: { _eq: "public" } }) {
+      id
+      member_id {
+        firstname
+        lastname
+        slug
+        title
+        member_potrait {
+          id
+        }
+      }
+      ships_id {
+        id
+        name
+        slug
+        productionStatus
+        storeImage {
+          id
+        }
+        manufacturer {
+          slug
+          firmen_name
+          code
+        }
+        length
+        beam
+        height
+        classification
+        size
+        cargo
+        price
+        minCrew
+        maxCrew
+      }
+      name
+      serial
+      group
+      visibility
+      department {
+        gameplay_name
+        gameplay_logo {
+          id
+        }
+      }
+    }
+    member_technologien(filter: { member_id: { slug: { _eq: $slug } } }) {
+      technologien_id {
+        id
+        waffen_name
+        waffenhersteller {
+          firmen_name
+          slug
+        }
+        waffen_bild {
+          id
+        }
+      }
+    }
+  }
+`
+
+export const GET_MEMBER_INTERNAL = gql`
+  query GetMemberInternal($slug: String!) {
+    member(filter: { slug: { _eq: $slug } }) {
+      id
+      status
+      firstname
+      lastname
+      title
+      slug
+      member_potrait {
+        id
+      }
+      sex
+      roles
+      position_level
+      head_of_department
+      head_department {
+        gameplay_name
+      }
+      department {
+        gameplay_name
+      }
+      birthdate
+      birthPlace
+      birthSystem {
+        name
+      }
+      ueeState
+      citizenReason
+      dutyPeriod
+      dutyReason
+      study
+      educations
+      hairColor
+      eyeColor
+      height
+      weight
+      currentResidence
+      currentResidenceSystem {
+        name
+      }
+      hobbys
+      habits
+      talents
+      tics
+      activities
+      mysteriousThings
+      characterTrait
+      fears
+      books
+      music
+      movies
+      colors
+      clothing
+      food
+      drink
+      alcohol
+      loves
+      hates
+      text
+      biography
+
+      member_biografie
+      member_steckbrief
+    }
+    member_ships(filter: { member_id: { slug: { _eq: $slug } }, visibility: { _neq: "hidden" } }) {
       id
       member_id {
         firstname

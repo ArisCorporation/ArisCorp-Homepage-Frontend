@@ -91,64 +91,75 @@ export default function OurFleet() {
       </p>
       <div>
         <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
-          <Tab.List
-            className={'flex justify-center flex-wrap mx-auto'}
-          >
-            <Tab
-              key={'alle'}
-              className={
-                'p-3 m-1 basis-full flex justify-center focus-visible:outline-none'
-              }
-            >
-              <div
+          <Tab.List className={'w-full mx-auto'}>
+            <div className="flex justify-center mx-auto">
+              <Tab
+                key={'alle'}
+                className={
+                  'p-3 m-1 basis-full flex justify-center focus-visible:outline-none'
+                }
+              >
+                {/* <div
                 className={
                   'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-24 w-24 border-1 hover:scale-150 ' +
                   (selectedIndex == 0 ? 'scale-125' : '')
                 }
-              >
-                <Image
-                  src={
-                    'https://cms.ariscorp.de/assets/a3495a27-dc35-4ba9-a37b-a5752db473ee'
-                  }
-                  fill
-                  cover
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/a3495a27-dc35-4ba9-a37b-a5752db473ee' +
-                    '?width=16&quality=1'
-                  }
-                  alt={'Alle Logo'}
-                />
-              </div>
-            </Tab>
-            {departments.map((data, index) => (
-              <Tab
-                key={data.id}
-                className={'p-3 m-1 focus-visible:outline-none'}
-              >
+              > */}
                 <div
                   className={
-                    'relative mx-1 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-20 w-20 border-1 hover:scale-150 ' +
-                    (selectedIndex == index + 1 ? 'scale-125' : '')
+                    'relative mx-3 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-24 w-24 border-1 hover:scale-150 ' +
+                    (selectedIndex == 0 ? 'scale-125' : '')
                   }
                 >
                   <Image
                     src={
-                      'https://cms.ariscorp.de/assets/' + data.gameplay_logo.id
+                      'https://cms.ariscorp.de/assets/a3495a27-dc35-4ba9-a37b-a5752db473ee'
                     }
                     fill
                     cover
                     placeholder="blur"
                     blurDataURL={
-                      'https://cms.ariscorp.de/assets/' +
-                      data.gameplay_logo.id +
+                      'https://cms.ariscorp.de/assets/a3495a27-dc35-4ba9-a37b-a5752db473ee' +
                       '?width=16&quality=1'
                     }
-                    alt={data.gameplay_name + ' Logo'}
+                    alt={'Alle Logo'}
                   />
                 </div>
               </Tab>
-            ))}
+            </div>
+            <div className='flex flex-wrap justify-center xl:grid xl:grid-flow-col xl:grid-rows-1'>
+              {departments.map((data, index) => (
+                <Tab
+                  key={data.id}
+                  className={'p-3 m-1 focus-visible:outline-none'}
+                >
+                  <div
+                    className={
+                      'relative mx-1 my-2 transition-all duration-300 ease-out border-solid cursor-pointer h-fit w-fit border-1 hover:scale-150 ' +
+                      (selectedIndex == index + 1 ? 'scale-125' : '')
+                    }
+                  >
+                    <Image
+                      src={
+                        'https://cms.ariscorp.de/assets/' +
+                        data.gameplay_logo.id
+                      }
+                      // fill
+                      width={80}
+                      height={80}
+                      cover
+                      placeholder="blur"
+                      blurDataURL={
+                        'https://cms.ariscorp.de/assets/' +
+                        data.gameplay_logo.id +
+                        '?width=16&quality=1'
+                      }
+                      alt={data.gameplay_name + ' Logo'}
+                    />
+                  </div>
+                </Tab>
+              ))}
+            </div>
             <hr />
           </Tab.List>
           <Tab.Panels className={'p-4'}>

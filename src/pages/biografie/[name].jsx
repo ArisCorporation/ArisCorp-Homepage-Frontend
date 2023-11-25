@@ -144,12 +144,12 @@ export default function Biografie({
       <div className="relative flex items-center align-center">
         <div className="absolute bottom-0">
           <h1 className="text-2xl italic xs:text-3xl sm:text-4xl lg:text-5xl 1.5xl:text-6xl">
-            <span className="text-secondary">Member</span> {fullName}
+              {fullName}
           </h1>
           {roles[0] && (
             <h3 className="mb-0 uppercase">
               <span className="text-white/25">Rollen: </span>
-              <span>{roles.join(', ')}</span>
+              <span>{roles[0] ? roles.sort().join(', ') : 'N/A'}</span>
             </h3>
           )}
         </div>
