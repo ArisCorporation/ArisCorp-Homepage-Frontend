@@ -82,7 +82,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
             group: e.group,
             department: e.department,
             visibility: e.visibility,
-            active_module: e.active_module
+            active_module: e.active_module,
           },
         }
         data.push(obj)
@@ -194,8 +194,10 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     if (ship.custom_data.visibility) {
       setSelectedVisibility(ship.custom_data.visibility)
     }
-    if(ship.custom_data.active_module){
-      setActiveModule(ship.ship.modules.find((e) => e.id == ship.custom_data.active_module.id))
+    if (ship.custom_data.active_module) {
+      setActiveModule(
+        ship.ship.modules.find((e) => e.id == ship.custom_data.active_module.id)
+      )
     }
     setModal(true)
   }
@@ -282,12 +284,10 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     if (activeModule != modalStore.custom_data.active_module) {
       console.log('🧩 ---ACTIVE MODULE---')
       console.log(
-        'OLD ACTIVE MODULE: ' +
-          modalStore.custom_data.active_module?.name || 'N/A'
+        'OLD ACTIVE MODULE: ' + modalStore.custom_data.active_module?.name ||
+          'N/A'
       )
-      console.log(
-        'NEW ACTIVE MODULE: ' +activeModule.name
-      )
+      console.log('NEW ACTIVE MODULE: ' + activeModule.name)
 
       edits.active_module = activeModule.id
     }
@@ -518,24 +518,28 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                   </div>
                 </div>
               </div>
-              <div className="mt-6">
-                <p className="w-full -ml-4 text-base text-left">
-                  Spezifische Informationen:
-                </p>
-                {modalStore.ship.modules[0] && (
-                  <div className="flex justify-between mb-3 space-x-4">
-                    <label className="my-auto text-base">Aktives Modul:</label>
-                    <div className="w-full max-w-[286px]">
-                      <Dropdown
-                        items={modalStore.ship.modules}
-                        state={activeModule}
-                        setState={setActiveModule}
-                        mode="module"
-                      />
+              {modalStore.ship.modules[0] && (
+                <div className="mt-6">
+                  <p className="w-full -ml-4 text-base text-left">
+                    Spezifische Informationen:
+                  </p>
+                  {modalStore.ship.modules[0] && (
+                    <div className="flex justify-between mb-3 space-x-4">
+                      <label className="my-auto text-base">
+                        Aktives Modul:
+                      </label>
+                      <div className="w-full max-w-[286px]">
+                        <Dropdown
+                          items={modalStore.ship.modules}
+                          state={activeModule}
+                          setState={setActiveModule}
+                          mode="module"
+                        />
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
+                  )}
+                </div>
+              )}
               <div className="w-full mt-8 space-x-12">
                 <DefaultButton animate danger action={() => closeModal()}>
                   Abbruch
