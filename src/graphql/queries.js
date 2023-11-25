@@ -1708,6 +1708,7 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
       productionStatus
       manufacturer {
         firmen_name
+        slug
       }
       storeImage {
         id
@@ -2023,6 +2024,7 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
       }
       manufacturer {
         firmen_name
+        slug
         code
       }
       length
@@ -2083,6 +2085,7 @@ export const INTERNAL_GET_MEMBER_HANGAR = gql`
           }
           manufacturer {
             firmen_name
+            slug
             code
           }
           length
