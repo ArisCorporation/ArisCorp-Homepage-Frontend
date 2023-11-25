@@ -454,9 +454,10 @@ export default function InternalIndex({
       first_name: memberFirstname,
       last_name: memberLastname,
       title: memberTitle,
-      email: `${slugify_dot(memberFirstname)}${
-        memberLastname ? `.${slugify_dot(memberLastname)}` : ''
-      }@ariscorp.de`,
+      email:
+        slugify_dot(memberFirstname) +
+        (memberLastname ? '.' + slugify_dot(memberLastname) : '') +
+        '@ariscorp.de',
       password: memberPassword
         ? memberPassword
         : `${slugify_dot(memberFirstname)}${
@@ -503,10 +504,6 @@ export default function InternalIndex({
     if (edits.firstname) accountEdits.first_name = edits.firstname
     if (edits.lastname) accountEdits.last_name = edits.lastname
     if (edits.title) accountEdits.title = edits.title
-    if (edits.firstname || edits.lastname)
-      accountEdits.email = `${slugify_dot(
-        edits.firstname || slugify_dot(memberFirstname)
-      )}.${edits.lastname || slugify_dot(memberLastname)}@ariscorp.de`
     if (edits.account?.role || edits.head_of_department)
       accountEdits.role = edits.account.role
         ? edits.account.role
@@ -523,6 +520,9 @@ export default function InternalIndex({
         : edits.account.password
         ? edits.account.password
         : ''
+    }
+    if (edits.account.email) {
+      accountEdits.email = edits.account.email
     }
 
     if (avatarFile) {
@@ -595,6 +595,27 @@ export default function InternalIndex({
       console.log('NEW LASTNAME: ' + memberLastname)
 
       edits.lastname = memberLastname
+    }
+    if (
+      memberFirstname != modalStore.firstname ||
+      memberLastname != modalStore.lastname
+    ) {
+      const rawEmail =
+        (edits.firstname
+          ? slugify_dot(edits.firstname)
+          : slugify_dot(memberFirstname)) +
+        (edits.lastname || memberLastname
+          ? '.' +
+            (edits.lastname
+              ? slugify_dot(edits.lastname)
+              : slugify_dot(memberLastname))
+          : '') +
+        '@ariscorp.de'
+      console.log('＠ ---EMAIL---')
+      console.log('OLD EMAIL: ' + modalStore.account.email)
+      console.log('NEW EMAIL: ' + rawEmail)
+
+      edits.account.email = rawEmail.toLowerCase()
     }
     if (memberTitle != modalStore.title) {
       console.log('✏️ ---TITLE---')
