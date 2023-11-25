@@ -209,11 +209,11 @@ class MyDocument extends Document {
             content="https://cms.ariscorp.de/assets/61f8ed26-978a-4d66-a59d-92e8db4fdcb5"
           />
 
-          {process.env.ENVIRONMENT == 'LIVE' && (
+          {process.env.ENVIRONMENT != 'LIVE' && (
             <meta name="robots" content="noindex" />
           )}
           
-          <meta name="version" content={`${process.env.APP_VERSION}-${process.env.NEXT_PUBLIC_BUILD_NUMBER}.${process.env.ENVIRONMENT}`} />
+          <meta name="version" content={`${process.env.NEXT_PUBLIC_APP_VERSION}-${process.env.NEXT_PUBLIC_BUILD_NUMBER}.${process.env.ENVIRONMENT}`} />
           
           {/* <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/nasalization-2" /> */}
         </Head>
