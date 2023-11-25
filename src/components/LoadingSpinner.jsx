@@ -2,7 +2,7 @@ const LoadingSpinner = ({color, text}) => (
   <div role="status">
     <svg
       aria-hidden="true"
-      class={
+      className={
         'inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 ' +
         (color ? `fill-${color}` : 'fill-primary')
       }
@@ -19,7 +19,7 @@ const LoadingSpinner = ({color, text}) => (
         fill="currentFill"
       />
     </svg>
-    {text && <span class="sr-only">Loading...</span>}
+    {text && <span className="sr-only">Loading...</span>}
   </div>
 )
 
