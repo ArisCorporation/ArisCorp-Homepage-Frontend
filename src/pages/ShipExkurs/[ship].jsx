@@ -1094,6 +1094,7 @@ export default function ShipPage({
                   <ShipPaintCard key={obj.name} data={obj} />
                 ))}
               </div>
+              <hr className="1.5xl:hidden" />
             </div>
           )}
           {data.modules[0] && (
