@@ -1840,6 +1840,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
     ) {
       id
       name
+      p4kMode
       erkulIdentifier
       slug
       length
