@@ -30,9 +30,8 @@ async function getDirectusFiles() {
     BackendURL +
       '/files?limit=-1&filter[folder]=fec4f425-d085-40fd-9c32-e08e69bfa476'
   )
-  let data = res.data.data
 
-  return data
+  return res?.data?.data || []
 }
 
 async function uploadFile(url, title) {
@@ -66,48 +65,41 @@ async function uploadFile(url, title) {
 
 async function getFlModules(ship) {
   const actualUrl = FLURL + ship + '/modules'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const apiResults = await axios.get(actualUrl).catch(() => {
+    return []
   })
 
-  return apiResults
+  return apiResults?.data || []
 }
 
 async function getLiveShipData() {
-  const actualUrl = BackendURL + '/items/ships?fields=id,name,slug,flSlug&limit=-1'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const actualUrl =
+    BackendURL + '/items/ships?fields=id,name,slug,flSlug&limit=-1'
+  const apiResults = await axios.get(actualUrl).catch(() => {
+    return []
   })
 
-  return apiResults.data
+  return apiResults?.data?.data || []
 }
 async function getLiveModuleData() {
-  const actualUrl = BackendURL + '/items/ship_modules?fields=id,name,slug,pledgePrice,description'
-  var apiResults = await fetch(actualUrl).then((resp) => {
-    return resp.json()
+  const actualUrl =
+    BackendURL +
+    '/items/ship_modules?fields=id,name,slug,pledgePrice,description'
+  const apiResults = await axios.get(actualUrl).catch(() => {
+    return []
   })
 
-  return apiResults.data
+  return apiResults?.data?.data
 }
 
 async function getManufacturers() {
   const actualUrl =
     BackendURL + '/items/firmen?fields=id,firmen_name,slug,code&limit=-1'
-  const apiResults = await axios
-    .get(actualUrl)
-    .then(function (resp) {
-      return resp.data
-    })
-    .catch((reason) => {
-      console.log(reason.message)
-      console.log(actualUrl)
-    })
-
-  if (apiResults) {
-    return apiResults.data
-  } else {
+  const apiResults = await axios.get(actualUrl).catch(() => {
     return []
-  }
+  })
+
+  return apiResults?.data?.data
 }
 
 async function formData() {
@@ -121,10 +113,6 @@ async function formData() {
   await Promise.all(
     liveShipData.map(async (obj) => {
       const flModules = await getFlModules(obj.flSlug)
-      if(obj.flSlug == "galaxy"){
-        console.log(obj.slug)
-        console.log(flModules)
-      }
 
       if (flModules[0]) {
         await Promise.all(
@@ -132,7 +120,9 @@ async function formData() {
             if (skippedModules.includes(i.name)) {
               return
             }
-            const liveData = liveModuleData.find((e) => e.name == i.name || e.slug == i.slug)
+            const liveData = liveModuleData.find(
+              (e) => e.name == i.name || e.slug == i.slug
+            )
             const company = manufacturers.find(
               (e) =>
                 e.code == i.manufacturer.code ||
