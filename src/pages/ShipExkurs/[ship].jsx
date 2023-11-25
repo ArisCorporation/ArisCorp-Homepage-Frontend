@@ -1068,7 +1068,7 @@ export default function ShipPage({
           {loaners[0] && (
             <>
               <div className="w-full">
-                <h3 className="mt-0 text-secondary">Loaners</h3>
+                <h3 className="mt-0 text-secondary">Leihschiffe</h3>
                 <div
                   className={`gap-x-3 grid gap-y-2 grid-cols-${
                     columns == 1 ? 2 : 1
@@ -1084,7 +1084,7 @@ export default function ShipPage({
           )}
           {data.paints[0] && (
             <div className="w-full">
-              <h3 className="mt-0 text-secondary">Paints</h3>
+              <h3 className="mt-0 text-secondary">Lackierungen</h3>
               <div
                 className={`gap-x-3 gap-y-2 grid 1.5xl:grid-cols-${
                   columns == 1 ? 2 : 1
