@@ -53,7 +53,7 @@ export async function getServerSideProps() {
   return {
     props: {
       apiData: data,
-      shipList,
+      shipList: shipList.ships,
       memberList: rawMemberData.member,
       departments: gameplayData.gameplays,
       siteTitle,
@@ -77,6 +77,8 @@ export default function InternalIndex({
   const [loanerView, setLoanerView] = useState()
   const [data, setData] = useState(apiData)
 
+  console.log(shipList)
+
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
     replace(
@@ -99,7 +101,7 @@ export default function InternalIndex({
   }
 
   function filterData() {
-    if (selectedDepartment != null || selectedMember != null) {
+    if (selectedDepartment != null || selectedMember != null || loanerView != null) {
       let filteredData = apiData
       if (selectedDepartment != null) {
         filteredData = filteredData.filter(
@@ -113,6 +115,7 @@ export default function InternalIndex({
           (e) => e.member?.slug == selectedMember.slug
         )
       }
+      console.log("loanerView")
       if (loanerView) {
         const loanerViewShips = [
           ...filteredData.filter(
@@ -122,6 +125,8 @@ export default function InternalIndex({
         filteredData
           .filter((e) => e.ship.productionStatus != 'flight-ready')
           ?.forEach((obj) => {
+            console.log("Apollo Triage")
+            console.log(obj.ship.name == "Apollo Triage" ? obj : "")
             obj.ship?.loaners?.forEach((i) => {
               loanerViewShips.push(shipList.find((e) => e.id == i.id))
             })
@@ -248,7 +253,7 @@ export default function InternalIndex({
                   exit={{ opacity: 0 }}
                 >
                   <HangarShipCard
-                    fleetView
+                    fleetView={!loanerView}
                     detailView={detailView}
                     data={object}
                   />

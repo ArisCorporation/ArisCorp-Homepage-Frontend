@@ -2162,6 +2162,7 @@ export const INTERNAL_GET_FLEET = gql`
         price
         minCrew
         maxCrew
+        loaners
       }
       name
       serial
