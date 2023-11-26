@@ -444,7 +444,10 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
   }, [session])
 
   useEffect(() => {
-    if (data) {
+    if (
+      data &&
+      firstname == null
+    ) {
       setStates()
     } else {
       return
@@ -724,37 +727,37 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
           )}
           {modalType == 'editAvatar' && (
             <div className="px-8">
-            <div>
-              <div className="flex justify-center overflow-hidden">
-                <BasicPanel classes={'overflow-hidden'}>
-                  <Cropper
-                    src={rawAvatarUrl}
-                    style={{ height: 320, width: 270, overflow: 'hidden' }}
-                    minCropBoxHeight={320}
-                    minCropBoxWidth={270}
-                    guides={true}
-                    checkOrientation={false}
-                    dragMode="move"
-                    onInitialized={(instance) => {
-                      setCropper(instance)
-                    }}
-                  />
-                </BasicPanel>
+              <div>
+                <div className="flex justify-center overflow-hidden">
+                  <BasicPanel classes={'overflow-hidden'}>
+                    <Cropper
+                      src={rawAvatarUrl}
+                      style={{ height: 320, width: 270, overflow: 'hidden' }}
+                      minCropBoxHeight={320}
+                      minCropBoxWidth={270}
+                      guides={true}
+                      checkOrientation={false}
+                      dragMode="move"
+                      onInitialized={(instance) => {
+                        setCropper(instance)
+                      }}
+                    />
+                  </BasicPanel>
+                </div>
+              </div>
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton
+                  animate
+                  danger
+                  action={() => setStates() + closeModal()}
+                >
+                  Schließen!
+                </DefaultButton>
+                <DefaultButton animate agree action={handleAvatarSave}>
+                  Speichern!
+                </DefaultButton>
               </div>
             </div>
-            <div className="w-full mt-8 space-x-12">
-              <DefaultButton
-                animate
-                danger
-                action={() => setStates() + closeModal()}
-              >
-                Schließen!
-              </DefaultButton>
-              <DefaultButton animate agree action={handleAvatarSave}>
-                Speichern!
-              </DefaultButton>
-            </div>
-          </div>
           )}
           {modalType == 'avatarRules' && (
             <div className="px-8">
