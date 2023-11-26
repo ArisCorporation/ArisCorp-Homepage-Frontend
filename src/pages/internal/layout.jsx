@@ -1,11 +1,15 @@
-import { ApolloProvider } from '@apollo/client';
+import { ApolloProvider } from '@apollo/client'
 import client from 'apollo/clients'
-import Footer from 'components/Footer';
-import Sidebar from 'components/internal/InternalSidebar';
-import { AnimatePresence } from 'framer-motion';
-import { signOut, useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import Footer from 'components/Footer'
+import AMSLogo from 'components/icons/AMSLogo'
+import Sidebar from 'components/internal/InternalSidebar'
+import { AnimatePresence } from 'framer-motion'
+import { signOut, useSession } from 'next-auth/react'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import { MdOutlineLiveHelp } from 'react-icons/md'
+import { motion } from 'framer-motion'
 
 /*
   add the requireAuth property to the page component
@@ -15,35 +19,39 @@ import { useEffect } from 'react';
   export default OrderDetail;
  */
 
-export const ProtectedLayout = ({ children, changes }) => {
-  const router = useRouter();
-  const { status: sessionStatus, data: sessionData } = useSession();
-  const authorized = sessionStatus === 'authenticated';
-  const unAuthorized = sessionStatus === 'unauthenticated';
-  const loading = sessionStatus === 'loading';
+export const ProtectedLayout = ({ children, changes, helpAction }) => {
+  const router = useRouter()
+  const { status: sessionStatus, data: sessionData } = useSession()
+  const authorized = sessionStatus === 'authenticated'
+  const unAuthorized = sessionStatus === 'unauthenticated'
+  const loading = sessionStatus === 'loading'
   const pageKey = router.asPath
 
   useEffect(() => {
     // check if the session is loading or the router is not ready
-    if (loading || !router.isReady) return;
+    if (loading || !router.isReady) return
 
     // if the user is not authorized, redirect to the login page
     // with a return url to the current page
     if (unAuthorized) {
-      console.log('not authorized');
+      console.log('not authorized')
       router.push({
         pathname: '/login',
         query: { callbackUrl: router.asPath },
-      });
+      })
     }
-    if(sessionData && sessionData.user.betaAccess != true && sessionData.user.role != "767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb") {
+    if (
+      sessionData &&
+      sessionData.user.betaAccess != true &&
+      sessionData.user.role != '767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb'
+    ) {
       signOut({ callbackUrl: '/' })
     }
-  }, [loading, unAuthorized, sessionStatus, router]);
+  }, [loading, unAuthorized, sessionStatus, router])
 
   // if the user refreshed the page or somehow navigated to the protected page
   if (loading) {
-    return <>Loading app...</>;
+    return <>Loading app...</>
   }
 
   // if the user is authorized, render the page
@@ -58,6 +66,27 @@ export const ProtectedLayout = ({ children, changes }) => {
           className="flex flex-col justify-between flex-1 max-w-full pt-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)] pl-[env(safe-area-inset-left)] lg:pt-0 lg:pr-0 lg:pl-0"
           style={{ transition: 'left .5s ease,right .5s ease' }}
         >
+          <div>
+            <div className="flex px-4">
+              <div className="w-1/4 -mb-2">
+                <AMSLogo />
+              </div>
+              {helpAction && (
+                <div
+                  className="relative mt-auto ml-auto group"
+                  onClick={helpAction}
+                >
+                  <motion.div whileTap={{ scale: 0.97 }}>
+                    <MdOutlineLiveHelp className="transition-all duration-200 cursor-pointer w-14 h-14 text-white/75 hover:text-white hover:duration-300" />
+                  </motion.div>
+                  <div className="absolute right-0 justify-center hidden mt-2 text-center w-14 group-hover:flex">
+                    Hilfe
+                  </div>
+                </div>
+              )}
+            </div>
+            <hr className="my-2" />
+          </div>
           <main
             className="block w-full px-[15px] mx-auto relative h-full"
             style={{ transition: 'left .5s ease,right .5s ease' }}
@@ -68,7 +97,9 @@ export const ProtectedLayout = ({ children, changes }) => {
         </div>
       </div>
     </>
-  ) : <></>;
-};
+  ) : (
+    <></>
+  )
+}
 
 export default ProtectedLayout

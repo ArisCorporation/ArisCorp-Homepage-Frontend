@@ -787,6 +787,10 @@ export default function InternalIndex({
     setModalStore(obj)
     setModal(true)
   }
+  function openHelpModal(obj) {
+    setModalType('help')
+    setModal(true)
+  }
   function modalEditShip(ship) {
     setSelectedShip(ship)
     setShipName(ship.name)
@@ -973,7 +977,7 @@ export default function InternalIndex({
 
   // z-[100] z-[1] z-[99]
   return (
-    <Layout>
+    <Layout helpAction={openHelpModal}>
       <motion.div
         key={1}
         initial={{ opacity: 0 }}
@@ -1062,7 +1066,8 @@ export default function InternalIndex({
                         )[0]) +
                     ' ' +
                     selectedShip?.ships_id?.name) +
-                ' von:')
+                ' von:') ||
+            (modalType == 'help' && 'Hilfe:')
           }
           subtitle={
             modalType == 'editHangar' &&
@@ -1086,7 +1091,7 @@ export default function InternalIndex({
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Dr. Med."
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1098,7 +1103,7 @@ export default function InternalIndex({
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Chris"
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1110,7 +1115,7 @@ export default function InternalIndex({
                       <input
                         value={memberLastname}
                         onChange={(e) => setMemberLastname(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Roberts"
                         className="form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1127,7 +1132,7 @@ export default function InternalIndex({
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Passwort..."
                         className="disabled:opacity-25 form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1334,7 +1339,7 @@ export default function InternalIndex({
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Dr. Med."
                         disabled={
                           session.user?.role !=
@@ -1350,7 +1355,7 @@ export default function InternalIndex({
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Chris"
                         disabled={
                           session.user?.role !=
@@ -1418,7 +1423,7 @@ export default function InternalIndex({
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
-                        autoComplete='off'
+                        autoComplete="off"
                         placeholder="Neues Passwort..."
                         type="password"
                         disabled={
@@ -1443,10 +1448,6 @@ export default function InternalIndex({
                     <div className="flex my-auto mr-auto space-x-4">
                       <div>
                         <Checkbox
-                          disabled={
-                            session.user?.role !=
-                            '767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb'
-                          }
                           state={abteilungsLeiter}
                           setState={setAbteilungsleiter}
                           id="c-1"
@@ -1697,7 +1698,7 @@ export default function InternalIndex({
                                 <input
                                   value={shipName}
                                   onChange={(e) => setShipName(e.target.value)}
-                                  autoComplete='off'
+                                  autoComplete="off"
                                   placeholder="Name..."
                                   className="form-control block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                                 />
@@ -1709,7 +1710,7 @@ export default function InternalIndex({
                                   onChange={(e) =>
                                     setShipSerial(e.target.value)
                                   }
-                                  autoComplete='off'
+                                  autoComplete="off"
                                   placeholder="Seriennummer..."
                                   className="form-control w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                                 />
@@ -1937,6 +1938,47 @@ export default function InternalIndex({
                   </DefaultButton>
                   <DefaultButton animate danger action={removeMember}>
                     Ja!
+                  </DefaultButton>
+                </div>
+              </div>
+            )}
+            {modalType == 'help' && (
+              <div className="px-8">
+                {activeTab == 0 && (
+                  <div>
+                    <div>
+                      <p>Hier kanst du die Charaktere der Mitarbeiter anpassen.</p>
+                      <p>Bitte beachte folgende Dinge:</p>
+                      <ul>
+                        <li>Als Verwaltungsmitglied kannst du aus Sicherheitsgründen nur die Rollen und den Abteilungsleiter-Status anpassen.</li>
+                        <li>
+                          <div>Wenn du ein Mitarbeiter erstellst, bekommt dieser ein Standardpassword. Er sollte es schnellstmöglich ändern.</div>
+                          <div className='text-primary'>Info: Das Standardpasswort ist der Benutzername (vorname.nachname)</div>
+                        </li>
+                        <li className='text-red-500'>Warnung: Wenn du ein Mitarbeiter erstellst ist dies dauerhaft!</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+                {activeTab == 1 && (
+                  <div>
+                    <div>
+                      <p>Hier kannst du die Hangare von jedem Mitarbeiter anpassen.</p>
+                      <p>Bitte beachte folgende Dinge:</p>
+                      <ul>
+                        <li className='text-red-500'>Jede Anpassung ist dauerhaft!</li>
+                        <li>Du solltest jederzeit Rücksprache mit dem Mitarbeiter halten, dessen Hangar du bearbeiten möchtest</li>
+                      </ul>
+                    </div>
+                  </div>
+                )}
+                <div className="w-full mt-8 space-x-12">
+                  <DefaultButton
+                    animate
+                    danger
+                    action={() => closeModal()}
+                  >
+                    Schließen!
                   </DefaultButton>
                 </div>
               </div>

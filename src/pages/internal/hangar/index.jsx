@@ -431,10 +431,13 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     setModalType('removeWishlistShip')
     setModal(true)
   }
+  function openHelpModal() {
+    setModalType('help')
+    setModal(true)
+  }
   async function removeShip() {
-    console.log(modalStore)
     await fetch(
-      `https://cms.ariscorp.de/items/member_wishlist/${modalStore.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+      `https://cms.ariscorp.de/items/member_ships/${modalStore.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
       {
         method: 'DELETE',
         headers: {
@@ -475,9 +478,9 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       setPlannedCheckbox()
     }, 600)
   }
-
+  console.log(activeTab)
   return (
-    <Layout>
+    <Layout helpAction={openHelpModal}>
       <Head>
         <title>{siteTitle}</title>
 
@@ -521,9 +524,11 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
               modalStore.ship.manufacturer.firmen_name +
               ' ' +
               modalStore?.name +
-              ' von der Wunschliste')
+              ' von der Wunschliste') ||
+          (modalType == 'help' && 'Hilfe:')
         }
         closeFunction={closeModal}
+        wxxl={modalType == 'help' ? true : false}
       >
         <div className="mb-2">
           {modalType == 'addShips' && (
@@ -759,6 +764,67 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                 </DefaultButton>
                 <DefaultButton animate agree action={removeWishlistShip}>
                   Ja!
+                </DefaultButton>
+              </div>
+            </div>
+          )}
+          {modalType == 'help' && (
+            <div className="px-8">
+              {(activeTab == 0 || !activeTab) && (
+                <div>
+                  <div>
+                    <p>Hier kannst du deinen Hangar anpassen.</p>
+                    <p>Klicke einfach auf "Schiffe hinzufügen" und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
+                    <p>Sie können ihr Schiff bearbeiten, in dem sie auf das Stift-Symbol in der rechten, unteren Ecke klicken.</p>
+                    <p>Bitte beachte folgende Dinge:</p>
+                    <ul>
+                      <li>
+                        Wenn du ein Schiff erstellst wird es Standardmäßig der
+                        ArisCorp-Flotte zugeordnet und nur Intern angezeigt.
+                      </li>
+                      <li>Aktuell werden Schiffsnamen immer angezeigt.</li>
+                      <li className="mt-2">
+                        Bitte füge nur Schiffe hinzu, die aktuell wirklich in
+                        deinem Hangar sind.
+                      </li>
+                      <li>
+                        <strong>
+                          Bitte füge keine Loaner hinzu, dafür gibt es die
+                          Leihschiff-Ansicht!
+                        </strong>
+                      </li>
+                      <li>
+                        Wenn ein Schiff fest geplant ist, stelle es bitte auf
+                        "geplant" damit dies auch so angezeigt wird.
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              {activeTab == 1 && (
+                <div>
+                  <div>
+                    <p>Hier kannst du deine Wunschliste anpassen.</p>
+                    <p>Klicke einfach auf "Schiffe hinzufügen" und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
+                    <p>Bitte beachte folgende Dinge:</p>
+                    <ul>
+                      <li>
+                        Deine Wunschliste ist nur für dich Sichtbar.
+                      </li>
+                      <li>
+                        Du kannst aktuell nur Schiffe und Fahrzeuge zur Wunschliste hinzufügen. (Keine Module oder andere Gegenstände)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              )}
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton
+                  animate
+                  danger
+                  action={() => closeModal()}
+                >
+                  Schließen!
                 </DefaultButton>
               </div>
             </div>

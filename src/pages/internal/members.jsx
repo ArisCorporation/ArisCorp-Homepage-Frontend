@@ -12,6 +12,8 @@ import { AnimatePresence, useInView, motion } from 'framer-motion'
 import MultipleCombobox from 'components/MultipleCombobox'
 import Image from 'next/image'
 import Link from 'next/link'
+import Modal from 'components/modal'
+import DefaultButton from 'components/DefaultButton'
 
 export async function getServerSideProps() {
   const { data: rawMemberData } = await client.query({ query: GET_MEMBERS })
@@ -31,6 +33,8 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
   const { query, replace } = useRouter()
   const departmentquery = query.department
   const [selectedDepartment, setSelectedDepartment] = useState()
+  const [modal, setModal] = useState(false)
+  const [modalType, setModalType] = useState()
   const [data, setData] = useState(apiData)
 
   function changeDepartment(dep) {
@@ -76,8 +80,19 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
     }, 800)
   }, [selectedDepartment])
 
+  function openHelpModal() {
+    setModalType('help')
+    setModal(true)
+  }
+  function closeModal() {
+    setModal(false)
+    setTimeout(() => {
+      setModalType('')
+    }, 600)
+  }
+
   return (
-    <Layout>
+    <Layout helpAction={openHelpModal}>
       <Head>
         <title>{siteTitle}</title>
 
@@ -85,6 +100,34 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
         <meta property="og:title" content={siteTitle} />
         <meta name="title" content={siteTitle} />
       </Head>
+      <Modal
+        state={modal}
+        setState={setModal}
+        title={modalType == 'help' && 'Hilfe:'}
+        closeFunction={closeModal}
+        wxxl={modalType == 'help' ? true : false}
+      >
+        <div className="mb-2">
+          {modalType == 'help' && (
+            <div className="px-8">
+              <div>
+                <p>
+                  Hier kannst du die Internen Biografien und Hangars der
+                  Mitarbeiter sheen.
+                </p>
+                <p>
+                  Hover einfach mit der Maus über eines der Potraits und wähle "Biografie" oder "Hangar" aus.
+                </p>
+              </div>
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton animate danger action={() => closeModal()}>
+                  Schließen!
+                </DefaultButton>
+              </div>
+            </div>
+          )}
+        </div>
+      </Modal>
       <div className="w-full h-full">
         <div className="flex px-2 my-4">
           <div className="min-w-[200px] w-full max-w-[25%]">

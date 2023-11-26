@@ -14,6 +14,8 @@ import Head from 'next/head'
 import Dropdown from 'components/Dropdown'
 import { useRouter } from 'next/router'
 import { AnimatePresence, motion } from 'framer-motion'
+import Modal from 'components/modal'
+import DefaultButton from 'components/DefaultButton'
 
 export async function getServerSideProps() {
   const { data: shipList } = await client.query({
@@ -75,6 +77,8 @@ export default function InternalIndex({
   const [selectedMember, setSelectedMember] = useState()
   const [detailView, setDetailView] = useState()
   const [loanerView, setLoanerView] = useState()
+  const [modal, setModal] = useState(false)
+  const [modalType, setModalType] = useState()
   const [data, setData] = useState(apiData)
 
   function changeDepartment(dep) {
@@ -115,9 +119,13 @@ export default function InternalIndex({
     // console.log('loanerView1', filteredData)
     if (loanerView == true) {
       const loanerViewShips = [
-        ...filteredData.filter((e) => e.ship.productionStatus == 'flight-ready')
+        ...filteredData.filter(
+          (e) => e.ship.productionStatus == 'flight-ready'
+        ),
       ]
-      filteredData.filter((e) => e.ship.productionStatus != 'flight-ready')?.forEach((obj) => {
+      filteredData
+        .filter((e) => e.ship.productionStatus != 'flight-ready')
+        ?.forEach((obj) => {
           obj.ship?.loaners?.forEach((i) => {
             loanerViewShips.push(shipList.find((e) => e.id == i.id))
           })
@@ -173,8 +181,20 @@ export default function InternalIndex({
       filterData()
     }, 800)
   }, [selectedDepartment, selectedMember, loanerView])
+
+  function openHelpModal() {
+    setModalType('help')
+    setModal(true)
+  }
+  function closeModal() {
+    setModal(false)
+    setTimeout(() => {
+      setModalType('')
+    }, 600)
+  }
+
   return (
-    <Layout>
+    <Layout helpAction={openHelpModal}>
       <Head>
         <title>{siteTitle}</title>
 
@@ -182,6 +202,33 @@ export default function InternalIndex({
         <meta property="og:title" content={siteTitle} />
         <meta name="title" content={siteTitle} />
       </Head>
+      <Modal
+        state={modal}
+        setState={setModal}
+        title={modalType == 'help' && 'Hilfe:'}
+        closeFunction={closeModal}
+        wxxl={modalType == 'help' ? true : false}
+      >
+        <div className="mb-2">
+          {modalType == 'help' && (
+            <div className="px-8">
+              <div>
+                <div>
+                  <p>Hier kannst du die ArisCorp-Flotte ansehen.</p>
+                  <p>Falls du nach Abteilung oder Mitarbeiter filtern möchtest, klicke einfach auf das jeweilige Dropdown-Menü.</p>
+                  <p>Wenn du Detailiertere Informationen anschauen möchtest, klicke einfach auf Detail Ansicht.</p>
+                  <p>Falls du nur Schiffe sehen möchtest, die jederzeit im Spiel abrufbar sind, schalte einfach die Leihschiff-Ansicht an.</p>
+                </div>
+              </div>
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton animate danger action={() => closeModal()}>
+                  Schließen!
+                </DefaultButton>
+              </div>
+            </div>
+          )}
+        </div>
+      </Modal>
       <div className="w-full h-full">
         <div className="flex flex-wrap px-2 my-4 gap-y-4">
           <div className="flex flex-wrap gap-4 w-fit">

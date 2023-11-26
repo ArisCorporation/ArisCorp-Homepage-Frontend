@@ -14,6 +14,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -53,6 +54,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -93,6 +95,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -148,6 +151,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -170,6 +174,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -192,6 +197,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -214,6 +220,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -236,6 +243,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -258,6 +266,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -298,6 +307,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -315,6 +325,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -342,6 +353,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -385,6 +397,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -412,6 +425,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -452,6 +466,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -487,6 +502,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -518,6 +534,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -554,6 +571,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -591,6 +609,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -630,6 +649,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -657,6 +677,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -673,6 +694,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -709,6 +731,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -741,6 +764,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -768,6 +792,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -802,6 +827,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -840,6 +866,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -872,6 +899,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -912,6 +940,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -947,6 +976,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -986,6 +1016,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -1025,6 +1056,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -1063,6 +1095,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-white'
+            : !classes ? 'fill-white'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'
@@ -1093,6 +1126,7 @@ const AMSLogo = ({ width, height, classes, classNames }) => {
         className={
           classes === 'navbar-banner'
             ? 'transition-all duration-100 ease-linear fill-gray-300 group-hover:fill-primary'
+            : !classes ? 'fill-primary'
             : classes === 'navbar-banner-soon'
             ? 'transition-all duration-100 ease-linear fill-gray-300'
             : classes === 'banner'

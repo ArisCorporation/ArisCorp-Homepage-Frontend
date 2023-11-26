@@ -6,12 +6,29 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { MdOutlineLiveHelp } from 'react-icons/md'
 import Head from 'next/head'
+import { useState } from 'react'
+import Modal from 'components/modal'
+import DefaultButton from 'components/DefaultButton'
 
 export default function InternalIndex() {
   const { data: sessionData } = useSession()
+  const [modal, setModal] = useState(false)
+  const [modalType, setModalType] = useState()
   const siteTitle = 'ArisCorp Management System'
+
+  function openHelpModal() {
+    setModalType('help')
+    setModal(true)
+  }
+  function closeModal() {
+    setModal(false)
+    setTimeout(() => {
+      setModalType('')
+    }, 600)
+  }
+
   return (
-    <ProtectedLayout>
+    <ProtectedLayout helpAction={openHelpModal}>
        <Head>
         <title>{siteTitle}</title>
 
@@ -19,30 +36,33 @@ export default function InternalIndex() {
         <meta property="og:title" content={siteTitle} />
         <meta name="title" content={siteTitle} />
       </Head>
-      <div>
-        <div>
-          <div className="flex">
-            <div className="w-1/4">
-              <Image
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                }}
-                width={1112}
-                height={477}
-                src={
-                  process.env.NEXT_PUBLIC_FILES_URL +
-                  '3090187e-6348-4290-a878-af1b2b48c114?format=webp'
-                }
-              />
+      <Modal
+        state={modal}
+        setState={setModal}
+        title={modalType == 'help' && 'Hilfe:'}
+        closeFunction={closeModal}
+        wxxl={modalType == 'help' ? true : false}
+      >
+        <div className="mb-2">
+          {modalType == 'help' && (
+            <div className="px-8">
+              <div>
+                <div>
+                  <p>Willkommen im A.M.S.</p>
+                  <p>Klicke einfach auf eine Schaltfläche um zu navigieren. Alternative kannst du auch die Seitenleiste nutzen.</p>
+                  <p>Bitte Beachte: Manche Seiten sind noch nicht verfügbar oder für dich gesperrt.</p>
+                </div>
+              </div>
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton animate danger action={() => closeModal()}>
+                  Schließen!
+                </DefaultButton>
+              </div>
             </div>
-            {/* <div className="relative mt-auto ml-auto group">
-              <MdOutlineLiveHelp className="w-16 h-16 transition-all duration-200 cursor-pointer text-white/75 hover:text-white hover:duration-300" />
-              <div className='absolute hidden right-4 group-hover:block'>Hilfe</div>
-            </div> */}
-          </div>
-          <hr />
+          )}
         </div>
+      </Modal>
+      <div className='mt-4'>
         <div className="grid max-w-6xl gap-4 mx-auto xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
           <GridItem
             title="Mein Profil"
