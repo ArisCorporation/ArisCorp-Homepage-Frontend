@@ -697,7 +697,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                       color="primary"
                       bg="[#111]"
                     >
-                      <Checkbox.Label>Schiff noch Geplant?</Checkbox.Label>
+                      <Checkbox.Label>Schiff erst Geplant?</Checkbox.Label>
                       <Checkbox.Indicator />
                     </Checkbox>
                   </div>
