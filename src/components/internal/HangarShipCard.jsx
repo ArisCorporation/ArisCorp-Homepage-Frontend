@@ -11,6 +11,7 @@ const HangarShipDetailCard = ({
   editAction,
   removeAction,
   fleetView,
+  hangarView,
   color,
 }) => {
   const ship = data.ship || data
@@ -22,7 +23,7 @@ const HangarShipDetailCard = ({
   const detailViewVariants = {
     normal: { height: '0px' },
     detail: {
-      height: 200 + (fleetView && custom_data.active_module ? 89 : 0) + 'px',
+      height: 200 + ((fleetView || hangarView) && custom_data?.active_module ? 89 : 0) + 'px',
     },
   }
   const gameplayName = {
@@ -216,7 +217,7 @@ const HangarShipDetailCard = ({
                 </p>
               </div>
             </div>
-            {fleetView && custom_data.active_module && (
+            {(fleetView || hangarView) && custom_data?.active_module && (
               <div>
                 <div className="flex mt-4">
                   <span className="inline-block mr-4 min-w-fit">

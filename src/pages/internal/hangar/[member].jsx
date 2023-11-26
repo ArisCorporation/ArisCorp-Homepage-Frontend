@@ -1,35 +1,25 @@
-import { useSession } from 'next-auth/react'
 import Layout from '../layout'
-import { gql, useQuery } from '@apollo/client'
 import {
   GET_GAMEPLAYS,
   INTERNAL_GET_MEMBER_HANGAR,
   INTERNAL_GET_Ships_MY_HANGAR,
 } from 'graphql/queries'
 import client from 'apollo/clients'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectionGridWrapper from 'components/SelectionGridWrapper'
 import HangarShipCard from 'components/internal/HangarShipCard'
-import { BasicPanel, BasicPanelButton } from 'components/panels'
-import { Dialog, Transition } from '@headlessui/react'
-import Modal from 'components/modal'
-import { MdOutlineModeEditOutline } from 'react-icons/md'
-import MultipleCombobox from 'components/MultipleCombobox'
-import Checkbox from 'components/Checkbox'
+import { BasicPanelButton } from 'components/panels'
 import Dropdown from 'components/Dropdown'
-import { PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid'
-import { AiOutlinePlusCircle } from 'react-icons/ai'
-import { FiPlusCircle } from 'react-icons/fi'
-import RadioButton from 'components/RadioButton'
-import { BsTrash, BsTrash3 } from 'react-icons/bs'
 import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
-import DefaultButton from 'components/DefaultButton'
 import { useRouter } from 'next/router'
 
 export async function getServerSideProps(context) {
   const { member } = context.query
 
+  const { data: shipList } = await client.query({
+    query: INTERNAL_GET_Ships_MY_HANGAR,
+  })
   const { data: rawData } = await client.query({
     query: INTERNAL_GET_MEMBER_HANGAR,
     variables: { member },
@@ -52,6 +42,7 @@ export async function getServerSideProps(context) {
         group: obj.group,
         visibility: obj.visibility,
         department: obj.department,
+        active_module: obj.active_module
       },
     }
     data.ships.push(item)
@@ -64,13 +55,12 @@ export async function getServerSideProps(context) {
     }
   }
 
-  // const siteTitle = `${data.member.title ? data.member.title + " " : ""}${data.member.firstname} ${data.member.lastname} - ArisCorp Management System`
-  const siteTitle = `ArisCorp Management System`
+  const siteTitle = `${data.member.title ? data.member.title + " " : ""}${data.member.firstname} ${data.member.lastname} - ArisCorp Management System`
 
   return {
     props: {
       apiData: data,
-      raw: rawData,
+      shipList: shipList.ships,
       departments: gameplayData.gameplays,
       siteTitle,
     },
@@ -79,16 +69,16 @@ export async function getServerSideProps(context) {
 
 export default function InternalIndex({
   apiData,
-  raw,
+  shipList,
   departments,
   siteTitle,
 }) {
   const { query, replace } = useRouter()
   const departmentquery = query.department
   const [detailView, setDetailView] = useState()
+  const [loanerView, setLoanerView] = useState()
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [data, setData] = useState(apiData)
-  console.log(raw)
 
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
@@ -102,26 +92,48 @@ export default function InternalIndex({
   }
 
   function filterData() {
+    let Data = { ...data, ships: [...apiData.ships] }
+    let filteredData = [...apiData.ships]
     if (selectedDepartment != null) {
-      let filteredData = [...apiData.ships]
       filteredData = filteredData.filter(
         (e) =>
           e.custom_data.department?.gameplay_name ==
           selectedDepartment.gameplay_name
       )
-      setData({ ...data, ships: [...filteredData] })
-    } else {
-      setData(apiData)
     }
+    if (loanerView) {
+      console.log('filteredData', filteredData)
+      const loanerViewShips = [
+        ...filteredData.filter(
+          (e) => e.ship.productionStatus == 'flight-ready'
+        ),
+      ]
+      filteredData
+        .filter((e) => e.ship.productionStatus != 'flight-ready')
+        ?.forEach((obj) => {
+          obj.ship?.loaners?.forEach((i) => {
+            loanerViewShips.push(shipList.find((e) => e.id == i.id))
+          })
+        })
+      filteredData = loanerViewShips.sort((a, b) =>
+        (a.ship?.name || a.name).localeCompare(b.ship?.name || b.name)
+      )
+    }
+    Data.ships = [...filteredData]
+    setData(Data)
   }
 
   useEffect(() => {
     // INITIAL STATES
 
     // LOCAL STORAGE
-    const viewValue = window.localStorage.getItem('hangarDetailView')
-    if (viewValue != null && viewValue != 'undefined') {
-      setDetailView(JSON.parse(viewValue))
+    const detailViewValue = window.localStorage.getItem('fleetDetailView')
+    if (detailViewValue != null && detailViewValue != 'undefined') {
+      setDetailView(JSON.parse(detailViewValue))
+    }
+    const loanerViewValue = window.localStorage.getItem('fleetLoanerView')
+    if (loanerViewValue != null && loanerViewValue != 'undefined') {
+      setDetailView(JSON.parse(loanerViewValue))
     }
 
     // DEPARTMENT
@@ -139,11 +151,17 @@ export default function InternalIndex({
   }, [detailView])
 
   useEffect(() => {
+    // LOCAL STORAGE
+    window.localStorage.setItem('hangarLoanerView', JSON.stringify(loanerView))
+  }, [loanerView])
+
+  useEffect(() => {
     // FILTER DATA
+    setData([])
     setTimeout(() => {
       filterData()
     }, 800)
-  }, [selectedDepartment])
+  }, [selectedDepartment, loanerView])
 
   return (
     <Layout>
@@ -154,23 +172,40 @@ export default function InternalIndex({
         <meta property="og:title" content={siteTitle} />
         <meta name="title" content={siteTitle} />
       </Head>
-      <div className="flex px-2 my-4">
-        <div className="min-w-[200px] w-full max-w-[25%]">
-          <Dropdown
-            changeAction={changeDepartment}
-            mode="departments"
-            animate
-            items={departments}
-            state={selectedDepartment}
-            bg={'[#222]'}
-          />
+      <div className="flex flex-wrap px-2 my-4 gap-y-4">
+        <div className="flex flex-wrap gap-4 w-fit">
+          <div className="w-[200px]">
+            <Dropdown
+              changeAction={changeDepartment}
+              mode="departments"
+              animate
+              items={departments}
+              state={selectedDepartment}
+              bg={'[#222]'}
+            />
+          </div>
         </div>
-        <div className="ml-auto">
-          <BasicPanelButton animate onClick={() => setDetailView(!detailView)}>
-            <p className="p-0">
-              Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
-            </p>
-          </BasicPanelButton>
+        <div className="flex flex-wrap gap-4 ml-auto">
+          <div className="">
+            <BasicPanelButton
+              animate
+              onClick={() => setDetailView(!detailView)}
+            >
+              <p className="p-0">
+                Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
+              </p>
+            </BasicPanelButton>
+          </div>
+          <div className="">
+            <BasicPanelButton
+              animate
+              onClick={() => setLoanerView(!loanerView)}
+            >
+              <p className="p-0">
+                Leihschiff-Ansicht: {loanerView ? 'Ausschalten' : 'Anschalten'}
+              </p>
+            </BasicPanelButton>
+          </div>
         </div>
       </div>
       <SelectionGridWrapper>
@@ -185,16 +220,19 @@ export default function InternalIndex({
             >
               <HangarShipCard
                 color={
-                  object.custom_data.group == 'private'
-                    ? 'white'
-                    : object.custom_data.group == 'ariscorp' &&
-                      object.custom_data.department
-                    ? 'primary'
-                    : object.custom_data.group == 'ariscorp' &&
-                      !object.custom_data.department
-                    ? 'secondary'
+                  !loanerView
+                    ? object.custom_data?.group == 'private'
+                      ? 'white'
+                      : object.custom_data?.group == 'ariscorp' &&
+                        object.custom_data?.department
+                      ? 'primary'
+                      : object.custom_data?.group == 'ariscorp' &&
+                        !object.custom_data?.department
+                      ? 'secondary'
+                      : null
                     : null
                 }
+                hangarView
                 detailView={detailView}
                 data={object}
               />

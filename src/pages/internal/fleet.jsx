@@ -1,5 +1,10 @@
 import Layout from './layout'
-import { GET_GAMEPLAYS, GET_MEMBERS, INTERNAL_GET_FLEET } from 'graphql/queries'
+import {
+  GET_GAMEPLAYS,
+  GET_MEMBERS,
+  INTERNAL_GET_FLEET,
+  INTERNAL_GET_Ships_MY_HANGAR,
+} from 'graphql/queries'
 import client from 'apollo/clients'
 import { useEffect, useState } from 'react'
 import SelectionGridWrapper from 'components/SelectionGridWrapper'
@@ -8,10 +13,12 @@ import { BasicPanelButton } from 'components/panels'
 import Head from 'next/head'
 import Dropdown from 'components/Dropdown'
 import { useRouter } from 'next/router'
-import { AnimatePresence, useInView, motion } from 'framer-motion'
-import MultipleCombobox from 'components/MultipleCombobox'
+import { AnimatePresence, motion } from 'framer-motion'
 
 export async function getServerSideProps() {
+  const { data: shipList } = await client.query({
+    query: INTERNAL_GET_Ships_MY_HANGAR,
+  })
   const { data: rawData } = await client.query({ query: INTERNAL_GET_FLEET })
   const { data: rawMemberData } = await client.query({ query: GET_MEMBERS })
   const { data: gameplayData } = await client.query({ query: GET_GAMEPLAYS })
@@ -34,7 +41,7 @@ export async function getServerSideProps() {
         group: obj.group,
         visibility: obj.visibility,
         department: obj.department,
-        active_module: obj.active_module
+        active_module: obj.active_module,
       },
     }
     data.push(item)
@@ -45,6 +52,7 @@ export async function getServerSideProps() {
   return {
     props: {
       apiData: data,
+      shipList,
       memberList: rawMemberData.member,
       departments: gameplayData.gameplays,
       siteTitle,
@@ -54,6 +62,7 @@ export async function getServerSideProps() {
 
 export default function InternalIndex({
   apiData,
+  shipList,
   memberList,
   departments,
   siteTitle,
@@ -64,6 +73,7 @@ export default function InternalIndex({
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [selectedMember, setSelectedMember] = useState()
   const [detailView, setDetailView] = useState()
+  const [loanerView, setLoanerView] = useState()
   const [data, setData] = useState(apiData)
   console.log(apiData)
 
@@ -103,6 +113,23 @@ export default function InternalIndex({
           (e) => e.member?.slug == selectedMember.slug
         )
       }
+      if (loanerView) {
+        const loanerViewShips = [
+          ...filteredData.filter(
+            (e) => e.ship.productionStatus == 'flight-ready'
+          ),
+        ]
+        filteredData
+          .filter((e) => e.ship.productionStatus != 'flight-ready')
+          ?.forEach((obj) => {
+            obj.ship?.loaners?.forEach((i) => {
+              loanerViewShips.push(shipList.find((e) => e.id == i.id))
+            })
+          })
+        filteredData = loanerViewShips.sort((a, b) =>
+          (a.ship?.name || a.name).localeCompare(b.ship?.name || b.name)
+        )
+      }
       setData(filteredData)
     } else {
       setData(apiData)
@@ -113,9 +140,13 @@ export default function InternalIndex({
     // INITIAL STATES
 
     // LOCAL STORAGE
-    const viewValue = window.localStorage.getItem('fleetDetailView')
-    if (viewValue != null && viewValue != 'undefined') {
-      setDetailView(JSON.parse(viewValue))
+    const detailViewValue = window.localStorage.getItem('fleetDetailView')
+    if (detailViewValue != null && detailViewValue != 'undefined') {
+      setDetailView(JSON.parse(detailViewValue))
+    }
+    const loanerViewValue = window.localStorage.getItem('fleetLoanerView')
+    if (loanerViewValue != null && loanerViewValue != 'undefined') {
+      setDetailView(JSON.parse(loanerViewValue))
     }
 
     // DEPARTMENT
@@ -126,7 +157,6 @@ export default function InternalIndex({
     // MEMBERS
     setSelectedMember(memberList.find((e) => e.slug == memberquery))
 
-    console.log(setSelectedMember)
     filterData()
   }, [])
 
@@ -138,12 +168,17 @@ export default function InternalIndex({
   }, [detailView])
 
   useEffect(() => {
+    // LOCAL STORAGE
+    window.localStorage.setItem('hangarLoanerView', JSON.stringify(loanerView))
+  }, [loanerView])
+
+  useEffect(() => {
     // FILTER DATA
     setData([])
     setTimeout(() => {
       filterData()
     }, 800)
-  }, [selectedDepartment, selectedMember])
+  }, [selectedDepartment, selectedMember, loanerView])
   return (
     <Layout>
       <Head>
@@ -154,9 +189,9 @@ export default function InternalIndex({
         <meta name="title" content={siteTitle} />
       </Head>
       <div className="w-full h-full">
-        <div className="flex px-2 my-4">
-          <div className="max-w-[50%] w-full lg:flex lg:space-y-0 space-y-4 lg:space-x-4">
-            <div className="min-w-[200px] w-full max-w-[25%]">
+        <div className="flex flex-wrap px-2 my-4 gap-y-4">
+          <div className="flex flex-wrap gap-4 w-fit">
+            <div className="w-[200px]">
               <Dropdown
                 changeAction={changeDepartment}
                 mode="departments"
@@ -166,7 +201,7 @@ export default function InternalIndex({
                 bg={'[#222]'}
               />
             </div>
-            <div className="min-w-[200px] w-full max-w-[25%]">
+            <div className="w-[200px]">
               <Dropdown
                 changeAction={changeMember}
                 mode="member"
@@ -177,15 +212,28 @@ export default function InternalIndex({
               />
             </div>
           </div>
-          <div className="ml-auto">
-            <BasicPanelButton
-              animate
-              onClick={() => setDetailView(!detailView)}
-            >
-              <p className="p-0">
-                Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
-              </p>
-            </BasicPanelButton>
+          <div className="flex flex-wrap gap-4 ml-auto">
+            <div className="">
+              <BasicPanelButton
+                animate
+                onClick={() => setDetailView(!detailView)}
+              >
+                <p className="p-0">
+                  Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
+                </p>
+              </BasicPanelButton>
+            </div>
+            <div className="">
+              <BasicPanelButton
+                animate
+                onClick={() => setLoanerView(!loanerView)}
+              >
+                <p className="p-0">
+                  Leihschiff-Ansicht:{' '}
+                  {loanerView ? 'Ausschalten' : 'Anschalten'}
+                </p>
+              </BasicPanelButton>
+            </div>
           </div>
         </div>
         <SelectionGridWrapper>

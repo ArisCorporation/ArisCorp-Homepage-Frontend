@@ -118,7 +118,7 @@ export const GET_INDEX_DATA = gql`
       partner_website
       date_created
     }
-    homepage{
+    homepage {
       discordLink
     }
   }
@@ -225,7 +225,12 @@ export const GET_MEMBER = gql`
       member_biografie
       member_steckbrief
     }
-    member_ships(filter: { member_id: { slug: { _eq: $slug } }, visibility: { _eq: "public" } }) {
+    member_ships(
+      filter: {
+        member_id: { slug: { _eq: $slug } }
+        visibility: { _eq: "public" }
+      }
+    ) {
       id
       member_id {
         firstname
@@ -351,7 +356,12 @@ export const GET_MEMBER_INTERNAL = gql`
       member_biografie
       member_steckbrief
     }
-    member_ships(filter: { member_id: { slug: { _eq: $slug } }, visibility: { _neq: "hidden" } }) {
+    member_ships(
+      filter: {
+        member_id: { slug: { _eq: $slug } }
+        visibility: { _neq: "hidden" }
+      }
+    ) {
       id
       member_id {
         firstname
@@ -483,7 +493,7 @@ export const GET_GAMEPLAYS = gql`
         id
       }
       text
-      head_of_department{
+      head_of_department {
         title
         firstname
         lastname
@@ -491,7 +501,7 @@ export const GET_GAMEPLAYS = gql`
           id
         }
       }
-      members{
+      members {
         title
         firstname
         lastname
@@ -1915,7 +1925,7 @@ export const GET_SHIPEXKURS_SHIP = gql`
       paints
       variants
       loaners
-      modules{
+      modules {
         name
         storeImage {
           id
@@ -2037,6 +2047,7 @@ export const INTERNAL_GET_Ships_MY_HANGAR = gql`
       price
       minCrew
       maxCrew
+      loaners
       modules {
         id
         name
@@ -2059,9 +2070,7 @@ export const INTERNAL_GET_MEMBER_HANGAR = gql`
         id
       }
       ships(
-        filter: {
-          visibility: { _neq: "hidden" }
-        }
+        filter: { visibility: { _neq: "hidden" } }
         sort: ["ships_id.name"]
         limit: -1
       ) {
@@ -2075,6 +2084,10 @@ export const INTERNAL_GET_MEMBER_HANGAR = gql`
             id
           }
           gameplay_name
+        }
+        active_module {
+          name
+          slug
         }
         ships_id {
           id
@@ -2098,6 +2111,11 @@ export const INTERNAL_GET_MEMBER_HANGAR = gql`
           price
           minCrew
           maxCrew
+          loaners
+          modules {
+            name
+            slug
+          }
         }
       }
     }

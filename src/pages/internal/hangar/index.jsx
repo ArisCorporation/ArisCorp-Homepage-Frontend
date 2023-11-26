@@ -3,21 +3,14 @@ import Layout from '../layout'
 import { gql, useQuery } from '@apollo/client'
 import { GET_GAMEPLAYS, INTERNAL_GET_Ships_MY_HANGAR } from 'graphql/queries'
 import client from 'apollo/clients'
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectionGridWrapper from 'components/SelectionGridWrapper'
 import HangarShipCard from 'components/internal/HangarShipCard'
-import { BasicPanel, BasicPanelButton } from 'components/panels'
-import { Dialog, Transition } from '@headlessui/react'
+import { BasicPanelButton } from 'components/panels'
 import Modal from 'components/modal'
-import { MdOutlineModeEditOutline } from 'react-icons/md'
 import MultipleCombobox from 'components/MultipleCombobox'
-import Checkbox from 'components/Checkbox'
 import Dropdown from 'components/Dropdown'
-import { PlusCircleIcon, TrashIcon } from '@heroicons/react/20/solid'
-import { AiOutlinePlusCircle } from 'react-icons/ai'
-import { FiPlusCircle } from 'react-icons/fi'
 import RadioButton from 'components/RadioButton'
-import { BsTrash, BsTrash3 } from 'react-icons/bs'
 import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
 import DefaultButton from 'components/DefaultButton'
@@ -49,6 +42,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
   const [Data, setData] = useState()
   const [member, setMember] = useState('')
   const [detailView, setDetailView] = useState()
+  const [loanerView, setLoanerView] = useState()
   const [modal, setModal] = useState(false)
   const [modalType, setModalType] = useState('')
   const [modalStore, setModalStore] = useState()
@@ -59,6 +53,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
   const [selectedVisibility, setSelectedVisibility] = useState('ariscorp')
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [activeModule, setActiveModule] = useState()
+  const [myShips, setMyShips] = useState()
 
   const updateShips = async () => {
     if (member) {
@@ -117,9 +112,13 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
 
   useEffect(() => {
     // LOCAL STORAGE
-    const viewValue = window.localStorage.getItem('hangarDetailView')
-    if (viewValue != null && viewValue != 'undefined') {
-      setDetailView(JSON.parse(viewValue))
+    const detailViewValue = window.localStorage.getItem('hangarDetailView')
+    if (detailViewValue != null && detailViewValue != 'undefined') {
+      setDetailView(JSON.parse(detailViewValue))
+    }
+    const loanerViewValue = window.localStorage.getItem('hangarLoanerView')
+    if (loanerViewValue != null && loanerViewValue != 'undefined') {
+      setDetailView(JSON.parse(loanerViewValue))
     }
   }, [])
 
@@ -128,19 +127,55 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     window.localStorage.setItem('hangarDetailView', JSON.stringify(detailView))
   }, [detailView])
 
-  if (!Data) return <Layout>no data</Layout>
+  useEffect(() => {
+    // LOCAL STORAGE
+    window.localStorage.setItem('hangarLoanerView', JSON.stringify(loanerView))
+  }, [loanerView])
 
-  const myShips = []
-  Data.forEach((obj) => {
-    const ship = shipList.find((e) => e.id == obj.ship_id)
-    const item = {
-      id: obj.id,
-      ship,
-      custom_data: obj.custom_data,
+  const getMyShips = () => {
+    let ships = []
+    Data.forEach((obj) => {
+      const ship = shipList.find((e) => e.id == obj.ship_id)
+      const item = {
+        id: obj.id,
+        ship,
+        custom_data: obj.custom_data,
+      }
+
+      ships.push(item)
+    })
+    if (loanerView) {
+      const loanerViewShips = [
+        ...ships.filter((e) => e.ship.productionStatus == 'flight-ready'),
+      ]
+      ships
+        .filter((e) => e.ship.productionStatus != 'flight-ready')
+        ?.forEach((obj) => {
+          obj.ship?.loaners?.forEach((i) => {
+            loanerViewShips.push(shipList.find((e) => e.id == i.id))
+          })
+        })
+      ships = loanerViewShips.sort((a, b) =>
+        (a.ship?.name || a.name).localeCompare(b.ship?.name || b.name)
+      )
     }
+    setMyShips(ships)
+  }
 
-    myShips.push(item)
-  })
+  useEffect(() => {
+    if (Data) {
+      if (myShips) {
+        setMyShips([])
+        setTimeout(() => {
+          getMyShips()
+        }, 800)
+      } else {
+        getMyShips()
+      }
+    }
+  }, [Data, loanerView])
+
+  if (!Data) return <Layout>no data</Layout>
 
   const addShips = async (ships) => {
     if (!member) {
@@ -570,8 +605,8 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       </Modal>
       <div className="w-full h-full">
         {/* <button onClick={() => setDetailView(!detailView)}>detail</button> */}
-        <div className="flex px-2 my-4">
-          <div className="flex ml-auto space-x-4">
+        <div className="flex flex-wrap px-2 my-4 gap-y-4">
+          <div className="flex flex-wrap gap-4 ml-auto">
             <div>
               <BasicPanelButton
                 animate
@@ -584,11 +619,21 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
             <div>
               <BasicPanelButton
                 animate
-                className="ml-auto w-fit"
                 onClick={() => setDetailView(!detailView)}
               >
                 <p className="p-0">
                   Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
+                </p>
+              </BasicPanelButton>
+            </div>
+            <div>
+              <BasicPanelButton
+                animate
+                onClick={() => setLoanerView(!loanerView)}
+              >
+                <p className="p-0">
+                  Leihschiff-Ansicht:{' '}
+                  {loanerView ? 'Ausschalten' : 'Anschalten'}
                 </p>
               </BasicPanelButton>
             </div>
@@ -604,7 +649,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
         {/* {detailView == false ? ( */}
         <SelectionGridWrapper>
           <AnimatePresence>
-            {myShips.map((object) => (
+            {myShips?.map((object) => (
               <motion.div
                 key={object.id}
                 initial={{ opacity: 0 }}
@@ -614,14 +659,16 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
               >
                 <HangarShipCard
                   color={
-                    object.custom_data.group == 'private'
-                      ? 'white'
-                      : object.custom_data.group == 'ariscorp' &&
-                        object.custom_data.department
-                      ? 'primary'
-                      : object.custom_data.group == 'ariscorp' &&
-                        !object.custom_data.department
-                      ? 'secondary'
+                    !loanerView
+                      ? object.custom_data?.group == 'private'
+                        ? 'white'
+                        : object.custom_data?.group == 'ariscorp' &&
+                          object.custom_data?.department
+                        ? 'primary'
+                        : object.custom_data?.group == 'ariscorp' &&
+                          !object.custom_data?.department
+                        ? 'secondary'
+                        : null
                       : null
                   }
                   editAction={() => openEditModal(object)}
