@@ -15,6 +15,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
 import DefaultButton from 'components/DefaultButton'
 import Checkbox from 'components/Checkbox'
+import { Tab } from '@headlessui/react'
+import { useRouter } from 'next/router'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: INTERNAL_GET_Ships_MY_HANGAR })
@@ -56,6 +58,9 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
   const [activeModule, setActiveModule] = useState()
   const [myShips, setMyShips] = useState()
   const [plannedCheckbox, setPlannedCheckbox] = useState()
+  const [activeTab, setActiveTab] = useState()
+  const [wishlist, setWishlist] = useState([])
+  const { replace, query } = useRouter()
 
   const updateShips = async () => {
     if (member) {
@@ -67,7 +72,17 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
           method: 'GET',
         }
       ).then((res) => res.json())
+      let rawWishlistData = await fetch(
+        // "https://cms.ariscorp.de/items/member_ships?fields=*.*&filter[member_id]=" + session.user.id,
+        'https://cms.ariscorp.de/items/member_wishlist?sort=ships_id.name&fields=*&filter[member_id]=' +
+          member,
+        {
+          method: 'GET',
+        }
+      ).then((res) => res.json())
+      console.log(member)
       const data = []
+      const wishlist = []
 
       rawData.data?.forEach((e) => {
         const obj = {
@@ -85,8 +100,27 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
         }
         data.push(obj)
       })
+      rawWishlistData.data?.forEach((i) => {
+        const object = {
+          id: i.id,
+          ship: shipList.find(e => e.id == i.ships_id)
+        }
+        wishlist.push(object)
+      })
+
+      // Data.forEach((obj) => {
+      //   const ship = shipList.find((e) => e.id == obj.ship_id)
+      //   const item = {
+      //     id: obj.id,
+      //     ship,
+      //     custom_data: obj.custom_data,
+      //   }
+  
+      //   ships.push(item)
+      // })
 
       setData(data)
+      setWishlist(wishlist)
       return console.log('HANGAR UPDATED!')
     }
   }
@@ -203,6 +237,41 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
 
     await fetch(
       'https://cms.ariscorp.de/items/member_ships?access_token=' +
+        process.env.NEXT_PUBLIC_CMS_TOKEN,
+      {
+        method: 'POST',
+        body: JSON.stringify(body),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    closeModal()
+    return updateShips()
+  }
+  const addWishlistShips = async (ships) => {
+    if (!member) {
+      return console.error('ERROR NO MEMBER')
+    }
+    const IDs = []
+    const body = []
+    ships.forEach((ship) => {
+      const id = shipList.find((e) => e == ship).id
+      IDs.push(id)
+    })
+    IDs.forEach((id) => {
+      const item = {
+        member_id: member,
+        ships_id: id,
+        group: 'ariscorp',
+        visibility: 'internal',
+      }
+
+      body.push(item)
+    })
+
+    await fetch(
+      'https://cms.ariscorp.de/items/member_wishlist?access_token=' +
         process.env.NEXT_PUBLIC_CMS_TOKEN,
       {
         method: 'POST',
@@ -348,14 +417,38 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     setModalType('addShips')
     setModal(true)
   }
+  function openWishlistAddModal() {
+    setModalType('addWishlistShips')
+    setModal(true)
+  }
   function openRemoveModal(ship) {
     setModalStore(ship)
     setModalType('removeShip')
     setModal(true)
   }
+  function openWishlistRemoveModal(ship) {
+    setModalStore(ship)
+    setModalType('removeWishlistShip')
+    setModal(true)
+  }
   async function removeShip() {
+    console.log(modalStore)
     await fetch(
-      `https://cms.ariscorp.de/items/member_ships/${modalStore.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+      `https://cms.ariscorp.de/items/member_wishlist/${modalStore.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    )
+    closeModal()
+    await updateShips()
+    return
+  }
+  async function removeWishlistShip() {
+    await fetch(
+      `https://cms.ariscorp.de/items/member_wishlist/${modalStore.id}?access_token=${process.env.NEXT_PUBLIC_CMS_TOKEN}`,
       {
         method: 'DELETE',
         headers: {
@@ -382,7 +475,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       setPlannedCheckbox()
     }, 600)
   }
-  // border-[#666] border-secondary border-primary border-white
+
   return (
     <Layout>
       <Head>
@@ -397,6 +490,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
         setState={setModal}
         title={
           (modalType == 'addShips' && 'Schiffe hinzufügen') ||
+          (modalType == 'addWishlistShips' && 'Schiffe zur Wunschliste hinzufügen') ||
           (modalType == 'editShip' &&
             'Bearbeiten: ' +
               (modalStore?.custom_data?.name
@@ -420,7 +514,9 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                         ' '
                       )[0]) +
                   ' ' +
-                  modalStore?.ship?.name))
+                  modalStore?.ship?.name)) || 
+          (modalType == 'removeWishlistShip' && (
+            'Entfernen: ' + modalStore.ship.manufacturer.firmen_name + ' ' + modalStore?.name + ' von der Wunschliste'))
         }
         closeFunction={closeModal}
       >
@@ -441,6 +537,28 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                   animate
                   agree
                   action={() => (closeModal, addShips(selectedShips))}
+                >
+                  Hinzufügen!
+                </DefaultButton>
+              </div>
+            </div>
+          )}
+          {modalType == 'addWishlistShips' && (
+            <div className="flex flex-wrap justify-center">
+              <MultipleCombobox
+                multiple
+                items={shipList}
+                state={selectedShips}
+                setState={setSelectedShips}
+              />
+              <div className="w-full mt-4 space-x-12">
+                <DefaultButton animate danger action={() => closeModal()}>
+                  Abbruch
+                </DefaultButton>
+                <DefaultButton
+                  animate
+                  agree
+                  action={() => (closeModal, addWishlistShips(selectedShips))}
                 >
                   Hinzufügen!
                 </DefaultButton>
@@ -570,9 +688,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                   Spezifische Informationen:
                 </p>
                 <div className="flex justify-between mb-3 space-x-4">
-                  <label className="my-auto text-base">
-                        Planung:
-                      </label>
+                  <label className="my-auto text-base">Planung:</label>
                   <div className="w-full max-w-[286px]">
                     <Checkbox
                       state={plannedCheckbox}
@@ -626,89 +742,176 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
               </div>
             </div>
           )}
+          {modalType == 'removeWishlistShip' && (
+            <div>
+              <h3>
+                Bist du sicher, das du dieses Schiff von der Wunschliste entfernen
+                möchtest?
+              </h3>
+              <div className="w-full mt-8 space-x-12">
+                <DefaultButton animate danger action={closeModal}>
+                  Nein!
+                </DefaultButton>
+                <DefaultButton animate agree action={removeWishlistShip}>
+                  Ja!
+                </DefaultButton>
+              </div>
+            </div>
+          )}
         </div>
       </Modal>
-      <div className="w-full h-full">
-        {/* <button onClick={() => setDetailView(!detailView)}>detail</button> */}
-        <div className="flex flex-wrap px-2 my-4 gap-y-4">
-          <div className="flex flex-wrap gap-4 ml-auto">
-            <div>
-              <BasicPanelButton
-                animate
-                className="ml-auto w-fit"
-                onClick={openAddModal}
-              >
-                <p className="p-0">Schiffe Hinzufügen</p>
-              </BasicPanelButton>
-            </div>
-            <div>
-              <BasicPanelButton
-                animate
-                onClick={() => setDetailView(!detailView)}
-              >
-                <p className="p-0">
-                  Detail Ansicht: {detailView ? 'Ausschalten' : 'Anschalten'}
-                </p>
-              </BasicPanelButton>
-            </div>
-            <div>
-              <BasicPanelButton
-                animate
-                onClick={() => setLoanerView(!loanerView)}
-              >
-                <p className="p-0">
-                  Leihschiff-Ansicht:{' '}
-                  {loanerView ? 'Ausschalten' : 'Anschalten'}
-                </p>
-              </BasicPanelButton>
-            </div>
-          </div>
-        </div>
-        {/* <button
-            type="button"
-            onClick={openAddModal}
-            className="px-4 py-2 text-sm font-medium text-white rounded-md bg-black/20 hover:bg-black/30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75"
+      <Tab.Group
+        selectedIndex={activeTab}
+        onChange={(event) =>
+          replace({ query: { tab: event } }, undefined, { shallow: true }) +
+          setActiveTab(event)
+        }
+      >
+        <Tab.List className="flex flex-wrap justify-between mt-6">
+          <Tab
+            className={({ selected }) =>
+              (selected ? 'text-primary' : 'opacity-50') +
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
+            }
           >
-            Open add
-          </button> */}
-        {/* {detailView == false ? ( */}
-        <SelectionGridWrapper>
-          <AnimatePresence>
-            {myShips?.map((object) => (
-              <motion.div
-                key={object.id}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                exit={{ opacity: 0 }}
-              >
-                <HangarShipCard
-                  color={
-                    !loanerView
-                      ? object.custom_data?.group == 'private'
-                        ? 'white'
-                        : object.custom_data?.group == 'ariscorp' &&
-                          object.custom_data?.department
-                        ? 'primary'
-                        : object.custom_data?.group == 'ariscorp' &&
-                          !object.custom_data?.department
-                        ? 'secondary'
-                        : null
-                      : null
-                  }
-                  editAction={() => openEditModal(object)}
-                  removeAction={() => openRemoveModal(object)}
-                  detailView={detailView}
-                  data={object}
-                />
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </SelectionGridWrapper>
-        {/* ) : (
-            <div>detailview</div>
-          )} */}
-      </div>
+            <h1 className="text-base font-normal font-base md:text-lg lg:text-2xl xl:text-3xl text-inherit">
+              Hangar
+            </h1>
+          </Tab>
+          <Tab
+            className={({ selected }) =>
+              (selected ? 'text-primary' : 'opacity-50') +
+              ' focus-visible:outline-none p-3 m-1 transition-all duration-300 ease-in-out'
+            }
+          >
+            <h1 className="text-base font-normal font-base md:text-lg lg:text-2xl xl:text-3xl text-inherit">
+              Wunschliste
+            </h1>
+          </Tab>
+          <hr />
+        </Tab.List>
+        <Tab.Panels>
+          <Tab.Panel>
+            <div className="w-full h-full">
+              <div className="flex flex-wrap px-2 my-4 gap-y-4">
+                <div className="flex flex-wrap gap-4 ml-auto">
+                  <div>
+                    <BasicPanelButton
+                      animate
+                      className="ml-auto w-fit"
+                      onClick={openAddModal}
+                    >
+                      <p className="p-0">Schiffe Hinzufügen</p>
+                    </BasicPanelButton>
+                  </div>
+                  <div>
+                    <BasicPanelButton
+                      animate
+                      onClick={() => setDetailView(!detailView)}
+                    >
+                      <p className="p-0">
+                        Detail Ansicht:{' '}
+                        {detailView ? 'Ausschalten' : 'Anschalten'}
+                      </p>
+                    </BasicPanelButton>
+                  </div>
+                  <div>
+                    <BasicPanelButton
+                      animate
+                      onClick={() => setLoanerView(!loanerView)}
+                    >
+                      <p className="p-0">
+                        Leihschiff-Ansicht:{' '}
+                        {loanerView ? 'Ausschalten' : 'Anschalten'}
+                      </p>
+                    </BasicPanelButton>
+                  </div>
+                </div>
+              </div>
+              <SelectionGridWrapper>
+                <AnimatePresence>
+                  {myShips?.map((object) => (
+                    <motion.div
+                      key={object.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <HangarShipCard
+                        color={
+                          !loanerView
+                            ? object.custom_data?.group == 'private'
+                              ? 'white'
+                              : object.custom_data?.group == 'ariscorp' &&
+                                object.custom_data?.department
+                              ? 'primary'
+                              : object.custom_data?.group == 'ariscorp' &&
+                                !object.custom_data?.department
+                              ? 'secondary'
+                              : null
+                            : null
+                        }
+                        editAction={() => openEditModal(object)}
+                        removeAction={() => openRemoveModal(object)}
+                        detailView={detailView}
+                        data={object}
+                      />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </SelectionGridWrapper>
+            </div>
+          </Tab.Panel>
+          <Tab.Panel>
+            <div className="w-full h-full">
+              <div className="flex flex-wrap px-2 my-4 gap-y-4">
+                <div className="flex flex-wrap gap-4 ml-auto">
+                  <div>
+                    <BasicPanelButton
+                      animate
+                      className="ml-auto w-fit"
+                      onClick={openWishlistAddModal}
+                    >
+                      <p className="p-0">Schiffe Hinzufügen</p>
+                    </BasicPanelButton>
+                  </div>
+                  <div>
+                    <BasicPanelButton
+                      animate
+                      onClick={() => setDetailView(!detailView)}
+                    >
+                      <p className="p-0">
+                        Detail Ansicht:{' '}
+                        {detailView ? 'Ausschalten' : 'Anschalten'}
+                      </p>
+                    </BasicPanelButton>
+                  </div>
+                </div>
+              </div>
+              <SelectionGridWrapper>
+                <AnimatePresence>
+                  {wishlist?.map((object) => (
+                    <motion.div
+                      key={object.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      exit={{ opacity: 0 }}
+                    >
+                      <HangarShipCard
+                        removeAction={() => openWishlistRemoveModal(object)}
+                        detailView={detailView}
+                        data={object}
+                      />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
+              </SelectionGridWrapper>
+            </div>
+          </Tab.Panel>
+        </Tab.Panels>
+      </Tab.Group>
       {/* <div onClick={() => addShips(["vulture", "carrack"])} className='absolute bottom-0 cursor-pointer right-12'>+</div> */}
       {/* <div className='sticky flex w-full bottom-8 z-[99]'>
         <div className='ml-auto mr-4'>
