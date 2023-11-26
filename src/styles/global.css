@@ -577,6 +577,10 @@ button.swiper-pagination-bullet {
   fill: #00ffe8 !important;
 }
 
+.text-stroke {
+  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black
+}
+
 @keyframes noise-before {
   0% {
     clip: rect(61px, 9999px, 52px, 0);

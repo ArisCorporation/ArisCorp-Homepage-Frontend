@@ -2089,6 +2089,7 @@ export const INTERNAL_GET_MEMBER_HANGAR = gql`
           name
           slug
         }
+        planned
         ships_id {
           id
           name
@@ -2176,6 +2177,7 @@ export const INTERNAL_GET_FLEET = gql`
         name
         slug
       }
+      planned
     }
   }
 `

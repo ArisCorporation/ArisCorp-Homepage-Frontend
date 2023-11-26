@@ -42,7 +42,8 @@ export async function getServerSideProps(context) {
         group: obj.group,
         visibility: obj.visibility,
         department: obj.department,
-        active_module: obj.active_module
+        active_module: obj.active_module,
+        planned: obj.planned,
       },
     }
     data.ships.push(item)

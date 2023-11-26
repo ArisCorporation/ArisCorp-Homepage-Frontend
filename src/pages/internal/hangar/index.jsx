@@ -14,6 +14,7 @@ import RadioButton from 'components/RadioButton'
 import { AnimatePresence, motion } from 'framer-motion'
 import Head from 'next/head'
 import DefaultButton from 'components/DefaultButton'
+import Checkbox from 'components/Checkbox'
 
 export async function getServerSideProps() {
   const { data } = await client.query({ query: INTERNAL_GET_Ships_MY_HANGAR })
@@ -54,6 +55,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
   const [selectedDepartment, setSelectedDepartment] = useState()
   const [activeModule, setActiveModule] = useState()
   const [myShips, setMyShips] = useState()
+  const [plannedCheckbox, setPlannedCheckbox] = useState()
 
   const updateShips = async () => {
     if (member) {
@@ -78,6 +80,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
             department: e.department,
             visibility: e.visibility,
             active_module: e.active_module,
+            planned: e.planned,
           },
         }
         data.push(obj)
@@ -234,6 +237,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
         ship.ship.modules.find((e) => e.id == ship.custom_data.active_module.id)
       )
     }
+    setPlannedCheckbox(ship.custom_data.planned)
     setModal(true)
   }
   async function editShip(edits, id) {
@@ -326,6 +330,13 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
 
       edits.active_module = activeModule.id
     }
+    if (plannedCheckbox != modalStore.custom_data.planned) {
+      console.log('📃 ---PLANNED STATE---')
+      console.log('OLD PLANNED STATE: ' + modalStore.custom_data.planned)
+      console.log('NEW PLANNED STATE: ' + plannedCheckbox)
+
+      edits.planned = plannedCheckbox
+    }
 
     console.log('📑 ---EDIT-OBJECT:---')
     console.log(edits)
@@ -368,6 +379,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       setSelectedVisibility()
       setSelectedShips([])
       setActiveModule()
+      setPlannedCheckbox()
     }, 600)
   }
   // border-[#666] border-secondary border-primary border-white
@@ -553,28 +565,41 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                   </div>
                 </div>
               </div>
-              {modalStore.ship.modules[0] && (
-                <div className="mt-6">
-                  <p className="w-full -ml-4 text-base text-left">
-                    Spezifische Informationen:
-                  </p>
-                  {modalStore.ship.modules[0] && (
-                    <div className="flex justify-between mb-3 space-x-4">
-                      <label className="my-auto text-base">
-                        Aktives Modul:
+              <div className="mt-6">
+                <p className="w-full -ml-4 text-base text-left">
+                  Spezifische Informationen:
+                </p>
+                <div className="flex justify-between mb-3 space-x-4">
+                  <label className="my-auto text-base">
+                        Planung:
                       </label>
-                      <div className="w-full max-w-[286px]">
-                        <Dropdown
-                          items={modalStore.ship.modules}
-                          state={activeModule}
-                          setState={setActiveModule}
-                          mode="module"
-                        />
-                      </div>
-                    </div>
-                  )}
+                  <div className="w-full max-w-[286px]">
+                    <Checkbox
+                      state={plannedCheckbox}
+                      setState={setPlannedCheckbox}
+                      id="c-6"
+                      color="primary"
+                      bg="[#111]"
+                    >
+                      <Checkbox.Label>Schiff noch Geplant?</Checkbox.Label>
+                      <Checkbox.Indicator />
+                    </Checkbox>
+                  </div>
                 </div>
-              )}
+                {modalStore.ship.modules[0] && (
+                  <div className="flex justify-between mb-3 space-x-4">
+                    <label className="my-auto text-base">Aktives Modul:</label>
+                    <div className="w-full max-w-[286px]">
+                      <Dropdown
+                        items={modalStore.ship.modules}
+                        state={activeModule}
+                        setState={setActiveModule}
+                        mode="module"
+                      />
+                    </div>
+                  </div>
+                )}
+              </div>
               <div className="w-full mt-8 space-x-12">
                 <DefaultButton animate danger action={() => closeModal()}>
                   Abbruch

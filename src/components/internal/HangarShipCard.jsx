@@ -23,7 +23,10 @@ const HangarShipDetailCard = ({
   const detailViewVariants = {
     normal: { height: '0px' },
     detail: {
-      height: 200 + ((fleetView || hangarView) && custom_data?.active_module ? 89 : 0) + 'px',
+      height:
+        200 +
+        ((fleetView || hangarView) && custom_data?.active_module ? 89 : 0) +
+        'px',
     },
   }
   const gameplayName = {
@@ -55,7 +58,7 @@ const HangarShipDetailCard = ({
         <div className="absolute z-50 flex top-2 left-2">
           <div
             onClick={removeAction}
-            className="flex items-center justify-center cursor-pointer w-fit h-100"
+            className="flex items-center justify-center cursor-pointer w-fit h-100 text-stroke"
           >
             {ship.productionStatus == 'flight-ready' ? (
               <span className="text-primary">Flugfertig</span>
@@ -98,9 +101,17 @@ const HangarShipDetailCard = ({
         {fleetView && (
           <Link legacyBehavior href={'/biografie/' + data.member.slug}>
             <a className="absolute before:absolute bottom-[0px] h-[22px] right-4 z-10 pl-4 decoration-transparent">
-              <div className="text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
+              <div className="text-xs leading-none transition-colors duration-200 group text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
                 <p className="pt-0">
-                  Bereitgestellt von:
+                  <span
+                    className={
+                      custom_data.planned
+                        ? 'text-secondary/50 group-hover:text-secondary/80'
+                        : ''
+                    }
+                  >
+                    {!custom_data.planned ? 'Bereitgestellt' : 'Geplant'} von:
+                  </span>
                   {data.member.title ? ' ' + data.member.title + ' ' : ''}{' '}
                   {data.member.firstname} {data.member.lastname}
                 </p>
@@ -149,6 +160,15 @@ const HangarShipDetailCard = ({
                 </p>
               </div>
             </motion.div>
+            {custom_data?.planned && (
+              <div
+                className={
+                  'absolute right-2 text-stroke ' + (fleetView ? 'bottom-[59px] 3.5xl:bottom-[49px]' : 'bottom-[49px]')
+                }y
+              >
+                Geplant
+              </div>
+            )}
           </a>
         </Link>
       </div>

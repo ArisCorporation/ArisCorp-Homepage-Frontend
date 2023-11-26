@@ -128,81 +128,83 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                         }
                       />
                     </div>
-                    <figcaption className="absolute top-0 left-0 h-full bg-opacity-50 text-center pt-[40%] px-[20px] pb-[20px] z-5 opacity-0 bg-black group-hover:opacity-100 transition-all ease-linear min-w-full min-h-full block">
-                      <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
-                      <p className="py-[10px] m-0 text-secondary">
-                        <span className="text-white">Position: </span>
-                        {member.position_level == 'candidate'
-                          ? 'Anwärter'
-                          : member.position_level == 'freelancer'
-                          ? 'Freier Mitarbeiter'
-                          : member.position_level == 'employee'
-                          ? 'Mitarbeiter'
-                          : member.position_level == 'administration'
-                          ? 'Verwaltung'
-                          : 'N/A'}
-                      </p>
-                      <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
-                      {member.roles[0] || member.head_of_department ? (
-                        <>
-                          <p className="p-[10px] m-0">
-                            “
-                            {member.roles.map((role, index) => (
-                              <span key={index}>
-                                {(index ? ', ' : '') +
-                                  (role == 'marketing'
-                                    ? 'Marketing & Presse'
-                                    : role == 'recruitment'
-                                    ? 'Rekrutierung'
-                                    : role == 'content_writer'
-                                    ? 'Inhaltsersteller'
-                                    : role)}
-                              </span>
-                            ))}
-                            {member.head_of_department && (
-                              <span>, Abteilungsleiter</span>
-                            )}
-                            “
-                          </p>
-                          <hr className="w-[100px] h-[2px] m-auto" />
-                        </>
-                      ) : null}
-                      <ul className="pl-0 mt-3 mb-0 space-x-4 list-none">
-                        <Link
-                          legacyBehavior
-                          href={'/internal/biografie/' + member.slug}
-                        >
-                          <a
-                            className="italic bg-transparent text-secondary hover:underline"
-                            aria-label={
-                              'Biografie von ' +
-                              (member.title ? member.title + ' ' : '') +
-                              member.firstname +
-                              ' ' +
-                              member?.lastname
-                            }
+                    <figcaption className="absolute top-0 left-0 flex w-full h-full text-center transition-all ease-linear bg-black bg-opacity-50 opacity-0 z-5 group-hover:opacity-100">
+                      <div className="m-auto w-fit h-fit">
+                        <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
+                        <p className="py-[10px] m-0 text-secondary">
+                          <span className="text-white">Position: </span>
+                          {member.position_level == 'candidate'
+                            ? 'Anwärter'
+                            : member.position_level == 'freelancer'
+                            ? 'Freier Mitarbeiter'
+                            : member.position_level == 'employee'
+                            ? 'Mitarbeiter'
+                            : member.position_level == 'administration'
+                            ? 'Verwaltung'
+                            : 'N/A'}
+                        </p>
+                        <hr className="w-[100px] h-[2px] mt-[5px] mb-auto m-auto" />
+                        {member.roles[0] || member.head_of_department ? (
+                          <>
+                            <p className="p-[10px] m-0">
+                              “
+                              {member.roles.map((role, index) => (
+                                <span key={index}>
+                                  {(index ? ', ' : '') +
+                                    (role == 'marketing'
+                                      ? 'Marketing & Presse'
+                                      : role == 'recruitment'
+                                      ? 'Rekrutierung'
+                                      : role == 'content_writer'
+                                      ? 'Inhaltsersteller'
+                                      : role)}
+                                </span>
+                              ))}
+                              {member.head_of_department && (
+                                <span>, Abteilungsleiter</span>
+                              )}
+                              “
+                            </p>
+                            <hr className="w-[100px] h-[2px] m-auto" />
+                          </>
+                        ) : null}
+                        <ul className="pl-0 mt-3 mb-0 space-x-4 list-none">
+                          <Link
+                            legacyBehavior
+                            href={'/internal/biografie/' + member.slug}
                           >
-                            BIOGRAFIE
-                          </a>
-                        </Link>
-                        <Link
-                          legacyBehavior
-                          href={'/internal/hangar/' + member.slug}
-                        >
-                          <a
-                            className="italic bg-transparent text-secondary hover:underline"
-                            aria-label={
-                              'Hangar von ' +
-                              (member.title ? member.title + ' ' : '') +
-                              member.firstname +
-                              ' ' +
-                              member?.lastname
-                            }
+                            <a
+                              className="italic bg-transparent text-secondary hover:underline"
+                              aria-label={
+                                'Biografie von ' +
+                                (member.title ? member.title + ' ' : '') +
+                                member.firstname +
+                                ' ' +
+                                member?.lastname
+                              }
+                            >
+                              BIOGRAFIE
+                            </a>
+                          </Link>
+                          <Link
+                            legacyBehavior
+                            href={'/internal/hangar/' + member.slug}
                           >
-                            HANGAR
-                          </a>
-                        </Link>
-                      </ul>
+                            <a
+                              className="italic bg-transparent text-secondary hover:underline"
+                              aria-label={
+                                'Hangar von ' +
+                                (member.title ? member.title + ' ' : '') +
+                                member.firstname +
+                                ' ' +
+                                member?.lastname
+                              }
+                            >
+                              HANGAR
+                            </a>
+                          </Link>
+                        </ul>
+                      </div>
                     </figcaption>
                   </figure>
                   <p className="text-2xl">

@@ -42,6 +42,7 @@ export async function getServerSideProps() {
         visibility: obj.visibility,
         department: obj.department,
         active_module: obj.active_module,
+        planned: obj.planned,
       },
     }
     data.push(item)
@@ -75,7 +76,6 @@ export default function InternalIndex({
   const [detailView, setDetailView] = useState()
   const [loanerView, setLoanerView] = useState()
   const [data, setData] = useState(apiData)
-  console.log(apiData)
 
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
