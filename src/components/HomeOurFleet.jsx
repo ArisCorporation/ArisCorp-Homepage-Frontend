@@ -21,6 +21,15 @@ export default function OurFleet() {
   const [apiData, setApiData] = useState([])
   const [data, setData] = useState([])
   const [selectedIndex, setSelectedIndex] = useState(0)
+  const fleetquery = query.fleet
+
+  useEffect(() => {
+    if (fleetquery != null && fleetquery != '') {
+      setSelectedIndex(fleetquery)
+    } else {
+      setSelectedIndex(0)
+    }
+  }, [fleetquery])
 
   useEffect(() => {
     if (rawData) {
@@ -80,8 +89,6 @@ export default function OurFleet() {
     )
   }
 
-  console.log(selectedIndex)
-
   return (
     <>
       <h1 className="text-center text-primary">Flotte der ArisCorp</h1>
@@ -90,7 +97,26 @@ export default function OurFleet() {
         Mitarbeiter der ArisCorp zur verfügung gestellt werden.
       </p>
       <div>
-        <Tab.Group selectedIndex={selectedIndex} onChange={setSelectedIndex}>
+        <Tab.Group
+          selectedIndex={selectedIndex}
+          onChange={(event) =>
+            (query.about != null && query.about != ''
+              ? replace(
+                  {
+                    query: {
+                      about: query.about,
+                      our: query.our,
+                      fleet: event,
+                    },
+                  },
+                  undefined,
+                  { shallow: true }
+                )
+              : replace({ query: { our: event } }, undefined, {
+                  shallow: true,
+                })) + setSelectedIndex(event)
+          }
+        >
           <Tab.List className={'w-full mx-auto'}>
             <div className="flex justify-center mx-auto">
               <Tab
@@ -127,7 +153,7 @@ export default function OurFleet() {
                 </div>
               </Tab>
             </div>
-            <div className='flex flex-wrap justify-center xl:grid xl:grid-flow-col xl:grid-rows-1'>
+            <div className="flex flex-wrap justify-center xl:grid xl:grid-flow-col xl:grid-rows-1">
               {departments.map((data, index) => (
                 <Tab
                   key={data.id}
@@ -142,7 +168,8 @@ export default function OurFleet() {
                     <Image
                       src={
                         'https://cms.ariscorp.de/assets/' +
-                        data.gameplay_logo.id + '?format=webp'
+                        data.gameplay_logo.id +
+                        '?format=webp'
                       }
                       width={80}
                       height={80}
