@@ -116,7 +116,7 @@ export default function InternalIndex({ apiData, departments, siteTitle }) {
                   Mitarbeiter sheen.
                 </p>
                 <p>
-                  Hover einfach mit der Maus über eines der Potraits und wähle "Biografie" oder "Hangar" aus.
+                  Hover einfach mit der Maus über eines der Potraits und wähle &quot;Biografie&quot; oder &quot;Hangar&quot; aus.
                 </p>
               </div>
               <div className="w-full mt-8 space-x-12">

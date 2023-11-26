@@ -811,7 +811,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <div>Dein Benutzername ändert sich, sobald du deinen Charakternamen änderst.</div>
                     <div className='text-primary'>Info: Der Benutzername setzt sich folgendermaßen zusammen: [vorname.nachname].</div>
                   </li>
-                  <li>Alles unter "Biografie & Steckbrief" ist optional.</li>
+                  <li>Alles unter &quot;Biografie & Steckbrief&quot; ist optional.</li>
                 </ul>
               </div>
               <div className="w-full mt-8 space-x-12">

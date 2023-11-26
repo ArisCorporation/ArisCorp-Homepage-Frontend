@@ -774,7 +774,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                 <div>
                   <div>
                     <p>Hier kannst du deinen Hangar anpassen.</p>
-                    <p>Klicke einfach auf "Schiffe hinzufügen" und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
+                    <p>Klicke einfach auf &quot;Schiffe hinzufügen&quot; und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
                     <p>Sie können ihr Schiff bearbeiten, in dem sie auf das Stift-Symbol in der rechten, unteren Ecke klicken.</p>
                     <p>Bitte beachte folgende Dinge:</p>
                     <ul>
@@ -795,7 +795,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                       </li>
                       <li>
                         Wenn ein Schiff fest geplant ist, stelle es bitte auf
-                        "geplant" damit dies auch so angezeigt wird.
+                        &quot;geplant&quot; damit dies auch so angezeigt wird.
                       </li>
                     </ul>
                   </div>
@@ -805,7 +805,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                 <div>
                   <div>
                     <p>Hier kannst du deine Wunschliste anpassen.</p>
-                    <p>Klicke einfach auf "Schiffe hinzufügen" und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
+                    <p>Klicke einfach auf &quot;Schiffe hinzufügen&quot; und wähle ein Schiff aus. Du kannst entweder nach dem Namen suchen oder es in der Liste suchen.</p>
                     <p>Bitte beachte folgende Dinge:</p>
                     <ul>
                       <li>
