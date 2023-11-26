@@ -155,7 +155,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
     }
     const loanerViewValue = window.localStorage.getItem('hangarLoanerView')
     if (loanerViewValue != null && loanerViewValue != 'undefined') {
-      setDetailView(JSON.parse(loanerViewValue))
+      setLoanerView(JSON.parse(loanerViewValue))
     }
   }, [])
 

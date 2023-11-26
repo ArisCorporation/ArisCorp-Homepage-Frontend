@@ -77,8 +77,6 @@ export default function InternalIndex({
   const [loanerView, setLoanerView] = useState()
   const [data, setData] = useState(apiData)
 
-  console.log(shipList)
-
   function changeDepartment(dep) {
     setSelectedDepartment(dep)
     replace(
@@ -101,44 +99,35 @@ export default function InternalIndex({
   }
 
   function filterData() {
-    if (selectedDepartment != null || selectedMember != null || loanerView != null) {
-      let filteredData = apiData
-      if (selectedDepartment != null) {
-        filteredData = filteredData.filter(
-          (e) =>
-            e.custom_data.department?.gameplay_name ==
-            selectedDepartment.gameplay_name
-        )
-      }
-      if (selectedMember != null) {
-        filteredData = filteredData.filter(
-          (e) => e.member?.slug == selectedMember.slug
-        )
-      }
-      console.log("loanerView")
-      if (loanerView) {
-        const loanerViewShips = [
-          ...filteredData.filter(
-            (e) => e.ship.productionStatus == 'flight-ready'
-          ),
-        ]
-        filteredData
-          .filter((e) => e.ship.productionStatus != 'flight-ready')
-          ?.forEach((obj) => {
-            console.log("Apollo Triage")
-            console.log(obj.ship.name == "Apollo Triage" ? obj : "")
-            obj.ship?.loaners?.forEach((i) => {
-              loanerViewShips.push(shipList.find((e) => e.id == i.id))
-            })
-          })
-        filteredData = loanerViewShips.sort((a, b) =>
-          (a.ship?.name || a.name).localeCompare(b.ship?.name || b.name)
-        )
-      }
-      setData(filteredData)
-    } else {
-      setData(apiData)
+    let filteredData = apiData
+    if (selectedDepartment != null) {
+      filteredData = filteredData.filter(
+        (e) =>
+          e.custom_data.department?.gameplay_name ==
+          selectedDepartment.gameplay_name
+      )
     }
+    if (selectedMember != null) {
+      filteredData = filteredData.filter(
+        (e) => e.member?.slug == selectedMember.slug
+      )
+    }
+    // console.log('loanerView1', filteredData)
+    if (loanerView == true) {
+      const loanerViewShips = [
+        ...filteredData.filter((e) => e.ship.productionStatus == 'flight-ready')
+      ]
+      filteredData.filter((e) => e.ship.productionStatus != 'flight-ready')?.forEach((obj) => {
+          obj.ship?.loaners?.forEach((i) => {
+            loanerViewShips.push(shipList.find((e) => e.id == i.id))
+          })
+        })
+      filteredData = loanerViewShips.sort((a, b) =>
+        (a.ship?.name || a.name).localeCompare(b.ship?.name || b.name)
+      )
+    }
+    // console.log('loanerView2', filteredData)
+    setData(filteredData)
   }
 
   useEffect(() => {
@@ -151,7 +140,7 @@ export default function InternalIndex({
     }
     const loanerViewValue = window.localStorage.getItem('fleetLoanerView')
     if (loanerViewValue != null && loanerViewValue != 'undefined') {
-      setDetailView(JSON.parse(loanerViewValue))
+      setLoanerView(JSON.parse(loanerViewValue))
     }
 
     // DEPARTMENT
@@ -174,7 +163,7 @@ export default function InternalIndex({
 
   useEffect(() => {
     // LOCAL STORAGE
-    window.localStorage.setItem('hangarLoanerView', JSON.stringify(loanerView))
+    window.localStorage.setItem('fleetLoanerView', JSON.stringify(loanerView))
   }, [loanerView])
 
   useEffect(() => {
@@ -244,9 +233,9 @@ export default function InternalIndex({
         <SelectionGridWrapper>
           <AnimatePresence>
             {data[0] &&
-              data.map((object) => (
+              data.map((object, i) => (
                 <motion.div
-                  key={object.id}
+                  key={object.id + i}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5 }}
