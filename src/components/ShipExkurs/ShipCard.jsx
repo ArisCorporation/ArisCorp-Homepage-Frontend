@@ -5,7 +5,7 @@ import Image from "next/image"
 const ShipCard = ({ data, manufacturer }) => (
   <BasicPanel>
     <div className="h-[200px] relative transition-all duration-500 ease">
-      <Link legacyBehavior href={"/VerseExkurs/firmen/" + data.manufacturer?.firmen_name || manufacturer.firmen_name}>
+      <Link legacyBehavior href={"/VerseExkurs/firmen/" + data.manufacturer?.slug || manufacturer.slug}>
         <a className='absolute bottom-0 h-[22px] z-10 pl-4 decoration-transparent'>
           <p className="top-0 bottom-0 py-0 mb-1 text-xs leading-none transition-colors duration-200 text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
             {data.manufacturer?.firmen_name || manufacturer.firmen_name}

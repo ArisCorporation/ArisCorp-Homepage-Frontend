@@ -854,6 +854,7 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
         height
       }
       firmen_name
+      slug
       firmenkategorie
       firmenherstellerkategorie
       firmenpersonenasrustungsherstellerkategorie
@@ -1955,6 +1956,7 @@ export const GET_SHIPEXKURS_SHIPLOANERS = gql`
       slug
       name
       manufacturer {
+        slug
         firmen_name
       }
       storeImage {

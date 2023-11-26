@@ -98,7 +98,7 @@ const HangarShipDetailCard = ({
             </div>
           </motion.div>
         </motion.div>
-        {fleetView && (
+        {(fleetView && data.member?.slug) && (
           <Link legacyBehavior href={'/biografie/' + data.member.slug}>
             <a className="absolute before:absolute bottom-[0px] h-[22px] right-4 z-10 pl-4 decoration-transparent">
               <div className="text-xs leading-none transition-colors duration-200 group text-white/50 hover:text-white/80 hover:cursor-pointer hover:duration-300">
