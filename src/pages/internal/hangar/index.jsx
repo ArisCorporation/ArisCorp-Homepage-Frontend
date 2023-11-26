@@ -103,7 +103,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       rawWishlistData.data?.forEach((i) => {
         const object = {
           id: i.id,
-          ship: shipList.find(e => e.id == i.ships_id)
+          ship: shipList.find((e) => e.id == i.ships_id),
         }
         wishlist.push(object)
       })
@@ -115,7 +115,7 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       //     ship,
       //     custom_data: obj.custom_data,
       //   }
-  
+
       //   ships.push(item)
       // })
 
@@ -490,7 +490,8 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
         setState={setModal}
         title={
           (modalType == 'addShips' && 'Schiffe hinzufügen') ||
-          (modalType == 'addWishlistShips' && 'Schiffe zur Wunschliste hinzufügen') ||
+          (modalType == 'addWishlistShips' &&
+            'Schiffe zur Wunschliste hinzufügen') ||
           (modalType == 'editShip' &&
             'Bearbeiten: ' +
               (modalStore?.custom_data?.name
@@ -514,9 +515,13 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
                         ' '
                       )[0]) +
                   ' ' +
-                  modalStore?.ship?.name)) || 
-          (modalType == 'removeWishlistShip' && (
-            'Entfernen: ' + modalStore.ship.manufacturer.firmen_name + ' ' + modalStore?.name + ' von der Wunschliste'))
+                  modalStore?.ship?.name)) ||
+          (modalType == 'removeWishlistShip' &&
+            'Entfernen: ' +
+              modalStore.ship.manufacturer.firmen_name +
+              ' ' +
+              modalStore?.name +
+              ' von der Wunschliste')
         }
         closeFunction={closeModal}
       >
@@ -745,8 +750,8 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
           {modalType == 'removeWishlistShip' && (
             <div>
               <h3>
-                Bist du sicher, das du dieses Schiff von der Wunschliste entfernen
-                möchtest?
+                Bist du sicher, das du dieses Schiff von der Wunschliste
+                entfernen möchtest?
               </h3>
               <div className="w-full mt-8 space-x-12">
                 <DefaultButton animate danger action={closeModal}>
