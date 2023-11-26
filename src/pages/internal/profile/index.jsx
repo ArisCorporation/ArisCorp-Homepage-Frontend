@@ -860,7 +860,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={firstname}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setFirstname(e.target.value)}
                   placeholder="Chris..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -873,7 +873,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={lastname}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setLastname(e.target.value)}
                   placeholder="Roberts..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -900,7 +900,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={title}
                   autoComplete="new-off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setTitle(e.target.value)}
                   disabled={!titleCheckbox}
                   placeholder="Dr. Med...."
@@ -914,7 +914,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={password}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setPassword(e.target.value)}
                   type="password"
                   placeholder="*********"
@@ -1046,7 +1046,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                     <input
                       onChange={handleAvatarUpload}
                       autoComplete="off"
-                      autoCorrect={false}
+                      
                       type="file"
                       accept="image/png, image/jpeg, image/webp"
                       className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1085,7 +1085,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={currentPlace}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setCurrentPlace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1136,7 +1136,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={birthdate}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setBirthdate(e.target.value)}
                   placeholder={moment()
                     .add(930, 'years')
@@ -1165,7 +1165,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={birthplace}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setBirthplace(e.target.value)}
                   placeholder="ArcCorp / Area 18"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1180,7 +1180,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={haircolor}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setHaircolor(e.target.value)}
                   placeholder="Schwarz/Grau"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1195,7 +1195,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={height}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setHeight(e.target.value)}
                   placeholder="185"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1210,7 +1210,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={eyecolor}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setEyecolor(e.target.value)}
                   placeholder="Braun"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1225,7 +1225,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={weight}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setWeight(e.target.value)}
                   placeholder="85"
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1353,7 +1353,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       <input
                         value={dutyPeriod}
                         autoComplete="off"
-                        autoCorrect={false}
+                        
                         onChange={(e) => setDutyPeriod(e.target.value)}
                         placeholder={`${moment()
                           .add(929, 'years')
@@ -1373,7 +1373,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       <input
                         value={dutyReason}
                         autoComplete="off"
-                        autoCorrect={false}
+                        
                         onChange={(e) => setDutyReason(e.target.value)}
                         placeholder="Dienst quittiert"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1405,7 +1405,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       <input
                         value={educationName}
                         autoComplete="off"
-                        autoCorrect={false}
+                        
                         onChange={(e) => setEducationName(e.target.value)}
                         placeholder="Medizin Studium"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1421,7 +1421,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       <input
                         value={educationPeriod}
                         autoComplete="off"
-                        autoCorrect={false}
+                        
                         onChange={(e) => setEducationPeriod(e.target.value)}
                         placeholder={`${moment()
                           .add(929, 'years')
@@ -1447,7 +1447,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                       <input
                         value={educationPlace}
                         autoComplete="off"
-                        autoCorrect={false}
+                        
                         onChange={(e) => setEducationPlace(e.target.value)}
                         placeholder="Medizinische Fakultät in Terra"
                         className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1469,7 +1469,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={hobbys}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setHobbys(e.target.value)}
                   placeholder="Sport, Fliegen, Schrauben, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1482,7 +1482,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={activities}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setActivities(e.target.value)}
                   placeholder="Pool, Kochen, Sport, Alkohol trinken, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1497,7 +1497,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={talents}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setTalents(e.target.value)}
                   placeholder="Spricht Sprache X, Handwerklich begabt, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1510,7 +1510,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={habits}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setHabits(e.target.value)}
                   placeholder="Geht gern Risiken ein, Ist sehr organisiert, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1525,7 +1525,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={tics}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setTics(e.target.value)}
                   placeholder="Hat einen fragwürdigen Humor, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1538,7 +1538,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={fears}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setFears(e.target.value)}
                   placeholder="Hat Angst im Dunklem, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1555,7 +1555,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={character}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setCharacter(e.target.value)}
                   placeholder="Ist sehr loyal, manchmal zu ehrlich, manchmal etwas impulsiv, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1582,7 +1582,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={music}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setMusic(e.target.value)}
                   placeholder="Rock Musik, EDM, Metal, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1595,7 +1595,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={movies}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setMovies(e.target.value)}
                   placeholder="Interstellar, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1610,7 +1610,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={books}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setBooks(e.target.value)}
                   placeholder="Brochuren von Hersteller X, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1623,7 +1623,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={clothing}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setClothing(e.target.value)}
                   placeholder="Leder Jacken, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1638,7 +1638,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={food}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setFood(e.target.value)}
                   placeholder="Big Bennys Nudeln, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1651,7 +1651,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={drink}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setDrink(e.target.value)}
                   placeholder="Vestal Wasser, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1666,7 +1666,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={alcohol}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setAlcohol(e.target.value)}
                   placeholder="Schmolz Bier, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1679,7 +1679,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={color}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setColor(e.target.value)}
                   placeholder="Grün, Rot, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1694,7 +1694,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={loves}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setLoves(e.target.value)}
                   placeholder="Hochwertige Schiffe, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1707,7 +1707,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <input
                   value={hates}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setHates(e.target.value)}
                   placeholder="Drake, ..."
                   className="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
@@ -1722,7 +1722,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
                 <textarea
                   value={medicalInformations}
                   autoComplete="off"
-                  autoCorrect={false}
+                  
                   onChange={(e) => setMedicalInformations(e.target.value)}
                   placeholder={
                     '- Rechte Hand große Narbe verursacht durch eine Piratenklinge \n- Linke Ohrmuschel nicht vorhanden durch einen schlimmen Rennsport-Unfall'

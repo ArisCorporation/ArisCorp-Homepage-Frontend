@@ -1086,7 +1086,7 @@ export default function InternalIndex({
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Dr. Med."
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1098,7 +1098,7 @@ export default function InternalIndex({
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Chris"
                         className="form-control placeholder:opacity-25 block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1110,7 +1110,7 @@ export default function InternalIndex({
                       <input
                         value={memberLastname}
                         onChange={(e) => setMemberLastname(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Roberts"
                         className="form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1127,7 +1127,7 @@ export default function InternalIndex({
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Passwort..."
                         className="disabled:opacity-25 form-control placeholder:opacity-25 w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                       />
@@ -1334,7 +1334,7 @@ export default function InternalIndex({
                       <input
                         value={memberTitle}
                         onChange={(e) => setMemberTitle(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Dr. Med."
                         disabled={
                           session.user?.role !=
@@ -1350,7 +1350,7 @@ export default function InternalIndex({
                       <input
                         value={memberFirstname}
                         onChange={(e) => setMemberFirstname(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Chris"
                         disabled={
                           session.user?.role !=
@@ -1418,7 +1418,7 @@ export default function InternalIndex({
                       <input
                         value={memberPassword}
                         onChange={(e) => setMemberPassword(e.target.value)}
-                        autoComplete={false}
+                        autoComplete='off'
                         placeholder="Neues Passwort..."
                         type="password"
                         disabled={
@@ -1697,7 +1697,7 @@ export default function InternalIndex({
                                 <input
                                   value={shipName}
                                   onChange={(e) => setShipName(e.target.value)}
-                                  autoComplete={false}
+                                  autoComplete='off'
                                   placeholder="Name..."
                                   className="form-control block w-full max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                                 />
@@ -1709,7 +1709,7 @@ export default function InternalIndex({
                                   onChange={(e) =>
                                     setShipSerial(e.target.value)
                                   }
-                                  autoComplete={false}
+                                  autoComplete='off'
                                   placeholder="Seriennummer..."
                                   className="form-control w-full block max-w-[286px] px-3 py-1.5 text-base font-normal text-gray-300 bg-[#111] bg-clip-padding border border-solid border-bg-secondary rounded transition ease-in-out m-0 focus-visible:outline-none"
                                 />
