@@ -2361,8 +2361,6 @@ async function formData() {
         })
       }
 
-      const modules = []
-
       let sortSize
       if (size && size >= 0) {
         sortSize = size
@@ -2442,8 +2440,6 @@ async function formData() {
         variants,
         loaners,
         paints,
-        modules,
-        hasModules: modules[0] ? true : false,
       }
 
       ships.push(ship)
