@@ -23,8 +23,6 @@ export default function OurFleet() {
   const [selectedIndex, setSelectedIndex] = useState(0)
   const fleetquery = query.fleet
 
-  console.log(query.our)
-
   useEffect(() => {
     if (fleetquery != null && fleetquery != '') {
       setSelectedIndex(fleetquery)
@@ -102,7 +100,7 @@ export default function OurFleet() {
         <Tab.Group
           selectedIndex={selectedIndex}
           onChange={(event) =>
-            (query.about != null && query.about != ''
+            (query.about != null && query.about != null
               ? replace(
                   {
                     query: {
@@ -126,7 +124,7 @@ export default function OurFleet() {
                   {
                     shallow: true,
                   }
-                )) + setSelectedIndex(event)
+                ))
           }
         >
           <Tab.List className={'w-full mx-auto'}>
