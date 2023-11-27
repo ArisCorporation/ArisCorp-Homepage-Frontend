@@ -478,7 +478,6 @@ export default function InternalIndex({ shipList, siteTitle, departments }) {
       setPlannedCheckbox()
     }, 600)
   }
-  console.log(activeTab)
   return (
     <Layout helpAction={openHelpModal}>
       <Head>
