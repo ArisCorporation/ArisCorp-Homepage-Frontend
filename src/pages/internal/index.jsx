@@ -63,7 +63,7 @@ export default function InternalIndex() {
         </div>
       </Modal>
       <div className='mt-4'>
-        <div className="grid max-w-6xl gap-4 mx-auto xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
+        <div className="grid max-w-6xl gap-12 mx-auto xs:gap-6 xl:gap-4 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-6">
           <GridItem
             title="Mein Profil"
             link="profile"
