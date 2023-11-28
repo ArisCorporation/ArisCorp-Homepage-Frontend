@@ -12,7 +12,7 @@ import { BasicPanel } from 'components/panels'
 import Link from 'next/link'
 import Head from 'next/head'
 
-export async function getServerSideProps () {
+export async function getServerSideProps() {
   const { data } = await client.query({
     query: GET_VERSEEXKURS_TECHNOLOGIES,
   })
@@ -30,7 +30,7 @@ export async function getServerSideProps () {
   }
 }
 
-export default function Technologie ({ data }) {
+export default function Technologie({ data }) {
   const { push, replace, query } = useRouter()
   const [activeTab, setActiveTab] = useState()
   const urlquery = query.tab
@@ -188,27 +188,17 @@ export default function Technologie ({ data }) {
     ShipTechnologieModalContext
   )
 
-  const siteTitle = "Technologien - Astro Research and Industrial Service Corporation"
+  const siteTitle =
+    'Technologien - Astro Research and Industrial Service Corporation'
 
   return (
     <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
-        <title>
-          {siteTitle}
-        </title>
+        <title>{siteTitle}</title>
 
-        <meta
-          property="twitter:title"
-          content={siteTitle}
-        />
-        <meta
-          property="og:title"
-          content={siteTitle}
-        />
-        <meta
-          name="title"
-          content={siteTitle}
-        />
+        <meta property="twitter:title" content={siteTitle} />
+        <meta property="og:title" content={siteTitle} />
+        <meta name="title" content={siteTitle} />
       </Head>
       <Tab.Group
         selectedIndex={activeTab}
@@ -262,10 +252,15 @@ export default function Technologie ({ data }) {
                         onMouseEnter={() => setSelectedTech(object.id)}
                         onMouseLeave={() => setSelectedTech(undefined)}
                       >
-                        <Link legacyBehavior href={'/VerseExkurs/technologie/' + object.name}>
+                        <Link
+                          legacyBehavior
+                          href={'/VerseExkurs/technologie/' + object.name}
+                        >
                           <a>
                             <div
-                              style={{ backgroundImage: `url(https://cms.ariscorp.de/assets/${object.icon})` }}
+                              style={{
+                                backgroundImage: `url(https://cms.ariscorp.de/assets/${object.icon})`,
+                              }}
                               className={
                                 'transition-opacity duration-150 bg-center bg-no-repeat bg-cover hover:duration-300 hover:cursor-pointer aspect-square ' +
                                 (selectedTech == object.id
@@ -304,8 +299,8 @@ export default function Technologie ({ data }) {
                   <div className="w-3/4">
                     {selectedTech && activeTab == 0 ? (
                       selectedTech != 'grav' &&
-                        selectedTech != 'weaponindex' &&
-                        selectedTech != 'armorindex' ? (
+                      selectedTech != 'weaponindex' &&
+                      selectedTech != 'armorindex' ? (
                         data
                           .filter((data) => data.id == selectedTech)
                           .map((data) => (
@@ -359,8 +354,8 @@ export default function Technologie ({ data }) {
                 <div className="relative w-full">
                   {selectedTech && activeTab == 1 ? (
                     selectedTech != 'weaponindex' &&
-                      selectedTech != 'armorindex' &&
-                      selectedTech != 'attachmentindex' ? (
+                    selectedTech != 'armorindex' &&
+                    selectedTech != 'attachmentindex' ? (
                       data
                         .filter((data) => data.id == selectedTech)
                         .map((data) => (
@@ -412,7 +407,7 @@ export default function Technologie ({ data }) {
                       className="relative w-60 aspect-square hover:cursor-pointer"
                       onMouseEnter={() => setSelectedTech('armorindex')}
                       onMouseLeave={() => setSelectedTech(undefined)}
-                    // onClick={() => router.push('/armorindex')}
+                      // onClick={() => router.push('/armorindex')}
                     >
                       <Image
                         src="https://cms.ariscorp.de/assets/3ba7bb79-a9f8-4e8a-9d6e-4e14616695ca"
@@ -457,9 +452,21 @@ export default function Technologie ({ data }) {
 
 const PersonalInfo = ({ name, desc, image }) => (
   <div className="top-4 relative h-44 lg:w-[516px] xl:w-[650px] lg:float-right">
-    <div className="md:w-full mx-auto h-full w-[90%] md:bg-transparent">
+    <div className="2xl:w-full mx-auto h-full w-[90%] md:bg-transparent">
       <BasicPanel>
         <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
+          <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
+          <div className="w-[44%] h-fit my-auto">
+            <img
+              src={'https://cms.ariscorp.de/assets/' + image}
+              className="object-cover"
+            />
+          </div>
+          <div className="w-[48%]">
+            <p className="p-0 text-base">{desc}</p>
+          </div>
+        </div>
+        {/* <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
           <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
           <div className="w-[47%]">
             <div className="relative sm:w-64 w-56 h-[5.5rem]">
@@ -479,7 +486,7 @@ const PersonalInfo = ({ name, desc, image }) => (
           <div className="w-[48%]">
             <p className="p-0 text-xs lg:text-base">{desc}</p>
           </div>
-        </div>
+        </div> */}
       </BasicPanel>
     </div>
   </div>
@@ -493,10 +500,10 @@ const ShipInfo = ({ name, desc, image }) => (
           <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
             <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
             <div className="w-[44%] h-fit my-auto">
-                <img
-                  src={'https://cms.ariscorp.de/assets/' + image}
-                  className='object-cover'
-                />
+              <img
+                src={'https://cms.ariscorp.de/assets/' + image}
+                className="object-cover"
+              />
             </div>
             <div className="w-[48%]">
               <p className="p-0 text-base">{desc}</p>
@@ -508,6 +515,6 @@ const ShipInfo = ({ name, desc, image }) => (
   </div>
 )
 
-Technologie.getLayout = function getLayout (page) {
+Technologie.getLayout = function getLayout(page) {
   return <Layout>{page}</Layout>
 }
