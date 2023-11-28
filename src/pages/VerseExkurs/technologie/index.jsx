@@ -492,20 +492,11 @@ const ShipInfo = ({ name, desc, image }) => (
         <BasicPanel>
           <div className="flex flex-wrap items-center justify-center px-2 py-6 text-center">
             <h4 className="w-full mt-0 mb-5 text-secondary">{name}</h4>
-            <div className="w-[44%]">
-              <div className="relative w-56 h-[5.5rem]">
-                <Image
+            <div className="w-[44%] h-fit my-auto">
+                <img
                   src={'https://cms.ariscorp.de/assets/' + image}
-                  fill
-                  cover
-                  placeholder="blur"
-                  blurDataURL={
-                    'https://cms.ariscorp.de/assets/' +
-                    image +
-                    '?width=16&quality=1'
-                  }
+                  className='object-cover'
                 />
-              </div>
             </div>
             <div className="w-[48%]">
               <p className="p-0 text-base">{desc}</p>
