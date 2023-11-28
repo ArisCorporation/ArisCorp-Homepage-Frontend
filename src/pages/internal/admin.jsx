@@ -1947,15 +1947,15 @@ export default function InternalIndex({
                 {activeTab == 0 && (
                   <div>
                     <div>
-                      <p>Hier kanst du die Charaktere der Mitarbeiter anpassen.</p>
+                      <p>Hier kanst du die Charaktere der Mitarbeiter erstellen und anpassen.</p>
                       <p>Bitte beachte folgende Dinge:</p>
                       <ul>
                         <li>Als Verwaltungsmitglied kannst du aus Sicherheitsgründen nur die Rollen und den Abteilungsleiter-Status anpassen.</li>
                         <li>
-                          <div>Wenn du ein Mitarbeiter erstellst, bekommt dieser ein Standardpassword. Er sollte es schnellstmöglich ändern.</div>
+                          <div>Wenn du einen Mitarbeiter erstellst, bekommt dieser ein Standardpassword. Er sollte es schnellstmöglich ändern.</div>
                           <div className='text-primary'>Info: Das Standardpasswort ist der Benutzername (vorname.nachname)</div>
                         </li>
-                        <li className='text-red-500'>Warnung: Wenn du ein Mitarbeiter erstellst ist dies dauerhaft!</li>
+                        <li className='text-red-500'>Warnung: Wenn du einen Mitarbeiter erstellst ist dies dauerhaft!</li>
                       </ul>
                     </div>
                   </div>
