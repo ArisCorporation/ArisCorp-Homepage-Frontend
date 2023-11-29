@@ -746,8 +746,8 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
 `
 
 export const GET_VERSEEXKURS_SYSTEM = gql`
-  query GetVerseExkursSystem($System: String!) {
-    systeme(filter: { status: { _eq: "published" }, name: { _eq: $System } }) {
+  query GetVerseExkursSystem($system: String!) {
+    systeme(filter: { status: { _eq: "published" }, slug: { _eq: $system } }) {
       id
       status
       name

@@ -1,11 +1,9 @@
 import Layout from 'pages/VerseExkurs/layout'
-import { useRouter } from 'next/router'
-import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
 import rehypeRaw from 'rehype-raw'
 import { BasicPanel } from 'components/panels'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 const { gql, useQuery } = require('@apollo/client')
 import { GET_VERSEEXKURS_SYSTEM } from 'graphql/queries'
@@ -15,11 +13,10 @@ import client from 'apollo/clients'
 export async function getServerSideProps (context) {
   const { params } = context
   const { system } = params
-  const System = system?.charAt(0).toUpperCase() + system?.slice(1)
 
   let { data } = await client.query({
     query: GET_VERSEEXKURS_SYSTEM,
-    variables: { System },
+    variables: { system },
   })
 
   if (!data) {
