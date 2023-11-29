@@ -259,7 +259,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>
@@ -279,7 +279,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>
@@ -298,7 +298,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>
@@ -351,7 +351,7 @@ export default function Firmen ({ data }) {
                     <>
                       <CardDisplay
                         image={data.firmen_trans_logo.id}
-                        link={'/VerseExkurs/firmen/' + data.firmen_name}
+                        link={'/VerseExkurs/firmen/' + data.slug}
                         alt={data.firmen_name}
                       />
                     </>
@@ -368,7 +368,7 @@ export default function Firmen ({ data }) {
                     <>
                       <CardDisplay
                         image={data.firmen_trans_logo.id}
-                        link={'/VerseExkurs/firmen/' + data.firmen_name}
+                        link={'/VerseExkurs/firmen/' + data.slug}
                         alt={data.firmen_name}
                       />
                     </>
@@ -453,7 +453,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>
@@ -504,7 +504,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>
@@ -523,7 +523,7 @@ export default function Firmen ({ data }) {
                         <>
                           <CardDisplay
                             image={data.firmen_trans_logo.id}
-                            link={'/VerseExkurs/firmen/' + data.firmen_name}
+                            link={'/VerseExkurs/firmen/' + data.slug}
                             alt={data.firmen_name}
                           />
                         </>

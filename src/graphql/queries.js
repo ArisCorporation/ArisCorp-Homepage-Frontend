@@ -747,7 +747,7 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
 
 export const GET_VERSEEXKURS_SYSTEM = gql`
   query GetVerseExkursSystem($system: String!) {
-    systeme(filter: { status: { _eq: "published" }, slug: { _eq: $system } }) {
+    systeme(filter: { slug: { _eq: $system } }) {
       id
       status
       name
@@ -854,6 +854,7 @@ export const GET_VERSEEXKURS_FIRMEN = gql`
         height
       }
       firmen_name
+      slug
       slug
       firmenkategorie
       firmenherstellerkategorie
