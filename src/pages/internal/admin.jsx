@@ -512,14 +512,23 @@ export default function InternalIndex({
         ? '767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb'
         : 'a74700bc-7e32-4597-a1e1-34c6d7674dad'
     if (
-      passwordReset == true ||
+      edits.account.passwordReset == true ||
       (edits.account.password != null && edits.account.password != '')
     ) {
-      accountEdits.password = passwordReset
-        ? `${slugify_dot(memberFirstname)}.${slugify_dot(memberLastname)}`
-        : edits.account.password
-        ? edits.account.password
-        : ''
+      if (edits.account.passwordReset) {
+        accountEdits.password =
+          (edits.firstname
+            ? slugify_dot(edits.firstname)
+            : slugify_dot(memberFirstname)) +
+          (edits.lastname || memberLastname
+            ? '.' +
+              (edits.lastname
+                ? slugify_dot(edits.lastname)
+                : slugify_dot(memberLastname))
+            : '')
+      } else {
+        accountEdits.password = edits.account.password
+      }
     }
     if (edits.account.email) {
       accountEdits.email = edits.account.email
@@ -1947,15 +1956,32 @@ export default function InternalIndex({
                 {activeTab == 0 && (
                   <div>
                     <div>
-                      <p>Hier kanst du die Charaktere der Mitarbeiter erstellen und anpassen.</p>
+                      <p>
+                        Hier kanst du die Charaktere der Mitarbeiter erstellen
+                        und anpassen.
+                      </p>
                       <p>Bitte beachte folgende Dinge:</p>
                       <ul>
-                        <li>Als Verwaltungsmitglied kannst du aus Sicherheitsgründen nur die Rollen und den Abteilungsleiter-Status anpassen.</li>
                         <li>
-                          <div>Wenn du einen Mitarbeiter erstellst, bekommt dieser ein Standardpassword. Er sollte es schnellstmöglich ändern.</div>
-                          <div className='text-primary'>Info: Das Standardpasswort ist der Benutzername (vorname.nachname)</div>
+                          Als Verwaltungsmitglied kannst du aus
+                          Sicherheitsgründen nur die Rollen und den
+                          Abteilungsleiter-Status anpassen.
                         </li>
-                        <li className='text-red-500'>Warnung: Wenn du einen Mitarbeiter erstellst ist dies dauerhaft!</li>
+                        <li>
+                          <div>
+                            Wenn du einen Mitarbeiter erstellst, bekommt dieser
+                            ein Standardpassword. Er sollte es schnellstmöglich
+                            ändern.
+                          </div>
+                          <div className="text-primary">
+                            Info: Das Standardpasswort ist der Benutzername
+                            (vorname.nachname)
+                          </div>
+                        </li>
+                        <li className="text-red-500">
+                          Warnung: Wenn du einen Mitarbeiter erstellst ist dies
+                          dauerhaft!
+                        </li>
                       </ul>
                     </div>
                   </div>
@@ -1963,21 +1989,25 @@ export default function InternalIndex({
                 {activeTab == 1 && (
                   <div>
                     <div>
-                      <p>Hier kannst du die Hangare von jedem Mitarbeiter anpassen.</p>
+                      <p>
+                        Hier kannst du die Hangare von jedem Mitarbeiter
+                        anpassen.
+                      </p>
                       <p>Bitte beachte folgende Dinge:</p>
                       <ul>
-                        <li className='text-red-500'>Jede Anpassung ist dauerhaft!</li>
-                        <li>Du solltest jederzeit Rücksprache mit dem Mitarbeiter halten, dessen Hangar du bearbeiten möchtest</li>
+                        <li className="text-red-500">
+                          Jede Anpassung ist dauerhaft!
+                        </li>
+                        <li>
+                          Du solltest jederzeit Rücksprache mit dem Mitarbeiter
+                          halten, dessen Hangar du bearbeiten möchtest
+                        </li>
                       </ul>
                     </div>
                   </div>
                 )}
                 <div className="w-full mt-8 space-x-12">
-                  <DefaultButton
-                    animate
-                    danger
-                    action={() => closeModal()}
-                  >
+                  <DefaultButton animate danger action={() => closeModal()}>
                     Schließen!
                   </DefaultButton>
                 </div>
