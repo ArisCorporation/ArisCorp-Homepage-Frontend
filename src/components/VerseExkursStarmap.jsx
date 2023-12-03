@@ -1850,7 +1850,7 @@ export default function Starmap({ data }) {
             'relative z-10 w-[1.667%] h-[2.3789%] left-[67.48%] top-[-44.81%] group hover:cursor-pointer' +
             (data.filter((data) => data.name === 'Rihlah')[0] ? '' : ' scale-0')
           }
-          onClick={() => router.push('/VerseExkurs/starmap/rhilah')}
+          onClick={() => router.push('/VerseExkurs/starmap/rihlah')}
           data-html={true}
           data-tip={ReactDOMServer.renderToString(
             <div>
