@@ -18,6 +18,7 @@ export async function getServerSideProps (context) {
     query: GET_VERSEEXKURS_SYSTEM,
     variables: { system },
   })
+  data = data.systeme[0]
 
   if (!data) {
     return {
@@ -25,8 +26,7 @@ export async function getServerSideProps (context) {
     }
   }
 
-  data = data.systeme[0]
-  const siteTitle = data.name + " - Astro Research and Industrial Service Corporation"
+  const siteTitle = " - Astro Research and Industrial Service Corporation"
 
   return {
     props: {
@@ -65,8 +65,9 @@ export default function SystemDetailPage ({ data, siteTitle }) {
               : data.affiliation == 'vanduul'
                 ? vnclIcon
                 : null
-
+  console.log(data)
   return (
+    // <></>
     <div className="items-center pt-10 mx-auto print:pt-5">
       <Head>
         <title>
