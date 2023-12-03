@@ -18,6 +18,8 @@ import WeaponCard from 'components/WeaponCard'
 import { Disclosure, Transition } from '@headlessui/react'
 import { MdKeyboardArrowRight } from 'react-icons/md'
 import HangarShipDetailCard from 'components/internal/HangarShipCard'
+import moment from 'moment'
+import 'moment/locale/de'
 
 export async function getServerSideProps(context) {
   const { name: slug } = context.query
@@ -273,6 +275,7 @@ export default function Biografie({
                     <p className="pb-0 text-sm">Geburtsdatum:</p>
                     <p className="p-0 text-primary">
                       {data.birthdate ? data.birthdate : 'N/A'}
+                      <span> (Alter: {moment(data.birthdate).from((moment().add(930, 'years')), true)})</span>
                     </p>
                   </div>
                   <div className="col-span-1">
