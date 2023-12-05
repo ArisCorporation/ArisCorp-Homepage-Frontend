@@ -1,4 +1,4 @@
-import Layout from '../layout'
+import Layout from './layout'
 import { useRouter } from 'next/router'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
@@ -271,11 +271,19 @@ export default function Biografie({
                 </div>
                 <hr className="relative mt-3 mb-2 -ml-1 col-span-full sm:mt-3 sm:mb-2 bg-bg-secondary before:w-1 before:aspect-square before:absolute before:inline-block before:bg-primary after:w-1 after:right-0 after:aspect-square after:absolute after:inline-block after:bg-primary" />
                 <div className="grid grid-cols-2 uppercase">
-                  <div className="col-span-2">
+                  <div className="col-span-1">
                     <p className="pb-0 text-sm">Geburtsdatum:</p>
                     <p className="p-0 text-primary">
                       {data.birthdate ? data.birthdate : 'N/A'}
-                      <span> (Alter: {moment(data.birthdate).from((moment().add(930, 'years')), true)})</span>
+                    </p>
+                  </div>
+                  <div className="col-span-1">
+                    <p className="pb-0 text-sm">Alter:</p>
+                    <p className="p-0 text-primary">
+                      {moment(data.birthdate).from(
+                        moment().add(930, 'years'),
+                        true
+                      )}
                     </p>
                   </div>
                   <div className="col-span-1">
