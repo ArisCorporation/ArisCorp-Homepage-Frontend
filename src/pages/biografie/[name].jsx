@@ -281,10 +281,10 @@ export default function Biografie({
                   <div className="col-span-1">
                     <p className="pb-0 text-sm">Alter:</p>
                     <p className="p-0 text-primary">
-                      {moment(data.birthdate).from(
-                        moment().add(930, 'years'),
-                        true
-                      )}
+                      {Math.trunc(moment.duration(moment()
+                        .add(930, 'years')
+                        .diff(moment(data.birthdate, 'DD.MM.YYYY'), true)).as('years'))}
+                      <span> Jahre alt</span>
                     </p>
                   </div>
                   <div className="col-span-1">
