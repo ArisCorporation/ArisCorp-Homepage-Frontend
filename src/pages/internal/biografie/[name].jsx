@@ -1,4 +1,4 @@
-import Layout from './layout'
+import Layout from '../layout'
 import { useRouter } from 'next/router'
 import { SquareLoader } from 'react-spinners'
 import Image from 'next/image'
