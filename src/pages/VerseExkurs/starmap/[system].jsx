@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
     }
   }
 
-  const siteTitle = ' - Astro Research and Industrial Service Corporation'
+  const siteTitle =  data.name + ' - Astro Research and Industrial Service Corporation'
 
   return {
     props: {
