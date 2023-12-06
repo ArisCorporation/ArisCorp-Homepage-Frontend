@@ -2,6 +2,9 @@ import Layout from './layout'
 import {
   GET_MEMBERS,
   GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  GET_VERSEEXKURS_FRAKTIONEN_TIMELINE,
+  GET_VERSEEXKURS_SPECTRUM_TIMELINE,
+  GET_VERSEEXKURS_SYSTEME_TIMELINE,
   GET_VERSEEXKURS_TIMELINE,
 } from 'graphql/queries'
 import ReactMarkdown from 'react-markdown'
@@ -19,6 +22,15 @@ export async function getServerSideProps() {
   const { data } = await client.query({ query: GET_VERSEEXKURS_TIMELINE })
   const { data: firmenList } = await client.query({
     query: GET_VERSEEXKURS_FIRMEN_TIMELINE,
+  })
+  const { data: systemList } = await client.query({
+    query: GET_VERSEEXKURS_SYSTEME_TIMELINE,
+  })
+  const { data: fractionList } = await client.query({
+    query: GET_VERSEEXKURS_FRAKTIONEN_TIMELINE,
+  })
+  const { data: spectrumList } = await client.query({
+    query: GET_VERSEEXKURS_SPECTRUM_TIMELINE,
   })
   const { data: memberList } = await client.query({ query: GET_MEMBERS })
   const timelineEvents = []
@@ -53,7 +65,13 @@ export async function getServerSideProps() {
     if (object.beitrags_typ == 'uee') {
       link ? (link = link + '/uee/' + object.link) : ''
     } else if (object.beitrags_typ == 'starsystem') {
-      link ? (link = link + '/starmap/' + object.link) : ''
+      var starmap_link
+      systemList.systeme.find((e) => e.id == object?.link)
+        ? (starmap_link = systemList.systeme.find(
+            (e) => e.id == object.link
+          ).slug)
+        : null
+      object.link ? (link = link + '/starmap/' + starmap_link) : ''
     } else if (object.beitrags_typ == 'one_day_in_history') {
       link ? (link = link + '/onedayinhistory/' + object.link) : ''
     } else if (object.beitrags_typ == 'firma') {
@@ -61,7 +79,7 @@ export async function getServerSideProps() {
       firmenList.firmen.find((e) => e.id == object?.link)
         ? (firmen_link = firmenList.firmen.find(
             (e) => e.id == object.link
-          ).firmen_name)
+          ).slug)
         : null
       object.link ? (link = link + '/firmen/' + firmen_link) : ''
     } else if (object.beitrags_typ == 'literatur') {
@@ -69,9 +87,23 @@ export async function getServerSideProps() {
     } else if (object.beitrags_typ == 'ship') {
       link ? (link = '/ShipExkurs/' + object.link) : '/'
     } else if (object.beitrags_typ == 'fraktion') {
-      link ? (link = link + '/fraktionen/' + object.link) : ''
+      var fraction_link
+      fractionList.fraktionengruppierungen.find((e) => e.id == object?.link)
+        ? (fraction_link = fractionList.fraktionengruppierungen.find(
+            (e) => e.id == object.link
+          ).name)
+        : null
+      object.link ? (link = link + '/fraktionen/' + fraction_link) : ''
     } else if (object.beitrags_typ == 'spectrum') {
-      link ? (link = link + '/spectrum/' + object.link) : ''
+      const beitrag = spectrumList.spectrum.find((e) => e.id == object?.link)
+      const category = spectrumList.spectrum.find(
+        (e) =>
+          e.spectrum_kategorie_beschreibung == true &&
+          e.spectrum_beitrag_kateogrie == beitrag.spectrum_beitrag_kateogrie
+      )
+      object.link
+        ? (link = link + '/spectrum/' + category?.id + '/' + beitrag?.id)
+        : ''
     } else if (object.beitrags_typ == 'member') {
       var member_link
       memberList.member.find((e) => e.id == object?.link)
@@ -79,7 +111,9 @@ export async function getServerSideProps() {
             (e) => e.id == object.link
           ).slug)
         : null
-      link ? (link = '/biografie/' + member_link) : ''
+      object?.link ? (link = '/biografie/' + member_link) : ''
+    } else if (object.beitrags_typ == 'ship') {
+      link = '/ShipExkurs/' + object?.link
     } else {
       link ? (link = link + '/' + object.link) : ''
     }
@@ -99,7 +133,7 @@ export async function getServerSideProps() {
       },
       group: group,
       autolink: true,
-      display_date: start_date.year
+      display_date: start_date.year,
     })
 
     if (object.short_caption != null) {
@@ -129,7 +163,7 @@ export async function getServerSideProps() {
 
 export default function TimelinePage({ data, events }) {
   const { push } = useRouter()
-  
+
   const siteTitle =
     'Timeline - Astro Research and Industrial Service Corporation'
   return (

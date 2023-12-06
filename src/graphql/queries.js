@@ -942,6 +942,35 @@ export const GET_VERSEEXKURS_FIRMEN_TIMELINE = gql`
     firmen(limit: -1) {
       id
       firmen_name
+      slug
+    }
+  }
+`
+export const GET_VERSEEXKURS_SYSTEME_TIMELINE = gql`
+  query GetVerseExkursSystemTimeline {
+    systeme(limit: -1) {
+      id
+      name
+      slug
+    }
+  }
+`
+export const GET_VERSEEXKURS_FRAKTIONEN_TIMELINE = gql`
+  query GetVerseExkursFraktionenTimeline {
+    fraktionengruppierungen(limit: -1) {
+      id
+      name
+      slug
+    }
+  }
+`
+export const GET_VERSEEXKURS_SPECTRUM_TIMELINE = gql`
+  query GetVerseExkursSpectrumTimeline {
+    spectrum(limit: -1) {
+      id
+      spectrum_titel
+      spectrum_kategorie_beschreibung
+      spectrum_beitrag_kateogrie
     }
   }
 `

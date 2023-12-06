@@ -25,7 +25,7 @@ export async function getServerSideProps (context) {
 
   data = data.spectrum
   const category = data.filter((data) => data.spectrum_kategorie_beschreibung == true && data.id == cid)[0]
-  data = data.filter((data) => data.spectrum_kategorie_beschreibung == false && data.spectrum_beitrag_kateogrie === category.spectrum_beitrag_kateogrie)
+  data = data.filter((data) => data.spectrum_kategorie_beschreibung == false && data.spectrum_beitrag_kateogrie === category?.spectrum_beitrag_kateogrie)
   const siteTitle = data[0].spectrum_titel + " - Astro Research and Industrial Service Corporation"
 
   return {
