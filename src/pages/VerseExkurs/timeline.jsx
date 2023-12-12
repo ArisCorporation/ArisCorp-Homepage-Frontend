@@ -105,13 +105,7 @@ export async function getServerSideProps() {
         ? (link = link + '/spectrum/' + category?.id + '/' + beitrag?.id)
         : ''
     } else if (object.beitrags_typ == 'member') {
-      var member_link
-      memberList.member.find((e) => e.id == object?.link)
-        ? (member_link = memberList.member.find(
-            (e) => e.id == object.link
-          ).slug)
-        : null
-      object?.link ? (link = '/biografie/' + member_link) : ''
+      link = object?.link ? (link = '/biografie/' + object?.link) : ''
     } else if (object.beitrags_typ == 'ship') {
       link = '/ShipExkurs/' + object?.link
     } else {
