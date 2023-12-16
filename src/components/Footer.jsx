@@ -83,6 +83,7 @@ const Footer = () => {
               __html: '&copy; ' + new Date().getFullYear() + ' ArisCorp ',
             }}
           />
+          <span> - V{process.env.NEXT_PUBLIC_APP_VERSION} </span>
           {/* <span> - </span>
           <Link legacyBehavior href="/impressum">
             <a className="text-secondary">Impressum</a>
@@ -98,6 +99,10 @@ const Footer = () => {
           <span> - </span>
           <Link legacyBehavior href="/internal">
             <a className="text-secondary">A.M.S</a>
+          </Link>
+          <span> - </span>
+          <Link legacyBehavior target='_blank' ref="noreferrer" href="https://releases.ariscorp.de">
+            <a className="text-secondary">Release-Notes</a>
           </Link>
         </div>
       </div>
