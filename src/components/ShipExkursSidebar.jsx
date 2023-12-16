@@ -149,7 +149,7 @@ export default function Sidebar() {
               </div>
             </a>
           </Link> */}
-          <Link legacyBehavior href="/ShipExkurs/comparison">
+          {/* <Link legacyBehavior href="/ShipExkurs/comparison">
             <a
               className={
                 'min-w-[62px] bg-transparent border-none relative flex items-center justify-center w-full m-h-[60px] mr-0 p-0 opacity-90 transition-all duration-500 ease-linear after:absolute after:top-0 after:w-4/5 after:h-[3px] after:bg-primary after:rounded-b-md after:shadow' +
@@ -168,7 +168,7 @@ export default function Sidebar() {
                 />
               </div>
             </a>
-          </Link>
+          </Link> */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="flex-col relative flex items-center justify-center w-full min-h-[60px] mr-0 p-0 opacity-90 bg-transparent h-[43px] border-[1px] border-solid border-transparent cursor-pointer"
@@ -265,7 +265,7 @@ export default function Sidebar() {
                   </a>
                 </Link>
               </li>
-              <li
+              {/* <li
                 className="p-0 m-0 list-none group"
                 data-tip
                 data-for="CompareTip"
@@ -315,7 +315,7 @@ export default function Sidebar() {
                     </div>
                   </a>
                 </Link>
-              </li>
+              </li> */}
               {/* <li
                 className="p-0 m-0 list-none group"
                 data-tip
