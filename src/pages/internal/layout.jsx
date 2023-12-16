@@ -40,13 +40,6 @@ export const ProtectedLayout = ({ children, changes, helpAction }) => {
         query: { callbackUrl: router.asPath },
       })
     }
-    if (
-      sessionData &&
-      sessionData.user.betaAccess != true &&
-      sessionData.user.role != '767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb'
-    ) {
-      signOut({ callbackUrl: '/' })
-    }
   }, [loading, unAuthorized, sessionStatus, router])
 
   // if the user refreshed the page or somehow navigated to the protected page

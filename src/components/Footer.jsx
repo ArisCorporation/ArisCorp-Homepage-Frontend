@@ -101,7 +101,7 @@ const Footer = () => {
             <a className="text-secondary">A.M.S</a>
           </Link>
           <span> - </span>
-          <Link legacyBehavior target='_blank' ref="noreferrer" href="https://releases.ariscorp.de">
+          <Link legacyBehavior target='_blank' href="https://releases.ariscorp.de">
             <a className="text-secondary">Release-Notes</a>
           </Link>
         </div>
