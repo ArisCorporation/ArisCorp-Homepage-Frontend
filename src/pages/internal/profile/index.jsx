@@ -467,10 +467,8 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
           (edits.head_of_department == null && abteilungsLeiter == true)
         ? '767bb09e-a6fc-4ebb-8c5f-08b060ab0bdb'
         : 'a74700bc-7e32-4597-a1e1-34c6d7674dad'
-    if (edits.account.password != null && edits.account.password != '') {
+    if (edits.account.password) {
       accountEdits.password = edits.account.password
-        ? edits.account.password
-        : null
     }
 
     delete edits.account
@@ -495,7 +493,8 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
         },
       }
     )
-    return
+    
+    return true
   }
   async function saveMemberEdit() {
     console.log(
@@ -663,8 +662,10 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
 
     console.log('📑 ---EDIT-OBJECT:---')
     console.log(edits)
+    console.log(edits.account)
     await editMember(edits, data.id, data.account.id)
-    return getData(session.user.id)
+    await getData(session.user.id)
+    return setStates()
   }
 
   function openCancelModal() {
@@ -1858,7 +1859,7 @@ export default function InternalIndex({ departments, systems, siteTitle }) {
               }
             />
             <CheckCircleIcon
-              onClick={() => changesMade && saveMemberEdit()}
+              onClick={() => changesMade ? saveMemberEdit() : null}
               className={
                 'w-12 h-12 transition duration-200 hover:duration-300 text-green-500/50 hover:text-green-500 ' +
                 (changesMade ? 'grayscale-0 cursor-pointer' : 'grayscale')
