@@ -734,7 +734,6 @@ export const GET_VERSEEXKURS_SYSTEME = gql`
       planets
       moons
       asteroid_belt
-      jumppoints
       affiliation
       discovery_year
       main_planet
@@ -763,7 +762,6 @@ export const GET_VERSEEXKURS_SYSTEM = gql`
       planets
       moons
       asteroid_belt
-      jumppoints
       affiliation
       discovery_year
       main_planet
