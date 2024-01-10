@@ -1761,6 +1761,12 @@ export const GET_SHIPEXKURS_SHIPS_INDEX = gql`
       onSale
       classification
       groundVehicle
+      length
+      beam
+      height
+      minCrew
+      maxCrew
+      cargo
     }
 
     firmen(
